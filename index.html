@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Diablo 4 Damage Calculator — calculate and compare build damage with custom additive and multiplicative bonuses.">
+  <title>D4 Damage Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- Header -->
+  <header class="app-header" id="app-header">
+    <h1 class="app-title">Damage Calculator <span>Diablo IV</span></h1>
+    <div class="header-controls">
+      <button class="btn" id="btn-import-maxroll" style="font-size: 0.8rem; padding: 4px 8px;" title="Paste Stats">📋 Paste</button>
+      <button class="btn" id="btn-new" title="New Build">✦ New</button>
+      <button class="btn btn-primary" id="btn-save" title="Save Build">💾 Save</button>
+      <div class="save-dropdown">
+        <button class="btn" id="btn-load" title="Load Build">📂 Load</button>
+        <div class="save-menu" id="load-menu"></div>
+      </div>
+      <button class="btn" id="btn-export" title="Export JSON">⬆ Export</button>
+      <button class="btn" id="btn-import" title="Import JSON">⬇ Import</button>
+      <input type="file" id="import-file" accept=".json" class="hidden">
+    </div>
+  </header>
+
+  <!-- Build Name -->
+  <div class="build-bar">
+    <label for="build-name">Build Name</label>
+    <input type="text" id="build-name" class="build-name-input" value="New Build" placeholder="Enter build name...">
+  </div>
+
+  <!-- Glass Tabs Container -->
+  <div class="panel glass-tabs-container" id="main-tabs-container" style="margin-bottom: 20px;">
+    <div class="tabs-header">
+      <button class="tab-btn active" data-target="tab-equipment"><span class="icon">🛡️</span> Equipment</button>
+      <!-- Future tabs can be added here -->
+    </div>
+    <div class="tabs-content">
+      <!-- Equipment Tab -->
+      <div id="tab-equipment" class="tab-pane active">
+        <div class="paperdoll-container">
+          <div class="paperdoll-main">
+            <div class="paperdoll-col paperdoll-left" id="paperdoll-left">
+              <!-- Left side items (Helm, Chest, etc) -->
+            </div>
+            <div class="paperdoll-center">
+
+              <div class="charm-wheel-container">
+                <div class="charm-wheel">
+                  <!-- The Seal -->
+                  <div class="seal-slot slot-circle" data-slot="Seal"></div>
+                  <!-- 6 Charms positioned via CSS -->
+                  <div class="charm-slot slot-circle charm-0" data-slot="Charm 1"></div>
+                  <div class="charm-slot slot-circle charm-1" data-slot="Charm 2"></div>
+                  <div class="charm-slot slot-circle charm-2" data-slot="Charm 3"></div>
+                  <div class="charm-slot slot-circle charm-3" data-slot="Charm 4"></div>
+                  <div class="charm-slot slot-circle charm-4" data-slot="Charm 5"></div>
+                  <div class="charm-slot slot-circle charm-5" data-slot="Charm 6"></div>
+                </div>
+              </div>
+              <div class="active-runes-section">
+                <div class="runes-label">Active Runes</div>
+                <div class="runes-container">
+                  <div class="rune-slot slot-square" data-slot="Rune 1"></div>
+                  <div class="rune-slot slot-square" data-slot="Rune 2"></div>
+                  <div class="rune-slot slot-square" data-slot="Rune 3"></div>
+                  <div class="rune-slot slot-square" data-slot="Rune 4"></div>
+                </div>
+              </div>
+            </div>
+            <div class="paperdoll-col paperdoll-right" id="paperdoll-right">
+              <!-- Right side items (Amulet, Rings, etc) -->
+            </div>
+          </div>
+          <div class="paperdoll-bottom-row" id="paperdoll-bottom-row">
+            <div class="paperdoll-footer" id="paperdoll-footer">
+              <!-- 6 skill boxes -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Future tab panes can be added here -->
+    </div>
+  </div>
+
+  <!-- Base Inputs -->
+  <div class="panel" style="margin-bottom: 20px;">
+    <div class="panel-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+      <div><span class="icon">⚔</span> Base Stats</div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <label for="class-select" style="font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; margin-bottom: 0;">Select a Class</label>
+        <select id="class-select" style="width: auto; padding: 4px 8px; font-size: 0.85rem;">
+          <option value="Barbarian">Barbarian</option>
+          <option value="Druid">Druid</option>
+          <option value="Necromancer">Necromancer</option>
+          <option value="Paladin">Paladin</option>
+          <option value="Rogue">Rogue</option>
+          <option value="Sorcerer">Sorcerer</option>
+          <option value="Spiritborn">Spiritborn</option>
+          <option value="Warlock">Warlock</option>
+        </select>
+      </div>
+    </div>
+    <div class="inputs-grid" style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border-subtle);">
+      <div class="input-group">
+        <label for="strength">Strength</label>
+        <input type="number" id="strength" value="276" step="1" placeholder="0">
+      </div>
+      <div class="input-group">
+        <label for="intelligence">Intelligence</label>
+        <input type="number" id="intelligence" value="1172" step="1" placeholder="0">
+      </div>
+      <div class="input-group">
+        <label for="willpower">Willpower</label>
+        <input type="number" id="willpower" value="519" step="1" placeholder="0">
+      </div>
+      <div class="input-group">
+        <label for="dexterity">Dexterity</label>
+        <input type="number" id="dexterity" value="557" step="1" placeholder="0">
+      </div>
+    </div>
+
+    <div class="inputs-grid">
+      <div class="input-group">
+        <label for="weapon-damage">Weapon Damage</label>
+        <input type="number" id="weapon-damage" value="5086" step="any" placeholder="0">
+      </div>
+      <div class="input-group">
+        <label for="skill-damage">Skill Damage %</label>
+        <input type="number" id="skill-damage" value="126" step="any" placeholder="0">
+      </div>
+
+      <div class="input-group">
+        <label for="aps">Attacks Per Second</label>
+        <input type="number" id="aps" value="1.0" step="0.01" placeholder="1.0">
+      </div>
+    </div>
+    <!-- Calculated Base Damage display -->
+    <div class="bonus-total-row">
+      <span class="bonus-total-label">Base Damage (Skill% × Weapon Dmg)</span>
+      <span class="bonus-total-value" id="base-damage-display">6,408.36</span>
+    </div>
+  </div>
+
+  <!-- Additive & Multiplicative Columns -->
+  <div class="bonus-columns">
+
+    <!-- Additive Panel -->
+    <div class="panel" id="additive-panel">
+      <div class="panel-title" data-toggle="true" style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <span class="icon">➕</span> Additive Bonuses
+        </div>
+        <span class="collapse-icon">▾</span>
+      </div>
+      <div class="panel-body">
+      <table class="bonus-table" id="additive-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th class="col-value">Value</th>
+            <th class="col-formula">Additive Multiplier</th>
+            <th class="col-delete"></th>
+          </tr>
+        </thead>
+        <tbody id="additive-body">
+          <!-- Rows injected by JS -->
+        </tbody>
+      </table>
+      <button class="btn btn-add" id="btn-add-additive">+ Add Bonus</button>
+      <div class="bonus-total-row">
+        <span class="bonus-total-label">Additive Total</span>
+        <span class="bonus-total-value" id="additive-total">0.00</span>
+      </div>
+      </div>
+    </div>
+
+    <!-- Multiplicative Panel -->
+    <div class="panel" id="multiplicative-panel">
+      <div class="panel-title" data-toggle="true" style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <span class="icon">✕</span> Multiplicative Bonuses
+        </div>
+        <span class="collapse-icon">▾</span>
+      </div>
+      <div class="panel-body">
+        <div class="panel-section" style="margin-bottom: 1.5rem;">
+          <div style="font-weight: 600; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Legendary Nodes</div>
+          <div id="nodes-container" class="inputs-grid" style="grid-template-columns: repeat(4, 1fr); gap: 0.75rem;">
+            <!-- Populated dynamically by JS based on selected class -->
+          </div>
+        </div>
+
+        <div class="panel-section" style="margin-bottom: 1.5rem;">
+          <div style="font-weight: 600; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Paragon Glyphs</div>
+          <div id="additional-bonuses-container" class="inputs-grid" style="grid-template-columns: repeat(5, 1fr); gap: 0.75rem; margin-bottom: 0.75rem;">
+            <!-- Populated dynamically by JS based on selected class -->
+          </div>
+          <div id="legendary-bonuses-container" class="inputs-grid" style="grid-template-columns: repeat(5, 1fr); gap: 0.75rem;">
+            <!-- Populated dynamically by JS based on selected class -->
+          </div>
+        </div>
+        
+        <div style="font-weight: 600; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Custom Multipliers</div>
+      <table class="bonus-table" id="multiplicative-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th class="col-value">Value %</th>
+            <th class="col-formula">Multiplier</th>
+            <th class="col-running">Running Damage</th>
+            <th class="col-delete"></th>
+          </tr>
+        </thead>
+        <tbody id="multiplicative-body">
+          <!-- Rows injected by JS -->
+        </tbody>
+      </table>
+      <button class="btn btn-add" id="btn-add-multiplicative">+ Add Multiplier</button>
+      <div class="bonus-total-row">
+        <span class="bonus-total-label">Multiplicative Product</span>
+        <span class="bonus-total-value" id="multiplicative-total">1.00</span>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results Dashboard -->
+  <div class="panel results-panel">
+    <div class="panel-title"><span class="icon">🔥</span> Damage Results</div>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-label">Base Damage</div>
+        <div class="result-value" id="result-base">0</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label" id="result-intel-label">Intelligence ×</div>
+        <div class="result-value" id="result-intel">1.00</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Additive ×</div>
+        <div class="result-value" id="result-additive">0.00</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Multiplicative ×</div>
+        <div class="result-value" id="result-multiplicative">1.00</div>
+      </div>
+      <div class="result-card result-final">
+        <div class="result-label">Single Hit (after 80% DR)</div>
+        <div class="result-value" id="result-final">0</div>
+      </div>
+      <div class="result-card result-total">
+        <div class="result-label">DPS (Damage per Second)</div>
+        <div class="result-value" id="result-total">0</div>
+      </div>
+    </div>
+    <div class="dr-note">
+      Monsters have <strong>80% damage reduction</strong> — final damage is multiplied by <strong>0.20</strong>
+    </div>
+  </div>
+
+
+
+</div>
+
+<!-- Maxroll Import Modal -->
+<div class="modal-overlay hidden" id="maxroll-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title">Paste Maxroll Stats</h2>
+      <button class="btn-close" id="btn-close-modal" title="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-instruction">Copy your stats list from Maxroll and paste it below. Base Weapon Damage will update your Base Stats, and all other damage values will be added as Additive Bonuses.</p>
+      <textarea id="maxroll-textarea" class="maxroll-textarea" placeholder="Base Weapon Damage
+5,374
+Critical Strike Damage
+1,192.6%..."></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" id="btn-cancel-modal">Cancel</button>
+      <button class="btn btn-primary" id="btn-submit-maxroll">Import Stats</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Item Selection Modal -->
+  <div id="item-selection-modal" class="modal-overlay" style="display: none;">
+    <div class="item-modal-content">
+      <div class="item-modal-header">
+        <div class="item-modal-tabs">
+          <button class="item-modal-tab active">Select</button>
+          <button class="item-modal-tab" disabled>Edit</button>
+        </div>
+        <button id="close-item-modal" class="item-modal-close">✕</button>
+      </div>
+      <div class="item-modal-body" id="item-modal-select-body">
+        <div class="item-modal-sidebar">
+          <div class="sidebar-item">All Items</div>
+          <div class="sidebar-item active" id="modal-sidebar-slot-name">Helm</div>
+        </div>
+        <div class="item-modal-main">
+          <div class="item-modal-search">
+            <span class="icon">⊞</span>
+            <input type="text" id="item-search-input" placeholder="Search...">
+          </div>
+          <div class="item-modal-list" id="item-modal-list">
+            <!-- Items populated dynamically -->
+          </div>
+        </div>
+      </div>
+      <div class="item-modal-body" id="item-modal-edit-body" style="display: none;">
+        <!-- Edit content injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <div id="d4-tooltip" class="d4-tooltip hidden"></div>
+  <div id="d4-context-menu" class="d4-context-menu hidden"></div>
+  <script src="app.js"></script>
+</body>
+</html>
