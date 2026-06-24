@@ -1152,6 +1152,14 @@
         
         const getSpecContent = (spec) => {
           if (spec === 'Skirmisher') return '<img src="assets/skirmisher_icon.png" style="height: 48px; object-fit: contain;">';
+          if (spec === 'Defender') return '<img src="assets/defender_icon.png" style="height: 48px; object-fit: contain;">';
+          if (spec === 'Reaper') return '<img src="assets/reaper_icon.png" style="height: 48px; object-fit: contain;">';
+          if (spec === 'Shadow Mage') return '<img src="assets/shadow_mage_icon.png" style="height: 48px; object-fit: contain;">';
+          if (spec === 'Cold Mage') return '<img src="assets/cold_mage_icon.png" style="height: 48px; object-fit: contain;">';
+          if (spec === 'Bone Mage') return '<img src="assets/bone_mage_icon.png" style="height: 48px; object-fit: contain;">';
+          if (spec === 'Bone Golem') return '<img src="assets/bone_golem_icon.png" style="height: 48px; object-fit: contain;">';
+          if (spec === 'Blood Golem') return '<img src="assets/blood_golem_icon.png" style="height: 48px; object-fit: contain;">';
+          if (spec === 'Iron Golem') return '<img src="assets/iron_golem_icon.png" style="height: 48px; object-fit: contain;">';
           return spec;
         };
         
