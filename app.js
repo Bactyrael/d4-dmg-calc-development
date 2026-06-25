@@ -1070,13 +1070,14 @@
     const leftCol = document.getElementById('paperdoll-left');
     const rightCol = document.getElementById('paperdoll-right');
     const footer = document.getElementById('paperdoll-footer');
-    const bottomRow = document.getElementById('paperdoll-bottom-row');
     if (!leftCol || !rightCol || !footer) return;
     
     leftCol.innerHTML = '';
     rightCol.innerHTML = '';
     footer.innerHTML = '';
-    if (bottomRow) bottomRow.innerHTML = '';
+    
+    // Clear old class mechanic panels
+    document.querySelectorAll('.class-mechanic-panel').forEach(e => e.remove());
     
     const slots = CLASS_EQUIPMENT_SLOTS[className] || [];
     
