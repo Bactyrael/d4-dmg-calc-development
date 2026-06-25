@@ -1679,6 +1679,10 @@
     let totalWeaponAps = 0;
 
     if (baseEquipped) {
+      let mainhandDmg = 0;
+      let offhandDmg = 0;
+      let hasShield = false;
+
       Object.keys(baseEquipped).forEach(slotName => {
         const item = baseEquipped[slotName];
         if (!item || !item.name) return;
@@ -1687,18 +1691,37 @@
         
         if (baseItem.armor) totalArmor += baseItem.armor;
         
-        if ((sName === 'mainhand' || sName.includes('weapon')) && baseItem.damageRange) {
+        if (sName === 'mainhand' && baseItem.damageRange) {
             const match = baseItem.damageRange.match(/([\d,]+)\s*-\s*([\d,]+)/);
             if (match) {
                 const min = parseFloat(match[1].replace(/,/g, ''));
                 const max = parseFloat(match[2].replace(/,/g, ''));
-                totalWeaponDmg = (min + max) / 2;
+                mainhandDmg = (min + max) / 2;
             }
             if (baseItem.weaponSpeed && typeof baseItem.weaponSpeed === 'number') {
                 totalWeaponAps = baseItem.weaponSpeed;
             }
         }
+
+        if (sName === 'offhand') {
+            if (baseItem.weaponType === 'Shield') {
+                hasShield = true;
+            } else if (baseItem.damageRange) {
+                const match = baseItem.damageRange.match(/([\d,]+)\s*-\s*([\d,]+)/);
+                if (match) {
+                    const min = parseFloat(match[1].replace(/,/g, ''));
+                    const max = parseFloat(match[2].replace(/,/g, ''));
+                    offhandDmg = (min + max) / 2;
+                }
+            }
+        }
       });
+
+      if (hasShield) {
+          totalWeaponDmg = mainhandDmg * 2;
+      } else {
+          totalWeaponDmg = mainhandDmg + offhandDmg;
+      }
     }
     
     // Update UI and lock inputs if gear is equipped
