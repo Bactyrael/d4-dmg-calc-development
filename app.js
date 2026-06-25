@@ -1078,6 +1078,9 @@
     const footer = document.getElementById('paperdoll-footer');
     if (!leftCol || !rightCol || !footer) return;
     
+    const container = document.querySelector('.paperdoll-container');
+    if (container) container.dataset.class = className;
+    
     leftCol.innerHTML = '';
     rightCol.innerHTML = '';
     footer.innerHTML = '';
