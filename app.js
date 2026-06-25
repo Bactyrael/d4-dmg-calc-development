@@ -2907,16 +2907,30 @@ rarity = foundItem.rarity;
 
     // Helper to render Affix Row (Option A style)
     function renderAffixRow(idx, type) {
-      const isTemper = type === 'temper';
-      const arr = isTemper ? itemObj.tempering : itemObj.affixes;
+      let arr = itemObj.affixes;
+      let valuesArr = itemObj.affixValues || {};
+      let placeholderText = 'Modifier';
+      let datalistId = 'affixes-list';
+      
+      if (type === 'temper') {
+        arr = itemObj.tempering;
+        valuesArr = itemObj.temperValues || {};
+        placeholderText = 'Tempering';
+        datalistId = 'temper-list';
+      } else if (type === 'transfigure') {
+        arr = itemObj.transfigure;
+        valuesArr = itemObj.transfigureValues || {};
+        placeholderText = 'Transfigure';
+        datalistId = 'affixes-list'; // transfigures share the same affixes pool
+      }
+      
       const currentName = arr && arr[idx] ? arr[idx] : '';
-      const valuesArr = isTemper ? (itemObj.temperValues || {}) : (itemObj.affixValues || {});
       const vals = valuesArr[idx] || [];
       
       const obj = (window.D4_DATABASE?.affixes || []).find(a => a.name === currentName);
       
       if (!currentName || !obj) {
-        return `<input list="${isTemper ? 'temper-list' : 'affixes-list'}" class="edit-dropdown" data-type="${type}" data-idx="${idx}" placeholder="Search for ${isTemper ? 'Tempering' : 'Modifier'}..." value="">`;
+        return `<input list="${datalistId}" class="edit-dropdown" data-type="${type}" data-idx="${idx}" placeholder="Search for ${placeholderText}..." value="">`;
       }
       
       let valIndex = 0;
@@ -2968,11 +2982,19 @@ rarity = foundItem.rarity;
       </div>
 
       <div class="edit-section">
+        <div class="edit-section-title">Transfigure</div>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          ${renderAffixRow(0, 'transfigure')}
+        </div>
+      </div>
+
+      <div class="edit-section">
         <div class="edit-section-title">Modifiers</div>
         <div style="display: flex; flex-direction: column; gap: 4px;">
           ${renderAffixRow(0, 'affix')}
           ${renderAffixRow(1, 'affix')}
           ${renderAffixRow(2, 'affix')}
+          ${renderAffixRow(3, 'affix')}
         </div>
       </div>
 
@@ -2980,7 +3002,6 @@ rarity = foundItem.rarity;
         <div class="edit-section-title">Tempering</div>
         <div style="display: flex; flex-direction: column; gap: 4px;">
           ${renderAffixRow(0, 'temper')}
-          ${renderAffixRow(1, 'temper')}
         </div>
       </div>
 
@@ -3055,9 +3076,12 @@ rarity = foundItem.rarity;
         if (type === 'affix') {
           if (!itemObj.affixes) itemObj.affixes = [];
           itemObj.affixes[idx] = val;
-        } else {
+        } else if (type === 'temper') {
           if (!itemObj.tempering) itemObj.tempering = [];
           itemObj.tempering[idx] = val;
+        } else if (type === 'transfigure') {
+          if (!itemObj.transfigure) itemObj.transfigure = [];
+          itemObj.transfigure[idx] = val;
         }
         box.dataset.value = JSON.stringify(itemObj);
         calculate();
@@ -3073,9 +3097,12 @@ rarity = foundItem.rarity;
         if (type === 'affix') {
           if (itemObj.affixes) itemObj.affixes[idx] = '';
           if (itemObj.affixValues) itemObj.affixValues[idx] = [];
-        } else {
+        } else if (type === 'temper') {
           if (itemObj.tempering) itemObj.tempering[idx] = '';
           if (itemObj.temperValues) itemObj.temperValues[idx] = [];
+        } else if (type === 'transfigure') {
+          if (itemObj.transfigure) itemObj.transfigure[idx] = '';
+          if (itemObj.transfigureValues) itemObj.transfigureValues[idx] = [];
         }
         box.dataset.value = JSON.stringify(itemObj);
         calculate();
@@ -3086,7 +3113,7 @@ rarity = foundItem.rarity;
     document.querySelectorAll('.affix-val-input').forEach(inp => {
       inp.addEventListener('change', (e) => {
         const target = e.target;
-        const type = target.dataset.type; // 'affix' or 'temper'
+        const type = target.dataset.type; // 'affix', 'temper' or 'transfigure'
         const groupIdx = parseInt(target.dataset.group);
         const idx = parseInt(target.dataset.idx);
         let val = parseFloat(target.value) || 0;
@@ -3106,10 +3133,14 @@ rarity = foundItem.rarity;
           if (!itemObj.affixValues) itemObj.affixValues = {};
           if (!itemObj.affixValues[groupIdx]) itemObj.affixValues[groupIdx] = [];
           itemObj.affixValues[groupIdx][idx] = val;
-        } else {
+        } else if (type === 'temper') {
           if (!itemObj.temperValues) itemObj.temperValues = {};
           if (!itemObj.temperValues[groupIdx]) itemObj.temperValues[groupIdx] = [];
           itemObj.temperValues[groupIdx][idx] = val;
+        } else if (type === 'transfigure') {
+          if (!itemObj.transfigureValues) itemObj.transfigureValues = {};
+          if (!itemObj.transfigureValues[groupIdx]) itemObj.transfigureValues[groupIdx] = [];
+          itemObj.transfigureValues[groupIdx][idx] = val;
         }
         
         box.dataset.value = JSON.stringify(itemObj);

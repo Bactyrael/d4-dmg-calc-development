@@ -39,9 +39,13 @@ async function buildDb() {
       
       let classArr = [0,0,0,0,0,0,0,0];
       if (a.classes && a.classes.length > 0) {
-        a.classes.forEach(c => {
-          if (CLASS_MAP[c] !== undefined) classArr[CLASS_MAP[c]] = 1;
-        });
+        if (a.classes.includes('All')) {
+          classArr = [1,1,1,1,1,1,1,1];
+        } else {
+          a.classes.forEach(c => {
+            if (CLASS_MAP[c] !== undefined) classArr[CLASS_MAP[c]] = 1;
+          });
+        }
       } else {
         classArr = [1,1,1,1,1,1,1,1]; // Any class
       }

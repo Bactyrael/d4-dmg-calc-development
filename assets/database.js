@@ -2,7 +2,8 @@
 window.D4_DATABASE = {
   affixes: [
   {
-    "name": "# All Stats",
+    "name": "[13.0 - 17.5]% Bone Prison Cooldown Reduction",
+    "shortName": "Bone Prison Cooldown Reduction",
     "classes": [
       0,
       0,
@@ -12,11 +13,30 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [],
+    "tempering": false
   },
   {
-    "name": "# All Stats per Ferocity or Resolve Stack",
+    "name": "[13.5 - 22.5]% Steel Grasp Cooldown Reduction",
+    "shortName": "Steel Grasp Cooldown Reduction",
     "classes": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [],
+    "tempering": false
+  },
+  {
+    "name": "[17.0 - 20.0]% Evade Cooldown Reduction",
+    "shortName": "Evade Cooldown Reduction",
+    "classes": [
       1,
       1,
       1,
@@ -25,36 +45,168 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Dexterity",
+    "name": "[2.5 - 5.0]% Block Chance",
+    "shortName": "Block Chance",
     "classes": [
-      0,
-      0,
-      0,
       1,
-      0,
       1,
-      0,
-      0
-    ]
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "amulet",
+      "chest",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Energy On Kill",
+    "name": "[20.0 - 30.0]% Damage Reduction for Your Summons",
+    "shortName": "Damage Reduction for Your Summons",
     "classes": [
       0,
       0,
       0,
-      1,
       0,
+      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "chest",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "[4.0 - 6.0]% Resource Cost Reduction",
+    "shortName": "Resource Cost Reduction",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "[5.0 - 6.0]% Dodge Chance",
+    "shortName": "Dodge Chance",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "boots",
+      "pants"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "[5.0 - 8.0]% Cooldown Reduction",
+    "shortName": "Cooldown Reduction",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "[5.0 - 8.0]% Impairment Reduction",
+    "shortName": "Impairment Reduction",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "[5.0 - 8.0]% Mobility Cooldown Reduction",
+    "shortName": "Mobility Cooldown Reduction",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "amulet",
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Energy Regeneration",
+    "name": "[7.0 - 10.0]% Imbuement Potency",
+    "shortName": "Imbuement Potency",
     "classes": [
       0,
       0,
@@ -64,23 +216,80 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Essence On Hit",
+    "name": "[7.0 - 11.0]% Damage Reduction",
+    "shortName": "Damage Reduction",
     "classes": [
-      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "mainhand",
+      "offhand"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "[8.0 - 11.0]% Resource Generation",
+    "shortName": "Resource Generation",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "helm",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[1 - 2] Energy On Kill",
+    "shortName": "Energy On Kill",
+    "classes": [
       0,
       0,
       0,
       1,
+      0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "mainhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Essence On Kill",
+    "name": "+[1 - 2] Essence On Kill",
+    "shortName": "Essence On Kill",
     "classes": [
       0,
       0,
@@ -90,88 +299,174 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Essence Regeneration",
+    "name": "+[1 - 2] Faith On Kill",
+    "shortName": "Faith On Kill",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Faith On Kill",
+    "name": "+[1 - 2] Fury On Kill",
+    "shortName": "Fury On Kill",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "mainhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Faith Regeneration",
+    "name": "+[1 - 2] Mana On Kill",
+    "shortName": "Mana On Kill",
     "classes": [
+      1,
       0,
       0,
       0,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Fury On Kill",
+    "name": "+[1 - 2] Maximum Evade Charge",
+    "shortName": "Maximum Evade Charge",
     "classes": [
-      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[1 - 2] Spirit On Kill",
+    "shortName": "Spirit On Kill",
+    "classes": [
       0,
       1,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Fury Regeneration",
+    "name": "+[1 - 2] to Abyss Skills",
+    "shortName": "Ranks to Abyss Skills",
     "classes": [
       0,
       0,
-      1,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Intelligence",
+    "name": "+[1 - 2] to Agility Skills",
+    "shortName": "Ranks to Agility Skills",
     "classes": [
-      1,
       0,
       0,
       0,
       1,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Life on Kill",
+    "name": "+[1 - 2] to All Skills",
+    "shortName": "Ranks to All Skills",
     "classes": [
       1,
       1,
@@ -180,11 +475,35 @@ window.D4_DATABASE = {
       1,
       1,
       1,
+      1
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[1 - 2] to Aura Skills",
+    "shortName": "Ranks to Aura Skills",
+    "classes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Life On Kill",
+    "name": "+[1 - 2] to Basic Skills",
+    "shortName": "Ranks to Basic Skills",
     "classes": [
       1,
       1,
@@ -194,62 +513,107 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Mana On Kill",
+    "name": "+[1 - 2] to Blood Skills",
+    "shortName": "Ranks to Blood Skills",
     "classes": [
-      1,
       0,
       0,
       0,
       0,
+      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Mana Regeneration",
+    "name": "+[1 - 2] to Bone Skills",
+    "shortName": "Ranks to Bone Skills",
     "classes": [
-      1,
       0,
       0,
       0,
       0,
+      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Resource On Hit",
+    "name": "+[1 - 2] to Brawling Skills",
+    "shortName": "Ranks to Brawling Skills",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Spirit On Kill",
+    "name": "+[1 - 2] to Centipede Skills",
+    "shortName": "Ranks to Centipede Skills",
     "classes": [
       0,
+      0,
+      0,
+      0,
+      0,
       1,
+      0,
+      0
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[1 - 2] to Combat Skills",
+    "shortName": "Ranks to Combat Skills",
+    "classes": [
+      0,
       0,
+      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Spirit Regeneration",
+    "name": "+[1 - 2] to Companion Skills",
+    "shortName": "Ranks to Companion Skills",
     "classes": [
       0,
       1,
@@ -259,62 +623,147 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Strength",
+    "name": "+[1 - 2] to Conjuration Skills",
+    "shortName": "Ranks to Conjuration Skills",
     "classes": [
+      1,
+      0,
+      0,
+      0,
+      0,
       0,
       0,
+      0
+    ],
+    "slots": [
+      "amulet",
+      "helm"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[1 - 2] to Core Skills",
+    "shortName": "Ranks to Core Skills",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
       1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "amulet",
+      "gloves"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[1 - 2] to Corpse Skills",
+    "shortName": "Ranks to Corpse Skills",
+    "classes": [
       0,
       0,
       0,
+      0,
       1,
+      0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Vigor On Kill",
+    "name": "+[1 - 2] to Curse Skills",
+    "shortName": "Ranks to Curse Skills",
     "classes": [
-      0,
       0,
       0,
       0,
       0,
       1,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Vigor Regeneration",
+    "name": "+[1 - 2] to Cutthroat Skills",
+    "shortName": "Ranks to Cutthroat Skills",
     "classes": [
       0,
       0,
       0,
+      1,
       0,
       0,
-      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Willpower",
+    "name": "+[1 - 2] to Darkness Skills",
+    "shortName": "Ranks to Darkness Skills",
     "classes": [
       0,
-      1,
       0,
       0,
       0,
+      1,
       0,
       0,
+      0
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[1 - 2] to Defensive Skills",
+    "shortName": "Ranks to Defensive Skills",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Wrath every 10 Kills",
+    "name": "+[1 - 2] to Demonology Skills",
+    "shortName": "Ranks to Demonology Skills",
     "classes": [
       0,
       0,
@@ -323,11 +772,17 @@ window.D4_DATABASE = {
       0,
       0,
       0,
-      1
-    ]
+      0
+    ],
+    "slots": [
+      "amulet",
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "# Wrath Regeneration",
+    "name": "+[1 - 2] to Disciple Skills",
+    "shortName": "Ranks to Disciple Skills",
     "classes": [
       0,
       0,
@@ -336,102 +791,144 @@ window.D4_DATABASE = {
       0,
       0,
       0,
-      1
-    ]
+      0
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Advance Resource Generation",
+    "name": "+[1 - 2] to Eagle Skills",
+    "shortName": "Ranks to Eagle Skills",
     "classes": [
       0,
       0,
       0,
       0,
       0,
-      0,
       1,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Aegis Cooldown Reduction",
+    "name": "+[1 - 2] to Earth Skills",
+    "shortName": "Ranks to Earth Skills",
     "classes": [
       0,
+      1,
       0,
       0,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Agility Cooldown Reduction",
+    "name": "+[1 - 2] to Focus Skills",
+    "shortName": "Ranks to Focus Skills",
     "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Arbiter of Justice Cooldown Reduction",
+    "name": "+[1 - 2] to Frost Skills",
+    "shortName": "Ranks to Frost Skills",
     "classes": [
+      1,
       0,
       0,
       0,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Aura Cooldown Reduction",
+    "name": "+[1 - 2] to Golem",
+    "shortName": "Ranks to Golem",
     "classes": [
       0,
       0,
       0,
       0,
+      1,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Basic Resource Generation",
+    "name": "+[1 - 2] to Gorilla Skills",
+    "shortName": "Ranks to Gorilla Skills",
     "classes": [
       0,
       0,
-      1,
       0,
-      1,
       0,
+      0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Block Chance",
+    "name": "+[1 - 2] to Hellfire Skills",
+    "shortName": "Ranks to Hellfire Skills",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "amulet",
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Blood Howl Cooldown Reduction",
+    "name": "+[1 - 2] to Human Skills",
+    "shortName": "Ranks to Human Skills",
     "classes": [
       0,
       1,
@@ -441,88 +938,126 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Blood Mist Cooldown Reduction",
+    "name": "+[1 - 2] to Imbuement Skills",
+    "shortName": "Ranks to Imbuement Skills",
     "classes": [
       0,
       0,
       0,
-      0,
       1,
+      0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Blood Wave Cooldown Reduction",
+    "name": "+[1 - 2] to Jaguar Skills",
+    "shortName": "Ranks to Jaguar Skills",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Bone Prison Cooldown Reduction",
+    "name": "+[1 - 2] to Juggernaut Skills",
+    "shortName": "Ranks to Juggernaut Skills",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Bone Spirit Cooldown Reduction",
+    "name": "+[1 - 2] to Justice Skills",
+    "shortName": "Ranks to Justice Skills",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Boulder Cooldown Reduction",
+    "name": "+[1 - 2] to Macabre Skills",
+    "shortName": "Ranks to Macabre Skills",
     "classes": [
       0,
-      1,
       0,
       0,
       0,
+      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Brandish Resource Generation",
+    "name": "+[1 - 2] to Marksman Skills",
+    "shortName": "Ranks to Marksman Skills",
     "classes": [
       0,
       0,
       0,
+      1,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Brawling Cooldown Reduction",
+    "name": "+[1 - 2] to Martial Skills",
+    "shortName": "Ranks to Martial Skills",
     "classes": [
       0,
       0,
@@ -532,36 +1067,52 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Call of the Ancients Cooldown Reduction",
+    "name": "+[1 - 2] to Mastery Skills",
+    "shortName": "Ranks to Mastery Skills",
     "classes": [
+      1,
       0,
       0,
-      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Caltrops Cooldown Reduction",
+    "name": "+[1 - 2] to Minion Skills",
+    "shortName": "Ranks to Minion Skills",
     "classes": [
       0,
       0,
       0,
-      1,
       0,
+      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Cataclysm Cooldown Reduction",
+    "name": "+[1 - 2] to Nature Magic Skills",
+    "shortName": "Ranks to Nature Magic Skills",
     "classes": [
       0,
       1,
@@ -571,49 +1122,71 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Challenging Shout Cooldown Reduction",
+    "name": "+[1 - 2] to Occult Skills",
+    "shortName": "Ranks to Occult Skills",
     "classes": [
       0,
       0,
-      1,
+      0,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Charge Cooldown Reduction",
+    "name": "+[1 - 2] to Potency Skills",
+    "shortName": "Ranks to Potency Skills",
     "classes": [
       0,
       0,
-      1,
       0,
       0,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Clash Resource Generation",
+    "name": "+[1 - 2] to Pyromancy Skills",
+    "shortName": "Ranks to Pyromancy Skills",
     "classes": [
+      1,
       0,
       0,
       0,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Companion Cooldown Reduction",
+    "name": "+[1 - 2] to Shapeshifting Skills",
+    "shortName": "Ranks to Shapeshifting Skills",
     "classes": [
       0,
       1,
@@ -623,270 +1196,342 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Concealment Cooldown Reduction",
+    "name": "+[1 - 2] to Shock Skills",
+    "shortName": "Ranks to Shock Skills",
     "classes": [
+      1,
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Condemn Cooldown Reduction",
+    "name": "+[1 - 2] to Skeleton Mage",
+    "shortName": "Ranks to Skeleton Mage",
     "classes": [
       0,
       0,
       0,
       0,
+      1,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "gloves",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Consecration Cooldown Reduction",
+    "name": "+[1 - 2] to Skeleton Warrior",
+    "shortName": "Ranks to Skeleton Warrior",
     "classes": [
       0,
       0,
       0,
       0,
+      1,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "boots",
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Cooldown Reduction",
+    "name": "+[1 - 2] to Storm Skills",
+    "shortName": "Ranks to Storm Skills",
     "classes": [
+      0,
       1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "#% Core Resource Cost Reduction",
-    "classes": [
-      0,
-      0,
       0,
       0,
       0,
       0,
       0,
-      1
-    ]
+      0
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Cyclone Armor Cooldown Reduction",
+    "name": "+[1 - 2] to Subterfuge Skills",
+    "shortName": "Ranks to Subterfuge Skills",
     "classes": [
       0,
-      1,
       0,
       0,
+      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction",
+    "name": "+[1 - 2] to Trap Skills",
+    "shortName": "Ranks to Trap Skills",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "#% Damage Reduction for Your Summons",
-    "classes": [
-      0,
       0,
       0,
       0,
       1,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction from Bleeding Enemies",
+    "name": "+[1 - 2] to Valor Skills",
+    "shortName": "Ranks to Valor Skills",
     "classes": [
       0,
       0,
-      1,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction from Burning Enemies",
+    "name": "+[1 - 2] to Versatile Skills",
+    "shortName": "Ranks to Versatile Skills",
     "classes": [
-      1,
       0,
+      1,
       0,
       0,
       0,
       0,
       0,
       0
-    ]
-  },
-  {
-    "name": "#% Damage Reduction from Close Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction from Corrupted Enemies",
+    "name": "+[1 - 2] to Weapon Mastery Skills",
+    "shortName": "Ranks to Weapon Mastery Skills",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
-  },
-  {
-    "name": "#% Damage Reduction from Distant Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction from Elites",
+    "name": "+[1 - 2] to Werebear Skills",
+    "shortName": "Ranks to Werebear Skills",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
+      0,
       1,
-      1
-    ]
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction from Enemies Affected by Blood Skills",
+    "name": "+[1 - 2] to Werewolf Skills",
+    "shortName": "Ranks to Werewolf Skills",
     "classes": [
       0,
+      1,
       0,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction from Enemies Affected by Curse Skills",
+    "name": "+[1 - 2] to Wrath Skills",
+    "shortName": "Ranks to Wrath Skills",
     "classes": [
       0,
+      1,
       0,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction from Enemies Affected by Trap Skills",
+    "name": "+[1 - 2] to Zealot Skills",
+    "shortName": "Ranks to Zealot Skills",
     "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction from Poisoned Enemies",
+    "name": "+[1 - 2] Vigor On Kill",
+    "shortName": "Vigor On Kill",
     "classes": [
       0,
-      1,
       0,
-      1,
+      0,
       0,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "amulet",
+      "mainhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction per Crackling Energy Charge",
+    "name": "+[1 - 2] Wrath every 10 Kills",
+    "shortName": "Wrath every 10 Kills",
     "classes": [
-      1,
       0,
       0,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction while Fortified",
+    "name": "+[1 - 3] Potion Capacity",
+    "shortName": "Potion Capacity",
     "classes": [
-      0,
       1,
       1,
-      0,
       1,
-      0,
-      0,
-      0
-    ]
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[10 - 15] Maximum Resource",
+    "shortName": "Maximum Resource",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "amulet",
+      "chest",
+      "helm",
+      "offhand"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction while Healthy",
+    "name": "+[10.0 - 12.5]% Barrier Generation",
+    "shortName": "Barrier Generation",
     "classes": [
       1,
       1,
@@ -896,10 +1541,22 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction while Injured",
+    "name": "+[10.0 - 12.5]% Fortify Generation",
+    "shortName": "Fortify Generation",
     "classes": [
       1,
       1,
@@ -909,10 +1566,38 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[103.5 - 135.0]% Damage for 4 Seconds After Picking Up a Blood Orb",
+    "shortName": "Damage for 4 Seconds After Picking Up a Blood Orb",
+    "classes": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "slots": [],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction while Standing Still",
+    "name": "+[12.0 - 15.0]% Crowd Control Duration",
+    "shortName": "Crowd Control Duration",
     "classes": [
       1,
       1,
@@ -922,10 +1607,22 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction while Unstoppable",
+    "name": "+[15.0 - 25.0]% Arbiter Duration",
+    "shortName": "Arbiter Duration",
     "classes": [
       1,
       1,
@@ -935,10 +1632,22 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Damage Reduction while You Have a Barrier",
+    "name": "+[2 - 3] Maximum Resolve Stacks",
+    "shortName": "Maximum Resolve Stacks",
     "classes": [
       1,
       1,
@@ -948,36 +1657,56 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "chest",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Dark Shroud Cooldown Reduction",
+    "name": "+[2 - 3] to Advance",
+    "shortName": "Ranks to Advance",
     "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Dash Cooldown Reduction",
+    "name": "+[2 - 3] to Aegis",
+    "shortName": "Ranks to Aegis",
     "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Death Blow Cooldown Reduction",
+    "name": "+[2 - 3] to Ancient Skills",
+    "shortName": "Ranks to Ancient Skills",
     "classes": [
       0,
       0,
@@ -987,114 +1716,123 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Death Trap Cooldown Reduction",
+    "name": "+[2 - 3] to Arc Lash",
+    "shortName": "Ranks to Arc Lash",
     "classes": [
+      1,
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Debilitating Roar Cooldown Reduction",
+    "name": "+[2 - 3] to Armored Hide",
+    "shortName": "Ranks to Armored Hide",
     "classes": [
       0,
-      1,
       0,
       0,
       0,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Deep Freeze Cooldown Reduction",
+    "name": "+[2 - 3] to Arrow Storm Skills",
+    "shortName": "Ranks to Arrow Storm Skills",
     "classes": [
-      1,
       0,
       0,
       0,
+      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Defensive Cooldown Reduction",
+    "name": "+[2 - 3] to Ball Lightning",
+    "shortName": "Ranks to Ball Lightning",
     "classes": [
+      1,
       0,
       0,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
-  },
-  {
-    "name": "#% Dodge Chance",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "#% Dodge Chance Against Close Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Dodge Chance Against Distant Enemies",
+    "name": "+[2 - 3] to Barrage",
+    "shortName": "Ranks to Barrage",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
+      0,
+      0,
+      0,
       1,
-      1
-    ]
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Earthen Bulwark Cooldown Reduction",
+    "name": "+[2 - 3] to Bash",
+    "shortName": "Ranks to Bash",
     "classes": [
       0,
-      1,
       0,
+      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Energy Cost Reduction",
+    "name": "+[2 - 3] to Blade Shift",
+    "shortName": "Ranks to Blade Shift",
     "classes": [
       0,
       0,
@@ -1104,36 +1842,33 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Essence Cost Reduction",
+    "name": "+[2 - 3] to Blazing Scream",
+    "shortName": "Ranks to Blazing Scream",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
       0,
       0,
+      0,
       0
-    ]
-  },
-  {
-    "name": "#% Evade Cooldown Reduction",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Falling Star Cooldown Reduction",
+    "name": "+[2 - 3] to Blessed Hammer",
+    "shortName": "Ranks to Blessed Hammer",
     "classes": [
       0,
       0,
@@ -1141,38 +1876,53 @@ window.D4_DATABASE = {
       0,
       0,
       0,
-      1,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Focus Cooldown Reduction",
+    "name": "+[2 - 3] to Blessed Shield",
+    "shortName": "Ranks to Blessed Shield",
     "classes": [
       0,
       0,
       0,
       0,
       0,
-      1,
+      0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Fortress Cooldown Reduction",
+    "name": "+[2 - 3] to Blight",
+    "shortName": "Ranks to Blight",
     "classes": [
       0,
       0,
       0,
       0,
+      1,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Frost Nova Cooldown Reduction",
+    "name": "+[2 - 3] to Blizzard",
+    "shortName": "Ranks to Blizzard",
     "classes": [
       1,
       0,
@@ -1182,49 +1932,51 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Fury Cost Reduction",
+    "name": "+[2 - 3] to Blood Howl",
+    "shortName": "Ranks to Blood Howl",
     "classes": [
       0,
-      0,
       1,
+      0,
       0,
       0,
       0,
       0,
       0
-    ]
-  },
-  {
-    "name": "#% Gem Strength in this Item",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Gold Drop Rate",
+    "name": "+[2 - 3] to Blood Lance",
+    "shortName": "Ranks to Blood Lance",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
+      0,
+      0,
+      0,
+      0,
       1,
-      1
-    ]
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Golem Active Cooldown Reduction",
+    "name": "+[2 - 3] to Blood Mist",
+    "shortName": "Ranks to Blood Mist",
     "classes": [
       0,
       0,
@@ -1234,114 +1986,159 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Grizzly Rage Cooldown Reduction",
+    "name": "+[2 - 3] to Blood Surge",
+    "shortName": "Ranks to Blood Surge",
     "classes": [
       0,
-      1,
       0,
       0,
       0,
+      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Ground Stomp Cooldown Reduction",
+    "name": "+[2 - 3] to Bombardment",
+    "shortName": "Ranks to Bombardment",
     "classes": [
       0,
       0,
-      1,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Heaven's Fury Cooldown Reduction",
+    "name": "+[2 - 3] to Bone Prison",
+    "shortName": "Ranks to Bone Prison",
     "classes": [
       0,
       0,
       0,
       0,
+      1,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Holy Bolt Resource Generation",
+    "name": "+[2 - 3] to Bone Spear",
+    "shortName": "Ranks to Bone Spear",
     "classes": [
       0,
       0,
       0,
       0,
+      1,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Hurricane Cooldown Reduction",
+    "name": "+[2 - 3] to Bone Spirit",
+    "shortName": "Ranks to Bone Spirit",
     "classes": [
       0,
-      1,
       0,
       0,
       0,
+      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Hydra Resource Cost Reduction",
+    "name": "+[2 - 3] to Bone Splinters",
+    "shortName": "Ranks to Bone Splinters",
     "classes": [
-      1,
       0,
       0,
       0,
       0,
+      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Ice Blades Cooldown Reduction",
+    "name": "+[2 - 3] to Boulder",
+    "shortName": "Ranks to Boulder",
     "classes": [
-      1,
       0,
+      1,
       0,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Imbuement Cooldown Reduction",
+    "name": "+[2 - 3] to Brandish",
+    "shortName": "Ranks to Brandish",
     "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Imbuement Potency",
+    "name": "+[2 - 3] to Caltrops",
+    "shortName": "Ranks to Caltrops",
     "classes": [
       0,
       0,
@@ -1351,49 +2148,51 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Impairment Reduction",
+    "name": "+[2 - 3] to Chain Lightning",
+    "shortName": "Ranks to Chain Lightning",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
       1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "#% Incarnate Cooldown Reduction",
-    "classes": [
       0,
       0,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Inferno Cooldown Reduction",
+    "name": "+[2 - 3] to Challenging Shout",
+    "shortName": "Ranks to Challenging Shout",
     "classes": [
-      1,
       0,
       0,
+      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Iron Maelstrom Cooldown Reduction",
+    "name": "+[2 - 3] to Charge",
+    "shortName": "Ranks to Charge",
     "classes": [
       0,
       0,
@@ -1403,23 +2202,33 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Iron Skin Cooldown Reduction",
+    "name": "+[2 - 3] to Charged Bolts",
+    "shortName": "Ranks to Charged Bolts",
     "classes": [
+      1,
       0,
       0,
-      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Justice Cooldown Reduction",
+    "name": "+[2 - 3] to Clash",
+    "shortName": "Ranks to Clash",
     "classes": [
       0,
       0,
@@ -1427,168 +2236,197 @@ window.D4_DATABASE = {
       0,
       0,
       0,
-      1,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Kick Cooldown Reduction",
+    "name": "+[2 - 3] to Claw",
+    "shortName": "Ranks to Claw",
     "classes": [
       0,
-      0,
       1,
+      0,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Lacerate Cooldown Reduction",
+    "name": "+[2 - 3] to Cold Imbuement",
+    "shortName": "Ranks to Cold Imbuement",
     "classes": [
       0,
-      1,
       0,
       0,
+      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Leap Cooldown Reduction",
+    "name": "+[2 - 3] to Command Fallen",
+    "shortName": "Ranks to Command Fallen",
     "classes": [
       0,
       0,
-      1,
+      0,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Lightning Spear Cooldown Reduction",
+    "name": "+[2 - 3] to Concealment",
+    "shortName": "Ranks to Concealment",
     "classes": [
-      1,
       0,
       0,
       0,
+      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Mana Cost Reduction",
+    "name": "+[2 - 3] to Concussive Stomp",
+    "shortName": "Ranks to Concussive Stomp",
     "classes": [
-      1,
       0,
       0,
       0,
       0,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Maximum Summon Life",
+    "name": "+[2 - 3] to Condemn",
+    "shortName": "Ranks to Condemn",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Mobility Cooldown Reduction",
+    "name": "+[2 - 3] to Consecration",
+    "shortName": "Ranks to Consecration",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "#% Nature Magic Cooldown Reduction",
-    "classes": [
       0,
-      1,
+      0,
       0,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Petrify Cooldown Reduction",
+    "name": "+[2 - 3] to Corpse Explosion",
+    "shortName": "Ranks to Corpse Explosion",
     "classes": [
       0,
-      1,
       0,
       0,
       0,
+      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Poison Creeper Cooldown Reduction",
+    "name": "+[2 - 3] to Corpse Tendrils",
+    "shortName": "Ranks to Corpse Tendrils",
     "classes": [
       0,
-      1,
       0,
       0,
       0,
+      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Poison Damage Over Time Duration",
+    "name": "+[2 - 3] to Counterattack",
+    "shortName": "Ranks to Counterattack",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "#% Poison Trap Cooldown Reduction",
-    "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Potency Cooldown Reduction",
+    "name": "+[2 - 3] to Crushing Hand",
+    "shortName": "Ranks to Crushing Hand",
     "classes": [
       0,
       0,
@@ -1598,49 +2436,69 @@ window.D4_DATABASE = {
       1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Puncture Resource Generation",
+    "name": "+[2 - 3] to Cyclone Armor",
+    "shortName": "Ranks to Cyclone Armor",
     "classes": [
       0,
+      1,
       0,
       0,
-      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Purify Cooldown Reduction",
+    "name": "+[2 - 3] to Dance of Knives",
+    "shortName": "Ranks to Dance of Knives",
     "classes": [
       0,
       0,
       0,
+      1,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Rabies Cooldown Reduction",
+    "name": "+[2 - 3] to Dark Prison",
+    "shortName": "Ranks to Dark Prison",
     "classes": [
       0,
-      1,
       0,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Rain of Arrows Cooldown Reduction",
+    "name": "+[2 - 3] to Dark Shroud",
+    "shortName": "Ranks to Dark Shroud",
     "classes": [
       0,
       0,
@@ -1650,114 +2508,141 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Ravens Cooldown Reduction",
+    "name": "+[2 - 3] to Dash",
+    "shortName": "Ranks to Dash",
     "classes": [
       0,
-      1,
       0,
       0,
+      1,
       0,
       0,
       0,
       0
-    ]
-  },
-  {
-    "name": "#% Resource Cost Reduction",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Resource Generation",
+    "name": "+[2 - 3] to Death Blow",
+    "shortName": "Ranks to Death Blow",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
+      0,
+      0,
       1,
-      1
-    ]
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Resource Generation and Maximum",
+    "name": "+[2 - 3] to Debilitating Roar",
+    "shortName": "Ranks to Debilitating Roar",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
+      0,
       1,
-      1
-    ]
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Rock Splitter Resource Generation",
+    "name": "+[2 - 3] to Decompose",
+    "shortName": "Ranks to Decompose",
     "classes": [
       0,
       0,
       0,
       0,
-      0,
       1,
+      0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Rupture Cooldown Reduction",
+    "name": "+[2 - 3] to Decrepify",
+    "shortName": "Ranks to Decrepify",
     "classes": [
       0,
       0,
-      1,
       0,
       0,
+      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Shadow Clone Cooldown Reduction",
+    "name": "+[2 - 3] to Defiance Aura",
+    "shortName": "Ranks to Defiance Aura",
     "classes": [
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Shadow Step Cooldown Reduction",
+    "name": "+[2 - 3] to Divine Lance",
+    "shortName": "Ranks to Divine Lance",
     "classes": [
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Shield Charge Cooldown Reduction",
+    "name": "+[2 - 3] to Doom",
+    "shortName": "Ranks to Doom",
     "classes": [
       0,
       0,
@@ -1765,12 +2650,17 @@ window.D4_DATABASE = {
       0,
       0,
       0,
-      1,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Shout Cooldown Reduction",
+    "name": "+[2 - 3] to Double Swing",
+    "shortName": "Ranks to Double Swing",
     "classes": [
       0,
       0,
@@ -1780,49 +2670,51 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
-  },
-  {
-    "name": "#% Slow Duration Reduction",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Smoke Grenade Cooldown Reduction",
+    "name": "+[2 - 3] to Dread Claws",
+    "shortName": "Ranks to Dread Claws",
     "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Soar Cooldown Reduction",
+    "name": "+[2 - 3] to Dust Devil Skills",
+    "shortName": "Ranks to Dust Devil Skills",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Spirit Cost Reduction",
+    "name": "+[2 - 3] to Earth Spike",
+    "shortName": "Ranks to Earth Spike",
     "classes": [
       0,
       1,
@@ -1832,49 +2724,69 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Steel Grasp Cooldown Reduction",
+    "name": "+[2 - 3] to Earthen Bulwark",
+    "shortName": "Ranks to Earthen Bulwark",
     "classes": [
-      0,
       0,
       1,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Storm Cooldown Reduction",
+    "name": "+[2 - 3] to Earthquake Skills",
+    "shortName": "Ranks to Earthquake Skills",
     "classes": [
       0,
-      1,
       0,
+      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Subterfuge Cooldown Reduction",
+    "name": "+[2 - 3] to Falling Star",
+    "shortName": "Ranks to Falling Star",
     "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Teleport Cooldown Reduction",
+    "name": "+[2 - 3] to Familiar",
+    "shortName": "Ranks to Familiar",
     "classes": [
       1,
       0,
@@ -1884,101 +2796,141 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% The Devourer Cooldown Reduction",
+    "name": "+[2 - 3] to Fanaticism Aura",
+    "shortName": "Ranks to Fanaticism Aura",
     "classes": [
       0,
       0,
       0,
       0,
       0,
-      1,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% The Hunter Cooldown Reduction",
+    "name": "+[2 - 3] to Fire Bolt",
+    "shortName": "Ranks to Fire Bolt",
     "classes": [
+      1,
       0,
       0,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% The Protector Cooldown Reduction",
+    "name": "+[2 - 3] to Fireball",
+    "shortName": "Ranks to Fireball",
     "classes": [
+      1,
       0,
       0,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% The Seeker Cooldown Reduction",
+    "name": "+[2 - 3] to Firewall",
+    "shortName": "Ranks to Firewall",
     "classes": [
+      1,
       0,
       0,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Thrash Resource Generation",
+    "name": "+[2 - 3] to Flame Shield",
+    "shortName": "Ranks to Flame Shield",
     "classes": [
+      1,
       0,
       0,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Thunderspike Resource Generation",
+    "name": "+[2 - 3] to Flay",
+    "shortName": "Ranks to Flay",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Trample Cooldown Reduction",
+    "name": "+[2 - 3] to Flurry",
+    "shortName": "Ranks to Flurry",
     "classes": [
       0,
-      1,
       0,
       0,
+      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Trap Cooldown Reduction",
+    "name": "+[2 - 3] to Forceful Arrow",
+    "shortName": "Ranks to Forceful Arrow",
     "classes": [
       0,
       0,
@@ -1988,23 +2940,33 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Ultimate Cooldown Reduction",
+    "name": "+[2 - 3] to Frenzy",
+    "shortName": "Ranks to Frenzy",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
+      0,
+      0,
       1,
-      1
-    ]
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Unstable Currents Cooldown Reduction",
+    "name": "+[2 - 3] to Frost Bolt",
+    "shortName": "Ranks to Frost Bolt",
     "classes": [
       1,
       0,
@@ -2014,49 +2976,69 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Valor Cooldown Reduction",
+    "name": "+[2 - 3] to Frost Nova",
+    "shortName": "Ranks to Frost Nova",
     "classes": [
+      1,
       0,
       0,
       0,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Vigor Cost Reduction",
+    "name": "+[2 - 3] to Frozen Orb",
+    "shortName": "Ranks to Frozen Orb",
     "classes": [
+      1,
       0,
       0,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% War Cry Cooldown Reduction",
+    "name": "+[2 - 3] to Grenade Skills",
+    "shortName": "Ranks to Grenade Skills",
     "classes": [
       0,
       0,
-      1,
       0,
+      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Weapon Mastery Cooldown Reduction",
+    "name": "+[2 - 3] to Ground Stomp",
+    "shortName": "Ranks to Ground Stomp",
     "classes": [
       0,
       0,
@@ -2066,49 +3048,69 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Withering Fist Resource Generation",
+    "name": "+[2 - 3] to Hammer of the Ancients",
+    "shortName": "Ranks to Hammer of the Ancients",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Wolves Cooldown Reduction",
+    "name": "+[2 - 3] to Heartseeker",
+    "shortName": "Ranks to Heartseeker",
     "classes": [
       0,
-      1,
       0,
       0,
+      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Wrath of the Berserker Cooldown Reduction",
+    "name": "+[2 - 3] to Hell Fracture",
+    "shortName": "Ranks to Hell Fracture",
     "classes": [
       0,
       0,
-      1,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "#% Zenith Cooldown Reduction",
+    "name": "+[2 - 3] to Hellion Sting",
+    "shortName": "Ranks to Hellion Sting",
     "classes": [
       0,
       0,
@@ -2116,194 +3118,161 @@ window.D4_DATABASE = {
       0,
       0,
       0,
-      1,
+      0,
       0
-    ]
-  },
-  {
-    "name": "+# Armor",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Armor while in Human Form",
+    "name": "+[2 - 3] to Hemorrhage",
+    "shortName": "Ranks to Hemorrhage",
     "classes": [
       0,
-      1,
       0,
       0,
       0,
+      1,
       0,
       0,
       0
-    ]
-  },
-  {
-    "name": "+# Cold Resistance",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Counterattack Charges",
+    "name": "+[2 - 3] to Holy Bolt",
+    "shortName": "Ranks to Holy Bolt",
     "classes": [
       0,
       0,
       0,
       0,
       0,
-      1,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Energy when a Stun Grenade Explodes",
+    "name": "+[2 - 3] to Holy Light Aura",
+    "shortName": "Ranks to Holy Light Aura",
     "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Essence per Enemy Drained by Blood Surge",
+    "name": "+[2 - 3] to Hurricane",
+    "shortName": "Ranks to Hurricane",
     "classes": [
       0,
+      1,
       0,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
-  },
-  {
-    "name": "+# Fire Resistance",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+# Item Quality",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+# Life On Hit",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Life per 5 Seconds",
+    "name": "+[2 - 3] to Hydra",
+    "shortName": "Ranks to Hydra",
     "classes": [
-      1,
-      1,
-      1,
-      1,
       1,
-      1,
-      1,
-      1
-    ]
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Life Regeneration",
+    "name": "+[2 - 3] to Ice Armor",
+    "shortName": "Ranks to Ice Armor",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
       1,
-      1
-    ]
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Lightning Resistance",
+    "name": "+[2 - 3] to Ice Blades",
+    "shortName": "Ranks to Ice Blades",
     "classes": [
       1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+# Maximum Energy",
-    "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Maximum Essence",
+    "name": "+[2 - 3] to Ice Shards",
+    "shortName": "Ranks to Ice Shards",
     "classes": [
+      1,
       0,
       0,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Maximum Evade Charges",
+    "name": "+[2 - 3] to Incinerate",
+    "shortName": "Ranks to Incinerate",
     "classes": [
       1,
       0,
@@ -2313,50 +3282,34 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Maximum Fury",
+    "name": "+[2 - 3] to Infernal Breath",
+    "shortName": "Ranks to Infernal Breath",
     "classes": [
       0,
       0,
-      1,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Maximum Life",
+    "name": "+[2 - 3] to Invigorating Strike",
+    "shortName": "Ranks to Invigorating Strike",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+# Maximum Mana",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# Maximum Poison Traps",
-    "classes": [
       0,
       0,
       0,
@@ -2365,271 +3318,214 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Maximum Resolve Stacks",
+    "name": "+[2 - 3] to Iron Maiden",
+    "shortName": "Ranks to Iron Maiden",
     "classes": [
       0,
       0,
       0,
       0,
-      0,
       1,
+      0,
       0,
       0
-    ]
-  },
-  {
-    "name": "+# Maximum Resource",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Maximum Spirit",
+    "name": "+[2 - 3] to Iron Shrapnel Skills",
+    "shortName": "Ranks to Iron Shrapnel Skills",
     "classes": [
       0,
-      1,
       0,
+      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Maximum Vigor",
+    "name": "+[2 - 3] to Iron Skin",
+    "shortName": "Ranks to Iron Skin",
     "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
       0,
       0,
-      0
-    ]
-  },
-  {
-    "name": "+# Physical Resistance",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
       1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+# Pickup Radius",
-    "classes": [
-      1,
-      1,
       0,
       0,
       0,
       0,
-      0,
       0
-    ]
-  },
-  {
-    "name": "+# Poison Resistance",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+# Potion Capacity",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Razor Wings Charges",
+    "name": "+[2 - 3] to Kick",
+    "shortName": "Ranks to Kick",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
-  },
-  {
-    "name": "+# Resistance to All Elements",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Resolve Generated",
+    "name": "+[2 - 3] to Landslide",
+    "shortName": "Ranks to Landslide",
     "classes": [
       0,
+      1,
       0,
       0,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Rushing Claw Charges",
+    "name": "+[2 - 3] to Leap",
+    "shortName": "Ranks to Leap",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# Shadow Resistance",
+    "name": "+[2 - 3] to Lightning Spear",
+    "shortName": "Ranks to Lightning Spear",
     "classes": [
       1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+# The Seeker Charges",
-    "classes": [
       0,
       0,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
-  },
-  {
-    "name": "+# Thorns",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Abyss Skills",
+    "name": "+[2 - 3] to Lightning Storm",
+    "shortName": "Ranks to Lightning Storm",
     "classes": [
       0,
-      0,
+      1,
       0,
       0,
       0,
       0,
       0,
-      1
-    ]
+      0
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Advance",
+    "name": "+[2 - 3] to Lunging Strike",
+    "shortName": "Ranks to Lunging Strike",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Aegis",
+    "name": "+[2 - 3] to Maul",
+    "shortName": "Ranks to Maul",
     "classes": [
       0,
+      1,
       0,
       0,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Agility Skills",
+    "name": "+[2 - 3] to Meteor",
+    "shortName": "Ranks to Meteor",
     "classes": [
+      1,
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to All Skills",
+    "name": "+[2 - 3] to Mighty Throw",
+    "shortName": "Ranks to Mighty Throw",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+# to Ancient Skills",
-    "classes": [
       0,
       0,
       1,
@@ -2638,23 +3534,33 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Arc Lash",
+    "name": "+[2 - 3] to Molten Bomb",
+    "shortName": "Ranks to Molten Bomb",
     "classes": [
-      1,
       0,
       0,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Archfiend Skills",
+    "name": "+[2 - 3] to Nether Step",
+    "shortName": "Ranks to Nether Step",
     "classes": [
       0,
       0,
@@ -2663,11 +3569,16 @@ window.D4_DATABASE = {
       0,
       0,
       0,
-      1
-    ]
+      0
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Armored Hide",
+    "name": "+[2 - 3] to Payback",
+    "shortName": "Ranks to Payback",
     "classes": [
       0,
       0,
@@ -2677,10 +3588,15 @@ window.D4_DATABASE = {
       1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Arrow Storm Skills",
+    "name": "+[2 - 3] to Penetrating Shot",
+    "shortName": "Ranks to Penetrating Shot",
     "classes": [
       0,
       0,
@@ -2690,75 +3606,51 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Aura Skills",
+    "name": "+[2 - 3] to Poison Creeper",
+    "shortName": "Ranks to Poison Creeper",
     "classes": [
-      0,
       0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Ball Lightning",
-    "classes": [
       1,
-      0,
       0,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Barrage",
+    "name": "+[2 - 3] to Poison Imbuement",
+    "shortName": "Ranks to Poison Imbuement",
     "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
       0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Bash",
-    "classes": [
       0,
       0,
       1,
       0,
       0,
       0,
-      0,
       0
-    ]
-  },
-  {
-    "name": "+# to Basic Skills",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Blade Shift",
+    "name": "+[2 - 3] to Poison Trap",
+    "shortName": "Ranks to Poison Trap",
     "classes": [
       0,
       0,
@@ -2768,10 +3660,15 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Blazing Scream",
+    "name": "+[2 - 3] to Profane Sentinel",
+    "shortName": "Ranks to Profane Sentinel",
     "classes": [
       0,
       0,
@@ -2780,63 +3677,70 @@ window.D4_DATABASE = {
       0,
       0,
       0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Blessed Hammer",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Blessed Shield",
+    "name": "+[2 - 3] to Pulverize",
+    "shortName": "Ranks to Pulverize",
     "classes": [
       0,
+      1,
       0,
       0,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Blight",
+    "name": "+[2 - 3] to Puncture",
+    "shortName": "Ranks to Puncture",
     "classes": [
-      0,
       0,
       0,
       0,
       1,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Blizzard",
+    "name": "+[2 - 3] to Quill Volley",
+    "shortName": "Ranks to Quill Volley",
     "classes": [
-      1,
       0,
       0,
       0,
       0,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Blood Howl",
+    "name": "+[2 - 3] to Rabies",
+    "shortName": "Ranks to Rabies",
     "classes": [
       0,
       1,
@@ -2846,62 +3750,69 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Blood Lance",
+    "name": "+[2 - 3] to Rake",
+    "shortName": "Ranks to Rake",
     "classes": [
-      0,
-      0,
-      0,
       0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Blood Mist",
-    "classes": [
       0,
       0,
       0,
       0,
       1,
-      0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Blood Skills",
+    "name": "+[2 - 3] to Rally",
+    "shortName": "Ranks to Rally",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Blood Surge",
+    "name": "+[2 - 3] to Rallying Cry",
+    "shortName": "Ranks to Rallying Cry",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Bombardment",
+    "name": "+[2 - 3] to Rampage",
+    "shortName": "Ranks to Rampage",
     "classes": [
       0,
       0,
@@ -2910,63 +3821,88 @@ window.D4_DATABASE = {
       0,
       0,
       0,
-      1
-    ]
+      0
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Bone Prison",
+    "name": "+[2 - 3] to Rapid Fire",
+    "shortName": "Ranks to Rapid Fire",
     "classes": [
       0,
       0,
       0,
-      0,
       1,
+      0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Bone Skills",
+    "name": "+[2 - 3] to Ravager",
+    "shortName": "Ranks to Ravager",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Bone Spear",
+    "name": "+[2 - 3] to Ravens",
+    "shortName": "Ranks to Ravens",
     "classes": [
       0,
+      1,
       0,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Bone Spirit",
+    "name": "+[2 - 3] to Razor Wings",
+    "shortName": "Ranks to Razor Wings",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Bone Splinters",
+    "name": "+[2 - 3] to Reap",
+    "shortName": "Ranks to Reap",
     "classes": [
       0,
       0,
@@ -2976,36 +3912,51 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Boulder",
+    "name": "+[2 - 3] to Rend",
+    "shortName": "Ranks to Rend",
     "classes": [
       0,
-      1,
       0,
+      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Brandish",
+    "name": "+[2 - 3] to Rock Splitter",
+    "shortName": "Ranks to Rock Splitter",
     "classes": [
       0,
       0,
       0,
       0,
       0,
-      0,
       1,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Brawling Skills",
+    "name": "+[2 - 3] to Rupture",
+    "shortName": "Ranks to Rupture",
     "classes": [
       0,
       0,
@@ -3015,23 +3966,33 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Caltrops",
+    "name": "+[2 - 3] to Rushing Claw",
+    "shortName": "Ranks to Rushing Claw",
     "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Centipede Skills",
+    "name": "+[2 - 3] to Scourge",
+    "shortName": "Ranks to Scourge",
     "classes": [
       0,
       0,
@@ -3041,114 +4002,141 @@ window.D4_DATABASE = {
       1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Chain Lightning",
+    "name": "+[2 - 3] to Sever",
+    "shortName": "Ranks to Sever",
     "classes": [
-      1,
-      0,
-      0,
-      0,
       0,
       0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Challenging Shout",
-    "classes": [
       0,
       0,
       1,
-      0,
       0,
       0,
-      0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Charge",
+    "name": "+[2 - 3] to Shade Skills",
+    "shortName": "Ranks to Shade Skills",
     "classes": [
       0,
       0,
-      1,
       0,
+      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Charged Bolts",
+    "name": "+[2 - 3] to Shadow Imbuement",
+    "shortName": "Ranks to Shadow Imbuement",
     "classes": [
-      1,
       0,
       0,
       0,
+      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Clash",
+    "name": "+[2 - 3] to Shadow Step",
+    "shortName": "Ranks to Shadow Step",
     "classes": [
       0,
       0,
       0,
+      1,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Claw",
+    "name": "+[2 - 3] to Shield Bash",
+    "shortName": "Ranks to Shield Bash",
     "classes": [
       0,
-      1,
       0,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Cold Imbuement",
+    "name": "+[2 - 3] to Shield Charge",
+    "shortName": "Ranks to Shield Charge",
     "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Combat Skills",
+    "name": "+[2 - 3] to Shred",
+    "shortName": "Ranks to Shred",
     "classes": [
-      0,
       0,
       1,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Command Abodian",
+    "name": "+[2 - 3] to Sigil of Chaos",
+    "shortName": "Ranks to Sigil of Chaos",
     "classes": [
       0,
       0,
@@ -3157,11 +4145,16 @@ window.D4_DATABASE = {
       0,
       0,
       0,
-      1
-    ]
+      0
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Command Ae'grom",
+    "name": "+[2 - 3] to Sigil of Subversion",
+    "shortName": "Ranks to Sigil of Subversion",
     "classes": [
       0,
       0,
@@ -3170,11 +4163,16 @@ window.D4_DATABASE = {
       0,
       0,
       0,
-      1
-    ]
+      0
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Command Fallen",
+    "name": "+[2 - 3] to Sigil of Summons",
+    "shortName": "Ranks to Sigil of Summons",
     "classes": [
       0,
       0,
@@ -3183,5965 +4181,88 @@ window.D4_DATABASE = {
       0,
       0,
       0,
-      1
-    ]
+      0
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Command Laalish",
+    "name": "+[2 - 3] to Smoke Grenade",
+    "shortName": "Ranks to Smoke Grenade",
     "classes": [
-      0,
       0,
       0,
       0,
+      1,
       0,
       0,
       0,
-      1
-    ]
+      0
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "+# to Command Valloch",
+    "name": "+[2 - 3] to Soar",
+    "shortName": "Ranks to Soar",
     "classes": [
       0,
       0,
       0,
       0,
       0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Companion Skills",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Concealment",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Concussive Stomp",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Condemn",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Conjuration Skills",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Consecration",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Core Skills",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+# to Corpse Explosion",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Corpse Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Corpse Tendrils",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Counterattack",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Crushing Hand",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Curse Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Cutthroat Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Cyclone Armor",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Dance of Knives",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Dark Prison",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Dark Shroud",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Darkness Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Dash",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Death Blow",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Debilitating Roar",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Decompose",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Decrepify",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Defensive Skills",
-    "classes": [
-      1,
-      1,
-      1,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Defiance Aura",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Demonology Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Disciple Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Divine Lance",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Doom",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Double Swing",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Dread Claws",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Dust Devil Skills",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Eagle Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Earth Skills",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Earth Spike",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Earthen Bulwark",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Earthquake Skills",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Falling Star",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Familiar",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Fanaticism Aura",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Fire Bolt",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Fireball",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Firewall",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Flame Shield",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Flay",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Flurry",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Focus Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Forceful Arrow",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Frenzy",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Frost Bolt",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Frost Nova",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Frost Skills",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Frozen Orb",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Golem",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Gorilla Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Grenade Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Ground Stomp",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Hammer of the Ancients",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Heartseeker",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Hell Fracture",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Hellfire Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Hellion Sting",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Hemorrhage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Holy Bolt",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Holy Light Aura",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Human Skills",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Hurricane",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Hydra",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Ice Armor",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Ice Blades",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Ice Shards",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Imbuement Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Incinerate",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Infernal Breath",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Invigorating Strike",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Iron Maiden",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Iron Shrapnel Skills",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Iron Skin",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Jaguar Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Judicator Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Juggernaut Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Justice Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Kick",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Landslide",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Leap",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Lightning Spear",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Lightning Storm",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Lunging Strike",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Macabre Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Marksman and Cutthroat Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Marksman Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Martial Skills",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Mastery Skills",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Maul",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Meteor",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Mighty Throw",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Minion Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Mobility Skills",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+# to Molten Bomb",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Nature Magic Skills",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Nether Step",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Occult Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Payback",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Penetrating Shot",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Poison Creeper",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Poison Imbuement",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Poison Trap",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Potency Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Profane Sentinel",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Pulverize",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Puncture",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Purify",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Pyromancy Skills",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Quill Volley",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Rabies",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Rake",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Rally",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Rallying Cry",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Rampage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Rapid Fire",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Ravager",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Ravens",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Razor Wings",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Reap",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Rend",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Rock Splitter",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Rupture",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Rushing Claw",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Scourge",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Sever",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Shade Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Shadow Imbuement",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Shadow Step",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Shapeshifting Skills",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Shield Bash",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Shield Charge",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Shock Skills",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Shred",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Sigil of Chaos",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Sigil of Subversion",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Sigil of Summons",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Sigil Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Skeletal Mage Mastery",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Skeleton Mage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Skeleton Warrior",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Slashing Skills",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Smoke Grenade",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Soar",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Soul Shard Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Soulrift",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Spark",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Spear of the Heavens",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Steel Grasp",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Steel Grasp, Cold Imbuement, Frost, Hurricane, or Skeletal Mage Mastery",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Stinger",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Stone Burst",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Storm Skills",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Storm Strike",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Subterfuge Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Teleport",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Thrash",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Thunderspike",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Tornado",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Tortured Wretch",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Touch of Death",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Toxic Skin",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Trample",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Trap Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Twisting Blades",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Tyrant's Grasp",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Ultimate Skills",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Umbral Chains",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to Upheaval",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Upheaval, Cutthroat, Pyromancy, Earth, or Blood",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Valor Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Versatile Skills",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Vortex",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Wall of Agony",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+# to War Cry",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Weapon Mastery Skills",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Werebear Skills",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Werewolf Skills",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Whirlwind",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Wind Shear",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Withering Fist",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Wolves",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Wrath Skills",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# to Zeal",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# to Zealot Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+# Vigor when Resolve is Lost",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+# Weapon Damage",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Abyss Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+#% Agility Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Ancient Damage",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Arbiter Duration",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Archfiend Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+#% Armor in Arbiter Form",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Attack Speed",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Attack Speed for # Seconds After Dodging an Attack",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Attack Speed for 5 seconds after Casting a Defensive Skill",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Attack Speed while Berserking",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Attack Speed+#% Movement Speed",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Aura Enhancement Potency",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Aura Potency",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Ball Lightning Projectile Speed",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Barrier Generation",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Basic Attack Speed",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Basic Damage",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Basic Lucky Hit Chance",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Berserking Duration",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Bleeding Damage",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Blight Chill Potency",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Blizzard Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Blood Attack Speed",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Blood Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Blood Orb Healing",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Bone Critical Strike Chance",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Bone Critical Strike Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Bone Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Bone Spirit Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Bone Storm Duration",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Bonus Kill Experience (#% at level 70)",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Boulder Damage",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Brawling Damage",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Burning Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Cataclysm Damage",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Centipede Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Arbiter to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Army of the Dead to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Basic Skills to Deal Double Damage",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Chance for Blood Lance to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Bone Storm to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Brandish to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Clash to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Concussive Stomp to Extra Hit",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Core Skills to Hit Twice",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Chance for Corpse Explosion to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Incinerate to Deal Double Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Judgement to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance For Minion Attacks to Fortify You for 3% Maximum Life",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Payback to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Pestilent Swarm to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Potency Skills to Deal Double Damage",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Chance for Projectiles to Cast Twice",
-    "classes": [
-      1,
-      1,
-      0,
-      1,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Rapid Fire Projectiles to Cast Twice",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Ravens to Deal Double Damage",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Retribution to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Rock Splitter to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Rushing Claw to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Sever to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Shield Bash to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Shield Charge to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Soar to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Soulrift to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Spear of the Heavens to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for The Devourer to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for The Hunter to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for The Protector to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for The Seeker to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Thrash to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Thunderspike to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Vortex to Extra Hit",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Withering Fist to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance for Zeal to Deal Double Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance to Cluck Thrice",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chance When Struck to Fortify for # Life",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Chance When Struck to Gain # Life as Barrier for # Seconds",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Charge Damage",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Chill Slow Potency",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Cold Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Cold Mage Attack Speed",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Companion Damage",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Conjuration Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Core Attack Speed",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Core Damage",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Corpse Attack Speed",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Corpse Explosion Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Corpse Tendrils Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Corrupting Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Crackling Energy Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Critical Strike and Vulnerable Damage",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Critical Strike Chance",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Critical Strike Chance Against Chilled Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Critical Strike Chance Against Close Enemies",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Critical Strike Chance Against Crowd Controlled Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Critical Strike Chance Against Feared Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Critical Strike Chance Against Injured Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Critical Strike Chance Against Stunned Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Critical Strike Chance to each Enhanced Rapid Fire Bonus",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Critical Strike Damage",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Crowd Control Duration",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Curse Duration",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Cutthroat Attack Speed",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Cutthroat Critical Strike Chance",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Cutthroat Critical Strike Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Cutthroat Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Cyclone Armor Damage",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage for # Seconds After Dodging an Attack",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage for # Seconds After Killing an Elite",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage for # Seconds After Picking Up a Blood Orb",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage for 4 Seconds After Gaining Resolve",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage on Next Attack After Entering Stealth",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage Over Time",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage Over Time Duration",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage per Combo Point Spent",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage Per Overpower Stack",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage Reduction for Each Active Ball Lightning.",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage to Angels and Demons",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage to Bleeding Enemies",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage to Burning Enemies",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage to Chilled Enemies",
-    "classes": [
-      1,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage to Close Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage to Corrupted Enemies",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage to Crowd Controlled Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage to Cursed Enemies",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage to Dazed Enemies",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage to Distant Enemies",
-    "classes": [
-      1,
-      1,
-      0,
-      1,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage to Elites",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage to Frozen Enemies",
-    "classes": [
-      1,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage to Healthy Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage to Immobilized Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage to Injured Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage to Judged Enemies",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage to Knocked-Down Enemies",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage to Poisoned Enemies",
-    "classes": [
-      0,
-      1,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage to Poultry",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage to Slowed Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage to Stunned Enemies",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage to Trapped Enemies",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage to Weakened Enemies",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage when Spending Resolve",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage when Swapping Weapons",
-    "classes": [
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage while Berserking",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage while Fortified",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage while Healthy",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage while in Arbiter Form",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage while in Human Form",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage while Iron Maelstrom is Active",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage while Shadowform is Active",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+#% Damage while Shapeshifted",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage while War Cry is Active",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage while Wrath of the Berserker is Active",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage with Dual-Wielded Weapons",
-    "classes": [
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage with Ranged Weapons",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage with Two-Handed Bludgeoning Weapons",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Damage with Two-Handed Slashing Weapons",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Darkness Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Dash Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Death Blow Damage",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Defensive Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Defiance Aura Potency",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Demonform Damage Bonus",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+#% Demonology Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+#% Desecrated Ground Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Disciple Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Dodge Chance while Channeling Dance of Knives",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Dust Devil Damage",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Eagle Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Earth Attack Speed",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Earth Critical Strike Chance",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Earth Critical Strike Damage",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Earth Damage",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Earth Lucky Hit Chance",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Earthquake Damage",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Enchantment Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Enhanced Rupture Explosion Size",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Familiar Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Familiar Lucky Hit Chance",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Fanaticism Aura Potency",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Ferocity Potency",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Fire and Cold Damage",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Fire Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Fire Lucky Hit Chance",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Fireball Attack Speed",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      0,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Fireball Projectile Speed",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Focus Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Fortify Generation",
-    "classes": [
-      0,
-      1,
-      1,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Freeze Duration",
-    "classes": [
-      1,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Frost Critical Strike Chance",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Frost Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Golem Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Gorilla Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Grenade Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Ground Stomp Damage",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Hammer of the Ancients Damage for 5 Seconds After an Earthquake Explodes",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Healing Received",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Hellfire Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+#% Holy Damage",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Holy Light Aura Potency",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Human Damage",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Hurricane Damage",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Hydra Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Hydra Lucky Hit Chance",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Ice Blades Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Ice Blades Lucky Hit Chance",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Ice Spike Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Imbued Critical Strike Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Imbued Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Imbuement Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Immobilize Duration",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Inner Sight Duration",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Invigorating Strike Energy Regeneration",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Iron Maiden Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Jaguar Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Judicator Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Juggernaut Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Justice Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "+#% Kick Damage",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Lacerate Damage",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Leap Damage",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Life Steal",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Lightning Bolt Damage",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Lightning Critical Strike Damage",
-    "classes": [
-      1,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Lightning Damage",
-    "classes": [
-      1,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Lightning Spear Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Lightning Spear Lucky Hit Chance",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Lucky Hit Chance",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Lucky Hit Chance while You Have a Barrier",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      0,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Lunging Strike Healing",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Macabre Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Main Hand Weapon Damage",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Marksman Attack Speed per Precison Stack",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Marksman Critical Strike Chance",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Marksman Critical Strike Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Marksman Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Mastery Damage",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Meteor Size",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Mobility Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Movement Speed",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Movement Speed for # Seconds After Killing an Elite",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Movement Speed for 2 Seconds After Killing an Enemy",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Movement Speed for 4 Seconds After Picking Up Crackling Energy",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Movement Speed while Berserking",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Movement Speed while Cataclysm is Active",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Movement Speed while Hurricane is Active",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Movement Speed while in Human Form",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Movement Speed while Shapeshifted into a Werewolf",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Movement Speed while the Inner Sight Gauge is Full",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Mystic Circle Potency",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Non-Physical Damage",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Occult Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "+#% Overpower Chance",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Overpower Critical Damage",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Pestilent Swarm Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Physical Critical Strike Chance Against Elites",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Physical Damage",
-    "classes": [
-      0,
-      1,
-      1,
-      1,
-      1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Poison Creeper Damage",
-    "classes": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Poison Damage",
-    "classes": [
-      0,
-      1,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Poisoning Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Potency Damage",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "+#% Potion Drop Rate",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "+#% Potion Healing",
-    "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
       1,
-      1
-    ]
+      0,
+      0
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Primary Centipede Spirit Hall Damage",
+    "name": "+[2 - 3] to Spark",
+    "shortName": "Ranks to Spark",
     "classes": [
+      1,
       0,
       0,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Primary Eagle Spirit Hall Damage",
+    "name": "+[2 - 3] to Steel Grasp",
+    "shortName": "Ranks to Steel Grasp",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Primary Gorilla Spirit Hall Damage",
+    "name": "+[2 - 3] to Stinger",
+    "shortName": "Ranks to Stinger",
     "classes": [
       0,
       0,
@@ -9151,36 +4272,51 @@ window.D4_DATABASE = {
       1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Primary Jaguar Spirit Hall Damage",
+    "name": "+[2 - 3] to Stone Burst",
+    "shortName": "Ranks to Stone Burst",
     "classes": [
       0,
+      1,
       0,
       0,
       0,
       0,
-      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Pyromancy Attack Speed",
+    "name": "+[2 - 3] to Storm Strike",
+    "shortName": "Ranks to Storm Strike",
     "classes": [
-      1,
       0,
+      1,
       0,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Pyromancy Critical Strike Damage",
+    "name": "+[2 - 3] to Teleport",
+    "shortName": "Ranks to Teleport",
     "classes": [
       1,
       0,
@@ -9190,23 +4326,51 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Pyromancy Damage",
+    "name": "+[2 - 3] to Thrash",
+    "shortName": "Ranks to Thrash",
     "classes": [
+      0,
+      0,
+      0,
+      0,
+      0,
       1,
       0,
+      0
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[2 - 3] to Thunderspike",
+    "shortName": "Ranks to Thunderspike",
+    "classes": [
       0,
       0,
       0,
       0,
       0,
+      1,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Rabies Damage",
+    "name": "+[2 - 3] to Tornado",
+    "shortName": "Ranks to Tornado",
     "classes": [
       0,
       1,
@@ -9216,23 +4380,33 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Rain of Arrows Damage",
+    "name": "+[2 - 3] to Tortured Wretch",
+    "shortName": "Ranks to Tortured Wretch",
     "classes": [
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Ravager On Kill Duration Extension",
+    "name": "+[2 - 3] to Touch of Death",
+    "shortName": "Ranks to Touch of Death",
     "classes": [
       0,
       0,
@@ -9242,23 +4416,33 @@ window.D4_DATABASE = {
       1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Ravens Attack Speed",
+    "name": "+[2 - 3] to Toxic Skin",
+    "shortName": "Ranks to Toxic Skin",
     "classes": [
       0,
-      1,
       0,
       0,
       0,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Ravens Damage",
+    "name": "+[2 - 3] to Trample",
+    "shortName": "Ranks to Trample",
     "classes": [
       0,
       1,
@@ -9268,49 +4452,69 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Resource Generation while Wielding a Scythe",
+    "name": "+[2 - 3] to Twisting Blades",
+    "shortName": "Ranks to Twisting Blades",
     "classes": [
       0,
       0,
       0,
-      0,
       1,
+      0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Resource Generation while Wielding a Shield",
+    "name": "+[2 - 3] to Tyrant's Grasp",
+    "shortName": "Ranks to Tyrant's Grasp",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Resource Generation with Dual-Wielded Weapons",
+    "name": "+[2 - 3] to Umbral Chains",
+    "shortName": "Ranks to Umbral Chains",
     "classes": [
       0,
       0,
-      1,
+      0,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Resource Generation with Polearms",
+    "name": "+[2 - 3] to Upheaval",
+    "shortName": "Ranks to Upheaval",
     "classes": [
       0,
       0,
@@ -9320,23 +4524,51 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Resource Generation with Two-Handed Bludgeoning Weapons",
+    "name": "+[2 - 3] to Vortex",
+    "shortName": "Ranks to Vortex",
     "classes": [
       0,
       0,
+      0,
+      0,
+      0,
       1,
+      0,
+      0
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[2 - 3] to Wall of Agony",
+    "shortName": "Ranks to Wall of Agony",
+    "classes": [
       0,
       0,
       0,
       0,
+      0,
+      0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "chest"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Resource Generation with Two-Handed Slashing Weapons",
+    "name": "+[2 - 3] to War Cry",
+    "shortName": "Ranks to War Cry",
     "classes": [
       0,
       0,
@@ -9346,36 +4578,51 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Resource Generation with Two-Handed Weapons",
+    "name": "+[2 - 3] to Whirlwind",
+    "shortName": "Ranks to Whirlwind",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Rupture Damage",
+    "name": "+[2 - 3] to Wind Shear",
+    "shortName": "Ranks to Wind Shear",
     "classes": [
-      0,
       0,
       1,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Scourge Poisoning Duration",
+    "name": "+[2 - 3] to Withering Fist",
+    "shortName": "Ranks to Withering Fist",
     "classes": [
       0,
       0,
@@ -9385,88 +4632,353 @@ window.D4_DATABASE = {
       1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Sever Size",
+    "name": "+[2 - 3] to Wolves",
+    "shortName": "Ranks to Wolves",
     "classes": [
       0,
+      1,
       0,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "helm"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Shade Damage",
+    "name": "+[2 - 3] to Zeal",
+    "shortName": "Ranks to Zeal",
     "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "gloves"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20 - 24]% Movement Speed",
+    "shortName": "Movement Speed",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "amulet",
+      "boots"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20 - 40]% Cold Damage",
+    "shortName": "Cold Damage",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20 - 40]% Fire Damage",
+    "shortName": "Fire Damage",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20 - 40]% Lightning Damage",
+    "shortName": "Lightning Damage",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20 - 40]% Physical Damage",
+    "shortName": "Physical Damage",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20 - 40]% Poison Damage",
+    "shortName": "Poison Damage",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20 - 40]% Shadow Damage",
+    "shortName": "Shadow Damage",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Shadow Clone Damage",
+    "name": "+[20 - 40]% Vulnerable Damage",
+    "shortName": "Vulnerable Damage",
     "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20.0 - 40.0]% Abyss Damage",
+    "shortName": "Abyss Damage",
+    "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Shadow Damage",
+    "name": "+[20.0 - 40.0]% Agility Damage",
+    "shortName": "Agility Damage",
     "classes": [
       0,
       0,
       0,
-      1,
       1,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Shadow Lucky Hit Chance",
+    "name": "+[20.0 - 40.0]% Ancient Damage",
+    "shortName": "Ancient Damage",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Shadow Step Damage",
+    "name": "+[20.0 - 40.0]% Archfiend Damage",
+    "shortName": "Archfiend Damage",
     "classes": [
       0,
       0,
       0,
-      1,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Shapeshifting Attack Speed",
+    "name": "+[20.0 - 40.0]% Blood Damage",
+    "shortName": "Blood Damage",
     "classes": [
       1,
       1,
@@ -9476,62 +4988,141 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Shock Critical Strike Chance",
+    "name": "+[20.0 - 40.0]% Bone Damage",
+    "shortName": "Bone Damage",
     "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20.0 - 40.0]% Brawling Damage",
+    "shortName": "Brawling Damage",
+    "classes": [
       0,
       0,
+      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Shock Critical Strike Damage",
+    "name": "+[20.0 - 40.0]% Centipede Damage",
+    "shortName": "Centipede Damage",
     "classes": [
-      1,
       0,
       0,
       0,
       0,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Shock Damage",
+    "name": "+[20.0 - 40.0]% Companion Damage",
+    "shortName": "Companion Damage",
     "classes": [
-      1,
       0,
+      1,
       0,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Shred Critical Strike Chance",
+    "name": "+[20.0 - 40.0]% Conjuration Damage",
+    "shortName": "Conjuration Damage",
     "classes": [
-      0,
       1,
+      0,
       0,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [],
+    "tempering": false
   },
   {
-    "name": "+#% Shrine Buff Duration",
+    "name": "+[20.0 - 40.0]% Cutthroat Damage",
+    "shortName": "Cutthroat Damage",
     "classes": [
       1,
       1,
@@ -9541,10 +5132,23 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Sigil Damage",
+    "name": "+[20.0 - 40.0]% Damage to Bleeding Enemies",
+    "shortName": "Damage to Bleeding Enemies",
     "classes": [
       0,
       0,
@@ -9553,11 +5157,102 @@ window.D4_DATABASE = {
       0,
       0,
       0,
+      0
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20.0 - 40.0]% Damage to Close Enemies",
+    "shortName": "Damage to Close Enemies",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20.0 - 40.0]% Damage to Crowd Controlled Enemies",
+    "shortName": "Damage to Crowd Controlled Enemies",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20.0 - 40.0]% Damage to Distant Enemies",
+    "shortName": "Damage to Distant Enemies",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Sigil Duration",
+    "name": "+[20.0 - 40.0]% Damage to Judged Enemies",
+    "shortName": "Damage to Judged Enemies",
     "classes": [
       0,
       0,
@@ -9566,37 +5261,102 @@ window.D4_DATABASE = {
       0,
       0,
       0,
+      0
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20.0 - 40.0]% Damage to Weakened Enemies",
+    "shortName": "Damage to Weakened Enemies",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Skeleton Mage Damage",
+    "name": "+[20.0 - 40.0]% Damage while in Arbiter Form",
+    "shortName": "Damage while in Arbiter Form",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Smoke Grenade Damage",
+    "name": "+[20.0 - 40.0]% Damage while Shadowform is Active",
+    "shortName": "Damage while Shadowform is Active",
     "classes": [
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Steel Grasp Damage",
+    "name": "+[20.0 - 40.0]% Damage with Dual-Wielded Weapons",
+    "shortName": "Damage with Dual-Wielded Weapons",
     "classes": [
       0,
       0,
@@ -9606,127 +5366,255 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Storm Critical Strike Chance",
+    "name": "+[20.0 - 40.0]% Damage with Two-Handed Bludgeoning Weapons",
+    "shortName": "Damage with Two-Handed Bludgeoning Weapons",
     "classes": [
       0,
-      1,
       0,
+      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Storm Damage",
+    "name": "+[20.0 - 40.0]% Damage with Two-Handed Slashing Weapons",
+    "shortName": "Damage with Two-Handed Slashing Weapons",
     "classes": [
       0,
-      1,
       0,
+      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Storm Feather Potency",
+    "name": "+[20.0 - 40.0]% Darkness Damage",
+    "shortName": "Darkness Damage",
     "classes": [
       0,
       0,
       0,
       0,
-      0,
       1,
+      0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Stun Duration",
+    "name": "+[20.0 - 40.0]% Demonform Damage Bonus",
+    "shortName": "Demonform Damage Bonus",
     "classes": [
-      1,
       0,
-      1,
       0,
       0,
       0,
       0,
+      0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Stun Grenade Damage",
+    "name": "+[20.0 - 40.0]% Demonology Damage",
+    "shortName": "Demonology Damage",
     "classes": [
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Stun Grenade Size",
+    "name": "+[20.0 - 40.0]% Disciple Damage",
+    "shortName": "Disciple Damage",
     "classes": [
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Summon Attack Speed",
+    "name": "+[20.0 - 40.0]% Eagle Damage",
+    "shortName": "Eagle Damage",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Summon Damage",
+    "name": "+[20.0 - 40.0]% Earth Damage",
+    "shortName": "Earth Damage",
     "classes": [
       0,
+      1,
       0,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Summon Movement Speed",
+    "name": "+[20.0 - 40.0]% Earthquake Damage",
+    "shortName": "Earthquake Damage",
     "classes": [
       0,
-      1,
       0,
+      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Teleport Damage",
+    "name": "+[20.0 - 40.0]% Enchantment Damage",
+    "shortName": "Enchantment Damage",
     "classes": [
       1,
       0,
@@ -9736,36 +5624,67 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Thorns while Fortified",
+    "name": "+[20.0 - 40.0]% Focus Damage",
+    "shortName": "Focus Damage",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% to Prime Bone Storm's Damage Reduction",
+    "name": "+[20.0 - 40.0]% Frost Damage",
+    "shortName": "Frost Damage",
     "classes": [
+      1,
       0,
       0,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% to the Pack Leader Spirit Boon's Lucky Hit Chance",
+    "name": "+[20.0 - 40.0]% Gorilla Damage",
+    "shortName": "Gorilla Damage",
     "classes": [
       1,
       1,
@@ -9775,23 +5694,72 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Total Armor",
+    "name": "+[20.0 - 40.0]% Grenade Damage",
+    "shortName": "Grenade Damage",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
+      0,
+      0,
+      0,
       1,
-      1
-    ]
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20.0 - 40.0]% Hellfire Damage",
+    "shortName": "Hellfire Damage",
+    "classes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Total Armor while in Werebear Form",
+    "name": "+[20.0 - 40.0]% Human Damage",
+    "shortName": "Human Damage",
     "classes": [
       0,
       1,
@@ -9801,23 +5769,46 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Total Armor while in Werewolf Form",
+    "name": "+[20.0 - 40.0]% Imbued Damage",
+    "shortName": "Imbued Damage",
     "classes": [
       0,
-      1,
       0,
       0,
+      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Total Bonus Experience",
+    "name": "+[20.0 - 40.0]% Jaguar Damage",
+    "shortName": "Jaguar Damage",
     "classes": [
       1,
       1,
@@ -9827,62 +5818,127 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Trample Damage",
+    "name": "+[20.0 - 40.0]% Judicator Damage",
+    "shortName": "Judicator Damage",
     "classes": [
       0,
-      1,
+      0,
       0,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Trap Damage",
+    "name": "+[20.0 - 40.0]% Juggernaut Damage",
+    "shortName": "Juggernaut Damage",
     "classes": [
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Ultimate Damage",
+    "name": "+[20.0 - 40.0]% Justice Damage",
+    "shortName": "Justice Damage",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Versatile Damage",
+    "name": "+[20.0 - 40.0]% Macabre Damage",
+    "shortName": "Macabre Damage",
     "classes": [
       0,
-      1,
       0,
       0,
       0,
+      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Vulnerable Damage",
+    "name": "+[20.0 - 40.0]% Marksman Damage",
+    "shortName": "Marksman Damage",
     "classes": [
       1,
       1,
@@ -9892,10 +5948,46 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20.0 - 40.0]% Mastery Damage",
+    "shortName": "Mastery Damage",
+    "classes": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Weapon Mastery Attack Speed",
+    "name": "+[20.0 - 40.0]% Mobility Damage",
+    "shortName": "Mobility Damage",
     "classes": [
       1,
       1,
@@ -9905,114 +5997,243 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Weapon Mastery Damage",
+    "name": "+[20.0 - 40.0]% Occult Damage",
+    "shortName": "Occult Damage",
     "classes": [
       0,
       0,
-      1,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Werebear Damage",
+    "name": "+[20.0 - 40.0]% Potency Damage",
+    "shortName": "Potency Damage",
     "classes": [
       0,
-      1,
       0,
       0,
       0,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Werewolf Attack Speed",
+    "name": "+[20.0 - 40.0]% Pyromancy Damage",
+    "shortName": "Pyromancy Damage",
     "classes": [
-      0,
       1,
       0,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Werewolf Critical Strike Chance",
+    "name": "+[20.0 - 40.0]% Shade Damage",
+    "shortName": "Shade Damage",
     "classes": [
       0,
-      1,
       0,
       0,
+      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Werewolf Critical Strike Damage",
+    "name": "+[20.0 - 40.0]% Shock Damage",
+    "shortName": "Shock Damage",
     "classes": [
-      0,
       1,
       0,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Werewolf Damage",
+    "name": "+[20.0 - 40.0]% Sigil Damage",
+    "shortName": "Sigil Damage",
     "classes": [
       0,
-      1,
       0,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Wing Strike Damage",
+    "name": "+[20.0 - 40.0]% Storm Damage",
+    "shortName": "Storm Damage",
     "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
       1,
-      0
-    ]
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Wolves Attack Speed",
+    "name": "+[20.0 - 40.0]% Summon Damage",
+    "shortName": "Summon Damage",
     "classes": [
-      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[20.0 - 40.0]% Trap Damage",
+    "shortName": "Trap Damage",
+    "classes": [
       0,
       0,
       0,
+      1,
+      0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Wolves Damage",
+    "name": "+[20.0 - 40.0]% Versatile Damage",
+    "shortName": "Versatile Damage",
     "classes": [
       0,
       1,
@@ -10022,49 +6243,101 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Zealot Critical Strike Chance",
+    "name": "+[20.0 - 40.0]% Weapon Mastery Damage",
+    "shortName": "Weapon Mastery Damage",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Zealot Critical Strike Damage",
+    "name": "+[20.0 - 40.0]% Werebear Damage",
+    "shortName": "Werebear Damage",
     "classes": [
       0,
+      1,
       0,
       0,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+#% Zealot Damage",
+    "name": "+[20.0 - 40.0]% Werewolf Damage",
+    "shortName": "Werewolf Damage",
     "classes": [
       0,
+      1,
       0,
       0,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "+160 Armor and #% Resistance to All Elements\r\n\r\nWhile you have three or more Growth & Decay Witch Powers equipped:\r\n You gain #% Primary Core Stat, #% Maximum Life, and Unhindered.",
+    "name": "+[20.0 - 40.0]% Zealot Damage",
+    "shortName": "Zealot Damage",
     "classes": [
       1,
       1,
@@ -10074,114 +6347,253 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Anima of the Forest grants #% Attack Speed",
+    "name": "+[219.0 - 300.0]% Ultimate Damage",
+    "shortName": "Ultimate Damage",
     "classes": [
-      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [],
+    "tempering": false
+  },
+  {
+    "name": "+[229 - 259] Resistance to All Elements",
+    "shortName": "Resistance to All Elements",
+    "classes": [
       1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[25 - 45]% Movement Speed for 4 Seconds After Killing an Elite",
+    "shortName": "Movement Speed for 4 Seconds After Killing an Elite",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "amulet",
+      "boots"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[3 - 4] Energy Regeneration",
+    "shortName": "Energy Regeneration",
+    "classes": [
+      0,
       0,
       0,
+      1,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Attacks Reduce Evade's Cooldown by # Seconds",
+    "name": "+[3 - 4] Essence Regeneration",
+    "shortName": "Essence Regeneration",
     "classes": [
-      1,
       0,
       0,
       0,
       0,
+      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Attacks Reduce Ultimate Cooldown by # Seconds",
+    "name": "+[3 - 4] Faith Regeneration",
+    "shortName": "Faith Regeneration",
     "classes": [
       0,
       0,
       0,
       0,
       0,
-      1,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Ball Lightning Can be Cast while Moving.",
+    "name": "+[3 - 4] Fury Regeneration",
+    "shortName": "Fury Regeneration",
     "classes": [
-      1,
       0,
       0,
+      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Blood Howl Grants Stealth for +# Seconds",
+    "name": "+[3 - 4] Mana Regeneration",
+    "shortName": "Mana Regeneration",
     "classes": [
-      0,
       1,
       0,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Blood Orbs Restore +# Essence",
+    "name": "+[3 - 4] Spirit Regeneration",
+    "shortName": "Spirit Regeneration",
     "classes": [
       0,
+      1,
       0,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Blood Surge Drains +# Times from Elites",
+    "name": "+[3 - 4] Vigor Regeneration",
+    "shortName": "Vigor Regeneration",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
       0,
+      1,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Casted Hydras Have +# Heads",
+    "name": "+[3 - 4] Wrath Regeneration",
+    "shortName": "Wrath Regeneration",
     "classes": [
-      1,
       0,
       0,
       0,
       0,
       0,
       0,
+      0,
       0
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Casting Blood Wave Fortifies You For +#% Maximum Life",
+    "name": "+[30 - 50]% Critical Strike Damage",
+    "shortName": "Critical Strike Damage",
     "classes": [
       1,
       1,
@@ -10191,36 +6603,49 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Casting Bone Spear Reduces Blood Wave's Cooldown by # Seconds.",
+    "name": "+[30 - 50]% Damage Over Time",
+    "shortName": "Damage Over Time",
     "classes": [
-      0,
-      0,
-      0,
-      0,
       1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "Casting Justice Skills Restores +# Primary Resource",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
       1,
-      0
-    ]
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Casting Macabre Skills Restores +# Primary Resource",
+    "name": "+[30.0 - 50.0]% Chance for Corpse Explosion to Deal Double Damage",
+    "shortName": "Chance for Corpse Explosion to Deal Double Damage",
     "classes": [
       0,
       0,
@@ -10230,10 +6655,13 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [],
+    "tempering": false
   },
   {
-    "name": "Casting Ultimate Skills Restores +# Primary Resource",
+    "name": "+[30.0 - 50.0]% Damage to Frozen Enemies",
+    "shortName": "Damage to Frozen Enemies",
     "classes": [
       1,
       1,
@@ -10243,36 +6671,75 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Casting Valor Skills Restores +# Primary Resource",
+    "name": "+[30.0 - 50.0]% Damage when Swapping Weapons",
+    "shortName": "Damage when Swapping Weapons",
     "classes": [
       0,
       0,
+      1,
       0,
       0,
       0,
       0,
-      1,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Casting Wrath Skills Restores +# Primary Resource",
+    "name": "+[30.0 - 50.0]% Damage while Berserking",
+    "shortName": "Damage while Berserking",
     "classes": [
       0,
-      1,
       0,
+      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Chance for Ball Lightning Projectiles to Cast Twice is converted to Chance to Cast a Super Ball Lightning.",
+    "name": "+[30.0 - 50.0]% Fire Damage Over Time",
+    "shortName": "Fire Damage Over Time",
     "classes": [
       1,
       0,
@@ -10282,36 +6749,69 @@ window.D4_DATABASE = {
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Conjuration Cooldowns are Reduced by +# Seconds when a Frozen Orb Explodes",
+    "name": "+[30.0 - 50.0]% Physical Damage Over Time",
+    "shortName": "Physical Damage Over Time",
     "classes": [
-      1,
       0,
       0,
+      1,
       0,
       0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Corpse Explosion Fears and Slows for # Seconds",
+    "name": "+[30.0 - 50.0]% Sigil Duration",
+    "shortName": "Sigil Duration",
     "classes": [
       0,
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Drinking a Potion Grants #% Movement Speed for 2 Seconds",
+    "name": "+[367 - 415] Cold Resistance",
+    "shortName": "Cold Resistance",
     "classes": [
       1,
       1,
@@ -10321,10 +6821,24 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Evade Grants +#% Attack Speed for 3 Seconds",
+    "name": "+[367 - 415] Fire Resistance",
+    "shortName": "Fire Resistance",
     "classes": [
       1,
       1,
@@ -10334,10 +6848,24 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Evade Grants +#% Movement Speed for # Seconds",
+    "name": "+[367 - 415] Lightning Resistance",
+    "shortName": "Lightning Resistance",
     "classes": [
       1,
       1,
@@ -10347,10 +6875,24 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Evade Grants Unhindered for # Seconds",
+    "name": "+[367 - 415] Physical Resistance",
+    "shortName": "Physical Resistance",
     "classes": [
       1,
       1,
@@ -10360,10 +6902,24 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Evade Leaves Behind Desecrated Ground for 2 Seconds",
+    "name": "+[367 - 415] Poison Resistance",
+    "shortName": "Poison Resistance",
     "classes": [
       1,
       1,
@@ -10373,10 +6929,24 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Feast: Every 10 Kills, release a Bloodsplosion for # damage",
+    "name": "+[367 - 415] Shadow Resistance",
+    "shortName": "Shadow Resistance",
     "classes": [
       1,
       1,
@@ -10386,10 +6956,24 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Feast: Every 15 Kills, restore #% of your maximum Primary Resource",
+    "name": "+[40.0 - 60.0]% Damage when Spending Resolve",
+    "shortName": "Damage when Spending Resolve",
     "classes": [
       1,
       1,
@@ -10399,10 +6983,23 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Feast: Every 15 Kills, your next Core Skill Cast deals # additional damage",
+    "name": "+[5.0 - 8.0]% Attack Speed",
+    "shortName": "Attack Speed",
     "classes": [
       1,
       1,
@@ -10412,10 +7009,18 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Feast: Every 20 Kills, savagely bite # Times for # damage and apply Vulnerable",
+    "name": "+[5.5 - 6.5]% Critical Strike Chance",
+    "shortName": "Critical Strike Chance",
     "classes": [
       1,
       1,
@@ -10425,10 +7030,18 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand"
+    ],
+    "tempering": false
   },
   {
-    "name": "Feast: Every 25 Kills, gain Berserking for # seconds",
+    "name": "+[541 - 740] Maximum Life",
+    "shortName": "Maximum Life",
     "classes": [
       1,
       1,
@@ -10438,10 +7051,20 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Feast: Every 30 Kills, chains hook # nearby enemies",
+    "name": "+[56 - 93] Weapon Damage",
+    "shortName": "Weapon Damage",
     "classes": [
       1,
       1,
@@ -10451,10 +7074,18 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Feast: Every 40 Kills, reset # random Cooldowns",
+    "name": "+[6.0 - 8.0]% Lucky Hit Chance",
+    "shortName": "Lucky Hit Chance",
     "classes": [
       1,
       1,
@@ -10464,36 +7095,61 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "helm",
+      "offhand"
+    ],
+    "tempering": false
   },
   {
-    "name": "Golems Inherit +#% of Your Thorns",
+    "name": "+[611 - 916] Thorns",
+    "shortName": "Thorns",
     "classes": [
-      0,
-      0,
-      0,
-      0,
       1,
-      0,
-      0,
-      0
-    ]
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "chest",
+      "helm",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Hewed Flesh Grants #% Maximum Life as Barrier for 4 Seconds",
+    "name": "+[689 - 779] Armor",
+    "shortName": "Armor",
     "classes": [
-      0,
-      0,
-      0,
-      0,
       1,
-      0,
-      0,
-      0
-    ]
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "gloves",
+      "helm",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Hunger: #% increased chance for additional Gold during Kill Streaks",
+    "name": "+[69 - 83] Dexterity",
+    "shortName": "Dexterity",
     "classes": [
       1,
       1,
@@ -10503,10 +7159,20 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Hunger: #% increased chance for additional Salvage Materials during your Kill Streaks",
+    "name": "+[69 - 83] Intelligence",
+    "shortName": "Intelligence",
     "classes": [
       1,
       1,
@@ -10516,10 +7182,20 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Hunger: #% increased chance for Feast Items during your Kill Streaks",
+    "name": "+[69 - 83] Strength",
+    "shortName": "Strength",
     "classes": [
       1,
       1,
@@ -10529,10 +7205,20 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Hunger: #% increased chance for Hunger Items during Kill Streaks",
+    "name": "+[69 - 83] Willpower",
+    "shortName": "Willpower",
     "classes": [
       1,
       1,
@@ -10542,11 +7228,109 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Hunger: #% increased chance for Rampage Items during Kill Streaks",
+    "name": "+[7 - 12]% Holy Damage",
+    "shortName": "Holy Damage",
     "classes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [],
+    "tempering": false
+  },
+  {
+    "name": "+[7.0 - 10.0]% Armor in Arbiter Form",
+    "shortName": "Armor in Arbiter Form",
+    "classes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "amulet",
+      "chest",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[7.0 - 10.0]% Chance For Minion Attacks to Fortify You for 3% Maximum Life",
+    "shortName": "Chance For Minion Attacks to Fortify You for 3% Maximum Life",
+    "classes": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "amulet",
+      "chest",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[7.0 - 10.0]% Damage per Combo Point Spent",
+    "shortName": "Damage per Combo Point Spent",
+    "classes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[7.0 - 10.0]% Damage Per Overpower Stack",
+    "shortName": "Damage Per Overpower Stack",
+    "classes": [
       1,
       1,
       1,
@@ -10555,23 +7339,98 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[7.0 - 10.0]% Defiance Aura Potency",
+    "shortName": "Defiance Aura Potency",
+    "classes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
+  },
+  {
+    "name": "+[7.0 - 10.0]% Fanaticism Aura Potency",
+    "shortName": "Fanaticism Aura Potency",
+    "classes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Hunger: #% increased chance for Runes during your Kill Streaks",
+    "name": "+[7.0 - 10.0]% Holy Light Aura Potency",
+    "shortName": "Holy Light Aura Potency",
     "classes": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Hunger: #% increased Experience from Kill Streaks",
+    "name": "+[7.0 - 11.0]% Healing Received",
+    "shortName": "Healing Received",
     "classes": [
       1,
       1,
@@ -10581,10 +7440,20 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Hunger: #% increased Reputation from Kill Streaks",
+    "name": "+[82 - 111] Life Regeneration",
+    "shortName": "Life Regeneration",
     "classes": [
       1,
       1,
@@ -10594,10 +7463,20 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Hunger: After you Cast a Basic Skill, #% chance for +1 Kill to your Kill Streak",
+    "name": "+[98 - 133] Life On Hit",
+    "shortName": "Life On Hit",
     "classes": [
       1,
       1,
@@ -10607,10 +7486,17 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "gloves",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Hunger: After you Cast a Cooldown, +1 Kill to your Kill Streak",
+    "name": "+[98 - 133] Life on Kill",
+    "shortName": "Life on Kill",
     "classes": [
       1,
       1,
@@ -10620,10 +7506,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "pants",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Hunger: After you kill an enemy, #% chance for +1 Kill to your Kill Streak",
+    "name": "Attacks Reduce Evade's Cooldown by [1.0 - 1.2] Second",
+    "shortName": "Attacks Reduce Evade's Cooldown by Second",
     "classes": [
       1,
       1,
@@ -10633,10 +7528,15 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "Hunger: Every 100 Resource, #% chance for +1 Kill to your Kill Streak",
+    "name": "Evade Grants +[100 - 125]% Movement Speed for 1.5 Seconds",
+    "shortName": "Evade Grants +% Movement Speed for 1.5 Seconds",
     "classes": [
       1,
       1,
@@ -10646,10 +7546,15 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "Hunger: Lucky Hit: Up to a #% chance for +1 Kill to your Kill Streak",
+    "name": "Evade Grants +125% Movement Speed for 3.0 Seconds",
+    "shortName": "Evade Grants +125% Movement Speed for 3.0 Seconds",
     "classes": [
       1,
       1,
@@ -10659,23 +7564,15 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
-  },
-  {
-    "name": "Ice Spikes Freeze Enemies for # Seconds",
-    "classes": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
+    ],
+    "slots": [
+      "boots"
+    ],
+    "tempering": false
   },
   {
-    "name": "Indestructible",
+    "name": "Feast: Every 10 Kills, release a Bloodsplosion for 30 damage",
+    "shortName": "Feast: Every 10 Kills, release a Bloodsplosion for 30 damage",
     "classes": [
       1,
       1,
@@ -10685,10 +7582,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Critical Strikes Have Up to a +#% Chance to Daze for 2 Seconds",
+    "name": "Feast: Every 15 Kills, restore 20% of your maximum Primary Resource",
+    "shortName": "Feast: Every 15 Kills, restore 20% of your maximum Primary Resource",
     "classes": [
       1,
       1,
@@ -10698,10 +7604,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Critical Strikes Have Up to a +#% Chance to Immobilize for 2 Seconds",
+    "name": "Feast: Every 20 Kills, savagely bite 2 times for 225 damage and apply Vulnerable",
+    "shortName": "Feast: Every 20 Kills, savagely bite 2 times for 225 damage and apply Vulnerable",
     "classes": [
       1,
       1,
@@ -10711,10 +7626,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Critical Strikes Have Up to a +#% Chance to Slow for 2 Seconds",
+    "name": "Feast: Every 25 Kills, gain Berserking for 3 seconds",
+    "shortName": "Feast: Every 25 Kills, gain Berserking for 3 seconds",
     "classes": [
       1,
       1,
@@ -10724,10 +7648,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Critical Strikes Have Up to a +#% Chance to Stun for 2 Seconds",
+    "name": "Feast: Every 30 Kills, chains hook 3 nearby enemies",
+    "shortName": "Feast: Every 30 Kills, chains hook 3 nearby enemies",
     "classes": [
       1,
       1,
@@ -10737,10 +7670,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a #% Chance to Become Berserking",
+    "name": "Feast: Every 40 Kills, reset 1 random Cooldown",
+    "shortName": "Feast: Every 40 Kills, reset 1 random Cooldown",
     "classes": [
       1,
       1,
@@ -10750,10 +7692,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a #% Chance to Gain +#% Damage for # Seconds",
+    "name": "Hunger: 10% increased chance for Feast Items during your Kill Streaks",
+    "shortName": "Hunger: 10% increased chance for Feast Items during your Kill Streaks",
     "classes": [
       1,
       1,
@@ -10763,23 +7714,17 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
-  },
-  {
-    "name": "Lucky Hit: Up to a #% Chance to Gain a Stack of Frenzy",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a +#% Chance to Apply a Random Crowd Control Effect for 2 Seconds",
+    "name": "Hunger: 10% increased chance for Hunger Items during Kill Streaks",
+    "shortName": "Hunger: 10% increased chance for Hunger Items during Kill Streaks",
     "classes": [
       1,
       1,
@@ -10789,10 +7734,17 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a +#% Chance to Chill for 2 Seconds",
+    "name": "Hunger: 10% increased chance for Rampage Items during Kill Streaks",
+    "shortName": "Hunger: 10% increased chance for Rampage Items during Kill Streaks",
     "classes": [
       1,
       1,
@@ -10802,10 +7754,17 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a +#% Chance to Daze for 2 Seconds",
+    "name": "Hunger: 10% increased chance for Runes during your Kill Streaks",
+    "shortName": "Hunger: 10% increased chance for Runes during your Kill Streaks",
     "classes": [
       1,
       1,
@@ -10815,23 +7774,17 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
-  },
-  {
-    "name": "Lucky Hit: Up to a +#% Chance to Deal #% Bleeding Damage over 5 seconds",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a +#% Chance to Execute Injured Non-Elites",
+    "name": "Hunger: 15% increased Experience from Kill Streaks",
+    "shortName": "Hunger: 15% increased Experience from Kill Streaks",
     "classes": [
       1,
       1,
@@ -10841,10 +7794,17 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a +#% Chance to Fear for 2 Seconds",
+    "name": "Hunger: 15% increased Reputation from Kill Streaks",
+    "shortName": "Hunger: 15% increased Reputation from Kill Streaks",
     "classes": [
       1,
       1,
@@ -10854,10 +7814,17 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a +#% Chance to Freeze for 2 Seconds",
+    "name": "Hunger: 20% increased chance for additional Salvage Materials during your Kill Streaks",
+    "shortName": "Hunger: 20% increased chance for additional Salvage Materials during your Kill Streaks",
     "classes": [
       1,
       1,
@@ -10867,10 +7834,17 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a +#% Chance to Immobilize for 2 Seconds",
+    "name": "Hunger: 25% increased chance for additional Gold during Kill Streaks",
+    "shortName": "Hunger: 25% increased chance for additional Gold during Kill Streaks",
     "classes": [
       1,
       1,
@@ -10880,10 +7854,17 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a +#% Chance to Knockback for 2 Seconds",
+    "name": "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Daze for 2 Seconds",
+    "shortName": "Lucky Hit: Up to a +% Chance to Daze for 2 Seconds",
     "classes": [
       1,
       1,
@@ -10893,10 +7874,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a +#% Chance to Make Enemies Vulnerable for # Seconds",
+    "name": "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Freeze for 2 Seconds",
+    "shortName": "Lucky Hit: Up to a +% Chance to Freeze for 2 Seconds",
     "classes": [
       1,
       1,
@@ -10906,10 +7896,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a +#% Chance to Slow for 2 Seconds",
+    "name": "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Immobilize for 2 Seconds",
+    "shortName": "Lucky Hit: Up to a +% Chance to Immobilize for 2 Seconds",
     "classes": [
       1,
       1,
@@ -10919,10 +7918,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a +#% Chance to Stun for 2 Seconds",
+    "name": "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Make Enemies Vulnerable for 2 Seconds",
+    "shortName": "Lucky Hit: Up to a +% Chance to Make Enemies Vulnerable for 2 Seconds",
     "classes": [
       1,
       1,
@@ -10932,10 +7940,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a +#% Chance to Taunt for 2 Seconds",
+    "name": "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Slow for 2 Seconds",
+    "shortName": "Lucky Hit: Up to a +% Chance to Slow for 2 Seconds",
     "classes": [
       1,
       1,
@@ -10945,36 +7962,35 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a +#% Chance to Weaken Enemies for # Seconds",
+    "name": "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Stun for 2 Seconds",
+    "shortName": "Lucky Hit: Up to a +% Chance to Stun for 2 Seconds",
     "classes": [
       1,
       1,
-      0,
-      0,
       1,
       1,
       1,
-      1
-    ]
-  },
-  {
-    "name": "Lucky Hit: Up to a +#% Chance to Weaken for 2 Seconds",
-    "classes": [
-      0,
-      0,
       1,
       1,
-      0,
-      0,
-      0,
-      0
-    ]
+      1
+    ],
+    "slots": [],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a 15% Chance to Heal +# Life",
+    "name": "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Weaken for 2 Seconds",
+    "shortName": "Lucky Hit: Up to a +% Chance to Weaken for 2 Seconds",
     "classes": [
       1,
       1,
@@ -10984,10 +8000,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a 15% Chance to Restore +#% Primary Resource",
+    "name": "Lucky Hit: Up to a 15% Chance to Restore +[3 - 4] Primary Resource",
+    "shortName": "Lucky Hit: Up to a 15% Chance to Restore + Primary Resource",
     "classes": [
       1,
       1,
@@ -10997,10 +8022,20 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a 40% Chance to Deal +# Cold Damage",
+    "name": "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Cold Damage",
+    "shortName": "Lucky Hit: Up to a 40% Chance to Deal + Cold Damage",
     "classes": [
       1,
       1,
@@ -11010,10 +8045,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a 40% Chance to Deal +# Fire Damage",
+    "name": "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Fire Damage",
+    "shortName": "Lucky Hit: Up to a 40% Chance to Deal + Fire Damage",
     "classes": [
       1,
       1,
@@ -11023,10 +8067,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a 40% Chance to Deal +# Holy Damage",
+    "name": "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Lightning Damage",
+    "shortName": "Lucky Hit: Up to a 40% Chance to Deal + Lightning Damage",
     "classes": [
       1,
       1,
@@ -11036,10 +8089,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a 40% Chance to Deal +# Lightning Damage",
+    "name": "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Physical Damage",
+    "shortName": "Lucky Hit: Up to a 40% Chance to Deal + Physical Damage",
     "classes": [
       1,
       1,
@@ -11049,10 +8111,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a 40% Chance to Deal +# Physical Damage",
+    "name": "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Poison Damage",
+    "shortName": "Lucky Hit: Up to a 40% Chance to Deal + Poison Damage",
     "classes": [
       1,
       1,
@@ -11062,10 +8133,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a 40% Chance to Deal +# Poison Damage",
+    "name": "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Shadow Damage",
+    "shortName": "Lucky Hit: Up to a 40% Chance to Deal + Shadow Damage",
     "classes": [
       1,
       1,
@@ -11075,10 +8155,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "Lucky Hit: Up to a 40% Chance to Deal +# Shadow Damage",
+    "name": "Minions Inherit +[10.0 - 12.5]% of Your Thorns",
+    "shortName": "Minions Inherit +% of Your Thorns",
     "classes": [
       1,
       1,
@@ -11088,23 +8177,22 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
-  },
-  {
-    "name": "Minions Inherit +#% of Your Thorns",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Mobility Skills Grant +#% Movement Speed for 2 seconds.",
+    "name": "Rampage: +10% Movement Speed per Kill Streak Tier",
+    "shortName": "Rampage: +10% Movement Speed per Kill Streak Tier",
     "classes": [
       1,
       1,
@@ -11114,10 +8202,21 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Mythic: #% Cooldown Reduction",
+    "name": "Rampage: +10% Resource Cost Reduction per Kill Streak Tier",
+    "shortName": "Rampage: +10% Resource Cost Reduction per Kill Streak Tier",
     "classes": [
       1,
       1,
@@ -11127,10 +8226,21 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Rampage: +# Life On Hit per Kill Streak Tier",
+    "name": "Rampage: +100 Life On Hit per Kill Streak Tier",
+    "shortName": "Rampage: +100 Life On Hit per Kill Streak Tier",
     "classes": [
       1,
       1,
@@ -11140,10 +8250,21 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Rampage: +#% Attack Speed per Kill Streak Tier",
+    "name": "Rampage: +2% Dexterity per Kill Streak Tier",
+    "shortName": "Rampage: +2% Dexterity per Kill Streak Tier",
     "classes": [
       1,
       1,
@@ -11153,10 +8274,19 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Rampage: +#% Cooldown Reduction per Kill Streak Tier",
+    "name": "Rampage: +2% Intelligence per Kill Streak Tier",
+    "shortName": "Rampage: +2% Intelligence per Kill Streak Tier",
     "classes": [
       1,
       1,
@@ -11166,10 +8296,21 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Rampage: +#% Critical Strike Chance per Kill Streak Tier",
+    "name": "Rampage: +2% Strength per Kill Streak Tier",
+    "shortName": "Rampage: +2% Strength per Kill Streak Tier",
     "classes": [
       1,
       1,
@@ -11179,36 +8320,43 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Rampage: +#% Dexterity per Kill Streak Tier",
+    "name": "Rampage: +2% Willpower per Kill Streak Tier",
+    "shortName": "Rampage: +2% Willpower per Kill Streak Tier",
     "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      1,
       0,
-      0
-    ]
-  },
-  {
-    "name": "Rampage: +#% Intelligence per Kill Streak Tier",
-    "classes": [
       1,
       0,
       0,
       0,
-      1,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Rampage: +#% Lucky Hit Chance per Kill Streak Tier",
+    "name": "Rampage: +3% Maximum Life per Kill Streak Tier",
+    "shortName": "Rampage: +3% Maximum Life per Kill Streak Tier",
     "classes": [
       1,
       1,
@@ -11218,10 +8366,21 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Rampage: +#% Maximum Life per Kill Streak Tier",
+    "name": "Rampage: +6.0% Cooldown Reduction per Kill Streak Tier",
+    "shortName": "Rampage: +6.0% Cooldown Reduction per Kill Streak Tier",
     "classes": [
       1,
       1,
@@ -11231,10 +8390,21 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Rampage: +#% Movement Speed per Kill Streak Tier",
+    "name": "Rampage: +6% Lucky Hit Chance per Kill Streak Tier",
+    "shortName": "Rampage: +6% Lucky Hit Chance per Kill Streak Tier",
     "classes": [
       1,
       1,
@@ -11244,10 +8414,21 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Rampage: +#% Resource Cost Reduction per Kill Streak Tier",
+    "name": "Rampage: +8% Attack Speed per Kill Streak Tier",
+    "shortName": "Rampage: +8% Attack Speed per Kill Streak Tier",
     "classes": [
       1,
       1,
@@ -11257,166 +8438,92 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Rampage: +#% Strength per Kill Streak Tier",
+    "name": "Rampage: +8% Critical Strike Chance per Kill Streak Tier",
+    "shortName": "Rampage: +8% Critical Strike Chance per Kill Streak Tier",
     "classes": [
-      0,
-      0,
       1,
-      0,
-      0,
-      0,
       1,
-      0
-    ]
-  },
-  {
-    "name": "Rampage: +#% Willpower per Kill Streak Tier",
-    "classes": [
-      0,
       1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "Shadow Clones Execute Injured Non-Elite Enemies.",
-    "classes": [
-      0,
-      0,
-      0,
       1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "Skeletal Mages Inherit +#% of Your Thorns",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
       1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "Skeletal Warriors Inherit +#% of Your Thorns",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
       1,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "Soar Deals Up to +#% Damage Based on Distance Traveled",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
       1,
-      0,
-      0
-    ]
+      1
+    ],
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ],
+    "tempering": false
   },
   {
-    "name": "Soar Grants #% Maximum Life as Barrier for 1.5 Seconds",
+    "name": "Traps Arm [0.4 - 0.6] Seconds Faster",
+    "shortName": "Traps Arm Seconds Faster",
     "classes": [
-      0,
-      0,
       0,
       0,
       0,
       1,
       0,
-      0
-    ]
-  },
-  {
-    "name": "Steel Grasp Stuns for +# Seconds",
-    "classes": [
-      0,
-      0,
-      1,
-      0,
       0,
       0,
-      0,
       0
-    ]
+    ],
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   },
   {
-    "name": "Storm Strike Chains to +# Targets",
+    "name": "x[13 - 25]% Critical Strike Damage Multiplier",
+    "shortName": "x% Critical Strike Damage Multiplier",
     "classes": [
-      0,
       1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "Traps Arm # Seconds Faster",
-    "classes": [
-      0,
-      0,
-      0,
       1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "Twisting Blades Returns +#% Faster",
-    "classes": [
-      0,
-      0,
-      0,
       1,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "Upheaval Overpowers Stun for +# Seconds",
-    "classes": [
-      0,
-      0,
       1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
+      1,
+      1,
+      1,
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "While Injured, Your Potion Also Grants #% Maximum Life as Barrier",
+    "name": "x[15 - 30]% Damage Over Time Multiplier",
+    "shortName": "x% Damage Over Time Multiplier",
     "classes": [
       1,
       1,
@@ -11426,10 +8533,21 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "While Injured, Your Potion Also Grants #% Movement Speed for 2 Seconds",
+    "name": "x[6 - 10]% All Damage Multiplier",
+    "shortName": "x% All Damage Multiplier",
     "classes": [
       1,
       1,
@@ -11439,10 +8557,21 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "While Injured, Your Potion Also Restores #% Resource",
+    "name": "x[6 - 10]% Cold Damage Multiplier",
+    "shortName": "x% Cold Damage Multiplier",
     "classes": [
       1,
       1,
@@ -11452,10 +8581,21 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "x#% All Damage Multiplier",
+    "name": "x[6 - 10]% Fire Damage Multiplier",
+    "shortName": "x% Fire Damage Multiplier",
     "classes": [
       1,
       1,
@@ -11465,23 +8605,45 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "x#% Cold Damage Multiplier",
+    "name": "x[6 - 10]% Holy Damage Multiplier",
+    "shortName": "x% Holy Damage Multiplier",
     "classes": [
-      1,
       0,
       0,
-      1,
-      1,
+      0,
+      0,
+      0,
       0,
       0,
       0
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "x#% Critical Strike Damage Multiplier",
+    "name": "x[6 - 10]% Lightning Damage Multiplier",
+    "shortName": "x% Lightning Damage Multiplier",
     "classes": [
       1,
       1,
@@ -11491,10 +8653,21 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "x#% Damage Over Time Multiplier",
+    "name": "x[6 - 10]% Physical Damage Multiplier",
+    "shortName": "x% Physical Damage Multiplier",
     "classes": [
       1,
       1,
@@ -11504,88 +8677,69 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "x#% Fire Damage Multiplier",
+    "name": "x[6 - 10]% Poison Damage Multiplier",
+    "shortName": "x% Poison Damage Multiplier",
     "classes": [
       1,
-      0,
       1,
-      0,
-      0,
       1,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "x#% Holy Damage Multiplier",
-    "classes": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
       1,
-      0
-    ]
-  },
-  {
-    "name": "x#% Lightning Damage Multiplier",
-    "classes": [
       1,
       1,
-      0,
-      0,
-      0,
       1,
-      0,
-      0
-    ]
+      1
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "x#% Physical Damage Multiplier",
+    "name": "x[6 - 10]% Shadow Damage Multiplier",
+    "shortName": "x% Shadow Damage Multiplier",
     "classes": [
-      0,
-      1,
-      1,
-      1,
       1,
       1,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "x#% Poison Damage Multiplier",
-    "classes": [
-      0,
       1,
-      0,
       1,
-      0,
       1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "x#% Shadow Damage Multiplier",
-    "classes": [
-      0,
-      0,
-      0,
       1,
       1,
-      0,
-      0,
       1
-    ]
+    ],
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ],
+    "tempering": false
   },
   {
-    "name": "x#% Vulnerable Damage Multiplier",
+    "name": "x[7 - 11]% Vulnerable Damage Multiplier",
+    "shortName": "x% Vulnerable Damage Multiplier",
     "classes": [
       1,
       1,
@@ -11595,20 +8749,12 @@ window.D4_DATABASE = {
       1,
       1,
       1
-    ]
-  },
-  {
-    "name": "Your Trap Skills are also considered Core Skills",
-    "classes": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ]
+    ],
+    "slots": [
+      "ring1",
+      "ring2"
+    ],
+    "tempering": false
   }
 ],
   aspects: [
