@@ -8467,7 +8467,7 @@ window.D4_DATABASE = {
         1,
         1,
         1,
-        1,
+        0,
         1,
         1,
         1
@@ -8536,7 +8536,7 @@ window.D4_DATABASE = {
         1,
         1,
         1,
-        1,
+        0,
         1,
         1,
         1
@@ -8605,7 +8605,7 @@ window.D4_DATABASE = {
         1,
         1,
         1,
-        1,
+        0,
         1,
         1,
         1
@@ -8674,7 +8674,7 @@ window.D4_DATABASE = {
         1,
         1,
         1,
-        1,
+        0,
         1,
         1,
         1
@@ -8840,6 +8840,297 @@ window.D4_DATABASE = {
       ],
       "slots": [
         "helm"
+      ],
+      "tempering": false
+    },
+    {
+      "name": "+[1206 - 1450] Maximum Life",
+      "shortName": "Maximum Life",
+      "classes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "slots": [
+        "Helm",
+        "Chest Armor",
+        "Gloves",
+        "Pants",
+        "Boots",
+        "Amulet",
+        "Ring",
+        "Mainhand",
+        "Offhand",
+        "Weapon 1",
+        "Weapon 2",
+        "Weapon 1 (Bludgeoning)",
+        "Weapon 2 (Slashing)",
+        "Weapon 3 (Dual Wield 1)",
+        "Weapon 4 (Dual Wield 2)",
+        "helm"
+      ],
+      "tempering": false
+    },
+    {
+      "name": "+[367 - 415] Fire Resistance",
+      "shortName": "Fire Resistance",
+      "classes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "slots": [
+        "amulet",
+        "boots",
+        "chest",
+        "gloves",
+        "helm",
+        "mainhand",
+        "offhand",
+        "pants",
+        "ring1",
+        "ring2",
+        "Helm",
+        "Chest Armor",
+        "Gloves",
+        "Pants",
+        "Boots",
+        "Amulet",
+        "Ring"
+      ],
+      "tempering": false
+    },
+    {
+      "name": "+[367 - 415] Lightning Resistance",
+      "shortName": "Lightning Resistance",
+      "classes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "slots": [
+        "amulet",
+        "boots",
+        "chest",
+        "gloves",
+        "helm",
+        "mainhand",
+        "offhand",
+        "pants",
+        "ring1",
+        "ring2",
+        "Helm",
+        "Chest Armor",
+        "Gloves",
+        "Pants",
+        "Boots",
+        "Amulet",
+        "Ring"
+      ],
+      "tempering": false
+    },
+    {
+      "name": "+[367 - 415] Poison Resistance",
+      "shortName": "Poison Resistance",
+      "classes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "slots": [
+        "amulet",
+        "boots",
+        "chest",
+        "gloves",
+        "helm",
+        "mainhand",
+        "offhand",
+        "pants",
+        "ring1",
+        "ring2",
+        "Helm",
+        "Chest Armor",
+        "Gloves",
+        "Pants",
+        "Boots",
+        "Amulet",
+        "Ring"
+      ],
+      "tempering": false
+    },
+    {
+      "name": "+[367 - 415] Shadow Resistance",
+      "shortName": "Shadow Resistance",
+      "classes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "slots": [
+        "amulet",
+        "boots",
+        "chest",
+        "gloves",
+        "helm",
+        "mainhand",
+        "offhand",
+        "pants",
+        "ring1",
+        "ring2",
+        "Helm",
+        "Chest Armor",
+        "Gloves",
+        "Pants",
+        "Boots",
+        "Amulet",
+        "Ring"
+      ],
+      "tempering": false
+    },
+    {
+      "name": "+[367 - 415] Cold Resistance",
+      "shortName": "Cold Resistance",
+      "classes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "slots": [
+        "amulet",
+        "boots",
+        "chest",
+        "gloves",
+        "helm",
+        "mainhand",
+        "offhand",
+        "pants",
+        "ring1",
+        "ring2",
+        "Helm",
+        "Chest Armor",
+        "Gloves",
+        "Pants",
+        "Boots",
+        "Amulet",
+        "Ring"
+      ],
+      "tempering": false
+    },
+    {
+      "name": "+[1.5 - 1.6] Thorns",
+      "shortName": "Thorns",
+      "classes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "slots": [
+        "chest",
+        "helm",
+        "pants"
+      ],
+      "tempering": false
+    },
+    {
+      "name": "+[327 - 392] Resistance to All Elements",
+      "shortName": "Resistance to All Elements",
+      "classes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "slots": [
+        "amulet",
+        "boots",
+        "chest",
+        "gloves",
+        "helm",
+        "mainhand",
+        "offhand",
+        "pants",
+        "ring1",
+        "ring2",
+        "Helm",
+        "Chest Armor",
+        "Gloves",
+        "Pants",
+        "Boots",
+        "Amulet",
+        "Ring"
+      ],
+      "tempering": false
+    },
+    {
+      "name": "+[367 - 415] Physical Resistance",
+      "shortName": "Physical Resistance",
+      "classes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "slots": [
+        "amulet",
+        "boots",
+        "chest",
+        "gloves",
+        "helm",
+        "mainhand",
+        "offhand",
+        "pants",
+        "ring1",
+        "ring2",
+        "Helm",
+        "Chest Armor",
+        "Gloves",
+        "Pants",
+        "Boots",
+        "Amulet",
+        "Ring"
       ],
       "tempering": false
     }
