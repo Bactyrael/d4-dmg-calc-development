@@ -35,7 +35,7 @@ async function buildDb() {
     const affixesMap = new Map();
     scrapedAffixes.forEach(a => {
       const desc = a.desc || '';
-      if (!desc) return;
+      if (!desc || desc.startsWith('Rampage:')) return;
       
       let classArr = [0,0,0,0,0,0,0,0];
       if (a.classes && a.classes.length > 0) {
