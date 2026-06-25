@@ -3098,15 +3098,34 @@ rarity = foundItem.rarity;
         arr = itemObj.transfigure;
         valuesArr = itemObj.transfigureValues || {};
         placeholderText = 'Transfigure';
-        datalistId = 'affixes-list'; // transfigures share the same affixes pool
+        datalistId = 'affixes-list'; // transfigures share the same affix
       }
       
       const currentName = arr && arr[idx] ? arr[idx] : '';
       const vals = valuesArr[idx] || [];
       
-      let obj = (window.D4_DATABASE?.affixes || []).find(a => a.name === currentName);
+      let obj;
+      
+      // Determine mapped slot name to match hierarchy keys
+      let mappedSlot = slotName.toLowerCase();
+      if (mappedSlot === 'left ring' || mappedSlot === 'right ring') mappedSlot = 'ring';
+      if (mappedSlot === 'chest armor') mappedSlot = 'chest';
+      if (mappedSlot === 'mainhand' || mappedSlot === 'offhand' || mappedSlot === 'weapon1' || mappedSlot === 'weapon2' || mappedSlot === 'ranged weapon') {
+         if (mappedSlot.startsWith('weapon') || mappedSlot === 'ranged weapon') mappedSlot = 'mainhand';
+      }
+
+      // Read from active class hierarchy
+      const currentClassVal = document.getElementById('class-select').value;
+      const classData = window.D4_DATABASE?.classData?.[currentClassVal]?.equipment?.[mappedSlot] || {};
+      
+      let dbItems = [];
+      if (type === 'affix') dbItems = classData.modifiers || [];
+      else if (type === 'temper') dbItems = classData.tempers || [];
+      else if (type === 'transfigure') dbItems = classData.transfigures || [];
+
+      obj = dbItems.find(a => a.name === currentName);
       if (!obj && currentName) {
-        obj = (window.D4_DATABASE?.affixes || []).find(a => a.name.toLowerCase().includes(currentName.toLowerCase()));
+        obj = dbItems.find(a => a.name.toLowerCase().includes(currentName.toLowerCase()));
         if (obj) {
           if (arr) arr[idx] = obj.name; // sync it back
         } else {
