@@ -1,0 +1,1217 @@
+{
+  "accelerating-aspect": {
+    "description": "Critical Strikes with Core Skills increase your Attack Speed by 50.0%[+] for 5 seconds."
+  },
+  "aggressive-aspect": {
+    "description": "While moving, gain 12.0%[x] increased damage for 2 seconds, up to 60%[x]. Hitting Close enemies refreshes the duration."
+  },
+  "archdruids-aspect": {
+    "description": "Gain an additional passive bonus for each Druid form: Human: 55%[x] increased damage to Distant enemies. Werewolf: 55%[x] increased Critical Strike Damage to Close enemies. Werebear: 45%[x] increased damage while you have Resolve."
+  },
+  "aspect-redesign-of-metamorphic-stone": {
+    "description": "(REDESIGN)Boulder is now also a Core Skill and costs 40 Spirit to cast dealing 160% of normal damage."
+  },
+  "aspect-of-abundant-energy": {
+    "description": "Crackling Energy has a 20% chance to chain to an additional enemy and also deals 60%[x] increased damage."
+  },
+  "aspect-of-alchemical-advantage": {
+    "description": "Dealing Non-Physical damage increases your Attack Speed and Lucky Hit Chance by 6.0%[+] for 8 seconds, up to 60.0%[+]."
+  },
+  "aspect-of-amplified-damage": {
+    "description": "You deal 60%[x] increased damage to Cursed enemies."
+  },
+  "aspect-of-ancestral-charge": {
+    "description": "Casting Charge Summons 4 Ancients to Charge with you, each dealing 40%[x] of normal damage.Your Summons deal 40% increased damage."
+  },
+  "aspect-of-ancestral-echoes": {
+    "description": "Lucky Hit: Leap, Upheaval, and Whirlwind have up to a 65% chance to Summon an Ancient to perform the same Skill. Can only occur once every 5 seconds.Your Summons deal 40% increased damage."
+  },
+  "aspect-of-ancestral-force": {
+    "description": "Hammer of the Ancients quakes outward for 60%[x] increased damage. This bonus is doubled against Bosses."
+  },
+  "aspect-of-ancient-flame": {
+    "description": "Your Pyromancy Skills with a Cooldown deal 30%[x] increased damage per second of Cooldown they incurred."
+  },
+  "aspect-of-anger-management": {
+    "description": "While above 50 Primary Resource, deal 20.0%[x] increased damage and gain Berserking, but lose 3 Primary Resource Regeneration."
+  },
+  "aspect-of-anticline-burst": {
+    "description": "(WIP)"
+  },
+  "aspect-of-apogeic-furor": {
+    "description": "Casting an Ultimate Skill increases your Ultimate damage by 10.0%[x], up to 100%[x]. At 10 stacks, your Cooldowns and this bonus are reset."
+  },
+  "aspect-of-armageddon": {
+    "description": "Your Ultimate Skill grants you 225.0% increased damage of its element type while active."
+  },
+  "aspect-of-arrogance": {
+    "description": "Shock Skills deal 45%[x] increased damage to Close or Stunned enemies. These bonuses can stack."
+  },
+  "aspect-of-arrow-storms": {
+    "description": "Every time you create an Arrow Storm, their damage is increased by 30.0%[x], up to 120.0%[x], for 3 seconds."
+  },
+  "aspect-of-artful-initiative": {
+    "description": "The amount of Stun Grenades you release is increased by 50%. Stun Grenades deal 30.0%[x] increased damage."
+  },
+  "aspect-of-ascension": {
+    "description": "Casting a Skill that grants Arbiter form increases your damage by 7.0%[x], stacking up to 10 times. All stacks are lost when leaving Arbiter form."
+  },
+  "aspect-of-berserk-ripping": {
+    "description": "While Berserking, your direct damage inflicts 60% bonus Bleeding damage over 5 seconds."
+  },
+  "aspect-of-binding-morass": {
+    "description": "Close enemies or those you deal indirect damage to are Slowed by 70% for 3 seconds. You deal 30% increased damage to Slowed enemies."
+  },
+  "aspect-of-bitter-infection": {
+    "description": "Lucky Hit: Imbuement Skills have up to a 100% chance to deal 120%[x] increased damage."
+  },
+  "aspect-of-bristling-vengeance": {
+    "description": "Payback now echoes forward and additionally deals 150% of your Thorns damage to enemies."
+  },
+  "aspect-of-burning-rage": {
+    "description": "While Berserking, you deal 124 Fire damage every second to surrounding enemies."
+  },
+  "aspect-of-bursting-bones": {
+    "description": "Bone Skills gain 0.40%[x] increased damage for every 1 Maximum Essence you have, up to 200."
+  },
+  "aspect-of-bursting-venoms": {
+    "description": "Lucky Hit: Poison Imbued Skills have up to a 35% chance to deploy a Poison Trap while you have Poison Trap equipped."
+  },
+  "aspect-of-calamity": {
+    "description": "Hex increases your Critical Strike Chance against an enemy by 20.0%[+] per stack."
+  },
+  "aspect-of-celestial-strife": {
+    "description": "While in Arbiter, kills grant 1.5%[x] increased Vulnerable damage, up to a maximum of 75%[x]."
+  },
+  "aspect-of-channeling": {
+    "description": "While channeling a Skill, all damage is increased by 70%[x]."
+  },
+  "aspect-of-chastisement": {
+    "description": "Your Juggernaut Skills deal 75%[x] increased damage to Bosses and Crowd Controlled enemies."
+  },
+  "aspect-of-coalesced-blood": {
+    "description": "Blood Skills deal 70.0%[x] increased damage while you are Healthy."
+  },
+  "aspect-of-combined-strikes": {
+    "description": "Each different Basic Skill you use increases all your damage by 35%[x] for 10 seconds."
+  },
+  "aspect-of-combustion": {
+    "description": "Your Pyromancy Skills deal 100.0% increased Critical Strike Damage to Burning enemies."
+  },
+  "aspect-of-contamination": {
+    "description": "When your Poison damage Critically Strikes, you deal 60%[x] increased Non-Physical damage for 9 seconds."
+  },
+  "aspect-of-corruption": {
+    "description": "Your Imbuement Skill effects have 60%[x] increased potency."
+  },
+  "aspect-of-decay": {
+    "description": "You deal 85%[x] increased Corrupting and Frostbite damage."
+  },
+  "aspect-of-decaying-humerus": {
+    "description": "Your Bone Skills now deal Shadow damage instead of Physical. Enemies take [15 - 25]%[x] increased Shadow damage after being hit with a Bone Skill."
+  },
+  "aspect-of-delayed-extinction": {
+    "description": "Mighty Throw and Steel Grasp now gain multiplicative damage instead of cooldown from Cooldown Reduction and their damage is increased by another 25%[x]. Additionally, Weapon Mastery skills gain 35%[x] bonus damage."
+  },
+  "aspect-of-earthquakes": {
+    "description": "Ground Stomp creates an Earthquake damaging enemies for 287 Physical damage over 4 seconds. While standing in Earthquakes and for 4 seconds afterwards, you deal 60%[x] increased damage.Your Earthquakes deal 60% increased damage."
+  },
+  "aspect-of-electrified-claws": {
+    "description": "Shapeshifting into a new animal form causes a Lightning Bolt to strike a Nearby enemy dealing Lightning damage. Your Lightning Bolts deal [20 - 40]% increased damage and Stun for 2 seconds."
+  },
+  "aspect-of-elemental-constellation": {
+    "description": "While you have an equal number of Frost, Pyromancy, and Shock Skills equipped, you deal 120.0% increased damage."
+  },
+  "aspect-of-elemental-fate": {
+    "description": "Gain 60%[x] increased damage to a set of damage types for 7 seconds alternating randomly between 2 sets: Fire, Lightning, Holy, and Physical. Cold, Poison, and Shadow.Fate can favor you granting the same bonus more than once, stacking up to 6 times. At Maximum, it&#039;s your lucky day!"
+  },
+  "aspect-of-encircling-blades": {
+    "description": "Cutthroat Skills deal 55%[x] increased damage. This bonus increases to 70%[x] against Injured enemies."
+  },
+  "aspect-of-encroaching-wrath": {
+    "description": "After spending 100 Fury, you deal 60%[x] increased Brawling Skill damage for 4 seconds."
+  },
+  "aspect-of-endless-talons": {
+    "description": "Your Spirit Storms Spark enemies for an additional 100% of the Spirit Storm&#039;s total damage over 3 seconds after they leave one."
+  },
+  "aspect-of-entrapment": {
+    "description": "Enemies damaged by Trap or Grenade Skills take 12.0%[x] increased damage from you, up to 60%[x], for 0 seconds."
+  },
+  "aspect-of-exorcism": {
+    "description": "Lucky Hit: Up to a 45% chance to Execute enemies."
+  },
+  "aspect-of-fathomless-dark": {
+    "description": "Your Abyss Skills deal increased damage equal to 80% of your Shadow Resistance Damage Reduction."
+  },
+  "aspect-of-fierce-winds": {
+    "description": "Your Shout Skills create 3 Dust Devils that deal 120 damage to enemies along their path.Your Dust Devils are 25% bigger and deal 1%[x] increased damage for each 1% their size is increased."
+  },
+  "aspect-of-fleet-wings": {
+    "description": "Your Eagle Skill damage is increased by 30.0%[x] of your Movement Speed."
+  },
+  "aspect-of-frenzied-onslaught": {
+    "description": "Your Summons gain 50%[+] Attack Speed."
+  },
+  "aspect-of-frozen-memories": {
+    "description": "Cold damage deals 45%[x] increased damage to Chilled enemies, this bonus is tripled against Frozen enemies."
+  },
+  "aspect-of-gloom": {
+    "description": "When you damage enemies with Darkness Skills, they take 15%[x] increased damage from your Darkness Skills for 2 seconds, stacking up to 4 times."
+  },
+  "aspect-of-gore-quills": {
+    "description": "NEEDS REDESIGNCasting Blood Lance will consume Blood Orbs to also conjure lances from them. Each additional Blood Lance deals 100% of normal damage and prioritizes targeting un-lanced enemies."
+  },
+  "aspect-of-herculean-spectacle": {
+    "description": "Mighty Throw deals 45%[x] increased damage and hurls another 2 weapons."
+  },
+  "aspect-of-heresy": {
+    "description": "Each different Occult Skill you cast increases all your damage by 14.0%[x] for 15 seconds."
+  },
+  "aspect-of-holy-punishment": {
+    "description": "Holy and Fire damage are increased by 60.0%[x]."
+  },
+  "aspect-of-human-ingenuity": {
+    "description": "Human Skills&#039; first hit Pull Close enemies towards the hit enemy and Immobilize them for 2 seconds. May only occur once every 5 seconds.Hindered enemies take 50%[x] increased damage from your Human Skills."
+  },
+  "aspect-of-ignition": {
+    "description": "Skills empowered by Volatility deal an additional 40%[x] increased damage and you have a 40.0% chance for Volatility to persist on casting an empowered Skill."
+  },
+  "aspect-of-imitated-imbuement": {
+    "description": "Your Shadow Clones and Shades also mimic the Imbuements applied to your Skills. Casting an Imbuement Skill increases your Non-physical damage by 60%[x] increased damage for 9 seconds."
+  },
+  "aspect-of-impending-deluge": {
+    "description": "(WIP)"
+  },
+  "aspect-of-incendiary-fissures": {
+    "description": "Your Earthquakes deal 60%[x] increased damage and their damage is converted into Fire."
+  },
+  "aspect-of-infestation": {
+    "description": "Pestilent Swarms now also deal 175% of their normal damage as Poisoning damage over 6 seconds."
+  },
+  "aspect-of-inner-calm": {
+    "description": "While standing still, deal up to 75%[x] increased damage."
+  },
+  "aspect-of-iron-rain": {
+    "description": "Smoke Grenade has a 100% chance to create an Arrow Storm where it explodes, dealing 360 Physical damage over 3 seconds. Your Arrow Storms continuously apply Vulnerable."
+  },
+  "aspect-of-jacques-fervor": {
+    "description": "Each stack of Fervor grants you 20.0%[x] bonus Critical Strike Damage."
+  },
+  "aspect-of-lageras-sovereignty": {
+    "description": "Your Disciple Skills deal 60.0%[x] increased damage."
+  },
+  "aspect-of-lapas-scripture": {
+    "description": "Losing Resolve grants you 875 Thorns for 10 seconds. Stacks up to 20 times."
+  },
+  "aspect-of-lava": {
+    "description": "Brimstones explode into lava pools, dealing 340% of their damage over 5 seconds. Standing in lava pools grants you Volatility."
+  },
+  "aspect-of-limitless-rage": {
+    "description": "Each point of Fury you generate increases your damage by 1.50%[x]. This bonus is lost after 4 seconds."
+  },
+  "aspect-of-malice": {
+    "description": "You deal 55%[x] increased damage to Vulnerable enemies, and 20%[x] increased damage to Knocked Down enemies."
+  },
+  "aspect-of-merciless-cold": {
+    "description": "Your Cold direct damage causes enemies to take 15.0% increased Cold damage for 4 seconds, stacking up to 10 times."
+  },
+  "aspect-of-mutilation": {
+    "description": "If you fail to Eviscerate an enemy you still apply 25.0% of its Bleeding damage for 3 seconds."
+  },
+  "aspect-of-natural-balance": {
+    "description": "Casting a Storm Skill grants your Earth Skills 70.0%[x] Critical Strike Damage for 4 seconds.Casting a Earth Skill increases the Critical Strike Chance of Storm Skills by 20.0%[+] for 4 seconds."
+  },
+  "aspect-of-natural-selection": {
+    "description": "While you have only 1 active Minion type, that Minion type deals 70%[x] increased damage and gains 60%[x] increased Maximum Life."
+  },
+  "aspect-of-noxious-ice": {
+    "description": "Chilled enemies Poisoned by Poison Imbuement will be further Chilled for 20% per second. You deal 40%[x] additional Poison damage to Frozen enemies."
+  },
+  "aspect-of-overwhelming-currents": {
+    "description": "Shock Skill Critical Strikes grant 3.00%[x] Shock damage for 4 seconds. Stacks do not refresh the duration."
+  },
+  "aspect-of-peril": {
+    "description": "Making an enemy Vulnerable increases the damage you do to them by 3.4%[x], up to 68%[x]."
+  },
+  "aspect-of-pestilence": {
+    "description": "Pestilent Swarms deal 100%[x] increased damage, last 50% longer, and spiral outwards."
+  },
+  "aspect-of-pestilent-points": {
+    "description": "(WIP) Need to replace this with a generic benefit for Basic Skills."
+  },
+  "aspect-of-piercing-static": {
+    "description": "Your Crackling Energy charges grant 6.0% increased Critical Strike Damage and 2.5% Attack Speed."
+  },
+  "aspect-of-plains-power": {
+    "description": "Lucky Hit: Up to a 25%[+] chance to create a Mystic Circle for 10 seconds. Casting a Jaguar Skill in Mystic Circles empowers them to refresh Ferocity&#039;s duration and increase your damage by 12.0%[x] per stack while you remain within."
+  },
+  "aspect-of-plunging-darkness": {
+    "description": "Bone Prison is now a Darkness Skill and spawns Blight for 6 seconds. Your Blights deal [40 - 60]%[x] increased damage while Bone Prison is active."
+  },
+  "aspect-of-poisonous-clouds": {
+    "description": "When entering Stealth, create a cloud that deals 1,170 Poison damage over 6 seconds."
+  },
+  "aspect-of-proselytizing": {
+    "description": "Judicator Skills have a 40% chance to chain to a Close enemy for 150%[x] of their damage. If no enemy is within range, damage the initial target instead."
+  },
+  "aspect-of-rathmas-chosen": {
+    "description": "Blood Skills have 60%[+] increased Attack Speed while you are Fortified."
+  },
+  "aspect-of-reanimation": {
+    "description": "Your Summons gain increased damage while alive, up to 90%[x] after 10 seconds."
+  },
+  "aspect-of-redirected-force": {
+    "description": "Gain increased Critical Strike Damage equal to 60%[x] of your Block Chance. Blocking doubles this bonus for 10 seconds."
+  },
+  "aspect-of-scorching-heat": {
+    "description": "Your Hellfire Skills deal increased damage equal to 80% of your Fire Resistance Damage Reduction."
+  },
+  "aspect-of-searing-impact": {
+    "description": "Meteorites deal 90.0% bonus damage as Burning over 4 seconds."
+  },
+  "aspect-of-serration": {
+    "description": "Your Corpse and Bone Skills gain 5%[+] increased Critical Strike Chance and 60%[x] increased Critical Strike Damage."
+  },
+  "aspect-of-service-and-sacrifice": {
+    "description": "Skeleton Warriors explode on death, dealing [100 - 200]% Physical damage to surrounding enemies. They lose 20% Life per second while in combat.Skeleton Mages take 90% reduced damage and deal [50 - 100]%[x] increased damage."
+  },
+  "aspect-of-shattering-steel": {
+    "description": "Steel Grasp and Iron Maelstrom launch up to 10 metal shards that deal 420 Physical damage."
+  },
+  "aspect-of-simple-reprisal": {
+    "description": "When you cast the 3rd attack of your Basic Skills you have a 30% chance to unleash Payback."
+  },
+  "aspect-of-splintering-energy": {
+    "description": "Your Shock Skills deal 180.0%[x] increased damage, but this bonus is reduced by 10% per subsequent hit."
+  },
+  "aspect-of-splintering-shards": {
+    "description": "Lucky Hit: Up to a 100% chance when hitting or killing a Frozen enemy to create ice splinters that fires away from them dealing 68 Cold damage and Chilling for 30%."
+  },
+  "aspect-of-star-shards": {
+    "description": "Knives from Dance of Knives have a 50% chance to shatter into 6 shards of metal on hit, dealing [150 - 300] Physical damage. Dance of Knives now Consumes Combo Points, granting up to 3 additional Charges that can exceed the Maximum."
+  },
+  "aspect-of-stolen-vigor": {
+    "description": "Weakening or Crowd Controlling enemies increases your Cutthroat Skill damage by 60%[x] for 6 seconds."
+  },
+  "aspect-of-sundered-ground": {
+    "description": "Every 20 seconds, your next Upheaval cast is guaranteed to Overpower and deals 70%[x] increased damage. Upheaval Critical Strikes against Elites reduce this timer by 1 second."
+  },
+  "aspect-of-supremacy": {
+    "description": "Enemies you kill while an Ultimate Skill is active grants a stack of Supremacy, each increasing your damage by 9.0%[x], up to 90.0%[x]. When an Ultimate Skill ends, you gain 5 stacks of Supremacy, but you begin to lose one stack every second."
+  },
+  "aspect-of-surprise": {
+    "description": "When you Evade or Shadow Step, you drop a cluster of exploding Stun Grenades that deal 270 total Physical damage and Stun enemies for 1.00 second.Your Stun Grenades deal 120%[x] increased damage."
+  },
+  "aspect-of-terror": {
+    "description": "Your Darkness Skills deal 35.0%[x] increased damage to Crowd Controlled enemies and 35.0%[x] increased damage to Elites. These bonuses can stack."
+  },
+  "aspect-of-the-changelings-debt": {
+    "description": "You deal 60%[x] increased Werebear Skill damage to Poisoned enemies or Werewolf Skill damage to Crowd Controlled enemies."
+  },
+  "aspect-of-the-dire-whirlwind": {
+    "description": "Whirlwind&#039;s Critical Strike Chance and Critical Strike Damage are increased by 10%[x] for each second it is channeled, up to 50%[x]."
+  },
+  "aspect-of-the-expectant": {
+    "description": "Basic Skills grant 6.0%[x] increased damage for 4 seconds, stacking up to 10 times."
+  },
+  "aspect-of-the-flaming-rampage": {
+    "description": "Charge gains an additional Charge. Each target hit by it explodes for 194 Fire damage to surrounding enemies."
+  },
+  "aspect-of-the-followed-path": {
+    "description": "Skills Cast in the base Shapeshift form gain 60%[x] increased damage."
+  },
+  "aspect-of-the-frozen-wake": {
+    "description": "Forming an Ice Spike increases their damage by 3.0%[x] for 2 seconds, stacking up to 30 times."
+  },
+  "aspect-of-the-golden-hour": {
+    "description": "Judgement detonations can detonate other Judgements early. Judgement deals 100%[x] increased damage."
+  },
+  "aspect-of-the-great-feast": {
+    "description": "While you have active Minions, your Summons deal 55%[x] increased damage, but each Minion Drains 2 Essence from you per second. While you have no active Minions, you deal 55%[x] increased damage, but 14 Essence Drains per second."
+  },
+  "aspect-of-the-judicator": {
+    "description": "Increase the damage and size of Judgement&#039;s explosion by 60%[x]."
+  },
+  "aspect-of-the-juggernauts-covenant": {
+    "description": "Consuming Resolve stacks with Juggernaut Oath grants an additional 100%[x] damage."
+  },
+  "aspect-of-the-moonrise": {
+    "description": "Damaging an enemy with a Basic Skill grants you 4% Attack Speed for 10 seconds, stacking up to 5 times. Upon reaching maximum stacks, you enter a Vampiric Bloodrage, gaining 60%[x] Basic Skill damage and 15% Movement Speed for 10 seconds."
+  },
+  "aspect-of-the-rabid-bear": {
+    "description": "While Grizzly Rage is active, your direct damage is converted into Poison damage, you deal [20 - 40]%[x] more Poison damage, and you passively spread Rabies."
+  },
+  "aspect-of-the-rabid-beast": {
+    "description": "Deal 80%[x] more Poison damage. While Shapeshifted, your direct damage is converted into Poison damage."
+  },
+  "aspect-of-the-stampede": {
+    "description": "Gain 1 additional Companion. In addition, your Companion Skills deal 35%[x] bonus damage."
+  },
+  "aspect-of-the-untarnished-blaze": {
+    "description": "While Healthy, your Pyromancy Skills deal 70%[x] increased damage."
+  },
+  "aspect-of-the-ursine-horror": {
+    "description": "While in Werebear form, you receive 15% additional Healing from all sources. In addition, every 2.0 seconds, gain 1 stack of Overpower."
+  },
+  "aspect-of-the-valintyr": {
+    "description": "Justice Skills deal 80.0%[x] increased damage."
+  },
+  "aspect-of-the-warpath": {
+    "description": "While you have Overpower charges, your Bludgeoning weapon attacks deal 60%[x] increased damage."
+  },
+  "aspect-of-the-zealots-covenant": {
+    "description": "Additional hits from Zealot Oath deal 120.0%[x] increased damage.Your Maximum Fervor is increased by 1 and its duration is increased by 2 seconds."
+  },
+  "aspect-of-thickened-blood": {
+    "description": "Blood Skills deal up to 90%[x] increased damage based on how Fortified you are."
+  },
+  "aspect-of-true-sight": {
+    "description": "You deal 200%[x] increased damage to enemies marked by Inner Sight. While Inner Sight is full, you gain 100%[x] increased damage."
+  },
+  "aspect-of-tyraels-jurisdiction": {
+    "description": "Arbiter&#039;s Wing Strikes now seek nearby enemies and deal 240%[x] increased damage."
+  },
+  "aspect-of-ultimate-shadow": {
+    "description": "Your Desecrated Ground deals 120%[x] increased damage and Slows enemies by 50%."
+  },
+  "aspect-of-unstable-imbuements": {
+    "description": "When casting an Imbuement Skill you trigger an explosion around yourself, applying the Imbuement effects at 60%[x] increased Potency and dealing 165 damage of the same type."
+  },
+  "aspect-of-untimely-death": {
+    "description": "Every 10% of your Maximum Life Healed grants you grants you 90%[x] increased Blood Skill damage for 4 seconds."
+  },
+  "aspect-of-unyielding-hits": {
+    "description": "Casting a Gorilla Skill increases your Weapon Damage by 30% of your Armor for 3 seconds. Maximum 2,000 bonus Weapon Damage."
+  },
+  "aspect-of-utmost-glory": {
+    "description": "While Healthy your Skills deal 35%[x] increased damage. Double this bonus against Weakened enemies."
+  },
+  "aspect-of-volatile-shadows": {
+    "description": "Shadow Imbuement deals 10%[x] increased damage per Skill Rank of the Imbued Skill. Every 10 seconds, when your Imbued Skill hits an enemy you trigger a large explosion that deals 173 Shadow damage and applies Shadow Imbuement to each enemy it hits."
+  },
+  "aspect-of-walloping": {
+    "description": "Your Skills using Bludgeoning weapons deal 60%[x] increased damage if the enemy is Incapacitated or Vulnerable."
+  },
+  "aspect-of-watkins-law": {
+    "description": "Your Judicator Skills deal 65.0%[x] increased damage against enemies affected by Judgement."
+  },
+  "aspect-of-wild-claws": {
+    "description": "Hitting enemies with Jaguar Skills increases the damage they take from you by 0.80%[x], up to 80.00%[x]."
+  },
+  "aspect-of-wolfs-rain": {
+    "description": "Casting Hurricane also spawns a smaller hurricane on your Wolves for 8 seconds. These hurricanes deals 25.0% of Hurricane&#039;s damage for each active Wolf."
+  },
+  "battle-casters-aspect": {
+    "description": "Lucky Hit: Conjuration damage has up to a 15% chance to increase its damage by 6.5% and Lucky Hit Chance by 2.5%[+] for 8 seconds, stacking up to 10 times."
+  },
+  "bladedancers-aspect": {
+    "description": "Twisting Blades orbit for a short time after they return to you, dealing 140% of Twisting Blades&#039; return damage per hit."
+  },
+  "blast-trappers-aspect": {
+    "description": "Lucky Hit: Dealing damage to enemies affected by your Trap Skills has a 35% chance to cause an explosion that deals 105 Shadow damage and applies Vulnerable for 4 seconds."
+  },
+  "blasting-aspect": {
+    "description": "Ice Spikes and Meteorites deal 90%[x] increased damage and have 50%[+] increased size."
+  },
+  "blighted-aspect": {
+    "description": "Consecutive hits with the Shadowblight Key Passive deal [15.0 - 25.0]%[x] increased damage for each hit, resetting after 6 seconds of the first."
+  },
+  "bone-breakers-aspect": {
+    "description": "Bone Skills deal 100%[x] increased damage. This bonus is reduced by 10% per subsequent enemy hit."
+  },
+  "bone-dusters-aspect": {
+    "description": "Bone Spear is guaranteed to Critically Strike enemies within Bone Prison and deals [20 - 40]% increased damage to them."
+  },
+  "brawlers-aspect": {
+    "description": "Enemies damaged by Kick or Charge will explode if they are killed within the next 2 seconds, dealing 488 damage to surrounding enemies."
+  },
+  "breakneck-bandits-aspect": {
+    "description": "Lucky Hit: Cutthroat Skills have up to a 50% chance to Execute enemies.Cutthroat Skills deal 45%[x] increased damage."
+  },
+  "bristleback-aspect": {
+    "description": "When you Dodge or Block an attack you trigger a 300% Thorns attack against the attacker."
+  },
+  "brutal-aspect": {
+    "description": "You gain 185% of your Attack Speed as increased damage but no longer attack faster.Current Bonus: 0.00%"
+  },
+  "cadaverous-aspect": {
+    "description": "Consuming a Corpse increases your damage by 13%[x] for 5 seconds, up to 65%[x]."
+  },
+  "conceited-aspect": {
+    "description": "Deal 60%[x] increased damage while you have a Barrier active."
+  },
+  "conjuration-masters-aspect": {
+    "description": "Your maximum number of Conjurations is increased by 1 and your Conjuration damage is increased by 60%[x]."
+  },
+  "crashstone-aspect": {
+    "description": "Earth Skills deal 70%[x] increased damage to Crowd Controlled enemies."
+  },
+  "cremators-aspect": {
+    "description": "While you have 4 or more Overpower, your Fire Skill Casts deal 100%[x] increased damage."
+  },
+  "crushing-aspect": {
+    "description": "While Fortified, you deal 65%[x] increased damage."
+  },
+  "cut-to-the-bone-aspect": {
+    "description": "Your Damage Over Time effects deal 60.0%[x] increased damage to Vulnerable enemies."
+  },
+  "deadeyes-aspect": {
+    "description": "Marksman Skills deal 60%[x] increased Critical Strike Damage."
+  },
+  "demonic-aspect": {
+    "description": "Each hit with Demonology Skills increases the damage you deal with Demonology Skills by 3.3%[x] for 10 seconds, up to 65%[x]."
+  },
+  "devilish-aspect": {
+    "description": "After generating 100 Fury your next direct damage creates 2 Dust Devils that deal 105 damage to enemies along their path."
+  },
+  "duelists-aspect": {
+    "description": "While using a One-Handed weapon, your Attack Speed is increased by 50%[+]."
+  },
+  "dust-devils-aspect": {
+    "description": "Whirlwind leaves behind Dust Devils that deal 210 damage to enemies in their path. Enemies hit by Dust Devils take 25%[x] increased damage from all of your other sources for 3 seconds."
+  },
+  "edgemasters-aspect": {
+    "description": "Skills deal up to 60%[x] increased damage based on your available Primary Resource when cast, receiving the maximum benefit while you have full Primary Resource."
+  },
+  "elementalists-aspect": {
+    "description": "Skill Casts at or above 100 Mana gain a 45.0%[+] increased Critical Strike Chance."
+  },
+  "envenomed-aspect": {
+    "description": "You gain 40%[+] bonus Critical Strike Damage against Poisoned enemies. Companions Skills gain double this bonus."
+  },
+  "executioners-aspect": {
+    "description": "Your Overpowers will spawn an Earthquake every 4 seconds that deals 702 Physical damage over 4 seconds. Your Earthquake damage is increased by 5%[x] for every 100 Strength you have, up to 100%[x].Current Bonus: 0%[x]"
+  },
+  "ferocious-aspect": {
+    "description": "Your Maximum Ferocity stacks are increased by 6."
+  },
+  "flash-fire-aspect": {
+    "description": "Increase the Critical Strike Damage of Pyromancy Skills by [25 - 45]%[x]. Double this bonus against Healthy targets."
+  },
+  "frostbitten-aspect": {
+    "description": "Enemies hit by your Stun Grenades have a chance equal to your Critical Strike Chance to be Frozen for 2 seconds. You deal 75%[x] increased Critical Strike Damage against Frozen or Stunned enemies."
+  },
+  "galvanic-aspect": {
+    "description": "Lucky Hit: Lightning damage has up to a 15% chance to echo 75% of its damage to up to 2 Close enemies. These echoes repeat on Isolated targets."
+  },
+  "grenadiers-aspect": {
+    "description": "Grenade Skills deal 50%[x] increased damage. This bonus increases to 75.0%[x] against Crowd Controlled enemies."
+  },
+  "heavy-hitting-aspect": {
+    "description": "Your skills that create Iron Shrapnel, Earthquakes, or Dust Devils deal 60.0%[x] increased damage."
+  },
+  "hellbent-commander-aspect": {
+    "description": "You deal 70%[x] increased Summon damage."
+  },
+  "high-velocity-aspect": {
+    "description": "Marksman Skills deal 55%[x] increased damage. This bonus increases to 80%[x] against Healthy enemies."
+  },
+  "insatiable-aspect": {
+    "description": "Centipede Skills deal 45.0%[x] increased damage, further increased to 90.0%[x] against Crowd Controlled enemies."
+  },
+  "insidious-aspect": {
+    "description": "Your Abyss Skills deal 80.0%[x] increased damage to enemies who have not hit you in the last 2 seconds."
+  },
+  "joltkeepers-aspect": {
+    "description": "Crackling Energy has a 25% chance to preserve its charge and deals 60%[x] increased damage."
+  },
+  "lightning-dancers-aspect": {
+    "description": "Dancing Bolt deals 145%[x] increased damage and moves 50% faster."
+  },
+  "lingering-aspect": {
+    "description": "Your Mastery Skills deal 30.0%[x] increased damage every second they are active."
+  },
+  "malicious-aspect": {
+    "description": "While in Demonform, you deal 4.5%[x] increased damage for every Demon or enemy Close to you, up to 90%[x]."
+  },
+  "mighty-storms-aspect": {
+    "description": "The Earthen Might Key Passive also applies to your Storm Skills."
+  },
+  "natures-reach-aspect": {
+    "description": "Human Skills deal an additional 60%[x] bonus damage to Distant enemies. This bonus increases by an additional 25%[+] if the target is also Hindered."
+  },
+  "needleflare-aspect": {
+    "description": "Thorns damage dealt has a 60% chance to deal damage to all enemies around you and your Minions."
+  },
+  "neurotoxic-aspect": {
+    "description": "You deal 60%[x] increased Non-Physical damage to enemies that are Hindered or Weakened."
+  },
+  "nightstalkers-aspect": {
+    "description": "Shade Skills deal 60%[x] increased damage and gain a 50% chance to spawn an additional Shade."
+  },
+  "of-cold-judgement-aspect": {
+    "description": "Frost Skills deal 90%[x] increased damage while no enemies are Close to you."
+  },
+  "of-compound-fracture-aspect": {
+    "description": "After Critically Striking 10 times with Bone Skills, your Bone Skills deal 70%[x] increased damage for 5 seconds."
+  },
+  "ominous-aspect": {
+    "description": "While standing still, gain 14.0%[x] increased damage against Distant enemies for 2 seconds, up to 70%[x]."
+  },
+  "opportunists-aspect": {
+    "description": "When you enter or break Stealth, you drop a cluster of exploding Stun Grenades around you that deal 270 total Physical damage and Stun enemies for 1.00 second.Your Stun Grenades deal 120%[x] increased damage."
+  },
+  "osseous-gale-aspect": {
+    "description": "Bone Storm consumes up to 8 Corpses to increase its duration by up to 15.0 seconds."
+  },
+  "overwhelming-aspect": {
+    "description": "Each hit against Elite enemies deals 120%[x] increased damage but requires and consumes 4 stacks of Overpower. No stacks are consumed if the enemy is Hexed."
+  },
+  "powershifting-aspect": {
+    "description": "Gain 13.8%[x] bonus damage for 6 seconds whenever you Shapeshift into a different form. Stacks up to 4 times."
+  },
+  "progenitors-aspect": {
+    "description": "Your skills that summon Ancients deal 60.0%[x] increased damage."
+  },
+  "rangers-aspect": {
+    "description": "Marksman Skills deal 60%[x] increased damage to Distant enemies."
+  },
+  "reapers-aspect": {
+    "description": "Enemies you Poison have 100% Reduced Healing and your Eagle Skills gain 50%[+] increased Critical Strike Chance and 30%[x] increased damage against them."
+  },
+  "rebounding-aspect": {
+    "description": "Gain 60%[+] increased Dodge Chance during Evade.Whenever you Evade or use a Non-Basic Mobility Skill, you gain 60%[x] Critical Strike Chance and 15%[x] Movement Speed for 4 seconds."
+  },
+  "remorseless-aspect": {
+    "description": "Killing at least 30 enemies or Demons within 10 seconds increases your damage by 60%[x] for 10 seconds."
+  },
+  "revelators-aspect": {
+    "description": "Zealot Skills deal 32.5%[x] increased damage, doubled while at 3 or more stacks of Fervor."
+  },
+  "rip-and-tear-aspect": {
+    "description": "Rushing Claw deals 30%[x] increased damage and is empowered based on how many Charges it has when you Cast it: 1: Heals 15% of your Maximum Life. 2: Guaranteed to Overpower. 3: Guaranteed to Critically Strike. 4+: Strikes an additional time."
+  },
+  "rotting-aspect": {
+    "description": "Decompose can chain and burst up to 4 additional targets. Explosions from Decompose deal 35%[x] increased damage."
+  },
+  "runeworkers-conduit-aspect": {
+    "description": "Critical Strikes with Storm Skills cause Lightning Bolts to periodically strike close enemies for 3 seconds, each dealing [375 - 600] Lightning damage. Your Lightning Bolts deal [25 - 40]%[x] increased damage."
+  },
+  "ruthless-aspect": {
+    "description": "Your Jaguar Skills gain 50%[+] Critical Strike Chance and they deal 30%[x] increased damage to Injured enemies."
+  },
+  "sacrificial-aspect": {
+    "description": "Your Sacrifice bonuses are increased by 80%."
+  },
+  "scornful-aspect": {
+    "description": "Your Pyromancy Skills deal 60%[x] increased damage against Distant or Immobilized enemies. These bonuses can stack."
+  },
+  "seismic-shift-aspect": {
+    "description": "Your Earth Skills deal 180%[x] damage to Healthy enemies."
+  },
+  "serpentine-aspect": {
+    "description": "Casting Hydra Consumes all your Mana to increase its damage by [0.5 - 2.5]%[x] per Mana Consumed."
+  },
+  "shadowslicer-aspect": {
+    "description": "Dash Summons a Shadow Clone that also casts Dash, dealing 350% of the Base damage."
+  },
+  "shepherds-aspect": {
+    "description": "Companion Skills deal an additional 13.0%[x] damage per Companion you have."
+  },
+  "shivering-aspect": {
+    "description": "Enemies take up to 90%[x] increased damage based on how Chilled or Staggered they have built up."
+  },
+  "skullbreakers-aspect": {
+    "description": "Incapacitating a Bleeding enemy deals 60% of their total Bleeding amount as Physical damage."
+  },
+  "slice-and-dice-aspect": {
+    "description": "Twisting Blades&#039; initial hit cleaves. Twisting Blades return [25 - 45]% faster."
+  },
+  "splintering-aspect": {
+    "description": "Bone Skills deal 70%[x] increased damage to Vulnerable enemies."
+  },
+  "starving-ravagers-aspect": {
+    "description": "Ravager no longer has a duration and instead drains 4 Vigor every second until depleted. Effects which extend Ravager instead generate Vigor."
+  },
+  "stoneworkers-aspect": {
+    "description": "Tectonic Spikes gain 100%[x] increased damage, and its Size is increased by 50%."
+  },
+  "storm-splitters-aspect": {
+    "description": "Your non-Channeled Shock Skills deal 45%[x] increased damage and have a 15% chance to trigger themselves on Cast."
+  },
+  "stormchasers-aspect": {
+    "description": "Tornado drags non-Elite enemies with it and deals 40.0%[x] increased damage. Each enemy or object inside of the Tornado increases the damage by an additional 10%[x]."
+  },
+  "subterranean-aspect": {
+    "description": "Poison Creeper&#039;s active also casts Landslide in a circle around you. Earth Skills deal 35% increased damage to Poisoned enemies."
+  },
+  "sunderfrost-aspect": {
+    "description": "Your Frost damage is increased by 75% against Vulnerable enemies."
+  },
+  "the-penitents-aspect": {
+    "description": "Spending Health on a Skill grants you 15.0% Critical Strike Chance and 55%[x] Critical Strike Damage for 0 seconds."
+  },
+  "tidal-aspect": {
+    "description": "Your Maximum Overpower is increased by 4 while you are Fortified."
+  },
+  "tides-of-blood-aspect": {
+    "description": "Blood Skills deal 35%[x] increased damage while you have a stack of Overpower. This bonus is doubled while you are Healthy."
+  },
+  "tormentors-aspect": {
+    "description": "Your Poisoning effects cause enemies to take 200% of your Thorns damage per second."
+  },
+  "toxic-alchemists-aspect": {
+    "description": "Lucky Hit: Shadow damage has up to a 75% chance to create a toxic explosion that applies 75 Poisoning damage over 5 seconds to the target and surrounding enemies. You deal 60%[x] increased Non-Physical damage to enemies affected by this Poison."
+  },
+  "trappers-aspect": {
+    "description": "Trap Skills deal 60%[x] increased damage to Vulnerable enemies."
+  },
+  "tricksters-aspect": {
+    "description": "Caltrops, Smoke Grenade, and Death Trap receive your Stun Grenade benefits and throw Stun Grenades that deal 270 Physical damage and Stun enemies for 1 second.Your Stun Grenades deal 45% increased damage."
+  },
+  "unrelenting-aspect": {
+    "description": "Your Knock Downs cause enemies to take 60%[x] damage from you for 6 seconds."
+  },
+  "unyielding-commanders-aspect": {
+    "description": "While Army of the Dead is active, your Minions take 90% reduced damage and you deal 110%[x] increased Summon Damage."
+  },
+  "vanguards-aspect": {
+    "description": "Juggernaut Skills deal 140%[x] increased damage to the first 3 enemies hit."
+  },
+  "vanquishing-aspect": {
+    "description": "You deal 90%[x] more damage to Incapacitated enemies."
+  },
+  "vehement-brawlers-aspect": {
+    "description": "Casting an Ultimate Skill increases your damage by 55%[x] for 8 seconds. Gain 2 additional Ultimate Skill Ranks."
+  },
+  "vengeful-aspect": {
+    "description": "Your Arrow Storms deal 120%[x] increased damage and gain 50%[+] increased Size."
+  },
+  "veteran-brawlers-aspect": {
+    "description": "Each time a Brawling Skill deals direct damage to an enemy, your Charge, Leap, or Kick deals 10.0%[x] increased damage for 5 seconds, up to 50%[x]."
+  },
+  "virtuous-aspect": {
+    "description": "Using a Valor skill increases your damage by 60.0%[x] for 0 seconds."
+  },
+  "virulent-aspect": {
+    "description": "When Rabies infects an enemy, reduce its Cooldown by 1.00 seconds, tripled when infecting Elite enemies. You deal 50%[x] increased damage to enemies affected by Rabies."
+  },
+  "wanton-rupture-aspect": {
+    "description": "All Damage Over Time durations and damage is increased by 30%[x]."
+  },
+  "windlasher-aspect": {
+    "description": "Casting Double Swing creates a Dust Devil that deals 83 damage to enemies in its path."
+  },
+  "writhing-aspect": {
+    "description": "Enemies take 12.5% increased Damage Over Time for every second they&#039;ve been affected by a Damage Over Time, up to 10 seconds."
+  },
+  "aspect-of-angelic-masterwork": {
+    "description": "Your All Resistance is increased by 140.0% while in Arbiter form."
+  },
+  "aspect-of-bul-kathos": {
+    "description": "Leap creates an Earthquake that deals 326 Physical damage over 4 seconds. While standing in Earthquakes and for 4 seconds afterwards, you gain 30% increased Damage Reduction."
+  },
+  "aspect-of-coagulation": {
+    "description": "Gain 30%[+] increased Fortify generation and 20% Damage Reduction while Fortified."
+  },
+  "aspect-of-concentration": {
+    "description": "Casting a Conjuration Skill grants you 30.0%[x] Damage Reduction for 5 seconds."
+  },
+  "aspect-of-deaths-defense": {
+    "description": "You and your Minions gain 30%[x] increased Maximum Life."
+  },
+  "aspect-of-debilitating-toxins": {
+    "description": "You gain 30.0% Damage Reduction, and Poisoned enemies deal 15% less damage to you."
+  },
+  "aspect-of-deflection": {
+    "description": "While active, Counterattack reflects incoming Razor Wings back out again with 50% increased damage. Other Small Missiles are also deflected back at enemies and deal 50% of Counterattack&#039;s Base damage on impact."
+  },
+  "aspect-of-diabolical-armor": {
+    "description": "Demonform grants 20% Damage Reduction plus an additional 1.0% for 5 seconds any time you take Fire damage, up to 10%."
+  },
+  "aspect-of-disobedience": {
+    "description": "Your Damage over Time grants you 1.5% Damage Reduction for 2 seconds, stacking up to 30 times."
+  },
+  "aspect-of-endurance": {
+    "description": "Your Resolve has a 12% chance to not be lost when you are hit for each stack of Ferocity you have. Gain 10% Damage Reduction."
+  },
+  "aspect-of-fevered-mauling": {
+    "description": "When you hit at least 1 enemy with Maul, increase its Attack Speed by 3.0%[+] and you gain 5.0%[x] Damage Reduction for 5 seconds, stacking up to 5 times."
+  },
+  "aspect-of-firm-decree": {
+    "description": "Judging an enemy grants you 30% Damage Reduction for 8 seconds."
+  },
+  "aspect-of-forest-power": {
+    "description": "Lucky Hit: Up to a 25%[+] chance to create a Mystic Circle for 10 seconds. Casting a Gorilla Skill in Mystic Circles empowers them to periodically grant you a Barrier for 20% of your Maximum Life which increases your Armor by 30%[+] while active."
+  },
+  "aspect-of-glynns-anvil": {
+    "description": "Your maximum Resolve is increased by 2 and you gain 4% Damage Reduction per Resolve."
+  },
+  "aspect-of-hardened-bones": {
+    "description": "You gain 25% increased Damage Reduction. When you take damage, you have a 15% chance to form a Corpse."
+  },
+  "aspect-of-heavenly-strength": {
+    "description": "While wielding a Two-Handed Weapon, gain 40% Damage Reduction."
+  },
+  "aspect-of-layered-wards": {
+    "description": "Your Blocked Damage Reduction is increased by 40%[+]."
+  },
+  "aspect-of-lethal-dusk": {
+    "description": "(WIP) This will become a benefits for coming out of Stealth Aspect. Part of existing: Breaking Stealth Heals for 30% Maximum Life."
+  },
+  "aspect-of-might": {
+    "description": "Basic Skills grant 30% Damage Reduction for 4 seconds."
+  },
+  "aspect-of-militance": {
+    "description": "Lucky Hit: Critically Striking has up to a 25% chance to Fortify for 0.50% of your Maximum Life for each stack of Fervor you have."
+  },
+  "aspect-of-scorn": {
+    "description": "When you lose at least 10% of your Maximum Life, you kill Lesser Demons that each absorb up to 10% of your Maximum Life in damage."
+  },
+  "aspect-of-shelter": {
+    "description": "Casting a Defensive Skill grants you 50%[+] increased All Resistances for 10 seconds."
+  },
+  "aspect-of-spiked-armor": {
+    "description": "Gain 60%[+] increased Total Armor, 2,415 Thorns, and 15%[+] increased Block Chance."
+  },
+  "aspect-of-tempering-blows": {
+    "description": "After swapping weapons 5 times, gain 30% Damage Reduction for 10 seconds."
+  },
+  "aspect-of-temporal-incisions": {
+    "description": "Upon casting an Ultimate Skill, the last different Potency, Defensive, or Focus Skill you Cast prior is reset and can be Cast for free up to 4 times in the next 10 seconds."
+  },
+  "aspect-of-tenuous-survival": {
+    "description": "While you have no Defensive Skills equipped, gain 30% Damage Reduction."
+  },
+  "aspect-of-the-disciple": {
+    "description": "Your Disciple skills now Weaken enemies for 6.0 seconds."
+  },
+  "aspect-of-the-fortress": {
+    "description": "Gain up to 60% Damage Reduction based on how Injured you are."
+  },
+  "aspect-of-the-indomitable": {
+    "description": "Gain up to 45% Damage Reduction and Impairment Resistance, based on your Block chance.Current Bonus: 0%"
+  },
+  "aspect-of-the-iron-warrior": {
+    "description": "Iron Skin grants Unstoppable, and 40% Damage Reduction."
+  },
+  "aspect-of-the-protector": {
+    "description": "Damaging an Elite enemy grants you a Barrier for 100% of your Maximum Life for 10 seconds. This effect can only happen once every 20 seconds."
+  },
+  "bruisers-aspect": {
+    "description": "Gain 4%[+] increased Armor and 290 Thorns per 1% missing Maximum Life."
+  },
+  "bulwarks-aspect": {
+    "description": "You no longer Dodge, but you gain 30% Block Damage Reduction and 15%[+] Block Chance."
+  },
+  "cheats-aspect": {
+    "description": "You gain 20.0%[+] Damage Reduction and 10%[+] increased Movement Speed. These bonuses are doubled while below 50% Maximum Life."
+  },
+  "encased-aspect": {
+    "description": "Freezing enemies grants you 8.0% Damage Reduction for 8 seconds, up to 5 times."
+  },
+  "enshrouding-aspect": {
+    "description": "Using a Healing Potion increases your Resistance to All Elements by 30%[+] for 8 seconds.You may now drink your Healing Potion while at full Life."
+  },
+  "escape-artists-aspect": {
+    "description": "Upon taking damage from surrounding enemies, you drop a Smoke Grenade and Dodge the next 10 attacks within 5 seconds. Can only occur once every 10 seconds."
+  },
+  "everliving-aspect": {
+    "description": "Each Crowd Controlled enemy Nearby grants 3.0% Damage Reduction, up to 13 enemies."
+  },
+  "iron-blood-aspect": {
+    "description": "Gain 5.9% Damage Reduction for each Nearby Bleeding enemy up to 30% maximum."
+  },
+  "irrepressible-aspect": {
+    "description": "Casting a Weapon Mastery Skill Fortifies you for 5% of your Maximum Life. Increase your Maximum Life by 45%[+]."
+  },
+  "juggernauts-aspect": {
+    "description": "You gain 150%[+] Total Armor, but your Evade has 100% increased Cooldown."
+  },
+  "mage-lords-aspect": {
+    "description": "Dealing Shock damage to Close enemies grants 45% Damage Reduction for 6 seconds."
+  },
+  "misanthropic-aspect": {
+    "description": "Gain 40%[+] increased Maximum Life if you have not had more than 1 active Demon in the last 5 seconds."
+  },
+  "of-arcane-ward-aspect": {
+    "description": "Your Mastery Skills grant 30% Damage Reduction while their effects are active."
+  },
+  "protecting-aspect": {
+    "description": "When hit while not Healthy, you form a protective bubble that grants all Players inside Immune. The bubble lasts for 6.0 seconds and can only form once every 90 seconds."
+  },
+  "snap-frozen-aspect": {
+    "description": "Lucky Hit: Dealing Cold damage has up to a 20% chance to grant you a Barrier for 10.0% of your Maximum Life for 5 seconds, stacking up to 30.0%."
+  },
+  "snowveiled-aspect": {
+    "description": "While you have a Barrier, gain 30% Damage Reduction."
+  },
+  "spirit-bond-aspect": {
+    "description": "20.0% of the damage you would take is redirected across your Companions. Your Companions cannot die."
+  },
+  "vigorous-aspect": {
+    "description": "Gain 30%[x] Damage Reduction while Shapeshifted into a Werewolf or Human."
+  },
+  "aphotic-aspect": {
+    "description": "Shadow damage gains 30%[x] increased Lucky Hit Chance."
+  },
+  "aspect-of-accursed-touch": {
+    "description": "Lucky Hit: Up to a 40.0% chance for your Skills to inflict Vampiric Curse on enemies. Enemies afflicted with Vampiric Curse are also Vulnerable.Vampiric Curse&#039;s stored souls deal 60.0% increased damage."
+  },
+  "aspect-of-anemia": {
+    "description": "Lucky Hit: Damaging enemies affected by Damage over Time or Vulnerable enemies has up to a 30% chance to Stun them for 2 seconds."
+  },
+  "aspect-of-apprehension": {
+    "description": "Once an enemy is Slowed by at least 80%, they also become Feared for 3 seconds. You deal 40%[x] increased damage to Feared enemies."
+  },
+  "aspect-of-audacity": {
+    "description": "When there are at least 5 Close enemies, Stun them for 4.5 seconds. Can only occur once every 20 seconds."
+  },
+  "aspect-of-biting-cold": {
+    "description": "Cold damage is increased by 20.0% and makes enemies Vulnerable for 4 seconds."
+  },
+  "aspect-of-booming-voice": {
+    "description": "Your Shout Skill effect durations are increased by 30%[+] and Weaken enemies for 5 seconds."
+  },
+  "aspect-of-cauterization": {
+    "description": "Taking Direct Damage while you have Volatility has a 75% chance to either strike you for an additional 3% of your Maximum Life as Fire damage or Fortify you for 6.00% of your Maximum Life."
+  },
+  "aspect-of-concussive-blend": {
+    "description": "Stun Grenades gain [45%[+] increased Size and 90%[+] increased Crowd Control Duration."
+  },
+  "aspect-of-crippling-darkness": {
+    "description": "Lucky Hit: Shadow damage has up to a 15% chance to deal 30%[x] increased damage, Fear and Immobilize for 1 second."
+  },
+  "aspect-of-dazzling-light": {
+    "description": "The first time you apply Judgement to an enemy, you Daze them for 3.0 seconds."
+  },
+  "aspect-of-debilitating-darkness": {
+    "description": "Your Desecrated Ground deals 25%[x] increased damage and makes enemies Vulnerable."
+  },
+  "aspect-of-deeper-shadows": {
+    "description": "Maximum Shadowform stacks increased by 6."
+  },
+  "aspect-of-dominance": {
+    "description": "Crowd Controlling an enemy has a 25% chance to generate 5 Resolve."
+  },
+  "aspect-of-elusive-menace": {
+    "description": "Your Dodge Chance increases by 30%[+] whenever you take damage. Successfully Dodging resets this bonus."
+  },
+  "aspect-of-excellence": {
+    "description": "Losing 0 Resolve grants 50% increased Retribution chance for 10 seconds.Retribution gains 50%[+] increased Size."
+  },
+  "aspect-of-explosive-verve": {
+    "description": "Your Grenade Skills count as Trap Skills. Whenever you arm a Trap or drop Grenades, you gain 30%[+] increased Movement Speed for 3 seconds."
+  },
+  "aspect-of-falling-feathers": {
+    "description": "Moving with a Mobility Skill or Evade spawns Storm Feathers behind you.Storm Feathers now drop from the sky as they are spawned, each dealing 525 Lightning damage on impact."
+  },
+  "aspect-of-fiendish-oppression": {
+    "description": "Summoning a Greater Demon Knocks Down enemies around it for 5 seconds. Your Lesser Demon Skills deal 20%[x] increased damage to Crowd Controlled enemies."
+  },
+  "aspect-of-fortune": {
+    "description": "You gain 20.0%[x] Lucky Hit Chance against Elite enemies."
+  },
+  "aspect-of-grasping-whirlwind": {
+    "description": "Whirlwind Pulls enemies to you every 3.0 seconds."
+  },
+  "aspect-of-hewed-flesh": {
+    "description": "Lucky Hit: Up to a 25% chance to form a Corpse at the target&#039;s location. Your Corpse Skills deal 20.0%[x] increased damage."
+  },
+  "aspect-of-immolation": {
+    "description": "The duration of any Volatility or Demonform you gain is increased by 200%[+] if you have the other."
+  },
+  "aspect-of-interdiction": {
+    "description": "Gain 3.0%[+] Block Chance per Resolve stack."
+  },
+  "aspect-of-kinetic-suppression": {
+    "description": "Casting a Non-Basic Mobility Skill grants 3 Resolve.Casting a Defensive Skill with 8 stacks of Resolve increases its damage by 150%[x]."
+  },
+  "aspect-of-malevolence": {
+    "description": "You gain Overpower for each 10 Wrath you gain while at Maximum Wrath."
+  },
+  "aspect-of-mending-obscurity": {
+    "description": "When entering Stealth and every second while Stealthed, you Heal for 15.0% of your Maximum Life. Breaking Stealth Fortifies you for 10.0% of your Maximum Life."
+  },
+  "aspect-of-mending-stone": {
+    "description": "Earth Skills Fortify you for 6.00% of your Maximum Life when first dealing damage."
+  },
+  "aspect-of-minds-awakening": {
+    "description": "Cast Skills grant a bonus based on their element:Pyromancy Immobilizes enemies for 2.0 secondShock grants 20% bonus Movement Speed for 4 secondsFrost grants a Barrier for 1.0% of your Maximum Life for 4 secondsIf you&#039;ve dealt damage with each element in the last 4 seconds, Skills grant all bonuses regardless of their element."
+  },
+  "aspect-of-misfortune": {
+    "description": "Hexed enemies that try to attack you have a 30.0% chance to instead be Knocked Down for 3 seconds."
+  },
+  "aspect-of-natural-instincts": {
+    "description": "Each Druid form gains a bonus every 5.0 seconds: Wolf 1 stack of Ferocity. Bear 1 stack of Overpower. Human 1 stack of Resolve."
+  },
+  "aspect-of-piercing-cold": {
+    "description": "You apply 50.0%[x] more Chill and deal 20%[x] increased damage to Chilled enemies."
+  },
+  "aspect-of-potent-exchange": {
+    "description": "Gain 1 Resolve when you Dodge an attack. Your Potency Skills consume 2 Resolve to deal 30%[x] increased damage."
+  },
+  "aspect-of-quickening-fog": {
+    "description": "You automatically drop a Smoke Grenade at the end of Dash. Smoke Grenades reduce Dash&#039;s Cooldown by 0.70 seconds for each enemy hit, up to 2.10 seconds."
+  },
+  "aspect-of-rallying-reversal": {
+    "description": "You have a 80% chance to gain 1 Ferocity when you Crowd Control an enemy or apply any Stagger to a Boss."
+  },
+  "aspect-of-reactive-armor": {
+    "description": "Gain 10%[+] Block Chance. Blocking an attack from an enemy has a 70% chance to invoke a free Concussive Stomp at them."
+  },
+  "aspect-of-recalling-feathers": {
+    "description": "Casting a Focus Skill recalls all Nearby Storm Feathers, dealing 450 Lightning damage and makes enemies Vulnerable for 4 seconds. If you recall no Storm Feathers, spawn 10 around you."
+  },
+  "aspect-of-retribution": {
+    "description": "Distant enemies have a 20% chance to be Stunned for 2 seconds when they hit you. You deal 25%[x] increased damage to Distant enemies."
+  },
+  "aspect-of-shielding-bones": {
+    "description": "Casting a Bone Skill grants 2 stacks of Resolve. Gain 30%[+] increased All Resistances while you have Resolve."
+  },
+  "aspect-of-shredding-blades": {
+    "description": "Conjuration damage makes enemies Vulnerable for 4 seconds. You deal 20.0%[x] increased damage to Vulnerable enemies."
+  },
+  "aspect-of-soil-power": {
+    "description": "Lucky Hit: Up to a 25%[+] chance to create a Mystic Circle for 10 seconds. Casting a Centipede Skill in Mystic Circles empowers them to periodically apply 450 Poisoning damage over 6 seconds to enemies within while extending any Crowd Controls affecting them."
+  },
+  "aspect-of-tenacity": {
+    "description": "You gain Resolve for each 15 Vigor you gain while at Maximum Vigor. This can overfill your Resolve by 5 stacks."
+  },
+  "aspect-of-the-cursed-aura": {
+    "description": "A dark aura surrounds you, inflicting Decrepify and Iron Maiden on enemies who touch it. Curses inflicted this way spread to surrounding targets every -0.5 seconds and last 4 seconds outside of the aura."
+  },
+  "aspect-of-the-dark-howl": {
+    "description": "Debilitating Roar is now a Werewolf Skill. In addition, Debilitating Roar will Immobilize Poisoned enemies for 4.5 seconds."
+  },
+  "aspect-of-the-embalmer": {
+    "description": "Consuming a Corpse has a 25% chance to spawn a Blood Orb. Blood Orb Healing is increased by 45%."
+  },
+  "aspect-of-the-enchanter": {
+    "description": "You gain 20.0% Enchantment Potency."
+  },
+  "aspect-of-the-lights-mending": {
+    "description": "Consuming Judgement Heals 3.5% of your Maximum Life to you and Nearby Allies."
+  },
+  "aspect-of-the-northern-guard": {
+    "description": "Blocks have a 45% chance to Freeze the attacker for 3 seconds."
+  },
+  "aspect-of-the-shapeshifter": {
+    "description": "Your form bonuses are maintained and you deal 18.0% increased damage for 4 seconds when shapeshifting into a different form."
+  },
+  "aspect-of-the-void": {
+    "description": "Darkness Skills Weaken enemies for 4 seconds. Darkness Skills deal 15%[x] increased damage to Weakened enemies."
+  },
+  "aspect-of-transfusion": {
+    "description": "Lucky Hit: Blood Skills have up to a 50% chance to create a Blood Orb at the target&#039;s location."
+  },
+  "aspect-of-turbulence": {
+    "description": "Soar casts Vortex at its landing location and deals 45%[x] increased damage."
+  },
+  "aspect-of-valiance": {
+    "description": "Valor Skills generate 6 Resolve when cast."
+  },
+  "aspect-of-warmth": {
+    "description": "Each Nearby Burning enemy Heals you for 3.0% of your Maximum Life every second."
+  },
+  "bane-link-aspect": {
+    "description": "Hexed enemies are Slowed by 70% for 3 seconds when you make them Vulnerable or become Vulnerable for 3 seconds when you Slow them."
+  },
+  "battle-fervors-aspect": {
+    "description": "Brawling Skills grant Berserking for 5 seconds on their first hit. Gain 15.0% Damage Reduction while Berserking."
+  },
+  "battle-mad-aspect": {
+    "description": "After swapping weapons 5 times gain Berserking for 4 seconds. Additionally, you deal 20.0%[x] increased damage while Berserking."
+  },
+  "blood-boiling-aspect": {
+    "description": "Every 6 seconds, gain 1 stack of Overpower. Gaining Overpower spawns 1 Volatile Blood Drop, and collecting it causes it to explode, dealing 974 Physical damage around you."
+  },
+  "blood-getters-aspect": {
+    "description": "Your Skeletal Priests now also empower you at 75% effectiveness."
+  },
+  "coldbringers-aspect": {
+    "description": "Every 4 seconds, your Skeletal Mages cast a blizzard that deals 180 Cold damage and continuously Chills enemies for 6% over 8 seconds."
+  },
+  "earthstrikers-aspect": {
+    "description": "Gain 1 Overpower stack each time you swap weapons. You deal 20.5%[x] increased damage while you have Overpower."
+  },
+  "eluding-aspect": {
+    "description": "Becoming Crowd Controlled while Injured grants you Unstoppable for 4 seconds. This effect has a 4 second Cooldown."
+  },
+  "embattled-aspect": {
+    "description": "Fortify&#039;s Drain Rate is increased by 150%[+]."
+  },
+  "enfeebling-aspect": {
+    "description": "Making an enemy Vulnerable has a 40% chance to also Weaken them for 3 seconds."
+  },
+  "exploiters-aspect": {
+    "description": "You have 50%[+] increased Crowd Control Duration. While enemies are Unstoppable, you deal 50%[x] increased damage to them."
+  },
+  "fell-soothsayers-aspect": {
+    "description": "When you cast an Incarnate Skill enemies around you become Vulnerable for 5 seconds. Killing a Vulnerable enemy echoes 100% of the killing blow&#039;s damage to another Nearby enemy."
+  },
+  "gorefeast-aspect": {
+    "description": "If you have Eviscerated an enemy in the last 10 seconds, you gain 50%[+] increased Fortify and it refills your Life 200%[+] faster."
+  },
+  "great-storm-aspect": {
+    "description": "Lucky Hit: Lightning damage has up to a 15% chance to grant a stack of Ferocity.You gain 15.0% Damage Reduction while you have Ferocity."
+  },
+  "hulking-aspect": {
+    "description": "Your Golem has a 18% chance to reduce its active Cooldown by 2 seconds and a 9.0% chance to spawn a Corpse each time it damages an enemy with its normal attack."
+  },
+  "icy-alchemists-aspect": {
+    "description": "Lucky Hit: Shadow damage has up to a 75% chance to release an explosion that deals 150 Cold damage to the target and surrounding enemies, Chilling for 25% and Weakening them for 6.0 seconds."
+  },
+  "impairing-aspect": {
+    "description": "Lucky Hit: Marksman Skills have up to a 40% chance to deal 30%[x] increased damage and Immobilize an enemy for 2 seconds."
+  },
+  "infiltrators-aspect": {
+    "description": "Poison Trap has no arm time, and no longer breaks Stealth and triggers no Cooldown while you are in Stealth. All Poison Traps activate when you exit Stealth and begin Poison Trap&#039;s Cooldown. Poison Trap&#039;s Cooldown is reduced by 50.0%."
+  },
+  "lord-of-bloods-aspect": {
+    "description": "Lucky Hit: Zealot Skills have up to a 20% chance to heal you for 6.0% of your missing Life."
+  },
+  "luckbringer-aspect": {
+    "description": "Gain 30%[+] increased Lucky Hit Chance while all damage bonuses from the Walking Arsenal Key Passive are active."
+  },
+  "menacing-aspect": {
+    "description": "Scourge continuously affects enemies around you for 9.0 seconds."
+  },
+  "mired-sharpshooters-aspect": {
+    "description": "Caltrops is now also a Marksman Skill that also throws 25 piercing daggers over its duration, each dealing 15 Shadow damage and applying Vulnerable for 3 seconds."
+  },
+  "necrotic-carapace-aspect": {
+    "description": "When a Corpse is formed from your Skills or your Minions, Fortify for 7% of your Maximum Life."
+  },
+  "nefarious-aspect": {
+    "description": "Becoming Crowd Controlled while you have Shadowform will consume a stack to apply it back to the attacker and adapt Shadowform to grant immunity to that type of effect for the next 8.0 seconds."
+  },
+  "of-siphoning-strikes-aspect": {
+    "description": "Lucky Hit: Cutthroat Skills have up to a 65% chance to Heal you for 3% of your Maximum Life."
+  },
+  "overcharged-aspect": {
+    "description": "Your Storm Skill damage makes enemies Vulnerable for 4 seconds. You deal 20.0%[x] increased damage to Vulnerable enemies."
+  },
+  "overheating-aspect": {
+    "description": "Slain Burning enemies have a 10% chance to grant Overpower. Your Fire damage is increased by 20.0%[x]."
+  },
+  "prepared-assailants-aspect": {
+    "description": "Breaking Stealth grants 4 Resolve. Gain an additional 30%[+] Armor while you have Resolve."
+  },
+  "pyroclastic-aspect": {
+    "description": "Brimstone explosions are 50% larger and deal 15%[x] increased damage. Brimstones instantly detonate when you run over them in Demonform."
+  },
+  "raid-leaders-aspect": {
+    "description": "Your Shouts also Heal allies for 6.0%[x] of their Maximum Life per second."
+  },
+  "raiders-aspect": {
+    "description": "Heal for 15% Maximum Life when you Poison a Healthy enemy."
+  },
+  "raw-might-aspect": {
+    "description": "Your Werebear Skill damage Stuns enemies for 3.0 seconds. Enemies can be Stunned this way every 5 seconds."
+  },
+  "sadistic-aspect": {
+    "description": "When killing your Demons, you have a 50% chance for each to count as two kills."
+  },
+  "shifters-aspect": {
+    "description": "Your form bonuses are increased by 80%[x]."
+  },
+  "steadfast-berserkers-aspect": {
+    "description": "Gain 6.0% of your Maximum Life as Fortify whenever you deal direct damage while Berserking."
+  },
+  "sticker-thought-aspect": {
+    "description": "Gain 7,246 Thorns while Channeling and for 3 seconds afterwards."
+  },
+  "undying-aspect": {
+    "description": "Casting a Skill Heals you for 3.0% of your Maximum Life. Double this bonus while Injured."
+  },
+  "weapon-masters-aspect": {
+    "description": "Weapon Mastery Skills Stun enemies for 1.5 seconds. Enemies can be Stunned this way once every 5 seconds. Your Weapon Mastery Skills have an additional Charge and deal 15%[x] increased damage."
+  },
+  "wildbolt-aspect": {
+    "description": "Every 1.5 seconds, Distant enemies are Pulled In to you and take 15%[x] increased damage from you for 3 seconds. This effect cannot occur while you are in Stealth."
+  },
+  "wywards-aspect": {
+    "description": "Lucky Hit: Lightning Damage has up to a 35% chance to Stun enemies for 1.5 seconds."
+  },
+  "aspect-of-adaptability": {
+    "description": "Basic Skills generate 25 additional Primary Resource, once per Skill."
+  },
+  "aspect-of-aftermath": {
+    "description": "Casting an Ultimate Skill generates 8.0 Energy per Skill Rank it has."
+  },
+  "aspect-of-akarats-blessing": {
+    "description": "Blocks have a 15% chance to reduce all Cooldowns by 1 second."
+  },
+  "aspect-of-alacrity": {
+    "description": "Your Defensive and Mobility Skills gain 75% Cooldown Rate while moving."
+  },
+  "aspect-of-authority": {
+    "description": "Gain 15[+] Maximum Dominance."
+  },
+  "aspect-of-berserk-fury": {
+    "description": "You gain 11.0 Fury per second while Berserking."
+  },
+  "aspect-of-contemplation": {
+    "description": "Every time you consume Judgement, reduce one of your active Cooldowns by 0.20 seconds."
+  },
+  "aspect-of-dedication": {
+    "description": "Gain 25 Faith every 10 times you consume Judgement."
+  },
+  "aspect-of-deluge": {
+    "description": "Overpower stacks increase your Primary Maximum Resource by 8 and regeneration by 2."
+  },
+  "aspect-of-efficiency": {
+    "description": "Lucky Hit: Cast Basic Skills have up to a 50.0% chance to make your next Core Skill cost no Primary Resource, stacks up to 3 times."
+  },
+  "aspect-of-elemental-acuity": {
+    "description": "Casting a Pyromancy, Shock, or Frost Skill grants 9 Mana Regeneration for 4 seconds, once per Element."
+  },
+  "aspect-of-elemental-attunement": {
+    "description": "Lucky Hit: Up to a 20% chance to reduce the Cooldown of one of your Defensive Skills by 10.0 seconds."
+  },
+  "aspect-of-empowered-feathers": {
+    "description": "Lucky Hit: Eagle Skills have up to a 32% chance to spawn a Storm Feather at your target. Each Storm Feather you pick up now also reduces your Mobility Skill Cooldowns by 0.5 seconds."
+  },
+  "aspect-of-exhilaration": {
+    "description": "Lucky Hit: Hitting an enemy has up to a 35% chance to reduce your Evade Cooldown by 5 seconds. Each stack of Ferocity you have increases this chance by 5%."
+  },
+  "aspect-of-furious-impulse": {
+    "description": "Each time you swap weapons, gain 11 Fury."
+  },
+  "aspect-of-giant-strides": {
+    "description": "Reduces the Cooldown of Leap by 3.5 seconds per enemy hit, up to a maximum of 7 seconds. Hitting a Boss with Leap provides the maximum reduction."
+  },
+  "aspect-of-intricacy": {
+    "description": "Upon casting an Ultimate Skill, the last different Potency, Defensive, or Focus Skill you Cast prior is reset and can be Cast for free up to 5 times in the next 10 seconds."
+  },
+  "aspect-of-pilgrims-progress": {
+    "description": "Your Disciple Skills with Cooldowns generate up to 60 Faith based on how far your travel with them."
+  },
+  "aspect-of-potent-blood": {
+    "description": "Blood Orbs grant 30 Essence."
+  },
+  "aspect-of-rapid-ossification": {
+    "description": "Every 100 Essence you spend reduces the cooldowns of your Bone Skills by 4 seconds."
+  },
+  "aspect-of-refutation": {
+    "description": "Your Defensive Skills gain additional 2 charges."
+  },
+  "aspect-of-ritual-synthesis": {
+    "description": "Casting Hellfire Skills grants Occult Skills 50% Cooldown Reduction for 3 seconds. Casting Abyss Skills grants Occult Skills 50% Resource Cost Reduction for 3 seconds."
+  },
+  "aspect-of-synergy": {
+    "description": "Using an Agility Skill reduces the Cooldown of a random Subterfuge Skill by 7.5 seconds, and vice versa."
+  },
+  "aspect-of-the-calm-breeze": {
+    "description": "Wind Shear now deals 345 Poisoning damage over 4 seconds.Lucky Hit: Wind Shear has up to a 14.0% chance to restore 100 Spirit."
+  },
+  "aspect-of-the-dark-dance": {
+    "description": "Every 5 seconds, your next Core Skill costs [102 - 25] Life instead of Primary Resource. Will only occur if you have at least 60% of your Maximum Life. Skills that consume Life deal 80%[x] increased damage."
+  },
+  "aspect-of-the-long-shadow": {
+    "description": "Lucky Hit: Your Corrupting effects have a 80.0% chance to generate 3 Essence."
+  },
+  "aspect-of-the-orange-herald": {
+    "description": "Cast Core Skill damage reduces the Cooldown of one of your Skills by 1.0 seconds."
+  },
+  "aspect-of-the-relentless-armsmaster": {
+    "description": "Gain 75.0%[x] increased Fury Generation and 15% reduced Fury cost while all damage bonuses from the Walking Arsenal Key Passive are active."
+  },
+  "aspect-of-the-umbral": {
+    "description": "Incapacitating enemies generates 6.0 Primary Resource."
+  },
+  "aspect-of-the-unsatiated": {
+    "description": "After Critically Striking an enemy with Shred, you gain 15 Spirit. While at 100 Spirit, your Werewolf Skills deal 40.0%[x] increased damage until you go below 30 Spirit."
+  }
+}

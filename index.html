@@ -29,9 +29,24 @@
   </header>
 
   <!-- Build Name -->
-  <div class="build-bar">
-    <label for="build-name">Build Name</label>
-    <input type="text" id="build-name" class="build-name-input" value="New Build" placeholder="Enter build name...">
+  <div class="build-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <label for="build-name" style="margin: 0;">Build Name</label>
+      <input type="text" id="build-name" class="build-name-input" value="New Build" placeholder="Enter build name...">
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <label for="class-select" style="font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; margin-bottom: 0;">Class</label>
+      <select id="class-select" class="dropdown">
+        <option value="Sorcerer">Sorcerer</option>
+        <option value="Druid">Druid</option>
+        <option value="Barbarian">Barbarian</option>
+        <option value="Rogue">Rogue</option>
+        <option value="Necromancer">Necromancer</option>
+        <option value="Spiritborn">Spiritborn</option>
+        <option value="Paladin">Paladin</option>
+        <option value="Warlock">Warlock</option>
+      </select>
+    </div>
   </div>
 
   <!-- Glass Tabs Container -->
@@ -92,19 +107,6 @@
   <div class="panel" style="margin-bottom: 20px;">
     <div class="panel-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
       <div><span class="icon">⚔</span> Base Stats</div>
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <label for="class-select" style="font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; margin-bottom: 0;">Select a Class</label>
-        <select id="class-select" style="width: auto; padding: 4px 8px; font-size: 0.85rem;">
-          <option value="Barbarian">Barbarian</option>
-          <option value="Druid">Druid</option>
-          <option value="Necromancer">Necromancer</option>
-          <option value="Paladin">Paladin</option>
-          <option value="Rogue">Rogue</option>
-          <option value="Sorcerer">Sorcerer</option>
-          <option value="Spiritborn">Spiritborn</option>
-          <option value="Warlock">Warlock</option>
-        </select>
-      </div>
     </div>
     <div class="inputs-grid" style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border-subtle);">
       <div class="input-group">
@@ -272,10 +274,20 @@
 <div class="modal-overlay hidden" id="maxroll-modal">
   <div class="modal-content">
     <div class="modal-header">
-      <h2 class="modal-title">Paste Maxroll Stats</h2>
+      <h2 class="modal-title">Import from Maxroll</h2>
       <button class="btn-close" id="btn-close-modal" title="Close">✕</button>
     </div>
     <div class="modal-body">
+      <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #333;">
+        <h3 style="margin-top: 0; margin-bottom: 10px; color: #d18a45;">API Profile Sync</h3>
+        <p class="modal-instruction" style="margin-bottom: 10px;">Paste a Maxroll planner link to instantly sync your Class, Level, and Book of the Dead choices directly from their servers.</p>
+        <div style="display: flex; gap: 10px;">
+          <input type="text" id="maxroll-api-url" class="stat-input" placeholder="https://maxroll.gg/d4/planner/..." style="flex: 1;">
+          <button class="btn btn-primary" id="btn-api-sync">Sync Profile</button>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 0; margin-bottom: 10px; color: #d18a45;">Paste Stat Sheet</h3>
       <p class="modal-instruction">Copy your stats list from Maxroll and paste it below. Base Weapon Damage will update your Base Stats, and all other damage values will be added as Additive Bonuses.</p>
       <textarea id="maxroll-textarea" class="maxroll-textarea" placeholder="Base Weapon Damage
 5,374
@@ -296,6 +308,7 @@ Critical Strike Damage
         <div class="item-modal-tabs">
           <button class="item-modal-tab active">Select</button>
           <button class="item-modal-tab" disabled>Edit</button>
+          <button class="item-modal-tab" id="tab-aspect" disabled>Aspect</button>
         </div>
         <button id="close-item-modal" class="item-modal-close">✕</button>
       </div>
@@ -314,6 +327,25 @@ Critical Strike Damage
           </div>
         </div>
       </div>
+      <div class="item-modal-body" id="item-modal-aspect-body" style="display: none;">
+        <div class="item-modal-sidebar" id="aspect-sidebar">
+          <div class="sidebar-item active" data-category="All Aspects">All Aspects</div>
+          <div class="sidebar-item" data-category="Defensive">Defensive</div>
+          <div class="sidebar-item" data-category="Utility">Utility</div>
+          <div class="sidebar-item" data-category="Offensive">Offensive</div>
+          <div class="sidebar-item" data-category="Resource">Resource</div>
+          <div class="sidebar-item" data-category="Mobility">Mobility</div>
+        </div>
+        <div class="item-modal-main">
+          <div class="item-modal-search">
+            <span class="icon">⊞</span>
+            <input type="text" id="aspect-search-input" placeholder="Search...">
+          </div>
+          <div class="item-modal-list" id="item-modal-aspect-list">
+            <!-- Aspects populated dynamically -->
+          </div>
+        </div>
+      </div>
       <div class="item-modal-body" id="item-modal-edit-body" style="display: none;">
         <!-- Edit content injected by JS -->
       </div>
@@ -322,6 +354,7 @@ Critical Strike Damage
 
   <div id="d4-tooltip" class="d4-tooltip hidden"></div>
   <div id="d4-context-menu" class="d4-context-menu hidden"></div>
+  <script src="assets/database.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -9,6 +9,17 @@
   const STORAGE_KEY = 'd4-damage-calc-builds';
   const AUTOSAVE_KEY = 'd4-damage-calc-autosave';
   const MONSTER_DR = 0.20; // Monsters have 80% DR, so multiply by 0.20
+  
+  // D4 Internal Index mapping:
+  const D4_CLASS_MAP = {
+    'Sorcerer': 0,
+    'Druid': 1,
+    'Barbarian': 2,
+    'Rogue': 3,
+    'Necromancer': 4,
+    'Spiritborn': 5
+  };
+
   let isLoading = false;
 
   // ---- DOM References ----
@@ -83,6 +94,8 @@
     btnCancelModal:   document.getElementById('btn-cancel-modal'),
     btnSubmitMaxroll: document.getElementById('btn-submit-maxroll'),
     maxrollTextarea:  document.getElementById('maxroll-textarea'),
+    btnApiSync:       document.getElementById('btn-api-sync'),
+    maxrollApiUrl:    document.getElementById('maxroll-api-url'),
     buildName:        document.getElementById('build-name'),
 
     nodesContainer: document.getElementById('nodes-container'),
@@ -750,19 +763,23 @@
     'Warlock': []
   };
 
-  const ITEM_DATABASE = {
-    'Helm': [
-      { name: 'Legendary Helm', rarity: 'legendary' },
-      { name: 'Andariel\'s Visage', rarity: 'mythic' },
-      { name: 'Harlequin Crest', rarity: 'mythic' },
-      { name: 'Heir of Perdition', rarity: 'mythic' },
-      { name: 'Crown of Lucion', rarity: 'unique' },
-      { name: 'Deathless Visage', rarity: 'unique' },
-      { name: 'Godslayer Crown', rarity: 'unique' },
-      { name: 'The Undercrown', rarity: 'unique' },
-      { name: 'The Unmaker', rarity: 'unique' }
-    ]
-  };
+  function getDbItems(slotName) {
+    if (!window.D4_DATABASE || !window.D4_DATABASE.itemDatabase) return [];
+    let mapped = slotName;
+    if (slotName === 'Left Ring' || slotName === 'Right Ring') mapped = 'Ring';
+    
+    // Check class filter
+    const currentClassVal = document.getElementById('class-select')?.value;
+    const d4Idx = currentClassVal ? D4_CLASS_MAP[currentClassVal] : undefined;
+    
+    const items = window.D4_DATABASE.itemDatabase[mapped] || [];
+    return items.filter(i => {
+      if (i.classes && d4Idx !== undefined) {
+        if (i.classes[d4Idx] !== 1) return false;
+      }
+      return true;
+    });
+  }
 
   const CLASS_PARAGON_DATA = {
     Necromancer: {
@@ -2332,6 +2349,27 @@
         }
       });
     }
+    
+    const aspectSearchInput = document.getElementById('aspect-search-input');
+    if (aspectSearchInput) {
+      aspectSearchInput.addEventListener('input', (e) => {
+        if (currentModalSlot) {
+          const activeSidebar = document.querySelector('#aspect-sidebar .sidebar-item.active');
+          const category = activeSidebar ? activeSidebar.dataset.category : 'All Aspects';
+          renderAspectTab(currentModalSlot, category, e.target.value);
+        }
+      });
+    }
+
+    document.querySelectorAll('#aspect-sidebar .sidebar-item').forEach(item => {
+      item.addEventListener('click', () => {
+        if (!currentModalSlot) return;
+        document.querySelectorAll('#aspect-sidebar .sidebar-item').forEach(el => el.classList.remove('active'));
+        item.classList.add('active');
+        const query = document.getElementById('aspect-search-input')?.value || '';
+        renderAspectTab(currentModalSlot, item.dataset.category, query);
+      });
+    });
 
     // Modal tabs switching logic
     const modalTabs = document.querySelectorAll('.item-modal-tab');
@@ -2482,6 +2520,92 @@
       }
       dom.maxrollModal.classList.add('hidden');
     });
+
+    dom.btnApiSync.addEventListener('click', async () => {
+      const url = dom.maxrollApiUrl.value.trim();
+      if (!url) return;
+      
+      const match = url.match(/planner\/([a-zA-Z0-9]+)/);
+      if (!match) {
+        alert('Invalid Maxroll planner URL.');
+        return;
+      }
+      
+      const profileId = match[1];
+      const btn = dom.btnApiSync;
+      btn.textContent = 'Syncing...';
+      btn.disabled = true;
+      
+      try {
+        const res = await fetch(`https://planners.maxroll.gg/profiles/d4/${profileId}`);
+        if (!res.ok) throw new Error(`Failed to fetch from Maxroll (Status: ${res.status}).`);
+        
+        const rawData = await res.json();
+        console.log("Maxroll API Response:", rawData);
+        
+        let parsedData = rawData;
+        if (rawData.data && typeof rawData.data === 'string') {
+          parsedData = JSON.parse(rawData.data);
+        }
+        
+        const profile = parsedData.profiles && parsedData.profiles[0];
+        if (!profile) {
+          throw new Error('Profile data not found. Raw response: ' + JSON.stringify(rawData).substring(0, 100));
+        }
+        
+        if (profile.minionSpec && Array.isArray(profile.minionSpec)) {
+          const wMap = ['Skirmisher', 'Defender', 'Reaper'];
+          const mMap = ['Shadow Mage', 'Cold Mage', 'Bone Mage'];
+          const gMap = ['Bone Golem', 'Blood Golem', 'Iron Golem'];
+          
+          if (profile.minionSpec[0] !== undefined) currentBuild.bookOfTheDead.warriors.spec = wMap[profile.minionSpec[0]];
+          if (profile.minionSpec[1] !== undefined) currentBuild.bookOfTheDead.mages.spec = mMap[profile.minionSpec[1]];
+          if (profile.minionSpec[2] !== undefined) currentBuild.bookOfTheDead.golems.spec = gMap[profile.minionSpec[2]];
+        }
+        
+        currentBuild.bookOfTheDead.warriors.node = null;
+        currentBuild.bookOfTheDead.mages.node = null;
+        currentBuild.bookOfTheDead.golems.node = null;
+
+        if (profile.minionUpgrades) {
+          profile.minionUpgrades.forEach(upg => {
+            let node = null;
+            if (upg.includes('UpgradeA')) node = '1';
+            else if (upg.includes('UpgradeB')) node = '2';
+            else if (upg.includes('Sacrifice')) node = '3';
+            
+            if (node) {
+              if (upg.includes('SkeletonWarrior')) currentBuild.bookOfTheDead.warriors.node = node;
+              else if (upg.includes('SkeletonMage')) currentBuild.bookOfTheDead.mages.node = node;
+              else if (upg.includes('Golem')) currentBuild.bookOfTheDead.golems.node = node;
+            }
+          });
+        }
+        
+        if (profile.level) {
+          currentBuild.level = profile.level;
+          dom.level.value = currentBuild.level;
+        }
+        
+        if (profile.class === 4) {
+          currentBuild.class = 'Necromancer';
+          dom.classSelect.value = 'Necromancer';
+          dom.classSelect.dispatchEvent(new Event('change'));
+        }
+        
+        saveBuild();
+        renderEquipment();
+        calculateDamage();
+        
+        dom.maxrollModal.classList.add('hidden');
+        alert('Maxroll profile synced successfully!');
+      } catch (err) {
+        alert('Error: ' + err.message);
+      } finally {
+        btn.textContent = 'Sync Profile';
+        btn.disabled = false;
+      }
+    });
   }
 
   function start() {
@@ -2507,38 +2631,48 @@
   let currentModalSlot = null;
 
   function switchModalTab(tabName) {
-    const selectTab = document.querySelectorAll('.item-modal-tab')[0];
-    const editTab = document.querySelectorAll('.item-modal-tab')[1];
+    const tabs = document.querySelectorAll('.item-modal-tab');
+    const selectTab = tabs[0];
+    const editTab = tabs[1];
+    const aspectTab = tabs[2];
     const selectBody = document.getElementById('item-modal-select-body');
     const editBody = document.getElementById('item-modal-edit-body');
+    const aspectBody = document.getElementById('item-modal-aspect-body');
     
+    // Reset all
+    [selectTab, editTab, aspectTab].forEach(t => t?.classList.remove('active'));
+    [selectBody, editBody, aspectBody].forEach(b => { if(b) b.style.display = 'none'; });
+
     if (tabName === 'select') {
-      selectTab.classList.add('active');
-      editTab.classList.remove('active');
+      selectTab?.classList.add('active');
       if (selectBody) selectBody.style.display = 'flex';
-      if (editBody) editBody.style.display = 'none';
-    } else {
-      selectTab.classList.remove('active');
-      editTab.classList.add('active');
-      if (selectBody) selectBody.style.display = 'none';
+    } else if (tabName === 'edit') {
+      editTab?.classList.add('active');
       if (editBody) editBody.style.display = 'flex';
+    } else if (tabName === 'aspect') {
+      aspectTab?.classList.add('active');
+      if (aspectBody) aspectBody.style.display = 'flex';
     }
   }
 
   function renderEditTab(slotName) {
     const editBody = document.getElementById('item-modal-edit-body');
     const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
-    const editTabBtn = document.querySelectorAll('.item-modal-tab')[1];
+    const tabs = document.querySelectorAll('.item-modal-tab');
+    const editTabBtn = tabs[1];
+    const aspectTabBtn = tabs[2];
     
     if (!editBody || !box) return;
 
     if (!box.dataset.value) {
       editTabBtn.disabled = true;
+      aspectTabBtn.disabled = true;
       editBody.innerHTML = '';
       return;
     }
     
     editTabBtn.disabled = false;
+    aspectTabBtn.disabled = false;
     
     let itemObj;
     try {
@@ -2548,23 +2682,103 @@
     }
     
     let rarity = 'rare';
-    const dbItems = ITEM_DATABASE[slotName] || [];
+    const dbItems = getDbItems(slotName);
     const foundItem = dbItems.find(i => i.name === itemObj.name);
     if (foundItem) {
       rarity = foundItem.rarity;
     }
     
+    // Get current class from DOM
+    const currentClassVal = document.getElementById('class-select').value;
+    const classIdx = D4_CLASS_MAP[currentClassVal];
+
+    // Filter affixes by class
+    const affixesOptions = (window.D4_DATABASE?.affixes || [])
+      .filter(a => classIdx === undefined || !a.classes || a.classes[classIdx] === 1)
+      .map(a => `<option value="${a.name}">${a.name}</option>`).join('');
+    
+    // Determine allowed aspect categories based on slot
+    const slotCategories = {
+      'helm': ['Defensive', 'Utility', 'Resource'],
+      'chest': ['Defensive', 'Utility'],
+      'gloves': ['Offensive', 'Utility'],
+      'pants': ['Defensive', 'Utility'],
+      'boots': ['Utility', 'Mobility'],
+      'amulet': ['Offensive', 'Defensive', 'Utility', 'Resource', 'Mobility'],
+      'ring1': ['Offensive', 'Resource'],
+      'ring2': ['Offensive', 'Resource'],
+      'weapon1': ['Offensive'],
+      'weapon2': ['Offensive'],
+      'offhand': ['Offensive', 'Defensive', 'Utility']
+    };
+    const allowedCats = slotCategories[slotName.toLowerCase()] || [];
+
+    const aspectsOptions = (window.D4_DATABASE?.aspects || [])
+      .filter(a => {
+        // Filter by class
+        if (classIdx !== undefined && a.classes && a.classes[classIdx] !== 1) return false;
+        // Filter by slot category
+        if (!a.category) return true;
+        return allowedCats.some(c => a.category.includes(c));
+      })
+      .map(a => `<option value="${a.name}">${a.name}</option>`).join('');
+
+    const affixesDatalist = `<datalist id="affixes-list">${affixesOptions}</datalist>`;
+    const aspectsDatalist = `<datalist id="aspects-list">${aspectsOptions}</datalist>`;
+
     let aspectSection = '';
     if (rarity !== 'mythic' && rarity !== 'unique') {
+      const currentAspectName = itemObj.aspect || 'None';
+      let aspectDescHtml = '';
+      if (currentAspectName !== 'None') {
+        const aspectObj = (window.D4_DATABASE?.aspects || []).find(a => a.name === currentAspectName);
+        if (aspectObj && aspectObj.desc) {
+          const vals = itemObj.aspectValues || [];
+          let valIndex = 0;
+          aspectDescHtml = aspectObj.desc.replace(/#/g, () => {
+            const v = vals[valIndex] || 0;
+            const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" style="width: 46px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #8ab4f8; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
+            valIndex++;
+            return inputHtml;
+          });
+          aspectDescHtml = `<div style="margin-top: 8px; color: #d18a45; font-size: 0.9rem; line-height: 1.5;">${aspectDescHtml}</div>`;
+        }
+      }
+      
       aspectSection = `
         <div class="edit-section">
-          <div class="edit-section-title orange">Legendary Aspect</div>
-          <div class="edit-section-content">
-            <select class="edit-dropdown" id="edit-aspect">
-              <option value="">Add Modifier...</option>
-              <option value="Aspect 1">Aspect of the Damned</option>
-              <option value="Aspect 2">Blighted Aspect</option>
-            </select>
+          <div class="edit-section-title orange" style="display: flex; justify-content: space-between; align-items: center;">
+            <span>Legendary Aspect</span>
+            <button class="edit-btn" id="btn-select-aspect" style="padding: 2px 8px; font-size: 0.75rem;">Change</button>
+          </div>
+          <div class="edit-section-content" style="padding: 4px 0;">
+            <div style="color: var(--text-primary); font-size: 0.95rem; font-weight: 500;">${currentAspectName}</div>
+            ${aspectDescHtml}
+          </div>
+        </div>
+      `;
+    } else {
+      let uniqueDescHtml = '';
+      const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === itemObj.name);
+      if (uniqueObj && uniqueObj.desc) {
+        const vals = itemObj.aspectValues || [];
+        let valIndex = 0;
+        uniqueDescHtml = uniqueObj.desc.replace(/#/g, () => {
+          const v = vals[valIndex] || 0;
+          const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" style="width: 46px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #8ab4f8; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
+          valIndex++;
+          return inputHtml;
+        });
+        uniqueDescHtml = `<div style="margin-top: 8px; color: #d18a45; font-size: 0.9rem; line-height: 1.5;">${uniqueDescHtml}</div>`;
+      }
+      
+      aspectSection = `
+        <div class="edit-section">
+          <div class="edit-section-title orange">
+            <span>${rarity === 'mythic' ? 'Mythic Unique Power' : 'Unique Power'}</span>
+          </div>
+          <div class="edit-section-content" style="padding: 4px 0;">
+            ${uniqueDescHtml || '<div style="color: #888; font-style: italic;">No unique power description found.</div>'}
           </div>
         </div>
       `;
@@ -2590,17 +2804,19 @@
         <button class="edit-btn" id="btn-delete-item">🗑 Delete</button>
       </div>
 
+      ${affixesDatalist}
+
       <div class="edit-section">
         <div class="edit-section-title">Modifiers</div>
         <div class="edit-section-content">
-          <select class="edit-dropdown"><option value="">Add Modifier...</option><option>+ Intelligence</option></select>
+          <input list="affixes-list" class="edit-dropdown" placeholder="Search for Modifier...">
         </div>
       </div>
 
       <div class="edit-section">
         <div class="edit-section-title">Tempering</div>
         <div class="edit-section-content">
-          <select class="edit-dropdown"><option value="">Add Modifier...</option><option>+ Damage</option></select>
+          <input list="affixes-list" class="edit-dropdown" placeholder="Search for Tempering...">
         </div>
       </div>
 
@@ -2619,6 +2835,11 @@
     document.getElementById('btn-unequip-item').addEventListener('click', () => selectItem(''));
     document.getElementById('btn-delete-item').addEventListener('click', () => selectItem(''));
     
+    const btnSelectAspect = document.getElementById('btn-select-aspect');
+    if (btnSelectAspect) {
+      btnSelectAspect.addEventListener('click', () => switchModalTab('aspect'));
+    }
+
     ['edit-power', 'edit-quality'].forEach(id => {
       const el = document.getElementById(id);
       if (el) {
@@ -2629,30 +2850,54 @@
         });
       }
     });
+
+    document.querySelectorAll('.aspect-val-input').forEach(inp => {
+      inp.addEventListener('input', (e) => {
+        const idx = parseInt(e.target.dataset.idx);
+        if (!itemObj.aspectValues) itemObj.aspectValues = [];
+        itemObj.aspectValues[idx] = parseFloat(e.target.value) || 0;
+        box.dataset.value = JSON.stringify(itemObj);
+        calculate();
+      });
+    });
   }
 
   function openItemModal(slotName) {
-    currentModalSlot = slotName;
-    const modal = document.getElementById('item-selection-modal');
-    const sidebarSlotName = document.getElementById('modal-sidebar-slot-name');
-    const searchInput = document.getElementById('item-search-input');
-    
-    if (!modal) return;
-    
-    if (sidebarSlotName) sidebarSlotName.textContent = slotName;
-    if (searchInput) searchInput.value = '';
-    
-    renderModalItems(slotName, '');
-    renderEditTab(slotName);
-    
-    const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
-    if (box && box.dataset.value) {
-      switchModalTab('edit');
-    } else {
-      switchModalTab('select');
+    try {
+      currentModalSlot = slotName;
+      const modal = document.getElementById('item-selection-modal');
+      const sidebarSlotName = document.getElementById('modal-sidebar-slot-name');
+      const searchInput = document.getElementById('item-search-input');
+      
+      if (!modal) return;
+      
+      if (sidebarSlotName) sidebarSlotName.textContent = slotName;
+      if (searchInput) searchInput.value = '';
+      
+      // Reset Aspect Tab state
+      const aspectSearchInput = document.getElementById('aspect-search-input');
+      if (aspectSearchInput) aspectSearchInput.value = '';
+      document.querySelectorAll('#aspect-sidebar .sidebar-item').forEach(el => {
+        el.classList.remove('active');
+        if (el.dataset.category === 'All Aspects') el.classList.add('active');
+      });
+
+      renderModalItems(slotName, '');
+      renderEditTab(slotName);
+      renderAspectTab(slotName, 'All Aspects', '');
+      
+      const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
+      if (box && box.dataset.value) {
+        switchModalTab('edit');
+      } else {
+        switchModalTab('select');
+      }
+      
+      modal.style.display = 'flex';
+    } catch(e) {
+      alert("openItemModal error: " + e.message);
+      console.error(e);
     }
-    
-    modal.style.display = 'flex';
   }
 
   function renderModalItems(slotName, query = '') {
@@ -2667,7 +2912,7 @@
     noneRow.addEventListener('click', () => selectItem(''));
     list.appendChild(noneRow);
 
-    let items = ITEM_DATABASE[slotName] || [];
+    let items = getDbItems(slotName);
     if (query) {
       items = items.filter(i => i.name.toLowerCase().includes(query.toLowerCase()));
     }
@@ -2705,21 +2950,140 @@
         box.dataset.value = JSON.stringify(itemObj);
         if (valDiv) {
           valDiv.textContent = itemName;
-          valDiv.classList.remove('empty');
+          
+          let rarity = 'rare';
+          const dbItems = getDbItems(currentModalSlot);
+          const foundItem = dbItems.find(i => i.name === itemName);
+          if (foundItem) rarity = foundItem.rarity;
+          
+          valDiv.className = `paperdoll-slot-value rarity-${rarity}`;
         }
-        calculate();
         renderEditTab(currentModalSlot);
         switchModalTab('edit');
       } else {
-        box.dataset.value = '';
+        delete box.dataset.value;
         if (valDiv) {
-          valDiv.textContent = 'Empty';
-          valDiv.classList.add('empty');
+          valDiv.textContent = '';
+          valDiv.className = 'paperdoll-slot-value';
         }
+        renderEditTab(currentModalSlot);
+        switchModalTab('select');
+      }
+      calculate();
+    }
+  }
+
+  function selectAspect(aspectName) {
+    if (!currentModalSlot) return;
+    
+    const box = document.querySelector(`.equipment-slot-box[data-slot="${currentModalSlot}"]`);
+    if (box && box.dataset.value) {
+      try {
+        const itemObj = JSON.parse(box.dataset.value);
+        itemObj.aspect = aspectName;
+        
+        // Auto-fill max value from database if available
+        const aspectObj = window.D4_DATABASE?.aspects?.find(a => a.name === aspectName);
+        if (aspectObj && aspectObj.maxValue) {
+          itemObj.aspectValues = [aspectObj.maxValue];
+        } else {
+          itemObj.aspectValues = [];
+        }
+        
+        box.dataset.value = JSON.stringify(itemObj);
+        
+        renderEditTab(currentModalSlot);
+        switchModalTab('edit');
         calculate();
-        document.getElementById('item-selection-modal').style.display = 'none';
+      } catch (e) {
+        console.error("Error setting aspect", e);
       }
     }
+  }
+
+  function renderAspectTab(slotName, activeCategory = 'All Aspects', query = '') {
+    const list = document.getElementById('item-modal-aspect-list');
+    if (!list) return;
+    list.innerHTML = '';
+    
+    // Get current class
+    const currentClassVal = document.getElementById('class-select').value;
+    const classIdx = D4_CLASS_MAP[currentClassVal];
+
+    // Determine allowed aspect categories based on slot
+    const slotCategories = {
+      'helm': ['Defensive', 'Utility', 'Resource'],
+      'chest armor': ['Defensive', 'Utility'],
+      'gloves': ['Offensive', 'Utility'],
+      'pants': ['Defensive', 'Utility'],
+      'boots': ['Utility', 'Mobility'],
+      'amulet': ['Offensive', 'Defensive', 'Utility', 'Resource', 'Mobility'],
+      'left ring': ['Offensive', 'Resource'],
+      'right ring': ['Offensive', 'Resource'],
+      'mainhand': ['Offensive'],
+      'offhand': ['Offensive', 'Defensive', 'Utility'],
+      'weapon 1': ['Offensive'],
+      'weapon 2': ['Offensive'],
+      'weapon 1 (bludgeoning)': ['Offensive'],
+      'weapon 2 (slashing)': ['Offensive'],
+      'weapon 3 (dual wield 1)': ['Offensive'],
+      'weapon 4 (dual wield 2)': ['Offensive']
+    };
+    const allowedCats = slotCategories[slotName.toLowerCase()] || [];
+
+    // Filter logic
+    let items = (window.D4_DATABASE?.aspects || []).filter(a => {
+      // 1. Filter by class
+      if (classIdx !== undefined && a.classes && a.classes[classIdx] !== 1) return false;
+      // 2. Filter by slot valid categories
+      if (a.category && !allowedCats.some(c => a.category.includes(c))) return false;
+      // 3. Filter by Active Sidebar Category
+      if (activeCategory !== 'All Aspects') {
+        if (!a.category || !a.category.includes(activeCategory)) return false;
+      }
+      // 4. Filter by Search Query
+      if (query && !a.name.toLowerCase().includes(query.toLowerCase())) return false;
+      
+      return true;
+    });
+
+    // Update sidebar visibility
+    document.querySelectorAll('#aspect-sidebar .sidebar-item').forEach(el => {
+      const cat = el.dataset.category;
+      if (cat === 'All Aspects' || allowedCats.includes(cat)) {
+        el.style.display = 'block'; // Or flex if that was the default
+      } else {
+        el.style.display = 'none';
+      }
+    });
+    
+    // Render "None" option
+    if (!query && activeCategory === 'All Aspects') {
+      const noneRow = document.createElement('div');
+      noneRow.className = 'item-row';
+      noneRow.innerHTML = `<div class="item-icon">✕</div><div class="item-name" style="color: #888;">None</div>`;
+      noneRow.addEventListener('click', () => selectAspect(''));
+      list.appendChild(noneRow);
+    }
+    
+    items.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      
+      const icon = document.createElement('div');
+      icon.className = 'item-icon';
+      icon.textContent = 'L'; // Legendary Aspect
+      
+      const name = document.createElement('div');
+      name.className = `item-name rarity-legendary`;
+      name.textContent = item.name;
+      
+      row.appendChild(icon);
+      row.appendChild(name);
+      
+      row.addEventListener('click', () => selectAspect(item.name));
+      list.appendChild(row);
+    });
   }
 
   if (document.readyState === 'loading') {
