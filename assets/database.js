@@ -114,7 +114,8 @@ window.D4_DATABASE = {
         "2h-bludgeoning",
         "2h-slashing",
         "mainhand",
-        "2h-ranged"
+        "2h-ranged",
+        "helm"
       ],
       "tempering": false
     },
@@ -7115,7 +7116,8 @@ window.D4_DATABASE = {
         "Weapon 1 (Bludgeoning)",
         "Weapon 2 (Slashing)",
         "Weapon 3 (Dual Wield 1)",
-        "Weapon 4 (Dual Wield 2)"
+        "Weapon 4 (Dual Wield 2)",
+        "helm"
       ],
       "tempering": true
     },
@@ -7391,7 +7393,8 @@ window.D4_DATABASE = {
         "mainhand",
         "offhand",
         "ring1",
-        "ring2"
+        "ring2",
+        "helm"
       ],
       "tempering": false
     },
@@ -8413,7 +8416,8 @@ window.D4_DATABASE = {
         "Boots",
         "Ring",
         "Left Ring",
-        "Right Ring"
+        "Right Ring",
+        "helm"
       ],
       "tempering": false
     },
@@ -8684,7 +8688,8 @@ window.D4_DATABASE = {
       ],
       "slots": [
         "Chest Armor",
-        "Pants"
+        "Pants",
+        "helm"
       ],
       "tempering": false
     },
@@ -8806,6 +8811,42 @@ window.D4_DATABASE = {
         "Weapon 2",
         "Weapon 1 (Bludgeoning)",
         "Weapon 2 (Slashing)"
+      ],
+      "tempering": false
+    },
+    {
+      "name": "+[15 - 20] Maximum Essence",
+      "shortName": "Maximum Essence",
+      "classes": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "slots": [
+        "helm"
+      ],
+      "tempering": false
+    },
+    {
+      "name": "+[1 - 2] to Skeleton Warrior Mastery",
+      "shortName": "Ranks to Skeleton Warrior Mastery",
+      "classes": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "slots": [
+        "helm"
       ],
       "tempering": false
     }
