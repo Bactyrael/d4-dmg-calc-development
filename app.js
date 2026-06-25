@@ -2895,41 +2895,16 @@ rarity = foundItem.rarity;
     // Get current class from DOM
     const currentClassVal = document.getElementById('class-select').value;
     const classIdx = D4_CLASS_MAP[currentClassVal];
-    // Filter affixes by class
-    const affixesBase = (window.D4_DATABASE?.affixes || [])
-      .filter(a => classIdx === undefined || !a.classes || a.classes[classIdx] === 1);
-      
-    const baseItemDef = window.D4_DATABASE.itemDatabase[slotName]?.find(i => i.name === itemObj.name) || {};
-    
-    // Determine allowed slots for affixes
-    function isAffixAllowedForSlot(affix, slotName) {
-      // Speed restriction check
-      if (affix.targetSpeeds && baseItemDef.weaponSpeed !== undefined) {
-        if (!affix.targetSpeeds.includes(baseItemDef.weaponSpeed)) {
-          return false;
-        }
-      }
-      
-      const affixSlots = affix.slots;
-      if (!affixSlots || affixSlots.length === 0) return true; // generic
-      let mapped = slotName.toLowerCase();
-      if (mapped === 'left ring' || mapped === 'right ring') mapped = 'ring';
-      if (mapped === 'chest armor') mapped = 'chest';
-      if (mapped === 'mainhand' || mapped === 'offhand' || mapped === 'weapon1' || mapped === 'weapon2' || mapped === 'ranged weapon') {
-         if (mapped.startsWith('weapon') || mapped === 'ranged weapon') mapped = 'mainhand';
-      }
-      
-      return affixSlots.some(s => {
-        const ms = s.toLowerCase();
-        if (mapped === 'ring' && (ms === 'ring1' || ms === 'ring2')) return true;
-        if (mapped === 'mainhand' && (ms === 'mainhand' || ms === '2h-slashing' || ms === '2h-bludgeoning' || ms === '2h-ranged')) return true; 
-        if (mapped === 'offhand' && (ms === 'offhand' || ms === 'shield')) return true;
-        return ms === mapped;
-      });
+    let mapped = slotName.toLowerCase();
+    if (mapped === 'left ring' || mapped === 'right ring') mapped = 'ring';
+    if (mapped === 'chest armor') mapped = 'chest';
+    if (mapped === 'mainhand' || mapped === 'offhand' || mapped === 'weapon1' || mapped === 'weapon2' || mapped === 'ranged weapon') {
+       if (mapped.startsWith('weapon') || mapped === 'ranged weapon') mapped = 'mainhand';
     }
 
-    const regularAffixes = affixesBase.filter(a => !a.tempering && isAffixAllowedForSlot(a, slotName));
-    const temperAffixes = affixesBase.filter(a => a.tempering && isAffixAllowedForSlot(a, slotName));
+    const classData = window.D4_DATABASE?.classData?.[currentClassVal]?.equipment?.[mapped] || {};
+    const regularAffixes = classData.modifiers || [];
+    const temperAffixes = classData.tempers || [];
 
     const affixesDatalist = `<datalist id="affixes-list">${regularAffixes.map(a => `<option value="${a.name}">${a.name}</option>`).join('')}</datalist>`;
     const temperDatalist = `<datalist id="temper-list">${temperAffixes.map(a => `<option value="${a.name}">${a.name}</option>`).join('')}</datalist>`;
