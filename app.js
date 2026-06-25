@@ -2089,7 +2089,7 @@
         return v;
     });
     renderLegendaryBonusInputs(b.class || 'Barbarian', legBonuses);
-    renderEquipment(dom.classSelect ? dom.classSelect.value : 'Barbarian', {});
+    renderEquipment(dom.classSelect ? dom.classSelect.value : 'Barbarian', b.equipment || {});
     renderSkills();
 
     // Clear existing rows
@@ -2477,6 +2477,7 @@
       tab.addEventListener('click', (e) => {
         if (e.target.disabled) return;
         const targetTab = e.target.textContent.toLowerCase();
+        window.currentModifierEditing = null;
         switchModalTab(targetTab);
       });
     });
@@ -2829,18 +2830,18 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     const tabs = document.querySelectorAll('.item-modal-tab');
     const selectTab = tabs[0];
     const editTab = tabs[1];
-    const aspectTab = tabs[2];
-    const modifierTab = tabs[3];
-    const gemTab = tabs[4];
+    
     const selectBody = document.getElementById('item-modal-select-body');
     const editBody = document.getElementById('item-modal-edit-body');
     const aspectBody = document.getElementById('item-modal-aspect-body');
     const modifierBody = document.getElementById('item-modal-modifier-body');
+    const temperBody = document.getElementById('item-modal-temper-body');
+    const transfigureBody = document.getElementById('item-modal-transfigure-body');
     const gemBody = document.getElementById('item-modal-gem-body');
     
     // Reset all
-    [selectTab, editTab, aspectTab, modifierTab, gemTab].forEach(t => t?.classList.remove('active'));
-    [selectBody, editBody, aspectBody, modifierBody, gemBody].forEach(b => { if(b) b.style.display = 'none'; });
+    [selectTab, editTab].forEach(t => t?.classList.remove('active'));
+    [selectBody, editBody, aspectBody, modifierBody, temperBody, transfigureBody, gemBody].forEach(b => { if(b) b.style.display = 'none'; });
 
     if (tabName === 'select') {
       selectTab?.classList.add('active');
@@ -2849,41 +2850,33 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       editTab?.classList.add('active');
       if (editBody) editBody.style.display = 'flex';
     } else if (tabName === 'aspect') {
-      aspectTab?.classList.add('active');
       if (aspectBody) aspectBody.style.display = 'flex';
     } else if (tabName === 'modifiers') {
-      modifierTab?.classList.add('active');
       if (modifierBody) modifierBody.style.display = 'flex';
+    } else if (tabName === 'temper' || tabName === 'tempering') {
+      if (temperBody) temperBody.style.display = 'flex';
+    } else if (tabName === 'transfigure') {
+      if (transfigureBody) transfigureBody.style.display = 'flex';
     } else if (tabName === 'gem') {
-      gemTab?.classList.add('active');
       if (gemBody) gemBody.style.display = 'flex';
     }
   }
 
   function renderEditTab(slotName) {
-    const editBody = document.getElementById('item-modal-edit-body');
-    const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
-    const tabs = document.querySelectorAll('.item-modal-tab');
-    const editTabBtn = tabs[1];
-    const aspectTabBtn = tabs[2];
-    const modifierTabBtn = tabs[3];
-    const gemTabBtn = tabs[4];
-    
-    if (!editBody || !box) return;
-
-    if (!box.dataset.value) {
-      editTabBtn.disabled = true;
-      aspectTabBtn.disabled = true;
-      modifierTabBtn.disabled = true;
-      if (gemTabBtn) gemTabBtn.disabled = true;
-      editBody.innerHTML = '';
-      return;
-    }
-    
-    editTabBtn.disabled = false;
-    aspectTabBtn.disabled = false;
-    modifierTabBtn.disabled = false;
-    if (gemTabBtn) gemTabBtn.disabled = false;
+      const editBody = document.getElementById('item-modal-edit-body');
+      const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
+      const tabs = document.querySelectorAll('.item-modal-tab');
+      const editTabBtn = tabs[1];
+      
+      if (!editBody || !box) return;
+  
+      if (!box.dataset.value) {
+        if (editTabBtn) editTabBtn.disabled = true;
+        editBody.innerHTML = '';
+        return;
+      }
+      
+      if (editTabBtn) editTabBtn.disabled = false;
     
     let itemObj;
     try {
@@ -3809,6 +3802,7 @@ rarity = foundItem.rarity;
         box.dataset.value = JSON.stringify(targetObj);
         calculate();
         switchModalTab('edit');
+        window.currentModifierEditing = null;
         renderEditTab(slotName);
       });
       
