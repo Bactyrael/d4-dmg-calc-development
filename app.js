@@ -1070,11 +1070,13 @@
     const leftCol = document.getElementById('paperdoll-left');
     const rightCol = document.getElementById('paperdoll-right');
     const footer = document.getElementById('paperdoll-footer');
+    const bottomRow = document.getElementById('paperdoll-bottom-row');
     if (!leftCol || !rightCol || !footer) return;
     
     leftCol.innerHTML = '';
     rightCol.innerHTML = '';
     footer.innerHTML = '';
+    if (bottomRow) bottomRow.innerHTML = '';
     
     const slots = CLASS_EQUIPMENT_SLOTS[className] || [];
     
