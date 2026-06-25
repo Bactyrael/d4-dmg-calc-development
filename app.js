@@ -1671,14 +1671,14 @@
     if (isLoading) return;
    try {
     // Auto-calculate base weapon damage and armor from equipped items
-    const equipment = getEquipmentValues();
+    const baseEquipped = getEquipmentValues();
     let totalArmor = 0;
     let totalWeaponDmg = 0;
     let totalWeaponAps = 1;
 
-    if (equipment) {
-      Object.keys(equipment).forEach(slotName => {
-        const item = equipment[slotName];
+    if (baseEquipped) {
+      Object.keys(baseEquipped).forEach(slotName => {
+        const item = baseEquipped[slotName];
         if (!item || !item.name) return;
         const sName = slotName.toLowerCase();
         const baseItem = (window.D4_DATABASE.itemDatabase[slotName] || []).find(i => i.name === item.name) || {};
