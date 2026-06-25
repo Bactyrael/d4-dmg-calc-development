@@ -214,6 +214,19 @@ async function buildDb() {
       'Weapon 4 (Dual Wield 2)': [{ name: 'Legendary Weapon', rarity: 'legendary' }]
     };
 
+    // Inject Necromancer base weapons from reference
+    const necroBases = [
+      'Bearded Axe', 'Bone Blade', 'Bone Wand', 'Bonebreaker', 'Demonblade', 
+      'Obsidian Blade', 'Ossified Scythe', 'Parashu', 'Skullsplitter', 'Sparr', 'Spiked Flail'
+    ];
+    necroBases.forEach(name => {
+      itemDatabase['Mainhand'].push({ 
+        name: name, 
+        rarity: 'legendary', 
+        classes: [0,0,0,0,1,0,0,0] // Necromancer only
+      });
+    });
+
     const KNOWN_MYTHICS = [
       "Andariel's Visage", "Harlequin Crest", "Tyrael's Might", 
       "Doombringer", "The Grandfather", "Ring of Starless Skies", 

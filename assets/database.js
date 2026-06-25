@@ -21513,6 +21513,160 @@ window.D4_DATABASE = {
       "rarity": "legendary"
     },
     {
+      "name": "Bearded Axe",
+      "rarity": "legendary",
+      "classes": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Bone Blade",
+      "rarity": "legendary",
+      "classes": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Bone Wand",
+      "rarity": "legendary",
+      "classes": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Bonebreaker",
+      "rarity": "legendary",
+      "classes": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Demonblade",
+      "rarity": "legendary",
+      "classes": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Obsidian Blade",
+      "rarity": "legendary",
+      "classes": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Ossified Scythe",
+      "rarity": "legendary",
+      "classes": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Parashu",
+      "rarity": "legendary",
+      "classes": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Skullsplitter",
+      "rarity": "legendary",
+      "classes": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Sparr",
+      "rarity": "legendary",
+      "classes": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Spiked Flail",
+      "rarity": "legendary",
+      "classes": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
       "name": "Ahavarion, Spear of Lycander",
       "rarity": "mythic",
       "classes": [
