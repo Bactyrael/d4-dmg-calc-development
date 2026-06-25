@@ -16,28 +16,43 @@ function fetchJson(url) {
 
 async function buildDb() {
   try {
-    console.log('Fetching affixes from D4Companion...');
-    const affixesRaw = await fetchJson(AFFIX_URL);
+    console.log('Loading scraped affixes...');
+    const scrapedAffixes = JSON.parse(fs.readFileSync('./assets/affixes_data.json', 'utf8'));
     
     console.log('Fetching aspects from D4Companion...');
     const aspectsRaw = await fetchJson(ASPECT_URL);
 
-    // Extract unique affixes (just searchable strings, since slot data is missing/empty for many)
+    // Map string classes to index arrays for app.js
+    const CLASS_MAP = {
+      'Sorcerer': 0,
+      'Druid': 1,
+      'Barbarian': 2,
+      'Rogue': 3,
+      'Necromancer': 4,
+      'Spiritborn': 5
+    };
+
     const affixesMap = new Map();
-    affixesRaw.forEach(a => {
-      if (a.Description && a.Description.trim().length > 0) {
-        const desc = a.Description.trim();
-        // If we haven't seen it, or if the current one has a wider class array, merge them
-        if (!affixesMap.has(desc)) {
-          affixesMap.set(desc, { name: desc, classes: a.AllowedForPlayerClass });
-        } else {
-          // Merge class allowances (some generic strings appear multiple times for different classes)
-          const existing = affixesMap.get(desc);
-          for (let i = 0; i < 8; i++) {
-            if (a.AllowedForPlayerClass[i]) existing.classes[i] = 1;
-          }
-        }
+    scrapedAffixes.forEach(a => {
+      const desc = a.desc || '';
+      if (!desc) return;
+      
+      let classArr = [0,0,0,0,0,0,0,0];
+      if (a.classes && a.classes.length > 0) {
+        a.classes.forEach(c => {
+          if (CLASS_MAP[c] !== undefined) classArr[CLASS_MAP[c]] = 1;
+        });
+      } else {
+        classArr = [1,1,1,1,1,1,1,1]; // Any class
       }
+
+      affixesMap.set(desc, { 
+        name: desc, 
+        shortName: a.name,
+        classes: classArr,
+        slots: a.slots || [],
+        tempering: a.tempering || false
+      });
     });
     const uniqueAffixes = Array.from(affixesMap.values());
 

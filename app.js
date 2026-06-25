@@ -2778,45 +2778,65 @@
     const dbItems = getDbItems(slotName);
     const foundItem = dbItems.find(i => i.name === itemObj.name);
     if (foundItem) {
-      rarity = foundItem.rarity;
+rarity = foundItem.rarity;
     }
     
     // Get current class from DOM
     const currentClassVal = document.getElementById('class-select').value;
     const classIdx = D4_CLASS_MAP[currentClassVal];
-
     // Filter affixes by class
-    const affixesOptions = (window.D4_DATABASE?.affixes || [])
-      .filter(a => classIdx === undefined || !a.classes || a.classes[classIdx] === 1)
-      .map(a => `<option value="${a.name}">${a.name}</option>`).join('');
+    const affixesBase = (window.D4_DATABASE?.affixes || [])
+      .filter(a => classIdx === undefined || !a.classes || a.classes[classIdx] === 1);
+      
+    // Determine allowed slots for affixes
+    function isAffixAllowedForSlot(affixSlots, slotName) {
+      if (!affixSlots || affixSlots.length === 0) return true; // generic
+      let mapped = slotName.toLowerCase();
+      if (mapped === 'left ring' || mapped === 'right ring') mapped = 'ring';
+      if (mapped === 'chest armor') mapped = 'chest';
+      if (mapped === 'mainhand' || mapped === 'offhand' || mapped === 'weapon1' || mapped === 'weapon2') {
+         if (mapped.startsWith('weapon')) mapped = 'mainhand';
+      }
+      
+      return affixSlots.some(s => {
+        const ms = s.toLowerCase();
+        if (mapped === 'ring' && (ms === 'ring1' || ms === 'ring2')) return true;
+        if (mapped === 'mainhand' && (ms === 'mainhand' || ms === '2h-slashing' || ms === '2h-bludgeoning' || ms === '2h-ranged')) return true; 
+        if (mapped === 'offhand' && (ms === 'offhand' || ms === 'shield')) return true;
+        return ms === mapped;
+      });
+    }
+
+    const regularAffixes = affixesBase.filter(a => !a.tempering && isAffixAllowedForSlot(a.slots, slotName));
+    const temperAffixes = affixesBase.filter(a => a.tempering && isAffixAllowedForSlot(a.slots, slotName));
+
+    const affixesDatalist = `<datalist id="affixes-list">${regularAffixes.map(a => `<option value="${a.name}">${a.name}</option>`).join('')}</datalist>`;
+    const temperDatalist = `<datalist id="temper-list">${temperAffixes.map(a => `<option value="${a.name}">${a.name}</option>`).join('')}</datalist>`;
     
     // Determine allowed aspect categories based on slot
     const slotCategories = {
       'helm': ['Defensive', 'Utility', 'Resource'],
-      'chest': ['Defensive', 'Utility'],
+      'chest armor': ['Defensive', 'Utility'],
       'gloves': ['Offensive', 'Utility'],
       'pants': ['Defensive', 'Utility'],
       'boots': ['Utility', 'Mobility'],
       'amulet': ['Offensive', 'Defensive', 'Utility', 'Resource', 'Mobility'],
-      'ring1': ['Offensive', 'Resource'],
-      'ring2': ['Offensive', 'Resource'],
+      'left ring': ['Offensive', 'Resource'],
+      'right ring': ['Offensive', 'Resource'],
       'weapon1': ['Offensive'],
       'weapon2': ['Offensive'],
+      'mainhand': ['Offensive'],
       'offhand': ['Offensive', 'Defensive', 'Utility']
     };
     const allowedCats = slotCategories[slotName.toLowerCase()] || [];
 
     const aspectsOptions = (window.D4_DATABASE?.aspects || [])
       .filter(a => {
-        // Filter by class
         if (classIdx !== undefined && a.classes && a.classes[classIdx] !== 1) return false;
-        // Filter by slot category
         if (!a.category) return true;
         return allowedCats.some(c => a.category.includes(c));
       })
       .map(a => `<option value="${a.name}">${a.name}</option>`).join('');
-
-    const affixesDatalist = `<datalist id="affixes-list">${affixesOptions}</datalist>`;
     const aspectsDatalist = `<datalist id="aspects-list">${aspectsOptions}</datalist>`;
 
     let aspectSection = '';
@@ -2877,17 +2897,57 @@
       
       aspectSection = `
         <div class="edit-section">
-          <div class="edit-section-title orange">
-            <span>${rarity === 'mythic' ? 'Mythic Unique Power' : 'Unique Power'}</span>
-          </div>
+          <div class="edit-section-title orange">Unique Power</div>
           <div class="edit-section-content" style="padding: 4px 0;">
-            ${uniqueDescHtml || '<div style="color: #888; font-style: italic;">No unique power description found.</div>'}
+            ${uniqueDescHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    // Helper to render Affix Row (Option A style)
+    function renderAffixRow(idx, type) {
+      const isTemper = type === 'temper';
+      const arr = isTemper ? itemObj.tempering : itemObj.affixes;
+      const currentName = arr && arr[idx] ? arr[idx] : '';
+      const valuesArr = isTemper ? (itemObj.temperValues || {}) : (itemObj.affixValues || {});
+      const vals = valuesArr[idx] || [];
+      
+      const obj = (window.D4_DATABASE?.affixes || []).find(a => a.name === currentName);
+      
+      if (!currentName || !obj) {
+        return `<input list="${isTemper ? 'temper-list' : 'affixes-list'}" class="edit-dropdown" data-type="${type}" data-idx="${idx}" placeholder="Search for ${isTemper ? 'Tempering' : 'Modifier'}..." value="">`;
+      }
+      
+      let valIndex = 0;
+      let descHtml = obj.name.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
+        const v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
+        let placeholder = min && max ? `${min}-${max}` : 'value';
+        let minAttr = min ? ` min="${min}"` : '';
+        let maxAttr = max ? ` max="${max}"` : '';
+        let stepAttr = (min && min.includes('.')) || (max && max.includes('.')) ? ' step="0.1"' : ' step="1"';
+        if (!min && !max) stepAttr = ' step="any"';
+        const inputHtml = `<input type="number" class="affix-val-input" data-type="${type}" data-group="${idx}" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #fff; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
+        valIndex++;
+        return inputHtml;
+      });
+      
+      return `
+        <div style="display:flex; flex-direction: column; background: rgba(255,255,255,0.05); padding: 4px; border-radius: 4px; gap: 4px;">
+          <div style="display:flex; justify-content: flex-end;">
+            <button class="edit-btn btn-clear-affix" data-type="${type}" data-idx="${idx}" style="padding: 2px 8px; font-size: 0.75rem;">Change</button>
+          </div>
+          <div style="font-size: 0.9rem; line-height: 1.5; color: #ccc;">
+            ${descHtml}
           </div>
         </div>
       `;
     }
 
     editBody.innerHTML = `
+      ${aspectsDatalist}
+      ${affixesDatalist}
+      ${temperDatalist}
       <div class="edit-header">
         <div class="edit-icon-large">${rarity === 'mythic' ? 'M' : (rarity === 'unique' ? 'U' : (rarity === 'legendary' ? 'L' : 'R'))}</div>
         <div class="edit-title-area">
@@ -2907,19 +2967,20 @@
         <button class="edit-btn" id="btn-delete-item">🗑 Delete</button>
       </div>
 
-      ${affixesDatalist}
-
       <div class="edit-section">
         <div class="edit-section-title">Modifiers</div>
-        <div class="edit-section-content">
-          <input list="affixes-list" class="edit-dropdown" placeholder="Search for Modifier...">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          ${renderAffixRow(0, 'affix')}
+          ${renderAffixRow(1, 'affix')}
+          ${renderAffixRow(2, 'affix')}
         </div>
       </div>
 
       <div class="edit-section">
         <div class="edit-section-title">Tempering</div>
-        <div class="edit-section-content">
-          <input list="affixes-list" class="edit-dropdown" placeholder="Search for Tempering...">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          ${renderAffixRow(0, 'temper')}
+          ${renderAffixRow(1, 'temper')}
         </div>
       </div>
 
@@ -2980,6 +3041,77 @@
         
         if (!itemObj.aspectValues) itemObj.aspectValues = [];
         itemObj.aspectValues[idx] = val;
+        box.dataset.value = JSON.stringify(itemObj);
+        calculate();
+      });
+    });
+
+    document.querySelectorAll('.edit-dropdown').forEach(input => {
+      input.addEventListener('change', (e) => {
+        const type = e.target.dataset.type; // 'affix' or 'temper'
+        const idx = parseInt(e.target.dataset.idx);
+        const val = e.target.value;
+        
+        if (type === 'affix') {
+          if (!itemObj.affixes) itemObj.affixes = [];
+          itemObj.affixes[idx] = val;
+        } else {
+          if (!itemObj.tempering) itemObj.tempering = [];
+          itemObj.tempering[idx] = val;
+        }
+        box.dataset.value = JSON.stringify(itemObj);
+        calculate();
+        renderEditTab(slotName); // Re-render to show the number inputs
+      });
+    });
+
+    document.querySelectorAll('.btn-clear-affix').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const type = e.target.dataset.type;
+        const idx = parseInt(e.target.dataset.idx);
+        
+        if (type === 'affix') {
+          if (itemObj.affixes) itemObj.affixes[idx] = '';
+          if (itemObj.affixValues) itemObj.affixValues[idx] = [];
+        } else {
+          if (itemObj.tempering) itemObj.tempering[idx] = '';
+          if (itemObj.temperValues) itemObj.temperValues[idx] = [];
+        }
+        box.dataset.value = JSON.stringify(itemObj);
+        calculate();
+        renderEditTab(slotName);
+      });
+    });
+
+    document.querySelectorAll('.affix-val-input').forEach(inp => {
+      inp.addEventListener('change', (e) => {
+        const target = e.target;
+        const type = target.dataset.type; // 'affix' or 'temper'
+        const groupIdx = parseInt(target.dataset.group);
+        const idx = parseInt(target.dataset.idx);
+        let val = parseFloat(target.value) || 0;
+        
+        if (target.hasAttribute('min')) {
+          const minVal = parseFloat(target.getAttribute('min'));
+          if (val < minVal) val = minVal;
+        }
+        if (target.hasAttribute('max')) {
+          const maxVal = parseFloat(target.getAttribute('max'));
+          if (val > maxVal) val = maxVal;
+        }
+        
+        target.value = val;
+        
+        if (type === 'affix') {
+          if (!itemObj.affixValues) itemObj.affixValues = {};
+          if (!itemObj.affixValues[groupIdx]) itemObj.affixValues[groupIdx] = [];
+          itemObj.affixValues[groupIdx][idx] = val;
+        } else {
+          if (!itemObj.temperValues) itemObj.temperValues = {};
+          if (!itemObj.temperValues[groupIdx]) itemObj.temperValues[groupIdx] = [];
+          itemObj.temperValues[groupIdx][idx] = val;
+        }
+        
         box.dataset.value = JSON.stringify(itemObj);
         calculate();
       });
