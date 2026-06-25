@@ -12941,14 +12941,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
         ],
         "weaponType": "Axe",
         "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1
+        "weaponSpeed": 1.1,
+        "sockets": 1
       },
       {
         "name": "Bone Blade",
@@ -12958,14 +12959,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
         ],
         "weaponType": "Dagger",
         "damageRange": "1,152 - 1,728",
-        "weaponSpeed": 1.2
+        "weaponSpeed": 1.2,
+        "sockets": 1
       },
       {
         "name": "Bone Wand",
@@ -12975,14 +12977,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
         ],
         "weaponType": "Wand",
         "damageRange": "1,152 - 1,728",
-        "weaponSpeed": 1.2
+        "weaponSpeed": 1.2,
+        "sockets": 1
       },
       {
         "name": "Bonebreaker",
@@ -12992,14 +12995,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
         ],
         "weaponType": "Two-Handed Mace",
         "damageRange": "3,071 - 4,607",
-        "weaponSpeed": 0.9
+        "weaponSpeed": 0.9,
+        "sockets": 2
       },
       {
         "name": "Demonblade",
@@ -13009,14 +13013,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
         ],
         "weaponType": "Two-Handed Sword",
         "damageRange": "2,764 - 4,146",
-        "weaponSpeed": 1
+        "weaponSpeed": 1,
+        "sockets": 2
       },
       {
         "name": "Obsidian Blade",
@@ -13026,14 +13031,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
         ],
         "weaponType": "Sword",
         "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1
+        "weaponSpeed": 1.1,
+        "sockets": 1
       },
       {
         "name": "Ossified Scythe",
@@ -13043,14 +13049,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
         ],
         "weaponType": "Scythe",
         "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1
+        "weaponSpeed": 1.1,
+        "sockets": 1
       },
       {
         "name": "Parashu",
@@ -13060,14 +13067,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
         ],
         "weaponType": "Two-Handed Axe",
         "damageRange": "3,071 - 4,607",
-        "weaponSpeed": 0.9
+        "weaponSpeed": 0.9,
+        "sockets": 2
       },
       {
         "name": "Skullsplitter",
@@ -13077,14 +13085,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
         ],
         "weaponType": "Mace",
         "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1
+        "weaponSpeed": 1.1,
+        "sockets": 1
       },
       {
         "name": "Sparr",
@@ -13094,14 +13103,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
         ],
         "weaponType": "Two-Handed Scythe",
         "damageRange": "3,071 - 4,607",
-        "weaponSpeed": 0.9
+        "weaponSpeed": 0.9,
+        "sockets": 2
       },
       {
         "name": "Spiked Flail",
@@ -13111,14 +13121,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
         ],
         "weaponType": "Flail",
         "damageRange": "1,152 - 1,728",
-        "weaponSpeed": 1.2
+        "weaponSpeed": 1.2,
+        "sockets": 1
       },
       {
         "name": "Ahavarion, Spear of Lycander",
@@ -13184,11 +13195,15 @@ window.D4_DATABASE = {
           0,
           1,
           0,
-          0,
+          1,
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Black River",
@@ -13212,11 +13227,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Two-Handed Scythe",
+        "weaponSpeed": 0.9,
+        "damageRange": "3,071 - 4,607",
+        "sockets": 2
       },
       {
         "name": "Cassia's Grace",
@@ -13310,11 +13329,15 @@ window.D4_DATABASE = {
           1,
           1,
           1,
-          0,
+          1,
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Eaglehorn",
@@ -13352,11 +13375,15 @@ window.D4_DATABASE = {
           1,
           1,
           1,
-          0,
+          1,
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Elegy",
@@ -13548,11 +13575,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Mace",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Misericorde",
@@ -13688,11 +13719,15 @@ window.D4_DATABASE = {
           1,
           0,
           1,
-          0,
+          1,
           0,
           0,
           1
-        ]
+        ],
+        "weaponType": "Dagger",
+        "weaponSpeed": 1.2,
+        "damageRange": "1,152 - 1,728",
+        "sockets": 1
       },
       {
         "name": "Sabre of Tsasgal",
@@ -13716,11 +13751,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Two-Handed Sword",
+        "weaponSpeed": 1,
+        "damageRange": "2,764 - 4,146",
+        "sockets": 2
       },
       {
         "name": "Scepter of the Three",
@@ -13926,11 +13965,15 @@ window.D4_DATABASE = {
           1,
           1,
           1,
-          0,
+          1,
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Axe",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "The Grandfather",
@@ -13940,11 +13983,15 @@ window.D4_DATABASE = {
           1,
           1,
           1,
-          0,
+          1,
           1,
           1,
           1
-        ]
+        ],
+        "weaponType": "Two-Handed Sword",
+        "weaponSpeed": 1,
+        "damageRange": "2,764 - 4,146",
+        "sockets": 2
       },
       {
         "name": "The Maestro",
@@ -13982,11 +14029,15 @@ window.D4_DATABASE = {
           1,
           1,
           0,
-          0,
+          1,
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Axe",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Vox Omnium",
@@ -14031,366 +14082,6 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Bearded Axe",
-        "rarity": "rare",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Axe",
-        "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1,
-        "sockets": 1
-      },
-      {
-        "name": "Bone Blade",
-        "rarity": "rare",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Dagger",
-        "damageRange": "1,152 - 1,728",
-        "weaponSpeed": 1.2,
-        "sockets": 1
-      },
-      {
-        "name": "Bone Wand",
-        "rarity": "rare",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Wand",
-        "damageRange": "1,152 - 1,728",
-        "weaponSpeed": 1.2,
-        "sockets": 1
-      },
-      {
-        "name": "Bonebreaker",
-        "rarity": "rare",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Two-Handed Mace",
-        "damageRange": "3,071 - 4,607",
-        "weaponSpeed": 0.9,
-        "sockets": 2
-      },
-      {
-        "name": "Demonblade",
-        "rarity": "rare",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Two-Handed Sword",
-        "damageRange": "2,764 - 4,146",
-        "weaponSpeed": 1,
-        "sockets": 2
-      },
-      {
-        "name": "Obsidian Blade",
-        "rarity": "rare",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Sword",
-        "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1,
-        "sockets": 1
-      },
-      {
-        "name": "Ossified Scythe",
-        "rarity": "rare",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Scythe",
-        "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1,
-        "sockets": 1
-      },
-      {
-        "name": "Parashu",
-        "rarity": "rare",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Two-Handed Axe",
-        "damageRange": "3,071 - 4,607",
-        "weaponSpeed": 0.9,
-        "sockets": 2
-      },
-      {
-        "name": "Skullsplitter",
-        "rarity": "rare",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Mace",
-        "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1,
-        "sockets": 1
-      },
-      {
-        "name": "Sparr",
-        "rarity": "rare",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Two-Handed Scythe",
-        "damageRange": "3,071 - 4,607",
-        "weaponSpeed": 0.9,
-        "sockets": 2
-      },
-      {
-        "name": "Spiked Flail",
-        "rarity": "rare",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Flail",
-        "damageRange": "1,152 - 1,728",
-        "weaponSpeed": 1.2,
-        "sockets": 1
-      },
-      {
-        "name": "Doombringer",
-        "rarity": "mythic",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Sword",
-        "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1,
-        "sockets": 1
-      },
-      {
-        "name": "El'Druin, Sword of Justice",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Sword",
-        "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1,
-        "sockets": 1
-      },
-      {
-        "name": "The Grandfather",
-        "rarity": "mythic",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Two-Handed Sword",
-        "damageRange": "2,764 - 4,146",
-        "weaponSpeed": 1,
-        "sockets": 2
-      },
-      {
-        "name": "Azurewrath",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Sword",
-        "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1,
-        "sockets": 1
-      },
-      {
-        "name": "Bloodless Scream",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Two-Handed Scythe",
-        "damageRange": "3,071 - 4,607",
-        "weaponSpeed": 0.9,
-        "sockets": 2
-      },
-      {
-        "name": "Mace of King Leoric",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Mace",
-        "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1,
-        "sockets": 1
-      },
-      {
-        "name": "Rustbitten Dirk",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Dagger",
-        "damageRange": "1,152 - 1,728",
-        "weaponSpeed": 1.2,
-        "sockets": 1
-      },
-      {
-        "name": "Sanguivor, Blade of Zir",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Two-Handed Sword",
-        "damageRange": "2,764 - 4,146",
-        "weaponSpeed": 1,
-        "sockets": 2
-      },
-      {
-        "name": "The Butcher's Cleaver",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Axe",
-        "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1,
-        "sockets": 1
-      },
-      {
         "name": "The Mortacrux",
         "rarity": "unique",
         "classes": [
@@ -14406,24 +14097,6 @@ window.D4_DATABASE = {
         "weaponType": "Dagger",
         "damageRange": "1,152 - 1,728",
         "weaponSpeed": 1.2,
-        "sockets": 1
-      },
-      {
-        "name": "Thousand-Eye Reaver",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Axe",
-        "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1,
         "sockets": 1
       }
     ],
@@ -14506,11 +14179,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Focus",
+        "weaponSpeed": 1.2,
+        "damageRange": "1,152 - 1,728",
+        "sockets": 1
       },
       {
         "name": "Herald of Zakarum",
@@ -14562,11 +14239,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Shield",
+        "weaponSpeed": "same as mainhand",
+        "damageRange": "same as mainhand",
+        "sockets": 1
       },
       {
         "name": "Okun's Catalyst",
@@ -14632,11 +14313,15 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Shield",
+        "weaponSpeed": "same as mainhand",
+        "damageRange": "same as mainhand",
+        "sockets": 1
       },
       {
         "name": "Ward of the White Dove",
@@ -14705,60 +14390,6 @@ window.D4_DATABASE = {
         "damageRange": "1,152 - 1,728",
         "weaponSpeed": 1.2,
         "sockets": 1
-      },
-      {
-        "name": "Gospel of the Devotee",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Focus",
-        "damageRange": "1,152 - 1,728",
-        "weaponSpeed": 1.2,
-        "sockets": 1
-      },
-      {
-        "name": "Lidless Wall",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Shield",
-        "damageRange": "same as mainhand",
-        "weaponSpeed": "same as mainhand",
-        "sockets": 1
-      },
-      {
-        "name": "The Gloom Ward",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Shield",
-        "damageRange": "same as mainhand",
-        "weaponSpeed": "same as mainhand",
-        "sockets": 1
       }
     ],
     "Weapon 1": [
@@ -14826,11 +14457,15 @@ window.D4_DATABASE = {
           0,
           1,
           0,
-          0,
+          1,
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Black River",
@@ -14858,7 +14493,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Two-Handed Scythe",
+        "weaponSpeed": 0.9,
+        "damageRange": "3,071 - 4,607",
+        "sockets": 2
       },
       {
         "name": "Cassia's Grace",
@@ -14956,7 +14595,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Eaglehorn",
@@ -14998,7 +14641,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Elegy",
@@ -15194,7 +14841,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Mace",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Misericorde",
@@ -15334,7 +14985,11 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "weaponType": "Dagger",
+        "weaponSpeed": 1.2,
+        "damageRange": "1,152 - 1,728",
+        "sockets": 1
       },
       {
         "name": "Sabre of Tsasgal",
@@ -15362,7 +15017,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Two-Handed Sword",
+        "weaponSpeed": 1,
+        "damageRange": "2,764 - 4,146",
+        "sockets": 2
       },
       {
         "name": "Scepter of the Three",
@@ -15572,7 +15231,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Axe",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "The Grandfather",
@@ -15586,7 +15249,11 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "weaponType": "Two-Handed Sword",
+        "weaponSpeed": 1,
+        "damageRange": "2,764 - 4,146",
+        "sockets": 2
       },
       {
         "name": "The Maestro",
@@ -15628,7 +15295,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Axe",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Vox Omnium",
@@ -15738,11 +15409,15 @@ window.D4_DATABASE = {
           0,
           1,
           0,
-          0,
+          1,
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Black River",
@@ -15770,7 +15445,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Two-Handed Scythe",
+        "weaponSpeed": 0.9,
+        "damageRange": "3,071 - 4,607",
+        "sockets": 2
       },
       {
         "name": "Cassia's Grace",
@@ -15868,7 +15547,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Eaglehorn",
@@ -15910,7 +15593,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Elegy",
@@ -16106,7 +15793,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Mace",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Misericorde",
@@ -16246,7 +15937,11 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "weaponType": "Dagger",
+        "weaponSpeed": 1.2,
+        "damageRange": "1,152 - 1,728",
+        "sockets": 1
       },
       {
         "name": "Sabre of Tsasgal",
@@ -16274,7 +15969,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Two-Handed Sword",
+        "weaponSpeed": 1,
+        "damageRange": "2,764 - 4,146",
+        "sockets": 2
       },
       {
         "name": "Scepter of the Three",
@@ -16484,7 +16183,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Axe",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "The Grandfather",
@@ -16498,7 +16201,11 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "weaponType": "Two-Handed Sword",
+        "weaponSpeed": 1,
+        "damageRange": "2,764 - 4,146",
+        "sockets": 2
       },
       {
         "name": "The Maestro",
@@ -16540,7 +16247,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Axe",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Vox Omnium",
@@ -16650,11 +16361,15 @@ window.D4_DATABASE = {
           0,
           1,
           0,
-          0,
+          1,
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Black River",
@@ -16682,7 +16397,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Two-Handed Scythe",
+        "weaponSpeed": 0.9,
+        "damageRange": "3,071 - 4,607",
+        "sockets": 2
       },
       {
         "name": "Cassia's Grace",
@@ -16780,7 +16499,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Eaglehorn",
@@ -16822,7 +16545,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Elegy",
@@ -17018,7 +16745,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Mace",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Misericorde",
@@ -17158,7 +16889,11 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "weaponType": "Dagger",
+        "weaponSpeed": 1.2,
+        "damageRange": "1,152 - 1,728",
+        "sockets": 1
       },
       {
         "name": "Sabre of Tsasgal",
@@ -17186,7 +16921,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Two-Handed Sword",
+        "weaponSpeed": 1,
+        "damageRange": "2,764 - 4,146",
+        "sockets": 2
       },
       {
         "name": "Scepter of the Three",
@@ -17396,7 +17135,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Axe",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "The Grandfather",
@@ -17410,7 +17153,11 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "weaponType": "Two-Handed Sword",
+        "weaponSpeed": 1,
+        "damageRange": "2,764 - 4,146",
+        "sockets": 2
       },
       {
         "name": "The Maestro",
@@ -17452,7 +17199,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Axe",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Vox Omnium",
@@ -17562,11 +17313,15 @@ window.D4_DATABASE = {
           0,
           1,
           0,
-          0,
+          1,
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Black River",
@@ -17594,7 +17349,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Two-Handed Scythe",
+        "weaponSpeed": 0.9,
+        "damageRange": "3,071 - 4,607",
+        "sockets": 2
       },
       {
         "name": "Cassia's Grace",
@@ -17692,7 +17451,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Eaglehorn",
@@ -17734,7 +17497,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Elegy",
@@ -17930,7 +17697,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Mace",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Misericorde",
@@ -18070,7 +17841,11 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "weaponType": "Dagger",
+        "weaponSpeed": 1.2,
+        "damageRange": "1,152 - 1,728",
+        "sockets": 1
       },
       {
         "name": "Sabre of Tsasgal",
@@ -18098,7 +17873,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Two-Handed Sword",
+        "weaponSpeed": 1,
+        "damageRange": "2,764 - 4,146",
+        "sockets": 2
       },
       {
         "name": "Scepter of the Three",
@@ -18308,7 +18087,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Axe",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "The Grandfather",
@@ -18322,7 +18105,11 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "weaponType": "Two-Handed Sword",
+        "weaponSpeed": 1,
+        "damageRange": "2,764 - 4,146",
+        "sockets": 2
       },
       {
         "name": "The Maestro",
@@ -18364,7 +18151,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Axe",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Vox Omnium",
@@ -18474,11 +18265,15 @@ window.D4_DATABASE = {
           0,
           1,
           0,
-          0,
+          1,
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Black River",
@@ -18506,7 +18301,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Two-Handed Scythe",
+        "weaponSpeed": 0.9,
+        "damageRange": "3,071 - 4,607",
+        "sockets": 2
       },
       {
         "name": "Cassia's Grace",
@@ -18604,7 +18403,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Eaglehorn",
@@ -18646,7 +18449,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Elegy",
@@ -18842,7 +18649,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Mace",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Misericorde",
@@ -18982,7 +18793,11 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "weaponType": "Dagger",
+        "weaponSpeed": 1.2,
+        "damageRange": "1,152 - 1,728",
+        "sockets": 1
       },
       {
         "name": "Sabre of Tsasgal",
@@ -19010,7 +18825,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Two-Handed Sword",
+        "weaponSpeed": 1,
+        "damageRange": "2,764 - 4,146",
+        "sockets": 2
       },
       {
         "name": "Scepter of the Three",
@@ -19220,7 +19039,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Axe",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "The Grandfather",
@@ -19234,7 +19057,11 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "weaponType": "Two-Handed Sword",
+        "weaponSpeed": 1,
+        "damageRange": "2,764 - 4,146",
+        "sockets": 2
       },
       {
         "name": "The Maestro",
@@ -19276,7 +19103,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Axe",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Vox Omnium",
@@ -19386,11 +19217,15 @@ window.D4_DATABASE = {
           0,
           1,
           0,
-          0,
+          1,
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Black River",
@@ -19418,7 +19253,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Two-Handed Scythe",
+        "weaponSpeed": 0.9,
+        "damageRange": "3,071 - 4,607",
+        "sockets": 2
       },
       {
         "name": "Cassia's Grace",
@@ -19516,7 +19355,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Eaglehorn",
@@ -19558,7 +19401,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Elegy",
@@ -19754,7 +19601,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Mace",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Misericorde",
@@ -19894,7 +19745,11 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "weaponType": "Dagger",
+        "weaponSpeed": 1.2,
+        "damageRange": "1,152 - 1,728",
+        "sockets": 1
       },
       {
         "name": "Sabre of Tsasgal",
@@ -19922,7 +19777,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "weaponType": "Two-Handed Sword",
+        "weaponSpeed": 1,
+        "damageRange": "2,764 - 4,146",
+        "sockets": 2
       },
       {
         "name": "Scepter of the Three",
@@ -20132,7 +19991,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Axe",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "The Grandfather",
@@ -20146,7 +20009,11 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "weaponType": "Two-Handed Sword",
+        "weaponSpeed": 1,
+        "damageRange": "2,764 - 4,146",
+        "sockets": 2
       },
       {
         "name": "The Maestro",
@@ -20188,7 +20055,11 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "weaponType": "Axe",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1
       },
       {
         "name": "Vox Omnium",
