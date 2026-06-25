@@ -2829,7 +2829,7 @@
           const vals = itemObj.aspectValues || [];
           let valIndex = 0;
           aspectDescHtml = aspectObj.desc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
-            const v = vals[valIndex] !== undefined ? vals[valIndex] : (min || 0);
+            const v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
             let placeholder = min && max ? `${min}-${max}` : 'value';
             const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}" style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #8ab4f8; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
             valIndex++;
@@ -2858,7 +2858,7 @@
         const vals = itemObj.aspectValues || [];
         let valIndex = 0;
         uniqueDescHtml = uniqueObj.desc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
-          const v = vals[valIndex] !== undefined ? vals[valIndex] : (min || 0);
+          const v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
           let placeholder = min && max ? `${min}-${max}` : 'value';
           const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}" style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #d18a45; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
           valIndex++;
