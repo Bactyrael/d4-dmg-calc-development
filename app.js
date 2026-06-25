@@ -752,15 +752,17 @@
     { label: 'Wrath', min: 2.8, max: 20 }
   ];
 
+  const STANDARD_SLOTS = ['Helm', 'Chest Armor', 'Gloves', 'Pants', 'Boots', 'Mainhand', 'Amulet', 'Left Ring', 'Right Ring', 'Offhand'];
+  
   const CLASS_EQUIPMENT_SLOTS = {
-    'Necromancer': ['Helm', 'Chest Armor', 'Gloves', 'Pants', 'Boots', 'Mainhand', 'Amulet', 'Left Ring', 'Right Ring', 'Offhand'],
+    'Necromancer': [...STANDARD_SLOTS],
     'Barbarian': [],
-    'Druid': [],
-    'Paladin': [],
+    'Druid': [...STANDARD_SLOTS],
+    'Paladin': [...STANDARD_SLOTS],
     'Rogue': [],
-    'Sorcerer': [],
-    'Spiritborn': [],
-    'Warlock': []
+    'Sorcerer': [...STANDARD_SLOTS],
+    'Spiritborn': [...STANDARD_SLOTS],
+    'Warlock': [...STANDARD_SLOTS]
   };
 
   function getDbItems(slotName) {
