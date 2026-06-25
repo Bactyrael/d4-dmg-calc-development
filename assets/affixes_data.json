@@ -1,0 +1,6207 @@
+[
+  {
+    "name": "Abyss Damage",
+    "desc": "+[20.0 - 40.0]% Abyss Damage",
+    "type": "Offensive",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Agility Damage",
+    "desc": "+[20.0 - 40.0]% Agility Damage",
+    "type": "Offensive",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Ancient Damage",
+    "desc": "+[20.0 - 40.0]% Ancient Damage",
+    "type": "Offensive",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Archfiend Damage",
+    "desc": "+[20.0 - 40.0]% Archfiend Damage",
+    "type": "Offensive",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Attack Speed",
+    "desc": "+[5.0 - 8.0]% Attack Speed",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Blood Damage",
+    "desc": "+[20.0 - 40.0]% Blood Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Bone Damage",
+    "desc": "+[20.0 - 40.0]% Bone Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Bone Prison Cooldown Reduction",
+    "desc": "[13.0 - 17.5]% Bone Prison Cooldown Reduction",
+    "type": "Offensive",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": []
+  },
+  {
+    "name": "Brawling Damage",
+    "desc": "+[20.0 - 40.0]% Brawling Damage",
+    "type": "Offensive",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Centipede Damage",
+    "desc": "+[20.0 - 40.0]% Centipede Damage",
+    "type": "Offensive",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Chance for Corpse Explosion to Deal Double Damage",
+    "desc": "+[30.0 - 50.0]% Chance for Corpse Explosion to Deal Double Damage",
+    "type": "Offensive",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": []
+  },
+  {
+    "name": "Cold Damage",
+    "desc": "+[20 - 40]% Cold Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Companion Damage",
+    "desc": "+[20.0 - 40.0]% Companion Damage",
+    "type": "Offensive",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Conjuration Damage",
+    "desc": "+[20.0 - 40.0]% Conjuration Damage",
+    "type": "Offensive",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": []
+  },
+  {
+    "name": "Critical Strike Chance",
+    "desc": "+[5.5 - 6.5]% Critical Strike Chance",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand"
+    ]
+  },
+  {
+    "name": "Critical Strike Damage",
+    "desc": "+[30 - 50]% Critical Strike Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Cutthroat Damage",
+    "desc": "+[20.0 - 40.0]% Cutthroat Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage for 4 Seconds After Picking Up a Blood Orb",
+    "desc": "+[103.5 - 135.0]% Damage for 4 Seconds After Picking Up a Blood Orb",
+    "type": "Offensive",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": []
+  },
+  {
+    "name": "Damage Over Time",
+    "desc": "+[30 - 50]% Damage Over Time",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage per Combo Point Spent",
+    "desc": "+[7.0 - 10.0]% Damage per Combo Point Spent",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage Per Overpower Stack",
+    "desc": "+[7.0 - 10.0]% Damage Per Overpower Stack",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage to Bleeding Enemies",
+    "desc": "+[20.0 - 40.0]% Damage to Bleeding Enemies",
+    "type": "Offensive",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage to Close Enemies",
+    "desc": "+[20.0 - 40.0]% Damage to Close Enemies",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage to Crowd Controlled Enemies",
+    "desc": "+[20.0 - 40.0]% Damage to Crowd Controlled Enemies",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage to Distant Enemies",
+    "desc": "+[20.0 - 40.0]% Damage to Distant Enemies",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage to Frozen Enemies",
+    "desc": "+[30.0 - 50.0]% Damage to Frozen Enemies",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage to Judged Enemies",
+    "desc": "+[20.0 - 40.0]% Damage to Judged Enemies",
+    "type": "Offensive",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage to Weakened Enemies",
+    "desc": "+[20.0 - 40.0]% Damage to Weakened Enemies",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage when Spending Resolve",
+    "desc": "+[40.0 - 60.0]% Damage when Spending Resolve",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage when Swapping Weapons",
+    "desc": "+[30.0 - 50.0]% Damage when Swapping Weapons",
+    "type": "Offensive",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage while Berserking",
+    "desc": "+[30.0 - 50.0]% Damage while Berserking",
+    "type": "Offensive",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage while in Arbiter Form",
+    "desc": "+[20.0 - 40.0]% Damage while in Arbiter Form",
+    "type": "Offensive",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage while Shadowform is Active",
+    "desc": "+[20.0 - 40.0]% Damage while Shadowform is Active",
+    "type": "Offensive",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage with Dual-Wielded Weapons",
+    "desc": "+[20.0 - 40.0]% Damage with Dual-Wielded Weapons",
+    "type": "Offensive",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage with Two-Handed Bludgeoning Weapons",
+    "desc": "+[20.0 - 40.0]% Damage with Two-Handed Bludgeoning Weapons",
+    "type": "Offensive",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Damage with Two-Handed Slashing Weapons",
+    "desc": "+[20.0 - 40.0]% Damage with Two-Handed Slashing Weapons",
+    "type": "Offensive",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Darkness Damage",
+    "desc": "+[20.0 - 40.0]% Darkness Damage",
+    "type": "Offensive",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Demonform Damage Bonus",
+    "desc": "+[20.0 - 40.0]% Demonform Damage Bonus",
+    "type": "Offensive",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Demonology Damage",
+    "desc": "+[20.0 - 40.0]% Demonology Damage",
+    "type": "Offensive",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Dexterity",
+    "desc": "+[69 - 83] Dexterity",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Disciple Damage",
+    "desc": "+[20.0 - 40.0]% Disciple Damage",
+    "type": "Offensive",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Eagle Damage",
+    "desc": "+[20.0 - 40.0]% Eagle Damage",
+    "type": "Offensive",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Earth Damage",
+    "desc": "+[20.0 - 40.0]% Earth Damage",
+    "type": "Offensive",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Earthquake Damage",
+    "desc": "+[20.0 - 40.0]% Earthquake Damage",
+    "type": "Offensive",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Enchantment Damage",
+    "desc": "+[20.0 - 40.0]% Enchantment Damage",
+    "type": "Offensive",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Evade Grants +125% Movement Speed for 3.0 Seconds",
+    "desc": "Evade Grants +125% Movement Speed for 3.0 Seconds",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Feast: Every 10 Kills, release a Bloodsplosion for 30 damage",
+    "desc": "Feast: Every 10 Kills, release a Bloodsplosion for 30 damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Feast: Every 15 Kills, restore 20% of your maximum Primary Resource",
+    "desc": "Feast: Every 15 Kills, restore 20% of your maximum Primary Resource",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Feast: Every 20 Kills, savagely bite 2 times for 225 damage and apply Vulnerable",
+    "desc": "Feast: Every 20 Kills, savagely bite 2 times for 225 damage and apply Vulnerable",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Feast: Every 25 Kills, gain Berserking for 3 seconds",
+    "desc": "Feast: Every 25 Kills, gain Berserking for 3 seconds",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Feast: Every 30 Kills, chains hook 3 nearby enemies",
+    "desc": "Feast: Every 30 Kills, chains hook 3 nearby enemies",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Feast: Every 40 Kills, reset 1 random Cooldown",
+    "desc": "Feast: Every 40 Kills, reset 1 random Cooldown",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Fire Damage",
+    "desc": "+[20 - 40]% Fire Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Fire Damage Over Time",
+    "desc": "+[30.0 - 50.0]% Fire Damage Over Time",
+    "type": "Offensive",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Focus Damage",
+    "desc": "+[20.0 - 40.0]% Focus Damage",
+    "type": "Offensive",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Frost Damage",
+    "desc": "+[20.0 - 40.0]% Frost Damage",
+    "type": "Offensive",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Gorilla Damage",
+    "desc": "+[20.0 - 40.0]% Gorilla Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Grenade Damage",
+    "desc": "+[20.0 - 40.0]% Grenade Damage",
+    "type": "Offensive",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Hellfire Damage",
+    "desc": "+[20.0 - 40.0]% Hellfire Damage",
+    "type": "Offensive",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Holy Damage",
+    "desc": "+[7 - 12]% Holy Damage",
+    "type": "Offensive",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": []
+  },
+  {
+    "name": "Human Damage",
+    "desc": "+[20.0 - 40.0]% Human Damage",
+    "type": "Offensive",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Hunger: 10% increased chance for Feast Items during your Kill Streaks",
+    "desc": "Hunger: 10% increased chance for Feast Items during your Kill Streaks",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Hunger: 10% increased chance for Hunger Items during Kill Streaks",
+    "desc": "Hunger: 10% increased chance for Hunger Items during Kill Streaks",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Hunger: 10% increased chance for Rampage Items during Kill Streaks",
+    "desc": "Hunger: 10% increased chance for Rampage Items during Kill Streaks",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Hunger: 10% increased chance for Runes during your Kill Streaks",
+    "desc": "Hunger: 10% increased chance for Runes during your Kill Streaks",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Hunger: 15% increased Experience from Kill Streaks",
+    "desc": "Hunger: 15% increased Experience from Kill Streaks",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Hunger: 15% increased Reputation from Kill Streaks",
+    "desc": "Hunger: 15% increased Reputation from Kill Streaks",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Hunger: 20% increased chance for additional Salvage Materials during your Kill Streaks",
+    "desc": "Hunger: 20% increased chance for additional Salvage Materials during your Kill Streaks",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Hunger: 25% increased chance for additional Gold during Kill Streaks",
+    "desc": "Hunger: 25% increased chance for additional Gold during Kill Streaks",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Imbued Damage",
+    "desc": "+[20.0 - 40.0]% Imbued Damage",
+    "type": "Offensive",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Imbuement Potency",
+    "desc": "[7.0 - 10.0]% Imbuement Potency",
+    "type": "Offensive",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Intelligence",
+    "desc": "+[69 - 83] Intelligence",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Jaguar Damage",
+    "desc": "+[20.0 - 40.0]% Jaguar Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Judicator Damage",
+    "desc": "+[20.0 - 40.0]% Judicator Damage",
+    "type": "Offensive",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Juggernaut Damage",
+    "desc": "+[20.0 - 40.0]% Juggernaut Damage",
+    "type": "Offensive",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Justice Damage",
+    "desc": "+[20.0 - 40.0]% Justice Damage",
+    "type": "Offensive",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Lightning Damage",
+    "desc": "+[20 - 40]% Lightning Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Lucky Hit: Up to a +% Chance to Daze for 2 Seconds",
+    "desc": "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Daze for 2 Seconds",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Lucky Hit: Up to a +% Chance to Freeze for 2 Seconds",
+    "desc": "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Freeze for 2 Seconds",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Lucky Hit: Up to a +% Chance to Immobilize for 2 Seconds",
+    "desc": "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Immobilize for 2 Seconds",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Lucky Hit: Up to a +% Chance to Make Enemies Vulnerable for 2 Seconds",
+    "desc": "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Make Enemies Vulnerable for 2 Seconds",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Lucky Hit: Up to a +% Chance to Slow for 2 Seconds",
+    "desc": "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Slow for 2 Seconds",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Lucky Hit: Up to a +% Chance to Stun for 2 Seconds",
+    "desc": "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Stun for 2 Seconds",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": []
+  },
+  {
+    "name": "Lucky Hit: Up to a +% Chance to Weaken for 2 Seconds",
+    "desc": "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Weaken for 2 Seconds",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Lucky Hit: Up to a 40% Chance to Deal + Cold Damage",
+    "desc": "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Cold Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Lucky Hit: Up to a 40% Chance to Deal + Fire Damage",
+    "desc": "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Fire Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Lucky Hit: Up to a 40% Chance to Deal + Lightning Damage",
+    "desc": "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Lightning Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Lucky Hit: Up to a 40% Chance to Deal + Physical Damage",
+    "desc": "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Physical Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Lucky Hit: Up to a 40% Chance to Deal + Poison Damage",
+    "desc": "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Poison Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Lucky Hit: Up to a 40% Chance to Deal + Shadow Damage",
+    "desc": "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Shadow Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Macabre Damage",
+    "desc": "+[20.0 - 40.0]% Macabre Damage",
+    "type": "Offensive",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Marksman Damage",
+    "desc": "+[20.0 - 40.0]% Marksman Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Mastery Damage",
+    "desc": "+[20.0 - 40.0]% Mastery Damage",
+    "type": "Offensive",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Mobility Damage",
+    "desc": "+[20.0 - 40.0]% Mobility Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Occult Damage",
+    "desc": "+[20.0 - 40.0]% Occult Damage",
+    "type": "Offensive",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Physical Damage",
+    "desc": "+[20 - 40]% Physical Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Physical Damage Over Time",
+    "desc": "+[30.0 - 50.0]% Physical Damage Over Time",
+    "type": "Offensive",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Poison Damage",
+    "desc": "+[20 - 40]% Poison Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Potency Damage",
+    "desc": "+[20.0 - 40.0]% Potency Damage",
+    "type": "Offensive",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Pyromancy Damage",
+    "desc": "+[20.0 - 40.0]% Pyromancy Damage",
+    "type": "Offensive",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Rampage: +10% Movement Speed per Kill Streak Tier",
+    "desc": "Rampage: +10% Movement Speed per Kill Streak Tier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Rampage: +10% Resource Cost Reduction per Kill Streak Tier",
+    "desc": "Rampage: +10% Resource Cost Reduction per Kill Streak Tier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Rampage: +100 Life On Hit per Kill Streak Tier",
+    "desc": "Rampage: +100 Life On Hit per Kill Streak Tier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Rampage: +2% Dexterity per Kill Streak Tier",
+    "desc": "Rampage: +2% Dexterity per Kill Streak Tier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "pants"
+    ]
+  },
+  {
+    "name": "Rampage: +2% Intelligence per Kill Streak Tier",
+    "desc": "Rampage: +2% Intelligence per Kill Streak Tier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Rampage: +2% Strength per Kill Streak Tier",
+    "desc": "Rampage: +2% Strength per Kill Streak Tier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Rampage: +2% Willpower per Kill Streak Tier",
+    "desc": "Rampage: +2% Willpower per Kill Streak Tier",
+    "type": "Offensive",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "pants"
+    ]
+  },
+  {
+    "name": "Rampage: +3% Maximum Life per Kill Streak Tier",
+    "desc": "Rampage: +3% Maximum Life per Kill Streak Tier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Rampage: +6% Lucky Hit Chance per Kill Streak Tier",
+    "desc": "Rampage: +6% Lucky Hit Chance per Kill Streak Tier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Rampage: +6.0% Cooldown Reduction per Kill Streak Tier",
+    "desc": "Rampage: +6.0% Cooldown Reduction per Kill Streak Tier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Rampage: +8% Attack Speed per Kill Streak Tier",
+    "desc": "Rampage: +8% Attack Speed per Kill Streak Tier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Rampage: +8% Critical Strike Chance per Kill Streak Tier",
+    "desc": "Rampage: +8% Critical Strike Chance per Kill Streak Tier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Shade Damage",
+    "desc": "+[20.0 - 40.0]% Shade Damage",
+    "type": "Offensive",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Shadow Damage",
+    "desc": "+[20 - 40]% Shadow Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Shock Damage",
+    "desc": "+[20.0 - 40.0]% Shock Damage",
+    "type": "Offensive",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Sigil Damage",
+    "desc": "+[20.0 - 40.0]% Sigil Damage",
+    "type": "Offensive",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Steel Grasp Cooldown Reduction",
+    "desc": "[13.5 - 22.5]% Steel Grasp Cooldown Reduction",
+    "type": "Offensive",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": []
+  },
+  {
+    "name": "Storm Damage",
+    "desc": "+[20.0 - 40.0]% Storm Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Strength",
+    "desc": "+[69 - 83] Strength",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Summon Damage",
+    "desc": "+[20.0 - 40.0]% Summon Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Thorns",
+    "desc": "+[611 - 916] Thorns",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest",
+      "helm",
+      "pants"
+    ]
+  },
+  {
+    "name": "Trap Damage",
+    "desc": "+[20.0 - 40.0]% Trap Damage",
+    "type": "Offensive",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Traps Arm Seconds Faster",
+    "desc": "Traps Arm [0.4 - 0.6] Seconds Faster",
+    "type": "Offensive",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Ultimate Damage",
+    "desc": "+[219.0 - 300.0]% Ultimate Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": []
+  },
+  {
+    "name": "Versatile Damage",
+    "desc": "+[20.0 - 40.0]% Versatile Damage",
+    "type": "Offensive",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Vulnerable Damage",
+    "desc": "+[20 - 40]% Vulnerable Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Weapon Damage",
+    "desc": "+[56 - 93] Weapon Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Weapon Mastery Damage",
+    "desc": "+[20.0 - 40.0]% Weapon Mastery Damage",
+    "type": "Offensive",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Werebear Damage",
+    "desc": "+[20.0 - 40.0]% Werebear Damage",
+    "type": "Offensive",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Werewolf Damage",
+    "desc": "+[20.0 - 40.0]% Werewolf Damage",
+    "type": "Offensive",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Willpower",
+    "desc": "+[69 - 83] Willpower",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "x% All Damage Multiplier",
+    "desc": "x[6 - 10]% All Damage Multiplier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "x% Cold Damage Multiplier",
+    "desc": "x[6 - 10]% Cold Damage Multiplier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "x% Critical Strike Damage Multiplier",
+    "desc": "x[13 - 25]% Critical Strike Damage Multiplier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "x% Damage Over Time Multiplier",
+    "desc": "x[15 - 30]% Damage Over Time Multiplier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "x% Fire Damage Multiplier",
+    "desc": "x[6 - 10]% Fire Damage Multiplier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "x% Holy Damage Multiplier",
+    "desc": "x[6 - 10]% Holy Damage Multiplier",
+    "type": "Offensive",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "x% Lightning Damage Multiplier",
+    "desc": "x[6 - 10]% Lightning Damage Multiplier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "x% Physical Damage Multiplier",
+    "desc": "x[6 - 10]% Physical Damage Multiplier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "x% Poison Damage Multiplier",
+    "desc": "x[6 - 10]% Poison Damage Multiplier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "x% Shadow Damage Multiplier",
+    "desc": "x[6 - 10]% Shadow Damage Multiplier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "x% Vulnerable Damage Multiplier",
+    "desc": "x[7 - 11]% Vulnerable Damage Multiplier",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Zealot Damage",
+    "desc": "+[20.0 - 40.0]% Zealot Damage",
+    "type": "Offensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Armor",
+    "desc": "+[689 - 779] Armor",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "gloves",
+      "helm",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Armor in Arbiter Form",
+    "desc": "+[7.0 - 10.0]% Armor in Arbiter Form",
+    "type": "Defensive",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "chest",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Block Chance",
+    "desc": "[2.5 - 5.0]% Block Chance",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "chest",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Chance For Minion Attacks to Fortify You for 3% Maximum Life",
+    "desc": "+[7.0 - 10.0]% Chance For Minion Attacks to Fortify You for 3% Maximum Life",
+    "type": "Defensive",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "chest",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Cold Resistance",
+    "desc": "+[367 - 415] Cold Resistance",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Damage Reduction",
+    "desc": "[7.0 - 11.0]% Damage Reduction",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "mainhand",
+      "offhand"
+    ]
+  },
+  {
+    "name": "Damage Reduction for Your Summons",
+    "desc": "[20.0 - 30.0]% Damage Reduction for Your Summons",
+    "type": "Defensive",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "chest",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Dodge Chance",
+    "desc": "[5.0 - 6.0]% Dodge Chance",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "pants"
+    ]
+  },
+  {
+    "name": "Fire Resistance",
+    "desc": "+[367 - 415] Fire Resistance",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Life On Hit",
+    "desc": "+[98 - 133] Life On Hit",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Life on Kill",
+    "desc": "+[98 - 133] Life on Kill",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "pants",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Life Regeneration",
+    "desc": "+[82 - 111] Life Regeneration",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Lightning Resistance",
+    "desc": "+[367 - 415] Lightning Resistance",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Maximum Life",
+    "desc": "+[541 - 740] Maximum Life",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Maximum Resolve Stacks",
+    "desc": "+[2 - 3] Maximum Resolve Stacks",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "chest",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Physical Resistance",
+    "desc": "+[367 - 415] Physical Resistance",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Poison Resistance",
+    "desc": "+[367 - 415] Poison Resistance",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Resistance to All Elements",
+    "desc": "+[229 - 259] Resistance to All Elements",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Shadow Resistance",
+    "desc": "+[367 - 415] Shadow Resistance",
+    "type": "Defensive",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Arbiter Duration",
+    "desc": "+[15.0 - 25.0]% Arbiter Duration",
+    "type": "Utility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Barrier Generation",
+    "desc": "+[10.0 - 12.5]% Barrier Generation",
+    "type": "Utility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Cooldown Reduction",
+    "desc": "[5.0 - 8.0]% Cooldown Reduction",
+    "type": "Utility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Crowd Control Duration",
+    "desc": "+[12.0 - 15.0]% Crowd Control Duration",
+    "type": "Utility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Defiance Aura Potency",
+    "desc": "+[7.0 - 10.0]% Defiance Aura Potency",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Fanaticism Aura Potency",
+    "desc": "+[7.0 - 10.0]% Fanaticism Aura Potency",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Fortify Generation",
+    "desc": "+[10.0 - 12.5]% Fortify Generation",
+    "type": "Utility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Healing Received",
+    "desc": "+[7.0 - 11.0]% Healing Received",
+    "type": "Utility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Holy Light Aura Potency",
+    "desc": "+[7.0 - 10.0]% Holy Light Aura Potency",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Impairment Reduction",
+    "desc": "[5.0 - 8.0]% Impairment Reduction",
+    "type": "Utility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Lucky Hit Chance",
+    "desc": "+[6.0 - 8.0]% Lucky Hit Chance",
+    "type": "Utility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves",
+      "helm",
+      "offhand"
+    ]
+  },
+  {
+    "name": "Minions Inherit +% of Your Thorns",
+    "desc": "Minions Inherit +[10.0 - 12.5]% of Your Thorns",
+    "type": "Utility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "mainhand",
+      "offhand",
+      "pants"
+    ]
+  },
+  {
+    "name": "Potion Capacity",
+    "desc": "+[1 - 3] Potion Capacity",
+    "type": "Utility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Abyss Skills",
+    "desc": "+[1 - 2] to Abyss Skills",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Advance",
+    "desc": "+[2 - 3] to Advance",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Aegis",
+    "desc": "+[2 - 3] to Aegis",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Agility Skills",
+    "desc": "+[1 - 2] to Agility Skills",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to All Skills",
+    "desc": "+[1 - 2] to All Skills",
+    "type": "Utility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Ancient Skills",
+    "desc": "+[2 - 3] to Ancient Skills",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Arc Lash",
+    "desc": "+[2 - 3] to Arc Lash",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Armored Hide",
+    "desc": "+[2 - 3] to Armored Hide",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Arrow Storm Skills",
+    "desc": "+[2 - 3] to Arrow Storm Skills",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Aura Skills",
+    "desc": "+[1 - 2] to Aura Skills",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Ball Lightning",
+    "desc": "+[2 - 3] to Ball Lightning",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Barrage",
+    "desc": "+[2 - 3] to Barrage",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Bash",
+    "desc": "+[2 - 3] to Bash",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Basic Skills",
+    "desc": "+[1 - 2] to Basic Skills",
+    "type": "Utility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Blade Shift",
+    "desc": "+[2 - 3] to Blade Shift",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Blazing Scream",
+    "desc": "+[2 - 3] to Blazing Scream",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Blessed Hammer",
+    "desc": "+[2 - 3] to Blessed Hammer",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Blessed Shield",
+    "desc": "+[2 - 3] to Blessed Shield",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Blight",
+    "desc": "+[2 - 3] to Blight",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Blizzard",
+    "desc": "+[2 - 3] to Blizzard",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Blood Howl",
+    "desc": "+[2 - 3] to Blood Howl",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Blood Lance",
+    "desc": "+[2 - 3] to Blood Lance",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Blood Mist",
+    "desc": "+[2 - 3] to Blood Mist",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Blood Skills",
+    "desc": "+[1 - 2] to Blood Skills",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Blood Surge",
+    "desc": "+[2 - 3] to Blood Surge",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Bombardment",
+    "desc": "+[2 - 3] to Bombardment",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Bone Prison",
+    "desc": "+[2 - 3] to Bone Prison",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Bone Skills",
+    "desc": "+[1 - 2] to Bone Skills",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Bone Spear",
+    "desc": "+[2 - 3] to Bone Spear",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Bone Spirit",
+    "desc": "+[2 - 3] to Bone Spirit",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Bone Splinters",
+    "desc": "+[2 - 3] to Bone Splinters",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Boulder",
+    "desc": "+[2 - 3] to Boulder",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Brandish",
+    "desc": "+[2 - 3] to Brandish",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Brawling Skills",
+    "desc": "+[1 - 2] to Brawling Skills",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Caltrops",
+    "desc": "+[2 - 3] to Caltrops",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Centipede Skills",
+    "desc": "+[1 - 2] to Centipede Skills",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Chain Lightning",
+    "desc": "+[2 - 3] to Chain Lightning",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Challenging Shout",
+    "desc": "+[2 - 3] to Challenging Shout",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Charge",
+    "desc": "+[2 - 3] to Charge",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Charged Bolts",
+    "desc": "+[2 - 3] to Charged Bolts",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Clash",
+    "desc": "+[2 - 3] to Clash",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Claw",
+    "desc": "+[2 - 3] to Claw",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Cold Imbuement",
+    "desc": "+[2 - 3] to Cold Imbuement",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Combat Skills",
+    "desc": "+[1 - 2] to Combat Skills",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Command Fallen",
+    "desc": "+[2 - 3] to Command Fallen",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Companion Skills",
+    "desc": "+[1 - 2] to Companion Skills",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Concealment",
+    "desc": "+[2 - 3] to Concealment",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Concussive Stomp",
+    "desc": "+[2 - 3] to Concussive Stomp",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Condemn",
+    "desc": "+[2 - 3] to Condemn",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Conjuration Skills",
+    "desc": "+[1 - 2] to Conjuration Skills",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Consecration",
+    "desc": "+[2 - 3] to Consecration",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Core Skills",
+    "desc": "+[1 - 2] to Core Skills",
+    "type": "Utility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Corpse Explosion",
+    "desc": "+[2 - 3] to Corpse Explosion",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Corpse Skills",
+    "desc": "+[1 - 2] to Corpse Skills",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Corpse Tendrils",
+    "desc": "+[2 - 3] to Corpse Tendrils",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Counterattack",
+    "desc": "+[2 - 3] to Counterattack",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Crushing Hand",
+    "desc": "+[2 - 3] to Crushing Hand",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Curse Skills",
+    "desc": "+[1 - 2] to Curse Skills",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Cutthroat Skills",
+    "desc": "+[1 - 2] to Cutthroat Skills",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Cyclone Armor",
+    "desc": "+[2 - 3] to Cyclone Armor",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Dance of Knives",
+    "desc": "+[2 - 3] to Dance of Knives",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Dark Prison",
+    "desc": "+[2 - 3] to Dark Prison",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Dark Shroud",
+    "desc": "+[2 - 3] to Dark Shroud",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Darkness Skills",
+    "desc": "+[1 - 2] to Darkness Skills",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Dash",
+    "desc": "+[2 - 3] to Dash",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Death Blow",
+    "desc": "+[2 - 3] to Death Blow",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Debilitating Roar",
+    "desc": "+[2 - 3] to Debilitating Roar",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Decompose",
+    "desc": "+[2 - 3] to Decompose",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Decrepify",
+    "desc": "+[2 - 3] to Decrepify",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Defensive Skills",
+    "desc": "+[1 - 2] to Defensive Skills",
+    "type": "Utility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Defiance Aura",
+    "desc": "+[2 - 3] to Defiance Aura",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Demonology Skills",
+    "desc": "+[1 - 2] to Demonology Skills",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Disciple Skills",
+    "desc": "+[1 - 2] to Disciple Skills",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Divine Lance",
+    "desc": "+[2 - 3] to Divine Lance",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Doom",
+    "desc": "+[2 - 3] to Doom",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Double Swing",
+    "desc": "+[2 - 3] to Double Swing",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Dread Claws",
+    "desc": "+[2 - 3] to Dread Claws",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Dust Devil Skills",
+    "desc": "+[2 - 3] to Dust Devil Skills",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Eagle Skills",
+    "desc": "+[1 - 2] to Eagle Skills",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Earth Skills",
+    "desc": "+[1 - 2] to Earth Skills",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Earth Spike",
+    "desc": "+[2 - 3] to Earth Spike",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Earthen Bulwark",
+    "desc": "+[2 - 3] to Earthen Bulwark",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Earthquake Skills",
+    "desc": "+[2 - 3] to Earthquake Skills",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Falling Star",
+    "desc": "+[2 - 3] to Falling Star",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Familiar",
+    "desc": "+[2 - 3] to Familiar",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Fanaticism Aura",
+    "desc": "+[2 - 3] to Fanaticism Aura",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Fire Bolt",
+    "desc": "+[2 - 3] to Fire Bolt",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Fireball",
+    "desc": "+[2 - 3] to Fireball",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Firewall",
+    "desc": "+[2 - 3] to Firewall",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Flame Shield",
+    "desc": "+[2 - 3] to Flame Shield",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Flay",
+    "desc": "+[2 - 3] to Flay",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Flurry",
+    "desc": "+[2 - 3] to Flurry",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Focus Skills",
+    "desc": "+[1 - 2] to Focus Skills",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Forceful Arrow",
+    "desc": "+[2 - 3] to Forceful Arrow",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Frenzy",
+    "desc": "+[2 - 3] to Frenzy",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Frost Bolt",
+    "desc": "+[2 - 3] to Frost Bolt",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Frost Nova",
+    "desc": "+[2 - 3] to Frost Nova",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Frost Skills",
+    "desc": "+[1 - 2] to Frost Skills",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Frozen Orb",
+    "desc": "+[2 - 3] to Frozen Orb",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Golem",
+    "desc": "+[1 - 2] to Golem",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Gorilla Skills",
+    "desc": "+[1 - 2] to Gorilla Skills",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Grenade Skills",
+    "desc": "+[2 - 3] to Grenade Skills",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Ground Stomp",
+    "desc": "+[2 - 3] to Ground Stomp",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Hammer of the Ancients",
+    "desc": "+[2 - 3] to Hammer of the Ancients",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Heartseeker",
+    "desc": "+[2 - 3] to Heartseeker",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Hell Fracture",
+    "desc": "+[2 - 3] to Hell Fracture",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Hellfire Skills",
+    "desc": "+[1 - 2] to Hellfire Skills",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Hellion Sting",
+    "desc": "+[2 - 3] to Hellion Sting",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Hemorrhage",
+    "desc": "+[2 - 3] to Hemorrhage",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Holy Bolt",
+    "desc": "+[2 - 3] to Holy Bolt",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Holy Light Aura",
+    "desc": "+[2 - 3] to Holy Light Aura",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Human Skills",
+    "desc": "+[1 - 2] to Human Skills",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Hurricane",
+    "desc": "+[2 - 3] to Hurricane",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Hydra",
+    "desc": "+[2 - 3] to Hydra",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Ice Armor",
+    "desc": "+[2 - 3] to Ice Armor",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Ice Blades",
+    "desc": "+[2 - 3] to Ice Blades",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Ice Shards",
+    "desc": "+[2 - 3] to Ice Shards",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Imbuement Skills",
+    "desc": "+[1 - 2] to Imbuement Skills",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Incinerate",
+    "desc": "+[2 - 3] to Incinerate",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Infernal Breath",
+    "desc": "+[2 - 3] to Infernal Breath",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Invigorating Strike",
+    "desc": "+[2 - 3] to Invigorating Strike",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Iron Maiden",
+    "desc": "+[2 - 3] to Iron Maiden",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Iron Shrapnel Skills",
+    "desc": "+[2 - 3] to Iron Shrapnel Skills",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Iron Skin",
+    "desc": "+[2 - 3] to Iron Skin",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Jaguar Skills",
+    "desc": "+[1 - 2] to Jaguar Skills",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Juggernaut Skills",
+    "desc": "+[1 - 2] to Juggernaut Skills",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Justice Skills",
+    "desc": "+[1 - 2] to Justice Skills",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Kick",
+    "desc": "+[2 - 3] to Kick",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Landslide",
+    "desc": "+[2 - 3] to Landslide",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Leap",
+    "desc": "+[2 - 3] to Leap",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Lightning Spear",
+    "desc": "+[2 - 3] to Lightning Spear",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Lightning Storm",
+    "desc": "+[2 - 3] to Lightning Storm",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Lunging Strike",
+    "desc": "+[2 - 3] to Lunging Strike",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Macabre Skills",
+    "desc": "+[1 - 2] to Macabre Skills",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Marksman Skills",
+    "desc": "+[1 - 2] to Marksman Skills",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Martial Skills",
+    "desc": "+[1 - 2] to Martial Skills",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Mastery Skills",
+    "desc": "+[1 - 2] to Mastery Skills",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Maul",
+    "desc": "+[2 - 3] to Maul",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Meteor",
+    "desc": "+[2 - 3] to Meteor",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Mighty Throw",
+    "desc": "+[2 - 3] to Mighty Throw",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Minion Skills",
+    "desc": "+[1 - 2] to Minion Skills",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Molten Bomb",
+    "desc": "+[2 - 3] to Molten Bomb",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Nature Magic Skills",
+    "desc": "+[1 - 2] to Nature Magic Skills",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Nether Step",
+    "desc": "+[2 - 3] to Nether Step",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Occult Skills",
+    "desc": "+[1 - 2] to Occult Skills",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Payback",
+    "desc": "+[2 - 3] to Payback",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Penetrating Shot",
+    "desc": "+[2 - 3] to Penetrating Shot",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Poison Creeper",
+    "desc": "+[2 - 3] to Poison Creeper",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Poison Imbuement",
+    "desc": "+[2 - 3] to Poison Imbuement",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Poison Trap",
+    "desc": "+[2 - 3] to Poison Trap",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Potency Skills",
+    "desc": "+[1 - 2] to Potency Skills",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Profane Sentinel",
+    "desc": "+[2 - 3] to Profane Sentinel",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Pulverize",
+    "desc": "+[2 - 3] to Pulverize",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Puncture",
+    "desc": "+[2 - 3] to Puncture",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Pyromancy Skills",
+    "desc": "+[1 - 2] to Pyromancy Skills",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Quill Volley",
+    "desc": "+[2 - 3] to Quill Volley",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Rabies",
+    "desc": "+[2 - 3] to Rabies",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Rake",
+    "desc": "+[2 - 3] to Rake",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Rally",
+    "desc": "+[2 - 3] to Rally",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Rallying Cry",
+    "desc": "+[2 - 3] to Rallying Cry",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Rampage",
+    "desc": "+[2 - 3] to Rampage",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Rapid Fire",
+    "desc": "+[2 - 3] to Rapid Fire",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Ravager",
+    "desc": "+[2 - 3] to Ravager",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Ravens",
+    "desc": "+[2 - 3] to Ravens",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Razor Wings",
+    "desc": "+[2 - 3] to Razor Wings",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Reap",
+    "desc": "+[2 - 3] to Reap",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Rend",
+    "desc": "+[2 - 3] to Rend",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Rock Splitter",
+    "desc": "+[2 - 3] to Rock Splitter",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Rupture",
+    "desc": "+[2 - 3] to Rupture",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Rushing Claw",
+    "desc": "+[2 - 3] to Rushing Claw",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Scourge",
+    "desc": "+[2 - 3] to Scourge",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Sever",
+    "desc": "+[2 - 3] to Sever",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Shade Skills",
+    "desc": "+[2 - 3] to Shade Skills",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Shadow Imbuement",
+    "desc": "+[2 - 3] to Shadow Imbuement",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Shadow Step",
+    "desc": "+[2 - 3] to Shadow Step",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Shapeshifting Skills",
+    "desc": "+[1 - 2] to Shapeshifting Skills",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Shield Bash",
+    "desc": "+[2 - 3] to Shield Bash",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Shield Charge",
+    "desc": "+[2 - 3] to Shield Charge",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Shock Skills",
+    "desc": "+[1 - 2] to Shock Skills",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Shred",
+    "desc": "+[2 - 3] to Shred",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Sigil of Chaos",
+    "desc": "+[2 - 3] to Sigil of Chaos",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Sigil of Subversion",
+    "desc": "+[2 - 3] to Sigil of Subversion",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Sigil of Summons",
+    "desc": "+[2 - 3] to Sigil of Summons",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Skeleton Mage",
+    "desc": "+[1 - 2] to Skeleton Mage",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves",
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Skeleton Warrior",
+    "desc": "+[1 - 2] to Skeleton Warrior",
+    "type": "Utility",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Smoke Grenade",
+    "desc": "+[2 - 3] to Smoke Grenade",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Soar",
+    "desc": "+[2 - 3] to Soar",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Spark",
+    "desc": "+[2 - 3] to Spark",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Steel Grasp",
+    "desc": "+[2 - 3] to Steel Grasp",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Stinger",
+    "desc": "+[2 - 3] to Stinger",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Stone Burst",
+    "desc": "+[2 - 3] to Stone Burst",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Storm Skills",
+    "desc": "+[1 - 2] to Storm Skills",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Storm Strike",
+    "desc": "+[2 - 3] to Storm Strike",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Subterfuge Skills",
+    "desc": "+[1 - 2] to Subterfuge Skills",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Teleport",
+    "desc": "+[2 - 3] to Teleport",
+    "type": "Utility",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Thrash",
+    "desc": "+[2 - 3] to Thrash",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Thunderspike",
+    "desc": "+[2 - 3] to Thunderspike",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Tornado",
+    "desc": "+[2 - 3] to Tornado",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Tortured Wretch",
+    "desc": "+[2 - 3] to Tortured Wretch",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to Touch of Death",
+    "desc": "+[2 - 3] to Touch of Death",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Toxic Skin",
+    "desc": "+[2 - 3] to Toxic Skin",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Trample",
+    "desc": "+[2 - 3] to Trample",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Trap Skills",
+    "desc": "+[1 - 2] to Trap Skills",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Twisting Blades",
+    "desc": "+[2 - 3] to Twisting Blades",
+    "type": "Utility",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Tyrant's Grasp",
+    "desc": "+[2 - 3] to Tyrant's Grasp",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Umbral Chains",
+    "desc": "+[2 - 3] to Umbral Chains",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Upheaval",
+    "desc": "+[2 - 3] to Upheaval",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Valor Skills",
+    "desc": "+[1 - 2] to Valor Skills",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Versatile Skills",
+    "desc": "+[1 - 2] to Versatile Skills",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Vortex",
+    "desc": "+[2 - 3] to Vortex",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Wall of Agony",
+    "desc": "+[2 - 3] to Wall of Agony",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "chest"
+    ]
+  },
+  {
+    "name": "Ranks to War Cry",
+    "desc": "+[2 - 3] to War Cry",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Weapon Mastery Skills",
+    "desc": "+[1 - 2] to Weapon Mastery Skills",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Werebear Skills",
+    "desc": "+[1 - 2] to Werebear Skills",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Werewolf Skills",
+    "desc": "+[1 - 2] to Werewolf Skills",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Ranks to Whirlwind",
+    "desc": "+[2 - 3] to Whirlwind",
+    "type": "Utility",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Wind Shear",
+    "desc": "+[2 - 3] to Wind Shear",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Withering Fist",
+    "desc": "+[2 - 3] to Withering Fist",
+    "type": "Utility",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "pants"
+    ]
+  },
+  {
+    "name": "Ranks to Wolves",
+    "desc": "+[2 - 3] to Wolves",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm"
+    ]
+  },
+  {
+    "name": "Ranks to Wrath Skills",
+    "desc": "+[1 - 2] to Wrath Skills",
+    "type": "Utility",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots"
+    ]
+  },
+  {
+    "name": "Ranks to Zeal",
+    "desc": "+[2 - 3] to Zeal",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "gloves"
+    ]
+  },
+  {
+    "name": "Ranks to Zealot Skills",
+    "desc": "+[1 - 2] to Zealot Skills",
+    "type": "Utility",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet"
+    ]
+  },
+  {
+    "name": "Sigil Duration",
+    "desc": "+[30.0 - 50.0]% Sigil Duration",
+    "type": "Utility",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots",
+      "chest",
+      "gloves",
+      "helm",
+      "pants"
+    ]
+  },
+  {
+    "name": "Energy On Kill",
+    "desc": "+[1 - 2] Energy On Kill",
+    "type": "Resource",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "mainhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Energy Regeneration",
+    "desc": "+[3 - 4] Energy Regeneration",
+    "type": "Resource",
+    "classes": [
+      "Rogue"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ]
+  },
+  {
+    "name": "Essence On Kill",
+    "desc": "+[1 - 2] Essence On Kill",
+    "type": "Resource",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Essence Regeneration",
+    "desc": "+[3 - 4] Essence Regeneration",
+    "type": "Resource",
+    "classes": [
+      "Necromancer"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ]
+  },
+  {
+    "name": "Faith On Kill",
+    "desc": "+[1 - 2] Faith On Kill",
+    "type": "Resource",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Faith Regeneration",
+    "desc": "+[3 - 4] Faith Regeneration",
+    "type": "Resource",
+    "classes": [
+      "Paladin"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ]
+  },
+  {
+    "name": "Fury On Kill",
+    "desc": "+[1 - 2] Fury On Kill",
+    "type": "Resource",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "mainhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Fury Regeneration",
+    "desc": "+[3 - 4] Fury Regeneration",
+    "type": "Resource",
+    "classes": [
+      "Barbarian"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ]
+  },
+  {
+    "name": "Lucky Hit: Up to a 15% Chance to Restore + Primary Resource",
+    "desc": "Lucky Hit: Up to a 15% Chance to Restore +[3 - 4] Primary Resource",
+    "type": "Resource",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "gloves",
+      "mainhand",
+      "offhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Mana On Kill",
+    "desc": "+[1 - 2] Mana On Kill",
+    "type": "Resource",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Mana Regeneration",
+    "desc": "+[3 - 4] Mana Regeneration",
+    "type": "Resource",
+    "classes": [
+      "Sorcerer"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ]
+  },
+  {
+    "name": "Maximum Resource",
+    "desc": "+[10 - 15] Maximum Resource",
+    "type": "Resource",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "chest",
+      "helm",
+      "offhand"
+    ]
+  },
+  {
+    "name": "Resource Cost Reduction",
+    "desc": "[4.0 - 6.0]% Resource Cost Reduction",
+    "type": "Resource",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "mainhand",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Resource Generation",
+    "desc": "[8.0 - 11.0]% Resource Generation",
+    "type": "Resource",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "helm",
+      "ring1",
+      "ring2"
+    ]
+  },
+  {
+    "name": "Spirit On Kill",
+    "desc": "+[1 - 2] Spirit On Kill",
+    "type": "Resource",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Spirit Regeneration",
+    "desc": "+[3 - 4] Spirit Regeneration",
+    "type": "Resource",
+    "classes": [
+      "Druid"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ]
+  },
+  {
+    "name": "Vigor On Kill",
+    "desc": "+[1 - 2] Vigor On Kill",
+    "type": "Resource",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "amulet",
+      "mainhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Vigor Regeneration",
+    "desc": "+[3 - 4] Vigor Regeneration",
+    "type": "Resource",
+    "classes": [
+      "Spiritborn"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ]
+  },
+  {
+    "name": "Wrath every 10 Kills",
+    "desc": "+[1 - 2] Wrath every 10 Kills",
+    "type": "Resource",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "2h-bludgeoning",
+      "2h-slashing",
+      "amulet",
+      "mainhand",
+      "offhand",
+      "ring1",
+      "ring2",
+      "2h-ranged"
+    ]
+  },
+  {
+    "name": "Wrath Regeneration",
+    "desc": "+[3 - 4] Wrath Regeneration",
+    "type": "Resource",
+    "classes": [
+      "Warlock"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots",
+      "chest",
+      "helm",
+      "pants"
+    ]
+  },
+  {
+    "name": "Attacks Reduce Evade's Cooldown by Second",
+    "desc": "Attacks Reduce Evade's Cooldown by [1.0 - 1.2] Second",
+    "type": "Mobility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Evade Cooldown Reduction",
+    "desc": "[17.0 - 20.0]% Evade Cooldown Reduction",
+    "type": "Mobility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots"
+    ]
+  },
+  {
+    "name": "Evade Grants +% Movement Speed for 1.5 Seconds",
+    "desc": "Evade Grants +[100 - 125]% Movement Speed for 1.5 Seconds",
+    "type": "Mobility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Maximum Evade Charge",
+    "desc": "+[1 - 2] Maximum Evade Charge",
+    "type": "Mobility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "boots"
+    ]
+  },
+  {
+    "name": "Mobility Cooldown Reduction",
+    "desc": "[5.0 - 8.0]% Mobility Cooldown Reduction",
+    "type": "Mobility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots"
+    ]
+  },
+  {
+    "name": "Movement Speed",
+    "desc": "+[20 - 24]% Movement Speed",
+    "type": "Mobility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots"
+    ]
+  },
+  {
+    "name": "Movement Speed for 4 Seconds After Killing an Elite",
+    "desc": "+[25 - 45]% Movement Speed for 4 Seconds After Killing an Elite",
+    "type": "Mobility",
+    "classes": [
+      "All"
+    ],
+    "tempering": false,
+    "slots": [
+      "amulet",
+      "boots"
+    ]
+  }
+]
