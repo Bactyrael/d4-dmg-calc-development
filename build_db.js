@@ -119,6 +119,24 @@ async function buildDb() {
         });
       }
     });
+    
+    // Inject scraped unique data with min/max values
+    if (fs.existsSync('./assets/uniques_data.json')) {
+      const scrapedUniques = JSON.parse(fs.readFileSync('./assets/uniques_data.json', 'utf8'));
+      scrapedUniques.forEach(su => {
+        if (su.name && su.desc) {
+          if (uniquesMap.has(su.name)) {
+            uniquesMap.get(su.name).desc = su.desc;
+          } else {
+            uniquesMap.set(su.name, {
+              name: su.name,
+              desc: su.desc
+            });
+          }
+        }
+      });
+    }
+
     const uniques = Array.from(uniquesMap.values());
 
     console.log(`Found ${sortedAffixes.length} unique affixes.`);

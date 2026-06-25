@@ -19984,135 +19984,135 @@ window.D4_DATABASE = {
   uniques: [
   {
     "name": "100,000 Steps",
-    "desc": "Ground Stomp's damage is increased by #% plus an additional amount based on the distance traveled since the last casted Ground Stomp's, up to #%."
+    "desc": "Ground Stomp's damage is increased by [20.0 - 25.0]%[x] plus an additional amount based on the distance traveled since the last casted Ground Stomp's, up to [80.0 - 100.0]%[x]."
   },
   {
     "name": "Accord of the Wilds",
-    "desc": "Your Companion Skills each gain 1 additional companions and deal #% bonus damage.\r\n\r\nGain the Passive Effect of Ravens, Wolves and Poison Creeper for free."
+    "desc": "Your Companion Skills each gain 1 additional companions and deal [40 - 50]%[x] bonus damage.Gain the Passive Effect of Ravens, Wolves and Poison Creeper for free."
   },
   {
     "name": "Ae'grom's Schism",
-    "desc": "Ae'grom and its summons deal #% increased damage. You additionally summon Ae'grom's other half and gain a second Charge of Command Ae'grom."
+    "desc": "Ae'grom and its summons deal [30 - 50]%[x] increased damage. You additionally summon Ae'grom's other half and gain a second Charge of Command Ae'grom."
   },
   {
     "name": "Ahavarion, Spear of Lycander",
-    "desc": "Gain a random Shrine effect for # seconds after killing an Elite enemy. Can only occur once every # seconds."
+    "desc": "Gain a random Shrine effect for 20 seconds after killing an Elite enemy. Can only occur once every 30 seconds."
   },
   {
     "name": "Airidah's Inexorable Will",
-    "desc": "Storm Strike chains to twice as many targets and gains #% bonus damage."
+    "desc": "Storm Strike chains to twice as many targets and gains [7 - 10]%[x] bonus damage."
   },
   {
     "name": "Anathema of the Primes",
-    "desc": "Hitting enemies with a Core Skill increases the damage they take from you by #% per Skill, up to #%. Archfiend Demonform Skill Variants are Core Skills and cost Wrath."
+    "desc": "Hitting enemies with a Core Skill increases the damage they take from you by [15 - 20]%[x] per Skill, up to [45 - 60]%[x]. Archfiend Demonform Skill Variants are Core Skills and cost Wrath."
   },
   {
     "name": "Ancients' Oath",
-    "desc": "Enemies hit by Steel Grasp take #% increased damage from you for # seconds."
+    "desc": "Enemies hit by Steel Grasp take [45 - 60]%[x] increased damage from you for 9 seconds."
   },
   {
     "name": "Andariel's Visage",
-    "desc": "Lucky Hit: Up to a #% chance to trigger a poison nova that deals #% of the damage dealt over # seconds to enemies in the area."
+    "desc": "Lucky Hit: Up to a 20% chance to trigger a poison nova that deals 40% of the damage dealt over 5 seconds to enemies in the area."
   },
   {
     "name": "Arcadia",
-    "desc": "Rally Fortifies you for #% of your Maximum Life. Whenever you recover #% of your Maximum Life, gain a charge of Rally."
+    "desc": "Rally Fortifies you for [6.0 - 8.0]% of your Maximum Life. Whenever you recover 8% of your Maximum Life, gain a charge of Rally."
   },
   {
     "name": "Argent Veil",
-    "desc": "Arbiter's Evade triggers a random equipped non-Channeled Core Skill for every # meters traveled. \r\n\r\nCore Skills deal #% increased damage during Arbiter's Evade and for # seconds after."
+    "desc": "Arbiter's Evade triggers a random equipped non-Channeled Core Skill for every 2.0 meters traveled. Core Skills deal [5 - 15]%[x] increased damage during Arbiter's Evade and for 4 seconds after."
   },
   {
     "name": "Arreat's Bearing",
-    "desc": "Your non-Ultimate Skills that summon Ancients will now summon an additional one. Skills that summon Ancients deal #% increased damage."
+    "desc": "Your non-Ultimate Skills that summon Ancients will now summon an additional one. Skills that summon Ancients deal [30.0 - 40.0]%[x] increased damage."
   },
   {
     "name": "Asheara's Khanjar",
-    "desc": "Hits with this weapon increase your Attack Speed by #% and damage by #% for # seconds, up to #% and #% respectively."
+    "desc": "Hits with this weapon increase your Attack Speed by [3.5 - 5.0]%[+] and damage by [11.7 - 16.7]%[x] for 4 seconds, up to [10.5 - 15.0]%[+] and [35.0 - 50.0]%[x] respectively."
   },
   {
     "name": "Assassin's Stride",
-    "desc": "Mobility Skills are always Shadow Imbued with #% increased potency. \r\n\r\nLucky Hit: Damaging an Elite or Boss with a Mobility Skill has up to a #% chance to instantly trigger a free Shadow Imbuement explosion."
+    "desc": "Mobility Skills are always Shadow Imbued with [45 - 60]%[x] increased potency. Lucky Hit: Damaging an Elite or Boss with a Mobility Skill has up to a [45 - 60]% chance to instantly trigger a free Shadow Imbuement explosion."
   },
   {
     "name": "Autumnal Crown",
-    "desc": "Wind Shear now deals # Poisoning damage over # seconds.\r\n\r\nLucky Hit: Wind Shear has up to a #% chance to restore # Spirit."
+    "desc": "Wind Shear now deals [225 - 300] Poisoning damage over 4 seconds.Lucky Hit: Wind Shear has up to a 20.0% chance to restore 100 Spirit."
   },
   {
     "name": "Axial Conduit",
-    "desc": "Casting Chain Lightning has a #% chance to activate # to # additional times."
+    "desc": "Casting Chain Lightning has a 50% chance to activate 1 to [2 - 5] additional times."
   },
   {
     "name": "Azurewrath",
-    "desc": "After Freeze expires, enemies explode for #% of the damage you dealt to them while Frozen."
+    "desc": "After Freeze expires, enemies explode for [100 - 120]% of the damage you dealt to them while Frozen."
   },
   {
     "name": "Balazan's Maxtlatl",
-    "desc": "Your Casts damage Close enemies for #% of your Thorns and also deals #% of this damage as Poisoning over # seconds.\r\n\r\nEach time you've retaliated with Thorns, for # seconds the Poisoning damage is increased by #%, up to #%."
+    "desc": "Your Casts damage Close enemies for [125 - 150]% of your Thorns and also deals 0% of this damage as Poisoning over 3 seconds.Each time you've retaliated with Thorns, for 5 seconds the Poisoning damage is increased by 0%, up to 0%."
   },
   {
     "name": "Band of First Breath",
-    "desc": "Casting Evade consumes # stacks of Resolve to increase your damage dealt by #% for # seconds.\r\n\r\nGain Armored Hide's Passive Effect."
+    "desc": "Casting Evade consumes 1 stack of Resolve to increase your damage dealt by [50 - 60]%[x] for 5 seconds.Gain Armored Hide's Passive Effect."
   },
   {
     "name": "Bands of Ichorous Rose",
-    "desc": "Lucky Hit: Poison or Cold Imbued Skills have up to a #% chance to deploy a Poison Trap while it is equipped, depending on your equipped Poison Trap's element.\r\n\r\nPoison Trap gains the Infiltrator Variant for free and deals #% increased damage."
+    "desc": "Lucky Hit: Poison or Cold Imbued Skills have up to a 35% chance to deploy a Poison Trap while it is equipped, depending on your equipped Poison Trap's element.Poison Trap gains the Infiltrator Variant for free and deals [75 - 90]%[x] increased damage."
   },
   {
     "name": "Bane of Ahjad-Den",
-    "desc": "While channeling Whirlwind, you now periodically hurl out a Mighty Throw that deals #% increased damage."
+    "desc": "While channeling Whirlwind, you now periodically hurl out a Mighty Throw that deals [75.0 - 90.0]%[x] increased damage."
   },
   {
     "name": "Banished Lord's Talisman",
-    "desc": "After you spend # of your Primary Resource, gain # stacks of Overpower. Your Critical Strikes deal #% increased damage per stack of Overpower."
+    "desc": "After you spend 275 of your Primary Resource, gain 4 stacks of Overpower. Your Critical Strikes deal [10 - 12]%[x] increased damage per stack of Overpower."
   },
   {
     "name": "Bastion of Sir Matthias",
-    "desc": "Blocking has a #% chance to retaliate with a Shield Bash. Your Shield Bash damage is increased by #%. "
+    "desc": "Blocking has a 15% chance to retaliate with a Shield Bash. Your Shield Bash damage is increased by [80 - 100]%[x]."
   },
   {
     "name": "Battle Trance",
-    "desc": "Frenzy gains the Barrage Variant for free and can stack # additional times. While at maximum stacks, you deal #% increased damage and your other Skills gain #% increased Attack Speed."
+    "desc": "Increase Frenzy's maximum stacks by 2. While at maximum stacks, you deal [45 - 60]%[x] increased damage and your other Skills gain [20 - 25]%[+] increased Attack Speed."
   },
   {
     "name": "Beastfall Boots",
-    "desc": "When you Cast a non-Channeled Ultimate Skill, it Consumes all of your Energy and deals #% increased damage per Energy Consumed.\r\n\r\nUsing a Cooldown restores # Energy."
+    "desc": "When you Cast a non-Channeled Ultimate Skill, it Consumes all of your Energy and deals [0.60 - 0.75]%[x] increased damage per Energy Consumed.Using a Cooldown restores 25 Energy."
   },
   {
     "name": "Bindings of Attrition",
-    "desc": "Casting Dark Prison consumes #% of your Maximum Life to reset its Cooldown. You gain #% Damage Reduction while Dark Prison is active."
+    "desc": "Casting Dark Prison consumes 48% of your Maximum Life to reset its Cooldown. You gain [20 - 30]% Damage Reduction while Dark Prison is active."
   },
   {
     "name": "Black River",
-    "desc": "Corpse Explosion consumes up to # additional Corpses around the initial Corpse, gaining #% damage and #% Size per additional Corpse consumed."
+    "desc": "Corpse Explosion consumes up to 4 additional Corpses around the initial Corpse, gaining [120 - 160]%[x] damage and [42.0 - 50.0]% Size per additional Corpse consumed."
   },
   {
     "name": "Blood Artisan's Cuirass",
-    "desc": "When you pick up # Blood Orbs, a free Bone Spirit is spawned, dealing bonus damage based on your current Life percent."
+    "desc": "When you pick up [10 - 3] Blood Orbs, a free Bone Spirit is spawned, dealing bonus damage based on your current Life percent."
   },
   {
     "name": "Blood Moon Breeches",
-    "desc": "Your Summons have a #% chance to randomly inflict Decrepify or Iron Maiden when they deal damage.  \r\n\r\nYou deal #% increased Critical Strike Damage to enemies affected by your Curses."
+    "desc": "Your Summons have a [7.0 - 10.0]% chance to randomly inflict Decrepify or Iron Maiden when they deal damage. You deal [50 - 60]%[x] increased Critical Strike Damage to enemies affected by your Curses."
   },
   {
     "name": "Blood Wake",
-    "desc": "Blood Mist casts Corpse Explosion on surrounding Corpses. When Blood Mist detonates a Corpse, its Cooldown is reduced by # second and you gain #% increased Movement Speed for # seconds."
+    "desc": "Blood Mist casts Corpse Explosion on surrounding Corpses. When Blood Mist detonates a Corpse, its Cooldown is reduced by 1 second and you gain [50 - 60]%[+] increased Movement Speed for 3 seconds."
   },
   {
     "name": "Blood-Mad Idol",
-    "desc": "You are always Berserking but take #% increased damage as Burning over # seconds. While Burning, Berserking grants an additional #% increased damage."
+    "desc": "You are always Berserking but take 200%[x] increased damage as Burning over 8 seconds. While Burning, Berserking grants an additional [80 - 100]%[x] increased damage."
   },
   {
     "name": "Bloodless Scream",
-    "desc": "Your Darkness Skills Chill enemies for up to #% and deal #% increased damage to Frozen enemies and bosses.\r\n\r\nEvery # times you damage enemies with Darkness Skills, all Nearby enemies are Feared for # seconds before Freezing for # more seconds."
+    "desc": "Your Darkness Skills Chill enemies for up to 100% and deal [100 - 125]%[x] increased damage to Frozen enemies and bosses.Every 800 times you damage enemies with Darkness Skills, all Nearby enemies are Feared for 0.25 seconds before Freezing for 3 more seconds."
   },
   {
     "name": "Blue Rose",
-    "desc": "Skills that form Ice Spikes deal #% increased damage. \r\n\r\nLucky Hit: Up to a #% chance to form an exploding Ice Spike, dealing # Cold damage. "
+    "desc": "Skills that form Ice Spikes deal [40 - 60]%[x] increased damage. Lucky Hit: Up to a 15% chance to form an exploding Ice Spike, dealing 225 Cold damage."
   },
   {
     "name": "Bridle of Tor'Baalos",
-    "desc": "Your Brimstones deal #% increased damage. Molten Bomb explodes all Brimstones instantly if there are at least 4 total but enemy proximity no longer detonates them."
+    "desc": "Your Brimstones deal [120 - 160]%[x] increased damage. Molten Bomb explodes all Brimstones instantly if there are at least 4 total but enemy proximity no longer detonates them."
   },
   {
     "name": "Bucrani's Grip",
@@ -20128,23 +20128,23 @@ window.D4_DATABASE = {
   },
   {
     "name": "Cage of Madness",
-    "desc": "Your Evade transforms you into an angry Lunatic for up to # seconds that explodes dealing Command Fallen's damage and increasing by #% for every second you're transformed for.\r\n\r\nWhile you are an angry Lunatic, your Movement speed is increased by #% and you periodically spawn a Mini Lunatic that seeks enemies. \r\n\r\nCommand Fallen deals #% increased damage."
+    "desc": "Your Evade transforms you into an angry Lunatic for up to 15 seconds that explodes dealing Command Fallen's damage and increasing by 100%[x] for every second you're transformed for.While you are an angry Lunatic, your Movement speed is increased by 60%[x] and you periodically spawn a Mini Lunatic that seeks enemies. Command Fallen deals [300 - 340]%[x] increased damage."
   },
   {
     "name": "Cassia's Grace",
-    "desc": "Your Arrow Storms last # seconds shorter, deal #% increased damage, and, when created, have a #% chance  to create an additional Arrow Storm on a nearby target."
+    "desc": "Your Arrow Storms last 2 seconds shorter, deal [60 - 90]%[x] increased damage, and, when created, have a 50% chance to create an additional Arrow Storm on a nearby target."
   },
   {
     "name": "Cathedral's Song",
-    "desc": "Lucky Hit: Casting Disciple Skills have up to a #% chance to call down Spear of the Heavens on a random enemy. \r\n\r\nYour Spear of the Heavens damage is increased by #%. "
+    "desc": "Lucky Hit: Casting Disciple Skills have up to a [8 - 10]% chance to call down Spear of the Heavens on a random enemy. Your Spear of the Heavens damage is increased by [80 - 100]%[x]."
   },
   {
     "name": "Chainscourged Mail",
-    "desc": "Casting a damaging Brawling Skill disables it afterwards. When all of these Skills that are on your Action Bar are disabled, they become re-enabled with their Cooldowns refreshed. Brawling Skills you Cast deal #% increased damage for each disabled Skill."
+    "desc": "Casting a damaging Brawling Skill disables it afterwards. When all of these Skills that are on your Action Bar are disabled, they become re-enabled with their Cooldowns refreshed. Brawling Skills you Cast deal [60.0 - 80.0]%[x] increased damage for each disabled Skill."
   },
   {
     "name": "Cluckeye",
-    "desc": "#% chance to cluck on Cast."
+    "desc": "[25 - 50]% chance to cluck on Cast."
   },
   {
     "name": "Cluckonomicon",
@@ -20152,103 +20152,103 @@ window.D4_DATABASE = {
   },
   {
     "name": "Condemnation",
-    "desc": "Your Core Skills deal #% increased damage for # seconds when Consuming 3 Combo Points. Casting Basic Skills always generates 3 Combo Points."
+    "desc": "Your Core Skills deal [45 - 60]%[x] increased damage for 0 seconds when Consuming 3 Combo Points. Casting Basic Skills always generates 3 Combo Points."
   },
   {
     "name": "Coop de Grâce",
-    "desc": "Lucky Hit: Damage to Injured enemies has up to a #% chance to spawn a flock of explosive chickens."
+    "desc": "Lucky Hit: Damage to Injured enemies has up to a [10 - 15]% chance to spawn a flock of explosive chickens."
   },
   {
     "name": "Cowl of Malefic Torment",
-    "desc": "Hex dooms enemies below #% Life, maintaining the Hex and dealing #% of Doom's damage every second until they die. Doom deals #% increased damage."
+    "desc": "Hex dooms enemies below 75% Life, maintaining the Hex and dealing 50% of Doom's damage every second until they die. Doom deals [80 - 100]%[x] increased damage."
   },
   {
     "name": "Cowl of the Nameless",
-    "desc": "Lucky Hit: Imbued Skills have up to a #% chance to trigger a large explosion, dealing #% of the damage dealt and applying the Imbuement effect to each enemy it hits with #% Potency."
+    "desc": "Lucky Hit: Imbued Skills have up to a 40% chance to trigger a large explosion, dealing 75% of the damage dealt and applying the Imbuement effect to each enemy it hits with [120 - 150]%[x] Potency."
   },
   {
     "name": "Craze of the Dead God",
-    "desc": "Direct damage is distributed as Poisoning over the next # seconds and reduced by #%.\r\n\r\nLucky Hit: Direct damage has up to a #% chance based on your Poisoned Life percentage to infect an enemy with Touch of Death."
+    "desc": "When you would take direct damage, it is instead distributed as Poisoning over the next 10 seconds but increased by [10 - 0]%.Lucky Hit: Direct damage has up to a 25% chance based on your Poisoned Life percentage to infect an enemy with Touch of Death."
   },
   {
     "name": "Crown of Lucion",
-    "desc": "Each time you use a Skill with a Primary Resource Cost, gain #% increased damage and Resource Cost is increased by #% for # seconds, stacking up to # times."
+    "desc": "Each time you use a Skill with a Primary Resource Cost, gain [10 - 15]%[x] increased damage and Resource Cost is increased by 30%[+] for 6 seconds, stacking up to 6 times."
   },
   {
     "name": "Cruor's Embrace",
-    "desc": "Casting Blood Surge picks up # Blood Orbs around you to expel smaller blood novas, dealing #% of normal damage."
+    "desc": "Casting Blood Surge picks up 4 Blood Orbs around you to expel smaller blood novas, dealing [50 - 60]% of normal damage."
   },
   {
     "name": "Dark Howl",
-    "desc": "Debilitating Roar is now a Werewolf Skill. In addition, Debilitating Roar increases your damage by #% while in Werewolf form for the duration."
+    "desc": "Debilitating Roar is now a Werewolf Skill. In addition, Debilitating Roar increases your damage by [60 - 80]%[x] while in Werewolf form for the duration."
   },
   {
     "name": "Dark Stalker's Medallion",
-    "desc": "Casting a Skill with a Two-Handed Bludgeoning, Two-Handed Slashing, or Dual-Wielded weapon grants #% increased damage for # seconds.\r\n\r\nWhile all three bonuses are active, you gain #% Crowd Control Duration and Attack Speed."
+    "desc": "Casting a Skill with a Two-Handed Bludgeoning, Two-Handed Slashing, or Dual-Wielded weapon grants [15.0 - 20.0]%[x] increased damage for 15 seconds.While all three bonuses are active, you gain 0%[+] Crowd Control Duration and Attack Speed."
   },
   {
     "name": "Dawnfire",
-    "desc": "Holy Light's passive now deals # Fire Damage every second in a small area around you. Each time an enemy dies within this aura, it increases its damage by #% and burn area by #% for # seconds, up to # times.\r\n\r\nActivating Holy Light Aura refreshes this duration."
+    "desc": "Holy Light's passive now deals [390 - 450] Fire Damage every second in a small area around you. Each time an enemy dies within this aura, it increases its damage by 15%[+] and burn area by 10%[+] for 20 seconds, up to 10 times.Activating Holy Light Aura refreshes this duration."
   },
   {
     "name": "Death's Pavane",
-    "desc": "Dance of Knives drops knives from enemies hit. Picking them up grants you # Energy and increases your Dance of Knives damage by #% for # seconds, stacking up to # times."
+    "desc": "Dance of Knives drops knives from enemies hit. Picking them up grants you 25 Energy and increases your Dance of Knives damage by [25.0 - 30.0]%[x] for 5 seconds, stacking up to 3 times."
   },
   {
     "name": "Deathgrip",
-    "desc": "Your maximum number of Skeleton Warriors is increased by #. Skeleton Warriors cleave with their attacks and deal #% increased damage.\r\n\r\nCommanding them onto a target increases the damage that target takes from your Skeleton Warriors by #%."
+    "desc": "Your maximum number of Skeleton Warriors is increased by 1. Skeleton Warriors cleave with their attacks and deal [40 - 50]%[x] increased damage.Commanding them onto a target increases the damage that target takes from your Skeleton Warriors by [40 - 50]%[x]."
   },
   {
     "name": "Deathless Visage",
-    "desc": "Critical Strikes with Bone Spear form an echo that bursts, dealing #% of its normal damage.\r\n\r\nBone Spear deals #% increased Critical Strike Damage. "
+    "desc": "Critical Strikes with Bone Spear form an echo that bursts, dealing [30 - 40]%[x] of its normal damage.Bone Spear deals [40 - 50]%[x] increased Critical Strike Damage."
   },
   {
     "name": "Deathmask of Nirmitruq",
-    "desc": "You can now overexert yourself while Casting Flurry, spending #% life when you don't have enough Energy. Spending life to Cast Flurry increases its damage by #% and your Attack Speed by #% for # seconds."
+    "desc": "You can now overexert yourself while Casting Flurry, spending 3% life when you don't have enough Energy. Spending life to Cast Flurry increases its damage by [45.0 - 60.0]%[x] and your Attack Speed by 50% for 5 seconds."
   },
   {
     "name": "Deathspeaker's Pendant",
-    "desc": "Blood Surge casts a mini nova on your Minions, dealing # damage. Damage is increased by #% per target drained by the initial cast, up to #%."
+    "desc": "Blood Surge casts a mini nova on your Minions, dealing [41 - 85] damage. Damage is increased by 10% per target drained by the initial cast, up to 50%."
   },
   {
     "name": "Desperate March",
-    "desc": "Evading leaves behind Caltrops. Caltrops gain #% increased Size and deal #% increased damage."
+    "desc": "Evading leaves behind Caltrops. Caltrops gain 50%[+] increased Size and deal [75 - 90]%[x] increased damage."
   },
   {
     "name": "Dirge of Airidah",
-    "desc": "Storm Skills that you Cast grant # Spirit and deal #% bonus damage. These bonuses are doubled when damaging a Vulnerable, Immobilized or Slowed enemy."
+    "desc": "Storm Skills that you Cast grant 1 Spirit and deal [25 - 35]%[x] bonus damage. These bonuses are doubled when damaging a Vulnerable, Immobilized or Slowed enemy."
   },
   {
     "name": "Dirge of Odium",
-    "desc": "Your Basic Skills deal #% increased damage per Wrath you have but you lose #% Wrath per second. Every # Wrath gained beyond your Maximum generates # Dominance."
+    "desc": "Your Basic Skills deal [0.40 - 0.50]%[x] increased damage per Wrath you have but you lose 10% Wrath per second. Every 50 Wrath gained beyond your Maximum generates 1 Dominance."
   },
   {
     "name": "Dolmen Stone",
-    "desc": "When Boulder would have normally expired, it instead explodes dealing an additional #% damage to surrounding enemies."
+    "desc": "When Boulder would have normally expired, it instead explodes dealing an additional [450 - 600] damage to surrounding enemies."
   },
   {
     "name": "Doombringer",
-    "desc": "Lucky Hit: Up to a #% chance to deal # Shadow damage to surrounding enemies and reduce their damage dealt by #% for # seconds."
+    "desc": "Lucky Hit: Up to a 40% chance to deal 1,500 Shadow damage to surrounding enemies and reduce their damage dealt by 25% for 5 seconds."
   },
   {
     "name": "Drognan's Anguish",
-    "desc": "Casting Pyromancy Skills Burns you for #% of your Maximum Life over # seconds. You inflict #% increased Burning damage based on how much of your Life is Burning."
+    "desc": "Casting Pyromancy Skills Burns you for 5% of your Maximum Life over 10 seconds. You inflict [200 - 250]%[x] increased Burning damage based on how much of your Life is Burning."
   },
   {
     "name": "Eaglehorn",
-    "desc": "Penetrating Shot bounces off walls and deals #% more damage."
+    "desc": "Penetrating Shot bounces off walls and deals [60 - 75]%[x] more damage."
   },
   {
     "name": "Earthbreaker",
-    "desc": "Casts of Landslide leave behind Tectonic Spikes that deal # Physical damage over # seconds.\r\n\r\nSpawning a Landslide pillar within Tectonic Spikes has a #% chance to spawn two instead."
+    "desc": "Casts of Landslide leave behind Tectonic Spikes that deal [375 - 525] Physical damage over 2 seconds.Spawning a Landslide pillar within Tectonic Spikes has a [50 - 60]% chance to spawn two instead."
   },
   {
     "name": "Ebonpiercer",
-    "desc": "Blight also shoots # smaller piercing projectiles, each dealing #% of Blight's defiled area damage."
+    "desc": "Blight also shoots 4 smaller piercing projectiles, each dealing [27 - 33]% of Blight's defiled area damage."
   },
   {
     "name": "Echo of Kwatli",
-    "desc": "You deal #% increased damage to Vulnerable enemies.\r\n\r\nAfter making an enemy Vulnerable, your next direct damage dealt to them:\r\n Heals you for #% of your Maximum Life\r\n Generates # Vigor\r\n Removes the Vulnerable effect"
+    "desc": "You deal [53 - 67]%[x] increased damage to Vulnerable enemies.After making an enemy Vulnerable, your next direct damage dealt to them: Heals you for 5% of your Maximum Life Generates 10 Vigor Removes the Vulnerable effect"
   },
   {
     "name": "Eggcecutioner",
@@ -20256,51 +20256,51 @@ window.D4_DATABASE = {
   },
   {
     "name": "Eggis",
-    "desc": "Blocking an attack has a chance to turn the attacker into a Feared chicken for # seconds."
+    "desc": "Blocking an attack has a chance to turn the attacker into a Feared chicken for [3.0 - 4.0] seconds."
   },
   {
     "name": "El'Druin, Sword of Justice",
-    "desc": "Defeating an Elite pack reduces your Skill Cooldowns by # seconds for # seconds."
+    "desc": "Defeating an Elite pack reduces your Skill Cooldowns by 10 seconds for 12 seconds."
   },
   {
     "name": "Elegy",
-    "desc": "Blazing Scream gains the Skull Splitter Variant for free and deals #% increased damage."
+    "desc": "Blazing Scream gains the Skull Splitter Variant for free and deals [20 - 30]%[x] increased damage."
   },
   {
     "name": "Emberfury",
-    "desc": "Overpower increases your Pyromancy Skill damage by #% and size, Mana cost and Cooldowns by #%."
+    "desc": "Overpower increases your Pyromancy Skill damage by [20 - 25]%[x] and size, Mana cost and Cooldowns by 0%."
   },
   {
     "name": "Emblem of Staalbreak",
-    "desc": "Berserking's damage bonus is increased by #%. While not Healthy, you are always Berserk."
+    "desc": "Berserking's damage bonus is increased by [56.7 - 73.3]%[x]. While not Healthy, you are always Berserk."
   },
   {
     "name": "Endurant Faith",
-    "desc": "When you would be damaged for at least #% of your Maximum Life at once, it is instead distributed over the next # seconds and reduced by #%."
+    "desc": "When you would be damaged for at least 30% of your Maximum Life at once, it is instead distributed over the next 4 seconds and reduced by [30 - 40]%."
   },
   {
     "name": "Esadora's Overflowing Cameo",
-    "desc": "Crackling Energy's discharge rate is increased by your Attack Speed, it's damage is increased by #%, and each hit has a #% chance to reduce a random Cooldown by # second."
+    "desc": "Crackling Energy's discharge rate is increased by your Attack Speed, it's damage is increased by [100 - 120]%[x], and each hit has a 25% chance to reduce a random Cooldown by 1 second."
   },
   {
     "name": "Etna's Lost Dagger",
-    "desc": "Dealing # different types of Non-Physical damage increases the Potency of your Imbuement Skills by #% and Non-Physical damage by #% for # seconds. \r\n\r\nBasic Skills are now Imbueable."
+    "desc": "Dealing 2 different types of Non-Physical damage increases the Potency of your Imbuement Skills by [45 - 60]%[x] and Non-Physical damage by [45 - 60]%[x] for 8 seconds. Basic Skills are now Imbueable."
   },
   {
     "name": "Eye of Baal",
-    "desc": "Soul Shard Skills and their demons deal #% increased damage. Casting a Soul Shard Skill increases all your damage by #% for # seconds, up to #%."
+    "desc": "Soul Shard Skills and their demons deal [60 - 80]%[x] damage. Casting a Soul Shard Skill increases all your damage by 10%[x] for 15 seconds, up to 50%[x]."
   },
   {
     "name": "Eyes in the Dark",
-    "desc": "Death Trap deals #% increased damage and will rearm itself after activating, once every # seconds."
+    "desc": "Death Trap deals [75 - 90]%[x] increased damage and will rearm itself after activating, once every 10 seconds."
   },
   {
     "name": "Fang of the Vipermagi",
-    "desc": "Inferno constricts the area # more times and deals #% increased damage."
+    "desc": "Inferno constricts the area 2 more times and deals [20 - 25]%[x] increased damage."
   },
   {
     "name": "Fields of Crimson",
-    "desc": "Rupture's rip deals #% of the total Bleeding damage on an enemy instantly, removing all Bleeding damage from them."
+    "desc": "Rupture's rip deals [38 - 50]% of the total Bleeding damage on an enemy instantly, removing all Bleeding damage from them."
   },
   {
     "name": "Fields of Crimson (Crucible)",
@@ -20308,71 +20308,71 @@ window.D4_DATABASE = {
   },
   {
     "name": "Fist of the Iron Rose",
-    "desc": "Damaging a Close enemy with Marksman or Cutthroat Skills each grant a #% Attack Speed bonus for # seconds.\r\n\r\nWhile both Attack Speed bonuses are active, you deal #% increased damage to Close enemies."
+    "desc": "Damaging a Close enemy with Marksman or Cutthroat Skills each grant a 15%[+] Attack Speed bonus for 8 seconds.While both Attack Speed bonuses are active, you deal [45.0 - 60.0]%[x] increased damage to Close enemies."
   },
   {
     "name": "Fists of Fate",
-    "desc": "Your attacks randomly deal #% to #% of their normal damage."
+    "desc": "Your attacks randomly deal 1% to [250 - 300]% of their normal damage."
   },
   {
     "name": "Flamescar",
-    "desc": "Incinerate gains one final charge, irradiating the area around you and increasing damage dealt by #% but costing an additional # Mana per second."
+    "desc": "Incinerate gains one final charge, irradiating the area around you and increasing damage dealt by [200 - 300]%[x] but costing an additional 50 Mana per second."
   },
   {
     "name": "Fleshrender",
-    "desc": "When Tornadoes expire, they instead seek back toward you. Returning Tornadoes deal #% bonus damage to enemies hit."
+    "desc": "When Tornadoes expire, they instead seek back toward you. Returning Tornadoes deal [40 - 50]%[x] bonus damage to enemies hit."
   },
   {
     "name": "Fleshwrit Carapace",
-    "desc": "Sigil Skills deal #% increased damage. Active Sigils gain # kills every second and unused kills are saved when they expire."
+    "desc": "Sigil Skills deal [70 - 90]%[x] increased damage. Active Sigils gain 1 kill every second and unused kills are saved when they expire."
   },
   {
     "name": "Flickerstep",
-    "desc": "Each enemy you Evade through reduces your active Ultimate Cooldown by # seconds, up to # seconds."
+    "desc": "Each enemy you Evade through reduces your active Ultimate Cooldown by [3.0 - 4.0] seconds, up to 10 seconds."
   },
   {
     "name": "Footfalls of the Waning World",
-    "desc": "Your Evade is now Nether Step and your Evade Cooldown is reduced by # seconds as you lose or consume Shadowform stacks."
+    "desc": "Your Evade is now Nether Step and your Evade Cooldown is reduced by [0.60 - 1.00] seconds as you lose or consume Shadowform stacks."
   },
   {
     "name": "Fractured Runestone",
-    "desc": "Your Earth Skills deal #% bonus Critical Strike damage. This bonus is increased to #% with at least # stacks of Overpower. You passively gain 2 stacks of Overpower every # seconds."
+    "desc": "Your Earth Skills deal [40 - 50]%[x] bonus Critical Strike damage. This bonus is increased to [80 - 100]%[x] with at least 4 stacks of Overpower. You passively gain 2 stacks of Overpower every 10 seconds."
   },
   {
     "name": "Fractured Winterglass",
-    "desc": "Casting a Core Skill has a #% chance to summon a Conjuration of the same element.\r\n\r\nEach active Conjuration grants:\r\n #% increased damage\r\n # Mana per second\r\n #% Movement Speed\r\n #% Damage Reduction"
+    "desc": "Casting a Core Skill has a 25% chance to summon a Conjuration of the same element.Each active Conjuration grants: [3.0 - 6.0]%[x] increased damage 1 Mana per second 5%[+] Movement Speed 2.5%[+] Damage Reduction"
   },
   {
     "name": "Frostburn",
-    "desc": "Lucky Hit: Up to a #% chance to Freeze enemies for # second.\r\n\r\nYou deal #% increased damage to Frozen enemies."
+    "desc": "Lucky Hit: Up to a 50% chance to Freeze enemies for 1 second.You deal [40 - 50]%[x] increased damage to Frozen enemies."
   },
   {
     "name": "Fury of the Wilds",
-    "desc": "When you Shapeshift into either Werewolf or Werebear form, you gain Berserking for # seconds. Additionally, Berserking grants # stack of Ferocity every # second while active.\r\n\r\nBerserking's damage bonus is increased by #%."
+    "desc": "When you Shapeshift into either Werewolf or Werebear form, you gain Berserking for [6 - 8] seconds. Additionally, Berserking grants 1 stack of Ferocity every 1 second while active.Berserking's damage bonus is increased by 10%[+]."
   },
   {
     "name": "Galvanic Azurite",
-    "desc": "Cast Shock Skill damage leaves enemies Magnetized for # seconds, causing them to emit Crackling Energy and receive #% increased Shock damage from you. \r\n\r\nCrackling Energy's damage Pulls Magnetized enemies together."
+    "desc": "Cast Shock Skill damage leaves enemies Magnetized for 4 seconds, causing them to emit Crackling Energy and receive [40.0 - 60.0]%[x] increased Shock damage from you. Crackling Energy's damage Pulls Magnetized enemies together."
   },
   {
     "name": "Gate of the Red Dawn",
-    "desc": "Juggernaut Core Skills are empowered, dealing #% increased damage to the first enemy hit and storing the damage dealt to that target, up to # times. \r\n\r\nFortress unleashes this stored damage to all enemies within its area."
+    "desc": "Juggernaut Core Skills are empowered, dealing [100 - 120]%[x] increased damage to the first enemy hit and storing the damage dealt to that target, up to 10 times. Fortress unleashes this stored damage to all enemies within its area."
   },
   {
     "name": "Gathlen's Birthright",
-    "desc": "Cyclone Armor is automatically triggered once every # seconds. Cyclone Armor's passive grants you #% Damage Reduction."
+    "desc": "Cyclone Armor is automatically triggered once every [8 - 5] seconds. This effect does not incur the Cooldown."
   },
   {
     "name": "Gauntlets of Sheol",
-    "desc": "Fiend of Abaddon deals #% increased damage.\r\nSummoning Fiend of Abaddon sacrifices all other Greater Demon Summons, dealing Fiend of Abaddon's damage around them and increasing his damage by #% per demon killed."
+    "desc": "Summoning Fiend of Abaddon sacrifices all other Greater Demon Summons, dealing Fiend of Abaddon's damage around them and increasing his damage by [23 - 33]%[x] per demon killed."
   },
   {
     "name": "Gift of Frost",
-    "desc": "Ice Armor gains the Permafrost Variant for free and has #% increased potency."
+    "desc": "Ice Armor gains the Permafrost Variant for free and [20 - 25]% increased potency."
   },
   {
     "name": "Gladiator's Triumph",
-    "desc": "The first direct damage you deal to an enemy is a guaranteed Critical Strike. When a Marksman Skill first Critically Strikes, it gains #% increased damage, and you gain # Overpower. This can stack up to # over your Maximum Overpower."
+    "desc": "The first direct damage you deal to an enemy is a guaranteed Critical Strike. When a Marksman Skill first Critically Strikes, it gains [90 - 120]%[x] increased damage, and you gain 1 Overpower. This can stack up to 4 over your Maximum Overpower."
   },
   {
     "name": "Gloves Unique Druid 98",
@@ -20380,95 +20380,95 @@ window.D4_DATABASE = {
   },
   {
     "name": "Gloves of the Illuminator",
-    "desc": "Fireball now bounces as it travels, exploding each time it hits the ground, but its explosion deals #% of normal damage."
+    "desc": "Fireball now bounces as it travels, exploding each time it hits the ground, but its explosion deals [70 - 100]% of normal damage."
   },
   {
     "name": "Godslayer Crown",
-    "desc": "When you attempt to Incapacitate an enemy, you mark them and all surrounding enemies, pulling them in and dealing #% increased damage to them."
+    "desc": "When you attempt to Incapacitate an enemy, you mark them and all surrounding enemies, pulling them in and dealing [30 - 40]%[x] increased damage to them."
   },
   {
     "name": "Gohr's Devastating Grips",
-    "desc": "Whirlwind deals #% increased damage and pulls enemies to you every # seconds."
+    "desc": "Whirlwind deals [75 - 90]% increased damage and pulls enemies to you every 2 seconds."
   },
   {
     "name": "Gospel of the Devotee",
-    "desc": "Your Basic Skills gain all Upgrades for free. Damaging an enemy with a Basic Skill causes them to take #% increased damage from your other Basic Skills for # seconds."
+    "desc": "Your Basic Skills gain the effect of every Upgrade. Damaging an enemy with a Basic Skill causes them to take [30 - 40]%[x] increased damage from your other Basic Skills for 10 seconds."
   },
   {
     "name": "Grasp of Shadow",
-    "desc": "Casting a Marksman or Cutthroat Skill has a #% chance to Summon a Shadow Clone that mimics that Skill."
+    "desc": "Casting a Marksman or Cutthroat Skill has a [45 - 60]% chance to Summon a Shadow Clone that mimics that Skill."
   },
   {
     "name": "Gravewalker's Hand",
-    "desc": "Your Essence Generation is increased by #%. Your Bone Skills deal #% increased damage for each point of Essence you have when Cast, up to #%."
+    "desc": "Your Essence Generation is increased by [30 - 40]%. Your Bone Skills deal 0.5%[x] increased damage for each point of Essence you have when Cast, up to [60 - 80]%[x]."
   },
   {
     "name": "Greatstaff of the Crone",
-    "desc": "Claw gains all Variants for free and deals #% increased damage."
+    "desc": "Claw gains all Variants and gains [15 - 20]%[x] bonus damage."
   },
   {
     "name": "Greaves of the Empty Tomb",
-    "desc": "Sever leaves behind Desecrated Ground that deals # Corrupting damage over # seconds."
+    "desc": "Sever leaves behind Desecrated Ground that deals [300 - 1,200] Corrupting damage over 2 seconds."
   },
   {
     "name": "Greenwalker's Oath",
-    "desc": "Poison Creeper gains the Germinate Variant for free and deals #% increased damage."
+    "desc": "Poison Creeper gains the Germinate Variant for free and deals [30 - 40]%[x] bonus damage."
   },
   {
     "name": "Greenwalker's Signet",
-    "desc": "Casting or Channeling a Human Skill has a #% chance to trigger an additional equipped non-Ultimate Human Skill. Human Skills deal #% bonus damage."
+    "desc": "Casting or Channeling an Human Skill has a 15% chance to trigger an additional equipped non-Ultimate Human Skill. Human Skills deal [40 - 50]%[x] bonus damage."
   },
   {
     "name": "Griswold's Opus",
-    "desc": "Dealing direct damage grants #% increased Critical Strike Damage for each enemy hit within # seconds, up to #%.\r\n\r\nAt Maximum you gain:\r\n\r\nLucky Hit: Critical Strikes have up to a #% chance to deal double damage, Heal for # Life, and refresh the duration of the bonus."
+    "desc": "Dealing direct damage grants [0.80 - 1.00]%[x] increased Critical Strike Damage for each enemy hit within 10 seconds, up to [40 - 50]%[x].At Maximum you gain:Lucky Hit: Critical Strikes have up to a 50% chance to deal double damage, Heal for [130 - 150] Life, and refresh the duration of the bonus."
   },
   {
     "name": "Hail of Verglas",
-    "desc": "Gain Ice Shards' Piercing Cold upgrade. Ice Shards deals #% bonus damage."
+    "desc": "Gain Ice Shards' Piercing Cold upgrade. Ice Shards deals [30 - 50]%[x] bonus damage."
   },
   {
     "name": "Hand of Apotheosis",
-    "desc": "Metamorphosis gains all Upgrades for free and they are #% more potent."
+    "desc": "Metamorphosis gains all Side Upgrades for free and they are [30 - 50]%[+] more potent."
   },
   {
     "name": "Hands of the Worldbreaker",
-    "desc": "Apocalypse deals up to #% increased damage when cast in Sigil of Chaos based on the number of kills the Sigil has stored. \r\n\r\nApocalypse is now also a Sigil Skill."
+    "desc": "Apocalypse deals up to [340 - 400]%[x] increased damage when cast in Sigil of Chaos based on the number of kills the Sigil has stored. Apocalypse is now also a Sigil Skill."
   },
   {
     "name": "Hangman's Hand",
-    "desc": "Sever deals #% increased damage and sends out # additional specter to attack a nearby enemy."
+    "desc": "Sever deals [10 - 15]%[x] increased damage and sends out 1 additional specter to attack a nearby enemy."
   },
   {
     "name": "Harlequin Crest",
-    "desc": "Gain +# Rank to all Skills."
+    "desc": "Gain 20% Damage Reduction. In addition, gain +4 Ranks to all Skills."
   },
   {
     "name": "Harmony of Ebewaka",
-    "desc": "According to your secondary Spirit Hall choice, your Skills are all additionally Jaguar, Eagle, Gorilla, or Centipede Skills.\r\n\r\nYour Skills deal #% increased damage per Spirit type they have."
+    "desc": "According to your secondary Spirit Hall choice, your Skills are all additionally Jaguar, Eagle, Gorilla, or Centipede Skills.Your Skills deal [25 - 30]%[x] increased damage per Spirit type they have."
   },
   {
     "name": "Heart of Azgar",
-    "desc": "When you hit at least 1 enemy with Maul, increase its Attack Speed by #% and damage by #% for # seconds, stacking up to # times."
+    "desc": "When you hit at least 1 enemy with Maul, increase its Attack Speed by 3%[+] and damage by [20 - 25]%[x] for 5 seconds, stacking up to 5 times."
   },
   {
     "name": "Hecaton Chasm",
-    "desc": "Tyrant's Grasp deals #% increased damage and summons # additional demonic hands in all directions."
+    "desc": "Tyrant's Grasp deals [100 - 120]%[x] increased damage and summons 5 additional demonic hands in all directions."
   },
   {
     "name": "Heir of Perdition",
-    "desc": "Succumb to hatred and earn Mother's Favor. Slaughtering enemies briefly steals #% Critical Strike Chance from surrounding allies with Mother's Favor.\r\nMother's Favor always grants you #% increased damage."
+    "desc": "Succumb to hatred and earn Mother's Favor, increasing your damage dealt by 80%[x]. Slaughter enemies to briefly steal Mother's Favor from surrounding allies."
   },
   {
     "name": "Hellbrand Signet",
-    "desc": "Sigil of Chaos gains the Diabolic Rebuke Variant for free and deals #% increased damage."
+    "desc": "Sigil of Chaos gains the Diabolic Rebuke Variant for free and deals [50 - 70]%[x] increased damage."
   },
   {
     "name": "Hellhammer",
-    "desc": "Upheaval gains the Iron Burst Variant for free and deals #% increased damage."
+    "desc": "Upheaval gains the Iron Burst Variant and deals [60.0 - 75.0]%[x] increased damage."
   },
   {
     "name": "Hellhound's Sabatons",
-    "desc": "Abodian deals #% increased damage. After Command Abodian ends you are connected with a fire chain that deals Command Abodian's Drag damage periodically and grants you #% Movement Speed for # seconds."
+    "desc": "Abodian deals [80 - 100]%[x] increased damage. After Command Abodian ends you are connected with a fire chain that deals Command Abodian's Drag damage periodically and grants you 25%[x] Movement Speed for 10 seconds."
   },
   {
     "name": "Helm Unique Druid 98",
@@ -20476,187 +20476,187 @@ window.D4_DATABASE = {
   },
   {
     "name": "Herald of Zakarum",
-    "desc": "Gain #% increased Strength, Resistance, Armor and Retribution Chance.\r\n\r\nRetribution gains #% increased Size."
+    "desc": "Gain [40 - 50]% increased Strength, Resistance, Armor and Retribution Chance.Retribution gains 50%[+] increased Size."
   },
   {
     "name": "Herald's Morningstar",
-    "desc": "Blessed Hammer deals #% increased damage.\r\n\r\nLucky Hit: Up to a #% chance to spawn a base Blessed Hammer on the target hit."
+    "desc": "Blessed Hammer deals [80 - 100]%[x] increased damage.Lucky Hit: Up to a 20% chance to spawn a base Blessed Hammer on the target hit."
   },
   {
     "name": "Hesha e Kesungi",
-    "desc": "The Protector can be invoked at range and Pulls inward with its smashes. Enemies in its area take #% increased damage from your Gorilla Skills, doubled while they are Knocked Down or a Boss. "
+    "desc": "The Protector can be invoked at range and Pulls inward with its smashes. Enemies in its area take [50 - 60]%[x] increased damage from your Gorilla Skills, doubled while they are Knocked Down or a Boss."
   },
   {
     "name": "Hooves of the Mountain God",
-    "desc": "Casting a Basic Skill while at Maximum Fury causes your Fury to increasingly Drain until you run out, during which your Basic skills now cleave dealing #% increased damage."
+    "desc": "Casting a Basic Skill while at Maximum Fury causes your Fury to increasingly Drain until you run out, during which your Basic skills now cleave dealing [45 - 60]%[x] increased damage."
   },
   {
     "name": "Howl from Below",
-    "desc": "Instead of detonating immediately, Corpse Explosion now Summons a Volatile Skeleton that charges at a random enemy and explodes. \r\n\r\nCorpse Explosion deals #% increased damage."
+    "desc": "Instead of detonating immediately, Corpse Explosion now Summons a Volatile Skeleton that charges at a random enemy and explodes. Corpse Explosion deals [70 - 90]%[x] increased damage."
   },
   {
     "name": "Hunter's Zenith",
-    "desc": "When Hurricane ends or after it lasts # seconds, an explosion occurs dealing #% of the total damage dealt by up to # hits of Hurricane."
+    "desc": "When Hurricane ends or after it lasts 10 seconds, an explosion occurs dealing [40 - 60]%[x] of the total damage dealt by up to 40 hits of Hurricane."
   },
   {
     "name": "Iceheart Brais",
-    "desc": "Your Conjurations periodically unleash Frost Nova. Enemies affected by Frost Nova take #% increased damage from you."
+    "desc": "Your Conjurations periodically unleash Frost Nova. Enemies affected by Frost Nova take [20 - 30]%[x] increased damage from you."
   },
   {
     "name": "Ifeh's Dire Totem",
-    "desc": "Grizzly Rage is now a Werewolf Skill and Shapeshifts you into a Dire Werewolf. Dire Werewolves gain #% Critical Strike Damage, #% bonus Poisoning damage and Spirit Cost Reduction instead of Armor. In addition, kills Heal you for #% of your Maximum Life."
+    "desc": "Grizzly Rage is now a Werewolf Skill and Shapeshifts you into a Dire Werewolf. Dire Werewolves gain [100 - 125]%[x] Critical Strike Damage, [100 - 125]%[x] bonus Poisoning damage and Spirit Cost Reduction instead of Armor. In addition, kills Heal you for 5% of your Maximum Life."
   },
   {
     "name": "Indira's Memory",
-    "desc": "Blood Wave is additionally a Bone Skill. It spawns a Bone Prison at its end point and increases your Blood Skill damage by #% for # seconds when Cast.\r\n\r\nAll Bone Spears are additionally Blood Skills. Your Bone Spears consume a Corpse to launch another Bone Spear and drain #% of your Maximum Life."
+    "desc": "Blood Wave is additionally a Bone Skill. It spawns a Bone Prison at its end point and increases your Blood Skill damage by [20 - 40]%[x] for 8 seconds when Cast.All Bone Spears are additionally Blood Skills. Your Bone Spears consume a Corpse to launch another Bone Spear and drain 10% of your Maximum Life."
   },
   {
     "name": "Infernal Homunculus",
-    "desc": "Your Archfiend Skills deal #% increased damage and gain their Lesser Demon Upgrades for free with #% longer durations."
+    "desc": "Your Archfiend Skills deal [50 - 70]%[x] increased damage and gain their Lesser Demon Side Upgrades for free with 200% longer durations."
   },
   {
     "name": "Insatiable Fury",
-    "desc": "For # seconds after Casting Trample, you may Cast Trample again without incurring the Cooldown. Trample additionally deals #% bonus damage."
+    "desc": "For 2 seconds after Casting Trample, you may Cast Trample again without incurring the Cooldown. Trample additionally deals [150 - 200]%[x] bonus damage."
   },
   {
     "name": "Jacinth Shell",
-    "desc": "Spending Vigor Heals you for #% of your Maximum Life. \r\n\r\nEvery second, your active Cooldowns each drain #% Maximum Life from you to reduce their durations by # seconds. "
+    "desc": "Spending Vigor Heals you for [7 - 10]% of your Maximum Life. Every second, your active Cooldowns each drain 10% Maximum Life from you to reduce their durations by 2 seconds."
   },
   {
     "name": "Judgment of Auriel",
-    "desc": "Arbiter of Justice gains all Variants and grants you #% increased damage and Damage Reduction for each Skill Rank it has while in Arbiter form. This bonus doubles for # seconds after Arbiter of Justice lands."
+    "desc": "Arbiter of Justice gains all Variants and grants you [0.53 - 0.67]%[x] increased damage and Damage Reduction for each Skill Rank it has while in Arbiter form. This bonus doubles for 30 seconds after Arbiter of Justice lands."
   },
   {
     "name": "Judicant's Glaivehelm",
-    "desc": "Lucky Hit: Judicator Skills have up to a #% chance to call down a Blessed Spear that carries a Judgement mark and deals Judgement's damage on impact."
+    "desc": "Lucky Hit: Judicator Skills have up to a [30 - 40]% chance to call down a Blessed Spear that carries a Judgement mark and deals Judgement's damage on impact."
   },
   {
     "name": "Kabraxis' Will",
-    "desc": "Wall of Agony gains the Fallen Army Variant for free and deals #% increased damage."
+    "desc": "Wall of Agony gains the Fallen Army Variant for free and deals [20 - 30]%[x] increased damage."
   },
   {
     "name": "Kessime's Legacy",
-    "desc": "Blood Wave now forms a wave on each side of you. Both waves converge at your feet, Pulling In all surrounding enemies and exploding for # damage."
+    "desc": "Blood Wave now forms a wave on each side of you. Both waves converge at your feet, Pulling In all surrounding enemies and exploding for [375 - 450] damage."
   },
   {
     "name": "Khamsin Steppewalkers",
-    "desc": "Earthen Bulwark gains the Earthen Shrapnel Variant for free and deals #% increased damage."
+    "desc": "Gain Earthen Bulwark's Earthen Shrapnel upgrade for free and the damage is increased by [150 - 200]%[x]."
   },
   {
     "name": "Kilt of Blackwing",
-    "desc": "Ravens deal #% increased damage and Shapeshifting into a different form or activating a Companion Skill Summons a Raven that attacks nearby enemies. Summoning a Raven has a chance to call forth an Unkindness for # seconds, increasing the number of Ravens Summoned to # for the duration."
+    "desc": "Ravens deal [80.0 - 100.0]%[x] increased damage and Shapeshifting into a different form or activating a Companion Skill Summons a Raven that attacks nearby enemies. Summoning a Raven has a chance to call forth an Unkindness for 10 seconds, increasing the number of Ravens Summoned to 3 for the duration."
   },
   {
     "name": "Levin Grasp",
-    "desc": "Spark shocks enemies #-# additional times and deals #% increased damage."
+    "desc": "Spark shocks enemies 1-9 additional times and deals [20 - 30]%[x] increased damage."
   },
   {
     "name": "Lidless Wall",
-    "desc": "Lucky Hit: While you have an active Bone Storm, hitting an enemy has up to a #% chance to spawn a Bone Storm around their location. \r\n\r\nEach Sacrifice bonus increases this chance by #% and allows you to spawn # additional Bone Storm. Each active Bone Storm grants #% Critical Strike Damage, up to #%."
+    "desc": "Lucky Hit: While you have an active Bone Storm, hitting an enemy has up to a [35 - 45]% chance to spawn a Bone Storm around their location. Each Sacrifice bonus increases this chance by 25% and allows you to spawn 1 additional Bone Storm. Each active Bone Storm grants 30%[x] Critical Strike Damage, up to 150%[x]."
   },
   {
     "name": "Light's Rebuke",
-    "desc": "Enemies impaled by the first strike of Divine Lance take #% increased damage from Divine Lance's subsequent hits."
+    "desc": "Enemies impaled by the first strike of Divine Lance take [110 - 150]% increased damage from Divine Lance's subsequent hits."
   },
   {
     "name": "Litany of Sable",
-    "desc": "Dread Claws deals #% increased damage and additional claws fire out when you gain a stack of Shadowform."
+    "desc": "Dread Claws deals [100 - 120]%[x] increased damage and additional claws fire out when you gain a stack of Shadowform."
   },
   {
     "name": "Locran's Talisman",
-    "desc": "Critical Strikes deal #% increased damage but your Critical Strike Chance is reduced by #%."
+    "desc": "Critical Strikes deal [80 - 100]%[x] increased damage but your Critical Strike Chance is reduced by 50%[+]."
   },
   {
     "name": "Loyalty's Mantle",
-    "desc": "While your Spirit Hall choices match:\r\n Their bonuses are #% more potent.\r\n Skills of their Base Spirit gain #% Vigor Cost Reduction.\r\n Skills of their Base Spirit gain #% Cooldown Reduction."
+    "desc": "While your Spirit Hall choices match: Their bonuses are 100% more potent. Skills of their Base Spirit gain [50 - 60]% Vigor Cost Reduction. Skills of their Base Spirit gain [50 - 60]% Cooldown Reduction."
   },
   {
     "name": "Lurid Pact",
-    "desc": "Rampage deals #% increased damage. Each enemy or demon killed by Rampage increases the size of the brute and its smashes by #%, up to #%."
+    "desc": "Rampage deals [200 - 240]%[x] increased damage. Each enemy or demon killed by Rampage increases the size of the brute and its smashes by 5%, up to 50%."
   },
   {
     "name": "Mace of King Leoric",
-    "desc": "Your Golem will consume one of your Skeleton Mages or Skeleton Warriors every # seconds, healing to full Life and gaining #% increased damage for # seconds."
+    "desc": "Your Golem will consume one of your Skeleton Mages or Skeleton Warriors every 8 seconds, healing to full Life and gaining [70 - 80]%[x] increased damage for 10 seconds."
   },
   {
     "name": "Mad Wolf's Glee",
-    "desc": "Lacerate has no Cooldown, costs # Spirit to cast and deals #% bonus damage but no longer grants Immunity.\r\n\r\nLacerate is also a Core Skill."
+    "desc": "Lacerate has no Cooldown, costs 100 Spirit to cast and deals [80 - 100]%[x] bonus damage but no longer grants Immunity.Lacerate is also a Core Skill."
   },
   {
     "name": "Malefic Crescent",
-    "desc": "Blood Howl is automatically cast when you Shapeshift into a Werewolf and every # seconds while in Werewolf form. In addition, you gain #% bonus damage for # seconds whenever Blood Howl is triggered."
+    "desc": "Blood Howl is automatically cast when you Shapeshift into a Werewolf and every 4 seconds while in Werewolf form. In addition, you gain [27 - 40]%[x] bonus damage for 4 seconds whenever Blood Howl is triggered."
   },
   {
     "name": "Mantle of Mountain's Fury",
-    "desc": "Casting Hammer of the Ancients on an Earthquake explodes for their total damage and are consumed, and also causes your Hammer of the Ancients to deal #% increased damage for # seconds."
+    "desc": "Casting Hammer of the Ancients on an Earthquake explodes for their total damage and are consumed, and also causes your Hammer of the Ancients to deal [60.00 - 80.00]%[x] increased damage for 5 seconds."
   },
   {
     "name": "Mantle of the Grey",
-    "desc": "Juggernaut Oath makes your Juggernaut Skills #% larger but Consumes up to # Resolve, granting #% increased Juggernaut Skill damage for each point Consumed."
+    "desc": "Juggernaut Oath makes your Juggernaut Skills 25% larger but Consumes up to 16 Resolve, granting [4.0 - 6.0]%[x] increased Juggernaut Skill damage for each point Consumed."
   },
   {
     "name": "March of the Stalwart Soul",
-    "desc": "Advance deals #% increased damage, gains # Skill Ranks, and travels twice as far."
+    "desc": "Advance deals [60 - 80]%[x] increased damage, gains 3 Skill Ranks, and travels twice as far."
   },
   {
     "name": "Mark of the Old Wolf",
-    "desc": "Gain #% bonus Poisoning damage.\r\nDirect damage from Werewolf Skills gain a bonus equal to #% of your bonus Poisoning damage, up to #%.\r\nPoison damage from Werewolf Skills gain a bonus equal to #% of your bonus Attack Speed and Critical Strike Chance, up to #%. \r\n\r\nCurrent Direct Damage bonus: #%\r\nCurrent Poison Damage bonus: #%"
+    "desc": "Gain [15 - 20]%[x] bonus Poisoning damage.Direct damage from Werewolf Skills gain a bonus equal to 50%[x] of your bonus Poisoning damage, up to 50%[x].Poison damage from Werewolf Skills gain a bonus equal to 100%[x] of your bonus Attack Speed and Critical Strike Chance, up to 50%[x]. Current Direct Damage bonus: 0%[x]Current Poison Damage bonus: 0%[x]"
   },
   {
     "name": "Melted Heart of Selig",
-    "desc": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced.\r\n\r\nYour Primary Resource is doubled but Maximum Life is reduced by #%. "
+    "desc": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced.Your Primary Resource is doubled but Maximum Life is reduced by 75%."
   },
   {
     "name": "Might of Qual-Kehk",
-    "desc": "Mighty Throw now gains multiplicative damage instead of cooldown from Cooldown Reduction at #% effectiveness."
+    "desc": "Mighty Throw now gains multiplicative damage instead of cooldown from Cooldown Reduction at [75.0 - 100.0]% effectiveness."
   },
   {
     "name": "Might of the Ursine",
-    "desc": "Gain #% bonus damage for each stack of Resolve while in Werebear form. Additionally, you automatically gain # stack of Resolve every # seconds while in Werebear form."
+    "desc": "Gain [10 - 13]%[x] bonus damage for each stack of Resolve while in Werebear form. Additionally, you automatically gain 1 stack of Resolve every 1 seconds while in Werebear form."
   },
   {
     "name": "Misericorde",
-    "desc": "Lucky Hit: Dealing damage to an enemy affected by a Trap Skill has up to a #% chance to:\r\n Reduce the active Cooldowns of your Trap Skills by #%\r\n Increase your Trap Skill damage by #% for # seconds, up to #%"
+    "desc": "Lucky Hit: Dealing damage to an enemy affected by a Trap Skill has up to a 40% chance to: Reduce the active Cooldowns of your Trap Skills by 30% Increase your Trap Skill damage by [9.0 - 12.0]%[x] for 10 seconds, up to [45 - 60]%[x]"
   },
   {
     "name": "Mjölnic Ryng",
-    "desc": "While Cataclysm is active, you gain unlimited Spirit and deal #% increased damage."
+    "desc": "While Cataclysm is active, you gain unlimited Spirit and deal [30 - 40]%[x] increased damage."
   },
   {
     "name": "Moloch's Beating Flame",
-    "desc": "Hellfire Skills deal #% increased damage for every Skill you have Empowered by Volatility. Casting a Volatility Empowered Skill increases you Core Stats by #% for # seconds, up to #%."
+    "desc": "Hellfire Skills deal [5 - 7]%[x] increased damage for every Skill you have Empowered by Volatility. Casting a Volatility Empowered Skill increases you Core Stats by 5%[+] for 10 seconds, up to 50%[+]."
   },
   {
     "name": "Molten Band",
-    "desc": "Your Pyromancy Critical Strike Damage is increased by #% against Healthy enemies and your Pyromancy Critical Strike Chance is increased by #% against Injured enemies.\r\n\r\nKilling an enemy with a Critical Strike grants both bonuses against all enemies as well as #% Attack Speed for # seconds."
+    "desc": "Your Pyromancy Critical Strike Damage is increased by [60 - 80]%[x] against Healthy enemies and your Pyromancy Critical Strike Chance is increased by [40 - 60]%[x] against Injured enemies.Killing an enemy with a Critical Strike grants both bonuses against all enemies as well as 50%[+] Attack Speed for 4 seconds."
   },
   {
     "name": "Morlu Fleshward",
-    "desc": "You cannot recover above #% of your Maximum Life but your Defensive Skills deal #% increased damage."
+    "desc": "You cannot recover above 65% of your Maximum Life but your Defensive Skills deal [300 - 400]%[x] increased damage."
   },
   {
     "name": "Mother's Embrace",
-    "desc": "If a Core Skill hits # or more enemies, #% of the Resource cost is refunded."
+    "desc": "If a Core Skill hits 4 or more enemies, [50 - 60]% of the Resource cost is refunded."
   },
   {
     "name": "Mutilator Plate",
-    "desc": "You are Blood Lanced, and when Blood Lance would deal damage to you, it instead Fortifies you for #% of your Maximum Life and has a #% chance to form a Blood Orb.\r\n\r\nBlood Lance deals #% increased damage."
+    "desc": "You are Blood Lanced, and when Blood Lance would deal damage to you, it instead Fortifies you for 5% of your Maximum Life and has a 10% chance to form a Blood Orb.Blood Lance deals [70 - 90]%[x] increased damage."
   },
   {
     "name": "Nails of the Gore-Crowned",
-    "desc": "Hellion Sting deals #% increased damage and automatically strikes out at enemies when you attack in Demonform."
+    "desc": "Hellion Sting deals [60 - 80]%[x] increased damage and automatically strikes out at enemies when you attack in Demonform."
   },
   {
     "name": "Nesekem, the Herald",
-    "desc": "Every # seconds, you randomly mark a Nearby enemy. Marked enemies are Vulnerable, and your attacks against them are guaranteed to Critically Strike.\r\n\r\nHitting a marked enemy # times clears the mark from them."
+    "desc": "Every 2 seconds, you randomly mark a Nearby enemy. Marked enemies are Vulnerable, and your attacks against them are guaranteed to Critically Strike.Hitting a marked enemy 10 times clears the mark from them."
   },
   {
     "name": "Night Terror",
-    "desc": "Your Abyss Skills deal #% increased damage for each stack of Shadowform. This bonus is increased by #% while you have Stealth."
+    "desc": "Your Abyss Skills deal [4.0 - 6.0]%[x] increased damage for each stack of Shadowform. This bonus is increased by 100% while you have Stealth."
   },
   {
     "name": "Nomad's Longing Heart",
-    "desc": "Core Skills deal #% increased damage, but cost #% more Fury. The damage is doubled against Injured enemies."
+    "desc": "Core Skills deal [30.0 - 40.0]%[x] increased damage, but cost 25%[x] more Fury. The damage is doubled against Injured enemies."
   },
   {
     "name": "Okun's Catalyst",
@@ -20664,35 +20664,35 @@ window.D4_DATABASE = {
   },
   {
     "name": "Omen of Pain",
-    "desc": "A dark aura surrounds you, inflicting Decrepify and Iron Maiden on enemies around you and increasing your damage to Close enemies by #%.\r\n\r\nCurses inflicted this way spread to surrounding targets every second."
+    "desc": "A dark aura surrounds you, inflicting Decrepify and Iron Maiden on enemies who touch it. Curses inflicted this way spread to surrounding targets every [1.3 - 1.0] seconds and last 4 seconds outside of the aura."
   },
   {
     "name": "Onyx Soul",
-    "desc": "Frozen Orb now returns to you dealing #% increased damage."
+    "desc": "Frozen Orb now returns to you dealing [80 - 100]%[x] increased damage."
   },
   {
     "name": "Ophidian Iris",
-    "desc": "Hydra is now a Core Skill with increased Mana cost and its attacks now explode dealing #% increased damage."
+    "desc": "Hydra is now a Core Skill with increased Mana cost and its attacks now explode dealing [100 - 125]%[x] increased damage."
   },
   {
     "name": "Orphan Maker",
-    "desc": "Basic and Core Skills that use this weapon now Reload.\r\nReload Skills deal #% increased damage and every second Reload Skill increases this bonus by #% for # seconds."
+    "desc": "Basic and Core Skills that use this weapon now Reload.Reload Skills deal [40 - 50]%[x] increased damage and every second Reload Skill increases this bonus by 100%[x] for 2 seconds."
   },
   {
     "name": "Orsivane",
-    "desc": "For each Defensive Skill not on your Action Bar, you deal #% increased damage and gain its associated Enchantment effect."
+    "desc": "For each Defensive Skill not on your Action Bar, you deal [15.0 - 25.0]%[x] increased damage and gain its associated Enchantment effect."
   },
   {
     "name": "Overkill",
-    "desc": "Death Blow gains all Upgrades for free and deals #% increased damage."
+    "desc": "Death Blow gains all side upgrades and deals [60.0 - 75.0]%[x] increased damage."
   },
   {
     "name": "Pact of Bone",
-    "desc": "Your Minions gain #% Attack Speed and Critical Strike Chance.\r\n\r\nWhen one of your Minions die, your other Minions enrage, dealing #% increased damage for # seconds."
+    "desc": "Your Minions gain [30 - 35]%[+] Attack Speed and Critical Strike Chance.When one of your Minions die, your other Minions enrage, dealing [30 - 35]%[x] increased damage for 3 seconds."
   },
   {
     "name": "Paingorger's Gauntlets",
-    "desc": "Damaging enemies with a Non-Basic Skill cast marks them for # seconds. When a Basic Skill first hits a marked enemy, the Basic Skill's damage is echoed to all marked enemies, dealing #% increased damage."
+    "desc": "Damaging enemies with a Non-Basic Skill cast marks them for 3 seconds. When a Basic Skill first hits a marked enemy, the Basic Skill's damage is echoed to all marked enemies, dealing [100 - 125]%[x] increased damage."
   },
   {
     "name": "Pants Unique Druid 97",
@@ -20700,267 +20700,267 @@ window.D4_DATABASE = {
   },
   {
     "name": "Path of Trag'Oul",
-    "desc": "Bone Prison traps a larger area and fires # Bone Splinters at enemies trapped within. \r\n\r\nYour Maximum Essence is increased by # for # seconds each time these Bone Splinters hit an enemy."
+    "desc": "Bone Prison traps a larger area and fires [30 - 35] Bone Splinters at enemies trapped within. Your Maximum Essence is increased by 2 for 10 seconds each time these Bone Splinters hit an enemy."
   },
   {
     "name": "Path of the Emissary",
-    "desc": "You invoke up to # base Core Skills from your primary Spirit Hall split across every # meters you move.\r\n\r\nWhile Ravager is active, Casting Core Skills instantly dashes you to your target."
+    "desc": "Every [6 - 4] meters you move, invoke a base Core Skill from your primary Spirit Hall.While Ravager is active, Casting Core Skills instantly dashes you to your target."
   },
   {
     "name": "Peacemonger's Signet",
-    "desc": "While you have at least # stacks of Ferocity, you gain #% increased damage and #% increased Armor.\r\n\r\nGaining Ferocity also grants Resolve."
+    "desc": "While you have at least 4 stacks of Ferocity, you gain [15 - 20]%[x] increased damage and [60 - 80]%[+] increased Armor.Gaining Ferocity also grants Resolve."
   },
   {
     "name": "Penitent Greaves",
-    "desc": "You are permanently Unhindered and leave behind a trail of frost that Chills enemies. \r\n\r\nYour Chill effects cause enemies to take #% increased damage from you."
+    "desc": "You are permanently Unhindered and leave behind a trail of frost that Chills enemies. Your Chill effects cause enemies to take [10 - 15]%[x] increased damage from you."
   },
   {
     "name": "Pitfighter's Gull",
-    "desc": "Smoke Grenade bounces and detonates a second time. Smoke Grenade's damage is increased by #% and Duration is increased by #%."
+    "desc": "Smoke Grenade bounces and detonates a second time. Smoke Grenade's damage is increased by [7.5 - 10.0]%[x] and Duration is increased by [7.5 - 10.0]%[x]."
   },
   {
     "name": "Protean Heart",
-    "desc": "The Base Spirit of a Skill cast grants:\r\n Eagle: #% Movement Speed\r\n Gorilla: #% Damage Reduction\r\n Jaguar: #% Attack Speed\r\n Centipede: #% Life per Second\r\n\r\nCasting a Skill of a different Base Spirit:\r\n Swaps to the new bonus\r\n Increases Core Stats by #% for # seconds."
+    "desc": "The Base Spirit of a Skill cast grants: Eagle: [17 - 20]%[+] Movement Speed Gorilla: [17 - 20]% Damage Reduction Jaguar: [17 - 20]%[+] Attack Speed Centipede: [1.7 - 2.0]% Life per SecondCasting a Skill of a different Base Spirit: Swaps to the new bonus Increases Core Stats by 100%[+] for 7 seconds."
   },
   {
     "name": "Protection of the Prime",
-    "desc": "While moving, you gain #% Dodge Chance and Damage Reduction.\r\n\r\nAfter standing still for # seconds, you become Unstoppable until you move."
+    "desc": "While moving, you gain [25 - 30]% Dodge Chance and Damage Reduction.After standing still for 2 seconds, you become Unstoppable until you move."
   },
   {
     "name": "Purified Lightbringer",
-    "desc": "Pulverize pulls Distant enemies towards you. In addition, Pulverize deals #% bonus damage. This damage bonus is increased to #% if the target was pulled towards you, is Unstoppable or a Boss."
+    "desc": "Pulverize pulls Distant enemies towards you. In addition, Pulverize deals [50 - 63]%[x] bonus damage. This damage bonus is increased to [100 - 125]%[x] if the target was pulled towards you, is Unstoppable or a Boss."
   },
   {
     "name": "Rage of Harrogath",
-    "desc": "Inflicting Damage Over Time on an enemy has up to a #% chance to reduce the Cooldowns of your Skills by # second."
+    "desc": "Inflicting Damage Over Time on an enemy has up to a [45 - 60]% chance to reduce the Cooldowns of your Skills by 1 second."
   },
   {
     "name": "Raiment of the Sea",
-    "desc": "Blizzard's effects linger on enemies for an additional #% of its duration."
+    "desc": "Blizzard's effects linger on enemies for an additional [100 - 120]% of its duration."
   },
   {
     "name": "Rakanoth's Wake",
-    "desc": "When you cast a Skill with a Cooldown, you explode, dealing # Fire damage."
+    "desc": "When you cast a Skill with a Cooldown, you explode, dealing [450 - 525] Fire damage."
   },
   {
     "name": "Ramaladni's Magnum Opus",
-    "desc": "Skills deal #% increased damage per point of Fury you have, but # Fury Drains per second."
+    "desc": "Skills deal [0.35 - 0.50]%[x] increased damage per point of Fury you have, but 10 Fury Drains per second."
   },
   {
     "name": "Razorplate",
-    "desc": "Thorns has a #% chance to deal #% increased damage. "
+    "desc": "Thorns has a 10% chance to deal [180 - 200]%[x] increased damage."
   },
   {
     "name": "Red Blessing",
-    "desc": "While Healthy, gain # Maximum Overpower. Blood Orbs grant # stacks of Overpower.\r\n\r\nYou deal #% increased damage per stack of Overpower."
+    "desc": "While Healthy, gain 4 Maximum Overpower. Blood Orbs grant 2 stacks of Overpower.You deal [5.33 - 6.67]%[x] increased damage per stack of Overpower."
   },
   {
     "name": "Red Sermon",
-    "desc": "Zeal gains the Death or Glory Variant for free and deals #% increased damage."
+    "desc": "Zeal deals [43 - 53]%[x] increased damage and gains the Death or Glory Variant for free."
   },
   {
     "name": "Rictus of Terror",
-    "desc": "Laalish deals #% increased damage. Command Laalish's Terror Realm is an Ultimate Skill that lasts #% longer and while active your Abyss Skills Execute enemies."
+    "desc": "Laalish deals [100 - 120]%[x] increased damage. Command Laalish's Terror Realm is an Ultimate Skill that lasts 100% longer and while active your Abyss Skills Execute enemies."
   },
   {
     "name": "Rimeblood",
-    "desc": "Frost Bolt pierces through Crowd Controlled and Unstoppable enemies and deals #% increased damage."
+    "desc": "Frost Bolt pierces through Crowd Controlled and Unstoppable enemies and deals [80 - 100]%[x] increased damage."
   },
   {
     "name": "Ring of Mendeln",
-    "desc": "Every 6th attack from each Minion is empowered, exploding for # Physical damage."
+    "desc": "Every 6th attack from each Minion is empowered, exploding for [975 - 1,650] Physical damage."
   },
   {
     "name": "Ring of Red Furor",
-    "desc": "After spending # Fury within # seconds, your next non-Channeled Core or Weapon Mastery Skill Cast within # seconds is a guaranteed Critical Strike and deals #% bonus Critical Strike Damage."
+    "desc": "After spending 100 Fury within 5 seconds, your next non-Channeled Core or Weapon Mastery Skill Cast within 5 seconds is a guaranteed Critical Strike and deals [50 - 60]%[x] bonus Critical Strike Damage."
   },
   {
     "name": "Ring of Starless Skies",
-    "desc": "Spending your Primary Resource reduces the Resource cost of your Skills and increases your damage by #% for # seconds, up to #%. "
+    "desc": "Spending your Primary Resource reduces the Resource cost of your Skills and increases your damage by 10%[x] for 3 seconds, up to 50%[x]."
   },
   {
     "name": "Ring of Writhing Moon",
-    "desc": "A Pestilent Swarm spawns from you every # seconds, dealing # Poison damage per hit. \r\n\r\nYour Pestilent Swarms now orbit around you and reduce an equipped Eagle Skill's cooldown by # seconds per hit."
+    "desc": "A Pestilent Swarm spawns from you every 4 seconds, dealing [188 - 225] Poison damage per hit. Your Pestilent Swarms now orbit around you and reduce an equipped Eagle Skill's cooldown by 0.25 seconds per hit."
   },
   {
     "name": "Ring of the Midday Hunt",
-    "desc": "Your Maximum Vigor is increased by #%, and killing an enemy grants you # Vigor. \r\n\r\nWhile you have Ferocity, your new Poisoning effects last #% longer. "
+    "desc": "Your Maximum Vigor is increased by 50%, and killing an enemy grants you [7 - 10] Vigor. While you have Ferocity, your new Poisoning effects last 33% longer."
   },
   {
     "name": "Ring of the Midnight Sun",
-    "desc": "When you Critically Strike, you regain #% of the Vigor you've spent in the last # seconds.\r\n\r\nGain Counterattack's Passive Effect."
+    "desc": "When you Critically Strike, you regain [40 - 50]%[+] of the Vigor you've spent in the last 2 seconds.Gain Counterattack's Passive Effect."
   },
   {
     "name": "Ring of the Ravenous",
-    "desc": "Rend's duration is increased by # seconds and deals #% increased damage. \r\n\r\nDamaging enemies with your Brawling Skills applies # stacks of Rend's Bleed. This can only affect each enemy once every # second."
+    "desc": "Rend's duration is increased by [6.0 - 8.0] seconds and deals [60.0 - 80.0]%[x] increased damage. Damaging enemies with your Brawling Skills applies 2 stacks of Rend's Bleed. This can only affect each enemy once every 1 second."
   },
   {
     "name": "Ring of the Sacrilegious Soul",
-    "desc": "Corpse Tendrils gains the effect of every Upgrade and is automatically triggered once every # seconds. This timer is reduced by # seconds each second while there are corpses by you."
+    "desc": "Corpse Tendrils gains the effect of every Upgrade and is automatically cast every [8.0 - 6.0] seconds."
   },
   {
     "name": "Rod of Kepeleke",
-    "desc": "Your Core Skills are now additionally Basic Skills and free to cast.\r\n\r\nWhen cast at Maximum Vigor, your Core Skills Consume all Vigor to cast at their largest Size, and become guaranteed Critical Strikes, with #% increased Critical Strike Damage for each point of Vigor spent this way."
+    "desc": "Your Core Skills are now additionally Basic Skills and free to cast.When cast at Maximum Vigor, your Core Skills Consume all Vigor to cast at their largest Size, and become guaranteed Critical Strikes, with [0.33 - 0.38]%[x] increased Critical Strike Damage for each point of Vigor spent this way."
   },
   {
     "name": "Rotting Lightbringer",
-    "desc": "Every # seconds, Pulverize forms a puddle that deals #% of its damage as Poisoning damage over # seconds.\r\n\r\nPulverizing the puddle splashes an additional #% of the puddle's total damage within the area and around it."
+    "desc": "Every 10 seconds, Pulverize forms a puddle that deals [200 - 400]%[x] of its damage as Poisoning damage over 6 seconds.Pulverizing the puddle splashes an additional [20 - 40]%[x] of the puddle's total damage within the area and around it."
   },
   {
     "name": "Rustbitten Dirk",
-    "desc": "Deal #% increased damage to isolated enemies."
+    "desc": "Deal [90 - 120]%[x] increased damage to isolated enemies."
   },
   {
     "name": "Saboteur's Signet",
-    "desc": "Your Grenades gain #% increased Size and deal #% increased damage.\r\n\r\nEnemies damaged by Grenade Skills become either Vulnerable or Weakened for # seconds."
+    "desc": "Your Grenades gain 50%[+] increased Size and deal [75 - 90]%[x] increased damage.Enemies damaged by Grenade Skills become either Vulnerable or Weakened for 4 seconds."
   },
   {
     "name": "Sabre of Tsasgal",
-    "desc": "You gain #% increased damage for each damaging Skill you have equipped, and an additional #% for # seconds when each of those Skills are used."
+    "desc": "You gain [3.0 - 4.0]%[x] increased damage for each damaging Skill you have equipped, and an additional [6.0 - 8.0]%[x] for 15 seconds when each of those Skills are used."
   },
   {
     "name": "Sanctis of Kethamar",
-    "desc": "Arbiter form increases Aura Potency by #% and Wing Strike damage by #%"
+    "desc": "Arbiter form increases Aura Potency by 30% and Wing Strike damage by [87 - 100]%[x]"
   },
   {
     "name": "Sanguivor, Blade of Zir",
-    "desc": "Your Summons' damage afflict enemies with Vampiric Curse. Consuming a Corpse also contributes # souls to Vampiric Curse, which can now stack up to # souls.\r\n\r\nOnly Army of the Dead can now unleash the souls from Vampiric Curse, causing both Army of the Dead and the souls to deal #% increased damage per soul unleashed."
+    "desc": "Your Summons' damage afflict enemies with Vampiric Curse. Consuming a Corpse also contributes 3 souls to Vampiric Curse, which can now stack up to 20 souls.Only Army of the Dead can now unleash the souls from Vampiric Curse, causing both Army of the Dead and the souls to deal [20.0 - 25.0]%[x] increased damage per soul unleashed."
   },
   {
     "name": "Sashes of the Wretched",
-    "desc": "Summon a Tortured Wretch when your Current Life drops below #% of your Maximum Life. Enemies Taunted by Tortured Wretch take #% increased damage from you for # seconds."
+    "desc": "Summon a Tortured Wretch when your Current Life drops below 55% of your Maximum Life. Enemies Taunted by Tortured Wretch take [8 - 10]%[x] increased damage from you for 5 seconds."
   },
   {
     "name": "Scepter of the Three",
-    "desc": "You can now equip all base Ultimate Skills and gain # Ranks in them. Attacking enemies with no active Ultimate Skill builds up your Ultimate Skill damage by #%, up to #%. After starting Ultimate Skills the damage bonus is reset once all have ended."
+    "desc": "You can now equip all Ultimate Skills and gain 15 Ranks in them. Attacking enemies with no active Ultimate Skill builds up your Ultimate Skill damage by [4 - 5]%[x], up to [80 - 100]%[x]. After starting Ultimate Skills the damage bonus is reset once all have ended."
   },
   {
     "name": "Scorn of the Earth",
-    "desc": "Your Evade is now Soar.\r\n\r\nSoar deals #% increased damage and triggers Vortex at its landing location"
+    "desc": "Your Evade is now Soar.Soar deals [125 - 150]%[x] increased damage and triggers Vortex at its landing location"
   },
   {
     "name": "Scoundrel's Kiss",
-    "desc": "Gain # Ferocity every # seconds as long as no enemies are Close to you.\r\n\r\nYour Marksman Skills deal #% increased damage per stack of Ferocity."
+    "desc": "Gain 1 Ferocity every 2 seconds as long as no enemies are Close to you.Your Marksman Skills deal [12.0 - 15.0]%[x] increased damage per stack of Ferocity."
   },
   {
     "name": "Scoundrel's Leathers",
-    "desc": "Your Trap Skills can be thrown and deal #% increased damage. "
+    "desc": "Your Trap Skills can be thrown and deal [45 - 60]%[x] increased damage."
   },
   {
     "name": "Scourge of Duriel",
-    "desc": "Umbral Chains gains the Epicenter Variant for free and deals #% increased damage."
+    "desc": "Umbral Chains gains the Epicenter Variant for free and deals [60 - 80]%[x] increased damage."
   },
   {
     "name": "Sea Lord's Fine Gloves",
-    "desc": "Casting or Channeling a Cutthroat Skill grants a stack of Momentum, up to #. Casting a Marksman Skill removes a stack of Momentum.\r\n\r\nFor each stack of Momentum, you gain:\r\n #% Maximum Energy\r\n #% Energy Regeneration\r\n #% Increased Damage"
+    "desc": "Casting or Channeling a Cutthroat Skill grants a stack of Momentum, up to 10. Casting a Marksman Skill removes a stack of Momentum.For each stack of Momentum, you gain: [2.50 - 3.00]% Maximum Energy [2.50 - 3.00]%[x] Energy Regeneration [5.00 - 6.00]%[x] Increased Damage"
   },
   {
     "name": "Seal of the Ophanim",
-    "desc": "Profane Sentinel deals #% increased damage and summons an additional eye that follows you for # seconds."
+    "desc": "Profane Sentinel deals [230 - 270]%[x] increased damage and summons an additional eye that follows you for 10 seconds."
   },
   {
     "name": "Seal of the Second Trumpet",
-    "desc": "Judgement deals #% increased damage and has a #% chance to explode twice when using the Judicator Oath."
+    "desc": "Judgement deals [80 - 100]%[x] increased damage and has a 33% chance to explode twice when using the Judicator Oath."
   },
   {
     "name": "Seed of Horazon",
-    "desc": "Your Demonology Skills deal #% increased damage per Wrath you have and you take #% reduced damage per Dominance you have."
+    "desc": "Your Demonology Skills deal [0.40 - 0.50]%[x] increased damage per Wrath you have and you take [0.13 - 0.17]%[+] reduced damage per Dominance you have."
   },
   {
     "name": "Sepazontec",
-    "desc": "Your Basic Skills deal #% increased damage and always use their 3rd attack. \r\n\r\nEvery 3rd cast of a Basic Skill strikes three times."
+    "desc": "Your Basic Skills deal [50 - 60]% increased damage and always use their 3rd attack. Every 3rd cast of a Basic Skill strikes three times."
   },
   {
     "name": "Shanar's Resonance",
-    "desc": "Deep Freeze's final blast deals #% increased damage."
+    "desc": "Deep Freeze's final blast deals [400 - 500]%[x] increased damage."
   },
   {
     "name": "Shard of Verathiel",
-    "desc": "Basic Skills deal #% increased damage but additionally cost # Primary Resource."
+    "desc": "Basic Skills deal [70 - 100]%[x] increased damage but additionally cost 25 Primary Resource."
   },
   {
     "name": "Shattered Vow",
-    "desc": "Enemies afflicted by more Damage over Time than remaining Life are Executed. "
+    "desc": "Enemies afflicted by more Damage over Time than remaining Life are Executed."
   },
   {
     "name": "Shroud of False Death",
-    "desc": "When you would be dealt fatal damage, instead you Heal to full Life, gain a Barrier for #% of your Maximum Life for # seconds, and Knock Back Close enemies. This power is disabled once used until you return to town."
+    "desc": "When you would be dealt fatal damage, instead you Heal to full Life, gain a Barrier for 100% of your Maximum Life for 3 seconds, and Knock Back Close enemies. This can only occur once every 300 seconds."
   },
   {
     "name": "Shroud of Khanduras",
-    "desc": "Casting Dark Shroud makes you Immune for # seconds, but your Evade Cooldown is increased by # seconds.\r\n\r\nEvading while Dark Shroud is active leaves behind an explosion that deals # Shadow damage and Pulls In enemies."
+    "desc": "Casting Dark Shroud makes you Immune for 2 seconds, but your Evade Cooldown is increased by [3.0 - 4.0] seconds.Evading while Dark Shroud is active leaves behind an explosion that deals [450 - 600] Shadow damage and Pulls In enemies."
   },
   {
     "name": "Shrouded Gift",
-    "desc": "Whenever you gain Stealth, you also gain Concealment. Gain #% increased Damage Reduction while Stealthed and for # seconds after breaking it."
+    "desc": "Whenever you gain Stealth, you also gain Concealment. Gain [25 - 30]% increased Damage Reduction while Stealthed and for 8 seconds after breaking it."
   },
   {
     "name": "Sidhe Bindings",
-    "desc": "Gain Familiar's Enchantment and Familiar's Potency is increased by #%."
+    "desc": "Gain Familiar's Enchantment and Familiar's Potency is increased by [60 - 80]%[x]."
   },
   {
     "name": "Signet of Pelghain",
-    "desc": "Your Freeze effects cause enemies to permanently take #% increased damage from you for each second they are Frozen."
+    "desc": "Your Freeze effects cause enemies to permanently take [15 - 20]%[x] increased damage from you for each second they are Frozen."
   },
   {
     "name": "Sire of Sin",
-    "desc": "Infernal Breath gains the Explosive Death Variant for free and deals #% increased damage."
+    "desc": "Infernal Breath gains the Explosive Death Variant for free and deals [20 - 30]%[x] increased damage."
   },
   {
     "name": "Skyhunter",
-    "desc": "Every consecutive Cast of Rapid Fire increases the amount of arrows it fires by #, up to #. Rapid Fire deals #% increased damage."
+    "desc": "Every consecutive Cast of Rapid Fire increases the amount of arrows it fires by 2, up to 6. Rapid Fire deals [40 - 50]%[x] increased damage."
   },
   {
     "name": "Sliver of Hate",
-    "desc": "Chance on being hit to unleash Hatred, Fearing and inflicting # Corrupting damage over # seconds to surrounding enemies."
+    "desc": "Chance on being hit to unleash Hatred, Fearing and inflicting 5,400 Corrupting damage over 5 seconds to surrounding enemies."
   },
   {
     "name": "Soulbrand",
-    "desc": "Your Healing Potions grant a Barrier for #% of your Maximum Life for # second.\r\n\r\nYou gain #% Damage Reduction while you have a Barrier and may drink your Healing Potion while at full Life."
+    "desc": "Your Healing Potions grant a Barrier for 100% of your Maximum Life for 1 second.You gain [25 - 30]% Damage Reduction while you have a Barrier and may drink your Healing Potion while at full Life."
   },
   {
     "name": "Spine of Tathamet",
-    "desc": "Hell Fracture deals #% increased damage and every #rd cast creates a triple fracture."
+    "desc": "Hell Fracture deals [100 - 120]%[x] increased damage and every 3rd cast creates a triple fracture."
   },
   {
     "name": "Staff of Endless Rage",
-    "desc": "Fireball deals #%#% increased damage and every 3rd Cast launches 2 additional projectiles."
+    "desc": "Fireball deals [40 - 60]%[x] increased damage and every 3rd Cast launches 2 additional projectiles."
   },
   {
     "name": "Staff of Lam Esen",
-    "desc": "Charged Bolts deal #% increased damage, last #% longer and seek enemies."
+    "desc": "Charged Bolts deal [55 - 80]%[x] increased damage, last 300% longer and seek enemies."
   },
   {
     "name": "Staff of Zerae",
-    "desc": "Unstable Currents increases your Armor and Resistances by #% and kills increase your damage by #% for the duration."
+    "desc": "Unstable Currents increases your Armor and Resistances by 100%[+] and kills increase your damage by [4.0 - 5.0]%[x] for the duration."
   },
   {
     "name": "Starfall Coronet",
-    "desc": "Meteor Casts consume Overpower when possible, dropping an additional Meteor for every # Overpower consumed. \r\n\r\nMeteor deals #% increased damage."
+    "desc": "Meteor Casts consume Overpower when possible, dropping an additional Meteor for every 2 Overpower consumed. Meteor deals [50 - 70]%[x] increased damage."
   },
   {
     "name": "Stone of Vehemen",
-    "desc": "Gain #% to All Resistances while channeling Stone Burst. Stone Burst's final explosion deals #% bonus damage split between all targets caught in the blast."
+    "desc": "Gain 40%[x] to All Resistances while channeling Stone Burst. Stone Burst's final explosion deals [250 - 300]%[x] bonus damage split between all targets caught in the blast."
   },
   {
     "name": "Storm's Companion",
-    "desc": "Your Wolf Companions are infused with the power of the storm, dealing #% increased Lightning damage and gaining the Storm Howl ability."
+    "desc": "Your Wolf Companions are infused with the power of the storm, dealing [80 - 100]%[x] increased Lightning damage and gaining the Storm Howl ability."
   },
   {
     "name": "Strike of Stormhorn",
-    "desc": "Ball Lightning deals #% increased damage and explodes for #% of its total damage when dissipating."
+    "desc": "Ball Lightning deals [40 - 60]%[x] increased damage and explodes for 40% of its total damage when dissipating."
   },
   {
     "name": "Sunbird's Gorget",
-    "desc": "Picking up a Storm Feather forms a firestorm around you for # seconds dealing # Fire damage every # seconds.\r\n\r\nEvery # additional Storm Feathers you pick up intensifies the firestorm, increasing its damage by #% but not refreshing its duration. Storm Feathers are now Jaguar Skills and the firestorm is an Eagle, Jaguar, and Storm Feather Skill."
+    "desc": "Picking up a Storm Feather forms a firestorm around you for 8 seconds dealing [900 - 1,050] Fire damage every 0.5 seconds.Every 5 additional Storm Feathers you pick up intensifies the firestorm, increasing its damage by 100%[x] but not refreshing its duration. Storm Feathers are now Jaguar Skills and the firestorm is an Eagle, Jaguar, and Storm Feather Skill."
   },
   {
     "name": "Sunbrand",
-    "desc": "Heaven's Fury gains # additional rays and deals #% increased damage."
+    "desc": "Heaven's Fury gains 3 additional rays and deals [70 - 90]% increased damage."
   },
   {
     "name": "Sundered Night",
-    "desc": "Casting an Aura Skill triggers a Consecration beneath you. \r\n\r\nYou gain #% Aura Potency while standing in Consecration."
+    "desc": "Casting an Aura Skill triggers a Consecration beneath you. You gain [80 - 100]% Aura Potency while standing in Consecration."
   },
   {
     "name": "Sunstained War-Crozier",
@@ -20968,91 +20968,91 @@ window.D4_DATABASE = {
   },
   {
     "name": "Supplication",
-    "desc": "Brandish unleashes in all directions dealing #% increased damage."
+    "desc": "Brandish unleashes in all directions dealing [60 - 80]%[x] increased damage."
   },
   {
     "name": "Tal Rasha's Iridescent Loop",
-    "desc": "Casting a Pyromancy, Shock, or Frost Skill increases your damage by #% for # seconds, stacking once per Element. Casting again refreshes all bonuses if the previous skill was a different Element."
+    "desc": "Casting a Pyromancy, Shock, or Frost Skill increases your damage by [10.0 - 20.0]%[x] for 8 seconds, stacking once per Element. Casting again refreshes all bonuses if the previous skill was a different Element."
   },
   {
     "name": "Tassets of the Dawning Sky",
-    "desc": "When you take damage from a Non-Physical damage type, you gain #% Resistance to that damage type for # seconds. This effect can only apply to one damage type at a time."
+    "desc": "When you take damage from a Non-Physical damage type, you gain [130.0 - 160.0]%[+] Resistance to that damage type for 6 seconds. This effect can only apply to one damage type at a time."
   },
   {
     "name": "Temerity",
-    "desc": "Effects that Heal you beyond #% Life grant you a Barrier up to #% of your Maximum Life that lasts for # seconds. \r\n\r\nYou may now drink your Healing Potion while at full Life."
+    "desc": "Effects that Heal you beyond 100% Life grant you a Barrier up to [80 - 100]% of your Maximum Life that lasts for 8 seconds. You may now drink your Healing Potion while at full Life."
   },
   {
     "name": "The Basilisk",
-    "desc": "Petrified enemies have a #% increased chance to be Critically Struck and take #% increased damage. Additionally, Earth Skills Petrify Healthy enemies for # seconds."
+    "desc": "Petrified enemies have a [80 - 100]%[+] increased chance to be Critically Struck. Additionally, Earth Skills Petrify Healthy enemies for 3 seconds."
   },
   {
     "name": "The Blade of Sight Aflame",
-    "desc": "Hitting a Lesser Demon with Bombardment explodes it for #% of a Bombardment impact if the Demon has less than # seconds duration left. Bombardment deals #% increased damage."
+    "desc": "Hitting a Lesser Demon with Bombardment explodes it for 400% of a Bombardment impact if the Demon has less than 3 seconds duration left. Bombardment deals [100 - 120]%[x] increased damage."
   },
   {
     "name": "The Butcher's Cleaver",
-    "desc": "Your attacks Critically Strike Injured Enemies. Killing Elites Fears and Slows nearby enemies by #% for # seconds."
+    "desc": "Your attacks Critically Strike Injured Enemies. Killing Elites Fears and Slows nearby enemies by [85 - 95]% for 2 seconds."
   },
   {
     "name": "The Eightfold Idol",
-    "desc": "Blazing Scream leaves Sigil of Subversion Shadow or Lava trails behind. Sigil of Subversion deals #% increased damage."
+    "desc": "Blazing Scream leaves Sigil of Subversion Shadow or Lava trails behind. Sigil of Subversion deals [160 - 200]%[x] increased damage."
   },
   {
     "name": "The Fecund Seal",
-    "desc": "Sigil of Summons deals #% increased damage and you can summon up to # additional Lesser Demons with # kills outside the ritual."
+    "desc": "Sigil of Summons deals [100 - 140]%[x] increased damage and you can summon up to 2 additional Lesser Demons with 10 kills outside the ritual."
   },
   {
     "name": "The Gloom Ward",
-    "desc": "Shadow damage infects enemies with Shadowblight for # seconds. Every 8th time an enemy receives Shadow damage from you while they are affected by Shadowblight, they take an additional #% of that damage as Corrupting damage over # seconds."
+    "desc": "Shadow damage infects enemies with Shadowblight for 2 seconds. Every 8th time an enemy receives Shadow damage from you while they are affected by Shadowblight, they take an additional [500 - 600]%[x] of that damage as Corrupting damage over 4 seconds."
   },
   {
     "name": "The Grandfather",
-    "desc": "Increases your Critical Strike Damage by #%."
+    "desc": "Increases your Critical Strike Damage by 150%[x]."
   },
   {
     "name": "The Hand of Naz",
-    "desc": "Your maximum number of Skeleton Mages is increased by # and they are upgraded to Arch-Mages.\r\n\r\nArch-Mages teleport to safety when attacked and their attacks occasionally shatter on impact, dealing #% increased damage to the enemy and up to # additional targets."
+    "desc": "Your maximum number of Skeleton Mages is increased by 1 and they are upgraded to Arch-Mages.Arch-Mages teleport to safety when attacked and their attacks occasionally shatter on impact, dealing [80 - 90]%[x] increased damage to the enemy and up to 3 additional targets."
   },
   {
     "name": "The Hemat Stone",
-    "desc": "Bonuses from Command Valloch and Ritualist Fragments have #% increased Potency. Your Occult Skills deal #% increased damage."
+    "desc": "Bonuses from Command Valloch and Ritualist Fragments have 100%[+] increased Potency. Your Occult Skills deal [20 - 30]%[x] increased damage."
   },
   {
     "name": "The Maestro",
-    "desc": "Twisting Blades impales an extra set of blades into its target, dealing #% increased damage and creating additional blades that return to you."
+    "desc": "Twisting Blades impales an extra set of blades into its target, dealing [24 - 30]%[x] increased damage and creating additional blades that return to you."
   },
   {
     "name": "The Mortacrux",
-    "desc": "When consuming a Corpse, there is a #% chance to also create a decaying Skeletal Simulacrum that seeks enemies but cannot attack. When it dies, it explodes for # Shadow damage. \r\n\r\nThis effect is treated as a Macabre Skill."
+    "desc": "When consuming a Corpse, there is a [40 - 50]% chance to also create a decaying Skeletal Simulacrum that seeks enemies but cannot attack. When it dies, it explodes for 450 Shadow damage. This effect is treated as a Macabre Skill."
   },
   {
     "name": "The Oculus",
-    "desc": "Each enemy hit by Teleport increases the damage by #% and reduces the Cooldown by # of the next Cast. Becoming Injured will Teleport you to a random location."
+    "desc": "Each enemy hit by Teleport increases the damage by [10.0 - 15.0]%[x] and reduces the Cooldown by 0.50 of the next Cast. Becoming Injured will Teleport you to a random location."
   },
   {
     "name": "The Open Eye of Gorgorra",
-    "desc": "When inflicting Damage Over Time, you have a chance equal to your Critical Strike Chance to increase the damage amount by #%."
+    "desc": "When inflicting Damage Over Time, you have a chance equal to your Critical Strike Chance to increase the damage amount by [75.0 - 90.0]%[x]."
   },
   {
     "name": "The Relentless Heart",
-    "desc": "Hammer of the Ancients deals #% increased damage on consecutive hits to the same target. This stacks up to # times."
+    "desc": "Hammer of the Ancients deals [22.5 - 30.0]%[x] increased damage on consecutive hits to the same target. This stacks up to 3 times."
   },
   {
     "name": "The Third Blade",
-    "desc": "Your Weapon Mastery Skills are now also Core Skills that have #% Cooldown Reduction but cost Fury, dealing #% of normal damage."
+    "desc": "Your Weapon Mastery Skills are now also Core Skills that have 100% Cooldown Reduction but cost Fury, dealing [140 - 160]% of normal damage."
   },
   {
     "name": "The Umbracrux",
-    "desc": "Your Subterfuge Skills create an attackable Shade Totem for # seconds. Any damage it takes is replicated onto surrounding enemies at #% effectiveness. \r\n\r\nThis effect is treated as a Trap Skill. You may only have # Shade Totems active at a time."
+    "desc": "Your Subterfuge Skills create an attackable Shade Totem for [6.0 - 8.0] seconds. Any base damage it takes is replicated onto surrounding enemies at 50% effectiveness. This effect is treated as a Trap Skill. You may only have 1 Shade Totem active at a time."
   },
   {
     "name": "The Undercrown",
-    "desc": "Your maximum number of Skeleton Warriors and Skeleton Mages is increased by # and your Summon damage is increased by #%. \r\n\r\nCommanding Skeleton Warriors also causes Skeleton Mages to focus the same target for # seconds."
+    "desc": "Your maximum number of Skeleton Warriors and Skeleton Mages is increased by [2 - 4]. Commanding Skeleton Warriors also causes Skeleton Mages to focus the same target for 5 seconds."
   },
   {
     "name": "The Unmaker",
-    "desc": "Soulrift's duration is increased by # seconds for every # Essence you spend while it's active, up to # seconds. \r\n\r\nSoulrift deals #% of its Shadow damage per second to surrounding enemies for every # Essence you gain while it's active."
+    "desc": "Soulrift's duration is increased by 0.5 seconds for every 30 Essence you spend while it's active, up to 8 seconds. Soulrift deals [200 - 250]% of its Shadow damage per second to surrounding enemies for every 30 Essence you gain while it's active."
   },
   {
     "name": "Thorn Pulse",
@@ -21060,39 +21060,39 @@ window.D4_DATABASE = {
   },
   {
     "name": "Thousand-Eye Reaver",
-    "desc": "Moving grants Ferocity, and Maximum Ferocity is increased by #. Ferocity also increases Movement Speed by #% per stack."
+    "desc": "Moving grants Ferocity, and Maximum Ferocity is increased by [2 - 4]. Ferocity also increases Movement Speed by [6 - 8]%[+] per stack."
   },
   {
     "name": "Thrice-Woven Nightmare",
-    "desc": "Terror Swarm gains the Devouring Swarm Variant for free and deals #% increased damage."
+    "desc": "Terror Swarm gains the Devouring Swarm Variant for free and deals [20 - 30]%[x] increased damage."
   },
   {
     "name": "Thundergod's Blessing",
-    "desc": "Lightning damage against Close enemies has a #% chance to grant Resolve and deal #% increased damage."
+    "desc": "Lightning damage against Close enemies has a 25% chance to grant Resolve and deal [250 - 300]%[x] increased damage."
   },
   {
     "name": "Tibault's Will",
-    "desc": "You deal #% increased damage and gain # Primary Resource Regeneration while Unstoppable and for # seconds after."
+    "desc": "You deal [15 - 20]%[x] increased damage and gain 50 Primary Resource Regeneration while Unstoppable and for 5 seconds after."
   },
   {
     "name": "Tuskhelm of Joritz the Mighty",
-    "desc": "When you gain Berserking while already Berserk, you become more enraged granting #% increased damage, # Fury per second, and #% Cooldown Reduction."
+    "desc": "When you gain Berserking while already Berserk, you become more enraged granting [40 - 50]%[x] increased damage, 6 Fury per second, and 10% Cooldown Reduction."
   },
   {
     "name": "Twin Strikes",
-    "desc": "Double Swing's initial sweep deals #% increased damage and applies Vulnerable. Subsequent swings deals #% increased damage and grants Berserking for # seconds."
+    "desc": "Double Swing's initial sweep deals [45.0 - 60.0]%[x] increased damage and applies Vulnerable. Subsequent swings deals [90.0 - 120.0]%[x] increased damage and grants Berserking for 3 seconds."
   },
   {
     "name": "Tyrael's Might",
-    "desc": "Gain #% Damage Reduction. While at full Life, your Skills unleash a divine barrage dealing # damage."
+    "desc": "While at full Life, your Skills unleash a divine barrage dealing 450 damage."
   },
   {
     "name": "Ugly Bastard Helm",
-    "desc": "While Wrath of the Berserker is active, you deal #% increased Fire damage."
+    "desc": "While Wrath of the Berserker is active, you deal [45 - 60]%[x] increased Fire damage."
   },
   {
     "name": "Unbroken Chain",
-    "desc": "Swapping weapons increases the damage of Iron Maelstrom by #% for # seconds, stacking up to # times."
+    "desc": "Swapping weapons increases the damage of Iron Maelstrom by [25.0 - 30.0]%[x] for 5 seconds, stacking up to 3 times."
   },
   {
     "name": "Vasily's Prayer",
@@ -21100,43 +21100,43 @@ window.D4_DATABASE = {
   },
   {
     "name": "Vengeful Sinew",
-    "desc": "Bone Spirit explodes an additional time, dealing #% of normal damage. \r\n\r\nBone Spirit deals #% increased damage."
+    "desc": "Bone Spirit explodes an additional time, dealing [35 - 45]% of normal damage. Bone Spirit deals [30 - 40]%[x] increased damage."
   },
   {
     "name": "Vision of the Firestorm",
-    "desc": "Firewall has #% increased damage and it's size is overcapped by #%."
+    "desc": "Firewall has [80 - 100]%[x] increased damage and it's size is overcapped by 100%."
   },
   {
     "name": "Vox Omnium",
-    "desc": "Casting a Core Skill triggers a random equipped Basic Skill at a random enemy which deals #% increased damage."
+    "desc": "Casting a Core Skill triggers a random equipped Basic Skill at a random enemy which deals [300 - 360]%[x] increased damage."
   },
   {
     "name": "Ward of the White Dove",
-    "desc": "Blessed Shield deals #% increased damage. Casting another Skill makes your next # Blessed Shields double this bonus and cost # less Faith to Cast."
+    "desc": "Blessed Shield deals [55 - 77]%[x] increased damage. Casting another Skill makes your next 3 Blessed Shields double this bonus and cost 7 less Faith to Cast."
   },
   {
     "name": "Waxing Gibbous",
-    "desc": "Shred deals #% more damage, and Shred has a #% chance to land an additional strike, up to # times."
+    "desc": "Shred deals [20 - 25]%[x] more damage, and Shred has a 25% chance to land an additional strike, up to 4 times."
   },
   {
     "name": "Wendigo Brand",
-    "desc": "Every # kills in the last # seconds increases your damage by #%, and Maximum Life by #%."
+    "desc": "Every 15 kills in the last [50 - 60] seconds increases your damage by 2%[x], and Maximum Life by 1%[+]."
   },
   {
     "name": "Widow's Web",
-    "desc": "Your Critical Strikes cause your Poisoning on an enemy to burst, dealing #% of the total Poisoning instantly to them and #% of the burst to surrounding enemies before removing the Poisoning effect from the primary target."
+    "desc": "Your Critical Strikes cause your Poisoning on an enemy to burst, dealing [167 - 200]% of the total Poisoning instantly to them and 10% of the burst to surrounding enemies before removing the Poisoning effect from the primary target."
   },
   {
     "name": "Wildheart Hunger",
-    "desc": "Rabies spreads #% faster and deals #% bonus damage (max #%) each time it spreads."
+    "desc": "Rabies spreads 100% faster and deals 10%[x] bonus damage (max [120 - 150]%[x]) each time it spreads."
   },
   {
     "name": "Will of Rathma",
-    "desc": "Vulnerable, Weakened, Crowd Controlled, or Corrupted enemies are Afflicted, taking #% increased damage from you.\r\n\r\nCurse Skills deal # Shadow damage when applied to Afflicted enemies."
+    "desc": "Vulnerable, Weakened, Crowd Controlled, or Corrupted enemies are Afflicted, taking 40% increased damage from you.Curse Skills deal [600 - 750] Shadow Damage when applied to Afflicted enemies."
   },
   {
     "name": "Will of Stone",
-    "desc": "Earth Spike is now a launched as a projectile. Upon impact, the projectile deals # damage to the target and summons 2-4 additional Earth Spikes."
+    "desc": "Earth Spike is now a launched as a projectile. Upon impact, the projectile deals [225 - 300] damage to the target and summons 2-4 additional Earth Spikes."
   },
   {
     "name": "Wilted Potential",
@@ -21144,39 +21144,75 @@ window.D4_DATABASE = {
   },
   {
     "name": "Windforce",
-    "desc": "Hits of Barrage have a #% chance to deal triple damage and Knock Down enemies."
+    "desc": "Hits of Barrage have a [25 - 30]% chance to deal triple damage and Knock Down enemies."
   },
   {
     "name": "Word of Hakan",
-    "desc": "Your Rain of Arrows is always Imbued with all Imbuements and deals #% increased damage to Distant enemies."
+    "desc": "Your Rain of Arrows is always Imbued with all Imbuements and deals [75 - 90]%[x] increased damage to Distant enemies."
   },
   {
     "name": "Wound Drinker",
-    "desc": "Every time you deal Thorns damage, you gain # Vigor.\r\n\r\nGain Toxic Skin's Passive Effect."
+    "desc": "Every time you deal Thorns damage, you gain [7 - 10] Vigor.Gain Toxic Skin's Passive Effect."
   },
   {
     "name": "Wreath of Auric Laurel",
-    "desc": "Lucky Hit: Holy Bolt has up to a #% chance to trigger Purify. \r\n\r\nPurify causes enemies to take #% increased damage from you for # seconds."
+    "desc": "Lucky Hit: Holy Bolt has up to a 40% chance to trigger Purify. Purify causes enemies to take [45 - 55]%[x] increased damage from you for 4 seconds."
   },
   {
     "name": "Writhing Band of Trickery",
-    "desc": "Your Subterfuge Skills create a Decoy Trap that Taunts and lures enemies, dealing # Corrupting damage over # seconds. This counts as a Trap Skill and only one Decoy can be active at a time. "
+    "desc": "Your Subterfuge Skills create a Decoy Trap that Taunts and lures enemies, dealing [900 - 1,200] Corrupting damage over 6 seconds. This counts as a Trap Skill and only one Decoy can be active at a time."
   },
   {
     "name": "Wushe Nak Pa",
-    "desc": "Casting an Ultimate Skill grants or amplifies its matching Primary Spirit Hall Bonus with #% potency for # seconds.\r\n\r\nYour Ultimate Skills each gain an additional Skill Type:\r\n The Seeker is a Focus Skill.\r\n The Hunter is a Mobility Skill.\r\n The Devourer is a Potency Skill.\r\n The Protector is a Defensive Skill."
+    "desc": "Casting an Ultimate Skill grants or amplifies its matching Primary Spirit Hall Bonus with [250 - 300]%[+] potency for 15 seconds.Your Ultimate Skills each gain an additional Skill Type: The Seeker is a Focus Skill. The Hunter is a Mobility Skill. The Devourer is a Potency Skill. The Protector is a Defensive Skill."
   },
   {
     "name": "Wyrdskin",
-    "desc": "Attacks apply Vulnerable to Distant Enemies, and Weakened to Close Enemies. You deal #% increased damage to Enemies that are both Vulnerable and Weakened."
+    "desc": "Attacks apply Vulnerable to Distant Enemies, and Weakened to Close Enemies. You deal [30 - 40]%[x] increased damage to Enemies that are both Vulnerable and Weakened."
   },
   {
     "name": "X'Fal's Corroded Signet",
-    "desc": "Each Damage over Time type you apply explodes every second, dealing # damage over # seconds to surrounding enemies."
+    "desc": "Each Damage over Time type you apply explodes every second, dealing [450 - 525] damage over 4 seconds to surrounding enemies."
   },
   {
     "name": "Yen's Blessing",
-    "desc": "Casting a Skill has a #% chance to trigger a Non-Mobility, Non-Ultimate Skill that is currently on Cooldown. Can only occur once every # seconds."
+    "desc": "Casting a Skill has a [40 - 60]% chance to trigger a Non-Mobility, Non-Ultimate Skill that is currently on Cooldown. Can only occur once every 8 seconds."
+  },
+  {
+    "name": "Boots Unique Necro 98",
+    "desc": "When you pick up [10 - 3] Blood Orbs, a free Bone Spirit is spawned, dealing bonus damage based on your current Life percent."
+  },
+  {
+    "name": "Chest Unique Necro 98",
+    "desc": "When you pick up [10 - 3] Blood Orbs, a free Bone Spirit is spawned, dealing bonus damage based on your current Life percent."
+  },
+  {
+    "name": "Esu's Heirloom",
+    "desc": "Your Critical Strike Chance is increased by [20 - 40]% of your Movement Speed bonus.Current Bonus: 0.0%"
+  },
+  {
+    "name": "Flameweaver",
+    "desc": "Casting Fire Bolt through your Firewall causes it to split into 3 bolts, each dealing [80 - 100]%[x] increased damage."
+  },
+  {
+    "name": "Pact Amulet",
+    "desc": "If you have at least 2 Blue Pacts, double in size."
+  },
+  {
+    "name": "Pants Unique Necro 98",
+    "desc": "When you pick up [10 - 3] Blood Orbs, a free Bone Spirit is spawned, dealing bonus damage based on your current Life percent."
+  },
+  {
+    "name": "Raiment of the Infinite",
+    "desc": "Teleport pulls Close enemies to you and you gain [40 - 50] Damage Reduction for 8 seconds."
+  },
+  {
+    "name": "Tempest Roar",
+    "desc": "(PH) I need a new design! (Werewolf)"
+  },
+  {
+    "name": "Unsung Ascetic's Wraps",
+    "desc": "Lightning Storm gains 1 additional strike each time it grows and deals [20 - 25]%[x] bonus damage."
   }
 ],
   gems: [
