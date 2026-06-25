@@ -12941,7 +12941,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -12958,7 +12958,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -12975,7 +12975,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -12992,7 +12992,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -13009,7 +13009,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -13026,7 +13026,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -13043,7 +13043,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -13060,7 +13060,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -13077,7 +13077,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -13094,7 +13094,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -13111,7 +13111,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -13212,7 +13212,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -13310,7 +13310,7 @@ window.D4_DATABASE = {
           1,
           1,
           1,
-          1,
+          0,
           0,
           1,
           1
@@ -13352,7 +13352,7 @@ window.D4_DATABASE = {
           1,
           1,
           1,
-          1,
+          0,
           0,
           1,
           1
@@ -13548,7 +13548,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -13688,7 +13688,7 @@ window.D4_DATABASE = {
           1,
           0,
           1,
-          1,
+          0,
           0,
           0,
           1
@@ -13716,7 +13716,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -13926,7 +13926,7 @@ window.D4_DATABASE = {
           1,
           1,
           1,
-          1,
+          0,
           0,
           1,
           1
@@ -13940,7 +13940,7 @@ window.D4_DATABASE = {
           1,
           1,
           1,
-          1,
+          0,
           1,
           1,
           1
@@ -13982,7 +13982,7 @@ window.D4_DATABASE = {
           1,
           1,
           0,
-          1,
+          0,
           0,
           1,
           1
@@ -14029,6 +14029,402 @@ window.D4_DATABASE = {
           0,
           0
         ]
+      },
+      {
+        "name": "Bearded Axe",
+        "rarity": "rare",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Axe",
+        "damageRange": "1,256 - 1,884",
+        "weaponSpeed": 1.1,
+        "sockets": 1
+      },
+      {
+        "name": "Bone Blade",
+        "rarity": "rare",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Dagger",
+        "damageRange": "1,152 - 1,728",
+        "weaponSpeed": 1.2,
+        "sockets": 1
+      },
+      {
+        "name": "Bone Wand",
+        "rarity": "rare",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Wand",
+        "damageRange": "1,152 - 1,728",
+        "weaponSpeed": 1.2,
+        "sockets": 1
+      },
+      {
+        "name": "Bonebreaker",
+        "rarity": "rare",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Two-Handed Mace",
+        "damageRange": "3,071 - 4,607",
+        "weaponSpeed": 0.9,
+        "sockets": 2
+      },
+      {
+        "name": "Demonblade",
+        "rarity": "rare",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Two-Handed Sword",
+        "damageRange": "2,764 - 4,146",
+        "weaponSpeed": 1,
+        "sockets": 2
+      },
+      {
+        "name": "Obsidian Blade",
+        "rarity": "rare",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Sword",
+        "damageRange": "1,256 - 1,884",
+        "weaponSpeed": 1.1,
+        "sockets": 1
+      },
+      {
+        "name": "Ossified Scythe",
+        "rarity": "rare",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Scythe",
+        "damageRange": "1,256 - 1,884",
+        "weaponSpeed": 1.1,
+        "sockets": 1
+      },
+      {
+        "name": "Parashu",
+        "rarity": "rare",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Two-Handed Axe",
+        "damageRange": "3,071 - 4,607",
+        "weaponSpeed": 0.9,
+        "sockets": 2
+      },
+      {
+        "name": "Skullsplitter",
+        "rarity": "rare",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Mace",
+        "damageRange": "1,256 - 1,884",
+        "weaponSpeed": 1.1,
+        "sockets": 1
+      },
+      {
+        "name": "Sparr",
+        "rarity": "rare",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Two-Handed Scythe",
+        "damageRange": "3,071 - 4,607",
+        "weaponSpeed": 0.9,
+        "sockets": 2
+      },
+      {
+        "name": "Spiked Flail",
+        "rarity": "rare",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Flail",
+        "damageRange": "1,152 - 1,728",
+        "weaponSpeed": 1.2,
+        "sockets": 1
+      },
+      {
+        "name": "Doombringer",
+        "rarity": "mythic",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Sword",
+        "damageRange": "1,256 - 1,884",
+        "weaponSpeed": 1.1,
+        "sockets": 1
+      },
+      {
+        "name": "El'Druin, Sword of Justice",
+        "rarity": "unique",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Sword",
+        "damageRange": "1,256 - 1,884",
+        "weaponSpeed": 1.1,
+        "sockets": 1
+      },
+      {
+        "name": "The Grandfather",
+        "rarity": "mythic",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Two-Handed Sword",
+        "damageRange": "2,764 - 4,146",
+        "weaponSpeed": 1,
+        "sockets": 2
+      },
+      {
+        "name": "Azurewrath",
+        "rarity": "unique",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Sword",
+        "damageRange": "1,256 - 1,884",
+        "weaponSpeed": 1.1,
+        "sockets": 1
+      },
+      {
+        "name": "Bloodless Scream",
+        "rarity": "unique",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Two-Handed Scythe",
+        "damageRange": "3,071 - 4,607",
+        "weaponSpeed": 0.9,
+        "sockets": 2
+      },
+      {
+        "name": "Mace of King Leoric",
+        "rarity": "unique",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Mace",
+        "damageRange": "1,256 - 1,884",
+        "weaponSpeed": 1.1,
+        "sockets": 1
+      },
+      {
+        "name": "Rustbitten Dirk",
+        "rarity": "unique",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Dagger",
+        "damageRange": "1,152 - 1,728",
+        "weaponSpeed": 1.2,
+        "sockets": 1
+      },
+      {
+        "name": "Sanguivor, Blade of Zir",
+        "rarity": "unique",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Two-Handed Sword",
+        "damageRange": "2,764 - 4,146",
+        "weaponSpeed": 1,
+        "sockets": 2
+      },
+      {
+        "name": "The Butcher's Cleaver",
+        "rarity": "unique",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Axe",
+        "damageRange": "1,256 - 1,884",
+        "weaponSpeed": 1.1,
+        "sockets": 1
+      },
+      {
+        "name": "The Mortacrux",
+        "rarity": "unique",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Dagger",
+        "damageRange": "1,152 - 1,728",
+        "weaponSpeed": 1.2,
+        "sockets": 1
+      },
+      {
+        "name": "Thousand-Eye Reaver",
+        "rarity": "unique",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Axe",
+        "damageRange": "1,256 - 1,884",
+        "weaponSpeed": 1.1,
+        "sockets": 1
       }
     ],
     "Offhand": [
@@ -14110,7 +14506,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -14166,7 +14562,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -14236,7 +14632,7 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1,
+          0,
           0,
           0,
           0
@@ -14255,6 +14651,114 @@ window.D4_DATABASE = {
           1,
           0
         ]
+      },
+      {
+        "name": "Bone Shield",
+        "rarity": "rare",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Shield",
+        "damageRange": "same as mainhand",
+        "weaponSpeed": "same as mainhand",
+        "sockets": 1
+      },
+      {
+        "name": "Enigma Cube",
+        "rarity": "rare",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Focus",
+        "damageRange": "1,152 - 1,728",
+        "weaponSpeed": 1.2,
+        "sockets": 1
+      },
+      {
+        "name": "Serpent Stone",
+        "rarity": "rare",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Focus",
+        "damageRange": "1,152 - 1,728",
+        "weaponSpeed": 1.2,
+        "sockets": 1
+      },
+      {
+        "name": "Gospel of the Devotee",
+        "rarity": "unique",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Focus",
+        "damageRange": "1,152 - 1,728",
+        "weaponSpeed": 1.2,
+        "sockets": 1
+      },
+      {
+        "name": "Lidless Wall",
+        "rarity": "unique",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Shield",
+        "damageRange": "same as mainhand",
+        "weaponSpeed": "same as mainhand",
+        "sockets": 1
+      },
+      {
+        "name": "The Gloom Ward",
+        "rarity": "unique",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Shield",
+        "damageRange": "same as mainhand",
+        "weaponSpeed": "same as mainhand",
+        "sockets": 1
       }
     ],
     "Weapon 1": [
