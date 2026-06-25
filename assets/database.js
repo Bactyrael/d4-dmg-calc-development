@@ -67,7 +67,6 @@ window.D4_DATABASE = {
       "slots": [
         "amulet",
         "chest",
-        "helm",
         "mainhand",
         "offhand",
         "pants"
@@ -90,7 +89,6 @@ window.D4_DATABASE = {
       "slots": [
         "amulet",
         "chest",
-        "helm",
         "mainhand",
         "offhand",
         "pants"
@@ -1253,8 +1251,7 @@ window.D4_DATABASE = {
         0
       ],
       "slots": [
-        "boots",
-        "helm"
+        "boots"
       ],
       "tempering": false
     },
@@ -1524,7 +1521,6 @@ window.D4_DATABASE = {
       "slots": [
         "amulet",
         "chest",
-        "helm",
         "offhand"
       ],
       "tempering": false
@@ -1613,7 +1609,6 @@ window.D4_DATABASE = {
         "boots",
         "chest",
         "gloves",
-        "helm",
         "mainhand",
         "offhand",
         "pants"
@@ -1628,7 +1623,7 @@ window.D4_DATABASE = {
         1,
         1,
         1,
-        1,
+        0,
         1,
         1,
         1
@@ -7217,7 +7212,6 @@ window.D4_DATABASE = {
       "slots": [
         "amulet",
         "chest",
-        "helm",
         "mainhand",
         "offhand",
         "pants"
@@ -8107,7 +8101,6 @@ window.D4_DATABASE = {
         "boots",
         "chest",
         "gloves",
-        "helm",
         "mainhand",
         "offhand",
         "pants"
