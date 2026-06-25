@@ -1670,6 +1670,59 @@
   function calculate() {
     if (isLoading) return;
    try {
+    // Auto-calculate base weapon damage and armor from equipped items
+    const equipment = getEquipmentValues();
+    let totalArmor = 0;
+    let totalWeaponDmg = 0;
+    let totalWeaponAps = 1;
+
+    if (equipment) {
+      Object.keys(equipment).forEach(slotName => {
+        const item = equipment[slotName];
+        if (!item || !item.name) return;
+        const sName = slotName.toLowerCase();
+        const baseItem = (window.D4_DATABASE.itemDatabase[slotName] || []).find(i => i.name === item.name) || {};
+        
+        if (baseItem.armor) totalArmor += baseItem.armor;
+        
+        if ((sName === 'mainhand' || sName.includes('weapon')) && baseItem.damageRange) {
+            const match = baseItem.damageRange.match(/([\d,]+)\s*-\s*([\d,]+)/);
+            if (match) {
+                const min = parseFloat(match[1].replace(/,/g, ''));
+                const max = parseFloat(match[2].replace(/,/g, ''));
+                totalWeaponDmg = (min + max) / 2;
+            }
+            if (baseItem.weaponSpeed) totalWeaponAps = baseItem.weaponSpeed;
+        }
+      });
+    }
+    
+    // Update UI and lock inputs if gear is equipped
+    if (totalWeaponDmg > 0) {
+        dom.weaponDamage.value = totalWeaponDmg;
+        dom.weaponDamage.disabled = true;
+        dom.weaponDamage.title = "Auto-calculated from equipped weapon";
+    } else {
+        dom.weaponDamage.disabled = false;
+        dom.weaponDamage.title = "";
+    }
+    
+    if (totalWeaponAps !== 1) {
+        dom.aps.value = totalWeaponAps;
+        dom.aps.disabled = true;
+    } else {
+        dom.aps.disabled = false;
+    }
+    
+    if (totalArmor > 0) {
+        dom.armor.value = totalArmor;
+        dom.armor.disabled = true;
+        dom.armor.title = "Auto-calculated from equipped armor";
+    } else {
+        dom.armor.disabled = false;
+        dom.armor.title = "";
+    }
+
     const weaponDmg = parseFloat(dom.weaponDamage.value) || 0;
     const skillPct  = parseFloat(dom.skillDamage.value) || 0;
     const str       = parseFloat(dom.strength.value) || 0;
@@ -3067,6 +3120,9 @@ rarity = foundItem.rarity;
       ${(() => {
         const baseItem = window.D4_DATABASE.itemDatabase[slotName]?.find(i => i.name === itemObj.name) || {};
         let extraWeaponInfo = '';
+        if (baseItem.armor) {
+          extraWeaponInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${baseItem.armor.toLocaleString()} Armor</div>`;
+        }
         if (baseItem.weaponType) {
           extraWeaponInfo += `<div style="font-size:13px; color:#ccc; margin-top: 4px;">Type: <span style="color:#fff;">${baseItem.weaponType}</span></div>`;
           if (baseItem.damageRange) extraWeaponInfo += `<div style="font-size:13px; color:#ccc;">Damage: <span style="color:#fff;">${baseItem.damageRange}</span></div>`;

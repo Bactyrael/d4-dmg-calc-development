@@ -10009,7 +10009,8 @@ window.D4_DATABASE = {
     "Helm": [
       {
         "name": "Legendary Helm",
-        "rarity": "legendary"
+        "rarity": "legendary",
+        "armor": 1603
       },
       {
         "name": "Andariel's Visage",
@@ -10023,7 +10024,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Autumnal Crown",
@@ -10037,7 +10039,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Bridle of Tor'Baalos",
@@ -10051,7 +10054,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Cage of Madness",
@@ -10065,7 +10069,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Cowl of Malefic Torment",
@@ -10079,7 +10084,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Cowl of the Nameless",
@@ -10093,7 +10099,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Crown of Lucion",
@@ -10107,7 +10114,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Deathless Visage",
@@ -10121,7 +10129,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Deathmask of Nirmitruq",
@@ -10135,7 +10144,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Gathlen's Birthright",
@@ -10149,7 +10159,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Godslayer Crown",
@@ -10163,7 +10174,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Hail of Verglas",
@@ -10177,7 +10189,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Harlequin Crest",
@@ -10191,7 +10204,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Harmony of Ebewaka",
@@ -10205,7 +10219,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Heir of Perdition",
@@ -10219,7 +10234,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Helm Unique Druid 98",
@@ -10233,7 +10249,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Judicant's Glaivehelm",
@@ -10247,7 +10264,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Loyalty's Mantle",
@@ -10261,7 +10279,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Nails of the Gore-Crowned",
@@ -10275,7 +10294,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Rictus of Terror",
@@ -10289,7 +10309,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Starfall Coronet",
@@ -10303,7 +10324,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "The Undercrown",
@@ -10317,7 +10339,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "The Unmaker",
@@ -10331,7 +10354,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Tuskhelm of Joritz the Mighty",
@@ -10345,7 +10369,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Ugly Bastard Helm",
@@ -10359,7 +10384,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Vasily's Prayer",
@@ -10373,7 +10399,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Vision of the Firestorm",
@@ -10387,7 +10414,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       },
       {
         "name": "Will of Stone",
@@ -10401,7 +10429,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 1603
       }
     ],
     "Chest Armor": [
