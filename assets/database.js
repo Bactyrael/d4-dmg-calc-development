@@ -6400,7 +6400,14 @@ window.D4_DATABASE = {
       "offhand",
       "pants",
       "ring1",
-      "ring2"
+      "ring2",
+      "Helm",
+      "Chest Armor",
+      "Gloves",
+      "Pants",
+      "Boots",
+      "Amulet",
+      "Ring"
     ],
     "tempering": true
   },
@@ -6832,7 +6839,14 @@ window.D4_DATABASE = {
       "offhand",
       "pants",
       "ring1",
-      "ring2"
+      "ring2",
+      "Helm",
+      "Chest Armor",
+      "Gloves",
+      "Pants",
+      "Boots",
+      "Amulet",
+      "Ring"
     ],
     "tempering": true
   },
@@ -6859,7 +6873,14 @@ window.D4_DATABASE = {
       "offhand",
       "pants",
       "ring1",
-      "ring2"
+      "ring2",
+      "Helm",
+      "Chest Armor",
+      "Gloves",
+      "Pants",
+      "Boots",
+      "Amulet",
+      "Ring"
     ],
     "tempering": true
   },
@@ -6886,7 +6907,14 @@ window.D4_DATABASE = {
       "offhand",
       "pants",
       "ring1",
-      "ring2"
+      "ring2",
+      "Helm",
+      "Chest Armor",
+      "Gloves",
+      "Pants",
+      "Boots",
+      "Amulet",
+      "Ring"
     ],
     "tempering": true
   },
@@ -6913,7 +6941,14 @@ window.D4_DATABASE = {
       "offhand",
       "pants",
       "ring1",
-      "ring2"
+      "ring2",
+      "Helm",
+      "Chest Armor",
+      "Gloves",
+      "Pants",
+      "Boots",
+      "Amulet",
+      "Ring"
     ],
     "tempering": true
   },
@@ -6940,7 +6975,14 @@ window.D4_DATABASE = {
       "offhand",
       "pants",
       "ring1",
-      "ring2"
+      "ring2",
+      "Helm",
+      "Chest Armor",
+      "Gloves",
+      "Pants",
+      "Boots",
+      "Amulet",
+      "Ring"
     ],
     "tempering": true
   },
@@ -6967,7 +7009,14 @@ window.D4_DATABASE = {
       "offhand",
       "pants",
       "ring1",
-      "ring2"
+      "ring2",
+      "Helm",
+      "Chest Armor",
+      "Gloves",
+      "Pants",
+      "Boots",
+      "Amulet",
+      "Ring"
     ],
     "tempering": true
   },
@@ -7053,12 +7102,21 @@ window.D4_DATABASE = {
       1
     ],
     "slots": [
-      "boots",
-      "chest",
-      "helm",
-      "pants",
-      "ring1",
-      "ring2"
+      "Helm",
+      "Chest Armor",
+      "Gloves",
+      "Pants",
+      "Boots",
+      "Amulet",
+      "Ring",
+      "Mainhand",
+      "Offhand",
+      "Weapon 1",
+      "Weapon 2",
+      "Weapon 1 (Bludgeoning)",
+      "Weapon 2 (Slashing)",
+      "Weapon 3 (Dual Wield 1)",
+      "Weapon 4 (Dual Wield 2)"
     ],
     "tempering": true
   },
@@ -7143,7 +7201,14 @@ window.D4_DATABASE = {
       "gloves",
       "helm",
       "ring1",
-      "ring2"
+      "ring2",
+      "Helm",
+      "Chest Armor",
+      "Gloves",
+      "Pants",
+      "Boots",
+      "Amulet",
+      "Ring"
     ],
     "tempering": true
   },
@@ -7161,12 +7226,21 @@ window.D4_DATABASE = {
       1
     ],
     "slots": [
-      "boots",
-      "chest",
-      "helm",
-      "pants",
-      "ring1",
-      "ring2"
+      "Helm",
+      "Chest Armor",
+      "Gloves",
+      "Pants",
+      "Boots",
+      "Amulet",
+      "Ring",
+      "Mainhand",
+      "Offhand",
+      "Weapon 1",
+      "Weapon 2",
+      "Weapon 1 (Bludgeoning)",
+      "Weapon 2 (Slashing)",
+      "Weapon 3 (Dual Wield 1)",
+      "Weapon 4 (Dual Wield 2)"
     ],
     "tempering": false
   },
@@ -7184,12 +7258,21 @@ window.D4_DATABASE = {
       1
     ],
     "slots": [
-      "boots",
-      "chest",
-      "helm",
-      "pants",
-      "ring1",
-      "ring2"
+      "Helm",
+      "Chest Armor",
+      "Gloves",
+      "Pants",
+      "Boots",
+      "Amulet",
+      "Ring",
+      "Mainhand",
+      "Offhand",
+      "Weapon 1",
+      "Weapon 2",
+      "Weapon 1 (Bludgeoning)",
+      "Weapon 2 (Slashing)",
+      "Weapon 3 (Dual Wield 1)",
+      "Weapon 4 (Dual Wield 2)"
     ],
     "tempering": false
   },
@@ -7207,12 +7290,21 @@ window.D4_DATABASE = {
       1
     ],
     "slots": [
-      "boots",
-      "chest",
-      "helm",
-      "pants",
-      "ring1",
-      "ring2"
+      "Helm",
+      "Chest Armor",
+      "Gloves",
+      "Pants",
+      "Boots",
+      "Amulet",
+      "Ring",
+      "Mainhand",
+      "Offhand",
+      "Weapon 1",
+      "Weapon 2",
+      "Weapon 1 (Bludgeoning)",
+      "Weapon 2 (Slashing)",
+      "Weapon 3 (Dual Wield 1)",
+      "Weapon 4 (Dual Wield 2)"
     ],
     "tempering": false
   },
@@ -7230,12 +7322,21 @@ window.D4_DATABASE = {
       1
     ],
     "slots": [
-      "boots",
-      "chest",
-      "helm",
-      "pants",
-      "ring1",
-      "ring2"
+      "Helm",
+      "Chest Armor",
+      "Gloves",
+      "Pants",
+      "Boots",
+      "Amulet",
+      "Ring",
+      "Mainhand",
+      "Offhand",
+      "Weapon 1",
+      "Weapon 2",
+      "Weapon 1 (Bludgeoning)",
+      "Weapon 2 (Slashing)",
+      "Weapon 3 (Dual Wield 1)",
+      "Weapon 4 (Dual Wield 2)"
     ],
     "tempering": false
   },

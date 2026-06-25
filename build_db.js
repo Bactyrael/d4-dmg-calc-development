@@ -67,11 +67,25 @@ async function buildDb() {
       // If the short name is in the temperAffixNames set, mark as tempering
       const isTempering = temperAffixNames.has(a.name) || (a.tempering === true);
 
+      // Patch slots for Universal Modifiers that d4guides.gg has incomplete data for
+      let finalSlots = [...(a.slots || [])];
+      const nameLower = a.name.toLowerCase();
+      
+      const ALL_SLOTS = ['Helm', 'Chest Armor', 'Gloves', 'Pants', 'Boots', 'Amulet', 'Ring', 'Mainhand', 'Offhand', 'Weapon 1', 'Weapon 2', 'Weapon 1 (Bludgeoning)', 'Weapon 2 (Slashing)', 'Weapon 3 (Dual Wield 1)', 'Weapon 4 (Dual Wield 2)'];
+      const NON_WEAPON_SLOTS = ['Helm', 'Chest Armor', 'Gloves', 'Pants', 'Boots', 'Amulet', 'Ring'];
+
+      if (['intelligence', 'strength', 'willpower', 'dexterity', 'all stats', 'maximum life'].includes(nameLower)) {
+          finalSlots = ALL_SLOTS;
+      } else if (nameLower === 'armor' || nameLower.includes('resistance')) {
+          // Generally non-weapons
+          finalSlots = Array.from(new Set([...finalSlots, ...NON_WEAPON_SLOTS]));
+      }
+
       affixesMap.set(desc, { 
         name: desc, 
         shortName: a.name,
         classes: classArr,
-        slots: a.slots || [],
+        slots: finalSlots,
         tempering: isTempering
       });
     });
