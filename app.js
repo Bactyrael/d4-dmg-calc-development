@@ -754,10 +754,11 @@
 
   const STANDARD_SLOTS = ['Helm', 'Chest Armor', 'Gloves', 'Pants', 'Boots', 'Mainhand', 'Amulet', 'Left Ring', 'Right Ring', 'Offhand'];
   const ROGUE_SLOTS = ['Helm', 'Chest Armor', 'Gloves', 'Pants', 'Boots', 'Ranged Weapon', 'Amulet', 'Left Ring', 'Right Ring', 'Mainhand', 'Offhand'];
+  const BARB_SLOTS = ['Helm', 'Chest Armor', 'Gloves', 'Pants', 'Boots', 'Bludgeoning Weapon', 'Mainhand', 'Amulet', 'Left Ring', 'Right Ring', 'Slicing Weapon', 'Offhand'];
   
   const CLASS_EQUIPMENT_SLOTS = {
     'Necromancer': [...STANDARD_SLOTS],
-    'Barbarian': [],
+    'Barbarian': [...BARB_SLOTS],
     'Druid': [...STANDARD_SLOTS],
     'Paladin': [...STANDARD_SLOTS],
     'Rogue': [...ROGUE_SLOTS],
@@ -771,6 +772,7 @@
     let mapped = slotName;
     if (slotName === 'Left Ring' || slotName === 'Right Ring') mapped = 'Ring';
     if (slotName === 'Ranged Weapon') mapped = 'Mainhand'; // Map to weapon pool
+    if (slotName === 'Bludgeoning Weapon' || slotName === 'Slicing Weapon') mapped = 'Mainhand'; // Map to weapon pool
     
     // Check class filter
     const currentClassVal = document.getElementById('class-select')?.value;
@@ -1086,7 +1088,7 @@
     const slots = CLASS_EQUIPMENT_SLOTS[className] || [];
     
     slots.forEach(slot => {
-      let isRight = ['Amulet', 'Left Ring', 'Right Ring', 'Offhand'].includes(slot);
+      let isRight = ['Amulet', 'Left Ring', 'Right Ring', 'Offhand', 'Slicing Weapon'].includes(slot);
       if (className === 'Rogue' && slot === 'Mainhand') isRight = true;
       
       const targetCol = isRight ? rightCol : leftCol;
