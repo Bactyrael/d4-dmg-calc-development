@@ -1750,3 +1750,85 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
   box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.65);
   border-radius: 8px;
 }
+
+/* Skills UI */
+.skill-category {
+  margin-bottom: 24px;
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 16px;
+}
+.skill-category-title {
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 8px;
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.skill-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(0,0,0,0.3);
+  padding: 8px;
+  border-radius: 4px;
+}
+.skill-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.skill-row:hover {
+  background: rgba(255,255,255,0.05);
+}
+.skill-row.active .skill-name {
+  color: #e5c899;
+}
+.skill-name {
+  color: #ccc;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.indent-1 { padding-left: 24px; }
+.indent-2 { padding-left: 48px; }
+.skill-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.skill-btn {
+  background: #333;
+  border: 1px solid #555;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.skill-btn:hover {
+  background: #555;
+}
+.skill-rank {
+  color: #fff;
+  font-family: monospace;
+  width: 45px;
+  text-align: center;
+}
