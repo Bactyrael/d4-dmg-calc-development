@@ -20257,7 +20257,76 @@ window.D4_DATABASE = {
             }
           ],
           "tempers": [],
-          "transfigures": []
+          "transfigures": [
+            {
+              "name": "Intelligence (%)",
+              "desc": "+[3.5 - 5]%"
+            },
+            {
+              "name": "Gem Strength",
+              "desc": "+[75 - 100]%"
+            },
+            {
+              "name": "Total Armor",
+              "desc": "+[8 - 10]%"
+            },
+            {
+              "name": "Resistance to All Elements",
+              "desc": "+[8 - 10]%"
+            },
+            {
+              "name": "Curse Skills",
+              "desc": "+[2 - 3]"
+            },
+            {
+              "name": "Macabre Skills",
+              "desc": "+[2 - 3]"
+            },
+            {
+              "name": "All Stats",
+              "desc": "+[75 - 100]"
+            },
+            {
+              "name": "Critical Strike Chance",
+              "desc": "+[3.5 - 5]%"
+            },
+            {
+              "name": "Attack Speed",
+              "desc": "+[8 - 10]%"
+            },
+            {
+              "name": "Intelligence",
+              "desc": "+[150 - 180]"
+            },
+            {
+              "name": "Lucky Hit Chance",
+              "desc": "+[6 - 8]%"
+            },
+            {
+              "name": "Resource Cost Reduction",
+              "desc": "[6 - 8]%"
+            },
+            {
+              "name": "Maximum Resource",
+              "desc": "+[15 - 20]"
+            },
+            {
+              "name": "Shadow Damage",
+              "desc": "+[8 - 10]%"
+            },
+            {
+              "name": "Physical Damage",
+              "desc": "+[8 - 10]%"
+            },
+            {
+              "name": "Maximum Life",
+              "desc": "+[6 - 8]%"
+            },
+            {
+              "name": "Item Quality",
+              "desc": "+[1 - 15]"
+            }
+          ]
         }
       }
     },
