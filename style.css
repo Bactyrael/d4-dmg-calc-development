@@ -1207,6 +1207,31 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
   color: #fff;
 }
 
+.empty-affix-slot {
+  background: transparent;
+  border-bottom: 1px solid #444;
+  color: #888;
+  padding: 6px 0;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  width: 100%;
+  cursor: pointer;
+}
+
+.empty-affix-slot:hover {
+  border-bottom-color: #666;
+  color: #aaa;
+}
+
+.affix-filled-row {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.05);
+  padding: 4px 8px;
+  border-radius: 4px;
+  gap: 8px;
+}
+
 /* --- Paperdoll Layout --- */
 .paperdoll-container {
   display: flex;

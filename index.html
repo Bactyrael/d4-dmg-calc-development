@@ -317,6 +317,9 @@ Critical Strike Damage
           <button class="item-modal-tab active">Select</button>
           <button class="item-modal-tab" disabled>Edit</button>
           <button class="item-modal-tab" id="tab-aspect" disabled>Aspect</button>
+          <button class="item-modal-tab" id="tab-modifier" disabled>Modifiers</button>
+          <button class="item-modal-tab" id="tab-temper" disabled>Tempering</button>
+          <button class="item-modal-tab" id="tab-transfigure" disabled>Transfigure</button>
           <button class="item-modal-tab" id="tab-gem" disabled>Gem</button>
         </div>
         <button id="close-item-modal" class="item-modal-close">✕</button>
@@ -355,6 +358,71 @@ Critical Strike Damage
           </div>
         </div>
       </div>
+      <div class="item-modal-body" id="item-modal-modifier-body" style="display: none;">
+        <div class="item-modal-sidebar" id="modifier-sidebar">
+          <div class="sidebar-item active" data-category="All Modifiers">All Modifiers</div>
+          <div class="sidebar-item" data-category="Core Stats">Core Stats</div>
+          <div class="sidebar-item" data-category="Offensive">Offensive</div>
+          <div class="sidebar-item" data-category="Defensive">Defensive</div>
+          <div class="sidebar-item" data-category="Utility">Utility</div>
+          <div class="sidebar-item" data-category="Resource">Resource</div>
+          <div class="sidebar-item" data-category="Skills">Skills</div>
+        </div>
+        <div class="item-modal-main">
+          <div class="item-modal-search">
+            <span class="icon">⊞</span>
+            <input type="text" id="modifier-search-input" placeholder="Search Modifiers...">
+          </div>
+          <div class="item-modal-list" id="item-modal-modifier-list">
+            <!-- Modifiers populated dynamically -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tempering Tab -->
+      <div class="item-modal-body" id="item-modal-temper-body" style="display: none;">
+        <div class="item-modal-sidebar" id="temper-sidebar">
+          <div class="sidebar-item active" data-category="All Modifiers">All Modifiers</div>
+          <div class="sidebar-item" data-category="Core Stats">Core Stats</div>
+          <div class="sidebar-item" data-category="Offensive">Offensive</div>
+          <div class="sidebar-item" data-category="Defensive">Defensive</div>
+          <div class="sidebar-item" data-category="Utility">Utility</div>
+          <div class="sidebar-item" data-category="Resource">Resource</div>
+          <div class="sidebar-item" data-category="Skills">Skills</div>
+        </div>
+        <div class="item-modal-main">
+          <div class="item-modal-search">
+            <span class="icon">⊞</span>
+            <input type="text" id="temper-search-input" placeholder="Search Tempering...">
+          </div>
+          <div class="item-modal-list" id="item-modal-temper-list">
+            <!-- Tempers populated dynamically -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Transfigure Tab -->
+      <div class="item-modal-body" id="item-modal-transfigure-body" style="display: none;">
+        <div class="item-modal-sidebar" id="transfigure-sidebar">
+          <div class="sidebar-item active" data-category="All Modifiers">All Modifiers</div>
+          <div class="sidebar-item" data-category="Core Stats">Core Stats</div>
+          <div class="sidebar-item" data-category="Offensive">Offensive</div>
+          <div class="sidebar-item" data-category="Defensive">Defensive</div>
+          <div class="sidebar-item" data-category="Utility">Utility</div>
+          <div class="sidebar-item" data-category="Resource">Resource</div>
+          <div class="sidebar-item" data-category="Skills">Skills</div>
+        </div>
+        <div class="item-modal-main">
+          <div class="item-modal-search">
+            <span class="icon">⊞</span>
+            <input type="text" id="transfigure-search-input" placeholder="Search Transfigure...">
+          </div>
+          <div class="item-modal-list" id="item-modal-transfigure-list">
+            <!-- Transfigure populated dynamically -->
+          </div>
+        </div>
+      </div>
+      
       <div class="item-modal-body" id="item-modal-gem-body" style="display: none;">
         <div class="item-modal-sidebar" id="gem-sidebar">
           <div class="sidebar-item active" data-category="All Gems">All Gems</div>

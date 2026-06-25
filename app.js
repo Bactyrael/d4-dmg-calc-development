@@ -2830,15 +2830,17 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     const selectTab = tabs[0];
     const editTab = tabs[1];
     const aspectTab = tabs[2];
-    const gemTab = tabs[3];
+    const modifierTab = tabs[3];
+    const gemTab = tabs[4];
     const selectBody = document.getElementById('item-modal-select-body');
     const editBody = document.getElementById('item-modal-edit-body');
     const aspectBody = document.getElementById('item-modal-aspect-body');
+    const modifierBody = document.getElementById('item-modal-modifier-body');
     const gemBody = document.getElementById('item-modal-gem-body');
     
     // Reset all
-    [selectTab, editTab, aspectTab, gemTab].forEach(t => t?.classList.remove('active'));
-    [selectBody, editBody, aspectBody, gemBody].forEach(b => { if(b) b.style.display = 'none'; });
+    [selectTab, editTab, aspectTab, modifierTab, gemTab].forEach(t => t?.classList.remove('active'));
+    [selectBody, editBody, aspectBody, modifierBody, gemBody].forEach(b => { if(b) b.style.display = 'none'; });
 
     if (tabName === 'select') {
       selectTab?.classList.add('active');
@@ -2849,6 +2851,9 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     } else if (tabName === 'aspect') {
       aspectTab?.classList.add('active');
       if (aspectBody) aspectBody.style.display = 'flex';
+    } else if (tabName === 'modifiers') {
+      modifierTab?.classList.add('active');
+      if (modifierBody) modifierBody.style.display = 'flex';
     } else if (tabName === 'gem') {
       gemTab?.classList.add('active');
       if (gemBody) gemBody.style.display = 'flex';
@@ -2861,13 +2866,15 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     const tabs = document.querySelectorAll('.item-modal-tab');
     const editTabBtn = tabs[1];
     const aspectTabBtn = tabs[2];
-    const gemTabBtn = tabs[3];
+    const modifierTabBtn = tabs[3];
+    const gemTabBtn = tabs[4];
     
     if (!editBody || !box) return;
 
     if (!box.dataset.value) {
       editTabBtn.disabled = true;
       aspectTabBtn.disabled = true;
+      modifierTabBtn.disabled = true;
       if (gemTabBtn) gemTabBtn.disabled = true;
       editBody.innerHTML = '';
       return;
@@ -2875,6 +2882,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     
     editTabBtn.disabled = false;
     aspectTabBtn.disabled = false;
+    modifierTabBtn.disabled = false;
     if (gemTabBtn) gemTabBtn.disabled = false;
     
     let itemObj;
@@ -2898,8 +2906,18 @@ rarity = foundItem.rarity;
     const affixesBase = (window.D4_DATABASE?.affixes || [])
       .filter(a => classIdx === undefined || !a.classes || a.classes[classIdx] === 1);
       
+    const baseItemDef = window.D4_DATABASE.itemDatabase[slotName]?.find(i => i.name === itemObj.name) || {};
+    
     // Determine allowed slots for affixes
-    function isAffixAllowedForSlot(affixSlots, slotName) {
+    function isAffixAllowedForSlot(affix, slotName) {
+      // Speed restriction check
+      if (affix.targetSpeeds && baseItemDef.weaponSpeed !== undefined) {
+        if (!affix.targetSpeeds.includes(baseItemDef.weaponSpeed)) {
+          return false;
+        }
+      }
+      
+      const affixSlots = affix.slots;
       if (!affixSlots || affixSlots.length === 0) return true; // generic
       let mapped = slotName.toLowerCase();
       if (mapped === 'left ring' || mapped === 'right ring') mapped = 'ring';
@@ -2917,8 +2935,8 @@ rarity = foundItem.rarity;
       });
     }
 
-    const regularAffixes = affixesBase.filter(a => !a.tempering && isAffixAllowedForSlot(a.slots, slotName));
-    const temperAffixes = affixesBase.filter(a => a.tempering && isAffixAllowedForSlot(a.slots, slotName));
+    const regularAffixes = affixesBase.filter(a => !a.tempering && isAffixAllowedForSlot(a, slotName));
+    const temperAffixes = affixesBase.filter(a => a.tempering && isAffixAllowedForSlot(a, slotName));
 
     const affixesDatalist = `<datalist id="affixes-list">${regularAffixes.map(a => `<option value="${a.name}">${a.name}</option>`).join('')}</datalist>`;
     const temperDatalist = `<datalist id="temper-list">${temperAffixes.map(a => `<option value="${a.name}">${a.name}</option>`).join('')}</datalist>`;
@@ -3036,10 +3054,19 @@ rarity = foundItem.rarity;
       const currentName = arr && arr[idx] ? arr[idx] : '';
       const vals = valuesArr[idx] || [];
       
-      const obj = (window.D4_DATABASE?.affixes || []).find(a => a.name === currentName);
+      let obj = (window.D4_DATABASE?.affixes || []).find(a => a.name === currentName);
+      if (!obj && currentName) {
+        obj = (window.D4_DATABASE?.affixes || []).find(a => a.name.toLowerCase().includes(currentName.toLowerCase()));
+        if (obj) {
+          if (arr) arr[idx] = obj.name; // sync it back
+        } else {
+          // Allow custom manual entry if no match is found
+          obj = { name: currentName, desc: currentName };
+        }
+      }
       
-      if (!currentName || !obj) {
-        return `<input list="${datalistId}" class="edit-dropdown" data-type="${type}" data-idx="${idx}" placeholder="Search for ${placeholderText}..." value="">`;
+      if (!currentName) {
+        return `<div class="btn-change-affix empty-affix-slot" data-type="${type}" data-idx="${idx}">Search for ${placeholderText}...</div>`;
       }
       
       let valIndex = 0;
@@ -3056,13 +3083,11 @@ rarity = foundItem.rarity;
       });
       
       return `
-        <div style="display:flex; flex-direction: column; background: rgba(255,255,255,0.05); padding: 4px; border-radius: 4px; gap: 4px;">
-          <div style="display:flex; justify-content: flex-end;">
-            <button class="edit-btn btn-clear-affix" data-type="${type}" data-idx="${idx}" style="padding: 2px 8px; font-size: 0.75rem;">Change</button>
+        <div class="affix-filled-row">
+          <div style="font-size: 0.9rem; line-height: 1.5; color: #ccc; flex: 1;">
+            <span style="color: #ff5555; margin-right: 4px; cursor: pointer;" class="btn-remove-affix" data-type="${type}" data-idx="${idx}" title="Remove">✖</span> ${descHtml}
           </div>
-          <div style="font-size: 0.9rem; line-height: 1.5; color: #ccc;">
-            ${descHtml}
-          </div>
+          <button class="edit-btn btn-change-affix" data-type="${type}" data-idx="${idx}" style="padding: 2px 8px; font-size: 0.75rem;">Change</button>
         </div>
       `;
     }
@@ -3071,18 +3096,30 @@ rarity = foundItem.rarity;
       ${aspectsDatalist}
       ${affixesDatalist}
       ${temperDatalist}
-      <div class="edit-header">
-        <div class="edit-icon-large">${rarity === 'mythic' ? 'M' : (rarity === 'unique' ? 'U' : (rarity === 'legendary' ? 'L' : 'R'))}</div>
-        <div class="edit-title-area">
-          <div class="edit-item-name rarity-${rarity}">${itemObj.name}</div>
-          <div class="edit-input-row">
-            <input type="number" id="edit-power" value="${itemObj.power || 900}"> Item Power
-          </div>
-          <div class="edit-input-row">
-            Quality: <input type="number" id="edit-quality" value="${itemObj.quality || 0}" min="0" max="25"> / 25
+      ${(() => {
+        const baseItem = window.D4_DATABASE.itemDatabase[slotName]?.find(i => i.name === itemObj.name) || {};
+        let extraWeaponInfo = '';
+        if (baseItem.weaponType) {
+          extraWeaponInfo += `<div style="font-size:13px; color:#ccc; margin-top: 4px;">Type: <span style="color:#fff;">${baseItem.weaponType}</span></div>`;
+          if (baseItem.damageRange) extraWeaponInfo += `<div style="font-size:13px; color:#ccc;">Damage: <span style="color:#fff;">${baseItem.damageRange}</span></div>`;
+          if (baseItem.weaponSpeed) extraWeaponInfo += `<div style="font-size:13px; color:#ccc;">Speed: <span style="color:#fff;">${baseItem.weaponSpeed}</span></div>`;
+        }
+        return `
+        <div class="edit-header">
+          <div class="edit-icon-large">${rarity === 'mythic' ? 'M' : (rarity === 'unique' ? 'U' : (rarity === 'legendary' ? 'L' : 'R'))}</div>
+          <div class="edit-title-area">
+            <div class="edit-item-name rarity-${rarity}">${itemObj.name}</div>
+            <div class="edit-input-row">
+              <input type="number" id="edit-power" value="${itemObj.power || 900}"> Item Power
+            </div>
+            <div class="edit-input-row">
+              Quality: <input type="number" id="edit-quality" value="${itemObj.quality || 0}" min="0" max="25"> / 25
+            </div>
+            ${extraWeaponInfo}
           </div>
         </div>
-      </div>
+        `;
+      })()}
       
       <div class="edit-actions">
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
@@ -3116,13 +3153,33 @@ rarity = foundItem.rarity;
 
       ${aspectSection}
 
-      <div class="edit-section">
-        <div class="edit-section-title tan">Sockets</div>
-        <div class="edit-section-content" style="display: flex; gap: 8px;">
-          <button class="edit-btn btn-socket" data-idx="0" style="flex: 1; padding: 4px;">${(itemObj.sockets && itemObj.sockets[0]) ? itemObj.sockets[0] : 'Empty Socket'}</button>
-          <button class="edit-btn btn-socket" data-idx="1" style="flex: 1; padding: 4px;">${(itemObj.sockets && itemObj.sockets[1]) ? itemObj.sockets[1] : 'Empty Socket'}</button>
+      ${(() => {
+        const lowerSlot = slotName.toLowerCase();
+        let maxSockets = 2; // Default to 2
+        
+        if (lowerSlot.includes('glove') || lowerSlot.includes('boot')) {
+          maxSockets = 0;
+        } else if (lowerSlot.includes('ring') || lowerSlot.includes('amulet') || lowerSlot.includes('mainhand') || lowerSlot.includes('offhand') || lowerSlot.includes('dual wield') || lowerSlot.includes('slicing')) {
+          maxSockets = 1;
+        }
+
+        if (maxSockets === 0) return '';
+        
+        let socketsHtml = '';
+        for (let i = 0; i < maxSockets; i++) {
+          const gemText = (itemObj.sockets && itemObj.sockets[i]) ? itemObj.sockets[i] : 'Empty Socket';
+          socketsHtml += `<button class="edit-btn btn-socket" data-idx="${i}" style="flex: 1; padding: 4px;">${gemText}</button>`;
+        }
+
+        return `
+        <div class="edit-section">
+          <div class="edit-section-title tan">Sockets</div>
+          <div class="edit-section-content" style="display: flex; gap: 8px;">
+            ${socketsHtml}
+          </div>
         </div>
-      </div>
+        `;
+      })()}
     `;
 
     document.getElementById('btn-change-item').addEventListener('click', () => switchModalTab('select'));
@@ -3198,7 +3255,7 @@ rarity = foundItem.rarity;
       });
     });
 
-    document.querySelectorAll('.btn-clear-affix').forEach(btn => {
+    document.querySelectorAll('.btn-remove-affix').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const type = e.target.dataset.type;
         const idx = parseInt(e.target.dataset.idx);
@@ -3214,8 +3271,25 @@ rarity = foundItem.rarity;
           if (itemObj.transfigureValues) itemObj.transfigureValues[idx] = [];
         }
         box.dataset.value = JSON.stringify(itemObj);
-        calculate();
+                calculate();
         renderEditTab(slotName);
+      });
+    });
+
+    document.querySelectorAll('.btn-change-affix').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const type = e.target.dataset.type;
+        const idx = parseInt(e.target.dataset.idx);
+        
+        window.currentModifierEditing = { type, idx, slotName };
+        if (type === 'temper') {
+          switchModalTab('temper');
+        } else if (type === 'transfigure') {
+          switchModalTab('transfigure');
+        } else {
+          switchModalTab('modifiers');
+        }
+        renderModifierTab(slotName, type);
       });
     });
 
@@ -3289,6 +3363,9 @@ rarity = foundItem.rarity;
       renderModalItems(slotName, '');
       renderEditTab(slotName);
       renderAspectTab(slotName, 'All Aspects', '');
+      renderModifierTab(slotName, 'affix', '', 'All Modifiers');
+      renderModifierTab(slotName, 'temper', '', 'All Modifiers');
+      renderModifierTab(slotName, 'transfigure', '', 'All Modifiers');
       renderGemTab(slotName, 'All Gems', '');
       
       const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
@@ -3593,5 +3670,178 @@ rarity = foundItem.rarity;
   } else {
     start();
   }
+
+
+
+
+
+  
+  function getAffixCategory(name) {
+    const n = name.toLowerCase();
+    if (n.includes('strength') || n.includes('intelligence') || n.includes('willpower') || n.includes('dexterity') || n.includes('all stats')) return 'Core Stats';
+    if (n.includes('damage') || n.includes('critical') || n.includes('attack speed') || n.includes('vulnerable') || n.includes('overpower') || n.includes('chance to')) return 'Offensive';
+    if (n.includes('armor') || n.includes('life') || n.includes('resistance') || n.includes('dodge') || n.includes('reduction') || n.includes('barrier')) return 'Defensive';
+    if (n.includes('movement') || n.includes('cooldown') || n.includes('luck') || n.includes('healing') || n.includes('duration') || n.includes('size')) return 'Utility';
+    if (n.includes('essence') || n.includes('mana') || n.includes('fury') || n.includes('spirit') || n.includes('energy') || n.includes('resource') || n.includes('regeneration')) return 'Resource';
+    if (n.includes('rank') || n.includes('to ')) return 'Skills';
+    return 'Utility';
+  }
+
+  function renderModifierTab(slotName, type, query = '', activeCategory = 'All Modifiers') {
+    let listId = 'item-modal-modifier-list';
+    if (type === 'temper') listId = 'item-modal-temper-list';
+    if (type === 'transfigure') listId = 'item-modal-transfigure-list';
+    const list = document.getElementById(listId);
+    if (!list) return;
+    list.innerHTML = '';
+    
+    const currentClassVal = document.getElementById('class-select').value;
+    const classIdx = D4_CLASS_MAP[currentClassVal];
+
+    const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
+    let itemObj = { name: '' };
+    if (box && box.dataset.value) {
+      try { itemObj = JSON.parse(box.dataset.value); } catch(e) {}
+    }
+    
+    function getDbItems(sName) {
+      const keys = Object.keys(window.D4_DATABASE?.itemDatabase || {});
+      const match = keys.find(k => k.toLowerCase() === sName.toLowerCase());
+      return match ? window.D4_DATABASE.itemDatabase[match] : [];
+    }
+    
+    const baseItemDef = getDbItems(slotName).find(i => i.name === itemObj.name) || {};
+
+    function isAffixAllowedForSlot(affix, slotName) {
+      if (affix.targetSpeeds && baseItemDef.weaponSpeed !== undefined) {
+        if (!affix.targetSpeeds.includes(baseItemDef.weaponSpeed)) return false;
+      }
+      const affixSlots = affix.slots;
+      if (!affixSlots || affixSlots.length === 0) return true; // generic
+      let mapped = slotName.toLowerCase();
+      if (mapped === 'left ring' || mapped === 'right ring') mapped = 'ring';
+      if (mapped === 'chest armor') mapped = 'chest';
+      if (mapped === 'mainhand' || mapped === 'offhand' || mapped === 'weapon1' || mapped === 'weapon2' || mapped === 'ranged weapon') {
+         if (mapped.startsWith('weapon') || mapped === 'ranged weapon') mapped = 'mainhand';
+      }
+      return affixSlots.some(s => {
+        const ms = s.toLowerCase();
+        if (mapped === 'ring' && (ms === 'ring1' || ms === 'ring2')) return true;
+        if (mapped === 'mainhand' && (ms === 'mainhand' || ms === '2h-slashing' || ms === '2h-bludgeoning' || ms === '2h-ranged')) return true; 
+        if (mapped === 'offhand' && (ms === 'offhand' || ms === 'shield')) return true;
+        return ms === mapped;
+      });
+    }
+
+    let items = (window.D4_DATABASE?.affixes || []).filter(a => {
+      if (classIdx !== undefined && a.classes && a.classes[classIdx] !== 1) return false;
+      if (type === 'temper' && !a.tempering) return false;
+      if (type === 'affix' && a.tempering) return false;
+      if (type === 'transfigure') {
+        if (a.tempering) return false;
+      }
+      if (!isAffixAllowedForSlot(a, slotName)) return false;
+      if (activeCategory !== 'All Modifiers' && getAffixCategory(a.name) !== activeCategory) return false;
+      if (query && !a.name.toLowerCase().includes(query.toLowerCase())) return false;
+      return true;
+    });
+
+    // Update sidebar visibility and active state
+    let sidebarId = 'modifier-sidebar';
+    if (type === 'temper') sidebarId = 'temper-sidebar';
+    if (type === 'transfigure') sidebarId = 'transfigure-sidebar';
+    document.querySelectorAll('#' + sidebarId + ' .sidebar-item').forEach(el => {
+      el.classList.remove('active');
+      if (el.dataset.category === activeCategory) el.classList.add('active');
+    });
+
+    if (items.length === 0) {
+      list.innerHTML = '<div style="padding: 20px; color: #888; text-align: center;">No modifiers found.</div>';
+      return;
+    }
+
+    items.forEach(a => {
+      const card = document.createElement('div');
+      card.className = 'item-card';
+      const title = document.createElement('div');
+      title.className = 'item-card-title';
+      title.textContent = a.name;
+      const desc = document.createElement('div');
+      desc.className = 'item-card-desc';
+      desc.innerHTML = a.desc || '';
+      card.appendChild(title);
+      card.appendChild(desc);
+      
+      card.addEventListener('click', () => {
+        let editing = window.currentModifierEditing;
+        if (!editing) {
+          // If no specific slot was clicked, find the first empty one
+          let targetObj = itemObj;
+          let idx = 0;
+          if (type === 'temper') {
+            if (!targetObj.tempering) targetObj.tempering = [];
+            idx = targetObj.tempering.findIndex(x => !x);
+            if (idx === -1) idx = Math.min(targetObj.tempering.length, 1); // Max 2 tempers (0,1)
+          } else if (type === 'transfigure') {
+            if (!targetObj.transfigure) targetObj.transfigure = [];
+            idx = targetObj.transfigure.findIndex(x => !x);
+            if (idx === -1) idx = Math.min(targetObj.transfigure.length, 0); // Max 1 transfigure (0)
+          } else {
+            if (!targetObj.affixes) targetObj.affixes = [];
+            idx = targetObj.affixes.findIndex(x => !x);
+            if (idx === -1) idx = Math.min(targetObj.affixes.length, 2); // Max 3 affixes (0,1,2)
+          }
+          editing = { type: type || 'affix', idx, slotName };
+        }
+        
+        let targetObj = itemObj;
+        if (editing.type === 'affix') {
+          if (!targetObj.affixes) targetObj.affixes = [];
+          targetObj.affixes[editing.idx] = a.name;
+        } else if (editing.type === 'temper') {
+          if (!targetObj.tempering) targetObj.tempering = [];
+          targetObj.tempering[editing.idx] = a.name;
+        } else if (editing.type === 'transfigure') {
+          if (!targetObj.transfigure) targetObj.transfigure = [];
+          targetObj.transfigure[editing.idx] = a.name;
+        }
+        
+        box.dataset.value = JSON.stringify(targetObj);
+        calculate();
+        switchModalTab('edit');
+        renderEditTab(slotName);
+      });
+      
+      list.appendChild(card);
+    });
+  }
+
+  // Setup search input listener for modifiers
+  document.addEventListener('DOMContentLoaded', () => {
+    function setupModifierListeners(type, prefix) {
+      const searchInput = document.getElementById(prefix + '-search-input');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const query = e.target.value;
+          const activeCat = document.querySelector('#' + prefix + '-sidebar .sidebar-item.active')?.dataset.category || 'All Modifiers';
+          const t = window.currentModifierEditing ? window.currentModifierEditing.type : type;
+          renderModifierTab(currentModalSlot, t, query, activeCat);
+        });
+      }
+
+      document.querySelectorAll('#' + prefix + '-sidebar .sidebar-item').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const cat = e.target.dataset.category;
+          const query = document.getElementById(prefix + '-search-input')?.value || '';
+          const t = window.currentModifierEditing ? window.currentModifierEditing.type : type;
+          renderModifierTab(currentModalSlot, t, query, cat);
+        });
+      });
+    }
+    
+    setupModifierListeners('affix', 'modifier');
+    setupModifierListeners('temper', 'temper');
+    setupModifierListeners('transfigure', 'transfigure');
+  });
 
 })();
