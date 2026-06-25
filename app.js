@@ -1676,7 +1676,7 @@
     const baseEquipped = getEquipmentValues();
     let totalArmor = 0;
     let totalWeaponDmg = 0;
-    let totalWeaponAps = 1;
+    let totalWeaponAps = 0;
 
     if (baseEquipped) {
       Object.keys(baseEquipped).forEach(slotName => {
@@ -1694,7 +1694,9 @@
                 const max = parseFloat(match[2].replace(/,/g, ''));
                 totalWeaponDmg = (min + max) / 2;
             }
-            if (baseItem.weaponSpeed) totalWeaponAps = baseItem.weaponSpeed;
+            if (baseItem.weaponSpeed && typeof baseItem.weaponSpeed === 'number') {
+                totalWeaponAps = baseItem.weaponSpeed;
+            }
         }
       });
     }
@@ -1709,9 +1711,10 @@
         dom.weaponDamage.title = "";
     }
     
-    if (totalWeaponAps !== 1) {
-        dom.aps.value = totalWeaponAps;
-        dom.aps.disabled = true;
+    if (totalWeaponAps > 0) {
+        dom.weaponSpeed.value = totalWeaponAps;
+        dom.weaponSpeed.disabled = true;
+        dom.weaponSpeed.title = "Auto-calculated from equipped weapon";
     } else {
         if (dom.weaponSpeed) { dom.weaponSpeed.disabled = false; dom.weaponSpeed.title = ""; }
     }
