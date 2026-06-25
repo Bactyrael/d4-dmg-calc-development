@@ -1666,7 +1666,7 @@ window.D4_DATABASE = {
       "offhand",
       "pants"
     ],
-    "tempering": false
+    "tempering": true
   },
   {
     "name": "+[2 - 3] to Advance",
@@ -6402,7 +6402,7 @@ window.D4_DATABASE = {
       "ring1",
       "ring2"
     ],
-    "tempering": false
+    "tempering": true
   },
   {
     "name": "+[25 - 45]% Movement Speed for 4 Seconds After Killing an Elite",
@@ -6834,7 +6834,7 @@ window.D4_DATABASE = {
       "ring1",
       "ring2"
     ],
-    "tempering": false
+    "tempering": true
   },
   {
     "name": "+[367 - 415] Fire Resistance",
@@ -6861,7 +6861,7 @@ window.D4_DATABASE = {
       "ring1",
       "ring2"
     ],
-    "tempering": false
+    "tempering": true
   },
   {
     "name": "+[367 - 415] Lightning Resistance",
@@ -6888,7 +6888,7 @@ window.D4_DATABASE = {
       "ring1",
       "ring2"
     ],
-    "tempering": false
+    "tempering": true
   },
   {
     "name": "+[367 - 415] Physical Resistance",
@@ -6915,7 +6915,7 @@ window.D4_DATABASE = {
       "ring1",
       "ring2"
     ],
-    "tempering": false
+    "tempering": true
   },
   {
     "name": "+[367 - 415] Poison Resistance",
@@ -6942,7 +6942,7 @@ window.D4_DATABASE = {
       "ring1",
       "ring2"
     ],
-    "tempering": false
+    "tempering": true
   },
   {
     "name": "+[367 - 415] Shadow Resistance",
@@ -6969,7 +6969,7 @@ window.D4_DATABASE = {
       "ring1",
       "ring2"
     ],
-    "tempering": false
+    "tempering": true
   },
   {
     "name": "+[40.0 - 60.0]% Damage when Spending Resolve",
@@ -7060,7 +7060,7 @@ window.D4_DATABASE = {
       "ring1",
       "ring2"
     ],
-    "tempering": false
+    "tempering": true
   },
   {
     "name": "+[56 - 93] Weapon Damage",
@@ -7122,7 +7122,7 @@ window.D4_DATABASE = {
       "helm",
       "pants"
     ],
-    "tempering": false
+    "tempering": true
   },
   {
     "name": "+[689 - 779] Armor",
@@ -7145,7 +7145,7 @@ window.D4_DATABASE = {
       "ring1",
       "ring2"
     ],
-    "tempering": false
+    "tempering": true
   },
   {
     "name": "+[69 - 83] Dexterity",
@@ -7492,7 +7492,7 @@ window.D4_DATABASE = {
       "ring1",
       "ring2"
     ],
-    "tempering": false
+    "tempering": true
   },
   {
     "name": "+[98 - 133] Life on Kill",

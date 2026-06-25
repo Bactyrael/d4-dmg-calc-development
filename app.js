@@ -2807,8 +2807,8 @@ rarity = foundItem.rarity;
       });
     }
 
-    const regularAffixes = affixesBase.filter(a => isAffixAllowedForSlot(a.slots, slotName));
-    const temperAffixes = regularAffixes; // Tempering shares the same pool for now since our database lacks specific tempering classification
+    const regularAffixes = affixesBase.filter(a => !a.tempering && isAffixAllowedForSlot(a.slots, slotName));
+    const temperAffixes = affixesBase.filter(a => a.tempering && isAffixAllowedForSlot(a.slots, slotName));
 
     const affixesDatalist = `<datalist id="affixes-list">${regularAffixes.map(a => `<option value="${a.name}">${a.name}</option>`).join('')}</datalist>`;
     const temperDatalist = `<datalist id="temper-list">${temperAffixes.map(a => `<option value="${a.name}">${a.name}</option>`).join('')}</datalist>`;

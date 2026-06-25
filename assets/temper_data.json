@@ -1,0 +1,1647 @@
+[
+  {
+    "name": "Barbarian Recovery",
+    "url": "https://d4guides.gg/en/loh/database/temper/barbarian-recovery",
+    "affixes": [
+      "% Lunging Strike Healing",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Blood Endurance",
+    "url": "https://d4guides.gg/en/loh/database/temper/blood-endurance",
+    "affixes": [
+      "All Stats",
+      "% Blood Orb Healing",
+      "All Stats",
+      "% Blood Mist Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Natural Resistance",
+    "url": "https://d4guides.gg/en/loh/database/temper/natural-resistance",
+    "affixes": [
+      "Fire Resistance",
+      "Lightning Resistance",
+      "Cold Resistance",
+      "Poison Resistance",
+      "Shadow Resistance",
+      "Physical Resistance"
+    ]
+  },
+  {
+    "name": "Natural Schemes",
+    "url": "https://d4guides.gg/en/loh/database/temper/natural-schemes",
+    "affixes": [
+      "Thorns",
+      "% Fortify Generation",
+      "% Barrier Generation"
+    ]
+  },
+  {
+    "name": "Nature Magic Wall",
+    "url": "https://d4guides.gg/en/loh/database/temper/nature-magic-wall",
+    "affixes": [
+      "% Cyclone Armor Cooldown Reduction",
+      "% Earthen Bulwark Cooldown Reduction",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Necromancer Wall",
+    "url": "https://d4guides.gg/en/loh/database/temper/necromancer-wall",
+    "affixes": [
+      "% Damage Reduction for Your Summons",
+      "% Chance For Minion Attacks to Fortify You for 3% Maximum Life",
+      "Minions Inherit +[10.0 - 12.5]% of Your Thorns",
+      "% Block Chance"
+    ]
+  },
+  {
+    "name": "Paladin Guard",
+    "url": "https://d4guides.gg/en/loh/database/temper/paladin-guard",
+    "affixes": [
+      "% Aegis Cooldown Reduction",
+      "% Block Chance"
+    ]
+  },
+  {
+    "name": "Paladin Perseverance",
+    "url": "https://d4guides.gg/en/loh/database/temper/paladin-perseverance",
+    "affixes": [
+      "% Block Chance",
+      "% Armor in Arbiter Form"
+    ]
+  },
+  {
+    "name": "Paladin Recovery",
+    "url": "https://d4guides.gg/en/loh/database/temper/paladin-recovery",
+    "affixes": [
+      "% Fortify Generation",
+      "% Consecration Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Pyromancy Endurance",
+    "url": "https://d4guides.gg/en/loh/database/temper/pyromancy-endurance",
+    "affixes": [
+      "Life On Hit",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Thorn Army",
+    "url": "https://d4guides.gg/en/loh/database/temper/thorn-army",
+    "affixes": [
+      "% Thorns while Fortified",
+      "Minions Inherit +[10.0 - 12.5]% of Your Thorns"
+    ]
+  },
+  {
+    "name": "Thorn Body",
+    "url": "https://d4guides.gg/en/loh/database/temper/thorn-body",
+    "affixes": [
+      "% Thorns while Fortified"
+    ]
+  },
+  {
+    "name": "Blood Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/blood-finesse",
+    "affixes": [
+      "% Blood Attack Speed",
+      "% Blood Damage",
+      "All Stats",
+      "% Damage while Fortified"
+    ]
+  },
+  {
+    "name": "Companion Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/companion-innovation",
+    "affixes": [
+      "% Wolves Attack Speed",
+      "% Ravens Attack Speed",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Cutthroat Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/cutthroat-finesse",
+    "affixes": [
+      "% Cutthroat Damage",
+      "% Cutthroat Attack Speed",
+      "% Cutthroat Critical Strike Chance"
+    ]
+  },
+  {
+    "name": "Natural Motion",
+    "url": "https://d4guides.gg/en/loh/database/temper/natural-motion",
+    "affixes": [
+      "% Movement Speed",
+      "% Movement Speed for 4 Seconds After Killing an Elite",
+      "% Mobility Cooldown Reduction",
+      "% Evade Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Werewolf Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/werewolf-finesse",
+    "affixes": [
+      "% Werewolf Attack Speed",
+      "% Werewolf Critical Strike Chance"
+    ]
+  },
+  {
+    "name": "Worldly Destruction",
+    "url": "https://d4guides.gg/en/loh/database/temper/worldly-destruction",
+    "affixes": [
+      "% Attack Speed",
+      "% Critical Strike Chance",
+      "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Make Enemies Vulnerable for 2 Seconds",
+      "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Weaken for 2 Seconds"
+    ]
+  },
+  {
+    "name": "Agile Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/agile-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Alchemist Control",
+    "url": "https://d4guides.gg/en/loh/database/temper/alchemist-control",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Assassin Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/assassin-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Aura Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/aura-innovation",
+    "affixes": [
+      "% Defiance Aura Potency",
+      "% Fanaticism Aura Potency",
+      "% Holy Light Aura Potency",
+      "% Arbiter Duration"
+    ]
+  },
+  {
+    "name": "Barbarian Breach",
+    "url": "https://d4guides.gg/en/loh/database/temper/barbarian-breach",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Berserking Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/berserking-finesse",
+    "affixes": [
+      "% Damage while Berserking",
+      "% Damage when Swapping Weapons",
+      "% Physical Damage Over Time"
+    ]
+  },
+  {
+    "name": "Berserking Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/berserking-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "% Berserking Duration"
+    ]
+  },
+  {
+    "name": "Bleed Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/bleed-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Bleed Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/bleed-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Blood Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/blood-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Blood Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/blood-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Bone Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/bone-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Bone Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/bone-finesse",
+    "affixes": [
+      "% Bone Damage",
+      "% Bone Critical Strike Chance",
+      "% Bone Critical Strike Damage"
+    ]
+  },
+  {
+    "name": "Bone Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/bone-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Brawling Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/brawling-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Brute Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/brute-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Centipede Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/centipede-augments",
+    "affixes": [
+      "% Chance for Withering Fist to Deal Double Damage"
+    ]
+  },
+  {
+    "name": "Centipede Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/centipede-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Channeler",
+    "url": "https://d4guides.gg/en/loh/database/temper/channeler",
+    "affixes": [
+      "% Abyss Damage",
+      "% Hellfire Damage",
+      "% Occult Damage"
+    ]
+  },
+  {
+    "name": "Companion Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/companion-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Conjuration Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/conjuration-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Conjuration Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/conjuration-finesse",
+    "affixes": [
+      "% Hydra Damage",
+      "% Ice Blades Damage",
+      "% Lightning Spear Damage",
+      "% Familiar Damage"
+    ]
+  },
+  {
+    "name": "Core Augments — Barbarian",
+    "url": "https://d4guides.gg/en/loh/database/temper/core-augments-barbarian",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Cutthroat Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/cutthroat-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Decay Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/decay-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Demolition Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/demolition-finesse",
+    "affixes": [
+      "% Damage with Two-Handed Bludgeoning Weapons",
+      "% Damage with Two-Handed Slashing Weapons",
+      "% Damage with Dual-Wielded Weapons"
+    ]
+  },
+  {
+    "name": "Demonologist",
+    "url": "https://d4guides.gg/en/loh/database/temper/demonologist",
+    "affixes": [
+      "% Demonology Damage",
+      "% Archfiend Damage",
+      "% Damage to Bleeding Enemies"
+    ]
+  },
+  {
+    "name": "Disciple Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/disciple-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "% Chance for Arbiter to Deal Double Damage"
+    ]
+  },
+  {
+    "name": "Disciple Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/disciple-innovation",
+    "affixes": [
+      "% Arbiter Duration",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Dreadful Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/dreadful-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Druid Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/druid-finesse",
+    "affixes": [
+      "% Earth Damage",
+      "% Versatile Damage",
+      "% Storm Damage",
+      "% Companion Damage"
+    ]
+  },
+  {
+    "name": "Eagle Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/eagle-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Earth Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/earth-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Elemental Control",
+    "url": "https://d4guides.gg/en/loh/database/temper/elemental-control",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Elemental Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/elemental-finesse",
+    "affixes": [
+      "% Fire Damage Over Time",
+      "% Frost Damage",
+      "% Pyromancy Damage",
+      "% Shock Damage"
+    ]
+  },
+  {
+    "name": "Elemental Finesse - Night",
+    "url": "https://d4guides.gg/en/loh/database/temper/elemental-finesse-night",
+    "affixes": [
+      "% Cold Damage",
+      "% Poison Damage",
+      "% Shadow Damage"
+    ]
+  },
+  {
+    "name": "Elemental Finesse — Day",
+    "url": "https://d4guides.gg/en/loh/database/temper/elemental-finesse-day",
+    "affixes": [
+      "% Physical Damage",
+      "% Fire Damage",
+      "% Lightning Damage",
+      "% Holy Damage"
+    ]
+  },
+  {
+    "name": "Execution Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/execution-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Fitness Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/fitness-efficiency",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Forest Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/forest-augments",
+    "affixes": [
+      "% Chance for Payback to Deal Double Damage",
+      "% Chance for Concussive Stomp to Extra Hit",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Frost Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/frost-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Frost Augments —  Frozen",
+    "url": "https://d4guides.gg/en/loh/database/temper/frost-augments-frozen",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Frost Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/frost-finesse",
+    "affixes": [
+      "% Frost Critical Strike Chance",
+      "% Damage to Frozen Enemies"
+    ]
+  },
+  {
+    "name": "Furious Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/furious-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Gorilla Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/gorilla-finesse",
+    "affixes": [
+      "% Defensive Damage",
+      "% Gorilla Damage",
+      "% Damage to Knocked-Down Enemies"
+    ]
+  },
+  {
+    "name": "Gorilla Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/gorilla-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Guardian Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/guardian-finesse",
+    "affixes": [
+      "% Disciple Damage",
+      "% Zealot Damage",
+      "% Damage while in Arbiter Form",
+      "% Damage to Judged Enemies"
+    ]
+  },
+  {
+    "name": "Imbuement Abundance",
+    "url": "https://d4guides.gg/en/loh/database/temper/imbuement-abundance",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Jaguar Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/jaguar-finesse",
+    "affixes": [
+      "% Mobility Damage",
+      "% Jaguar Damage",
+      "% Damage to Injured Enemies"
+    ]
+  },
+  {
+    "name": "Jaguar Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/jaguar-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "% Ravager On Kill Duration Extension"
+    ]
+  },
+  {
+    "name": "Judicator Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/judicator-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "% Chance for Judgement to Deal Double Damage"
+    ]
+  },
+  {
+    "name": "Judicator Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/judicator-finesse",
+    "affixes": [
+      "% Juggernaut Damage",
+      "% Judicator Damage",
+      "% Justice Damage",
+      "% Damage to Weakened Enemies"
+    ]
+  },
+  {
+    "name": "Judicator Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/judicator-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Juggernaut Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/juggernaut-augments",
+    "affixes": [
+      "% Chance for Clash to Deal Double Damage",
+      "% Chance for Shield Bash to Deal Double Damage",
+      "% Chance for Shield Charge to Deal Double Damage",
+      "% Chance for Retribution to Deal Double Damage"
+    ]
+  },
+  {
+    "name": "Juggernaut Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/juggernaut-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Lightning Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/lightning-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Marksman Augments — Basic",
+    "url": "https://d4guides.gg/en/loh/database/temper/marksman-augments-basic",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Marksman Augments — Core",
+    "url": "https://d4guides.gg/en/loh/database/temper/marksman-augments-core",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Marksman Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/marksman-finesse",
+    "affixes": [
+      "% Marksman Damage",
+      "% Marksman Critical Strike Chance"
+    ]
+  },
+  {
+    "name": "Metamorph",
+    "url": "https://d4guides.gg/en/loh/database/temper/metamorph",
+    "affixes": [
+      "% Sigil Damage",
+      "% Damage while Shadowform is Active",
+      "% Demonform Damage Bonus"
+    ]
+  },
+  {
+    "name": "Minion Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/minion-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Minion Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/minion-finesse",
+    "affixes": [
+      "% Summon Damage"
+    ]
+  },
+  {
+    "name": "Nature Magic Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/nature-magic-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Necromancer Motion",
+    "url": "https://d4guides.gg/en/loh/database/temper/necromancer-motion",
+    "affixes": [
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Plains Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/plains-augments",
+    "affixes": [
+      "% Chance for Rushing Claw to Deal Double Damage",
+      "All Stats",
+      "All Stats",
+      "% Mystic Circle Potency"
+    ]
+  },
+  {
+    "name": "Prismatic Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/prismatic-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Profane Cage",
+    "url": "https://d4guides.gg/en/loh/database/temper/profane-cage",
+    "affixes": [
+      "% Blight Chill Potency",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Profane Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/profane-finesse",
+    "affixes": [
+      "% Blood Damage",
+      "% Bone Damage",
+      "% Summon Damage"
+    ]
+  },
+  {
+    "name": "Profane Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/profane-innovation",
+    "affixes": [
+      "% Curse Duration"
+    ]
+  },
+  {
+    "name": "Pyromancy Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/pyromancy-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Pyromancy Augments —  Fiery",
+    "url": "https://d4guides.gg/en/loh/database/temper/pyromancy-augments-fiery",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Rogue Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/rogue-innovation",
+    "affixes": [
+      "All Stats",
+      "Twisting Blades Returns +[20.0 - 30.0]% Faster",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Rogue Motion",
+    "url": "https://d4guides.gg/en/loh/database/temper/rogue-motion",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Rogue Recovery",
+    "url": "https://d4guides.gg/en/loh/database/temper/rogue-recovery",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Scoundrel Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/scoundrel-finesse",
+    "affixes": [
+      "% Cutthroat Damage",
+      "% Marksman Damage",
+      "% Agility Damage",
+      "% Damage per Combo Point Spent"
+    ]
+  },
+  {
+    "name": "Shadow Augments — Decay",
+    "url": "https://d4guides.gg/en/loh/database/temper/shadow-augments-decay",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Shadow Augments — Execution",
+    "url": "https://d4guides.gg/en/loh/database/temper/shadow-augments-execution",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Shadow Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/shadow-finesse",
+    "affixes": [
+      "% Macabre Damage",
+      "% Darkness Damage"
+    ]
+  },
+  {
+    "name": "Shapeshifting Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/shapeshifting-finesse",
+    "affixes": [
+      "% Human Damage",
+      "% Werebear Damage",
+      "% Werewolf Damage"
+    ]
+  },
+  {
+    "name": "Shock Augments — Discharge",
+    "url": "https://d4guides.gg/en/loh/database/temper/shock-augments-discharge",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Shock Augments — Surge",
+    "url": "https://d4guides.gg/en/loh/database/temper/shock-augments-surge",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Sigil Mastery",
+    "url": "https://d4guides.gg/en/loh/database/temper/sigil-mastery",
+    "affixes": [
+      "% Sigil Duration"
+    ]
+  },
+  {
+    "name": "Sky Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/sky-augments",
+    "affixes": [
+      "% Chance for Soar to Deal Double Damage",
+      "% Chance for Vortex to Extra Hit",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Slayer's Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/slayer-s-finesse",
+    "affixes": [
+      "% Weapon Mastery Damage",
+      "% Brawling Damage",
+      "% Ancient Damage",
+      "% Earthquake Damage"
+    ]
+  },
+  {
+    "name": "Soil Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/soil-augments",
+    "affixes": [
+      "All Stats",
+      "% Scourge Poisoning Duration",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Sorcerer Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/sorcerer-finesse",
+    "affixes": [
+      "% Enchantment Damage",
+      "% Damage to Frozen Enemies",
+      "% Mastery Damage"
+    ]
+  },
+  {
+    "name": "Sorcerer Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/sorcerer-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Sorcerer Innovation — Fiery",
+    "url": "https://d4guides.gg/en/loh/database/temper/sorcerer-innovation-fiery",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Sorcerer Stability",
+    "url": "https://d4guides.gg/en/loh/database/temper/sorcerer-stability",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Specialist Evolution",
+    "url": "https://d4guides.gg/en/loh/database/temper/specialist-evolution",
+    "affixes": [
+      "% Damage per Combo Point Spent",
+      "All Stats",
+      "% Inner Sight Duration"
+    ]
+  },
+  {
+    "name": "Storm Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/storm-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Storm Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/storm-finesse",
+    "affixes": [
+      "% Storm Damage",
+      "% Storm Critical Strike Chance"
+    ]
+  },
+  {
+    "name": "Subterfuge Expertise",
+    "url": "https://d4guides.gg/en/loh/database/temper/subterfuge-expertise",
+    "affixes": [
+      "All Stats",
+      "% Damage on Next Attack After Entering Stealth",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Trap Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/trap-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Trap Expertise",
+    "url": "https://d4guides.gg/en/loh/database/temper/trap-expertise",
+    "affixes": [
+      "% Trap Damage",
+      "Traps Arm [0.4 - 0.6] Seconds Faster",
+      "% Grenade Damage"
+    ]
+  },
+  {
+    "name": "Vehement Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/vehement-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Wasteland Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/wasteland-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Wasteland Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/wasteland-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Weapon Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/weapon-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Werebear Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/werebear-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Werebear Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/werebear-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Werewolf Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/werewolf-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Worldly Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/worldly-finesse",
+    "affixes": [
+      "% Critical Strike Damage",
+      "% Damage Over Time",
+      "% Vulnerable Damage"
+    ]
+  },
+  {
+    "name": "Zealot Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/zealot-augments",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Zealot Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/zealot-finesse",
+    "affixes": [
+      "% Zealot Critical Strike Chance",
+      "% Zealot Critical Strike Damage",
+      "% Zealot Damage",
+      "% Damage to Weakened Enemies"
+    ]
+  },
+  {
+    "name": "Zealot Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/zealot-innovation",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Centipede Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/centipede-efficiency",
+    "affixes": [
+      "% Withering Fist Resource Generation",
+      "% The Devourer Cooldown Reduction",
+      "% Potency Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Disciple Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/disciple-efficiency",
+    "affixes": [
+      "% Brandish Resource Generation",
+      "% Justice Cooldown Reduction",
+      "% Arbiter of Justice Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Druid Invigoration",
+    "url": "https://d4guides.gg/en/loh/database/temper/druid-invigoration",
+    "affixes": [
+      "Casting Wrath Skills Restores +[7 - 14] Primary Resource"
+    ]
+  },
+  {
+    "name": "Eagle Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/eagle-augments",
+    "affixes": [
+      "% Chance for Thunderspike to Deal Double Damage",
+      "All Stats",
+      "% Chance for The Seeker to Deal Double Damage",
+      "% Primary Eagle Spirit Hall Damage"
+    ]
+  },
+  {
+    "name": "Eagle Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/eagle-efficiency",
+    "affixes": [
+      "% Focus Cooldown Reduction",
+      "Casting Ultimate Skills Restores +[10 - 18] Primary Resource"
+    ]
+  },
+  {
+    "name": "Gorilla Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/gorilla-augments",
+    "affixes": [
+      "% Chance for Rock Splitter to Deal Double Damage",
+      "All Stats",
+      "% Chance for The Protector to Deal Double Damage",
+      "% Primary Gorilla Spirit Hall Damage"
+    ]
+  },
+  {
+    "name": "Gorilla Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/gorilla-efficiency",
+    "affixes": [
+      "% Rock Splitter Resource Generation",
+      "% The Protector Cooldown Reduction",
+      "% Defensive Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Jaguar Augments",
+    "url": "https://d4guides.gg/en/loh/database/temper/jaguar-augments",
+    "affixes": [
+      "% Chance for Thrash to Deal Double Damage",
+      "All Stats",
+      "% Chance for The Hunter to Deal Double Damage",
+      "% Primary Jaguar Spirit Hall Damage"
+    ]
+  },
+  {
+    "name": "Judicator Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/judicator-efficiency",
+    "affixes": [
+      "% Holy Bolt Resource Generation",
+      "Casting Justice Skills Restores +[2 - 6] Primary Resource",
+      "% Heaven's Fury Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Juggernaut Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/juggernaut-efficiency",
+    "affixes": [
+      "% Clash Resource Generation",
+      "% Valor Cooldown Reduction",
+      "% Fortress Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Necromancer Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/necromancer-efficiency",
+    "affixes": [
+      "% Ultimate Cooldown Reduction",
+      "% Resource Generation with Two-Handed Weapons",
+      "% Resource Generation while Wielding a Shield"
+    ]
+  },
+  {
+    "name": "Necromancer Invigoration",
+    "url": "https://d4guides.gg/en/loh/database/temper/necromancer-invigoration",
+    "affixes": [
+      "Casting Macabre Skills Restores +[10 - 21] Primary Resource"
+    ]
+  },
+  {
+    "name": "Paladin Resolve",
+    "url": "https://d4guides.gg/en/loh/database/temper/paladin-resolve",
+    "affixes": [
+      "Resolve Generated",
+      "Maximum Resolve Stacks"
+    ]
+  },
+  {
+    "name": "Rogue Invigoration",
+    "url": "https://d4guides.gg/en/loh/database/temper/rogue-invigoration",
+    "affixes": [
+      "% Puncture Resource Generation",
+      "% Invigorating Strike Energy Regeneration",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Sharpened Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/sharpened-finesse",
+    "affixes": [
+      "% Damage when Spending Resolve",
+      "% Damage Per Overpower Stack"
+    ]
+  },
+  {
+    "name": "Spirit Hall Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/spirit-hall-finesse",
+    "affixes": [
+      "% Centipede Damage",
+      "% Eagle Damage",
+      "% Gorilla Damage",
+      "% Jaguar Damage"
+    ]
+  },
+  {
+    "name": "Spiritborn Endurance",
+    "url": "https://d4guides.gg/en/loh/database/temper/spiritborn-endurance",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Spiritborn Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/spiritborn-finesse",
+    "affixes": [
+      "% Focus Damage",
+      "% Mobility Damage",
+      "% Potency Damage"
+    ]
+  },
+  {
+    "name": "Spiritborn Guard",
+    "url": "https://d4guides.gg/en/loh/database/temper/spiritborn-guard",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Spiritborn Motion",
+    "url": "https://d4guides.gg/en/loh/database/temper/spiritborn-motion",
+    "affixes": [
+      "% Soar Cooldown Reduction",
+      "Rushing Claw Charges",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Spiritborn Recovery",
+    "url": "https://d4guides.gg/en/loh/database/temper/spiritborn-recovery",
+    "affixes": [
+      "All Stats",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Spiritborn Resolve",
+    "url": "https://d4guides.gg/en/loh/database/temper/spiritborn-resolve",
+    "affixes": [
+      "All Stats",
+      "Resolve Generated"
+    ]
+  },
+  {
+    "name": "Weapon Attunement — Barbarian",
+    "url": "https://d4guides.gg/en/loh/database/temper/weapon-attunement-barbarian",
+    "affixes": [
+      "% Basic Resource Generation"
+    ]
+  },
+  {
+    "name": "Weapon Attunement — Necromancer",
+    "url": "https://d4guides.gg/en/loh/database/temper/weapon-attunement-necromancer",
+    "affixes": [
+      "% Basic Resource Generation"
+    ]
+  },
+  {
+    "name": "Worldly Endurance",
+    "url": "https://d4guides.gg/en/loh/database/temper/worldly-endurance",
+    "affixes": [
+      "Maximum Life",
+      "Armor",
+      "Resistance to All Elements",
+      "Maximum Resolve Stacks"
+    ]
+  },
+  {
+    "name": "Worldly Stability",
+    "url": "https://d4guides.gg/en/loh/database/temper/worldly-stability",
+    "affixes": [
+      "% Resource Generation",
+      "% Resource Cost Reduction",
+      "Lucky Hit: Up to a 15% Chance to Restore +[5 - 12] Primary Resource",
+      "% Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Zealot Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/zealot-efficiency",
+    "affixes": [
+      "% Advance Resource Generation",
+      "Casting Valor Skills Restores +[2 - 6] Primary Resource",
+      "% Zenith Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Agility Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/agility-efficiency",
+    "affixes": [
+      "% Agility Cooldown Reduction",
+      "% Shadow Step Cooldown Reduction",
+      "% Caltrops Cooldown Reduction",
+      "% Dash Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Barbarian Control",
+    "url": "https://d4guides.gg/en/loh/database/temper/barbarian-control",
+    "affixes": [
+      "Steel Grasp Stuns for +[0.9 - 1.3] Seconds",
+      "Upheaval Overpowers Stun for +[0.7 - 1.1] Seconds",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Barbarian Innovation",
+    "url": "https://d4guides.gg/en/loh/database/temper/barbarian-innovation",
+    "affixes": [
+      "% Stun Duration"
+    ]
+  },
+  {
+    "name": "Barbarian Motion",
+    "url": "https://d4guides.gg/en/loh/database/temper/barbarian-motion",
+    "affixes": [
+      "% Leap Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Barbarian Strategy",
+    "url": "https://d4guides.gg/en/loh/database/temper/barbarian-strategy",
+    "affixes": [
+      "% Ground Stomp Cooldown Reduction",
+      "% Iron Skin Cooldown Reduction",
+      "% Challenging Shout Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Brawling Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/brawling-efficiency",
+    "affixes": [
+      "% War Cry Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Companion Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/companion-efficiency",
+    "affixes": [
+      "% Companion Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Conjuration Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/conjuration-efficiency",
+    "affixes": [
+      "% Ice Blades Cooldown Reduction",
+      "% Lightning Spear Cooldown Reduction",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Conjuration Fortune",
+    "url": "https://d4guides.gg/en/loh/database/temper/conjuration-fortune",
+    "affixes": [
+      "% Hydra Lucky Hit Chance",
+      "% Ice Blades Lucky Hit Chance",
+      "% Lightning Spear Lucky Hit Chance",
+      "% Familiar Lucky Hit Chance"
+    ]
+  },
+  {
+    "name": "Daze Control",
+    "url": "https://d4guides.gg/en/loh/database/temper/daze-control",
+    "affixes": [
+      "% Smoke Grenade Cooldown Reduction",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Druid Motion",
+    "url": "https://d4guides.gg/en/loh/database/temper/druid-motion",
+    "affixes": [
+      "% Trample Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Elemental Surge — Day",
+    "url": "https://d4guides.gg/en/loh/database/temper/elemental-surge-day",
+    "affixes": [
+      "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Physical Damage",
+      "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Fire Damage",
+      "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Lightning Damage"
+    ]
+  },
+  {
+    "name": "Elemental Surge — Night",
+    "url": "https://d4guides.gg/en/loh/database/temper/elemental-surge-night",
+    "affixes": [
+      "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Cold Damage",
+      "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Poison Damage",
+      "Lucky Hit: Up to a 40% Chance to Deal +[1,500 - 2,400] Shadow Damage"
+    ]
+  },
+  {
+    "name": "Frost Cage",
+    "url": "https://d4guides.gg/en/loh/database/temper/frost-cage",
+    "affixes": [
+      "% Frost Nova Cooldown Reduction",
+      "All Stats",
+      "% Chill Slow Potency",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Jaguar Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/jaguar-efficiency",
+    "affixes": [
+      "% Incarnate Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Natural Finesse",
+    "url": "https://d4guides.gg/en/loh/database/temper/natural-finesse",
+    "affixes": [
+      "% Damage",
+      "% Damage to Crowd Controlled Enemies",
+      "% Damage to Close Enemies",
+      "% Damage to Distant Enemies"
+    ]
+  },
+  {
+    "name": "Paladin Motion",
+    "url": "https://d4guides.gg/en/loh/database/temper/paladin-motion",
+    "affixes": [
+      "% Falling Star Cooldown Reduction",
+      "% Shield Charge Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Rogue Cloaking",
+    "url": "https://d4guides.gg/en/loh/database/temper/rogue-cloaking",
+    "affixes": [
+      "% Concealment Cooldown Reduction",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Shapeshifting Endurance",
+    "url": "https://d4guides.gg/en/loh/database/temper/shapeshifting-endurance",
+    "affixes": [
+      "% Blood Howl Cooldown Reduction",
+      "% Debilitating Roar Cooldown Reduction",
+      "All Stats",
+      "All Stats"
+    ]
+  },
+  {
+    "name": "Sorcerer Control",
+    "url": "https://d4guides.gg/en/loh/database/temper/sorcerer-control",
+    "affixes": [
+      "% Immobilize Duration",
+      "% Stun Duration",
+      "% Freeze Duration"
+    ]
+  },
+  {
+    "name": "Sorcerer Motion",
+    "url": "https://d4guides.gg/en/loh/database/temper/sorcerer-motion",
+    "affixes": [
+      "% Teleport Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Subterfuge Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/subterfuge-efficiency",
+    "affixes": [
+      "% Subterfuge Cooldown Reduction",
+      "% Trap Cooldown Reduction",
+      "% Poison Trap Cooldown Reduction",
+      "% Dark Shroud Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Ultimate Efficiency —  Druid",
+    "url": "https://d4guides.gg/en/loh/database/temper/ultimate-efficiency-druid",
+    "affixes": [
+      "% Petrify Cooldown Reduction",
+      "% Cataclysm Cooldown Reduction",
+      "% Lacerate Cooldown Reduction",
+      "% Grizzly Rage Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Ultimate Efficiency —  Sorcerer",
+    "url": "https://d4guides.gg/en/loh/database/temper/ultimate-efficiency-sorcerer",
+    "affixes": [
+      "% Deep Freeze Cooldown Reduction",
+      "% Inferno Cooldown Reduction",
+      "% Unstable Currents Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Ultimate Efficiency — Barbarian",
+    "url": "https://d4guides.gg/en/loh/database/temper/ultimate-efficiency-barbarian",
+    "affixes": [
+      "% Call of the Ancients Cooldown Reduction",
+      "% Iron Maelstrom Cooldown Reduction",
+      "% Wrath of the Berserker Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Ultimate Efficiency — Rogue",
+    "url": "https://d4guides.gg/en/loh/database/temper/ultimate-efficiency-rogue",
+    "affixes": [
+      "% Rain of Arrows Cooldown Reduction",
+      "% Death Trap Cooldown Reduction",
+      "% Shadow Clone Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Weapon Mastery Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/weapon-mastery-efficiency",
+    "affixes": [
+      "% Weapon Mastery Cooldown Reduction",
+      "% Death Blow Cooldown Reduction",
+      "% Rupture Cooldown Reduction",
+      "% Steel Grasp Cooldown Reduction"
+    ]
+  },
+  {
+    "name": "Worldly Afflictions",
+    "url": "https://d4guides.gg/en/loh/database/temper/worldly-afflictions",
+    "affixes": [
+      "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Daze for 2 Seconds",
+      "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Freeze for 2 Seconds",
+      "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Immobilize for 2 Seconds",
+      "Lucky Hit: Up to a +[7.0 - 10.0]% Chance to Slow for 2 Seconds",
+      "Lucky Hit: Up to a +[2.0 - 4.0]% Chance to Stun for 2 Seconds"
+    ]
+  },
+  {
+    "name": "Worldly Fortune",
+    "url": "https://d4guides.gg/en/loh/database/temper/worldly-fortune",
+    "affixes": [
+      "% Lucky Hit Chance",
+      "% Impairment Reduction",
+      "% Crowd Control Duration"
+    ]
+  },
+  {
+    "name": "Worldly Scourge",
+    "url": "https://d4guides.gg/en/loh/database/temper/worldly-scourge",
+    "affixes": [
+      "Lucky Hit: Up to a +[2.5 - 5.0]% Chance to Daze for 2 Seconds",
+      "Lucky Hit: Up to a +[2.5 - 5.0]% Chance to Freeze for 2 Seconds",
+      "Lucky Hit: Up to a +[2.5 - 5.0]% Chance to Immobilize for 2 Seconds",
+      "Lucky Hit: Up to a +[2.5 - 5.0]% Chance to Slow for 2 Seconds",
+      "Lucky Hit: Up to a +[2.5 - 5.0]% Chance to Stun for 2 Seconds"
+    ]
+  },
+  {
+    "name": "Wrath Efficiency",
+    "url": "https://d4guides.gg/en/loh/database/temper/wrath-efficiency",
+    "affixes": [
+      "% Hurricane Cooldown Reduction",
+      "% Boulder Cooldown Reduction",
+      "% Rabies Cooldown Reduction"
+    ]
+  }
+]

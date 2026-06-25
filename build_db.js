@@ -32,6 +32,20 @@ async function buildDb() {
       'Spiritborn': 5
     };
 
+    console.log('Loading scraped tempers...');
+    let scrapedTempers = [];
+    if (fs.existsSync('./assets/temper_data.json')) {
+      scrapedTempers = JSON.parse(fs.readFileSync('./assets/temper_data.json', 'utf8'));
+    }
+
+    // Build a flat set of all valid temper affix names
+    const temperAffixNames = new Set();
+    scrapedTempers.forEach(manual => {
+      if (manual.affixes) {
+        manual.affixes.forEach(aff => temperAffixNames.add(aff));
+      }
+    });
+
     const affixesMap = new Map();
     scrapedAffixes.forEach(a => {
       const desc = a.desc || '';
@@ -50,12 +64,15 @@ async function buildDb() {
         classArr = [1,1,1,1,1,1,1,1]; // Any class
       }
 
+      // If the short name is in the temperAffixNames set, mark as tempering
+      const isTempering = temperAffixNames.has(a.name) || (a.tempering === true);
+
       affixesMap.set(desc, { 
         name: desc, 
         shortName: a.name,
         classes: classArr,
         slots: a.slots || [],
-        tempering: a.tempering || false
+        tempering: isTempering
       });
     });
     const uniqueAffixes = Array.from(affixesMap.values());
