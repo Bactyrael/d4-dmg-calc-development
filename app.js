@@ -753,13 +753,14 @@
   ];
 
   const STANDARD_SLOTS = ['Helm', 'Chest Armor', 'Gloves', 'Pants', 'Boots', 'Mainhand', 'Amulet', 'Left Ring', 'Right Ring', 'Offhand'];
+  const ROGUE_SLOTS = ['Helm', 'Chest Armor', 'Gloves', 'Pants', 'Boots', 'Ranged Weapon', 'Amulet', 'Left Ring', 'Right Ring', 'Mainhand', 'Offhand'];
   
   const CLASS_EQUIPMENT_SLOTS = {
     'Necromancer': [...STANDARD_SLOTS],
     'Barbarian': [],
     'Druid': [...STANDARD_SLOTS],
     'Paladin': [...STANDARD_SLOTS],
-    'Rogue': [],
+    'Rogue': [...ROGUE_SLOTS],
     'Sorcerer': [...STANDARD_SLOTS],
     'Spiritborn': [...STANDARD_SLOTS],
     'Warlock': [...STANDARD_SLOTS]
@@ -769,6 +770,7 @@
     if (!window.D4_DATABASE || !window.D4_DATABASE.itemDatabase) return [];
     let mapped = slotName;
     if (slotName === 'Left Ring' || slotName === 'Right Ring') mapped = 'Ring';
+    if (slotName === 'Ranged Weapon') mapped = 'Mainhand'; // Map to weapon pool
     
     // Check class filter
     const currentClassVal = document.getElementById('class-select')?.value;
@@ -1084,7 +1086,9 @@
     const slots = CLASS_EQUIPMENT_SLOTS[className] || [];
     
     slots.forEach(slot => {
-      const isRight = ['Amulet', 'Left Ring', 'Right Ring', 'Offhand'].includes(slot);
+      let isRight = ['Amulet', 'Left Ring', 'Right Ring', 'Offhand'].includes(slot);
+      if (className === 'Rogue' && slot === 'Mainhand') isRight = true;
+      
       const targetCol = isRight ? rightCol : leftCol;
       
       const box = document.createElement('div');
@@ -2799,8 +2803,8 @@ rarity = foundItem.rarity;
       let mapped = slotName.toLowerCase();
       if (mapped === 'left ring' || mapped === 'right ring') mapped = 'ring';
       if (mapped === 'chest armor') mapped = 'chest';
-      if (mapped === 'mainhand' || mapped === 'offhand' || mapped === 'weapon1' || mapped === 'weapon2') {
-         if (mapped.startsWith('weapon')) mapped = 'mainhand';
+      if (mapped === 'mainhand' || mapped === 'offhand' || mapped === 'weapon1' || mapped === 'weapon2' || mapped === 'ranged weapon') {
+         if (mapped.startsWith('weapon') || mapped === 'ranged weapon') mapped = 'mainhand';
       }
       
       return affixSlots.some(s => {
