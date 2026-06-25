@@ -17219,7 +17219,7 @@ window.D4_DATABASE = {
   },
   {
     "name": "Eggis",
-    "desc": "Blocking an attack has a chance to turn the attacker into a Feared chicken for [3.0 - 4.0] seconds."
+    "desc": "Blocking an attack has a chance to turn the attacker into a Feared chicken for # seconds."
   },
   {
     "name": "El'Druin, Sword of Justice",

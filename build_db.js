@@ -175,6 +175,8 @@ async function buildDb() {
       const scrapedUniques = JSON.parse(fs.readFileSync('./assets/uniques_data.json', 'utf8'));
       scrapedUniques.forEach(su => {
         if (su.name && su.desc) {
+          if (su.name === 'Eggcecutioner' || su.name === 'Eggis') return; // Filter out fake datamined/April fools items
+          
           if (uniquesMap.has(su.name)) {
             uniquesMap.get(su.name).desc = su.desc;
           } else {
