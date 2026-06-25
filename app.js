@@ -56,6 +56,7 @@
     willpower:      document.getElementById('willpower'),
     dexterity:      document.getElementById('dexterity'),
     aps:            document.getElementById('aps'),
+    weaponSpeed:    document.getElementById('weapon-speed'),
     baseDmgDisplay: document.getElementById('base-damage-display'),
     classSelect:    document.getElementById('class-select'),
     equipmentGrid:  document.getElementById('equipment-grid'),
@@ -118,6 +119,7 @@
       willpower: 0,
       dexterity: 0,
       aps: 1,
+      weaponSpeed: 1,
       level: 0,
       toughness: 0,
       armor: 0,
@@ -1711,7 +1713,7 @@
         dom.aps.value = totalWeaponAps;
         dom.aps.disabled = true;
     } else {
-        dom.aps.disabled = false;
+        if (dom.weaponSpeed) { dom.weaponSpeed.disabled = false; dom.weaponSpeed.title = ""; }
     }
     
     if (totalArmor > 0) {
@@ -2102,6 +2104,7 @@
     dom.willpower.value = b.willpower || 0;
     dom.dexterity.value = b.dexterity || 0;
     dom.aps.value = b.aps || 1;
+    if (dom.weaponSpeed) dom.weaponSpeed.value = b.weaponSpeed || 1;
     if (dom.level) dom.level.value = b.level || 0;
     if (dom.toughness) dom.toughness.value = b.toughness || 0;
     if (dom.armor) dom.armor.value = b.armor || 0;
@@ -2448,7 +2451,7 @@
   // ---- Event Binding ----
   function init() {
     // Base stat inputs → recalculate
-    [dom.weaponDamage, dom.skillDamage, dom.strength, dom.intelligence, dom.willpower, dom.dexterity, dom.level, dom.toughness, dom.armor, dom.physRes, dom.fireRes, dom.lightningRes, dom.coldRes, dom.poisonRes, dom.shadowRes, dom.maxLife, dom.potionCapacity, dom.healingReceived, dom.lifePer5s, dom.summonArmor, dom.damageReductionAll, dom.barrierBonus, dom.dodgeChance, dom.maxEssence, dom.essenceRegen, dom.movementSpeed, dom.luckyHit, dom.ccDuration, dom.expBonus, dom.damageReduction, dom.aps, dom.buildName].filter(Boolean).forEach(el => {
+    [dom.weaponDamage, dom.skillDamage, dom.strength, dom.intelligence, dom.willpower, dom.dexterity, dom.level, dom.toughness, dom.armor, dom.physRes, dom.fireRes, dom.lightningRes, dom.coldRes, dom.poisonRes, dom.shadowRes, dom.maxLife, dom.potionCapacity, dom.healingReceived, dom.lifePer5s, dom.summonArmor, dom.damageReductionAll, dom.barrierBonus, dom.dodgeChance, dom.maxEssence, dom.essenceRegen, dom.movementSpeed, dom.luckyHit, dom.ccDuration, dom.expBonus, dom.damageReduction, dom.aps, dom.weaponSpeed, dom.buildName].filter(Boolean).forEach(el => {
       el.addEventListener('input', calculate);
       if (el.tagName === 'SELECT') {
         el.addEventListener('change', calculate);
