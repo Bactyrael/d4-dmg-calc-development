@@ -2831,7 +2831,11 @@
           aspectDescHtml = aspectObj.desc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
             const v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
             let placeholder = min && max ? `${min}-${max}` : 'value';
-            const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}" style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #8ab4f8; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
+            let minAttr = min ? ` min="${min}"` : '';
+            let maxAttr = max ? ` max="${max}"` : '';
+            let stepAttr = (min && min.includes('.')) || (max && max.includes('.')) ? ' step="0.1"' : ' step="1"';
+            if (!min && !max) stepAttr = ' step="any"';
+            const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #8ab4f8; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
             valIndex++;
             return inputHtml;
           });
@@ -2860,7 +2864,11 @@
         uniqueDescHtml = uniqueObj.desc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
           const v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
           let placeholder = min && max ? `${min}-${max}` : 'value';
-          const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}" style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #d18a45; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
+          let minAttr = min ? ` min="${min}"` : '';
+          let maxAttr = max ? ` max="${max}"` : '';
+          let stepAttr = (min && min.includes('.')) || (max && max.includes('.')) ? ' step="0.1"' : ' step="1"';
+          if (!min && !max) stepAttr = ' step="any"';
+          const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #d18a45; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
           valIndex++;
           return inputHtml;
         });
@@ -2954,10 +2962,24 @@
     });
 
     document.querySelectorAll('.aspect-val-input').forEach(inp => {
-      inp.addEventListener('input', (e) => {
-        const idx = parseInt(e.target.dataset.idx);
+      inp.addEventListener('change', (e) => {
+        const target = e.target;
+        const idx = parseInt(target.dataset.idx);
+        let val = parseFloat(target.value) || 0;
+        
+        if (target.hasAttribute('min')) {
+          const minVal = parseFloat(target.getAttribute('min'));
+          if (val < minVal) val = minVal;
+        }
+        if (target.hasAttribute('max')) {
+          const maxVal = parseFloat(target.getAttribute('max'));
+          if (val > maxVal) val = maxVal;
+        }
+        
+        target.value = val;
+        
         if (!itemObj.aspectValues) itemObj.aspectValues = [];
-        itemObj.aspectValues[idx] = parseFloat(e.target.value) || 0;
+        itemObj.aspectValues[idx] = val;
         box.dataset.value = JSON.stringify(itemObj);
         calculate();
       });

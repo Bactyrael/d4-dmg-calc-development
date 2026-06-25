@@ -322,13 +322,21 @@ input[type="number"] {
   font-variant-numeric: tabular-nums;
 }
 
-/* Remove number spinners */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+/* Remove number spinners, except for aspect inputs */
+input[type="number"]:not(.aspect-val-input)::-webkit-inner-spin-button,
+input[type="number"]:not(.aspect-val-input)::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type="number"] { -moz-appearance: textfield; }
+input[type="number"]:not(.aspect-val-input) { -moz-appearance: textfield; }
+
+/* Keep spinners for aspect values */
+input[type="number"].aspect-val-input::-webkit-inner-spin-button,
+input[type="number"].aspect-val-input::-webkit-outer-spin-button {
+  -webkit-appearance: auto;
+  opacity: 1;
+}
+input[type="number"].aspect-val-input { -moz-appearance: auto; }
 
 /* --- Buttons --- */
 .btn {
