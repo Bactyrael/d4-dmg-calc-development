@@ -1652,4 +1652,22 @@ input[type="number"] { -moz-appearance: textfield; }
 .skill-box:hover {
   border-color: #666;
   background: #1a1a1a;
+}/* Sockets */
+.paperdoll-socket-container {
+  display: flex;
+  gap: 4px;
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+}
+.socket-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #111;
+}
+.socket-circle.filled {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
 }

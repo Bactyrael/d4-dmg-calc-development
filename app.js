@@ -1104,7 +1104,7 @@
       
       let val = savedEquipment[slot];
       if (typeof val === 'string' && val) {
-        val = { name: val, power: 900, quality: 0 };
+        val = { name: val, power: 900, quality: 0, sockets: [] };
       }
       box.dataset.value = val ? JSON.stringify(val) : '';
       
@@ -1119,11 +1119,31 @@
       textContainer.appendChild(label);
       textContainer.appendChild(valDiv);
       
+      const socketContainer = document.createElement('div');
+      socketContainer.className = 'paperdoll-socket-container';
+      
+      if (val && val.sockets) {
+        val.sockets.forEach(gem => {
+          const circle = document.createElement('div');
+          circle.className = 'socket-circle filled';
+          circle.title = gem;
+          // Determine color based on gem type
+          if (gem.includes('Ruby')) circle.style.background = '#e74c3c';
+          else if (gem.includes('Amethyst')) circle.style.background = '#9b59b6';
+          else if (gem.includes('Emerald')) circle.style.background = '#2ecc71';
+          else if (gem.includes('Topaz')) circle.style.background = '#f1c40f';
+          else if (gem.includes('Sapphire')) circle.style.background = '#3498db';
+          else if (gem.includes('Diamond')) circle.style.background = '#bdc3c7';
+          else if (gem.includes('Skull')) circle.style.background = '#ecf0f1';
+          socketContainer.appendChild(circle);
+        });
+      }
+      
       box.appendChild(icon);
       box.appendChild(textContainer);
-      
-      box.addEventListener('click', () => openItemModal(slot));
+      box.appendChild(socketContainer);
       targetCol.appendChild(box);
+      box.addEventListener('click', () => openItemModal(slot));
     });
     
     // Inject Class Mechanic Panel for Necromancer
@@ -1717,9 +1737,53 @@
         multProduct *= (1 + (val / 100));
       }
     }
+    
+    // Aggregate Gem Stats
+    let gemMultProduct = 1;
+    let gemAdditiveSum = 0;
+    const equipment = getEquipmentValues();
+    if (equipment) {
+      Object.keys(equipment).forEach(slotName => {
+        const item = equipment[slotName];
+        if (!item || !item.sockets) return;
+        
+        const sName = slotName.toLowerCase();
+        const isWeapon = sName.includes('weapon') || sName === 'mainhand' || sName === 'offhand';
+        const isArmor = sName === 'helm' || sName === 'chest armor' || sName === 'pants' || sName === 'boots' || sName === 'gloves';
+        const isJewelry = sName === 'amulet' || sName.includes('ring');
+        
+        item.sockets.forEach(gemName => {
+          if (!gemName) return;
+          const gemObj = window.D4_DATABASE?.gems?.find(g => g.name === gemName);
+          if (!gemObj) return;
+          
+          let effectStr = '';
+          if (isWeapon) effectStr = gemObj.weaponEffect;
+          else if (isArmor) effectStr = gemObj.armorEffect;
+          else if (isJewelry) effectStr = gemObj.jewelryEffect;
+          
+          if (effectStr) {
+            const matchMult = effectStr.match(/x([\d.]+)%/);
+            if (matchMult) {
+              gemMultProduct *= (1 + (parseFloat(matchMult[1]) / 100));
+            } else {
+              const matchAdd = effectStr.match(/\+([\d.]+)%/);
+              // Only add if it's a damage additive for the damage calc (e.g. Damage over time, basic damage)
+              if (matchAdd && effectStr.toLowerCase().includes('damage')) {
+                gemAdditiveSum += (parseFloat(matchAdd[1]) / 100);
+              }
+            }
+          }
+        });
+      });
+    }
+    
+    // Apply gem bonuses to totals
+    const finalAdditiveSum = additiveSum + gemAdditiveSum;
+    multProduct *= gemMultProduct;
 
     const runningDamages = [];
-    const damageBeforeMult = baseDamage * mainStatMultiplier * additiveSum;
+    const damageBeforeMult = baseDamage * mainStatMultiplier * finalAdditiveSum;
 
     for (let i = 0; i < multiplicatives.length; i++) {
       const formulaValue = 1 + (multiplicatives[i].value / 100);
@@ -1728,19 +1792,19 @@
     }
 
     // Final single-hit damage (after 80% monster DR)
-    const rawDamage = baseDamage * mainStatMultiplier * additiveSum * multProduct;
+    const rawDamage = baseDamage * mainStatMultiplier * finalAdditiveSum * multProduct;
     const singleHit = rawDamage * MONSTER_DR;
     const totalDamage = singleHit * aps;
 
     // Update DOM
     dom.baseDmgDisplay.innerHTML = formatNumber(baseDamage);
-    dom.additiveTotal.textContent = formatMultiplier(additiveSum);
+    dom.additiveTotal.textContent = formatMultiplier(finalAdditiveSum);
     dom.multTotal.textContent = formatMultiplier(multProduct);
 
     dom.resultBase.innerHTML = formatNumber(baseDamage);
     if (dom.resultIntelLabel) dom.resultIntelLabel.textContent = `${mainStatInfo.name} ×`;
     dom.resultIntel.textContent = formatMultiplier(mainStatMultiplier);
-    dom.resultAdditive.textContent = formatMultiplier(additiveSum);
+    dom.resultAdditive.textContent = formatMultiplier(finalAdditiveSum);
     dom.resultMult.innerHTML = formatNumber(multProduct);
     dom.resultFinal.innerHTML = formatNumber(singleHit);
     dom.resultTotal.innerHTML = formatNumber(totalDamage);
@@ -2371,6 +2435,27 @@
       });
     });
 
+    const gemSearchInput = document.getElementById('gem-search-input');
+    if (gemSearchInput) {
+      gemSearchInput.addEventListener('input', (e) => {
+        if (currentModalSlot) {
+          const activeSidebar = document.querySelector('#gem-sidebar .sidebar-item.active');
+          const category = activeSidebar ? activeSidebar.dataset.category : 'All Gems';
+          renderGemTab(currentModalSlot, category, e.target.value);
+        }
+      });
+    }
+
+    document.querySelectorAll('#gem-sidebar .sidebar-item').forEach(item => {
+      item.addEventListener('click', () => {
+        if (!currentModalSlot) return;
+        document.querySelectorAll('#gem-sidebar .sidebar-item').forEach(el => el.classList.remove('active'));
+        item.classList.add('active');
+        const query = document.getElementById('gem-search-input')?.value || '';
+        renderGemTab(currentModalSlot, item.dataset.category, query);
+      });
+    });
+
     // Modal tabs switching logic
     const modalTabs = document.querySelectorAll('.item-modal-tab');
     modalTabs.forEach(tab => {
@@ -2635,13 +2720,15 @@
     const selectTab = tabs[0];
     const editTab = tabs[1];
     const aspectTab = tabs[2];
+    const gemTab = tabs[3];
     const selectBody = document.getElementById('item-modal-select-body');
     const editBody = document.getElementById('item-modal-edit-body');
     const aspectBody = document.getElementById('item-modal-aspect-body');
+    const gemBody = document.getElementById('item-modal-gem-body');
     
     // Reset all
-    [selectTab, editTab, aspectTab].forEach(t => t?.classList.remove('active'));
-    [selectBody, editBody, aspectBody].forEach(b => { if(b) b.style.display = 'none'; });
+    [selectTab, editTab, aspectTab, gemTab].forEach(t => t?.classList.remove('active'));
+    [selectBody, editBody, aspectBody, gemBody].forEach(b => { if(b) b.style.display = 'none'; });
 
     if (tabName === 'select') {
       selectTab?.classList.add('active');
@@ -2652,6 +2739,9 @@
     } else if (tabName === 'aspect') {
       aspectTab?.classList.add('active');
       if (aspectBody) aspectBody.style.display = 'flex';
+    } else if (tabName === 'gem') {
+      gemTab?.classList.add('active');
+      if (gemBody) gemBody.style.display = 'flex';
     }
   }
 
@@ -2661,18 +2751,21 @@
     const tabs = document.querySelectorAll('.item-modal-tab');
     const editTabBtn = tabs[1];
     const aspectTabBtn = tabs[2];
+    const gemTabBtn = tabs[3];
     
     if (!editBody || !box) return;
 
     if (!box.dataset.value) {
       editTabBtn.disabled = true;
       aspectTabBtn.disabled = true;
+      if (gemTabBtn) gemTabBtn.disabled = true;
       editBody.innerHTML = '';
       return;
     }
     
     editTabBtn.disabled = false;
     aspectTabBtn.disabled = false;
+    if (gemTabBtn) gemTabBtn.disabled = false;
     
     let itemObj;
     try {
@@ -2824,9 +2917,9 @@
 
       <div class="edit-section">
         <div class="edit-section-title tan">Sockets</div>
-        <div class="edit-section-content">
-          <select class="edit-dropdown"><option value="">Empty Socket</option><option>Ruby</option></select>
-          <select class="edit-dropdown"><option value="">Empty Socket</option><option>Topaz</option></select>
+        <div class="edit-section-content" style="display: flex; gap: 8px;">
+          <button class="edit-btn btn-socket" data-idx="0" style="flex: 1; padding: 4px;">${(itemObj.sockets && itemObj.sockets[0]) ? itemObj.sockets[0] : 'Empty Socket'}</button>
+          <button class="edit-btn btn-socket" data-idx="1" style="flex: 1; padding: 4px;">${(itemObj.sockets && itemObj.sockets[1]) ? itemObj.sockets[1] : 'Empty Socket'}</button>
         </div>
       </div>
     `;
@@ -2839,6 +2932,13 @@
     if (btnSelectAspect) {
       btnSelectAspect.addEventListener('click', () => switchModalTab('aspect'));
     }
+
+    document.querySelectorAll('.btn-socket').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        window.currentSocketIndex = parseInt(e.target.dataset.idx);
+        switchModalTab('gem');
+      });
+    });
 
     ['edit-power', 'edit-quality'].forEach(id => {
       const el = document.getElementById(id);
@@ -2881,10 +2981,19 @@
         el.classList.remove('active');
         if (el.dataset.category === 'All Aspects') el.classList.add('active');
       });
+      
+      // Reset Gem Tab state
+      const gemSearchInput = document.getElementById('gem-search-input');
+      if (gemSearchInput) gemSearchInput.value = '';
+      document.querySelectorAll('#gem-sidebar .sidebar-item').forEach(el => {
+        el.classList.remove('active');
+        if (el.dataset.category === 'All Gems') el.classList.add('active');
+      });
 
       renderModalItems(slotName, '');
       renderEditTab(slotName);
       renderAspectTab(slotName, 'All Aspects', '');
+      renderGemTab(slotName, 'All Gems', '');
       
       const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
       if (box && box.dataset.value) {
@@ -3082,6 +3191,103 @@
       row.appendChild(name);
       
       row.addEventListener('click', () => selectAspect(item.name));
+      list.appendChild(row);
+    });
+  }
+
+  function selectGem(gemName) {
+    if (!currentModalSlot) return;
+    
+    const box = document.querySelector(`.equipment-slot-box[data-slot="${currentModalSlot}"]`);
+    if (box && box.dataset.value) {
+      try {
+        const itemObj = JSON.parse(box.dataset.value);
+        if (!itemObj.sockets) itemObj.sockets = [];
+        
+        const idx = window.currentSocketIndex || 0;
+        if (gemName === '') {
+          itemObj.sockets[idx] = null;
+        } else {
+          itemObj.sockets[idx] = gemName;
+        }
+        
+        // Cleanup nulls at end
+        while(itemObj.sockets.length > 0 && itemObj.sockets[itemObj.sockets.length - 1] === null) {
+          itemObj.sockets.pop();
+        }
+        
+        box.dataset.value = JSON.stringify(itemObj);
+        
+        renderEditTab(currentModalSlot);
+        switchModalTab('edit');
+        calculate();
+        
+        // Re-render paperdoll for socket updates
+        renderEquipment(document.getElementById('class-select').value, getSavedEquipment());
+        openItemModal(currentModalSlot); // re-open to edit state
+      } catch (e) {
+        console.error("Error setting gem", e);
+      }
+    }
+  }
+
+  function renderGemTab(slotName, activeCategory = 'All Gems', query = '') {
+    const list = document.getElementById('item-modal-gem-list');
+    if (!list) return;
+    list.innerHTML = '';
+    
+    let items = window.D4_DATABASE?.gems || [];
+    
+    // Filter
+    items = items.filter(g => {
+      if (activeCategory !== 'All Gems' && g.type.toLowerCase() !== activeCategory.toLowerCase()) return false;
+      if (query && !g.name.toLowerCase().includes(query.toLowerCase())) return false;
+      return true;
+    });
+    
+    // Render "None"
+    if (!query && activeCategory === 'All Gems') {
+      const noneRow = document.createElement('div');
+      noneRow.className = 'item-row';
+      noneRow.innerHTML = `<div class="item-icon">✕</div><div class="item-name" style="color: #888;">None</div>`;
+      noneRow.addEventListener('click', () => selectGem(''));
+      list.appendChild(noneRow);
+    }
+    
+    // Determine which effect to show based on slot
+    const sName = slotName.toLowerCase();
+    const isWeapon = sName.includes('weapon') || sName === 'mainhand' || sName === 'offhand';
+    const isJewelry = sName === 'amulet' || sName.includes('ring');
+    
+    items.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      row.style.flexDirection = 'column';
+      row.style.alignItems = 'flex-start';
+      row.style.padding = '8px 12px';
+      
+      let effect = item.armorEffect;
+      if (isWeapon) effect = item.weaponEffect;
+      else if (isJewelry) effect = item.jewelryEffect;
+      
+      let color = '#fff';
+      if (item.type === 'ruby') color = '#e74c3c';
+      if (item.type === 'amethyst') color = '#9b59b6';
+      if (item.type === 'emerald') color = '#2ecc71';
+      if (item.type === 'topaz') color = '#f1c40f';
+      if (item.type === 'sapphire') color = '#3498db';
+      if (item.type === 'diamond') color = '#bdc3c7';
+      if (item.type === 'skull') color = '#ecf0f1';
+      
+      row.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
+          <div class="socket-circle filled" style="background: ${color}; width: 16px; height: 16px;"></div>
+          <div class="item-name" style="color: ${color}; font-weight: bold;">${item.name}</div>
+        </div>
+        <div style="font-size: 0.85rem; color: #aaa; margin-left: 28px;">${effect}</div>
+      `;
+      
+      row.addEventListener('click', () => selectGem(item.name));
       list.appendChild(row);
     });
   }

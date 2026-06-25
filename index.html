@@ -309,6 +309,7 @@ Critical Strike Damage
           <button class="item-modal-tab active">Select</button>
           <button class="item-modal-tab" disabled>Edit</button>
           <button class="item-modal-tab" id="tab-aspect" disabled>Aspect</button>
+          <button class="item-modal-tab" id="tab-gem" disabled>Gem</button>
         </div>
         <button id="close-item-modal" class="item-modal-close">✕</button>
       </div>
@@ -343,6 +344,27 @@ Critical Strike Damage
           </div>
           <div class="item-modal-list" id="item-modal-aspect-list">
             <!-- Aspects populated dynamically -->
+          </div>
+        </div>
+      </div>
+      <div class="item-modal-body" id="item-modal-gem-body" style="display: none;">
+        <div class="item-modal-sidebar" id="gem-sidebar">
+          <div class="sidebar-item active" data-category="All Gems">All Gems</div>
+          <div class="sidebar-item" data-category="Amethyst">Amethyst</div>
+          <div class="sidebar-item" data-category="Diamond">Diamond</div>
+          <div class="sidebar-item" data-category="Emerald">Emerald</div>
+          <div class="sidebar-item" data-category="Ruby">Ruby</div>
+          <div class="sidebar-item" data-category="Sapphire">Sapphire</div>
+          <div class="sidebar-item" data-category="Skull">Skull</div>
+          <div class="sidebar-item" data-category="Topaz">Topaz</div>
+        </div>
+        <div class="item-modal-main">
+          <div class="item-modal-search">
+            <span class="icon">⊞</span>
+            <input type="text" id="gem-search-input" placeholder="Search...">
+          </div>
+          <div class="item-modal-list" id="item-modal-gem-list">
+            <!-- Gems populated dynamically -->
           </div>
         </div>
       </div>

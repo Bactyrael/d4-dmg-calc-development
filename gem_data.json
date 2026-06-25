@@ -1,0 +1,402 @@
+[
+  {
+    "name": "Crude Amethyst",
+    "type": "amethyst",
+    "quality": "crude",
+    "weaponEffect": "x14% Shadow Damage Multiplier",
+    "armorEffect": "+2.0% Barrier Generation",
+    "jewelryEffect": "+50 Shadow Resistance"
+  },
+  {
+    "name": "Chipped Amethyst",
+    "type": "amethyst",
+    "quality": "chipped",
+    "weaponEffect": "x16% Shadow Damage Multiplier",
+    "armorEffect": "+4.0% Barrier Generation",
+    "jewelryEffect": "+250 Shadow Resistance"
+  },
+  {
+    "name": "Amethyst",
+    "type": "amethyst",
+    "quality": "standard",
+    "weaponEffect": "x18% Shadow Damage Multiplier",
+    "armorEffect": "+6.0% Barrier Generation",
+    "jewelryEffect": "+450 Shadow Resistance"
+  },
+  {
+    "name": "Flawless Amethyst",
+    "type": "amethyst",
+    "quality": "flawless",
+    "weaponEffect": "x20% Shadow Damage Multiplier",
+    "armorEffect": "+8.0% Barrier Generation",
+    "jewelryEffect": "+900 Shadow Resistance"
+  },
+  {
+    "name": "Royal Amethyst",
+    "type": "amethyst",
+    "quality": "royal",
+    "weaponEffect": "x22% Shadow Damage Multiplier",
+    "armorEffect": "+12.0% Barrier Generation",
+    "jewelryEffect": "+1,750 Shadow Resistance"
+  },
+  {
+    "name": "Grand Amethyst",
+    "type": "amethyst",
+    "quality": "grand",
+    "weaponEffect": "x24% Shadow Damage Multiplier",
+    "armorEffect": "+18.0% Barrier Generation",
+    "jewelryEffect": "+2,625 Shadow Resistance"
+  },
+  {
+    "name": "Horadric Amethyst",
+    "type": "amethyst",
+    "quality": "horadric",
+    "weaponEffect": "x28% Shadow Damage Multiplier",
+    "armorEffect": "+25.0% Barrier Generation",
+    "jewelryEffect": "+3,500 Shadow Resistance"
+  },
+  {
+    "name": "Flawless Horadric Amethyst",
+    "type": "amethyst",
+    "quality": "flawless horadric",
+    "weaponEffect": "x32% Shadow Damage Multiplier",
+    "armorEffect": "+30.0% Barrier Generation",
+    "jewelryEffect": "+4,375 Shadow Resistance"
+  },
+  {
+    "name": "Crude Diamond",
+    "type": "diamond",
+    "quality": "crude",
+    "weaponEffect": "x10% All Damage Multiplier",
+    "armorEffect": "+4 All Stats",
+    "jewelryEffect": "+7 Resistance to All Elements"
+  },
+  {
+    "name": "Chipped Diamond",
+    "type": "diamond",
+    "quality": "chipped",
+    "weaponEffect": "x12% All Damage Multiplier",
+    "armorEffect": "+7 All Stats",
+    "jewelryEffect": "+35 Resistance to All Elements"
+  },
+  {
+    "name": "Diamond",
+    "type": "diamond",
+    "quality": "standard",
+    "weaponEffect": "x14% All Damage Multiplier",
+    "armorEffect": "+10 All Stats",
+    "jewelryEffect": "+65 Resistance to All Elements"
+  },
+  {
+    "name": "Flawless Diamond",
+    "type": "diamond",
+    "quality": "flawless",
+    "weaponEffect": "x16% All Damage Multiplier",
+    "armorEffect": "+13 All Stats",
+    "jewelryEffect": "+125 Resistance to All Elements"
+  },
+  {
+    "name": "Royal Diamond",
+    "type": "diamond",
+    "quality": "royal",
+    "weaponEffect": "x18% All Damage Multiplier",
+    "armorEffect": "+20 All Stats",
+    "jewelryEffect": "+250 Resistance to All Elements"
+  },
+  {
+    "name": "Grand Diamond",
+    "type": "diamond",
+    "quality": "grand",
+    "weaponEffect": "x20% All Damage Multiplier",
+    "armorEffect": "+30 All Stats",
+    "jewelryEffect": "+375 Resistance to All Elements"
+  },
+  {
+    "name": "Horadric Diamond",
+    "type": "diamond",
+    "quality": "horadric",
+    "weaponEffect": "x24% All Damage Multiplier",
+    "armorEffect": "+40 All Stats",
+    "jewelryEffect": "+500 Resistance to All Elements"
+  },
+  {
+    "name": "Flawless Horadric Diamond",
+    "type": "diamond",
+    "quality": "flawless horadric",
+    "weaponEffect": "x28% All Damage Multiplier",
+    "armorEffect": "+50 All Stats",
+    "jewelryEffect": "+625 Resistance to All Elements"
+  },
+  {
+    "name": "Crude Emerald",
+    "type": "emerald",
+    "quality": "crude",
+    "weaponEffect": "x14% Poison Damage Multiplier",
+    "armorEffect": "+10 Dexterity",
+    "jewelryEffect": "+50 Poison Resistance"
+  },
+  {
+    "name": "Chipped Emerald",
+    "type": "emerald",
+    "quality": "chipped",
+    "weaponEffect": "x16% Poison Damage Multiplier",
+    "armorEffect": "+20 Dexterity",
+    "jewelryEffect": "+250 Poison Resistance"
+  },
+  {
+    "name": "Emerald",
+    "type": "emerald",
+    "quality": "standard",
+    "weaponEffect": "x18% Poison Damage Multiplier",
+    "armorEffect": "+30 Dexterity",
+    "jewelryEffect": "+450 Poison Resistance"
+  },
+  {
+    "name": "Flawless Emerald",
+    "type": "emerald",
+    "quality": "flawless",
+    "weaponEffect": "x20% Poison Damage Multiplier",
+    "armorEffect": "+40 Dexterity",
+    "jewelryEffect": "+900 Poison Resistance"
+  },
+  {
+    "name": "Royal Emerald",
+    "type": "emerald",
+    "quality": "royal",
+    "weaponEffect": "x22% Poison Damage Multiplier",
+    "armorEffect": "+60 Dexterity",
+    "jewelryEffect": "+1,750 Poison Resistance"
+  },
+  {
+    "name": "Grand Emerald",
+    "type": "emerald",
+    "quality": "grand",
+    "weaponEffect": "x24% Poison Damage Multiplier",
+    "armorEffect": "+90 Dexterity",
+    "jewelryEffect": "+2,625 Poison Resistance"
+  },
+  {
+    "name": "Horadric Emerald",
+    "type": "emerald",
+    "quality": "horadric",
+    "weaponEffect": "x28% Poison Damage Multiplier",
+    "armorEffect": "+120 Dexterity",
+    "jewelryEffect": "+3,500 Poison Resistance"
+  },
+  {
+    "name": "Flawless Horadric Emerald",
+    "type": "emerald",
+    "quality": "flawless horadric",
+    "weaponEffect": "x32% Poison Damage Multiplier",
+    "armorEffect": "+150 Dexterity",
+    "jewelryEffect": "+4,375 Poison Resistance"
+  },
+  {
+    "name": "Crude Ruby",
+    "type": "ruby",
+    "quality": "crude",
+    "weaponEffect": "x14% Fire and Holy Damage Multiplier",
+    "armorEffect": "+10 Strength",
+    "jewelryEffect": "+50 Fire Resistance"
+  },
+  {
+    "name": "Chipped Ruby",
+    "type": "ruby",
+    "quality": "chipped",
+    "weaponEffect": "x16% Fire and Holy Damage Multiplier",
+    "armorEffect": "+20 Strength",
+    "jewelryEffect": "+250 Fire Resistance"
+  },
+  {
+    "name": "Ruby",
+    "type": "ruby",
+    "quality": "standard",
+    "weaponEffect": "x18% Fire and Holy Damage Multiplier",
+    "armorEffect": "+30 Strength",
+    "jewelryEffect": "+450 Fire Resistance"
+  },
+  {
+    "name": "Flawless Ruby",
+    "type": "ruby",
+    "quality": "flawless",
+    "weaponEffect": "x20% Fire and Holy Damage Multiplier",
+    "armorEffect": "+40 Strength",
+    "jewelryEffect": "+900 Fire Resistance"
+  },
+  {
+    "name": "Royal Ruby",
+    "type": "ruby",
+    "quality": "royal",
+    "weaponEffect": "x22% Fire and Holy Damage Multiplier",
+    "armorEffect": "+60 Strength",
+    "jewelryEffect": "+1,750 Fire Resistance"
+  },
+  {
+    "name": "Grand Ruby",
+    "type": "ruby",
+    "quality": "grand",
+    "weaponEffect": "x24% Fire and Holy Damage Multiplier",
+    "armorEffect": "+90 Strength",
+    "jewelryEffect": "+2,625 Fire Resistance"
+  },
+  {
+    "name": "Horadric Ruby",
+    "type": "ruby",
+    "quality": "horadric",
+    "weaponEffect": "x28% Fire and Holy Damage Multiplier",
+    "armorEffect": "+120 Strength",
+    "jewelryEffect": "+3,500 Fire Resistance"
+  },
+  {
+    "name": "Flawless Horadric Ruby",
+    "type": "ruby",
+    "quality": "flawless horadric",
+    "weaponEffect": "x32% Fire and Holy Damage Multiplier",
+    "armorEffect": "+150 Strength",
+    "jewelryEffect": "+4,375 Fire Resistance"
+  },
+  {
+    "name": "Crude Sapphire",
+    "type": "sapphire",
+    "quality": "crude",
+    "weaponEffect": "x14% Cold Damage Multiplier",
+    "armorEffect": "+10 Willpower",
+    "jewelryEffect": "+50 Cold Resistance"
+  },
+  {
+    "name": "Chipped Sapphire",
+    "type": "sapphire",
+    "quality": "chipped",
+    "weaponEffect": "x16% Cold Damage Multiplier",
+    "armorEffect": "+20 Willpower",
+    "jewelryEffect": "+250 Cold Resistance"
+  },
+  {
+    "name": "Sapphire",
+    "type": "sapphire",
+    "quality": "standard",
+    "weaponEffect": "x18% Cold Damage Multiplier",
+    "armorEffect": "+30 Willpower",
+    "jewelryEffect": "+450 Cold Resistance"
+  },
+  {
+    "name": "Flawless Sapphire",
+    "type": "sapphire",
+    "quality": "flawless",
+    "weaponEffect": "x20% Cold Damage Multiplier",
+    "armorEffect": "+40 Willpower",
+    "jewelryEffect": "+900 Cold Resistance"
+  },
+  {
+    "name": "Royal Sapphire",
+    "type": "sapphire",
+    "quality": "royal",
+    "weaponEffect": "x22% Cold Damage Multiplier",
+    "armorEffect": "+60 Willpower",
+    "jewelryEffect": "+1,750 Cold Resistance"
+  },
+  {
+    "name": "Grand Sapphire",
+    "type": "sapphire",
+    "quality": "grand",
+    "weaponEffect": "x24% Cold Damage Multiplier",
+    "armorEffect": "+90 Willpower",
+    "jewelryEffect": "+2,625 Cold Resistance"
+  },
+  {
+    "name": "Horadric Sapphire",
+    "type": "sapphire",
+    "quality": "horadric",
+    "weaponEffect": "x28% Cold Damage Multiplier",
+    "armorEffect": "+120 Willpower",
+    "jewelryEffect": "+3,500 Cold Resistance"
+  },
+  {
+    "name": "Flawless Horadric Sapphire",
+    "type": "sapphire",
+    "quality": "flawless horadric",
+    "weaponEffect": "x32% Cold Damage Multiplier",
+    "armorEffect": "+150 Willpower",
+    "jewelryEffect": "+4,375 Cold Resistance"
+  },
+  {
+    "name": "Crude Skull",
+    "type": "skull",
+    "quality": "crude",
+    "weaponEffect": "x200% Physical Damage Multiplier",
+    "armorEffect": "+2.0% Healing Received",
+    "jewelryEffect": "+20 Physical Resistance"
+  },
+  {
+    "name": "Chipped Skull",
+    "type": "skull",
+    "quality": "chipped",
+    "weaponEffect": "x16% Physical Damage Multiplier",
+    "armorEffect": "+6.0% Healing Received",
+    "jewelryEffect": "+250 Physical Resistance"
+  },
+  {
+    "name": "Skull",
+    "type": "skull",
+    "quality": "standard",
+    "weaponEffect": "x18% Physical Damage Multiplier",
+    "armorEffect": "+8.0% Healing Received",
+    "jewelryEffect": "+450 Physical Resistance"
+  },
+  {
+    "name": "Flawless Skull",
+    "type": "skull",
+    "quality": "flawless",
+    "weaponEffect": "x20% Physical Damage Multiplier",
+    "armorEffect": "+10.0% Healing Received",
+    "jewelryEffect": "+900 Physical Resistance"
+  },
+  {
+    "name": "Royal Skull",
+    "type": "skull",
+    "quality": "royal",
+    "weaponEffect": "x22% Physical Damage Multiplier",
+    "armorEffect": "+15.0% Healing Received",
+    "jewelryEffect": "+1,750 Physical Resistance"
+  },
+  {
+    "name": "Grand Skull",
+    "type": "skull",
+    "quality": "grand",
+    "weaponEffect": "x24% Physical Damage Multiplier",
+    "armorEffect": "+22.5% Healing Received",
+    "jewelryEffect": "+2,625 Physical Resistance"
+  },
+  {
+    "name": "Horadric Skull",
+    "type": "skull",
+    "quality": "horadric",
+    "weaponEffect": "x28% Physical Damage Multiplier",
+    "armorEffect": "+30.0% Healing Received",
+    "jewelryEffect": "+3,500 Physical Resistance"
+  },
+  {
+    "name": "Flawless Horadric Skull",
+    "type": "skull",
+    "quality": "flawless horadric",
+    "weaponEffect": "x32% Physical Damage Multiplier",
+    "armorEffect": "+38.0% Healing Received",
+    "jewelryEffect": "+4,375 Physical Resistance"
+  },
+  {
+    "name": "Crude Topaz",
+    "type": "topaz",
+    "quality": "crude",
+    "weaponEffect": "x14% Lightning Damage Multiplier",
+    "armorEffect": "+10 Intelligence",
+    "jewelryEffect": "+50 Lightning Resistance"
+  },
+  {
+    "name": "Chipped Topaz",
+    "type": "topaz",
+    "quality": "chipped",
+    "weaponEffect": "x16% Lightning Damage Multiplier",
+    "armorEffect": "+20 Intelligence",
+    "jewelryEffect": "+250 Lightning Resistance"
+  }
+]

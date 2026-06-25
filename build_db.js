@@ -199,11 +199,17 @@ async function buildDb() {
       });
     });
 
+    let gems = [];
+    if (fs.existsSync('./gem_data.json')) {
+      gems = JSON.parse(fs.readFileSync('./gem_data.json', 'utf8'));
+    }
+
     const fileContent = `// Auto-generated Relational D4 Database
 window.D4_DATABASE = {
   affixes: ${JSON.stringify(sortedAffixes, null, 2)},
   aspects: ${JSON.stringify(aspects, null, 2)},
   uniques: ${JSON.stringify(uniques, null, 2)},
+  gems: ${JSON.stringify(gems, null, 2)},
   itemDatabase: ${JSON.stringify(itemDatabase, null, 2)}
 };
 `;
