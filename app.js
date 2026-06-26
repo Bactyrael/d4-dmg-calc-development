@@ -2397,19 +2397,7 @@
         }
       }
     
-    // Update UI and lock inputs if gear is equipped
-    if (totalWeaponDmg > 0) {
-      if (dom.weaponDamage) {
-        dom.weaponDamage.value = totalWeaponDmg;
-        dom.weaponDamage.disabled = true;
-        dom.weaponDamage.title = "Auto-calculated from equipped weapon";
-      }
-    } else {
-      if (dom.weaponDamage) {
-        dom.weaponDamage.disabled = false;
-        dom.weaponDamage.title = "";
-      }
-    }
+    // (Weapon Damage UI update moved below compileCharacterStats)
     
     if (totalWeaponAps > 0) {
       if (dom.weaponSpeed) {
@@ -2489,6 +2477,25 @@
     };
     
     const compiledStats = compileCharacterStats(baseEquipped, autoStats);
+    
+    // Add flat "Weapon Damage" from modifiers
+    if (compiledStats['Weapon Damage']) {
+        totalWeaponDmg += compiledStats['Weapon Damage'].final;
+    }
+    
+    // Update UI and lock inputs if gear is equipped
+    if (totalWeaponDmg > 0) {
+      if (dom.weaponDamage) {
+        dom.weaponDamage.value = totalWeaponDmg;
+        dom.weaponDamage.disabled = true;
+        dom.weaponDamage.title = "Auto-calculated from equipped weapon (Base + Modifiers)";
+      }
+    } else {
+      if (dom.weaponDamage) {
+        dom.weaponDamage.disabled = false;
+        dom.weaponDamage.title = "";
+      }
+    }
     
     if (dom.strength) {
         dom.strength.value = compiledStats['Strength'] ? Math.floor(compiledStats['Strength'].final) : 0;
