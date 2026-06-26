@@ -22739,46 +22739,55 @@ window.D4_DATABASE = {
             {
               "name": "+[20 - 40]% Physical Damage",
               "shortName": "Physical Damage",
+              "category": "Offensive",
               "desc": "Elemental Finesse - Day"
             },
             {
               "name": "+[20 - 40]% Fire Damage",
               "shortName": "Fire Damage",
+              "category": "Offensive",
               "desc": "Elemental Finesse - Day"
             },
             {
               "name": "+[20 - 40]% Lightning Damage",
               "shortName": "Lightning Damage",
+              "category": "Offensive",
               "desc": "Elemental Finesse - Day"
             },
             {
               "name": "+[20 - 40]% Holy Damage",
               "shortName": "Holy Damage",
+              "category": "Offensive",
               "desc": "Elemental Finesse - Day"
             },
             {
               "name": "+[20 - 40]% Cold Damage",
               "shortName": "Cold Damage",
+              "category": "Offensive",
               "desc": "Elemental Finesse - Night"
             },
             {
               "name": "+[20 - 40]% Poison Damage",
               "shortName": "Poison Damage",
+              "category": "Offensive",
               "desc": "Elemental Finesse - Night"
             },
             {
               "name": "+[20 - 40]% Shadow Damage",
               "shortName": "Shadow Damage",
+              "category": "Offensive",
               "desc": "Elemental Finesse - Night"
             },
             {
               "name": "+[10 - 30]% Damage",
               "shortName": "Damage",
+              "category": "Offensive",
               "desc": "Natural Finesse"
             },
             {
               "name": "+[20 - 40]% Damage to Crowd Controlled Enemies",
               "shortName": "Damage to Crowd Controlled Enemies",
+              "category": "Offensive",
               "desc": "Natural Finesse"
             },
             {
@@ -22794,82 +22803,74 @@ window.D4_DATABASE = {
             {
               "name": "+[20 - 40]% Blood Damage",
               "shortName": "Blood Damage",
+              "category": "Offensive",
               "desc": "Profane Finesse"
             },
             {
               "name": "+[20 - 40]% Bone Damage",
               "shortName": "Bone Damage",
+              "category": "Offensive",
               "desc": "Profane Finesse"
             },
             {
               "name": "+[20 - 40]% Summon Damage",
               "shortName": "Summon Damage",
+              "category": "Offensive",
               "desc": "Profane Finesse"
             },
             {
               "name": "+[20 - 40]% Macabre Damage",
               "shortName": "Macabre Damage",
+              "category": "Offensive",
               "desc": "Shadow Finesse"
             },
             {
               "name": "+[20 - 40]% Darkness Damage",
               "shortName": "Darkness Damage",
+              "category": "Offensive",
               "desc": "Shadow Finesse"
             },
             {
               "name": "+[40 - 60]% Damage when Spending Resolve",
               "shortName": "Damage when Spending Resolve",
+              "category": "Offensive",
               "desc": "Sharpened Finesse"
             },
             {
               "name": "+[7 - 10]% Damage Per Overpower Stack",
               "shortName": "Damage Per Overpower Stack",
+              "category": "Offensive",
               "desc": "Sharpened Finesse"
             },
             {
               "name": "+[30 - 50]% Critical Strike Damage",
               "shortName": "Critical Strike Damage",
+              "category": "Offensive",
               "desc": "Worldly Finesse"
             },
             {
               "name": "+[30 - 50]% Damage Over Time",
               "shortName": "Damage Over Time",
+              "category": "Offensive",
               "desc": "Worldly Finesse"
             },
             {
               "name": "+[20 - 40]% Vulnerable Damage",
               "shortName": "Vulnerable Damage",
+              "category": "Offensive",
               "desc": "Worldly Finesse"
             },
             {
-              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Physical Damage",
-              "shortName": "Lucky Hit: Deal Physical Damage",
-              "desc": "Elemental Surge - Day"
+              "name": "+[20 - 40]% Damage to Close",
+              "shortName": "Damage to Close",
+              "category": "Offensive",
+              "desc": "Natural Finesse"
             },
             {
-              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Fire Damage",
-              "shortName": "Lucky Hit: Deal Fire Damage",
-              "desc": "Elemental Surge - Day"
-            },
-            {
-              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Lightning Damage",
-              "shortName": "Lucky Hit: Deal Lightning Damage",
-              "desc": "Elemental Surge - Day"
-            },
-            {
-              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Cold Damage",
-              "shortName": "Lucky Hit: Deal Cold Damage",
-              "desc": "Elemental Surge - Night"
-            },
-            {
-              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Poison Damage",
-              "shortName": "Lucky Hit: Deal Poison Damage",
-              "desc": "Elemental Surge - Night"
-            },
-            {
-              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Shadow Damage",
-              "shortName": "Lucky Hit: Deal Shadow Damage",
-              "desc": "Elemental Surge - Night"
+              "name": "+[20 - 40]% Damage to Distant",
+              "shortName": "Damage to Distant",
+              "category": "Offensive",
+              "desc": "Natural Finesse"
             },
             {
               "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Daze for 2 Seconds",
@@ -22910,6 +22911,36 @@ window.D4_DATABASE = {
               "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Make Enemies Vulnerable for 2 Seconds",
               "shortName": "Lucky Hit: Vulnerable",
               "desc": "Worldly Destruction"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Physical Damage",
+              "shortName": "Lucky Hit: Deal Physical Damage",
+              "desc": "Elemental Surge - Day"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Fire Damage",
+              "shortName": "Lucky Hit: Deal Fire Damage",
+              "desc": "Elemental Surge - Day"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Lightning Damage",
+              "shortName": "Lucky Hit: Deal Lightning Damage",
+              "desc": "Elemental Surge - Day"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Cold Damage",
+              "shortName": "Lucky Hit: Deal Cold Damage",
+              "desc": "Elemental Surge - Night"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Poison Damage",
+              "shortName": "Lucky Hit: Deal Poison Damage",
+              "desc": "Elemental Surge - Night"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Shadow Damage",
+              "shortName": "Lucky Hit: Deal Shadow Damage",
+              "desc": "Elemental Surge - Night"
             }
           ],
           "transfigures": [
@@ -23172,148 +23203,57 @@ window.D4_DATABASE = {
           ],
           "tempers": [
             {
-              "name": "+[440 - 490] Fire Resistance",
-              "shortName": "Fire Resistance",
-              "desc": "Natural Resistance"
-            },
-            {
-              "name": "+[440 - 490] Lightning Resistance",
-              "shortName": "Lightning Resistance",
-              "desc": "Natural Resistance"
-            },
-            {
-              "name": "+[440 - 490] Cold Resistance",
-              "shortName": "Cold Resistance",
-              "desc": "Natural Resistance"
-            },
-            {
-              "name": "+[440 - 490] Poison Resistance",
-              "shortName": "Poison Resistance",
-              "desc": "Natural Resistance"
-            },
-            {
-              "name": "+[440 - 490] Shadow Resistance",
-              "shortName": "Shadow Resistance",
-              "desc": "Natural Resistance"
-            },
-            {
-              "name": "+[440 - 490] Physical Resistance",
-              "shortName": "Physical Resistance",
-              "desc": "Natural Resistance"
-            },
-            {
-              "name": "+[20 - 30]% Damage Reduction for Your Summons",
-              "shortName": "Damage Reduction for Your Summons",
-              "desc": "Necromancer Wall"
-            },
-            {
-              "name": "+[7 - 10]% Chance for Minion Attacks to Fortify You for 3% Maximum Life",
-              "shortName": "Chance for Minion Attacks to Fortify You for 3% Maximum Life",
-              "desc": "Necromancer Wall"
-            },
-            {
-              "name": "+[10 - 12]% Minions Inherit +% of Your Thorns",
-              "shortName": "Minions Inherit +% of Your Thorns",
-              "desc": "Necromancer Wall"
-            },
-            {
-              "name": "+[2.5 - 5.0]% Block Chance",
-              "shortName": "Block Chance",
-              "desc": "Necromancer Wall"
-            },
-            {
-              "name": "+[1,000 - 1,500] Maximum Life",
-              "shortName": "Maximum Life",
-              "desc": "Wordly Endurance"
-            },
-            {
-              "name": "+[1,250 - 2,000] Armor",
-              "shortName": "Armor",
-              "desc": "Wordly Endurance"
-            },
-            {
-              "name": "+[60 - 70] Resistance to All Elements",
-              "shortName": "Resistance to All Elements",
-              "desc": "Wordly Endurance"
-            },
-            {
-              "name": "+[2 - 3] Maximum Resolve Stacks",
-              "shortName": "Maximum Resolve Stacks",
-              "desc": "Wordly Endurance"
-            },
-            {
-              "name": "+[484 - 646] Thorns",
-              "shortName": "Thorns",
-              "desc": "Natural Schemes"
-            },
-            {
-              "name": "+[10 - 12.5]% Fortify Generation",
-              "shortName": "Fortify Generation",
-              "desc": "Natural Schemes"
-            },
-            {
-              "name": "+[10 - 12.5]% Barrier Generation",
-              "shortName": "Barrier Generation",
-              "desc": "Natural Schemes"
-            },
-            {
-              "name": "+[2.5 - 5.0]% Lucky Hit Chance",
-              "shortName": "Lucky Hit Chance",
-              "desc": "Worldy Fortune"
-            },
-            {
-              "name": "+[10 - 12.5]% Impairment Reduction",
-              "shortName": "Impairment Reduction",
-              "desc": "Worldy Fortune"
-            },
-            {
-              "name": "+[12 - 15]% Crowd Control Duration",
-              "shortName": "Crowd Control Duration",
-              "desc": "Worldy Fortune"
-            },
-            {
               "name": "+[20 - 40]% Physical Damage",
               "shortName": "Physical Damage",
+              "category": "Offensive",
               "desc": "Elemental Finesse - Day"
             },
             {
               "name": "+[20 - 40]% Fire Damage",
               "shortName": "Fire Damage",
+              "category": "Offensive",
               "desc": "Elemental Finesse - Day"
             },
             {
               "name": "+[20 - 40]% Lightning Damage",
               "shortName": "Lightning Damage",
+              "category": "Offensive",
               "desc": "Elemental Finesse - Day"
             },
             {
               "name": "+[20 - 40]% Holy Damage",
               "shortName": "Holy Damage",
+              "category": "Offensive",
               "desc": "Elemental Finesse - Day"
             },
             {
               "name": "+[20 - 40]% Cold Damage",
               "shortName": "Cold Damage",
+              "category": "Offensive",
               "desc": "Elemental Finesse - Night"
             },
             {
               "name": "+[20 - 40]% Poison Damage",
               "shortName": "Poison Damage",
+              "category": "Offensive",
               "desc": "Elemental Finesse - Night"
             },
             {
               "name": "+[20 - 40]% Shadow Damage",
               "shortName": "Shadow Damage",
+              "category": "Offensive",
               "desc": "Elemental Finesse - Night"
             },
             {
               "name": "+[10 - 30]% Damage",
               "shortName": "Damage",
+              "category": "Offensive",
               "desc": "Natural Finesse"
             },
             {
               "name": "+[20 - 40]% Damage to Crowd Controlled Enemies",
               "shortName": "Damage to Crowd Controlled Enemies",
+              "category": "Offensive",
               "desc": "Natural Finesse"
             },
             {
@@ -23329,82 +23269,74 @@ window.D4_DATABASE = {
             {
               "name": "+[20 - 40]% Blood Damage",
               "shortName": "Blood Damage",
+              "category": "Offensive",
               "desc": "Profane Finesse"
             },
             {
               "name": "+[20 - 40]% Bone Damage",
               "shortName": "Bone Damage",
+              "category": "Offensive",
               "desc": "Profane Finesse"
             },
             {
               "name": "+[20 - 40]% Summon Damage",
               "shortName": "Summon Damage",
+              "category": "Offensive",
               "desc": "Profane Finesse"
             },
             {
               "name": "+[20 - 40]% Macabre Damage",
               "shortName": "Macabre Damage",
+              "category": "Offensive",
               "desc": "Shadow Finesse"
             },
             {
               "name": "+[20 - 40]% Darkness Damage",
               "shortName": "Darkness Damage",
+              "category": "Offensive",
               "desc": "Shadow Finesse"
             },
             {
               "name": "+[40 - 60]% Damage when Spending Resolve",
               "shortName": "Damage when Spending Resolve",
+              "category": "Offensive",
               "desc": "Sharpened Finesse"
             },
             {
               "name": "+[7 - 10]% Damage Per Overpower Stack",
               "shortName": "Damage Per Overpower Stack",
+              "category": "Offensive",
               "desc": "Sharpened Finesse"
             },
             {
               "name": "+[30 - 50]% Critical Strike Damage",
               "shortName": "Critical Strike Damage",
+              "category": "Offensive",
               "desc": "Worldly Finesse"
             },
             {
               "name": "+[30 - 50]% Damage Over Time",
               "shortName": "Damage Over Time",
+              "category": "Offensive",
               "desc": "Worldly Finesse"
             },
             {
               "name": "+[20 - 40]% Vulnerable Damage",
               "shortName": "Vulnerable Damage",
+              "category": "Offensive",
               "desc": "Worldly Finesse"
             },
             {
-              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Physical Damage",
-              "shortName": "Lucky Hit: Deal Physical Damage",
-              "desc": "Elemental Surge - Day"
+              "name": "+[20 - 40]% Damage to Close",
+              "shortName": "Damage to Close",
+              "category": "Offensive",
+              "desc": "Natural Finesse"
             },
             {
-              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Fire Damage",
-              "shortName": "Lucky Hit: Deal Fire Damage",
-              "desc": "Elemental Surge - Day"
-            },
-            {
-              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Lightning Damage",
-              "shortName": "Lucky Hit: Deal Lightning Damage",
-              "desc": "Elemental Surge - Day"
-            },
-            {
-              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Cold Damage",
-              "shortName": "Lucky Hit: Deal Cold Damage",
-              "desc": "Elemental Surge - Night"
-            },
-            {
-              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Poison Damage",
-              "shortName": "Lucky Hit: Deal Poison Damage",
-              "desc": "Elemental Surge - Night"
-            },
-            {
-              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Shadow Damage",
-              "shortName": "Lucky Hit: Deal Shadow Damage",
-              "desc": "Elemental Surge - Night"
+              "name": "+[20 - 40]% Damage to Distant",
+              "shortName": "Damage to Distant",
+              "category": "Offensive",
+              "desc": "Natural Finesse"
             },
             {
               "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Daze for 2 Seconds",
@@ -23445,6 +23377,36 @@ window.D4_DATABASE = {
               "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Make Enemies Vulnerable for 2 Seconds",
               "shortName": "Lucky Hit: Vulnerable",
               "desc": "Worldly Destruction"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Physical Damage",
+              "shortName": "Lucky Hit: Deal Physical Damage",
+              "desc": "Elemental Surge - Day"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Fire Damage",
+              "shortName": "Lucky Hit: Deal Fire Damage",
+              "desc": "Elemental Surge - Day"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Lightning Damage",
+              "shortName": "Lucky Hit: Deal Lightning Damage",
+              "desc": "Elemental Surge - Day"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Cold Damage",
+              "shortName": "Lucky Hit: Deal Cold Damage",
+              "desc": "Elemental Surge - Night"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Poison Damage",
+              "shortName": "Lucky Hit: Deal Poison Damage",
+              "desc": "Elemental Surge - Night"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Shadow Damage",
+              "shortName": "Lucky Hit: Deal Shadow Damage",
+              "desc": "Elemental Surge - Night"
             }
           ],
           "transfigures": [
@@ -24590,7 +24552,214 @@ window.D4_DATABASE = {
               "category": "Defensive"
             }
           ],
-          "tempers": [],
+          "tempers": [
+            {
+              "name": "+[20 - 40]% Physical Damage",
+              "shortName": "Physical Damage",
+              "category": "Offensive",
+              "desc": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Fire Damage",
+              "shortName": "Fire Damage",
+              "category": "Offensive",
+              "desc": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Lightning Damage",
+              "shortName": "Lightning Damage",
+              "category": "Offensive",
+              "desc": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Holy Damage",
+              "shortName": "Holy Damage",
+              "category": "Offensive",
+              "desc": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Cold Damage",
+              "shortName": "Cold Damage",
+              "category": "Offensive",
+              "desc": "Elemental Finesse - Night"
+            },
+            {
+              "name": "+[20 - 40]% Poison Damage",
+              "shortName": "Poison Damage",
+              "category": "Offensive",
+              "desc": "Elemental Finesse - Night"
+            },
+            {
+              "name": "+[20 - 40]% Shadow Damage",
+              "shortName": "Shadow Damage",
+              "category": "Offensive",
+              "desc": "Elemental Finesse - Night"
+            },
+            {
+              "name": "+[10 - 30]% Damage",
+              "shortName": "Damage",
+              "category": "Offensive",
+              "desc": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Damage to Crowd Controlled Enemies",
+              "shortName": "Damage to Crowd Controlled Enemies",
+              "category": "Offensive",
+              "desc": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Damage to Close Enemies",
+              "shortName": "Damage to Close Enemies",
+              "desc": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Damage to Distant Enemies",
+              "shortName": "Damage to Distant Enemies",
+              "desc": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Blood Damage",
+              "shortName": "Blood Damage",
+              "category": "Offensive",
+              "desc": "Profane Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Bone Damage",
+              "shortName": "Bone Damage",
+              "category": "Offensive",
+              "desc": "Profane Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Summon Damage",
+              "shortName": "Summon Damage",
+              "category": "Offensive",
+              "desc": "Profane Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Macabre Damage",
+              "shortName": "Macabre Damage",
+              "category": "Offensive",
+              "desc": "Shadow Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Darkness Damage",
+              "shortName": "Darkness Damage",
+              "category": "Offensive",
+              "desc": "Shadow Finesse"
+            },
+            {
+              "name": "+[40 - 60]% Damage when Spending Resolve",
+              "shortName": "Damage when Spending Resolve",
+              "category": "Offensive",
+              "desc": "Sharpened Finesse"
+            },
+            {
+              "name": "+[7 - 10]% Damage Per Overpower Stack",
+              "shortName": "Damage Per Overpower Stack",
+              "category": "Offensive",
+              "desc": "Sharpened Finesse"
+            },
+            {
+              "name": "+[30 - 50]% Critical Strike Damage",
+              "shortName": "Critical Strike Damage",
+              "category": "Offensive",
+              "desc": "Worldly Finesse"
+            },
+            {
+              "name": "+[30 - 50]% Damage Over Time",
+              "shortName": "Damage Over Time",
+              "category": "Offensive",
+              "desc": "Worldly Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Vulnerable Damage",
+              "shortName": "Vulnerable Damage",
+              "category": "Offensive",
+              "desc": "Worldly Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Damage to Close",
+              "shortName": "Damage to Close",
+              "category": "Offensive",
+              "desc": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Damage to Distant",
+              "shortName": "Damage to Distant",
+              "category": "Offensive",
+              "desc": "Natural Finesse"
+            },
+            {
+              "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Daze for 2 Seconds",
+              "shortName": "Lucky Hit: Chance to Daze",
+              "desc": "Worldly Afflictions"
+            },
+            {
+              "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Freeze for 2 Seconds",
+              "shortName": "Lucky Hit: Chance to Freeze",
+              "desc": "Worldly Afflictions"
+            },
+            {
+              "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Immobilize for 2 Seconds",
+              "shortName": "Lucky Hit: Chance to Immobilize",
+              "desc": "Worldly Afflictions"
+            },
+            {
+              "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Slow for 2 Seconds",
+              "shortName": "Lucky Hit: Chance to Slow",
+              "desc": "Worldly Afflictions"
+            },
+            {
+              "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Stun for 2 Seconds",
+              "shortName": "Lucky Hit: Chance to Stun",
+              "desc": "Worldly Afflictions"
+            },
+            {
+              "name": "+[5 - 8]% Attack Speed",
+              "shortName": "Attack Speed",
+              "desc": "Worldly Destruction"
+            },
+            {
+              "name": "+[2.5 - 5]% Critical Strike Chance",
+              "shortName": "Critical Strike Chance",
+              "desc": "Worldly Destruction"
+            },
+            {
+              "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Make Enemies Vulnerable for 2 Seconds",
+              "shortName": "Lucky Hit: Vulnerable",
+              "desc": "Worldly Destruction"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Physical Damage",
+              "shortName": "Lucky Hit: Deal Physical Damage",
+              "desc": "Elemental Surge - Day"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Fire Damage",
+              "shortName": "Lucky Hit: Deal Fire Damage",
+              "desc": "Elemental Surge - Day"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Lightning Damage",
+              "shortName": "Lucky Hit: Deal Lightning Damage",
+              "desc": "Elemental Surge - Day"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Cold Damage",
+              "shortName": "Lucky Hit: Deal Cold Damage",
+              "desc": "Elemental Surge - Night"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Poison Damage",
+              "shortName": "Lucky Hit: Deal Poison Damage",
+              "desc": "Elemental Surge - Night"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Shadow Damage",
+              "shortName": "Lucky Hit: Deal Shadow Damage",
+              "desc": "Elemental Surge - Night"
+            }
+          ],
           "transfigures": [
             {
               "name": "+[7.0 - 10.0]% Intelligence",
