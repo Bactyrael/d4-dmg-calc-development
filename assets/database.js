@@ -22534,64 +22534,43 @@ window.D4_DATABASE = {
           ],
           "tempers": [
             {
+              "name": "+[484 - 646] Thorns",
+              "shortName": "Thorns",
+              "desc": "Natural Schemes"
+            },
+            {
+              "name": "+[10 - 12.5]% Fortify Generation",
+              "shortName": "Fortify Generation",
+              "desc": "Natural Schemes"
+            },
+            {
+              "name": "+[10 - 12.5]% Barrier Generation",
+              "shortName": "Barrier Generation",
+              "desc": "Natural Schemes"
+            },
+            {
               "name": "+[15 - 25]% Movement Speed",
               "shortName": "Movement Speed",
               "category": "Utility",
-              "manual": "Natural Motion"
+              "desc": "Natural Motion"
             },
             {
               "name": "+[25 - 45]% Movement Speed for 4 Seconds After Killing an Elite",
               "shortName": "Movement Speed for 4 Seconds After Killing an Elite",
               "category": "Utility",
-              "manual": "Natural Motion"
+              "desc": "Natural Motion"
             },
             {
               "name": "+[5 - 8]% Mobility Cooldown Reduction",
               "shortName": "Mobility Cooldown Reduction",
               "category": "Utility",
-              "manual": "Natural Motion"
+              "desc": "Natural Motion"
             },
             {
               "name": "+[17 - 20]% Evade Cooldown Reduction",
               "shortName": "Evade Cooldown Reduction",
               "category": "Utility",
-              "manual": "Natural Motion"
-            },
-            {
-              "name": "+[484 - 646] Thorns",
-              "shortName": "Thorns",
-              "category": "Utility",
-              "manual": "Natural Schemes"
-            },
-            {
-              "name": "+[10 - 12.5]% Fortify Generation",
-              "shortName": "Fortify Generation",
-              "category": "Utility",
-              "manual": "Natural Schemes"
-            },
-            {
-              "name": "+[10 - 12.5]% Barrier Generation",
-              "shortName": "Barrier Generation",
-              "category": "Utility",
-              "manual": "Natural Schemes"
-            },
-            {
-              "name": "+[2.5 - 5]% Lucky Hit Chance",
-              "shortName": "Lucky Hit Chance",
-              "category": "Utility",
-              "manual": "Worldy Fortune"
-            },
-            {
-              "name": "+[10 - 12.5]% Impairment Reduction",
-              "shortName": "Impairment Reduction",
-              "category": "Utility",
-              "manual": "Worldy Fortune"
-            },
-            {
-              "name": "+[12 - 15]% Crowd Control Duration",
-              "shortName": "Crowd Control Duration",
-              "category": "Utility",
-              "manual": "Worldy Fortune"
+              "desc": "Natural Motion"
             }
           ],
           "transfigures": [
