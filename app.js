@@ -2121,7 +2121,10 @@
     currentBuild = b;
 
     dom.buildName.value = b.name || 'New Build';
-    if (dom.classSelect) dom.classSelect.value = b.class || 'Barbarian';
+    if (dom.classSelect) {
+        dom.classSelect.value = b.class || 'Barbarian';
+        selectedClass = dom.classSelect.value;
+    }
     dom.weaponDamage.value = b.weaponDamage || 0;
     dom.skillDamage.value = b.skillDamage || 0;
 
