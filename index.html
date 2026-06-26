@@ -15,7 +15,6 @@
   <header class="app-header" id="app-header">
     <h1 class="app-title">Damage Calculator <span>Diablo IV</span></h1>
     <div class="header-controls">
-      <button class="btn" id="btn-import-maxroll" style="font-size: 0.8rem; padding: 4px 8px;" title="Paste Stats">📋 Paste</button>
       <button class="btn" id="btn-new" title="New Build">✦ New</button>
       <button class="btn btn-primary" id="btn-save" title="Save Build">💾 Save</button>
       <div class="save-dropdown">
@@ -280,37 +279,6 @@
 
 
 
-</div>
-
-<!-- Maxroll Import Modal -->
-<div class="modal-overlay hidden" id="maxroll-modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2 class="modal-title">Import from Maxroll</h2>
-      <button class="btn-close" id="btn-close-modal" title="Close">✕</button>
-    </div>
-    <div class="modal-body">
-      <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #333;">
-        <h3 style="margin-top: 0; margin-bottom: 10px; color: #d18a45;">API Profile Sync</h3>
-        <p class="modal-instruction" style="margin-bottom: 10px;">Paste a Maxroll planner link to instantly sync your Class, Level, and Book of the Dead choices directly from their servers.</p>
-        <div style="display: flex; gap: 10px;">
-          <input type="text" id="maxroll-api-url" class="stat-input" placeholder="https://maxroll.gg/d4/planner/..." style="flex: 1;">
-          <button class="btn btn-primary" id="btn-api-sync">Sync Profile</button>
-        </div>
-      </div>
-
-      <h3 style="margin-top: 0; margin-bottom: 10px; color: #d18a45;">Paste Stat Sheet</h3>
-      <p class="modal-instruction">Copy your stats list from Maxroll and paste it below. Base Weapon Damage will update your Base Stats, and all other damage values will be added as Additive Bonuses.</p>
-      <textarea id="maxroll-textarea" class="maxroll-textarea" placeholder="Base Weapon Damage
-5,374
-Critical Strike Damage
-1,192.6%..."></textarea>
-    </div>
-    <div class="modal-footer">
-      <button class="btn" id="btn-cancel-modal">Cancel</button>
-      <button class="btn btn-primary" id="btn-submit-maxroll">Import Stats</button>
-    </div>
-  </div>
 </div>
 
   <!-- Item Selection Modal -->

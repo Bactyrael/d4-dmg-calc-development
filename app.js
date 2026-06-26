@@ -94,15 +94,8 @@
 
     compareGrid:  document.getElementById('compare-grid'),
     compareEmpty: document.getElementById('compare-empty'),
-
-    btnImportMaxroll: document.getElementById('btn-import-maxroll'),
-    maxrollModal:     document.getElementById('maxroll-modal'),
-    btnCloseModal:    document.getElementById('btn-close-modal'),
-    btnCancelModal:   document.getElementById('btn-cancel-modal'),
-    btnSubmitMaxroll: document.getElementById('btn-submit-maxroll'),
-    maxrollTextarea:  document.getElementById('maxroll-textarea'),
+    
     btnApiSync:       document.getElementById('btn-api-sync'),
-    maxrollApiUrl:    document.getElementById('maxroll-api-url'),
     buildName:        document.getElementById('build-name'),
 
     nodesContainer: document.getElementById('nodes-container'),
@@ -2732,22 +2725,6 @@
         
         // Skip the value line we just processed
         i++;
-      }
-    }
-
-    // Now append the unique additive rows
-    Object.values(parsedStats).forEach(stat => {
-      createAdditiveRow(stat.name, stat.value);
-    });
-    
-    if (count > 0) {
-      calculate();
-      showToast(`Imported ${count} stats from Maxroll`);
-    } else {
-      showToast(`No valid stats found to import`);
-    }
-  }
-
   // ---- Toast Notification ----
   function showToast(message) {
     // Remove existing toast
@@ -3018,114 +2995,6 @@
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.save-dropdown')) {
         dom.loadMenu.classList.remove('open');
-      }
-    });
-
-    // Maxroll Modal Events
-    dom.btnImportMaxroll.addEventListener('click', () => {
-      dom.maxrollTextarea.value = '';
-      dom.maxrollModal.classList.remove('hidden');
-    });
-
-    dom.btnCloseModal.addEventListener('click', () => {
-      dom.maxrollModal.classList.add('hidden');
-    });
-
-    dom.btnCancelModal.addEventListener('click', () => {
-      dom.maxrollModal.classList.add('hidden');
-    });
-
-    dom.btnSubmitMaxroll.addEventListener('click', () => {
-      const text = dom.maxrollTextarea.value;
-      if (text) {
-        parseMaxrollStats(text);
-      }
-      dom.maxrollModal.classList.add('hidden');
-    });
-
-    dom.btnApiSync.addEventListener('click', async () => {
-      const url = dom.maxrollApiUrl.value.trim();
-      if (!url) return;
-      
-      const match = url.match(/planner\/([a-zA-Z0-9]+)/);
-      if (!match) {
-        alert('Invalid Maxroll planner URL.');
-        return;
-      }
-      
-      const profileId = match[1];
-      const btn = dom.btnApiSync;
-      btn.textContent = 'Syncing...';
-      btn.disabled = true;
-      
-      try {
-        const res = await fetch(`https://planners.maxroll.gg/profiles/d4/${profileId}`);
-        if (!res.ok) throw new Error(`Failed to fetch from Maxroll (Status: ${res.status}).`);
-        
-        const rawData = await res.json();
-        console.log("Maxroll API Response:", rawData);
-        
-        let parsedData = rawData;
-        if (rawData.data && typeof rawData.data === 'string') {
-          parsedData = JSON.parse(rawData.data);
-        }
-        
-        const profile = parsedData.profiles && parsedData.profiles[0];
-        if (!profile) {
-          throw new Error('Profile data not found. Raw response: ' + JSON.stringify(rawData).substring(0, 100));
-        }
-        
-        if (profile.minionSpec && Array.isArray(profile.minionSpec)) {
-          const wMap = ['Skirmisher', 'Defender', 'Reaper'];
-          const mMap = ['Shadow Mage', 'Cold Mage', 'Bone Mage'];
-          const gMap = ['Bone Golem', 'Blood Golem', 'Iron Golem'];
-          
-          if (profile.minionSpec[0] !== undefined) currentBuild.bookOfTheDead.warriors.spec = wMap[profile.minionSpec[0]];
-          if (profile.minionSpec[1] !== undefined) currentBuild.bookOfTheDead.mages.spec = mMap[profile.minionSpec[1]];
-          if (profile.minionSpec[2] !== undefined) currentBuild.bookOfTheDead.golems.spec = gMap[profile.minionSpec[2]];
-        }
-        
-        currentBuild.bookOfTheDead.warriors.node = null;
-        currentBuild.bookOfTheDead.mages.node = null;
-        currentBuild.bookOfTheDead.golems.node = null;
-
-        if (profile.minionUpgrades) {
-          profile.minionUpgrades.forEach(upg => {
-            let node = null;
-            if (upg.includes('UpgradeA')) node = '1';
-            else if (upg.includes('UpgradeB')) node = '2';
-            else if (upg.includes('Sacrifice')) node = '3';
-            
-            if (node) {
-              if (upg.includes('SkeletonWarrior')) currentBuild.bookOfTheDead.warriors.node = node;
-              else if (upg.includes('SkeletonMage')) currentBuild.bookOfTheDead.mages.node = node;
-              else if (upg.includes('Golem')) currentBuild.bookOfTheDead.golems.node = node;
-            }
-          });
-        }
-        
-        if (profile.level) {
-          currentBuild.level = profile.level;
-          dom.level.value = currentBuild.level;
-        }
-        
-        if (profile.class === 4) {
-          currentBuild.class = 'Necromancer';
-          dom.classSelect.textContent = 'Necromancer';
-          dom.classSelect.dispatchEvent(new Event('change'));
-        }
-        
-        saveBuild();
-        renderEquipment();
-        calculateDamage();
-        
-        dom.maxrollModal.classList.add('hidden');
-        alert('Maxroll profile synced successfully!');
-      } catch (err) {
-        alert('Error: ' + err.message);
-      } finally {
-        btn.textContent = 'Sync Profile';
-        btn.disabled = false;
       }
     });
   }
