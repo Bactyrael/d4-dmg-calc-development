@@ -22442,13 +22442,8 @@ window.D4_DATABASE = {
               "category": "Defensive"
             },
             {
-              "name": "+[8 - 10]% Impairment Reduction",
+              "name": "+[8.0 - 10.0]% Impairment Reduction",
               "shortName": "Impairment Reduction",
-              "category": "Utility"
-            },
-            {
-              "name": "+[20 - 24]% Movement Speed",
-              "shortName": "Movement Speed",
               "category": "Utility"
             },
             {
@@ -22462,8 +22457,8 @@ window.D4_DATABASE = {
               "category": "Defensive"
             },
             {
-              "name": "+[8 - 9]% Lucky Hit Chance",
-              "shortName": "Lucky Hit Chance",
+              "name": "+[20 - 24]% Movement Speed",
+              "shortName": "Movement Speed",
               "category": "Utility"
             },
             {
@@ -22492,49 +22487,29 @@ window.D4_DATABASE = {
               "category": "Defensive"
             },
             {
-              "name": "+[11 - 15]% Resource Generation",
-              "shortName": "Resource Generation",
-              "category": "Resource"
+              "name": "+[7.0 - 8.0]% Dodge Chance",
+              "shortName": "Dodge Chance",
+              "category": "Defensive"
             },
             {
-              "name": "+[11 - 15]% Healing Received",
+              "name": "+[11.0 - 15.0]% Healing Received",
               "shortName": "Healing Received",
               "category": "Defensive"
             },
             {
-              "name": "+[326 - 392] Resistance to All Elements",
+              "name": "+[327 - 392] Resistance to All Elements",
               "shortName": "Resistance to All Elements",
               "category": "Defensive"
             },
             {
-              "name": "+[524 - 630] Physical Resistance",
-              "shortName": "Physical Resistance",
-              "category": "Defensive"
+              "name": "+[2 - 3] to Bone Spirit",
+              "shortName": "Bone Spirit",
+              "category": "Utility"
             },
             {
-              "name": "+[2 - 3] Ranks to Bone Spirit",
-              "shortName": "Ranks to Bone Spirit",
-              "category": "Offensive"
-            },
-            {
-              "name": "+[2 - 3] Ranks to Corpse Tendrils",
-              "shortName": "Ranks to Corpse Tendrils",
-              "category": "Offensive"
-            },
-            {
-              "name": "+[2 - 3] Ranks to Skeletal Warrior",
-              "shortName": "Ranks to Skeletal Warrior",
-              "category": "Offensive"
-            },
-            {
-              "name": "+[1 - 2] Ranks to Corpse Skills",
-              "shortName": "Ranks to Corpse Skills",
-              "category": "Offensive"
-            },
-            {
-              "name": "+[6 - 7]% Resource Cost Reduction",
-              "shortName": "Resource Cost Reduction",
-              "category": "Resource"
+              "name": "+[2 - 3] to Corpse Tendrils",
+              "shortName": "Corpse Tendrils",
+              "category": "Utility"
             },
             {
               "name": "+[153 - 184] Life Regeneration",
@@ -22547,18 +22522,18 @@ window.D4_DATABASE = {
               "category": "Resource"
             },
             {
-              "name": "+[10 - 15]% Fortify Generation",
-              "shortName": "Fortify Generation",
-              "category": "Defensive"
+              "name": "+[1 - 2] to Corpse Skills",
+              "shortName": "Corpse Skills",
+              "category": "Utility"
             },
             {
-              "name": "+[10 - 15]% Barrier Generation",
-              "shortName": "Barrier Generation",
-              "category": "Defensive"
+              "name": "+[1 - 2] to Skeleton Warrior",
+              "shortName": "Skeleton Warrior",
+              "category": "Utility"
             },
             {
-              "name": "+[7 - 8]% Dodge Chance",
-              "shortName": "Dodge Chance",
+              "name": "+[524 - 630] Physical Resistance",
+              "shortName": "Physical Resistance",
               "category": "Defensive"
             },
             {
@@ -22567,19 +22542,29 @@ window.D4_DATABASE = {
               "category": "Defensive"
             },
             {
+              "name": "+[10.0 - 15.0]% Fortify Generation",
+              "shortName": "Fortify Generation",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[10.0 - 15.0]% Barrier Generation",
+              "shortName": "Barrier Generation",
+              "category": "Defensive"
+            },
+            {
+              "name": "Attacks Reduce Evade's Cooldown by [1.2 - 1.5] Seconds",
+              "shortName": "Attacks Reduce Evade's Cooldown",
+              "category": "Utility"
+            },
+            {
               "name": "+[1 - 3] Maximum Evade Charges",
               "shortName": "Maximum Evade Charges",
-              "category": "Mobility"
+              "category": "Utility"
             },
             {
-              "name": "+[1.2 - 1.5] Attacks Reduce Evade's Cooldown by [x] Seconds",
-              "shortName": "Attacks Reduce Evade's Cooldown by [x] Seconds",
-              "category": "Mobility"
-            },
-            {
-              "name": "+[125 - 150]% Evade Grants +[x]% Movement Speed for 1.5 Seconds",
-              "shortName": "Evade Grants +[x]% Movement Speed for 1.5 Seconds",
-              "category": "Mobility"
+              "name": "Evade Grants +[125 - 150]% Movement Speed for 1.5 Seconds",
+              "shortName": "Evade Grants Movement Speed",
+              "category": "Utility"
             }
           ],
           "tempers": [
@@ -22646,68 +22631,100 @@ window.D4_DATABASE = {
           ],
           "transfigures": [
             {
-              "name": "+[3.5 - 5]% Intelligence",
-              "shortName": "Intelligence"
+              "name": "+[3.5 - 5.0]% Intelligence",
+              "desc": "Intelligence"
             },
             {
-              "name": "+[75 - 100]% Gem Strength",
-              "shortName": "Gem Strength"
+              "name": "+[8.0 - 10.0]% Total Armor",
+              "desc": "Total Armor"
             },
             {
-              "name": "+[8 - 10]% Total Armor",
-              "shortName": "Total Armor"
+              "name": "+[8.0 - 10.0]% Resistance to All Elements",
+              "desc": "Resistance to All Elements"
             },
             {
-              "name": "+[8 - 10]% Resistance to All Elements",
-              "shortName": "Resistance to All Elements"
+              "name": "+[2 - 3] to Corpse Skills",
+              "desc": "Corpse Skills"
             },
             {
-              "name": "+[2 - 3] Ranks to Corpse Skills",
-              "shortName": "Ranks to Corpse Skills"
-            },
-            {
-              "name": "+[2 - 3] Ranks to Macabre Skills",
-              "shortName": "Ranks to Macabre Skills"
+              "name": "+[2 - 3] to Macabre Skills",
+              "desc": "Macabre Skills"
             },
             {
               "name": "+[75 - 100] All Stats",
-              "shortName": "All Stats"
+              "desc": "All Stats"
             },
             {
-              "name": "+[3.5 - 5]% Critical Strike Chance",
-              "shortName": "Critical Strike Chance"
+              "name": "+[3.5 - 5.0]% Critical Strike Chance",
+              "desc": "Critical Strike Chance"
             },
             {
-              "name": "+[8 - 10]% Attack Speed",
-              "shortName": "Attack Speed"
+              "name": "+[6.0 - 8.0]% Cooldown Reduction",
+              "desc": "Cooldown Reduction"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Attack Speed",
+              "desc": "Attack Speed"
             },
             {
               "name": "+[150 - 180] Intelligence",
-              "shortName": "Intelligence"
-            },
-            {
-              "name": "+[8 - 10]% Shadow Damage",
-              "shortName": "Shadow Damage"
-            },
-            {
-              "name": "+[8 - 10]% Physical Damage",
-              "shortName": "Physical Damage"
-            },
-            {
-              "name": "+[6 - 8]% Maximum Life",
-              "shortName": "Maximum Life"
-            },
-            {
-              "name": "+[1 - 15] Item Quality",
-              "shortName": "Item Quality"
-            },
-            {
-              "name": "+[6 - 8]% Cooldown Reduction",
-              "shortName": "Cooldown Reduction"
+              "desc": "Intelligence"
             },
             {
               "name": "+[20 - 30]% Movement Speed",
-              "shortName": "Movement Speed"
+              "desc": "Movement Speed"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Shadow Damage [x]",
+              "desc": "Shadow Damage"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Physical Damage [x]",
+              "desc": "Physical Damage"
+            },
+            {
+              "name": "+[1 - 15] Item Quality",
+              "desc": "Item Quality"
+            },
+            {
+              "name": "Gain 20% Damage Reduction. In addition, gain +4 Ranks to all Skills.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Every 4 seconds, you randomly mark a Nearby enemy. Marked enemies are Vulnerable, and your attacks against them are guaranteed to Critically Strike and Overpower. Hitting a marked enemy 30 times clears the mark from them.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Gain a random Shrine effect for 20 seconds after killing an Elite enemy. Can only occur once every 30 seconds.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Lucky Hit: Up to a 38% chance to deal 0 Shadow damage to surrounding enemies and reduce their damage dealt by 20% for 5 seconds.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Increases your Critical Strike Damage by 100%[x].",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Spending your Primary Resource reduces the Resource cost of your Skills and increases your damage by 15%[x] for 3 seconds, up to 75%[x].",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced. Your Primary Resource is doubled but Maximum Life is reduced by 75%.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Enemies afflicted by more Damage over Time than remaining Life are Executed.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Your Skills unleash a divine barrage dealing 0 damage.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Lucky Hit: Up to a 30% chance to trigger a poison nova that applies 0 Poisoning damage over 5 seconds to enemies in the area.",
+              "desc": "Sanctified Modifier"
             }
           ]
         },
