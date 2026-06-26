@@ -22733,7 +22733,7 @@ window.D4_DATABASE = {
               "category": "Offensive"
             },
             {
-              "name": "+[86 - 143]% Weapon Damage",
+              "name": "+[86 - 143] Weapon Damage",
               "shortName": "Weapon Damage",
               "category": "Offensive"
             },
@@ -23089,7 +23089,7 @@ window.D4_DATABASE = {
               "exclusiveTo": "Focus"
             },
             {
-              "name": "+[86 - 143]% Weapon Damage",
+              "name": "+[86 - 143] Weapon Damage",
               "shortName": "Weapon Damage",
               "category": "Offensive",
               "exclusiveTo": "Focus"
