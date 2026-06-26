@@ -22736,6 +22736,18 @@ window.D4_DATABASE = {
               "name": "+[86 - 143]% Weapon Damage",
               "shortName": "Weapon Damage",
               "category": "Offensive"
+            },
+            {
+              "name": "+[6 - 7]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction",
+              "category": "Resource",
+              "exclusiveTo": "2H"
+            },
+            {
+              "name": "+[1 - 2] Essence On Kill",
+              "shortName": "Essence On Kill",
+              "category": "Resource",
+              "exclusiveTo": "2H"
             }
           ],
           "tempers": [

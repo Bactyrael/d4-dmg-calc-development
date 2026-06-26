@@ -4940,6 +4940,13 @@ rarity = foundItem.rarity;
         }
       }
       
+      // Filter out 1H vs 2H specific modifiers on mainhand
+      if (mapped === 'mainhand' && type === 'affix') {
+        const is2H = checkIs2H(itemObj, mapped);
+        if (is2H && a.exclusiveTo === '1H') return false;
+        if (!is2H && a.exclusiveTo === '2H') return false;
+      }
+      
       return true;
     });
 
