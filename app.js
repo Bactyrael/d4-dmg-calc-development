@@ -1723,6 +1723,11 @@
       if (!rawName) return;
       let cleanName = rawName.replace(/\[.*?\]\s*/, '').replace(/^[\+\-]\s*/, '').trim();
       
+      const keepPct = ['% Strength', '% Intelligence', '% Willpower', '% Dexterity', '% Maximum Life', '% Armor', '% Total Armor'];
+      if (cleanName.startsWith('%') && !keepPct.includes(cleanName)) {
+          cleanName = cleanName.replace(/^%\s*/, '').trim();
+      }
+      
       if (!stats[cleanName]) {
           stats[cleanName] = { 
               total: 0, 
