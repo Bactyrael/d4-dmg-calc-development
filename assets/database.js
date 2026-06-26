@@ -22688,11 +22688,6 @@ window.D4_DATABASE = {
               "category": "Defensive"
             },
             {
-              "name": "+[8 - 9]% Lucky Hit Chance",
-              "shortName": "Lucky Hit Chance",
-              "category": "Utility"
-            },
-            {
               "name": "+[3 - 4] Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
               "shortName": "Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
               "category": "Resource"
