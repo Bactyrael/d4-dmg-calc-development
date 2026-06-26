@@ -3793,8 +3793,8 @@ rarity = foundItem.rarity;
           const vals = itemObj.aspectValues || [];
           let valIndex = 0;
           aspectDescHtml = aspectObj.desc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, minStr, maxStr) => {
-            let min = minStr ? parseFloat(minStr.replace(/,/g, '')) * aspectMult : null;
-            let max = maxStr ? parseFloat(maxStr.replace(/,/g, '')) * aspectMult : null;
+            let min = minStr ? parseFloat(minStr.replace(/,/g, '')) * aspectMult : (aspectObj.minVal ? parseFloat(aspectObj.minVal) * aspectMult : null);
+            let max = maxStr ? parseFloat(maxStr.replace(/,/g, '')) * aspectMult : (aspectObj.maxVal ? parseFloat(aspectObj.maxVal) * aspectMult : null);
             
             if (min !== null) min = parseFloat(min.toFixed(2));
             if (max !== null) max = parseFloat(max.toFixed(2));
