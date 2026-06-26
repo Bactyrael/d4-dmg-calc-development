@@ -21828,122 +21828,87 @@ window.D4_DATABASE = {
             {
               "name": "+[440 - 490] Fire Resistance",
               "shortName": "Fire Resistance",
-              "category": "Defensive",
-              "manual": "Natural Resistance"
+              "desc": "Natural Resistance"
             },
             {
               "name": "+[440 - 490] Lightning Resistance",
               "shortName": "Lightning Resistance",
-              "category": "Defensive",
-              "manual": "Natural Resistance"
+              "desc": "Natural Resistance"
             },
             {
               "name": "+[440 - 490] Cold Resistance",
               "shortName": "Cold Resistance",
-              "category": "Defensive",
-              "manual": "Natural Resistance"
+              "desc": "Natural Resistance"
             },
             {
               "name": "+[440 - 490] Poison Resistance",
               "shortName": "Poison Resistance",
-              "category": "Defensive",
-              "manual": "Natural Resistance"
+              "desc": "Natural Resistance"
             },
             {
               "name": "+[440 - 490] Shadow Resistance",
               "shortName": "Shadow Resistance",
-              "category": "Defensive",
-              "manual": "Natural Resistance"
+              "desc": "Natural Resistance"
             },
             {
               "name": "+[440 - 490] Physical Resistance",
               "shortName": "Physical Resistance",
-              "category": "Defensive",
-              "manual": "Natural Resistance"
+              "desc": "Natural Resistance"
             },
             {
               "name": "+[20 - 30]% Damage Reduction for Your Summons",
               "shortName": "Damage Reduction for Your Summons",
-              "category": "Defensive",
-              "manual": "Necromancer Wall"
+              "desc": "Necromancer Wall"
             },
             {
               "name": "+[7 - 10]% Chance for Minion Attacks to Fortify You for 3% Maximum Life",
               "shortName": "Chance for Minion Attacks to Fortify You for 3% Maximum Life",
-              "category": "Defensive",
-              "manual": "Necromancer Wall"
+              "desc": "Necromancer Wall"
             },
             {
               "name": "+[10 - 12]% Minions Inherit +% of Your Thorns",
               "shortName": "Minions Inherit +% of Your Thorns",
-              "category": "Defensive",
-              "manual": "Necromancer Wall"
+              "desc": "Necromancer Wall"
             },
             {
-              "name": "+[2.5 - 5]% Block Chance",
+              "name": "+[2.5 - 5.0]% Block Chance",
               "shortName": "Block Chance",
-              "category": "Defensive",
-              "manual": "Necromancer Wall"
+              "desc": "Necromancer Wall"
             },
             {
-              "name": "+[1000 - 1500] Maximum Life",
+              "name": "+[1,000 - 1,500] Maximum Life",
               "shortName": "Maximum Life",
-              "category": "Defensive",
-              "manual": "Wordly Endurance"
+              "desc": "Wordly Endurance"
             },
             {
-              "name": "+[1250 - 2000] Armor",
+              "name": "+[1,250 - 2,000] Armor",
               "shortName": "Armor",
-              "category": "Defensive",
-              "manual": "Wordly Endurance"
+              "desc": "Wordly Endurance"
             },
             {
               "name": "+[60 - 70] Resistance to All Elements",
               "shortName": "Resistance to All Elements",
-              "category": "Defensive",
-              "manual": "Wordly Endurance"
+              "desc": "Wordly Endurance"
             },
             {
               "name": "+[2 - 3] Maximum Resolve Stacks",
               "shortName": "Maximum Resolve Stacks",
-              "category": "Defensive",
-              "manual": "Wordly Endurance"
+              "desc": "Wordly Endurance"
             },
             {
               "name": "+[484 - 646] Thorns",
               "shortName": "Thorns",
-              "category": "Utility",
-              "manual": "Natural Schemes"
+              "desc": "Natural Schemes"
             },
             {
               "name": "+[10 - 12.5]% Fortify Generation",
               "shortName": "Fortify Generation",
-              "category": "Utility",
-              "manual": "Natural Schemes"
+              "desc": "Natural Schemes"
             },
             {
               "name": "+[10 - 12.5]% Barrier Generation",
               "shortName": "Barrier Generation",
-              "category": "Utility",
-              "manual": "Natural Schemes"
-            },
-            {
-              "name": "+[2.5 - 5]% Lucky Hit Chance",
-              "shortName": "Lucky Hit Chance",
-              "category": "Utility",
-              "manual": "Worldy Fortune"
-            },
-            {
-              "name": "+[10 - 12.5]% Impairment Reduction",
-              "shortName": "Impairment Reduction",
-              "category": "Utility",
-              "manual": "Worldy Fortune"
-            },
-            {
-              "name": "+[12 - 15]% Crowd Control Duration",
-              "shortName": "Crowd Control Duration",
-              "category": "Utility",
-              "manual": "Worldy Fortune"
+              "desc": "Natural Schemes"
             }
           ],
           "transfigures": [
