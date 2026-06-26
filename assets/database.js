@@ -23010,9 +23010,9 @@ window.D4_DATABASE = {
         "offhand": {
           "modifiers": [
             {
-              "name": "+[150 - 180] Intelligence",
-              "shortName": "Intelligence",
-              "category": "Core Stat"
+              "name": "+[5.0 - 8.0]% Cooldown Reduction",
+              "shortName": "Cooldown Reduction",
+              "category": "Utility"
             },
             {
               "name": "+[6.5 - 8.5]% Critical Strike Chance",
@@ -23020,175 +23020,84 @@ window.D4_DATABASE = {
               "category": "Offensive"
             },
             {
-              "name": "+[526 - 632] Life On Kill",
-              "shortName": "Life On Kill",
+              "name": "+[13 - 25]% Critical Strike Damage [x]",
+              "shortName": "Critical Strike Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[6 - 10]% All Damage [x]",
+              "shortName": "All Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[15 - 30]% Damage Over Time [x]",
+              "shortName": "Damage Over Time",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[8.0 - 9.0]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility"
+            },
+            {
+              "name": "+[15 - 20] Maximum Resource",
+              "shortName": "Maximum Resource",
+              "category": "Resource"
+            },
+            {
+              "name": "+[6.0 - 7.0]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction",
+              "category": "Resource"
+            },
+            {
+              "name": "+[1 - 2] Essence On Kill",
+              "shortName": "Essence On Kill",
+              "category": "Resource"
+            },
+            {
+              "name": "+[3 - 4] Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
+              "shortName": "Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
+              "category": "Resource"
+            },
+            {
+              "name": "+[526 - 632] Life on Kill",
+              "shortName": "Life on Kill",
               "category": "Defensive"
+            },
+            {
+              "name": "+[7 - 10]% Physical Damage [x]",
+              "shortName": "Physical Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[7 - 10]% Cold Damage [x]",
+              "shortName": "Cold Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[7 - 10]% Shadow Damage [x]",
+              "shortName": "Shadow Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[150 - 180] Intelligence",
+              "shortName": "Intelligence",
+              "category": "Core Stat"
+            },
+            {
+              "name": "+[1831 - 2200] Maximum Life",
+              "shortName": "Maximum Life",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[86 - 143] Weapon Damage",
+              "shortName": "Weapon Damage",
+              "category": "Offensive"
             },
             {
               "name": "+[526 - 632] Life On Hit",
               "shortName": "Life On Hit",
               "category": "Defensive"
-            },
-            {
-              "name": "+[1 - 2] Essence on Kill",
-              "shortName": "Essence on Kill",
-              "category": "Resource"
-            },
-            {
-              "name": "+[220 - 264] Life Regeneration",
-              "shortName": "Life Regeneration",
-              "category": "Defensive",
-              "exclusiveTo": "Shield"
-            },
-            {
-              "name": "+[524 - 630] Fire Resistance",
-              "shortName": "Fire Resistance",
-              "category": "Defensive",
-              "exclusiveTo": "Shield"
-            },
-            {
-              "name": "+[524 - 630] Lightning Resistance",
-              "shortName": "Lightning Resistance",
-              "category": "Defensive",
-              "exclusiveTo": "Shield"
-            },
-            {
-              "name": "+[524 - 630] Poison Resistance",
-              "shortName": "Poison Resistance",
-              "category": "Defensive",
-              "exclusiveTo": "Shield"
-            },
-            {
-              "name": "+[524 - 630] Shadow Resistance",
-              "shortName": "Shadow Resistance",
-              "category": "Defensive",
-              "exclusiveTo": "Shield"
-            },
-            {
-              "name": "+[524 - 630] Cold Resistance",
-              "shortName": "Cold Resistance",
-              "category": "Defensive",
-              "exclusiveTo": "Shield"
-            },
-            {
-              "name": "+[524 - 630] Physical Resistance",
-              "shortName": "Physical Resistance",
-              "category": "Defensive",
-              "exclusiveTo": "Shield"
-            },
-            {
-              "name": "+[326 - 392] Resistance to All Elements",
-              "shortName": "Resistance to All Elements",
-              "category": "Defensive",
-              "exclusiveTo": "Shield"
-            },
-            {
-              "name": "+[1221 - 1526] Thorns",
-              "shortName": "Thorns",
-              "category": "Offensive",
-              "exclusiveTo": "Shield"
-            },
-            {
-              "name": "+[10 - 15]% Fortify Generation",
-              "shortName": "Fortify Generation",
-              "category": "Defensive",
-              "exclusiveTo": "Shield"
-            },
-            {
-              "name": "+[10 - 15]% Barrier Generation",
-              "shortName": "Barrier Generation",
-              "category": "Defensive",
-              "exclusiveTo": "Shield"
-            },
-            {
-              "name": "+[11 - 15]% Damage Reduction",
-              "shortName": "Damage Reduction",
-              "category": "Defensive",
-              "exclusiveTo": "Shield"
-            },
-            {
-              "name": "+[1963 - 2450] Armor",
-              "shortName": "Armor",
-              "category": "Defensive",
-              "exclusiveTo": "Shield"
-            },
-            {
-              "name": "+[1831 - 2200] Maximum Life",
-              "shortName": "Maximum Life",
-              "category": "Defensive",
-              "exclusiveTo": "Focus"
-            },
-            {
-              "name": "+[8 - 9]% Lucky Hit Chance",
-              "shortName": "Lucky Hit Chance",
-              "category": "Utility",
-              "exclusiveTo": "Focus"
-            },
-            {
-              "name": "+[3 - 4] Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
-              "shortName": "Lucky Hit: Restore Resource",
-              "category": "Resource",
-              "exclusiveTo": "Focus"
-            },
-            {
-              "name": "+[13 - 25]% Critical Strike Damage [x]",
-              "shortName": "Critical Strike Damage",
-              "category": "Offensive",
-              "exclusiveTo": "Focus"
-            },
-            {
-              "name": "+[6 - 10]% All Damage [x]",
-              "shortName": "All Damage",
-              "category": "Offensive",
-              "exclusiveTo": "Focus"
-            },
-            {
-              "name": "+[15 - 30]% Damage Over Time [x]",
-              "shortName": "Damage Over Time",
-              "category": "Offensive",
-              "exclusiveTo": "Focus"
-            },
-            {
-              "name": "+[7 - 10]% Cold Damage [x]",
-              "shortName": "Cold Damage",
-              "category": "Offensive",
-              "exclusiveTo": "Focus"
-            },
-            {
-              "name": "+[7 - 10]% Shadow Damage [x]",
-              "shortName": "Shadow Damage",
-              "category": "Offensive",
-              "exclusiveTo": "Focus"
-            },
-            {
-              "name": "+[7 - 10]% Physical Damage [x]",
-              "shortName": "Physical Damage",
-              "category": "Offensive",
-              "exclusiveTo": "Focus"
-            },
-            {
-              "name": "+[86 - 143] Weapon Damage",
-              "shortName": "Weapon Damage",
-              "category": "Offensive",
-              "exclusiveTo": "Focus"
-            },
-            {
-              "name": "+[5 - 8]% Cooldown Reduction",
-              "shortName": "Cooldown Reduction",
-              "category": "Utility",
-              "exclusiveTo": "Focus"
-            },
-            {
-              "name": "+[15 - 20] Maximum Essence",
-              "shortName": "Maximum Essence",
-              "category": "Resource",
-              "exclusiveTo": "Focus"
-            },
-            {
-              "name": "+[6 - 7]% Resource Cost Reduction",
-              "shortName": "Resource Cost Reduction",
-              "category": "Resource",
-              "exclusiveTo": "Focus"
             }
           ],
           "tempers": [
@@ -23468,7 +23377,116 @@ window.D4_DATABASE = {
               "desc": "Worldly Destruction"
             }
           ],
-          "transfigures": []
+          "transfigures": [
+            {
+              "name": "+[3.5 - 5.0]% Intelligence",
+              "desc": "Intelligence"
+            },
+            {
+              "name": "+[20.0 - 30.0]% Gem Strength in this Item",
+              "desc": "Gem Strength"
+            },
+            {
+              "name": "+[21.0 - 35.0]% Chance for Projectiles to Cast Twice",
+              "desc": "Chance for Projectiles to Cast Twice"
+            },
+            {
+              "name": "+[2 - 3] to Basic Skills",
+              "desc": "Basic Skills"
+            },
+            {
+              "name": "+[75 - 100] All Stats",
+              "desc": "All Stats"
+            },
+            {
+              "name": "+[3.5 - 5.0]% Critical Strike Chance",
+              "desc": "Critical Strike Chance"
+            },
+            {
+              "name": "+[6.0 - 8.0]% Cooldown Reduction",
+              "desc": "Cooldown Reduction"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Attack Speed",
+              "desc": "Attack Speed"
+            },
+            {
+              "name": "+[150 - 180] Intelligence",
+              "desc": "Intelligence"
+            },
+            {
+              "name": "+[6.0 - 8.0]% Lucky Hit Chance",
+              "desc": "Lucky Hit Chance"
+            },
+            {
+              "name": "+[6.0 - 8.0]% Resource Cost Reduction",
+              "desc": "Resource Cost Reduction"
+            },
+            {
+              "name": "+[15 - 20] Maximum Resource",
+              "desc": "Maximum Resource"
+            },
+            {
+              "name": "+[263 - 316] Life On Hit",
+              "desc": "Life On Hit"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Shadow Damage [x]",
+              "desc": "Shadow Damage"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Physical Damage [x]",
+              "desc": "Physical Damage"
+            },
+            {
+              "name": "+[6.0 - 8.0]% Maximum Life",
+              "desc": "Maximum Life"
+            },
+            {
+              "name": "+[1 - 15] Item Quality",
+              "desc": "Item Quality"
+            },
+            {
+              "name": "Gain 20% Damage Reduction. In addition, gain +4 Ranks to all Skills.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Every 4 seconds, you randomly mark a Nearby enemy. Marked enemies are Vulnerable, and your attacks against them are guaranteed to Critically Strike and Overpower. Hitting a marked enemy 30 times clears the mark from them.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Gain a random Shrine effect for 20 seconds after killing an Elite enemy. Can only occur once every 30 seconds.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Lucky Hit: Up to a 38% chance to deal 0 Shadow damage to surrounding enemies and reduce their damage dealt by 20% for 5 seconds.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Increases your Critical Strike Damage by 100%[x].",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Spending your Primary Resource reduces the Resource cost of your Skills and increases your damage by 15%[x] for 3 seconds, up to 75%[x].",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced. Your Primary Resource is doubled but Maximum Life is reduced by 75%.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Enemies afflicted by more Damage over Time than remaining Life are Executed.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Your Skills unleash a divine barrage dealing 0 damage.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Lucky Hit: Up to a 30% chance to trigger a poison nova that applies 0 Poisoning damage over 5 seconds to enemies in the area.",
+              "desc": "Sanctified Modifier"
+            }
+          ]
         },
         "ring": {
           "modifiers": [
