@@ -3743,14 +3743,10 @@ rarity = foundItem.rarity;
     start();
   }
 
-
-
-
-
-  
   function getAffixCategory(name) {
     const n = name.toLowerCase();
     if (n.includes('strength') || n.includes('intelligence') || n.includes('willpower') || n.includes('dexterity') || n.includes('all stats')) return 'Core Stats';
+    if (n.includes('damage reduction')) return 'Defensive';
     if (n.includes('damage') || n.includes('critical') || n.includes('attack speed') || n.includes('vulnerable') || n.includes('overpower') || n.includes('chance to')) return 'Offensive';
     if (n.includes('armor') || n.includes('life') || n.includes('resistance') || n.includes('dodge') || n.includes('reduction') || n.includes('barrier')) return 'Defensive';
     if (n.includes('movement') || n.includes('cooldown') || n.includes('luck') || n.includes('healing') || n.includes('duration') || n.includes('size')) return 'Utility';
