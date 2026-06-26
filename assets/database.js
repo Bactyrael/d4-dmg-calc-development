@@ -22743,7 +22743,183 @@ window.D4_DATABASE = {
               "category": "Offensive"
             }
           ],
-          "tempers": [],
+          "tempers": [
+            {
+              "name": "+[20 - 40]% Physical Damage",
+              "shortName": "Physical Damage",
+              "desc": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Fire Damage",
+              "shortName": "Fire Damage",
+              "desc": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Lightning Damage",
+              "shortName": "Lightning Damage",
+              "desc": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Holy Damage",
+              "shortName": "Holy Damage",
+              "desc": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Cold Damage",
+              "shortName": "Cold Damage",
+              "desc": "Elemental Finesse - Night"
+            },
+            {
+              "name": "+[20 - 40]% Poison Damage",
+              "shortName": "Poison Damage",
+              "desc": "Elemental Finesse - Night"
+            },
+            {
+              "name": "+[20 - 40]% Shadow Damage",
+              "shortName": "Shadow Damage",
+              "desc": "Elemental Finesse - Night"
+            },
+            {
+              "name": "+[10 - 30]% Damage",
+              "shortName": "Damage",
+              "desc": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Damage to Crowd Controlled Enemies",
+              "shortName": "Damage to Crowd Controlled Enemies",
+              "desc": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Damage to Close Enemies",
+              "shortName": "Damage to Close Enemies",
+              "desc": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Damage to Distant Enemies",
+              "shortName": "Damage to Distant Enemies",
+              "desc": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Blood Damage",
+              "shortName": "Blood Damage",
+              "desc": "Profane Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Bone Damage",
+              "shortName": "Bone Damage",
+              "desc": "Profane Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Summon Damage",
+              "shortName": "Summon Damage",
+              "desc": "Profane Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Macabre Damage",
+              "shortName": "Macabre Damage",
+              "desc": "Shadow Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Darkness Damage",
+              "shortName": "Darkness Damage",
+              "desc": "Shadow Finesse"
+            },
+            {
+              "name": "+[40 - 60]% Damage when Spending Resolve",
+              "shortName": "Damage when Spending Resolve",
+              "desc": "Sharpened Finesse"
+            },
+            {
+              "name": "+[7 - 10]% Damage Per Overpower Stack",
+              "shortName": "Damage Per Overpower Stack",
+              "desc": "Sharpened Finesse"
+            },
+            {
+              "name": "+[30 - 50]% Critical Strike Damage",
+              "shortName": "Critical Strike Damage",
+              "desc": "Worldly Finesse"
+            },
+            {
+              "name": "+[30 - 50]% Damage Over Time",
+              "shortName": "Damage Over Time",
+              "desc": "Worldly Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Vulnerable Damage",
+              "shortName": "Vulnerable Damage",
+              "desc": "Worldly Finesse"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Physical Damage",
+              "shortName": "Lucky Hit: Deal Physical Damage",
+              "desc": "Elemental Surge - Day"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Fire Damage",
+              "shortName": "Lucky Hit: Deal Fire Damage",
+              "desc": "Elemental Surge - Day"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Lightning Damage",
+              "shortName": "Lucky Hit: Deal Lightning Damage",
+              "desc": "Elemental Surge - Day"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Cold Damage",
+              "shortName": "Lucky Hit: Deal Cold Damage",
+              "desc": "Elemental Surge - Night"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Poison Damage",
+              "shortName": "Lucky Hit: Deal Poison Damage",
+              "desc": "Elemental Surge - Night"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Shadow Damage",
+              "shortName": "Lucky Hit: Deal Shadow Damage",
+              "desc": "Elemental Surge - Night"
+            },
+            {
+              "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Daze for 2 Seconds",
+              "shortName": "Lucky Hit: Chance to Daze",
+              "desc": "Worldly Afflictions"
+            },
+            {
+              "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Freeze for 2 Seconds",
+              "shortName": "Lucky Hit: Chance to Freeze",
+              "desc": "Worldly Afflictions"
+            },
+            {
+              "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Immobilize for 2 Seconds",
+              "shortName": "Lucky Hit: Chance to Immobilize",
+              "desc": "Worldly Afflictions"
+            },
+            {
+              "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Slow for 2 Seconds",
+              "shortName": "Lucky Hit: Chance to Slow",
+              "desc": "Worldly Afflictions"
+            },
+            {
+              "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Stun for 2 Seconds",
+              "shortName": "Lucky Hit: Chance to Stun",
+              "desc": "Worldly Afflictions"
+            },
+            {
+              "name": "+[5 - 8]% Attack Speed",
+              "shortName": "Attack Speed",
+              "desc": "Worldly Destruction"
+            },
+            {
+              "name": "+[2.5 - 5]% Critical Strike Chance",
+              "shortName": "Critical Strike Chance",
+              "desc": "Worldly Destruction"
+            },
+            {
+              "name": "Lucky Hit: Up to a +[7 - 10]% Chance to Make Enemies Vulnerable for 2 Seconds",
+              "shortName": "Lucky Hit: Vulnerable",
+              "desc": "Worldly Destruction"
+            }
+          ],
           "transfigures": []
         }
       }
