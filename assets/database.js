@@ -22923,7 +22923,98 @@ window.D4_DATABASE = {
           "transfigures": []
         },
         "offhand": {
-          "modifiers": [],
+          "modifiers": [
+            {
+              "name": "+[150 - 180] Intelligence",
+              "shortName": "Intelligence",
+              "category": "Core Stat"
+            },
+            {
+              "name": "+[6.5 - 8.5]% Critical Strike Chance",
+              "shortName": "Critical Strike Chance",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[220 - 264] Life Regeneration",
+              "shortName": "Life Regeneration",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[526 - 632] Life On Kill",
+              "shortName": "Life On Kill",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Fire Resistance",
+              "shortName": "Fire Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Lightning Resistance",
+              "shortName": "Lightning Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Poison Resistance",
+              "shortName": "Poison Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Shadow Resistance",
+              "shortName": "Shadow Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Cold Resistance",
+              "shortName": "Cold Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Physical Resistance",
+              "shortName": "Physical Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[326 - 392] Resistance to All Elements",
+              "shortName": "Resistance to All Elements",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[1221 - 1526] Thorns",
+              "shortName": "Thorns",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[10 - 15]% Fortify Generation",
+              "shortName": "Fortify Generation",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[10 - 15]% Barrier Generation",
+              "shortName": "Barrier Generation",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[526 - 632] Life On Hit",
+              "shortName": "Life On Hit",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[1 - 2] Essence on Kill",
+              "shortName": "Essence on Kill",
+              "category": "Resource"
+            },
+            {
+              "name": "+[11 - 15]% Damage Reduction",
+              "shortName": "Damage Reduction",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[1963 - 2450] Armor",
+              "shortName": "Armor",
+              "category": "Defensive"
+            }
+          ],
           "tempers": [
             {
               "name": "+[440 - 490] Fire Resistance",
