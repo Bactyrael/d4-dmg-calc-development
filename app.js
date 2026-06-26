@@ -2121,10 +2121,7 @@
     currentBuild = b;
 
     dom.buildName.value = b.name || 'New Build';
-    if (dom.classSelect) {
-        dom.classSelect.value = b.class || 'Barbarian';
-        selectedClass = dom.classSelect.value;
-    }
+    if (dom.classSelect) dom.classSelect.value = b.class || 'Barbarian';
     dom.weaponDamage.value = b.weaponDamage || 0;
     dom.skillDamage.value = b.skillDamage || 0;
 
@@ -2588,7 +2585,7 @@
 
     // Class select: re-render node inputs and recalculate
     if (dom.classSelect) {
-      dom.classSelect.addEventListener('change', () => {
+      dom.classSelect.addEventListener('change', (e) => {
         if (isLoading) return;
         const selectedClass = dom.classSelect.value;
         if (currentBuild && currentBuild.class === selectedClass) return; // Prevent spurious resets
@@ -2615,6 +2612,11 @@
         
         renderAdditionalBonusInputs(dom.classSelect.value, currentAddSave);
         renderLegendaryBonusInputs(dom.classSelect.value, currentLegSave);
+        
+        // Auto clear equipment to prevent slot mismatches ONLY if triggered by a real user interaction
+        if (e.isTrusted) {
+          currentBuild.equipment = {};
+        }
         renderEquipment(dom.classSelect.value, currentBuild ? currentBuild.equipment : {});
         calculate();
       });
