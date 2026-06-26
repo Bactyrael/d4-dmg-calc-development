@@ -626,7 +626,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Biting Cold",
-      "desc": "Cold damage is increased by #% and makes enemies Vulnerable\u00a0for # seconds.",
+      "desc": "Cold damage is increased by #% and makes enemies Vulnerable for # seconds.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -1874,7 +1874,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Frozen Memories",
-      "desc": "Cold\u00a0damage deals #% increased damage to Chilled enemies, this bonus is tripled against Frozen enemies.",
+      "desc": "Cold damage deals #% increased damage to Chilled enemies, this bonus is tripled against Frozen enemies.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -2290,7 +2290,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Inevitable Fate",
-      "desc": "When an enemy falls below #% Life while afflicted with any of your damage over time effects, an explosion occurs every # seconds, dealing\u00a0# damage for each Element they're afflicted by.",
+      "desc": "When an enemy falls below #% Life while afflicted with any of your damage over time effects, an explosion occurs every # seconds, dealing # damage for each Element they're afflicted by.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -3522,7 +3522,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Shredding Blades",
-      "desc": "Conjuration damage makes enemies Vulnerable for # seconds.\u00a0You deal #% increased damage to Vulnerable enemies.",
+      "desc": "Conjuration damage makes enemies Vulnerable for # seconds. You deal #% increased damage to Vulnerable enemies.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -5666,7 +5666,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Crushing Aspect",
-      "desc": "While Fortified,\u00a0you deal #% increased damage.",
+      "desc": "While Fortified, you deal #% increased damage.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -8447,7 +8447,7 @@ window.D4_DATABASE = {
       "desc": "Lucky Hit: Poison or Cold Imbued Skills have up to a 35% chance to deploy a Poison Trap while it is equipped, depending on your equipped Poison Trap's element.Poison Trap gains the Infiltrator Variant for free and deals [75 - 90]%[x] increased damage."
     },
     {
-      "name": "Bane of\u00a0Ahjad-Den",
+      "name": "Bane of Ahjad-Den",
       "desc": "While channeling Whirlwind, you now periodically hurl out a Mighty Throw that deals [75.0 - 90.0]%[x] increased damage."
     },
     {
@@ -8539,7 +8539,7 @@ window.D4_DATABASE = {
       "desc": "Your Core Skills deal [45 - 60]%[x] increased damage for 0 seconds when Consuming 3 Combo Points. Casting Basic Skills always generates 3 Combo Points."
     },
     {
-      "name": "Coop de Gr\u00e2ce",
+      "name": "Coop de Grâce",
       "desc": "Lucky Hit: Damage to Injured enemies has up to a [10 - 15]% chance to spawn a flock of explosive chickens."
     },
     {
@@ -8735,7 +8735,7 @@ window.D4_DATABASE = {
       "desc": "When you Shapeshift into either Werewolf or Werebear form, you gain Berserking for [6 - 8] seconds. Additionally, Berserking grants 1 stack of Ferocity every 1 second while active.Berserking's damage bonus is increased by 10%[+]."
     },
     {
-      "name": "Galvanic\u00a0Azurite",
+      "name": "Galvanic Azurite",
       "desc": "Cast Shock Skill damage leaves enemies Magnetized for 4 seconds, causing them to emit Crackling Energy and receive [40.0 - 60.0]%[x] increased Shock damage from you. Crackling Energy's damage Pulls Magnetized enemies together."
     },
     {
@@ -8927,7 +8927,7 @@ window.D4_DATABASE = {
       "desc": "Gain Earthen Bulwark's Earthen Shrapnel upgrade for free and the damage is increased by [150 - 200]%[x]."
     },
     {
-      "name": "Kilt of\u00a0Blackwing",
+      "name": "Kilt of Blackwing",
       "desc": "Ravens deal [80.0 - 100.0]%[x] increased damage and Shapeshifting into a different form or activating a Companion Skill Summons a Raven that attacks nearby enemies. Summoning a Raven has a chance to call forth an Unkindness for 10 seconds, increasing the number of Ravens Summoned to 3 for the duration."
     },
     {
@@ -9003,7 +9003,7 @@ window.D4_DATABASE = {
       "desc": "Lucky Hit: Dealing damage to an enemy affected by a Trap Skill has up to a 40% chance to: Reduce the active Cooldowns of your Trap Skills by 30% Increase your Trap Skill damage by [9.0 - 12.0]%[x] for 10 seconds, up to [45 - 60]%[x]"
     },
     {
-      "name": "Mj\u00f6lnic Ryng",
+      "name": "Mjölnic Ryng",
       "desc": "While Cataclysm is active, you gain unlimited Spirit and deal [30 - 40]%[x] increased damage."
     },
     {
@@ -9347,7 +9347,7 @@ window.D4_DATABASE = {
       "desc": "Casting an Aura Skill triggers a Consecration beneath you. You gain [80 - 100]% Aura Potency while standing in Consecration."
     },
     {
-      "name": "Sunstained\u00a0War-Crozier",
+      "name": "Sunstained War-Crozier",
       "desc": "Your base Focus Skills benefit from all their Upgrades, and they increase the damage of your Potency Skills by #% for # seconds, up to #%."
     },
     {
@@ -10006,7 +10006,8 @@ window.D4_DATABASE = {
       {
         "name": "Legendary Helm",
         "rarity": "legendary",
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Andariel's Visage",
@@ -10021,7 +10022,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Autumnal Crown",
@@ -10036,7 +10038,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Bridle of Tor'Baalos",
@@ -10051,7 +10054,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Cage of Madness",
@@ -10066,7 +10070,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Cowl of Malefic Torment",
@@ -10081,7 +10086,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Cowl of the Nameless",
@@ -10096,7 +10102,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Crown of Lucion",
@@ -10111,7 +10118,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Deathless Visage",
@@ -10126,7 +10134,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Deathmask of Nirmitruq",
@@ -10141,7 +10150,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Gathlen's Birthright",
@@ -10156,7 +10166,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Godslayer Crown",
@@ -10171,7 +10182,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Hail of Verglas",
@@ -10186,7 +10198,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Harlequin Crest",
@@ -10201,7 +10214,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Harmony of Ebewaka",
@@ -10216,7 +10230,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Heir of Perdition",
@@ -10231,7 +10246,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Helm Unique Druid 98",
@@ -10246,7 +10262,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Judicant's Glaivehelm",
@@ -10261,7 +10278,8 @@ window.D4_DATABASE = {
           1,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Loyalty's Mantle",
@@ -10276,7 +10294,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Nails of the Gore-Crowned",
@@ -10291,7 +10310,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Rictus of Terror",
@@ -10306,7 +10326,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Starfall Coronet",
@@ -10321,7 +10342,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "The Undercrown",
@@ -10336,7 +10358,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "The Unmaker",
@@ -10351,7 +10374,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Tuskhelm of Joritz the Mighty",
@@ -10366,7 +10390,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Ugly Bastard Helm",
@@ -10381,7 +10406,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Vasily's Prayer",
@@ -10396,7 +10422,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Vision of the Firestorm",
@@ -10411,7 +10438,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       },
       {
         "name": "Will of Stone",
@@ -10426,14 +10454,16 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 1603
+        "armor": 1603,
+        "type": "Helm"
       }
     ],
     "Chest Armor": [
       {
         "name": "Legendary Chest",
         "rarity": "legendary",
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Ae'grom's Schism",
@@ -10448,7 +10478,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Bucrani's Will",
@@ -10463,7 +10494,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Fleshwrit Carapace",
@@ -10478,7 +10510,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Heart of Azgar",
@@ -10493,7 +10526,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Insatiable Fury",
@@ -10508,7 +10542,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Jacinth Shell",
@@ -10523,7 +10558,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Mad Wolf's Glee",
@@ -10538,7 +10574,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Mantle of Mountain's Fury",
@@ -10553,7 +10590,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Mantle of the Grey",
@@ -10568,7 +10606,8 @@ window.D4_DATABASE = {
           1,
           0
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Mutilator Plate",
@@ -10583,7 +10622,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Rage of Harrogath",
@@ -10598,7 +10638,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Raiment of the Sea",
@@ -10613,7 +10654,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Razorplate",
@@ -10628,7 +10670,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Scoundrel's Leathers",
@@ -10643,7 +10686,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Shroud of False Death",
@@ -10658,7 +10702,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Shroud of Khanduras",
@@ -10673,7 +10718,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Soulbrand",
@@ -10688,7 +10734,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "The Relentless Heart",
@@ -10703,7 +10750,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Tyrael's Might",
@@ -10718,7 +10766,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       },
       {
         "name": "Vengeful Sinew",
@@ -10733,14 +10782,16 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2805
+        "armor": 2805,
+        "type": "Chest Armor"
       }
     ],
     "Gloves": [
       {
         "name": "Legendary Gloves",
         "rarity": "legendary",
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Bands of Ichorous Rose",
@@ -10755,10 +10806,11 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
-        "name": "Bane of\u00a0Ahjad-Den",
+        "name": "Bane of Ahjad-Den",
         "rarity": "unique",
         "classes": [
           0,
@@ -10770,7 +10822,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Bucrani's Grip",
@@ -10785,7 +10838,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Craze of the Dead God",
@@ -10800,7 +10854,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Cruor's Embrace",
@@ -10815,7 +10870,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Dark Howl",
@@ -10830,7 +10886,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Dawnfire",
@@ -10845,7 +10902,8 @@ window.D4_DATABASE = {
           1,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Deathgrip",
@@ -10860,7 +10918,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Endurant Faith",
@@ -10875,7 +10934,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Fist of the Iron Rose",
@@ -10890,7 +10950,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Fists of Fate",
@@ -10905,7 +10966,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Frostburn",
@@ -10920,7 +10982,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Gauntlets of Sheol",
@@ -10935,7 +10998,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Gladiator's Triumph",
@@ -10950,7 +11014,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Gloves Unique Druid 98",
@@ -10965,7 +11030,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Gloves of the Illuminator",
@@ -10980,7 +11046,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Gohr's Devastating Grips",
@@ -10995,7 +11062,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Grasp of Shadow",
@@ -11010,7 +11078,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Gravewalker's Hand",
@@ -11025,7 +11094,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Hand of Apotheosis",
@@ -11040,7 +11110,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Hands of the Worldbreaker",
@@ -11055,7 +11126,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Hangman's Hand",
@@ -11070,7 +11142,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Hesha e Kesungi",
@@ -11085,7 +11158,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Howl from Below",
@@ -11100,7 +11174,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Levin Grasp",
@@ -11115,7 +11190,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Might of Qual-Kehk",
@@ -11130,7 +11206,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Paingorger's Gauntlets",
@@ -11145,7 +11222,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Pants Unique Druid 97",
@@ -11160,7 +11238,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Rimeblood",
@@ -11175,7 +11254,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Sea Lord's Fine Gloves",
@@ -11190,7 +11270,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "The Hand of Naz",
@@ -11205,7 +11286,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Thrice-Woven Nightmare",
@@ -11220,7 +11302,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Twin Strikes",
@@ -11235,7 +11318,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Wilted Potential",
@@ -11250,7 +11334,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       },
       {
         "name": "Wyrdskin",
@@ -11265,14 +11350,16 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Gloves"
       }
     ],
     "Pants": [
       {
         "name": "Legendary Pants",
         "rarity": "legendary",
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Arcadia",
@@ -11287,7 +11374,8 @@ window.D4_DATABASE = {
           1,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Arreat's Bearing",
@@ -11302,7 +11390,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Axial Conduit",
@@ -11317,7 +11406,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Balazan's Maxtlatl",
@@ -11332,7 +11422,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Bindings of Attrition",
@@ -11347,7 +11438,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Blood Moon Breeches",
@@ -11362,7 +11454,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Chainscourged Mail",
@@ -11377,7 +11470,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Death's Pavane",
@@ -11392,7 +11486,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Eyes in the Dark",
@@ -11407,7 +11502,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Iceheart Brais",
@@ -11422,7 +11518,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Indira's Memory",
@@ -11437,7 +11534,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Kabraxis' Will",
@@ -11452,7 +11550,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Kessime's Legacy",
@@ -11467,10 +11566,11 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
-        "name": "Kilt of\u00a0Blackwing",
+        "name": "Kilt of Blackwing",
         "rarity": "unique",
         "classes": [
           0,
@@ -11482,7 +11582,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Morlu Fleshward",
@@ -11497,7 +11598,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Protection of the Prime",
@@ -11512,7 +11614,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Sashes of the Wretched",
@@ -11527,7 +11630,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Shrouded Gift",
@@ -11542,7 +11646,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Storm's Companion",
@@ -11557,7 +11662,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Tassets of the Dawning Sky",
@@ -11572,7 +11678,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Temerity",
@@ -11587,7 +11694,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       },
       {
         "name": "Tibault's Will",
@@ -11602,14 +11710,16 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 2004
+        "armor": 2004,
+        "type": "Pants"
       }
     ],
     "Boots": [
       {
         "name": "Legendary Boots",
         "rarity": "legendary",
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "100,000 Steps",
@@ -11624,7 +11734,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Assassin's Stride",
@@ -11639,7 +11750,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Beastfall Boots",
@@ -11654,7 +11766,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Blood Wake",
@@ -11669,7 +11782,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Bucrani's Tread",
@@ -11684,7 +11798,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Desperate March",
@@ -11699,7 +11814,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Flickerstep",
@@ -11714,7 +11830,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Footfalls of the Waning World",
@@ -11729,7 +11846,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Gift of Frost",
@@ -11744,7 +11862,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Greaves of the Empty Tomb",
@@ -11759,7 +11878,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Greenwalker's Oath",
@@ -11774,7 +11894,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Hellhound's Sabatons",
@@ -11789,7 +11910,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Hooves of the Mountain God",
@@ -11804,7 +11926,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Khamsin Steppewalkers",
@@ -11819,7 +11942,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "March of the Stalwart Soul",
@@ -11834,7 +11958,8 @@ window.D4_DATABASE = {
           1,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Path of Trag'Oul",
@@ -11849,7 +11974,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Path of the Emissary",
@@ -11864,7 +11990,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Penitent Greaves",
@@ -11879,7 +12006,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Scorn of the Earth",
@@ -11894,7 +12022,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Wildheart Hunger",
@@ -11909,7 +12038,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       },
       {
         "name": "Yen's Blessing",
@@ -11924,14 +12054,16 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 801
+        "armor": 801,
+        "type": "Boots"
       }
     ],
     "Amulet": [
       {
         "name": "Legendary Amulet",
         "rarity": "legendary",
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Banished Lord's Talisman",
@@ -11946,7 +12078,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Battle Trance",
@@ -11961,7 +12094,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Blood-Mad Idol",
@@ -11976,7 +12110,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Dark Stalker's Medallion",
@@ -11991,7 +12126,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Deathspeaker's Pendant",
@@ -12006,7 +12142,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Dolmen Stone",
@@ -12021,7 +12158,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Ebonpiercer",
@@ -12036,7 +12174,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Echo of Kwatli",
@@ -12051,7 +12190,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Emberfury",
@@ -12066,7 +12206,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Emblem of Staalbreak",
@@ -12081,7 +12222,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Esadora's Overflowing Cameo",
@@ -12096,7 +12238,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Fractured Winterglass",
@@ -12111,7 +12254,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Judgment of Auriel",
@@ -12126,7 +12270,8 @@ window.D4_DATABASE = {
           1,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Malefic Crescent",
@@ -12141,7 +12286,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Melted Heart of Selig",
@@ -12156,7 +12302,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Moloch's Beating Flame",
@@ -12171,7 +12318,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Night Terror",
@@ -12186,7 +12334,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Nomad's Longing Heart",
@@ -12201,7 +12350,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Ophidian Iris",
@@ -12216,7 +12366,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Protean Heart",
@@ -12231,7 +12382,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Red Blessing",
@@ -12246,7 +12398,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Sanctis of Kethamar",
@@ -12261,7 +12414,8 @@ window.D4_DATABASE = {
           1,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Seed of Horazon",
@@ -12276,7 +12430,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Sunbird's Gorget",
@@ -12291,7 +12446,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "The Hemat Stone",
@@ -12306,7 +12462,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "The Open Eye of Gorgorra",
@@ -12321,7 +12478,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Unbroken Chain",
@@ -12336,7 +12494,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Widow's Web",
@@ -12351,7 +12510,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Will of Rathma",
@@ -12366,7 +12526,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       },
       {
         "name": "Word of Hakan",
@@ -12381,14 +12542,16 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 230
+        "resistance": 230,
+        "type": "Amulet"
       }
     ],
     "Ring": [
       {
         "name": "Legendary Ring",
         "rarity": "legendary",
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Accord of the Wilds",
@@ -12403,7 +12566,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Airidah's Inexorable Will",
@@ -12418,7 +12582,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Argent Veil",
@@ -12433,7 +12598,8 @@ window.D4_DATABASE = {
           1,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Band of First Breath",
@@ -12448,7 +12614,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Blue Rose",
@@ -12463,7 +12630,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Dirge of Airidah",
@@ -12478,7 +12646,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Drognan's Anguish",
@@ -12493,7 +12662,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Earthbreaker",
@@ -12508,7 +12678,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Fractured Runestone",
@@ -12523,7 +12694,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Fury of the Wilds",
@@ -12538,10 +12710,11 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
-        "name": "Galvanic\u00a0Azurite",
+        "name": "Galvanic Azurite",
         "rarity": "unique",
         "classes": [
           1,
@@ -12553,7 +12726,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Greenwalker's Signet",
@@ -12568,7 +12742,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Hecaton Chasm",
@@ -12583,7 +12758,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Hellbrand Signet",
@@ -12598,7 +12774,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Hunter's Zenith",
@@ -12613,7 +12790,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Lurid Pact",
@@ -12628,7 +12806,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Mark of the Old Wolf",
@@ -12643,7 +12822,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Might of the Ursine",
@@ -12658,10 +12838,11 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
-        "name": "Mj\u00f6lnic Ryng",
+        "name": "Mjölnic Ryng",
         "rarity": "unique",
         "classes": [
           0,
@@ -12673,7 +12854,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Molten Band",
@@ -12688,7 +12870,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Mother's Embrace",
@@ -12703,7 +12886,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Omen of Pain",
@@ -12718,7 +12902,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Pact of Bone",
@@ -12733,7 +12918,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Peacemonger's Signet",
@@ -12748,7 +12934,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Ring of Mendeln",
@@ -12763,7 +12950,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Ring of Red Furor",
@@ -12778,7 +12966,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Ring of Starless Skies",
@@ -12793,7 +12982,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Ring of Writhing Moon",
@@ -12808,7 +12998,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Ring of the Midday Hunt",
@@ -12823,7 +13014,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Ring of the Midnight Sun",
@@ -12838,7 +13030,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Ring of the Ravenous",
@@ -12853,7 +13046,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Ring of the Sacrilegious Soul",
@@ -12868,7 +13062,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Saboteur's Signet",
@@ -12883,7 +13078,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Scoundrel's Kiss",
@@ -12898,7 +13094,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Seal of the Ophanim",
@@ -12913,7 +13110,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Seal of the Second Trumpet",
@@ -12928,7 +13126,8 @@ window.D4_DATABASE = {
           1,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Signet of Pelghain",
@@ -12943,7 +13142,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Sire of Sin",
@@ -12958,7 +13158,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Sliver of Hate",
@@ -12973,7 +13174,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Tal Rasha's Iridescent Loop",
@@ -12988,7 +13190,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "The Eightfold Idol",
@@ -13003,7 +13206,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "The Fecund Seal",
@@ -13018,7 +13222,8 @@ window.D4_DATABASE = {
           0,
           1
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Thorn Pulse",
@@ -13033,7 +13238,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Thundergod's Blessing",
@@ -13048,7 +13254,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Wendigo Brand",
@@ -13063,7 +13270,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Wound Drinker",
@@ -13078,7 +13286,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Wreath of Auric Laurel",
@@ -13093,7 +13302,8 @@ window.D4_DATABASE = {
           1,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "Writhing Band of Trickery",
@@ -13108,7 +13318,8 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       },
       {
         "name": "X'Fal's Corroded Signet",
@@ -13123,7 +13334,8 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "resistance": 173
+        "resistance": 173,
+        "type": "Ring"
       }
     ],
     "Mainhand": [
@@ -13143,7 +13355,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "damageRange": "1,256 - 1,884",
         "weaponSpeed": 1.1,
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "Bone Blade",
@@ -13161,7 +13374,8 @@ window.D4_DATABASE = {
         "weaponType": "Dagger",
         "damageRange": "1,152 - 1,728",
         "weaponSpeed": 1.2,
-        "sockets": 1
+        "sockets": 1,
+        "type": "Dagger"
       },
       {
         "name": "Bone Wand",
@@ -13179,7 +13393,8 @@ window.D4_DATABASE = {
         "weaponType": "Wand",
         "damageRange": "1,152 - 1,728",
         "weaponSpeed": 1.2,
-        "sockets": 1
+        "sockets": 1,
+        "type": "Wand"
       },
       {
         "name": "Bonebreaker",
@@ -13197,7 +13412,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Mace",
         "damageRange": "3,071 - 4,607",
         "weaponSpeed": 0.9,
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Mace"
       },
       {
         "name": "Demonblade",
@@ -13215,7 +13431,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "damageRange": "2,764 - 4,146",
         "weaponSpeed": 1,
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "Obsidian Blade",
@@ -13233,7 +13450,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "damageRange": "1,256 - 1,884",
         "weaponSpeed": 1.1,
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Ossified Scythe",
@@ -13251,7 +13469,8 @@ window.D4_DATABASE = {
         "weaponType": "Scythe",
         "damageRange": "1,256 - 1,884",
         "weaponSpeed": 1.1,
-        "sockets": 1
+        "sockets": 1,
+        "type": "Scythe"
       },
       {
         "name": "Parashu",
@@ -13269,7 +13488,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Axe",
         "damageRange": "3,071 - 4,607",
         "weaponSpeed": 0.9,
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Axe"
       },
       {
         "name": "Skullsplitter",
@@ -13287,7 +13507,8 @@ window.D4_DATABASE = {
         "weaponType": "Mace",
         "damageRange": "1,256 - 1,884",
         "weaponSpeed": 1.1,
-        "sockets": 1
+        "sockets": 1,
+        "type": "Mace"
       },
       {
         "name": "Sparr",
@@ -13305,7 +13526,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Scythe",
         "damageRange": "3,071 - 4,607",
         "weaponSpeed": 0.9,
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Scythe"
       },
       {
         "name": "Spiked Flail",
@@ -13323,7 +13545,8 @@ window.D4_DATABASE = {
         "weaponType": "Flail",
         "damageRange": "1,152 - 1,728",
         "weaponSpeed": 1.2,
-        "sockets": 1
+        "sockets": 1,
+        "type": "Flail"
       },
       {
         "name": "Ahavarion, Spear of Lycander",
@@ -13337,7 +13560,8 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Anathema of the Primes",
@@ -13351,7 +13575,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Ancients' Oath",
@@ -13365,7 +13590,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Asheara's Khanjar",
@@ -13379,7 +13605,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Azurewrath",
@@ -13397,7 +13624,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Black River",
@@ -13411,7 +13639,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Bloodless Scream",
@@ -13429,7 +13658,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Scythe",
         "weaponSpeed": 0.9,
         "damageRange": "3,071 - 4,607",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Scythe"
       },
       {
         "name": "Cassia's Grace",
@@ -13443,7 +13673,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Cluckeye",
@@ -13457,7 +13688,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Cluckonomicon",
@@ -13471,7 +13703,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Condemnation",
@@ -13485,10 +13718,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
-        "name": "Coop de Gr\u00e2ce",
+        "name": "Coop de Grâce",
         "rarity": "unique",
         "classes": [
           0,
@@ -13499,7 +13733,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Dirge of Odium",
@@ -13513,7 +13748,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Doombringer",
@@ -13531,7 +13767,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Eaglehorn",
@@ -13545,7 +13782,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Eggcecutioner",
@@ -13559,7 +13797,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "El'Druin, Sword of Justice",
@@ -13577,7 +13816,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Elegy",
@@ -13591,7 +13831,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Etna's Lost Dagger",
@@ -13605,7 +13846,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Fang of the Vipermagi",
@@ -13619,7 +13861,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Fields of Crimson",
@@ -13633,7 +13876,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Fields of Crimson (Crucible)",
@@ -13647,7 +13891,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Flamescar",
@@ -13661,7 +13906,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Fleshrender",
@@ -13675,7 +13921,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Greatstaff of the Crone",
@@ -13689,7 +13936,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Griswold's Opus",
@@ -13703,7 +13951,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Hellhammer",
@@ -13717,7 +13966,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Herald's Morningstar",
@@ -13731,7 +13981,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Light's Rebuke",
@@ -13745,7 +13996,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Litany of Sable",
@@ -13759,7 +14011,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Mace of King Leoric",
@@ -13777,7 +14030,8 @@ window.D4_DATABASE = {
         "weaponType": "Mace",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Mace"
       },
       {
         "name": "Misericorde",
@@ -13791,7 +14045,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Orphan Maker",
@@ -13805,7 +14060,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Orsivane",
@@ -13819,7 +14075,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Overkill",
@@ -13833,7 +14090,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Purified Lightbringer",
@@ -13847,7 +14105,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Ramaladni's Magnum Opus",
@@ -13861,7 +14120,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Red Sermon",
@@ -13875,7 +14135,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Rod of Kepeleke",
@@ -13889,7 +14150,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Rotting Lightbringer",
@@ -13903,7 +14165,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Rustbitten Dirk",
@@ -13921,7 +14184,8 @@ window.D4_DATABASE = {
         "weaponType": "Dagger",
         "weaponSpeed": 1.2,
         "damageRange": "1,152 - 1,728",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Dagger"
       },
       {
         "name": "Sabre of Tsasgal",
@@ -13935,7 +14199,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Sanguivor, Blade of Zir",
@@ -13953,7 +14218,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "Scepter of the Three",
@@ -13967,7 +14233,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Scourge of Duriel",
@@ -13981,7 +14248,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Sepazontec",
@@ -13995,7 +14263,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Shattered Vow",
@@ -14009,7 +14278,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Skyhunter",
@@ -14023,7 +14293,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Spine of Tathamet",
@@ -14037,7 +14308,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Staff of Endless Rage",
@@ -14051,7 +14323,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Staff of Lam Esen",
@@ -14065,7 +14338,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Staff of Zerae",
@@ -14079,7 +14353,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Sunbrand",
@@ -14093,7 +14368,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Sundered Night",
@@ -14107,10 +14383,11 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
-        "name": "Sunstained\u00a0War-Crozier",
+        "name": "Sunstained War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -14121,7 +14398,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Supplication",
@@ -14135,7 +14413,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "The Blade of Sight Aflame",
@@ -14149,7 +14428,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "The Butcher's Cleaver",
@@ -14167,7 +14447,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "The Grandfather",
@@ -14185,7 +14466,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "The Maestro",
@@ -14199,7 +14481,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "The Oculus",
@@ -14213,7 +14496,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Thousand-Eye Reaver",
@@ -14231,7 +14515,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "Vox Omnium",
@@ -14245,7 +14530,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Waxing Gibbous",
@@ -14259,7 +14545,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "Windforce",
@@ -14273,7 +14560,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Mainhand"
       },
       {
         "name": "The Mortacrux",
@@ -14291,7 +14579,8 @@ window.D4_DATABASE = {
         "weaponType": "Dagger",
         "damageRange": "1,152 - 1,728",
         "weaponSpeed": 1.2,
-        "sockets": 1
+        "sockets": 1,
+        "type": "Dagger"
       }
     ],
     "Offhand": [
@@ -14307,7 +14596,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Offhand"
       },
       {
         "name": "Cathedral's Song",
@@ -14321,7 +14611,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Offhand"
       },
       {
         "name": "Eggis",
@@ -14335,7 +14626,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Offhand"
       },
       {
         "name": "Eye of Baal",
@@ -14349,7 +14641,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Offhand"
       },
       {
         "name": "Gate of the Red Dawn",
@@ -14363,7 +14656,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Offhand"
       },
       {
         "name": "Gospel of the Devotee",
@@ -14381,7 +14675,8 @@ window.D4_DATABASE = {
         "weaponType": "Focus",
         "weaponSpeed": 1.2,
         "damageRange": "1,152 - 1,728",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Focus"
       },
       {
         "name": "Herald of Zakarum",
@@ -14395,7 +14690,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Offhand"
       },
       {
         "name": "Ifeh's Dire Totem",
@@ -14409,7 +14705,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Offhand"
       },
       {
         "name": "Infernal Homunculus",
@@ -14423,7 +14720,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Offhand"
       },
       {
         "name": "Lidless Wall",
@@ -14441,7 +14739,8 @@ window.D4_DATABASE = {
         "weaponType": "Shield",
         "weaponSpeed": "same as mainhand",
         "damageRange": "same as mainhand",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Shield"
       },
       {
         "name": "Okun's Catalyst",
@@ -14455,7 +14754,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Offhand"
       },
       {
         "name": "Onyx Soul",
@@ -14469,7 +14769,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Offhand"
       },
       {
         "name": "Shanar's Resonance",
@@ -14483,7 +14784,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Offhand"
       },
       {
         "name": "Strike of Stormhorn",
@@ -14497,7 +14799,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Offhand"
       },
       {
         "name": "The Gloom Ward",
@@ -14515,7 +14818,8 @@ window.D4_DATABASE = {
         "weaponType": "Shield",
         "weaponSpeed": "same as mainhand",
         "damageRange": "same as mainhand",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Shield"
       },
       {
         "name": "Ward of the White Dove",
@@ -14529,7 +14833,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Offhand"
       },
       {
         "name": "Bone Shield",
@@ -14547,7 +14852,8 @@ window.D4_DATABASE = {
         "weaponType": "Shield",
         "damageRange": "same as mainhand",
         "weaponSpeed": "same as mainhand",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Shield"
       },
       {
         "name": "Enigma Cube",
@@ -14565,7 +14871,8 @@ window.D4_DATABASE = {
         "weaponType": "Focus",
         "damageRange": "1,152 - 1,728",
         "weaponSpeed": 1.2,
-        "sockets": 1
+        "sockets": 1,
+        "type": "Focus"
       },
       {
         "name": "Serpent Stone",
@@ -14583,7 +14890,8 @@ window.D4_DATABASE = {
         "weaponType": "Focus",
         "damageRange": "1,152 - 1,728",
         "weaponSpeed": 1.2,
-        "sockets": 1
+        "sockets": 1,
+        "type": "Focus"
       }
     ],
     "Weapon 1": [
@@ -14599,7 +14907,8 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Anathema of the Primes",
@@ -14613,7 +14922,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Ancients' Oath",
@@ -14627,7 +14937,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Asheara's Khanjar",
@@ -14641,7 +14952,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Azurewrath",
@@ -14659,7 +14971,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Black River",
@@ -14673,7 +14986,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Bloodless Scream",
@@ -14691,7 +15005,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Scythe",
         "weaponSpeed": 0.9,
         "damageRange": "3,071 - 4,607",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Scythe"
       },
       {
         "name": "Cassia's Grace",
@@ -14705,7 +15020,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Cluckeye",
@@ -14719,7 +15035,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Cluckonomicon",
@@ -14733,7 +15050,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Condemnation",
@@ -14747,10 +15065,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
-        "name": "Coop de Gr\u00e2ce",
+        "name": "Coop de Grâce",
         "rarity": "unique",
         "classes": [
           0,
@@ -14761,7 +15080,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Dirge of Odium",
@@ -14775,7 +15095,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Doombringer",
@@ -14793,7 +15114,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Eaglehorn",
@@ -14807,7 +15129,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Eggcecutioner",
@@ -14821,7 +15144,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "El'Druin, Sword of Justice",
@@ -14839,7 +15163,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Elegy",
@@ -14853,7 +15178,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Etna's Lost Dagger",
@@ -14867,7 +15193,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Fang of the Vipermagi",
@@ -14881,7 +15208,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Fields of Crimson",
@@ -14895,7 +15223,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Fields of Crimson (Crucible)",
@@ -14909,7 +15238,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Flamescar",
@@ -14923,7 +15253,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Fleshrender",
@@ -14937,7 +15268,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Greatstaff of the Crone",
@@ -14951,7 +15283,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Griswold's Opus",
@@ -14965,7 +15298,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Hellhammer",
@@ -14979,7 +15313,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Herald's Morningstar",
@@ -14993,7 +15328,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Light's Rebuke",
@@ -15007,7 +15343,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Litany of Sable",
@@ -15021,7 +15358,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Mace of King Leoric",
@@ -15039,7 +15377,8 @@ window.D4_DATABASE = {
         "weaponType": "Mace",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Mace"
       },
       {
         "name": "Misericorde",
@@ -15053,7 +15392,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Orphan Maker",
@@ -15067,7 +15407,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Orsivane",
@@ -15081,7 +15422,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Overkill",
@@ -15095,7 +15437,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Purified Lightbringer",
@@ -15109,7 +15452,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Ramaladni's Magnum Opus",
@@ -15123,7 +15467,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Red Sermon",
@@ -15137,7 +15482,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Rod of Kepeleke",
@@ -15151,7 +15497,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Rotting Lightbringer",
@@ -15165,7 +15512,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Rustbitten Dirk",
@@ -15183,7 +15531,8 @@ window.D4_DATABASE = {
         "weaponType": "Dagger",
         "weaponSpeed": 1.2,
         "damageRange": "1,152 - 1,728",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Dagger"
       },
       {
         "name": "Sabre of Tsasgal",
@@ -15197,7 +15546,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Sanguivor, Blade of Zir",
@@ -15215,7 +15565,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "Scepter of the Three",
@@ -15229,7 +15580,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Scourge of Duriel",
@@ -15243,7 +15595,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Sepazontec",
@@ -15257,7 +15610,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Shattered Vow",
@@ -15271,7 +15625,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Skyhunter",
@@ -15285,7 +15640,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Spine of Tathamet",
@@ -15299,7 +15655,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Staff of Endless Rage",
@@ -15313,7 +15670,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Staff of Lam Esen",
@@ -15327,7 +15685,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Staff of Zerae",
@@ -15341,7 +15700,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Sunbrand",
@@ -15355,7 +15715,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Sundered Night",
@@ -15369,10 +15730,11 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
-        "name": "Sunstained\u00a0War-Crozier",
+        "name": "Sunstained War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -15383,7 +15745,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Supplication",
@@ -15397,7 +15760,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "The Blade of Sight Aflame",
@@ -15411,7 +15775,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "The Butcher's Cleaver",
@@ -15429,7 +15794,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "The Grandfather",
@@ -15447,7 +15813,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "The Maestro",
@@ -15461,7 +15828,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "The Oculus",
@@ -15475,7 +15843,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Thousand-Eye Reaver",
@@ -15493,7 +15862,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "Vox Omnium",
@@ -15507,7 +15877,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Waxing Gibbous",
@@ -15521,7 +15892,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       },
       {
         "name": "Windforce",
@@ -15535,7 +15907,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1"
       }
     ],
     "Weapon 2": [
@@ -15551,7 +15924,8 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Anathema of the Primes",
@@ -15565,7 +15939,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Ancients' Oath",
@@ -15579,7 +15954,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Asheara's Khanjar",
@@ -15593,7 +15969,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Azurewrath",
@@ -15611,7 +15988,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Black River",
@@ -15625,7 +16003,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Bloodless Scream",
@@ -15643,7 +16022,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Scythe",
         "weaponSpeed": 0.9,
         "damageRange": "3,071 - 4,607",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Scythe"
       },
       {
         "name": "Cassia's Grace",
@@ -15657,7 +16037,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Cluckeye",
@@ -15671,7 +16052,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Cluckonomicon",
@@ -15685,7 +16067,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Condemnation",
@@ -15699,10 +16082,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
-        "name": "Coop de Gr\u00e2ce",
+        "name": "Coop de Grâce",
         "rarity": "unique",
         "classes": [
           0,
@@ -15713,7 +16097,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Dirge of Odium",
@@ -15727,7 +16112,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Doombringer",
@@ -15745,7 +16131,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Eaglehorn",
@@ -15759,7 +16146,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Eggcecutioner",
@@ -15773,7 +16161,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "El'Druin, Sword of Justice",
@@ -15791,7 +16180,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Elegy",
@@ -15805,7 +16195,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Etna's Lost Dagger",
@@ -15819,7 +16210,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Fang of the Vipermagi",
@@ -15833,7 +16225,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Fields of Crimson",
@@ -15847,7 +16240,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Fields of Crimson (Crucible)",
@@ -15861,7 +16255,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Flamescar",
@@ -15875,7 +16270,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Fleshrender",
@@ -15889,7 +16285,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Greatstaff of the Crone",
@@ -15903,7 +16300,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Griswold's Opus",
@@ -15917,7 +16315,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Hellhammer",
@@ -15931,7 +16330,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Herald's Morningstar",
@@ -15945,7 +16345,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Light's Rebuke",
@@ -15959,7 +16360,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Litany of Sable",
@@ -15973,7 +16375,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Mace of King Leoric",
@@ -15991,7 +16394,8 @@ window.D4_DATABASE = {
         "weaponType": "Mace",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Mace"
       },
       {
         "name": "Misericorde",
@@ -16005,7 +16409,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Orphan Maker",
@@ -16019,7 +16424,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Orsivane",
@@ -16033,7 +16439,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Overkill",
@@ -16047,7 +16454,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Purified Lightbringer",
@@ -16061,7 +16469,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Ramaladni's Magnum Opus",
@@ -16075,7 +16484,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Red Sermon",
@@ -16089,7 +16499,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Rod of Kepeleke",
@@ -16103,7 +16514,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Rotting Lightbringer",
@@ -16117,7 +16529,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Rustbitten Dirk",
@@ -16135,7 +16548,8 @@ window.D4_DATABASE = {
         "weaponType": "Dagger",
         "weaponSpeed": 1.2,
         "damageRange": "1,152 - 1,728",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Dagger"
       },
       {
         "name": "Sabre of Tsasgal",
@@ -16149,7 +16563,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Sanguivor, Blade of Zir",
@@ -16167,7 +16582,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "Scepter of the Three",
@@ -16181,7 +16597,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Scourge of Duriel",
@@ -16195,7 +16612,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Sepazontec",
@@ -16209,7 +16627,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Shattered Vow",
@@ -16223,7 +16642,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Skyhunter",
@@ -16237,7 +16657,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Spine of Tathamet",
@@ -16251,7 +16672,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Staff of Endless Rage",
@@ -16265,7 +16687,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Staff of Lam Esen",
@@ -16279,7 +16702,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Staff of Zerae",
@@ -16293,7 +16717,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Sunbrand",
@@ -16307,7 +16732,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Sundered Night",
@@ -16321,10 +16747,11 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
-        "name": "Sunstained\u00a0War-Crozier",
+        "name": "Sunstained War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -16335,7 +16762,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Supplication",
@@ -16349,7 +16777,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "The Blade of Sight Aflame",
@@ -16363,7 +16792,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "The Butcher's Cleaver",
@@ -16381,7 +16811,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "The Grandfather",
@@ -16399,7 +16830,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "The Maestro",
@@ -16413,7 +16845,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "The Oculus",
@@ -16427,7 +16860,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Thousand-Eye Reaver",
@@ -16445,7 +16879,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "Vox Omnium",
@@ -16459,7 +16894,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Waxing Gibbous",
@@ -16473,7 +16909,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       },
       {
         "name": "Windforce",
@@ -16487,7 +16924,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2"
       }
     ],
     "Weapon 1 (Bludgeoning)": [
@@ -16503,7 +16941,8 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Anathema of the Primes",
@@ -16517,7 +16956,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Ancients' Oath",
@@ -16531,7 +16971,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Asheara's Khanjar",
@@ -16545,7 +16986,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Azurewrath",
@@ -16563,7 +17005,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Black River",
@@ -16577,7 +17020,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Bloodless Scream",
@@ -16595,7 +17039,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Scythe",
         "weaponSpeed": 0.9,
         "damageRange": "3,071 - 4,607",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Scythe"
       },
       {
         "name": "Cassia's Grace",
@@ -16609,7 +17054,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Cluckeye",
@@ -16623,7 +17069,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Cluckonomicon",
@@ -16637,7 +17084,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Condemnation",
@@ -16651,10 +17099,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
-        "name": "Coop de Gr\u00e2ce",
+        "name": "Coop de Grâce",
         "rarity": "unique",
         "classes": [
           0,
@@ -16665,7 +17114,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Dirge of Odium",
@@ -16679,7 +17129,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Doombringer",
@@ -16697,7 +17148,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Eaglehorn",
@@ -16711,7 +17163,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Eggcecutioner",
@@ -16725,7 +17178,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "El'Druin, Sword of Justice",
@@ -16743,7 +17197,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Elegy",
@@ -16757,7 +17212,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Etna's Lost Dagger",
@@ -16771,7 +17227,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Fang of the Vipermagi",
@@ -16785,7 +17242,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Fields of Crimson",
@@ -16799,7 +17257,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Fields of Crimson (Crucible)",
@@ -16813,7 +17272,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Flamescar",
@@ -16827,7 +17287,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Fleshrender",
@@ -16841,7 +17302,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Greatstaff of the Crone",
@@ -16855,7 +17317,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Griswold's Opus",
@@ -16869,7 +17332,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Hellhammer",
@@ -16883,7 +17347,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Herald's Morningstar",
@@ -16897,7 +17362,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Light's Rebuke",
@@ -16911,7 +17377,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Litany of Sable",
@@ -16925,7 +17392,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Mace of King Leoric",
@@ -16943,7 +17411,8 @@ window.D4_DATABASE = {
         "weaponType": "Mace",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Mace"
       },
       {
         "name": "Misericorde",
@@ -16957,7 +17426,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Orphan Maker",
@@ -16971,7 +17441,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Orsivane",
@@ -16985,7 +17456,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Overkill",
@@ -16999,7 +17471,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Purified Lightbringer",
@@ -17013,7 +17486,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Ramaladni's Magnum Opus",
@@ -17027,7 +17501,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Red Sermon",
@@ -17041,7 +17516,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Rod of Kepeleke",
@@ -17055,7 +17531,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Rotting Lightbringer",
@@ -17069,7 +17546,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Rustbitten Dirk",
@@ -17087,7 +17565,8 @@ window.D4_DATABASE = {
         "weaponType": "Dagger",
         "weaponSpeed": 1.2,
         "damageRange": "1,152 - 1,728",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Dagger"
       },
       {
         "name": "Sabre of Tsasgal",
@@ -17101,7 +17580,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Sanguivor, Blade of Zir",
@@ -17119,7 +17599,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "Scepter of the Three",
@@ -17133,7 +17614,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Scourge of Duriel",
@@ -17147,7 +17629,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Sepazontec",
@@ -17161,7 +17644,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Shattered Vow",
@@ -17175,7 +17659,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Skyhunter",
@@ -17189,7 +17674,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Spine of Tathamet",
@@ -17203,7 +17689,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Staff of Endless Rage",
@@ -17217,7 +17704,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Staff of Lam Esen",
@@ -17231,7 +17719,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Staff of Zerae",
@@ -17245,7 +17734,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Sunbrand",
@@ -17259,7 +17749,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Sundered Night",
@@ -17273,10 +17764,11 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
-        "name": "Sunstained\u00a0War-Crozier",
+        "name": "Sunstained War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -17287,7 +17779,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Supplication",
@@ -17301,7 +17794,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "The Blade of Sight Aflame",
@@ -17315,7 +17809,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "The Butcher's Cleaver",
@@ -17333,7 +17828,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "The Grandfather",
@@ -17351,7 +17847,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "The Maestro",
@@ -17365,7 +17862,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "The Oculus",
@@ -17379,7 +17877,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Thousand-Eye Reaver",
@@ -17397,7 +17896,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "Vox Omnium",
@@ -17411,7 +17911,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Waxing Gibbous",
@@ -17425,7 +17926,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       },
       {
         "name": "Windforce",
@@ -17439,7 +17941,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 1 (Bludgeoning)"
       }
     ],
     "Weapon 2 (Slashing)": [
@@ -17455,7 +17958,8 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Anathema of the Primes",
@@ -17469,7 +17973,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Ancients' Oath",
@@ -17483,7 +17988,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Asheara's Khanjar",
@@ -17497,7 +18003,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Azurewrath",
@@ -17515,7 +18022,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Black River",
@@ -17529,7 +18037,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Bloodless Scream",
@@ -17547,7 +18056,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Scythe",
         "weaponSpeed": 0.9,
         "damageRange": "3,071 - 4,607",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Scythe"
       },
       {
         "name": "Cassia's Grace",
@@ -17561,7 +18071,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Cluckeye",
@@ -17575,7 +18086,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Cluckonomicon",
@@ -17589,7 +18101,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Condemnation",
@@ -17603,10 +18116,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
-        "name": "Coop de Gr\u00e2ce",
+        "name": "Coop de Grâce",
         "rarity": "unique",
         "classes": [
           0,
@@ -17617,7 +18131,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Dirge of Odium",
@@ -17631,7 +18146,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Doombringer",
@@ -17649,7 +18165,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Eaglehorn",
@@ -17663,7 +18180,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Eggcecutioner",
@@ -17677,7 +18195,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "El'Druin, Sword of Justice",
@@ -17695,7 +18214,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Elegy",
@@ -17709,7 +18229,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Etna's Lost Dagger",
@@ -17723,7 +18244,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Fang of the Vipermagi",
@@ -17737,7 +18259,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Fields of Crimson",
@@ -17751,7 +18274,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Fields of Crimson (Crucible)",
@@ -17765,7 +18289,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Flamescar",
@@ -17779,7 +18304,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Fleshrender",
@@ -17793,7 +18319,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Greatstaff of the Crone",
@@ -17807,7 +18334,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Griswold's Opus",
@@ -17821,7 +18349,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Hellhammer",
@@ -17835,7 +18364,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Herald's Morningstar",
@@ -17849,7 +18379,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Light's Rebuke",
@@ -17863,7 +18394,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Litany of Sable",
@@ -17877,7 +18409,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Mace of King Leoric",
@@ -17895,7 +18428,8 @@ window.D4_DATABASE = {
         "weaponType": "Mace",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Mace"
       },
       {
         "name": "Misericorde",
@@ -17909,7 +18443,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Orphan Maker",
@@ -17923,7 +18458,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Orsivane",
@@ -17937,7 +18473,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Overkill",
@@ -17951,7 +18488,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Purified Lightbringer",
@@ -17965,7 +18503,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Ramaladni's Magnum Opus",
@@ -17979,7 +18518,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Red Sermon",
@@ -17993,7 +18533,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Rod of Kepeleke",
@@ -18007,7 +18548,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Rotting Lightbringer",
@@ -18021,7 +18563,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Rustbitten Dirk",
@@ -18039,7 +18582,8 @@ window.D4_DATABASE = {
         "weaponType": "Dagger",
         "weaponSpeed": 1.2,
         "damageRange": "1,152 - 1,728",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Dagger"
       },
       {
         "name": "Sabre of Tsasgal",
@@ -18053,7 +18597,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Sanguivor, Blade of Zir",
@@ -18071,7 +18616,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "Scepter of the Three",
@@ -18085,7 +18631,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Scourge of Duriel",
@@ -18099,7 +18646,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Sepazontec",
@@ -18113,7 +18661,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Shattered Vow",
@@ -18127,7 +18676,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Skyhunter",
@@ -18141,7 +18691,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Spine of Tathamet",
@@ -18155,7 +18706,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Staff of Endless Rage",
@@ -18169,7 +18721,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Staff of Lam Esen",
@@ -18183,7 +18736,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Staff of Zerae",
@@ -18197,7 +18751,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Sunbrand",
@@ -18211,7 +18766,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Sundered Night",
@@ -18225,10 +18781,11 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
-        "name": "Sunstained\u00a0War-Crozier",
+        "name": "Sunstained War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -18239,7 +18796,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Supplication",
@@ -18253,7 +18811,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "The Blade of Sight Aflame",
@@ -18267,7 +18826,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "The Butcher's Cleaver",
@@ -18285,7 +18845,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "The Grandfather",
@@ -18303,7 +18864,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "The Maestro",
@@ -18317,7 +18879,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "The Oculus",
@@ -18331,7 +18894,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Thousand-Eye Reaver",
@@ -18349,7 +18913,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "Vox Omnium",
@@ -18363,7 +18928,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Waxing Gibbous",
@@ -18377,7 +18943,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       },
       {
         "name": "Windforce",
@@ -18391,7 +18958,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 2 (Slashing)"
       }
     ],
     "Weapon 3 (Dual Wield 1)": [
@@ -18407,7 +18975,8 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Anathema of the Primes",
@@ -18421,7 +18990,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Ancients' Oath",
@@ -18435,7 +19005,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Asheara's Khanjar",
@@ -18449,7 +19020,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Azurewrath",
@@ -18467,7 +19039,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Black River",
@@ -18481,7 +19054,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Bloodless Scream",
@@ -18499,7 +19073,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Scythe",
         "weaponSpeed": 0.9,
         "damageRange": "3,071 - 4,607",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Scythe"
       },
       {
         "name": "Cassia's Grace",
@@ -18513,7 +19088,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Cluckeye",
@@ -18527,7 +19103,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Cluckonomicon",
@@ -18541,7 +19118,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Condemnation",
@@ -18555,10 +19133,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
-        "name": "Coop de Gr\u00e2ce",
+        "name": "Coop de Grâce",
         "rarity": "unique",
         "classes": [
           0,
@@ -18569,7 +19148,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Dirge of Odium",
@@ -18583,7 +19163,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Doombringer",
@@ -18601,7 +19182,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Eaglehorn",
@@ -18615,7 +19197,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Eggcecutioner",
@@ -18629,7 +19212,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "El'Druin, Sword of Justice",
@@ -18647,7 +19231,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Elegy",
@@ -18661,7 +19246,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Etna's Lost Dagger",
@@ -18675,7 +19261,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Fang of the Vipermagi",
@@ -18689,7 +19276,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Fields of Crimson",
@@ -18703,7 +19291,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Fields of Crimson (Crucible)",
@@ -18717,7 +19306,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Flamescar",
@@ -18731,7 +19321,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Fleshrender",
@@ -18745,7 +19336,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Greatstaff of the Crone",
@@ -18759,7 +19351,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Griswold's Opus",
@@ -18773,7 +19366,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Hellhammer",
@@ -18787,7 +19381,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Herald's Morningstar",
@@ -18801,7 +19396,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Light's Rebuke",
@@ -18815,7 +19411,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Litany of Sable",
@@ -18829,7 +19426,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Mace of King Leoric",
@@ -18847,7 +19445,8 @@ window.D4_DATABASE = {
         "weaponType": "Mace",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Mace"
       },
       {
         "name": "Misericorde",
@@ -18861,7 +19460,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Orphan Maker",
@@ -18875,7 +19475,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Orsivane",
@@ -18889,7 +19490,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Overkill",
@@ -18903,7 +19505,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Purified Lightbringer",
@@ -18917,7 +19520,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Ramaladni's Magnum Opus",
@@ -18931,7 +19535,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Red Sermon",
@@ -18945,7 +19550,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Rod of Kepeleke",
@@ -18959,7 +19565,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Rotting Lightbringer",
@@ -18973,7 +19580,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Rustbitten Dirk",
@@ -18991,7 +19599,8 @@ window.D4_DATABASE = {
         "weaponType": "Dagger",
         "weaponSpeed": 1.2,
         "damageRange": "1,152 - 1,728",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Dagger"
       },
       {
         "name": "Sabre of Tsasgal",
@@ -19005,7 +19614,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Sanguivor, Blade of Zir",
@@ -19023,7 +19633,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "Scepter of the Three",
@@ -19037,7 +19648,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Scourge of Duriel",
@@ -19051,7 +19663,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Sepazontec",
@@ -19065,7 +19678,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Shattered Vow",
@@ -19079,7 +19693,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Skyhunter",
@@ -19093,7 +19708,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Spine of Tathamet",
@@ -19107,7 +19723,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Staff of Endless Rage",
@@ -19121,7 +19738,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Staff of Lam Esen",
@@ -19135,7 +19753,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Staff of Zerae",
@@ -19149,7 +19768,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Sunbrand",
@@ -19163,7 +19783,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Sundered Night",
@@ -19177,10 +19798,11 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
-        "name": "Sunstained\u00a0War-Crozier",
+        "name": "Sunstained War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -19191,7 +19813,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Supplication",
@@ -19205,7 +19828,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "The Blade of Sight Aflame",
@@ -19219,7 +19843,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "The Butcher's Cleaver",
@@ -19237,7 +19862,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "The Grandfather",
@@ -19255,7 +19881,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "The Maestro",
@@ -19269,7 +19896,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "The Oculus",
@@ -19283,7 +19911,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Thousand-Eye Reaver",
@@ -19301,7 +19930,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "Vox Omnium",
@@ -19315,7 +19945,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Waxing Gibbous",
@@ -19329,7 +19960,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       },
       {
         "name": "Windforce",
@@ -19343,7 +19975,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 3 (Dual Wield 1)"
       }
     ],
     "Weapon 4 (Dual Wield 2)": [
@@ -19359,7 +19992,8 @@ window.D4_DATABASE = {
           0,
           1,
           1
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Anathema of the Primes",
@@ -19373,7 +20007,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Ancients' Oath",
@@ -19387,7 +20022,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Asheara's Khanjar",
@@ -19401,7 +20037,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Azurewrath",
@@ -19419,7 +20056,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Black River",
@@ -19433,7 +20071,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Bloodless Scream",
@@ -19451,7 +20090,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Scythe",
         "weaponSpeed": 0.9,
         "damageRange": "3,071 - 4,607",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Scythe"
       },
       {
         "name": "Cassia's Grace",
@@ -19465,7 +20105,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Cluckeye",
@@ -19479,7 +20120,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Cluckonomicon",
@@ -19493,7 +20135,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Condemnation",
@@ -19507,10 +20150,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
-        "name": "Coop de Gr\u00e2ce",
+        "name": "Coop de Grâce",
         "rarity": "unique",
         "classes": [
           0,
@@ -19521,7 +20165,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Dirge of Odium",
@@ -19535,7 +20180,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Doombringer",
@@ -19553,7 +20199,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Eaglehorn",
@@ -19567,7 +20214,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Eggcecutioner",
@@ -19581,7 +20229,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "El'Druin, Sword of Justice",
@@ -19599,7 +20248,8 @@ window.D4_DATABASE = {
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Elegy",
@@ -19613,7 +20263,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Etna's Lost Dagger",
@@ -19627,7 +20278,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Fang of the Vipermagi",
@@ -19641,7 +20293,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Fields of Crimson",
@@ -19655,7 +20308,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Fields of Crimson (Crucible)",
@@ -19669,7 +20323,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Flamescar",
@@ -19683,7 +20338,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Fleshrender",
@@ -19697,7 +20353,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Greatstaff of the Crone",
@@ -19711,7 +20368,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Griswold's Opus",
@@ -19725,7 +20383,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Hellhammer",
@@ -19739,7 +20398,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Herald's Morningstar",
@@ -19753,7 +20413,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Light's Rebuke",
@@ -19767,7 +20428,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Litany of Sable",
@@ -19781,7 +20443,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Mace of King Leoric",
@@ -19799,7 +20462,8 @@ window.D4_DATABASE = {
         "weaponType": "Mace",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Mace"
       },
       {
         "name": "Misericorde",
@@ -19813,7 +20477,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Orphan Maker",
@@ -19827,7 +20492,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Orsivane",
@@ -19841,7 +20507,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Overkill",
@@ -19855,7 +20522,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Purified Lightbringer",
@@ -19869,7 +20537,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Ramaladni's Magnum Opus",
@@ -19883,7 +20552,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Red Sermon",
@@ -19897,7 +20567,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Rod of Kepeleke",
@@ -19911,7 +20582,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Rotting Lightbringer",
@@ -19925,7 +20597,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Rustbitten Dirk",
@@ -19943,7 +20616,8 @@ window.D4_DATABASE = {
         "weaponType": "Dagger",
         "weaponSpeed": 1.2,
         "damageRange": "1,152 - 1,728",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Dagger"
       },
       {
         "name": "Sabre of Tsasgal",
@@ -19957,7 +20631,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Sanguivor, Blade of Zir",
@@ -19975,7 +20650,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "Scepter of the Three",
@@ -19989,7 +20665,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Scourge of Duriel",
@@ -20003,7 +20680,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Sepazontec",
@@ -20017,7 +20695,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Shattered Vow",
@@ -20031,7 +20710,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Skyhunter",
@@ -20045,7 +20725,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Spine of Tathamet",
@@ -20059,7 +20740,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Staff of Endless Rage",
@@ -20073,7 +20755,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Staff of Lam Esen",
@@ -20087,7 +20770,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Staff of Zerae",
@@ -20101,7 +20785,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Sunbrand",
@@ -20115,7 +20800,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Sundered Night",
@@ -20129,10 +20815,11 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
-        "name": "Sunstained\u00a0War-Crozier",
+        "name": "Sunstained War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -20143,7 +20830,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Supplication",
@@ -20157,7 +20845,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "The Blade of Sight Aflame",
@@ -20171,7 +20860,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "The Butcher's Cleaver",
@@ -20189,7 +20879,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "The Grandfather",
@@ -20207,7 +20898,8 @@ window.D4_DATABASE = {
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
-        "sockets": 2
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "The Maestro",
@@ -20221,7 +20913,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "The Oculus",
@@ -20235,7 +20928,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Thousand-Eye Reaver",
@@ -20253,7 +20947,8 @@ window.D4_DATABASE = {
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
-        "sockets": 1
+        "sockets": 1,
+        "type": "Axe"
       },
       {
         "name": "Vox Omnium",
@@ -20267,7 +20962,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Waxing Gibbous",
@@ -20281,7 +20977,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       },
       {
         "name": "Windforce",
@@ -20295,7 +20992,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "type": "Weapon 4 (Dual Wield 2)"
       }
     ]
   },
