@@ -2045,6 +2045,18 @@
         const finalUniversalDr = 0;
         addStat(stats, 'Universal Damage Reduction %', finalUniversalDr * 100, 'Calculated');
 
+        // Post-Compilation Step: Inverse Multiplicative Stats (Dodge Chance, Damage Reduction, etc.)
+        // This must run at the very end so that Core Stats (like Dexterity) are included in the inverse multiplicative pool!
+        const inverseMultiplicativeKeys = Object.keys(stats).filter(k => k.includes('Dodge Chance') || k.includes('Damage Reduction'));
+        inverseMultiplicativeKeys.forEach(k => {
+            if (stats[k].flatSources && stats[k].flatSources.length > 1) {
+                let inverseProduct = 1.0;
+                stats[k].flatSources.forEach(src => {
+                    inverseProduct *= (1 - (src.val / 100));
+                });
+                stats[k].final = (1 - inverseProduct) * 100;
+            }
+        });
 
         return stats;
     }
