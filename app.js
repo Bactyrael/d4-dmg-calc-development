@@ -2516,6 +2516,25 @@
       }
     });
 
+    // Inject additive bonuses from compiledStats
+    dom.additiveBody.querySelectorAll('tr.injected-row').forEach(row => row.remove());
+    Object.keys(compiledStats).forEach(statName => {
+      const lower = statName.toLowerCase();
+      if (
+        (lower.includes('damage') || lower.includes('critical') || lower.includes('vulnerable') || lower.includes('overpower')) &&
+        !lower.includes('reduction') &&
+        !lower.includes('chance') &&
+        !lower.includes('base damage') &&
+        !lower.includes('weapon damage') &&
+        statName !== 'Skill Damage'
+      ) {
+        const val = compiledStats[statName].final;
+        if (val && val > 0) {
+          createAdditiveRow(statName, val, true);
+        }
+      }
+    });
+
     // Additive: 1 + sum all (value / 100)
     const additives = getAdditiveValues();
     const additiveRawSum = additives.reduce((sum, a) => sum + (a.value / 100), 0);
@@ -2730,17 +2749,26 @@
 
   function getAdditiveValues() {
     const rows = dom.additiveBody.querySelectorAll('tr');
-    const values = [];
+    const allValues = [];
+    const manualValues = [];
     rows.forEach(row => {
       const nameInput = row.querySelector('.row-name-input');
       const valueInput = row.querySelector('.row-value-input');
-      values.push({
+      const isInjected = row.classList.contains('injected-row');
+      const val = parseFloat(valueInput.value) || 0;
+      
+      allValues.push({
         name: nameInput.value,
-        value: parseFloat(valueInput.value) || 0,
+        value: val,
+        isInjected: isInjected
       });
+      
+      if (!isInjected) {
+        manualValues.push({ name: nameInput.value, value: val });
+      }
     });
-    currentBuild.additives = values;
-    return values;
+    currentBuild.additives = manualValues;
+    return allValues;
   }
 
   function getDrValues() {
@@ -2859,27 +2887,43 @@
   }
 
   // ---- Row Management ----
-  function createAdditiveRow(name = '', value = '') {
+  function createAdditiveRow(name = '', value = '', isInjected = false) {
     const tr = document.createElement('tr');
+    if (isInjected) tr.classList.add('injected-row');
+
+    const nameHtml = isInjected
+      ? `<input type="text" class="row-name-input" value="${escapeHtml(name)}" disabled title="From Equipment" style="background: rgba(255,255,255,0.05); color: #aaa;">`
+      : `<input type="text" class="row-name-input" value="${escapeHtml(name)}" placeholder="Bonus name...">`;
+      
+    const valHtml = isInjected
+      ? `<input type="number" class="row-value-input" value="${value}" disabled title="From Equipment" style="background: rgba(255,255,255,0.05); color: #aaa;">`
+      : `<input type="number" class="row-value-input" value="${value}" step="any" placeholder="0">`;
+      
+    const deleteHtml = isInjected
+      ? `<td class="col-delete"></td>`
+      : `<td class="col-delete"><button class="btn-delete" title="Remove">✖</button></td>`;
+
     tr.innerHTML = `
-      <td><input type="text" class="row-name-input" value="${escapeHtml(name)}" placeholder="Bonus name..."></td>
-      <td><input type="number" class="row-value-input" value="${value}" step="any" placeholder="0"></td>
+      <td>${nameHtml}</td>
+      <td>${valHtml}</td>
       <td class="formula-value">0.00</td>
-      <td class="col-delete"><button class="btn-delete" title="Remove">✕</button></td>
+      ${deleteHtml}
     `;
 
     // Event listeners
-    tr.querySelector('.row-name-input').addEventListener('input', calculate);
-    tr.querySelector('.row-value-input').addEventListener('input', calculate);
-    tr.querySelector('.btn-delete').addEventListener('click', () => {
-      tr.style.opacity = '0';
-      tr.style.transform = 'translateX(-10px)';
-      tr.style.transition = 'all 0.2s ease';
-      setTimeout(() => {
-        tr.remove();
-        calculate();
-      }, 200);
-    });
+    if (!isInjected) {
+      tr.querySelector('.row-name-input').addEventListener('input', calculate);
+      tr.querySelector('.row-value-input').addEventListener('input', calculate);
+      tr.querySelector('.btn-delete').addEventListener('click', () => {
+        tr.style.opacity = '0';
+        tr.style.transform = 'translateX(-10px)';
+        tr.style.transition = 'all 0.2s ease';
+        setTimeout(() => {
+          tr.remove();
+          calculate();
+        }, 200);
+      });
+    }
 
     dom.additiveBody.appendChild(tr);
     return tr;
