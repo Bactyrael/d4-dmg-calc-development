@@ -816,6 +816,33 @@
     });
   }
 
+  function getAspectMultiplier(slotName, itemObj) {
+    if (!slotName) return 1;
+    const ls = slotName.toLowerCase();
+    
+    // Default slot mapping
+    if (ls.includes('two-handed') || ls === 'two-handed weapon' || ls === 'bludgeoning weapon' || ls === 'slicing weapon' || ls === 'ranged weapon') {
+      return 2;
+    }
+    if (ls === 'amulet') {
+      return 1.5;
+    }
+    
+    // Check specific base item weapon type
+    if (itemObj && itemObj.name) {
+      const dbItems = getDbItems(slotName);
+      const baseItem = dbItems.find(i => i.name === itemObj.name);
+      
+      if (baseItem && baseItem.weaponType) {
+        if (baseItem.weaponType.toLowerCase().includes('two-handed')) {
+          return 2;
+        }
+      }
+    }
+    
+    return 1;
+  }
+
   const CLASS_PARAGON_DATA = {
     Necromancer: {
       nodes: NECROMANCER_NODES,
@@ -3723,10 +3750,7 @@ rarity = foundItem.rarity;
       if (currentAspectName !== 'None') {
         const aspectObj = (window.D4_DATABASE?.aspects || []).find(a => a.name === currentAspectName);
         if (aspectObj && aspectObj.desc) {
-          let aspectMult = 1;
-          const ls = slotName.toLowerCase();
-          if (ls.includes('two-handed') || ls === 'two-handed weapon') aspectMult = 2;
-          else if (ls === 'amulet') aspectMult = 1.5;
+          let aspectMult = getAspectMultiplier(slotName, itemObj);
 
           const vals = itemObj.aspectValues || [];
           let valIndex = 0;
@@ -4538,10 +4562,7 @@ rarity = foundItem.rarity;
         const itemObj = JSON.parse(box.dataset.value);
         itemObj.aspect = aspectName;
         
-        let aspectMult = 1;
-        const ls = currentModalSlot.toLowerCase();
-        if (ls.includes('two-handed') || ls === 'two-handed weapon') aspectMult = 2;
-        else if (ls === 'amulet') aspectMult = 1.5;
+        let aspectMult = getAspectMultiplier(currentModalSlot, itemObj);
         
         // Auto-fill max value from database if available
         const aspectObj = window.D4_DATABASE?.aspects?.find(a => a.name === aspectName);
