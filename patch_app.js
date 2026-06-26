@@ -1,106 +1,121 @@
 const fs = require('fs');
-let appJs = fs.readFileSync('app.js', 'utf8');
-const skillsLogic = `window.selectedSkills = {};
-function renderSkills() { 
-  const container = document.getElementById('skills-container'); 
-  if (!container) return; 
-  container.innerHTML = ''; 
-  if (typeof skillsDatabase === 'undefined') return; 
-  for (const [category, skills] of Object.entries(skillsDatabase)) { 
-    const catDiv = document.createElement('div'); 
-    catDiv.className = 'skill-category'; 
-    const catTitle = document.createElement('h3'); 
-    catTitle.className = 'skill-category-title'; 
-    catTitle.textContent = category + ' Skills'; 
-    catDiv.appendChild(catTitle); 
-    const skillsList = document.createElement('div'); 
-    skillsList.className = 'skill-list'; 
-    skills.forEach(skill => { 
-      const skillGroup = document.createElement('div'); 
-      skillGroup.className = 'skill-group'; 
-      const baseRow = createSkillRow(skill.name, skill.maxRank, 0); 
-      skillGroup.appendChild(baseRow); 
-      if (skill.enhancement) { 
-        const enhRow = createSkillRow(skill.enhancement.name, skill.enhancement.maxRank, 1, skill.name); 
-        skillGroup.appendChild(enhRow); 
-        if (skill.enhancement.branches && skill.enhancement.branches.length > 0) { 
-          const branchContainer = document.createElement('div'); 
-          branchContainer.className = 'skill-branches'; 
-          skill.enhancement.branches.forEach(branch => { 
-            const bRow = createSkillRow(branch.name, branch.maxRank, 2, skill.enhancement.name, skill.enhancement.branches.map(b => b.name)); 
-            branchContainer.appendChild(bRow); 
-          }); 
-          skillGroup.appendChild(branchContainer); 
-        } 
-      } 
-      skillsList.appendChild(skillGroup); 
-    }); 
-    catDiv.appendChild(skillsList); 
-    container.appendChild(catDiv); 
-  } 
-}
-function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusiveSiblings = []) { 
-  const row = document.createElement('div'); 
-  row.className = 'skill-row indent-' + indentLevel; 
-  const nameSpan = document.createElement('span'); 
-  nameSpan.className = 'skill-name'; 
-  nameSpan.textContent = name; 
-  if (indentLevel > 0) nameSpan.innerHTML = '<span style="color:#666;">└</span> ' + name; 
-  const controls = document.createElement('div'); 
-  controls.className = 'skill-controls'; 
-  const minusBtn = document.createElement('button'); 
-  minusBtn.textContent = '-'; 
-  minusBtn.className = 'skill-btn'; 
-  const rankDisplay = document.createElement('span'); 
-  rankDisplay.className = 'skill-rank'; 
-  const currentRank = window.selectedSkills[name] || 0; 
-  rankDisplay.textContent = currentRank + ' / ' + maxRank; 
-  const plusBtn = document.createElement('button'); 
-  plusBtn.textContent = '+'; 
-  plusBtn.className = 'skill-btn'; 
-  const updateDisplay = () => { 
-    rankDisplay.textContent = (window.selectedSkills[name] || 0) + ' / ' + maxRank; 
-    if (window.selectedSkills[name] > 0) row.classList.add('active'); 
-    else row.classList.remove('active'); 
-  }; 
-  minusBtn.onclick = () => { 
-    if (window.selectedSkills[name] > 0) { 
-      window.selectedSkills[name]--; 
-      if (window.selectedSkills[name] === 0) delete window.selectedSkills[name]; 
-      updateDisplay(); 
-      if (typeof recalculate === 'function') recalculate(); 
-    } 
-  }; 
-  plusBtn.onclick = () => { 
-    const current = window.selectedSkills[name] || 0; 
-    if (parentName && (!window.selectedSkills[parentName] || window.selectedSkills[parentName] === 0)) return; 
-    if (current < maxRank) { 
-      if (exclusiveSiblings.length > 0) { 
-        let hasSibling = false; 
-        exclusiveSiblings.forEach(sib => { 
-          if (sib !== name && window.selectedSkills[sib] > 0) hasSibling = true; 
-        }); 
-        if (hasSibling) return; 
-      } 
-      window.selectedSkills[name] = current + 1; 
-      updateDisplay(); 
-      if (typeof recalculate === 'function') recalculate(); 
-    } 
-  }; 
-  updateDisplay(); 
-  controls.appendChild(minusBtn); 
-  controls.appendChild(rankDisplay); 
-  controls.appendChild(plusBtn); 
-  row.appendChild(nameSpan); 
-  row.appendChild(controls); 
-  return row; 
-}`;
+let code = fs.readFileSync('app.js', 'utf8');
 
-if (!appJs.includes('function renderSkills()')) { 
-  appJs = appJs.replace('function start() {', skillsLogic + '\n  function start() {'); 
-  appJs = appJs.replace(/renderEquipment\(.*?\);/, `renderEquipment(dom.classSelect ? dom.classSelect.value : 'Barbarian', {});\n    renderSkills();`); 
-  fs.writeFileSync('app.js', appJs); 
-  console.log('Successfully injected skills logic into app.js'); 
+// Replace logic in renderEditTab
+const oldEditLogic = `    // Filter affixes by class
+    const affixesBase = (window.D4_DATABASE?.affixes || [])
+      .filter(a => classIdx === undefined || !a.classes || a.classes[classIdx] === 1);
+      
+    const baseItemDef = window.D4_DATABASE.itemDatabase[slotName]?.find(i => i.name === itemObj.name) || {};
+    
+    // Determine allowed slots for affixes
+    function isAffixAllowedForSlot(affix, slotName) {
+      // Speed restriction check
+      if (affix.targetSpeeds && baseItemDef.weaponSpeed !== undefined) {
+        if (!affix.targetSpeeds.includes(baseItemDef.weaponSpeed)) {
+          return false;
+        }
+      }
+      
+      const affixSlots = affix.slots;
+      if (!affixSlots || affixSlots.length === 0) return true; // generic
+      let mapped = slotName.toLowerCase();
+      if (mapped === 'left ring' || mapped === 'right ring') mapped = 'ring';
+      if (mapped === 'chest armor') mapped = 'chest';
+      if (mapped === 'mainhand' || mapped === 'offhand' || mapped === 'weapon1' || mapped === 'weapon2' || mapped === 'ranged weapon') {
+         if (mapped.startsWith('weapon') || mapped === 'ranged weapon') mapped = 'mainhand';
+      }
+      
+      return affixSlots.some(s => {
+        const ms = s.toLowerCase();
+        if (mapped === 'ring' && (ms === 'ring1' || ms === 'ring2')) return true;
+        if (mapped === 'mainhand' && (ms === 'mainhand' || ms === '2h-slashing' || ms === '2h-bludgeoning' || ms === '2h-ranged')) return true; 
+        if (mapped === 'offhand' && (ms === 'offhand' || ms === 'shield')) return true;
+        return ms === mapped;
+      });
+    }
+
+    const regularAffixes = affixesBase.filter(a => !a.tempering && isAffixAllowedForSlot(a, slotName));
+    const temperAffixes = affixesBase.filter(a => a.tempering && isAffixAllowedForSlot(a, slotName));`;
+
+const newEditLogic = `    // New Hierarchical Lookup
+    let mapped = slotName.toLowerCase();
+    if (mapped === 'chest armor') mapped = 'chest';
+    if (mapped === 'left ring' || mapped === 'right ring') mapped = 'ring';
+    if (mapped.startsWith('weapon') || mapped === 'ranged weapon') mapped = 'mainhand';
+
+    const classData = window.D4_DATABASE?.classData?.[currentClassVal]?.equipment?.[mapped] || {};
+    const regularAffixes = classData.modifiers || [];
+    const temperAffixes = classData.tempers || [];`;
+
+// Replace logic in renderModifierTab
+const oldModLogic = `    function getDbItems(sName) {
+      const keys = Object.keys(window.D4_DATABASE?.itemDatabase || {});
+      const match = keys.find(k => k.toLowerCase() === sName.toLowerCase());
+      return match ? window.D4_DATABASE.itemDatabase[match] : [];
+    }
+    
+    const baseItemDef = getDbItems(slotName).find(i => i.name === itemObj.name) || {};
+
+    function isAffixAllowedForSlot(affix, slotName) {
+      if (affix.targetSpeeds && baseItemDef.weaponSpeed !== undefined) {
+        if (!affix.targetSpeeds.includes(baseItemDef.weaponSpeed)) return false;
+      }
+      const affixSlots = affix.slots;
+      if (!affixSlots || affixSlots.length === 0) return true; // generic
+      let mapped = slotName.toLowerCase();
+      if (mapped === 'left ring' || mapped === 'right ring') mapped = 'ring';
+      if (mapped === 'chest armor') mapped = 'chest';
+      if (mapped === 'mainhand' || mapped === 'offhand' || mapped === 'weapon1' || mapped === 'weapon2' || mapped === 'ranged weapon') {
+         if (mapped.startsWith('weapon') || mapped === 'ranged weapon') mapped = 'mainhand';
+      }
+      return affixSlots.some(s => {
+        const ms = s.toLowerCase();
+        if (mapped === 'ring' && (ms === 'ring1' || ms === 'ring2')) return true;
+        if (mapped === 'mainhand' && (ms === 'mainhand' || ms === '2h-slashing' || ms === '2h-bludgeoning' || ms === '2h-ranged')) return true; 
+        if (mapped === 'offhand' && (ms === 'offhand' || ms === 'shield')) return true;
+        return ms === mapped;
+      });
+    }
+
+    let items = (window.D4_DATABASE?.affixes || []).filter(a => {
+      if (classIdx !== undefined && a.classes && a.classes[classIdx] !== 1) return false;
+      if (type === 'temper' && !a.tempering) return false;
+      if (type === 'affix' && a.tempering) return false;
+      if (type === 'transfigure') {
+        if (a.tempering) return false;
+      }
+      if (!isAffixAllowedForSlot(a, slotName)) return false;
+      if (activeCategory !== 'All Modifiers' && getAffixCategory(a.name) !== activeCategory) return false;
+      if (query && !a.name.toLowerCase().includes(query.toLowerCase())) return false;
+      return true;
+    });`;
+
+const newModLogic = `    // New Hierarchical Lookup
+    let mapped = slotName.toLowerCase();
+    if (mapped === 'chest armor') mapped = 'chest';
+    if (mapped === 'left ring' || mapped === 'right ring') mapped = 'ring';
+    if (mapped.startsWith('weapon') || mapped === 'ranged weapon') mapped = 'mainhand';
+
+    const classData = window.D4_DATABASE?.classData?.[currentClassVal]?.equipment?.[mapped] || {};
+    let dbItems = [];
+    if (type === 'affix') dbItems = classData.modifiers || [];
+    else if (type === 'temper') dbItems = classData.tempers || [];
+    else if (type === 'transfigure') dbItems = classData.transfigures || [];
+
+    let items = dbItems.filter(a => {
+      if (activeCategory !== 'All Modifiers' && getAffixCategory(a.name) !== activeCategory) return false;
+      if (query && !a.name.toLowerCase().includes(query.toLowerCase())) return false;
+      return true;
+    });`;
+
+if (code.includes(oldEditLogic) && code.includes(oldModLogic)) {
+    code = code.replace(oldEditLogic, newEditLogic);
+    code = code.replace(oldModLogic, newModLogic);
+    fs.writeFileSync('app.js', code);
+    console.log('Successfully patched app.js UI logic!');
 } else {
-  console.log('renderSkills already exists in app.js');
+    console.log('Failed to match logic chunks in app.js');
+    if (!code.includes(oldEditLogic)) console.log('Missed oldEditLogic');
+    if (!code.includes(oldModLogic)) console.log('Missed oldModLogic');
 }

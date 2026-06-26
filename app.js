@@ -85,6 +85,12 @@
     btnImport: document.getElementById('btn-import'),
     importFile: document.getElementById('import-file'),
     loadMenu:  document.getElementById('load-menu'),
+    
+    newBuildModal: document.getElementById('new-build-modal'),
+    newBuildName:  document.getElementById('new-build-name'),
+    newBuildClass: document.getElementById('new-build-class'),
+    btnCancelNewBuild: document.getElementById('btn-cancel-new-build'),
+    btnCreateNewBuild: document.getElementById('btn-create-new-build'),
 
     compareGrid:  document.getElementById('compare-grid'),
     compareEmpty: document.getElementById('compare-empty'),
@@ -108,10 +114,10 @@
   let currentBuild = createDefaultBuild();
 
   // ---- Build Model ----
-  function createDefaultBuild() {
+  function createDefaultBuild(name = 'New Build', className = 'Barbarian') {
     return {
-      name: 'New Build',
-      class: 'Barbarian',
+      name: name,
+      class: className,
       weaponDamage: 0,
       skillDamage: 0,
       strength: 0,
@@ -777,7 +783,7 @@
     if (slotName === 'Bludgeoning Weapon' || slotName === 'Slicing Weapon') mapped = 'Mainhand'; // Map to weapon pool
     
     // Check class filter
-    const currentClassVal = document.getElementById('class-select')?.value;
+    const currentClassVal = document.getElementById('class-select')?.textContent;
     const d4Idx = currentClassVal ? D4_CLASS_MAP[currentClassVal] : undefined;
     
     const items = window.D4_DATABASE.itemDatabase[mapped] || [];
@@ -843,7 +849,7 @@
   }
 
   function getAdditionalBonusValues() {
-    const selectedClass = dom.classSelect ? dom.classSelect.value : 'Barbarian';
+    const selectedClass = dom.classSelect ? dom.classSelect.textContent : 'Barbarian';
     const classData = CLASS_PARAGON_DATA[selectedClass];
     const vals = [];
     for (let i = 1; i <= 5; i++) {
@@ -1011,7 +1017,7 @@
   }
 
   function getLegendaryBonusValues() {
-    const selectedClass = dom.classSelect ? dom.classSelect.value : 'Barbarian';
+    const selectedClass = dom.classSelect ? dom.classSelect.textContent : 'Barbarian';
     const classData = CLASS_PARAGON_DATA[selectedClass];
     const vals = [];
     for (let i = 1; i <= 5; i++) {
@@ -1671,84 +1677,119 @@
 
   function calculate() {
     if (isLoading) return;
-   try {
-    // Auto-calculate base weapon damage and armor from equipped items
-    const baseEquipped = getEquipmentValues();
-    let totalArmor = 0;
-    let totalWeaponDmg = 0;
-    let totalWeaponAps = 0;
-
-    if (baseEquipped) {
-      let mainhandDmg = 0;
-      let offhandDmg = 0;
-      let hasShield = false;
-
-      Object.keys(baseEquipped).forEach(slotName => {
-        const item = baseEquipped[slotName];
-        if (!item || !item.name) return;
-        const sName = slotName.toLowerCase();
-        const baseItem = (window.D4_DATABASE.itemDatabase[slotName] || []).find(i => i.name === item.name) || {};
-        
-        if (baseItem.armor) totalArmor += baseItem.armor;
-        
-        if (sName === 'mainhand' && baseItem.damageRange) {
-            const match = baseItem.damageRange.match(/([\d,]+)\s*-\s*([\d,]+)/);
-            if (match) {
-                const min = parseFloat(match[1].replace(/,/g, ''));
-                const max = parseFloat(match[2].replace(/,/g, ''));
-                mainhandDmg = (min + max) / 2;
-            }
-            if (baseItem.weaponSpeed && typeof baseItem.weaponSpeed === 'number') {
-                totalWeaponAps = baseItem.weaponSpeed;
-            }
+    try {
+      // Auto-calculate base weapon damage and armor from equipped items
+      const baseEquipped = getEquipmentValues();
+      let totalArmor = 0;
+      let totalWeaponDmg = 0;
+      let totalWeaponAps = 0;
+      let totalAllRes = 0;
+  
+      if (baseEquipped) {
+        let mainhandDmg = 0;
+        let offhandDmg = 0;
+        let hasShield = false;
+  
+        Object.keys(baseEquipped).forEach(slotName => {
+          const item = baseEquipped[slotName];
+          if (!item || !item.name) return;
+          const sName = slotName.toLowerCase();
+          const baseItem = (window.D4_DATABASE.itemDatabase[slotName] || []).find(i => i.name === item.name) || {};
+          
+          const qMult = 1 + ((item.quality || 0) * 0.01);
+            
+          if (baseItem.armor) totalArmor += (baseItem.armor * qMult);
+          if (baseItem.resistance) totalAllRes += (baseItem.resistance * qMult);
+          
+          if (sName === 'mainhand' && baseItem.damageRange) {
+              const match = baseItem.damageRange.match(/([\d,]+)\s*-\s*([\d,]+)/);
+              if (match) {
+                  const min = parseFloat(match[1].replace(/,/g, ''));
+                  const max = parseFloat(match[2].replace(/,/g, ''));
+                  mainhandDmg = ((min + max) / 2) * qMult;
+              }
+              if (baseItem.weaponSpeed && typeof baseItem.weaponSpeed === 'number') {
+                  totalWeaponAps = baseItem.weaponSpeed;
+              }
+          }
+  
+          if (sName === 'offhand') {
+              if (baseItem.weaponType === 'Shield') {
+                  hasShield = true;
+              } else if (baseItem.damageRange) {
+                  const match = baseItem.damageRange.match(/([\d,]+)\s*-\s*([\d,]+)/);
+                  if (match) {
+                      const min = parseFloat(match[1].replace(/,/g, ''));
+                      const max = parseFloat(match[2].replace(/,/g, ''));
+                      offhandDmg = ((min + max) / 2) * qMult;
+                  }
+              }
+          }
+        });
+  
+        if (hasShield) {
+            totalWeaponDmg = mainhandDmg * 2;
+        } else {
+            totalWeaponDmg = mainhandDmg + offhandDmg;
         }
-
-        if (sName === 'offhand') {
-            if (baseItem.weaponType === 'Shield') {
-                hasShield = true;
-            } else if (baseItem.damageRange) {
-                const match = baseItem.damageRange.match(/([\d,]+)\s*-\s*([\d,]+)/);
-                if (match) {
-                    const min = parseFloat(match[1].replace(/,/g, ''));
-                    const max = parseFloat(match[2].replace(/,/g, ''));
-                    offhandDmg = (min + max) / 2;
-                }
-            }
-        }
-      });
-
-      if (hasShield) {
-          totalWeaponDmg = mainhandDmg * 2;
-      } else {
-          totalWeaponDmg = mainhandDmg + offhandDmg;
       }
-    }
     
     // Update UI and lock inputs if gear is equipped
     if (totalWeaponDmg > 0) {
+      if (dom.weaponDamage) {
         dom.weaponDamage.value = totalWeaponDmg;
         dom.weaponDamage.disabled = true;
         dom.weaponDamage.title = "Auto-calculated from equipped weapon";
+      }
     } else {
+      if (dom.weaponDamage) {
         dom.weaponDamage.disabled = false;
         dom.weaponDamage.title = "";
+      }
     }
     
     if (totalWeaponAps > 0) {
+      if (dom.weaponSpeed) {
         dom.weaponSpeed.value = totalWeaponAps;
         dom.weaponSpeed.disabled = true;
         dom.weaponSpeed.title = "Auto-calculated from equipped weapon";
+      }
     } else {
-        if (dom.weaponSpeed) { dom.weaponSpeed.disabled = false; dom.weaponSpeed.title = ""; }
+      if (dom.weaponSpeed) {
+        dom.weaponSpeed.disabled = false;
+        dom.weaponSpeed.title = "";
+      }
     }
     
     if (totalArmor > 0) {
+      if (dom.armor) {
         dom.armor.value = totalArmor;
         dom.armor.disabled = true;
         dom.armor.title = "Auto-calculated from equipped armor";
+      }
     } else {
+      if (dom.armor) {
         dom.armor.disabled = false;
         dom.armor.title = "";
+      }
+    }
+
+    const resFields = [dom.fireRes, dom.lightningRes, dom.coldRes, dom.poisonRes, dom.shadowRes];
+    if (totalAllRes > 0) {
+      resFields.forEach(el => {
+          if (el) {
+              el.value = totalAllRes;
+              el.disabled = true;
+              el.title = "Auto-calculated from equipped jewelry";
+          }
+      });
+    } else {
+      resFields.forEach(el => {
+          if (el) {
+              el.disabled = false;
+              el.title = "";
+          }
+      });
     }
 
     const weaponDmg = parseFloat(dom.weaponDamage.value) || 0;
@@ -1764,7 +1805,7 @@
     const baseDamage = (skillPct / 100) * weaponDmg;
 
     // Get Class main stat multiplier
-    const selectedClass = dom.classSelect ? dom.classSelect.value : 'Barbarian';
+    const selectedClass = dom.classSelect ? dom.classSelect.textContent : 'Barbarian';
     const mainStatInfo = getClassMainStat(selectedClass);
     
     let mainStatValue = 0;
@@ -1946,7 +1987,7 @@
     currentBuild.ccDuration = dom.ccDuration ? parseFloat(dom.ccDuration.value) || 0 : 0;
     if (dom.expBonus) currentBuild.expBonus = parseFloat(dom.expBonus.value) || 0;
     if (dom.damageReduction) currentBuild.damageReduction = parseFloat(dom.damageReduction.value) || 0;
-    currentBuild.name = dom.buildName.value || 'New Build';
+    currentBuild.name = dom.buildName.textContent || 'New Build';
     currentBuild.class = selectedClass;
     currentBuild.equipment = getEquipmentValues();
     
@@ -1989,8 +2030,17 @@
     ];
 
     // Auto-save
-    localStorage.setItem(AUTOSAVE_KEY, JSON.stringify(currentBuild));
-   } catch(e) { console.error('calculate() error:', e); }
+    try {
+      localStorage.setItem(AUTOSAVE_KEY, JSON.stringify(currentBuild));
+    } catch(e) {
+      if (e.name === 'QuotaExceededError') {
+        console.error('Out of storage quota for autosave');
+      }
+    }
+   } catch(e) { 
+     console.error('calculate() error:', e); 
+     alert('Critical error during calculation: ' + e.message);
+   }
   }
 
   function getAdditiveValues() {
@@ -2120,8 +2170,8 @@
       const b = JSON.parse(JSON.stringify(build));
     currentBuild = b;
 
-    dom.buildName.value = b.name || 'New Build';
-    if (dom.classSelect) dom.classSelect.value = b.class || 'Barbarian';
+    dom.buildName.textContent = b.name || 'New Build';
+    if (dom.classSelect) dom.classSelect.textContent = b.class || 'Barbarian';
     dom.weaponDamage.value = b.weaponDamage || 0;
     dom.skillDamage.value = b.skillDamage || 0;
 
@@ -2171,7 +2221,7 @@
         return v;
     });
     renderLegendaryBonusInputs(b.class || 'Barbarian', legBonuses);
-    renderEquipment(dom.classSelect ? dom.classSelect.value : 'Barbarian', b.equipment || {});
+    renderEquipment(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', b.equipment || {});
     renderSkills();
 
     // Clear existing rows
@@ -2193,8 +2243,11 @@
     calculate();
   }
 
-  function newBuild() {
-    loadBuildToUI(createDefaultBuild());
+  function newBuild(name = 'New Build', className = 'Barbarian') {
+    try { localStorage.removeItem(AUTOSAVE_KEY); } catch(e) {}
+    loadBuildToUI(createDefaultBuild(name, className));
+    const equipmentBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('data-target') === 'tab-equipment');
+    if (equipmentBtn) equipmentBtn.click();
   }
 
   // ---- Save / Load ----
@@ -2234,6 +2287,12 @@
     const builds = getSavedBuilds().filter(b => b.name !== name);
     setSavedBuilds(builds);
     renderLoadMenu();
+    
+    // If the user deleted the build they currently have loaded, 
+    // wipe the active session so it doesn't resurrect from autosave on refresh
+    if (currentBuild && currentBuild.name === name) {
+      newBuild();
+    }
   }
 
   function renderLoadMenu() {
@@ -2477,7 +2536,7 @@
   // ---- Event Binding ----
   function init() {
     // Base stat inputs → recalculate
-    [dom.weaponDamage, dom.skillDamage, dom.strength, dom.intelligence, dom.willpower, dom.dexterity, dom.level, dom.toughness, dom.armor, dom.physRes, dom.fireRes, dom.lightningRes, dom.coldRes, dom.poisonRes, dom.shadowRes, dom.maxLife, dom.potionCapacity, dom.healingReceived, dom.lifePer5s, dom.summonArmor, dom.damageReductionAll, dom.barrierBonus, dom.dodgeChance, dom.maxEssence, dom.essenceRegen, dom.movementSpeed, dom.luckyHit, dom.ccDuration, dom.expBonus, dom.damageReduction, dom.aps, dom.weaponSpeed, dom.buildName].filter(Boolean).forEach(el => {
+    [dom.weaponDamage, dom.skillDamage, dom.strength, dom.intelligence, dom.willpower, dom.dexterity, dom.level, dom.toughness, dom.armor, dom.physRes, dom.fireRes, dom.lightningRes, dom.coldRes, dom.poisonRes, dom.shadowRes, dom.maxLife, dom.potionCapacity, dom.healingReceived, dom.lifePer5s, dom.summonArmor, dom.damageReductionAll, dom.barrierBonus, dom.dodgeChance, dom.maxEssence, dom.essenceRegen, dom.movementSpeed, dom.luckyHit, dom.ccDuration, dom.expBonus, dom.damageReduction, dom.aps, dom.weaponSpeed].filter(Boolean).forEach(el => {
       el.addEventListener('input', calculate);
       if (el.tagName === 'SELECT') {
         el.addEventListener('change', calculate);
@@ -2587,16 +2646,16 @@
     if (dom.classSelect) {
       dom.classSelect.addEventListener('change', (e) => {
         if (isLoading) return;
-        const selectedClass = dom.classSelect.value;
+        const selectedClass = dom.classSelect.textContent;
         if (currentBuild && currentBuild.class === selectedClass) return; // Prevent spurious resets
         
         const currentNodes = getNodeEls().map(el => el ? parseFloat(el.value) || 0 : 0);
-        renderNodeInputs(dom.classSelect.value, currentNodes);
+        renderNodeInputs(dom.classSelect.textContent, currentNodes);
         // When changing class, get the current state to pass through (it handles resets gracefully)
         const currentAddSave = [];
         const currentLegSave = [];
         const oldClassData = CLASS_PARAGON_DATA[currentBuild.class || 'Barbarian'];
-        const newClassData = CLASS_PARAGON_DATA[dom.classSelect.value];
+        const newClassData = CLASS_PARAGON_DATA[dom.classSelect.textContent];
         
         for (let i = 1; i <= 5; i++) {
           if (!newClassData) {
@@ -2610,14 +2669,14 @@
           }
         }
         
-        renderAdditionalBonusInputs(dom.classSelect.value, currentAddSave);
-        renderLegendaryBonusInputs(dom.classSelect.value, currentLegSave);
+        renderAdditionalBonusInputs(dom.classSelect.textContent, currentAddSave);
+        renderLegendaryBonusInputs(dom.classSelect.textContent, currentLegSave);
         
         // Auto clear equipment to prevent slot mismatches ONLY if triggered by a real user interaction
         if (e.isTrusted) {
           currentBuild.equipment = {};
         }
-        renderEquipment(dom.classSelect.value, currentBuild ? currentBuild.equipment : {});
+        renderEquipment(dom.classSelect.textContent, currentBuild ? currentBuild.equipment : {});
         calculate();
       });
     }
@@ -2654,10 +2713,38 @@
 
     // Build management
     dom.btnNew.addEventListener('click', () => {
-      if (confirm('Start a new build? Unsaved changes will be lost.')) {
-        newBuild();
+      if (dom.newBuildModal) {
+        dom.newBuildModal.style.display = 'flex';
+        dom.newBuildModal.classList.remove('hidden');
+        if (dom.newBuildName) dom.newBuildName.value = 'New Build';
+        if (dom.newBuildClass) dom.newBuildClass.value = 'Barbarian';
       }
     });
+
+    if (dom.btnCancelNewBuild) {
+      dom.btnCancelNewBuild.addEventListener('click', () => {
+        if (dom.newBuildModal) {
+          dom.newBuildModal.style.display = 'none';
+          dom.newBuildModal.classList.add('hidden');
+        }
+      });
+    }
+
+    if (dom.btnCreateNewBuild) {
+      dom.btnCreateNewBuild.addEventListener('click', () => {
+        const name = dom.newBuildName ? (dom.newBuildName.value.trim() || 'New Build') : 'New Build';
+        const className = dom.newBuildClass ? dom.newBuildClass.value : 'Barbarian';
+        
+        if (confirm('Start a new build? Unsaved changes will be lost.')) {
+          newBuild(name, className);
+          if (dom.newBuildModal) {
+            dom.newBuildModal.style.display = 'none';
+            dom.newBuildModal.classList.add('hidden');
+          }
+          saveBuild();
+        }
+      });
+    }
 
     dom.btnSave.addEventListener('click', saveBuild);
 
@@ -2777,7 +2864,7 @@
         
         if (profile.class === 4) {
           currentBuild.class = 'Necromancer';
-          dom.classSelect.value = 'Necromancer';
+          dom.classSelect.textContent = 'Necromancer';
           dom.classSelect.dispatchEvent(new Event('change'));
         }
         
@@ -2892,23 +2979,21 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   return row; 
 }
   function start() {
-    init(); // Setup listeners
+    init();
+    
     try {
       const autosave = JSON.parse(localStorage.getItem(AUTOSAVE_KEY));
       if (autosave && typeof autosave === 'object') {
         loadBuildToUI(autosave);
         return; // We loaded successfully, skip default render
       }
-    } catch(e) {
-      console.error("Autosave load failed:", e);
-      alert("Error loading save data: " + e.message + "\nIf this persists, please use the Reset Data button.");
-    }
+    } catch(e) {}
     
     // If we didn't load a build, run the default render
-    renderNodeInputs(dom.classSelect ? dom.classSelect.value : 'Barbarian', [0,0,0,0]);
-    renderAdditionalBonusInputs(dom.classSelect ? dom.classSelect.value : 'Barbarian', [0,0,0,0,0]);
-    renderLegendaryBonusInputs(dom.classSelect ? dom.classSelect.value : 'Barbarian', [0,0,0,0,0]);
-    renderEquipment(dom.classSelect ? dom.classSelect.value : 'Barbarian', {});
+    renderNodeInputs(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', [0,0,0,0]);
+    renderAdditionalBonusInputs(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', [0,0,0,0,0]);
+    renderLegendaryBonusInputs(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', [0,0,0,0,0]);
+    renderEquipment(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', {});
   }
 
   let currentModalSlot = null;
@@ -2980,7 +3065,7 @@ rarity = foundItem.rarity;
     }
     
     // Get current class from DOM
-    const currentClassVal = document.getElementById('class-select').value;
+    const currentClassVal = document.getElementById('class-select').textContent;
     const classIdx = D4_CLASS_MAP[currentClassVal];
     let mapped = slotName.toLowerCase();
     if (mapped === 'left ring' || mapped === 'right ring') mapped = 'ring';
@@ -3032,7 +3117,8 @@ rarity = foundItem.rarity;
           const vals = itemObj.aspectValues || [];
           let valIndex = 0;
           aspectDescHtml = aspectObj.desc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
-            const v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
+            let v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
+            if (typeof v === 'string') v = v.replace(/,/g, '');
             let placeholder = min && max ? `${min}-${max}` : 'value';
             let minAttr = min ? ` min="${min}"` : '';
             let maxAttr = ''; // Allow overriding max for higher item power tiers
@@ -3065,7 +3151,8 @@ rarity = foundItem.rarity;
         const vals = itemObj.aspectValues || [];
         let valIndex = 0;
         uniqueDescHtml = uniqueObj.desc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
-          const v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
+          let v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
+          if (typeof v === 'string') v = v.replace(/,/g, '');
           let placeholder = min && max ? `${min}-${max}` : 'value';
           let minAttr = min ? ` min="${min}"` : '';
           let stepAttr = (min && min.includes('.')) || (max && max.includes('.')) ? ' step="0.1"' : ' step="1"';
@@ -3120,7 +3207,7 @@ rarity = foundItem.rarity;
       }
 
       // Read from active class hierarchy
-      const currentClassVal = document.getElementById('class-select').value;
+      const currentClassVal = document.getElementById('class-select').textContent;
       const classData = window.D4_DATABASE?.classData?.[currentClassVal]?.equipment?.[mappedSlot] || {};
       
       let dbItems = [];
@@ -3145,13 +3232,27 @@ rarity = foundItem.rarity;
       
       let valIndex = 0;
       let descHtml = obj.name.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
-        const v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
+        let v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
+        if (typeof v === 'string') v = v.replace(/,/g, '');
+        
+        let displayV = v;
+        const qMult = 1 + ((itemObj.quality || 0) * 0.01);
+        if (typeof displayV === 'number' || (typeof displayV === 'string' && !isNaN(parseFloat(displayV)))) {
+           displayV = (parseFloat(displayV) * qMult).toFixed(1).replace(/\.0$/, '');
+        }
+
         let placeholder = min && max ? `${min}-${max}` : 'value';
-        let minAttr = min ? ` min="${min}"` : '';
+        
+        let minAttr = '';
+        if (min) {
+            let minScaled = (parseFloat(min.replace(/,/g, '')) * qMult).toFixed(1).replace(/\.0$/, '');
+            minAttr = ` min="${minScaled}"`;
+        }
         let maxAttr = ''; // Allow overriding max for higher item power tiers
+        
         let stepAttr = (min && min.includes('.')) || (max && max.includes('.')) ? ' step="0.1"' : ' step="1"';
         if (!min && !max) stepAttr = ' step="any"';
-        const inputHtml = `<input type="number" class="affix-val-input" data-type="${type}" data-group="${idx}" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #fff; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
+        const inputHtml = `<input type="number" class="affix-val-input" data-type="${type}" data-group="${idx}" data-idx="${valIndex}" value="${displayV}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #fff; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
         valIndex++;
         return inputHtml;
       });
@@ -3171,14 +3272,32 @@ rarity = foundItem.rarity;
       ${affixesDatalist}
       ${temperDatalist}
       ${(() => {
-        const baseItem = window.D4_DATABASE.itemDatabase[slotName]?.find(i => i.name === itemObj.name) || {};
+        let dbSlotName = slotName;
+        if (slotName === 'Left Ring' || slotName === 'Right Ring') dbSlotName = 'Ring';
+        const baseItem = window.D4_DATABASE.itemDatabase[dbSlotName]?.find(i => i.name === itemObj.name) || {};
         let extraWeaponInfo = '';
+        const qMult = 1 + ((itemObj.quality || 0) * 0.01);
+        
         if (baseItem.armor) {
-          extraWeaponInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${baseItem.armor.toLocaleString()} Armor</div>`;
+          const scaledArmor = Math.floor(baseItem.armor * qMult);
+          extraWeaponInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${scaledArmor.toLocaleString()} Armor</div>`;
+        }
+        if (baseItem.resistance) {
+          const scaledRes = Math.floor(baseItem.resistance * qMult);
+          extraWeaponInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${scaledRes.toLocaleString()} Resistance to All Elements</div>`;
         }
         if (baseItem.weaponType) {
           extraWeaponInfo += `<div style="font-size:13px; color:#ccc; margin-top: 4px;">Type: <span style="color:#fff;">${baseItem.weaponType}</span></div>`;
-          if (baseItem.damageRange) extraWeaponInfo += `<div style="font-size:13px; color:#ccc;">Damage: <span style="color:#fff;">${baseItem.damageRange}</span></div>`;
+          if (baseItem.damageRange) {
+             let dmgStr = baseItem.damageRange;
+             const match = dmgStr.match(/([\d,]+)\s*-\s*([\d,]+)/);
+             if (match) {
+                 const min = Math.floor(parseFloat(match[1].replace(/,/g, '')) * qMult);
+                 const max = Math.floor(parseFloat(match[2].replace(/,/g, '')) * qMult);
+                 dmgStr = `${min.toLocaleString()} - ${max.toLocaleString()}`;
+             }
+             extraWeaponInfo += `<div style="font-size:13px; color:#ccc;">Damage: <span style="color:#fff;">${dmgStr}</span></div>`;
+          }
           if (baseItem.weaponSpeed) extraWeaponInfo += `<div style="font-size:13px; color:#ccc;">Speed: <span style="color:#fff;">${baseItem.weaponSpeed}</span></div>`;
         }
         return `
@@ -3415,47 +3534,50 @@ rarity = foundItem.rarity;
         calculate();
         
         // Re-render paperdoll for socket updates
-        renderEquipment(document.getElementById('class-select').value, getSavedEquipment());
+        renderEquipment(document.getElementById('class-select').textContent, getEquipmentValues());
       });
     });
 
-    document.querySelectorAll('.affix-val-input').forEach(inp => {
-      inp.addEventListener('change', (e) => {
-        const target = e.target;
-        const type = target.dataset.type; // 'affix', 'temper' or 'transfigure'
-        const groupIdx = parseInt(target.dataset.group);
-        const idx = parseInt(target.dataset.idx);
-        let val = parseFloat(target.value) || 0;
-        
-        if (target.hasAttribute('min')) {
-          const minVal = parseFloat(target.getAttribute('min'));
-          if (val < minVal) val = minVal;
-        }
-        if (target.hasAttribute('max')) {
-          const maxVal = parseFloat(target.getAttribute('max'));
-          if (val > maxVal) val = maxVal;
-        }
-        
-        target.value = val;
-        
-        if (type === 'affix') {
-          if (!itemObj.affixValues) itemObj.affixValues = {};
-          if (!itemObj.affixValues[groupIdx]) itemObj.affixValues[groupIdx] = [];
-          itemObj.affixValues[groupIdx][idx] = val;
-        } else if (type === 'temper') {
-          if (!itemObj.temperValues) itemObj.temperValues = {};
-          if (!itemObj.temperValues[groupIdx]) itemObj.temperValues[groupIdx] = [];
-          itemObj.temperValues[groupIdx][idx] = val;
-        } else if (type === 'transfigure') {
-          if (!itemObj.transfigureValues) itemObj.transfigureValues = {};
-          if (!itemObj.transfigureValues[groupIdx]) itemObj.transfigureValues[groupIdx] = [];
-          itemObj.transfigureValues[groupIdx][idx] = val;
-        }
-        
-        box.dataset.value = JSON.stringify(itemObj);
-        calculate();
+      document.querySelectorAll('.affix-val-input').forEach(inp => {
+        inp.addEventListener('change', (e) => {
+          const target = e.target;
+          const type = target.dataset.type; // 'affix', 'temper' or 'transfigure'
+          const groupIdx = parseInt(target.dataset.group);
+          const idx = parseInt(target.dataset.idx);
+          let val = parseFloat(target.value) || 0;
+          
+          if (target.hasAttribute('min')) {
+            const minVal = parseFloat(target.getAttribute('min'));
+            if (val < minVal) val = minVal;
+          }
+          if (target.hasAttribute('max')) {
+            const maxVal = parseFloat(target.getAttribute('max'));
+            if (val > maxVal) val = maxVal;
+          }
+          
+          target.value = val;
+          
+          const qMult = 1 + ((itemObj.quality || 0) * 0.01);
+          const baseVal = Number((val / qMult).toFixed(2));
+          
+          if (type === 'affix') {
+            if (!itemObj.affixValues) itemObj.affixValues = {};
+            if (!itemObj.affixValues[groupIdx]) itemObj.affixValues[groupIdx] = [];
+            itemObj.affixValues[groupIdx][idx] = baseVal;
+          } else if (type === 'temper') {
+            if (!itemObj.temperValues) itemObj.temperValues = {};
+            if (!itemObj.temperValues[groupIdx]) itemObj.temperValues[groupIdx] = [];
+            itemObj.temperValues[groupIdx][idx] = baseVal;
+          } else if (type === 'transfigure') {
+            if (!itemObj.transfigureValues) itemObj.transfigureValues = {};
+            if (!itemObj.transfigureValues[groupIdx]) itemObj.transfigureValues[groupIdx] = [];
+            itemObj.transfigureValues[groupIdx][idx] = baseVal;
+          }
+          
+          box.dataset.value = JSON.stringify(itemObj);
+          calculate();
+        });
       });
-    });
   }
 
   function openItemModal(slotName) {
@@ -3556,23 +3678,57 @@ rarity = foundItem.rarity;
       if (itemName) {
         const itemObj = { name: itemName, power: 900, quality: 0 };
         box.dataset.value = JSON.stringify(itemObj);
+        
+        let rarity = 'rare';
+        const dbItems = getDbItems(currentModalSlot);
+        const foundItem = dbItems.find(i => i.name === itemName);
+        if (foundItem) rarity = foundItem.rarity;
+        
         if (valDiv) {
           valDiv.textContent = itemName;
-          
-          let rarity = 'rare';
-          const dbItems = getDbItems(currentModalSlot);
-          const foundItem = dbItems.find(i => i.name === itemName);
-          if (foundItem) rarity = foundItem.rarity;
-          
           valDiv.className = `paperdoll-slot-value rarity-${rarity}`;
         }
+        
+        // QoL: Two-Handed logic
+        if (foundItem && foundItem.weaponType && foundItem.weaponType.toLowerCase().includes('two-handed')) {
+            if (currentModalSlot === 'Mainhand') {
+                const offhandBox = document.querySelector(`.equipment-slot-box[data-slot="Offhand"]`);
+                if (offhandBox) {
+                    delete offhandBox.dataset.value;
+                    const offValDiv = offhandBox.querySelector('.paperdoll-slot-value');
+                    if (offValDiv) {
+                        offValDiv.textContent = 'Empty';
+                        offValDiv.className = 'paperdoll-slot-value empty';
+                    }
+                }
+            }
+        }
+        if (currentModalSlot === 'Offhand') {
+           const mainhandBox = document.querySelector(`.equipment-slot-box[data-slot="Mainhand"]`);
+           if (mainhandBox && mainhandBox.dataset.value) {
+              try {
+                  const mhVal = JSON.parse(mainhandBox.dataset.value);
+                  const mhDbItems = getDbItems('Mainhand');
+                  const mhFoundItem = mhDbItems.find(i => i.name === mhVal.name);
+                  if (mhFoundItem && mhFoundItem.weaponType && mhFoundItem.weaponType.toLowerCase().includes('two-handed')) {
+                      delete mainhandBox.dataset.value;
+                      const mhValDiv = mainhandBox.querySelector('.paperdoll-slot-value');
+                      if (mhValDiv) {
+                          mhValDiv.textContent = 'Empty';
+                          mhValDiv.className = 'paperdoll-slot-value empty';
+                      }
+                  }
+              } catch(e) {}
+           }
+        }
+
         renderEditTab(currentModalSlot);
         switchModalTab('edit');
       } else {
         delete box.dataset.value;
         if (valDiv) {
-          valDiv.textContent = '';
-          valDiv.className = 'paperdoll-slot-value';
+          valDiv.textContent = 'Empty';
+          valDiv.className = 'paperdoll-slot-value empty';
         }
         renderEditTab(currentModalSlot);
         switchModalTab('select');
@@ -3615,7 +3771,7 @@ rarity = foundItem.rarity;
     list.innerHTML = '';
     
     // Get current class
-    const currentClassVal = document.getElementById('class-select').value;
+    const currentClassVal = document.getElementById('class-select').textContent;
     const classIdx = D4_CLASS_MAP[currentClassVal];
 
     // Determine allowed aspect categories based on slot
@@ -3722,7 +3878,7 @@ rarity = foundItem.rarity;
         calculate();
         
         // Re-render paperdoll for socket updates
-        renderEquipment(document.getElementById('class-select').value, getSavedEquipment());
+        renderEquipment(document.getElementById('class-select').textContent, getEquipmentValues());
         openItemModal(currentModalSlot); // re-open to edit state
       } catch (e) {
         console.error("Error setting gem", e);
@@ -3817,7 +3973,7 @@ rarity = foundItem.rarity;
     if (!list) return;
     list.innerHTML = '';
     
-    const currentClassVal = document.getElementById('class-select').value;
+    const currentClassVal = document.getElementById('class-select').textContent;
     const classIdx = D4_CLASS_MAP[currentClassVal];
 
     const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);

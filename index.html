@@ -31,21 +31,12 @@
   <!-- Build Name -->
   <div class="build-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
     <div style="display: flex; align-items: center; gap: 8px;">
-      <label for="build-name" style="margin: 0;">Build Name</label>
-      <input type="text" id="build-name" class="build-name-input" value="New Build" placeholder="Enter build name...">
+      <span style="font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">Build Name:</span>
+      <span id="build-name" style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary);">New Build</span>
     </div>
     <div style="display: flex; align-items: center; gap: 8px;">
-      <label for="class-select" style="font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; margin-bottom: 0;">Class</label>
-      <select id="class-select" class="dropdown">
-        <option value="Sorcerer">Sorcerer</option>
-        <option value="Druid">Druid</option>
-        <option value="Barbarian">Barbarian</option>
-        <option value="Rogue">Rogue</option>
-        <option value="Necromancer">Necromancer</option>
-        <option value="Spiritborn">Spiritborn</option>
-        <option value="Paladin">Paladin</option>
-        <option value="Warlock">Warlock</option>
-      </select>
+      <span style="font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">Class:</span>
+      <span id="class-select" style="font-size: 1rem; color: var(--text-primary);">Barbarian</span>
     </div>
   </div>
 
@@ -444,6 +435,36 @@ Critical Strike Damage
       </div>
       <div class="item-modal-body" id="item-modal-edit-body" style="display: none;">
         <!-- Edit content injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <div id="new-build-modal" class="modal-overlay hidden" style="align-items: center; justify-content: center; z-index: 1000;">
+    <div class="modal-content" style="max-width: 400px; padding: 24px;">
+      <h2 style="margin-top: 0; color: var(--text-primary); font-size: 1.25rem;">Create New Build</h2>
+      
+      <div style="margin-bottom: 16px;">
+        <label for="new-build-name" style="display: block; margin-bottom: 8px; color: var(--text-secondary); font-size: 0.875rem;">Build Name</label>
+        <input type="text" id="new-build-name" class="d4-input" style="width: 100%; box-sizing: border-box;" value="New Build">
+      </div>
+      
+      <div style="margin-bottom: 24px;">
+        <label for="new-build-class" style="display: block; margin-bottom: 8px; color: var(--text-secondary); font-size: 0.875rem;">Class</label>
+        <select id="new-build-class" class="dropdown" style="width: 100%; box-sizing: border-box;">
+          <option value="Barbarian">Barbarian</option>
+          <option value="Necromancer">Necromancer</option>
+          <option value="Sorcerer">Sorcerer</option>
+          <option value="Rogue">Rogue</option>
+          <option value="Druid">Druid</option>
+          <option value="Paladin">Paladin</option>
+          <option value="Spiritborn">Spiritborn</option>
+          <option value="Warlock">Warlock</option>
+        </select>
+      </div>
+      
+      <div style="display: flex; justify-content: flex-end; gap: 12px;">
+        <button id="btn-cancel-new-build" class="tab-btn" style="background: transparent; border: 1px solid var(--border-color);">Cancel</button>
+        <button id="btn-create-new-build" class="btn btn-primary" style="padding: 8px 16px; font-weight: 600;">Create Build</button>
       </div>
     </div>
   </div>

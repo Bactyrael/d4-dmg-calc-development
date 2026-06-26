@@ -626,7 +626,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Biting Cold",
-      "desc": "Cold damage is increased by #% and makes enemies Vulnerable for # seconds.",
+      "desc": "Cold damage is increased by #% and makes enemies Vulnerable\u00a0for # seconds.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -1874,7 +1874,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Frozen Memories",
-      "desc": "Cold damage deals #% increased damage to Chilled enemies, this bonus is tripled against Frozen enemies.",
+      "desc": "Cold\u00a0damage deals #% increased damage to Chilled enemies, this bonus is tripled against Frozen enemies.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -2290,7 +2290,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Inevitable Fate",
-      "desc": "When an enemy falls below #% Life while afflicted with any of your damage over time effects, an explosion occurs every # seconds, dealing # damage for each Element they're afflicted by.",
+      "desc": "When an enemy falls below #% Life while afflicted with any of your damage over time effects, an explosion occurs every # seconds, dealing\u00a0# damage for each Element they're afflicted by.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -3522,7 +3522,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Shredding Blades",
-      "desc": "Conjuration damage makes enemies Vulnerable for # seconds. You deal #% increased damage to Vulnerable enemies.",
+      "desc": "Conjuration damage makes enemies Vulnerable for # seconds.\u00a0You deal #% increased damage to Vulnerable enemies.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -5666,7 +5666,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Crushing Aspect",
-      "desc": "While Fortified, you deal #% increased damage.",
+      "desc": "While Fortified,\u00a0you deal #% increased damage.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -8447,7 +8447,7 @@ window.D4_DATABASE = {
       "desc": "Lucky Hit: Poison or Cold Imbued Skills have up to a 35% chance to deploy a Poison Trap while it is equipped, depending on your equipped Poison Trap's element.Poison Trap gains the Infiltrator Variant for free and deals [75 - 90]%[x] increased damage."
     },
     {
-      "name": "Bane of Ahjad-Den",
+      "name": "Bane of\u00a0Ahjad-Den",
       "desc": "While channeling Whirlwind, you now periodically hurl out a Mighty Throw that deals [75.0 - 90.0]%[x] increased damage."
     },
     {
@@ -8473,10 +8473,6 @@ window.D4_DATABASE = {
     {
       "name": "Black River",
       "desc": "Corpse Explosion consumes up to 4 additional Corpses around the initial Corpse, gaining [120 - 160]%[x] damage and [42.0 - 50.0]% Size per additional Corpse consumed."
-    },
-    {
-      "name": "Blood Artisan's Cuirass",
-      "desc": "When you pick up [10 - 3] Blood Orbs, a free Bone Spirit is spawned, dealing bonus damage based on your current Life percent."
     },
     {
       "name": "Blood Moon Breeches",
@@ -8543,7 +8539,7 @@ window.D4_DATABASE = {
       "desc": "Your Core Skills deal [45 - 60]%[x] increased damage for 0 seconds when Consuming 3 Combo Points. Casting Basic Skills always generates 3 Combo Points."
     },
     {
-      "name": "Coop de Grâce",
+      "name": "Coop de Gr\u00e2ce",
       "desc": "Lucky Hit: Damage to Injured enemies has up to a [10 - 15]% chance to spawn a flock of explosive chickens."
     },
     {
@@ -8739,7 +8735,7 @@ window.D4_DATABASE = {
       "desc": "When you Shapeshift into either Werewolf or Werebear form, you gain Berserking for [6 - 8] seconds. Additionally, Berserking grants 1 stack of Ferocity every 1 second while active.Berserking's damage bonus is increased by 10%[+]."
     },
     {
-      "name": "Galvanic Azurite",
+      "name": "Galvanic\u00a0Azurite",
       "desc": "Cast Shock Skill damage leaves enemies Magnetized for 4 seconds, causing them to emit Crackling Energy and receive [40.0 - 60.0]%[x] increased Shock damage from you. Crackling Energy's damage Pulls Magnetized enemies together."
     },
     {
@@ -8931,7 +8927,7 @@ window.D4_DATABASE = {
       "desc": "Gain Earthen Bulwark's Earthen Shrapnel upgrade for free and the damage is increased by [150 - 200]%[x]."
     },
     {
-      "name": "Kilt of Blackwing",
+      "name": "Kilt of\u00a0Blackwing",
       "desc": "Ravens deal [80.0 - 100.0]%[x] increased damage and Shapeshifting into a different form or activating a Companion Skill Summons a Raven that attacks nearby enemies. Summoning a Raven has a chance to call forth an Unkindness for 10 seconds, increasing the number of Ravens Summoned to 3 for the duration."
     },
     {
@@ -9007,7 +9003,7 @@ window.D4_DATABASE = {
       "desc": "Lucky Hit: Dealing damage to an enemy affected by a Trap Skill has up to a 40% chance to: Reduce the active Cooldowns of your Trap Skills by 30% Increase your Trap Skill damage by [9.0 - 12.0]%[x] for 10 seconds, up to [45 - 60]%[x]"
     },
     {
-      "name": "Mjölnic Ryng",
+      "name": "Mj\u00f6lnic Ryng",
       "desc": "While Cataclysm is active, you gain unlimited Spirit and deal [30 - 40]%[x] increased damage."
     },
     {
@@ -9351,7 +9347,7 @@ window.D4_DATABASE = {
       "desc": "Casting an Aura Skill triggers a Consecration beneath you. You gain [80 - 100]% Aura Potency while standing in Consecration."
     },
     {
-      "name": "Sunstained War-Crozier",
+      "name": "Sunstained\u00a0War-Crozier",
       "desc": "Your base Focus Skills benefit from all their Upgrades, and they increase the damage of your Potency Skills by #% for # seconds, up to #%."
     },
     {
@@ -10436,7 +10432,8 @@ window.D4_DATABASE = {
     "Chest Armor": [
       {
         "name": "Legendary Chest",
-        "rarity": "legendary"
+        "rarity": "legendary",
+        "armor": 2805
       },
       {
         "name": "Ae'grom's Schism",
@@ -10450,21 +10447,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
-      },
-      {
-        "name": "Blood Artisan's Cuirass",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Bucrani's Will",
@@ -10478,7 +10462,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Fleshwrit Carapace",
@@ -10492,7 +10477,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Heart of Azgar",
@@ -10506,7 +10492,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Insatiable Fury",
@@ -10520,7 +10507,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Jacinth Shell",
@@ -10534,7 +10522,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Mad Wolf's Glee",
@@ -10548,7 +10537,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Mantle of Mountain's Fury",
@@ -10562,7 +10552,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Mantle of the Grey",
@@ -10576,7 +10567,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Mutilator Plate",
@@ -10590,7 +10582,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Rage of Harrogath",
@@ -10604,7 +10597,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Raiment of the Sea",
@@ -10618,7 +10612,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Razorplate",
@@ -10632,7 +10627,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Scoundrel's Leathers",
@@ -10646,7 +10642,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Shroud of False Death",
@@ -10660,7 +10657,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Shroud of Khanduras",
@@ -10674,7 +10672,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Soulbrand",
@@ -10688,7 +10687,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "The Relentless Heart",
@@ -10702,7 +10702,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Tyrael's Might",
@@ -10716,7 +10717,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 2805
       },
       {
         "name": "Vengeful Sinew",
@@ -10730,13 +10732,15 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2805
       }
     ],
     "Gloves": [
       {
         "name": "Legendary Gloves",
-        "rarity": "legendary"
+        "rarity": "legendary",
+        "armor": 801
       },
       {
         "name": "Bands of Ichorous Rose",
@@ -10750,10 +10754,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
-        "name": "Bane of Ahjad-Den",
+        "name": "Bane of\u00a0Ahjad-Den",
         "rarity": "unique",
         "classes": [
           0,
@@ -10764,7 +10769,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Bucrani's Grip",
@@ -10778,7 +10784,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Craze of the Dead God",
@@ -10792,7 +10799,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Cruor's Embrace",
@@ -10806,7 +10814,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Dark Howl",
@@ -10820,7 +10829,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Dawnfire",
@@ -10834,7 +10844,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Deathgrip",
@@ -10848,7 +10859,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Endurant Faith",
@@ -10862,7 +10874,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Fist of the Iron Rose",
@@ -10876,7 +10889,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Fists of Fate",
@@ -10890,7 +10904,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Frostburn",
@@ -10904,7 +10919,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Gauntlets of Sheol",
@@ -10918,7 +10934,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Gladiator's Triumph",
@@ -10932,7 +10949,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Gloves Unique Druid 98",
@@ -10946,7 +10964,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Gloves of the Illuminator",
@@ -10960,7 +10979,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Gohr's Devastating Grips",
@@ -10974,7 +10994,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Grasp of Shadow",
@@ -10988,7 +11009,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Gravewalker's Hand",
@@ -11002,7 +11024,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Hand of Apotheosis",
@@ -11016,7 +11039,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Hands of the Worldbreaker",
@@ -11030,7 +11054,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Hangman's Hand",
@@ -11044,7 +11069,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Hesha e Kesungi",
@@ -11058,7 +11084,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Howl from Below",
@@ -11072,7 +11099,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Levin Grasp",
@@ -11086,7 +11114,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Might of Qual-Kehk",
@@ -11100,7 +11129,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Paingorger's Gauntlets",
@@ -11114,7 +11144,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Pants Unique Druid 97",
@@ -11128,7 +11159,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Rimeblood",
@@ -11142,7 +11174,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Sea Lord's Fine Gloves",
@@ -11156,7 +11189,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "The Hand of Naz",
@@ -11170,7 +11204,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Thrice-Woven Nightmare",
@@ -11184,7 +11219,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Twin Strikes",
@@ -11198,7 +11234,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Wilted Potential",
@@ -11212,7 +11249,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Wyrdskin",
@@ -11226,13 +11264,15 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 801
       }
     ],
     "Pants": [
       {
         "name": "Legendary Pants",
-        "rarity": "legendary"
+        "rarity": "legendary",
+        "armor": 2004
       },
       {
         "name": "Arcadia",
@@ -11246,7 +11286,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Arreat's Bearing",
@@ -11260,7 +11301,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Axial Conduit",
@@ -11274,7 +11316,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Balazan's Maxtlatl",
@@ -11288,7 +11331,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Bindings of Attrition",
@@ -11302,7 +11346,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Blood Moon Breeches",
@@ -11316,7 +11361,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Chainscourged Mail",
@@ -11330,7 +11376,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Death's Pavane",
@@ -11344,7 +11391,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Eyes in the Dark",
@@ -11358,7 +11406,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Iceheart Brais",
@@ -11372,7 +11421,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Indira's Memory",
@@ -11386,7 +11436,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Kabraxis' Will",
@@ -11400,7 +11451,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Kessime's Legacy",
@@ -11414,10 +11466,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
-        "name": "Kilt of Blackwing",
+        "name": "Kilt of\u00a0Blackwing",
         "rarity": "unique",
         "classes": [
           0,
@@ -11428,7 +11481,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Morlu Fleshward",
@@ -11442,7 +11496,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Protection of the Prime",
@@ -11456,7 +11511,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Sashes of the Wretched",
@@ -11470,7 +11526,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Shrouded Gift",
@@ -11484,7 +11541,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Storm's Companion",
@@ -11498,7 +11556,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Tassets of the Dawning Sky",
@@ -11512,7 +11571,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Temerity",
@@ -11526,7 +11586,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 2004
       },
       {
         "name": "Tibault's Will",
@@ -11540,13 +11601,15 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 2004
       }
     ],
     "Boots": [
       {
         "name": "Legendary Boots",
-        "rarity": "legendary"
+        "rarity": "legendary",
+        "armor": 801
       },
       {
         "name": "100,000 Steps",
@@ -11560,7 +11623,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Assassin's Stride",
@@ -11574,7 +11638,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Beastfall Boots",
@@ -11588,7 +11653,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Blood Wake",
@@ -11602,7 +11668,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Bucrani's Tread",
@@ -11616,7 +11683,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Desperate March",
@@ -11630,7 +11698,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Flickerstep",
@@ -11644,7 +11713,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Footfalls of the Waning World",
@@ -11658,7 +11728,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Gift of Frost",
@@ -11672,7 +11743,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Greaves of the Empty Tomb",
@@ -11686,7 +11758,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Greenwalker's Oath",
@@ -11700,7 +11773,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Hellhound's Sabatons",
@@ -11714,7 +11788,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Hooves of the Mountain God",
@@ -11728,7 +11803,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Khamsin Steppewalkers",
@@ -11742,7 +11818,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "March of the Stalwart Soul",
@@ -11756,7 +11833,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Path of Trag'Oul",
@@ -11770,7 +11848,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Path of the Emissary",
@@ -11784,7 +11863,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Penitent Greaves",
@@ -11798,7 +11878,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Scorn of the Earth",
@@ -11812,7 +11893,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Wildheart Hunger",
@@ -11826,7 +11908,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "armor": 801
       },
       {
         "name": "Yen's Blessing",
@@ -11840,13 +11923,15 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "armor": 801
       }
     ],
     "Amulet": [
       {
         "name": "Legendary Amulet",
-        "rarity": "legendary"
+        "rarity": "legendary",
+        "resistance": 230
       },
       {
         "name": "Banished Lord's Talisman",
@@ -11860,7 +11945,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Battle Trance",
@@ -11874,7 +11960,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Blood-Mad Idol",
@@ -11888,7 +11975,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Dark Stalker's Medallion",
@@ -11902,7 +11990,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Deathspeaker's Pendant",
@@ -11916,7 +12005,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Dolmen Stone",
@@ -11930,7 +12020,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Ebonpiercer",
@@ -11944,7 +12035,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Echo of Kwatli",
@@ -11958,7 +12050,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Emberfury",
@@ -11972,7 +12065,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Emblem of Staalbreak",
@@ -11986,7 +12080,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Esadora's Overflowing Cameo",
@@ -12000,7 +12095,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Fractured Winterglass",
@@ -12014,7 +12110,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Judgment of Auriel",
@@ -12028,7 +12125,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Malefic Crescent",
@@ -12042,7 +12140,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Melted Heart of Selig",
@@ -12056,7 +12155,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Moloch's Beating Flame",
@@ -12070,7 +12170,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Night Terror",
@@ -12084,7 +12185,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Nomad's Longing Heart",
@@ -12098,7 +12200,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Ophidian Iris",
@@ -12112,7 +12215,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Protean Heart",
@@ -12126,7 +12230,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Red Blessing",
@@ -12140,7 +12245,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Sanctis of Kethamar",
@@ -12154,7 +12260,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Seed of Horazon",
@@ -12168,7 +12275,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Sunbird's Gorget",
@@ -12182,7 +12290,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "The Hemat Stone",
@@ -12196,7 +12305,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "The Open Eye of Gorgorra",
@@ -12210,7 +12320,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Unbroken Chain",
@@ -12224,7 +12335,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Widow's Web",
@@ -12238,7 +12350,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Will of Rathma",
@@ -12252,7 +12365,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       },
       {
         "name": "Word of Hakan",
@@ -12266,13 +12380,15 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 230
       }
     ],
     "Ring": [
       {
         "name": "Legendary Ring",
-        "rarity": "legendary"
+        "rarity": "legendary",
+        "resistance": 173
       },
       {
         "name": "Accord of the Wilds",
@@ -12286,7 +12402,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Airidah's Inexorable Will",
@@ -12300,7 +12417,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Argent Veil",
@@ -12314,7 +12432,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Band of First Breath",
@@ -12328,7 +12447,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Blue Rose",
@@ -12342,7 +12462,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Dirge of Airidah",
@@ -12356,7 +12477,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Drognan's Anguish",
@@ -12370,7 +12492,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Earthbreaker",
@@ -12384,7 +12507,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Fractured Runestone",
@@ -12398,7 +12522,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Fury of the Wilds",
@@ -12412,10 +12537,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
-        "name": "Galvanic Azurite",
+        "name": "Galvanic\u00a0Azurite",
         "rarity": "unique",
         "classes": [
           1,
@@ -12426,7 +12552,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Greenwalker's Signet",
@@ -12440,7 +12567,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Hecaton Chasm",
@@ -12454,7 +12582,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Hellbrand Signet",
@@ -12468,7 +12597,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Hunter's Zenith",
@@ -12482,7 +12612,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Lurid Pact",
@@ -12496,7 +12627,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Mark of the Old Wolf",
@@ -12510,7 +12642,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Might of the Ursine",
@@ -12524,10 +12657,11 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
-        "name": "Mjölnic Ryng",
+        "name": "Mj\u00f6lnic Ryng",
         "rarity": "unique",
         "classes": [
           0,
@@ -12538,7 +12672,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Molten Band",
@@ -12552,7 +12687,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Mother's Embrace",
@@ -12566,7 +12702,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Omen of Pain",
@@ -12580,7 +12717,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Pact of Bone",
@@ -12594,7 +12732,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Peacemonger's Signet",
@@ -12608,7 +12747,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Ring of Mendeln",
@@ -12622,7 +12762,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Ring of Red Furor",
@@ -12636,7 +12777,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Ring of Starless Skies",
@@ -12650,7 +12792,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Ring of Writhing Moon",
@@ -12664,7 +12807,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Ring of the Midday Hunt",
@@ -12678,7 +12822,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Ring of the Midnight Sun",
@@ -12692,7 +12837,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Ring of the Ravenous",
@@ -12706,7 +12852,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Ring of the Sacrilegious Soul",
@@ -12720,7 +12867,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Saboteur's Signet",
@@ -12734,7 +12882,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Scoundrel's Kiss",
@@ -12748,7 +12897,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Seal of the Ophanim",
@@ -12762,7 +12912,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Seal of the Second Trumpet",
@@ -12776,7 +12927,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Signet of Pelghain",
@@ -12790,7 +12942,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Sire of Sin",
@@ -12804,7 +12957,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Sliver of Hate",
@@ -12818,7 +12972,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Tal Rasha's Iridescent Loop",
@@ -12832,7 +12987,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "The Eightfold Idol",
@@ -12846,7 +13002,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "The Fecund Seal",
@@ -12860,7 +13017,8 @@ window.D4_DATABASE = {
           0,
           0,
           1
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Thorn Pulse",
@@ -12874,7 +13032,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Thundergod's Blessing",
@@ -12888,7 +13047,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Wendigo Brand",
@@ -12902,7 +13062,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Wound Drinker",
@@ -12916,7 +13077,8 @@ window.D4_DATABASE = {
           1,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Wreath of Auric Laurel",
@@ -12930,7 +13092,8 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "Writhing Band of Trickery",
@@ -12944,7 +13107,8 @@ window.D4_DATABASE = {
           0,
           0,
           0
-        ]
+        ],
+        "resistance": 173
       },
       {
         "name": "X'Fal's Corroded Signet",
@@ -12958,7 +13122,8 @@ window.D4_DATABASE = {
           1,
           1,
           1
-        ]
+        ],
+        "resistance": 173
       }
     ],
     "Mainhand": [
@@ -13323,7 +13488,7 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -13945,7 +14110,7 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -14585,7 +14750,7 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -15207,7 +15372,7 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -15537,7 +15702,7 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -16159,7 +16324,7 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -16489,7 +16654,7 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -17111,7 +17276,7 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -17441,7 +17606,7 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -18063,7 +18228,7 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -18393,7 +18558,7 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -19015,7 +19180,7 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -19345,7 +19510,7 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -19967,7 +20132,7 @@ window.D4_DATABASE = {
         ]
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
