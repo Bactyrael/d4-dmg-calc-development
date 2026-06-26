@@ -2308,6 +2308,27 @@
         dom.dexterity.title = "Auto-calculated from equipment and level";
     }
 
+    if (dom.critChance) {
+        dom.critChance.value = 5.0 + (compiledStats['Critical Strike Chance'] ? compiledStats['Critical Strike Chance'].final : 0);
+        dom.critChance.disabled = true;
+        dom.critChance.title = "Auto-calculated from equipment and stats";
+    }
+    if (dom.luckyHitChance) {
+        dom.luckyHitChance.value = compiledStats['Lucky Hit Chance'] ? compiledStats['Lucky Hit Chance'].final : 0;
+        dom.luckyHitChance.disabled = true;
+        dom.luckyHitChance.title = "Auto-calculated from equipment";
+    }
+    if (dom.attackSpeed) {
+        dom.attackSpeed.value = compiledStats['Attack Speed'] ? compiledStats['Attack Speed'].final : 0;
+        dom.attackSpeed.disabled = true;
+        dom.attackSpeed.title = "Auto-calculated from equipment";
+    }
+    if (dom.castSpeed) {
+        dom.castSpeed.value = compiledStats['Cast Speed'] ? compiledStats['Cast Speed'].final : 0;
+        dom.castSpeed.disabled = true;
+        dom.castSpeed.title = "Auto-calculated from equipment";
+    }
+
     const weaponDmg = parseFloat(dom.weaponDamage.value) || 0;
     const skillPct  = parseFloat(dom.skillDamage.value) || 0;
     const str       = parseFloat(dom.strength.value) || 0;
@@ -2332,17 +2353,14 @@
     let critStatValue = 0;
     const cls = selectedClass;
     
-    if (cls === 'Barbarian') { mainStatName = 'Strength'; mainStatValue = str; mainStatFactor = 0.0011; critStatValue = dex; }
-    else if (cls === 'Paladin') { mainStatName = 'Strength'; mainStatValue = str; mainStatFactor = 0.00125; critStatValue = intel; }
-    else if (cls === 'Druid') { mainStatName = 'Willpower'; mainStatValue = will; mainStatFactor = 0.00125; critStatValue = dex; }
-    else if (cls === 'Rogue') { mainStatName = 'Dexterity'; mainStatValue = dex; mainStatFactor = 0.0011; critStatValue = intel; }
-    else if (cls === 'Sorcerer' || cls === 'Necromancer') { mainStatName = 'Intelligence'; mainStatValue = intel; mainStatFactor = 0.00125; critStatValue = dex; }
-    else if (cls === 'Spiritborn') { mainStatName = 'Dexterity'; mainStatValue = dex; mainStatFactor = 0.00125; critStatValue = str; }
+    if (cls === 'Barbarian') { mainStatName = 'Strength'; mainStatValue = str; mainStatFactor = 0.0011; }
+    else if (cls === 'Paladin') { mainStatName = 'Strength'; mainStatValue = str; mainStatFactor = 0.00125; }
+    else if (cls === 'Druid') { mainStatName = 'Willpower'; mainStatValue = will; mainStatFactor = 0.00125; }
+    else if (cls === 'Rogue') { mainStatName = 'Dexterity'; mainStatValue = dex; mainStatFactor = 0.0011; }
+    else if (cls === 'Sorcerer' || cls === 'Necromancer') { mainStatName = 'Intelligence'; mainStatValue = intel; mainStatFactor = 0.00125; }
+    else if (cls === 'Spiritborn') { mainStatName = 'Dexterity'; mainStatValue = dex; mainStatFactor = 0.00125; }
     
     const mainStatMultiplier = 1 + (mainStatValue * mainStatFactor);
-    
-    const statCritBonus = (critStatValue * 0.0002);
-    const finalCrit = crit + statCritBonus;
 
     // Highlight main stat input group
     const inputGroups = {
@@ -2457,7 +2475,7 @@
 
     // Final single-hit damage (after 80% monster DR)
     const rawDamage = baseDamage * mainStatMultiplier * finalAdditiveSum * multProduct;
-    const critMultiplier = 1 + finalCrit;
+    const critMultiplier = 1 + crit;
     const speedMultiplier = 1 + atkSpd + castSpd;
     const singleHit = rawDamage * MONSTER_DR * critMultiplier;
     const totalDamage = singleHit * aps * speedMultiplier;
