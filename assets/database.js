@@ -23692,6 +23692,10 @@ window.D4_DATABASE = {
               "desc": "Intelligence"
             },
             {
+              "name": "+[2 - 3] to All Skills",
+              "desc": "All Skills"
+            },
+            {
               "name": "+[20.0 - 30.0]% Gem Strength in this Item",
               "desc": "Gem Strength"
             },
