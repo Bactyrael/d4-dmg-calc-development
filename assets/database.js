@@ -20256,75 +20256,176 @@ window.D4_DATABASE = {
               "shortName": "Physical Resistance"
             }
           ],
-          "tempers": [],
+          "tempers": [
+            {
+              "name": "+[440 - 490] Fire Resistance",
+              "shortName": "Fire Resistance",
+              "desc": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Lightning Resistance",
+              "shortName": "Lightning Resistance",
+              "desc": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Cold Resistance",
+              "shortName": "Cold Resistance",
+              "desc": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Poison Resistance",
+              "shortName": "Poison Resistance",
+              "desc": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Shadow Resistance",
+              "shortName": "Shadow Resistance",
+              "desc": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Physical Resistance",
+              "shortName": "Physical Resistance",
+              "desc": "Natural Resistance"
+            },
+            {
+              "name": "+[20 - 30]% Damage Reduction for Your Summons",
+              "shortName": "Damage Reduction for Your Summons",
+              "desc": "Necromancer Wall"
+            },
+            {
+              "name": "+[7 - 10]% Chance for Minion Attacks to Fortify You for 3% Maximum Life",
+              "shortName": "Chance for Minion Attacks to Fortify You for 3% Maximum Life",
+              "desc": "Necromancer Wall"
+            },
+            {
+              "name": "+[10 - 12]% Minions Inherit +% of Your Thorns",
+              "shortName": "Minions Inherit +% of Your Thorns",
+              "desc": "Necromancer Wall"
+            },
+            {
+              "name": "+[2.5 - 5.0]% Block Chance",
+              "shortName": "Block Chance",
+              "desc": "Necromancer Wall"
+            },
+            {
+              "name": "+[1,000 - 1,500] Maximum Life",
+              "shortName": "Maximum Life",
+              "desc": "Wordly Endurance"
+            },
+            {
+              "name": "+[1,250 - 2,000] Armor",
+              "shortName": "Armor",
+              "desc": "Wordly Endurance"
+            },
+            {
+              "name": "+[60 - 70] Resistance to All Elements",
+              "shortName": "Resistance to All Elements",
+              "desc": "Wordly Endurance"
+            },
+            {
+              "name": "+[2 - 3] Maximum Resolve Stacks",
+              "shortName": "Maximum Resolve Stacks",
+              "desc": "Wordly Endurance"
+            },
+            {
+              "name": "+[484 - 646] Thorns",
+              "shortName": "Thorns",
+              "desc": "Natural Schemes"
+            },
+            {
+              "name": "+[10 - 12.5]% Fortify Generation",
+              "shortName": "Fortify Generation",
+              "desc": "Natural Schemes"
+            },
+            {
+              "name": "+[10 - 12.5]% Barrier Generation",
+              "shortName": "Barrier Generation",
+              "desc": "Natural Schemes"
+            },
+            {
+              "name": "+[2.5 - 5.0]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "desc": "Worldy Fortune"
+            },
+            {
+              "name": "+[10 - 12.5]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "desc": "Worldy Fortune"
+            },
+            {
+              "name": "+[12 - 15]% Crowd Control Duration",
+              "shortName": "Crowd Control Duration",
+              "desc": "Worldy Fortune"
+            }
+          ],
           "transfigures": [
             {
-              "name": "Intelligence (%)",
-              "desc": "+[3.5 - 5]%"
+              "name": "+[3.5 - 5.0]% Intelligence",
+              "shortName": "Intelligence (%)"
             },
             {
-              "name": "Gem Strength",
-              "desc": "+[75 - 100]%"
+              "name": "+[75 - 100]% Gem Strength",
+              "shortName": "Gem Strength"
             },
             {
-              "name": "Total Armor",
-              "desc": "+[8 - 10]%"
+              "name": "+[8 - 10]% Total Armor",
+              "shortName": "Total Armor"
             },
             {
-              "name": "Resistance to All Elements",
-              "desc": "+[8 - 10]%"
+              "name": "+[8 - 10]% Resistance to All Elements",
+              "shortName": "Resistance to All Elements"
             },
             {
-              "name": "Curse Skills",
-              "desc": "+[2 - 3]"
+              "name": "+[2 - 3] Curse Skills",
+              "shortName": "Curse Skills"
             },
             {
-              "name": "Macabre Skills",
-              "desc": "+[2 - 3]"
+              "name": "+[2 - 3] Macabre Skills",
+              "shortName": "Macabre Skills"
             },
             {
-              "name": "All Stats",
-              "desc": "+[75 - 100]"
+              "name": "+[75 - 100] All Stats",
+              "shortName": "All Stats"
             },
             {
-              "name": "Critical Strike Chance",
-              "desc": "+[3.5 - 5]%"
+              "name": "+[3.5 - 5.0]% Critical Strike Chance",
+              "shortName": "Critical Strike Chance"
             },
             {
-              "name": "Attack Speed",
-              "desc": "+[8 - 10]%"
+              "name": "+[8 - 10]% Attack Speed",
+              "shortName": "Attack Speed"
             },
             {
-              "name": "Intelligence",
-              "desc": "+[150 - 180]"
+              "name": "+[150 - 180] Intelligence",
+              "shortName": "Intelligence"
             },
             {
-              "name": "Lucky Hit Chance",
-              "desc": "+[6 - 8]%"
+              "name": "+[6 - 8]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance"
             },
             {
-              "name": "Resource Cost Reduction",
-              "desc": "[6 - 8]%"
+              "name": "[6 - 8]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction"
             },
             {
-              "name": "Maximum Resource",
-              "desc": "+[15 - 20]"
+              "name": "+[15 - 20] Maximum Resource",
+              "shortName": "Maximum Resource"
             },
             {
-              "name": "Shadow Damage",
-              "desc": "+[8 - 10]%"
+              "name": "+[8 - 10]% Shadow Damage",
+              "shortName": "Shadow Damage"
             },
             {
-              "name": "Physical Damage",
-              "desc": "+[8 - 10]%"
+              "name": "+[8 - 10]% Physical Damage",
+              "shortName": "Physical Damage"
             },
             {
-              "name": "Maximum Life",
-              "desc": "+[6 - 8]%"
+              "name": "+[6 - 8]% Maximum Life",
+              "shortName": "Maximum Life"
             },
             {
-              "name": "Item Quality",
-              "desc": "+[1 - 15]"
+              "name": "+[1 - 15] Item Quality",
+              "shortName": "Item Quality"
             }
           ]
         }
