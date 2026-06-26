@@ -2,7 +2,7 @@ window.D4_DATABASE = {
   "aspects": [
     {
       "name": "Accelerating Aspect",
-      "desc": "Critical Strikes with Core Skills increase your Attack Speed by #% for # seconds.",
+      "desc": "Critical Strikes with Core Skills increase your Attack Speed by [30.0 - 50.0]%[+] for 5 seconds.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -50,7 +50,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aphotic Aspect",
-      "desc": "Shadow damage gains #% increased Lucky Hit Chance.",
+      "desc": "Shadow damage gains [20 - 30]%[x] increased Lucky Hit Chance.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -114,7 +114,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Accursed Touch",
-      "desc": "Lucky Hit: Up to a #% chance for your Skills to inflict Vampiric Curse on enemies. Enemies afflicted with Vampiric Curse are also Vulnerable.\r\n\r\nVampiric Curse's stored souls deal #% increased damage.",
+      "desc": "Lucky Hit: Up to a [30.0 - 40.0]% chance for your Skills to inflict Vampiric Curse on enemies. Enemies afflicted with Vampiric Curse are also Vulnerable.\n\nVampiric Curse's stored souls deal [40.0 - 60.0]% increased damage.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -130,7 +130,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Adaptability",
-      "desc": "Basic Skills generate # additional Primary Resource, once per Skill.",
+      "desc": "Basic Skills generate [15 - 25] additional Primary Resource, once per Skill.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         1,
@@ -162,7 +162,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Akarat's Blessing",
-      "desc": "Blocks have a #% chance to reduce all Cooldowns by # second.",
+      "desc": "Blocks have a [10 - 15]% chance to reduce all Cooldowns by 1 second.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         0,
@@ -178,7 +178,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Alacrity",
-      "desc": "Your Defensive and Mobility Skills gain #% Cooldown Rate while moving.",
+      "desc": "Your Defensive and Mobility Skills gain [50 - 75]% Cooldown Rate while moving.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         1,
@@ -210,7 +210,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Amplified Damage",
-      "desc": "You deal #% increased damage to Cursed enemies.",
+      "desc": "You deal [40 - 60]%[x] increased damage to Cursed enemies.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -354,7 +354,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Apogeic Furor",
-      "desc": "Casting an Ultimate Skill reduces the Cooldowns of your other Skills by # seconds.",
+      "desc": "Casting an Ultimate Skill reduces the Cooldowns of your other Skills by [6.5 - 10.0] seconds.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         1,
@@ -498,7 +498,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Audacity",
-      "desc": "When there are at least # Close enemies, Stun them for # seconds. Can only occur once every # seconds.",
+      "desc": "When there are at least 5 Close enemies, Stun them for [2.5 - 4.5] seconds. Can only occur once every 20 seconds.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -610,7 +610,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Binding Morass",
-      "desc": "Close enemies or those you deal indirect damage to are Slowed by #% for # seconds. You deal #% increased damage to Slowed enemies.",
+      "desc": "Close enemies or those you deal indirect damage to are Slowed by [50 - 70]% for 3 seconds. You deal [20 - 30]% increased damage to Slowed enemies.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -626,7 +626,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Biting Cold",
-      "desc": "Cold damage is increased by #% and makes enemies Vulnerable for # seconds.",
+      "desc": "Cold damage is increased by [15.0 - 20.0]% and makes enemies Vulnerable for 4 seconds.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -722,7 +722,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Bursting Bones",
-      "desc": "Bone Skills gain #% increased damage for every # Maximum Essence you have, up to #.",
+      "desc": "Bone Skills gain [0.30 - 0.40]%[x] increased damage for every 1 Maximum Essence you have, up to 200.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -802,7 +802,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Channeling",
-      "desc": "While channeling a Skill, all damage is increased by #%.",
+      "desc": "While channeling a Skill, all damage is increased by [50 - 70]%[x].",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -850,7 +850,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Coagulation",
-      "desc": "Gain #% increased Fortify generation and #% Damage Reduction while Fortified.",
+      "desc": "Gain 30%[+] increased Fortify generation and [15 - 20]% Damage Reduction while Fortified.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         0,
@@ -866,7 +866,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Coalesced Blood",
-      "desc": "Blood Skills deal #% increased damage while you are Healthy.",
+      "desc": "Blood Skills deal [50.0 - 70.0]%[x] increased damage while you are Healthy.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -930,7 +930,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Compound Fracture",
-      "desc": "After Critically Striking # times with Bone Skills, your Bone Skills deal #% increased damage for # seconds.",
+      "desc": "After Critically Striking 10 times with Bone Skills, your Bone Skills deal [50 - 70]%[x] increased damage for 5 seconds.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -1058,7 +1058,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Creeping Cadaver",
-      "desc": "Every # meters traveled triggers a random equipped Corpse Skill. Consuming a Corpse increases your Movement Speed by #% for # seconds.",
+      "desc": "Every 20 meters traveled triggers a random equipped Corpse Skill. Consuming a Corpse increases your Movement Speed by [10 - 15]% for 4 seconds.",
       "category": "FILTER_Legendary_Movement",
       "classes": [
         0,
@@ -1090,7 +1090,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Crippling Darkness",
-      "desc": "Lucky Hit: Shadow damage has up to a #% chance to deal #% increased damage, Fear and Immobilize for # second.",
+      "desc": "Lucky Hit: Shadow damage has up to a 15% chance to deal [20 - 30]%[x] increased damage, Fear and Immobilize for 1 second.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -1138,7 +1138,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Death's Defense",
-      "desc": "You and your Minions gain #% increased Maximum Life.",
+      "desc": "You and your Minions gain [20 - 30]%[x] increased Maximum Life.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         0,
@@ -1154,7 +1154,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Debilitating Darkness",
-      "desc": "Your Desecrated Ground deals #% increased damage and makes enemies Vulnerable.",
+      "desc": "Your Desecrated Ground deals [15 - 25]%[x] increased damage and makes enemies Vulnerable.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -1186,7 +1186,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Decay",
-      "desc": "You deal #% increased Corrupting and Frostbite damage.",
+      "desc": "You deal [65 - 85]%[x] increased Corrupting and Frostbite damage.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -1266,7 +1266,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Deluge",
-      "desc": "Overpower stacks increase your Primary Maximum Resource by # and regeneration by #.",
+      "desc": "Overpower stacks increase your Primary Maximum Resource by [6 - 8] and regeneration by 2.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         1,
@@ -1298,7 +1298,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Disobedience",
-      "desc": "Your Damage over Time grants you #% Damage Reduction for # seconds, stacking up to # times.",
+      "desc": "Your Damage over Time grants you [1.0 - 1.5]% Damage Reduction for 2 seconds, stacking up to 30 times.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,
@@ -1314,7 +1314,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Dominance",
-      "desc": "Crowd Controlling an enemy grants # Resolve.",
+      "desc": "Crowd Controlling an enemy grants [1 - 2] Resolve.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -1346,7 +1346,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Efficiency",
-      "desc": "Lucky Hit: Cast Basic Skills have up to a #% chance to make your next Core Skill cost no Primary Resource, stacks up to # times.",
+      "desc": "Lucky Hit: Cast Basic Skills have up to a [35.0 - 50.0]% chance to make your next Core Skill cost no Primary Resource, stacks up to 3 times.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         1,
@@ -1426,7 +1426,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Elemental Fate",
-      "desc": "Gain #% increased damage to a set of damage types for # seconds alternating randomly between 2 sets: \r\nFire, Lightning, Holy, and Physical. \r\nCold, Poison, and Shadow.\r\n\r\nFate can favor you granting the same bonus more than once, stacking up to # times. At Maximum, it's your lucky day!",
+      "desc": "Gain [40 - 60]%[x] increased damage to a set of damage types for 7 seconds alternating randomly between 2 sets: \nFire, Lightning, Holy, and Physical. \nCold, Poison, and Shadow.\n\nFate can favor you granting the same bonus more than once, stacking up to 6 times. At Maximum, it's your lucky day!",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -1442,7 +1442,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Elusive Menace",
-      "desc": "Your Dodge Chance increases by #% whenever you take damage. Successfully Dodging resets this bonus.",
+      "desc": "Your Dodge Chance increases by [20 - 30]%[+] whenever you take damage. Successfully Dodging resets this bonus.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -1810,7 +1810,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Fortune",
-      "desc": "You gain #% Lucky Hit Chance against Elite enemies.",
+      "desc": "You gain [15.0 - 20.0]%[x] Lucky Hit Chance against Elite enemies.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -1826,7 +1826,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Forward Momentum",
-      "desc": "Your Knock Back and Pull effects grant you #% Movement Speed for # seconds.",
+      "desc": "Your Knock Back and Pull effects grant you [25 - 35]%[x] Movement Speed for 4 seconds.",
       "category": "FILTER_Legendary_Movement",
       "classes": [
         1,
@@ -1842,7 +1842,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Frenzied Onslaught",
-      "desc": "Your Summons gain #% Attack Speed.",
+      "desc": "Your Summons gain [35 - 50]%[+] Attack Speed.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -1874,7 +1874,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Frozen Memories",
-      "desc": "Cold damage deals #% increased damage to Chilled enemies, this bonus is tripled against Frozen enemies.",
+      "desc": "Cold damage deals [30 - 45]%[x] increased damage to Chilled enemies, this bonus is tripled against Frozen enemies.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -1938,7 +1938,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Gloom",
-      "desc": "When you damage enemies with Darkness Skills, they take #% increased damage from your Darkness Skills for # seconds, stacking up to # times.",
+      "desc": "When you damage enemies with Darkness Skills, they take [10 - 15]%[x] increased damage from your Darkness Skills for 2 seconds, stacking up to 4 times.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -1954,7 +1954,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Glynn's Anvil",
-      "desc": "Your maximum Resolve is increased by # and you gain #% Damage Reduction per Resolve, up to #%.",
+      "desc": "Your maximum Resolve is increased by 2 and you gain [2.5 - 4]% Damage Reduction per Resolve.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         0,
@@ -1970,7 +1970,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Gore Quills",
-      "desc": "NEEDS REDESIGN\r\nCasting Blood Lance will consume Blood Orbs to also conjure lances from them. Each additional Blood Lance deals #% of normal damage and prioritizes targeting un-lanced enemies. ",
+      "desc": "Casting Blood Lance will consume Blood Orbs to also conjure lances from them. Each additional Blood Lance deals [60 - 100]% of normal damage and prioritizes targeting un-lanced enemies.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -2050,7 +2050,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Hardened Bones",
-      "desc": "You gain #% increased Damage Reduction. When you take damage, you have a #% chance to form a Corpse.",
+      "desc": "You gain [15 - 25]% increased Damage Reduction. When you take damage, you have a [5 - 15]% chance to form a Corpse.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         0,
@@ -2082,7 +2082,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Heavenly Strength",
-      "desc": "While wielding a Two-Handed Weapon, gain #% Damage Reduction.",
+      "desc": "While wielding a Two-Handed Weapon, gain [30 - 40]% Damage Reduction.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,
@@ -2130,7 +2130,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Hewed Flesh",
-      "desc": "Lucky Hit: Up to a #% chance to form a Corpse at the target's location. Your Corpse Skills deal #% increased damage.",
+      "desc": "Lucky Hit: Up to a 25% chance to form a Corpse at the target's location. Your Corpse Skills deal [15.0 - 20.0]%[x] increased damage.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -2322,7 +2322,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Inner Calm",
-      "desc": "While standing still, deal up to #% increased damage.",
+      "desc": "While standing still, deal up to [50 - 75]%[x] increased damage.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -2354,7 +2354,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Interdiction",
-      "desc": "Gain #% Block Chance per Resolve stack.",
+      "desc": "Gain [2.0 - 3.0]%[+] Block Chance per Resolve stack.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -2466,7 +2466,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Lapa's Scripture",
-      "desc": "Losing Resolve grants you # Thorns for # seconds. Stacks up to # times.",
+      "desc": "Losing Resolve grants you [392 - 718] Thorns for 10 seconds. Stacks up to 20 times.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -2498,7 +2498,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Layered Wards",
-      "desc": "Your Blocked Damage Reduction is increased by #%.",
+      "desc": "Your Blocked Damage Reduction is increased by [30 - 40]%[+].",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         0,
@@ -2642,7 +2642,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Metamorphosis",
-      "desc": "Evade transforms you into a cloud of bats, dealing # Physical damage and inflicting Vampiric Curse to enemies in your path. Evade's Cooldown is increased by # seconds.",
+      "desc": "Evade transforms you into a cloud of bats, dealing 300 Physical damage and inflicting Vampiric Curse to enemies in your path. Evade's Cooldown is increased by [10.0 - 4.0] seconds.",
       "category": "FILTER_Legendary_Movement",
       "classes": [
         1,
@@ -2658,7 +2658,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Might",
-      "desc": "Basic Skills grant #% Damage Reduction for # seconds. ",
+      "desc": "Basic Skills grant [20 - 30]% Damage Reduction for 4 seconds.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,
@@ -2802,7 +2802,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Natural Selection",
-      "desc": "While you have only 1 active Minion type, that Minion type deals #% increased damage and gains #% increased Maximum Life.",
+      "desc": "While you have only 1 active Minion type, that Minion type deals [50 - 70]%[x] increased damage and gains [40 - 60]%[x] increased Maximum Life.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -2818,7 +2818,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Nebulous Brews",
-      "desc": "Healing Potions grant #% Movement Speed for # seconds. Every # meters you travel refills a Healing Potion.",
+      "desc": "Healing Potions grant [20 - 30]%[x] Movement Speed for 8 seconds. Every 80 meters you travel refills a Healing Potion.",
       "category": "FILTER_Legendary_Movement",
       "classes": [
         1,
@@ -2962,7 +2962,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Piercing Cold",
-      "desc": "You apply #% more Chill and deal #% increased damage to Chilled enemies.",
+      "desc": "You apply [30.0 - 50.0]%[x] more Chill and deal 20%[x] increased damage to Chilled enemies.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -3042,7 +3042,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Potent Blood",
-      "desc": "Blood Orbs grant # Essence.",
+      "desc": "Blood Orbs grant [20 - 30] Essence.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         0,
@@ -3154,7 +3154,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Rallying Reversal",
-      "desc": "You have a #% chance to gain # Ferocity when you Crowd Control an enemy or apply any Stagger to a Boss.",
+      "desc": "You have a [60 - 80]% chance to gain 1 Ferocity when you Crowd Control an enemy or apply any Stagger to a Boss.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -3170,7 +3170,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Rapid Ossification",
-      "desc": "Every # Essence you spend reduces the cooldowns of your Bone Skills by # seconds.",
+      "desc": "Every 100 Essence you spend reduces the cooldowns of your Bone Skills by [2 - 4] seconds.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         0,
@@ -3186,7 +3186,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Rathma's Chosen",
-      "desc": "Blood Skills have #% increased Attack Speed while you are Fortified.",
+      "desc": "Blood Skills have [40 - 60]%[+] increased Attack Speed while you are Fortified.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -3218,7 +3218,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Reanimation",
-      "desc": "Your Summons gain increased damage while alive, up to #% after # seconds.",
+      "desc": "Your Summons gain increased damage while alive, up to [60 - 90]%[x] after 10 seconds.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -3250,7 +3250,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Redirected Force",
-      "desc": "Gain increased Critical Strike Damage equal to #% of your Block Chance. Blocking doubles this bonus for # seconds.",
+      "desc": "Gain increased Critical Strike Damage equal to [40 - 60]%[x] of your Block Chance. Blocking doubles this bonus for 10 seconds.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -3298,7 +3298,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Retribution",
-      "desc": "Distant enemies have a #% chance to be Stunned for # seconds when they hit you. You deal #% increased damage to Distant enemies.",
+      "desc": "Distant enemies have a 20% chance to be Stunned for 2 seconds when they hit you. You deal [15 - 25]%[x] increased damage to Distant enemies.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -3426,7 +3426,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Serration",
-      "desc": "Your Corpse and Bone Skills gain #% increased Critical Strike Chance and #% increased Critical Strike Damage.",
+      "desc": "Your Corpse and Bone Skills gain 5%[+] increased Critical Strike Chance and [40 - 60]%[x] increased Critical Strike Damage.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -3490,7 +3490,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Shelter",
-      "desc": "Casting a Defensive Skill grants you #% increased All Resistances for # seconds.",
+      "desc": "Casting a Defensive Skill grants you [30 - 50]%[+] increased All Resistances for 10 seconds.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,
@@ -3506,7 +3506,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Shielding Bones",
-      "desc": "Casting a Bone Skill grants # stacks of Resolve. Gain #% increased All Resistances while you have Resolve.",
+      "desc": "Casting a Bone Skill grants 2 stacks of Resolve. Gain [20 - 30]%[+] increased All Resistances while you have Resolve.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -3618,7 +3618,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Slaughter",
-      "desc": "You gain #% increased Movement Speed. Taking damage from Close enemies Slows you by #% for # seconds.",
+      "desc": "You gain [30.0 - 45.0]%[+] increased Movement Speed. Taking damage from Close enemies Slows you by 30% for 2 seconds.",
       "category": "FILTER_Legendary_Movement",
       "classes": [
         1,
@@ -3666,7 +3666,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Spiked Armor",
-      "desc": "Gain #% increased Total Armor, # Thorns, and #% increased Block Chance.",
+      "desc": "Gain [40 - 60]%[+] increased Total Armor, 1,813 Thorns, and 15%[+] increased Block Chance.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         0,
@@ -3778,7 +3778,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Swift Spirit",
-      "desc": "Losing Resolve grants #% Movement Speed for # seconds, stacking up to # times.",
+      "desc": "Losing Resolve grants [3.0 - 5.0]%[x] Movement Speed for 10 seconds, stacking up to 5 times.",
       "category": "FILTER_Legendary_Movement",
       "classes": [
         0,
@@ -3890,7 +3890,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Terror",
-      "desc": "Your Darkness Skills deal #% increased damage to Crowd Controlled enemies and #% increased damage to Elites. These bonuses can stack.",
+      "desc": "Your Darkness Skills deal [25.0 - 35.0]%[x] increased damage to Crowd Controlled enemies and [25.0 - 35.0]%[x] increased damage to Elites. These bonuses can stack.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -3986,7 +3986,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Cursed Aura",
-      "desc": "A dark aura surrounds you, inflicting Decrepify and Iron Maiden on enemies who touch it. \r\n\r\nCurses inflicted this way spread to surrounding targets every # seconds and last # seconds outside of the aura.",
+      "desc": "A dark aura surrounds you, inflicting Decrepify and Iron Maiden on enemies who touch it. \n\nCurses inflicted this way spread to surrounding targets every [2.5 - 4] seconds and last 4 seconds outside of the aura.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -4098,7 +4098,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Embalmer",
-      "desc": "Consuming a Corpse has a #% chance to spawn a Blood Orb. Blood Orb Healing is increased by #%.",
+      "desc": "Consuming a Corpse has a 25% chance to spawn a Blood Orb. Blood Orb Healing is increased by [30 - 45]%.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -4130,7 +4130,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Expectant",
-      "desc": "Basic Skills grant #% increased damage for # seconds, stacking up to # times.",
+      "desc": "Basic Skills grant [4.0 - 6.0]%[x] increased damage for 4 seconds, stacking up to 10 times.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -4194,7 +4194,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Fortress",
-      "desc": "Gain up to #% Damage Reduction based on how Injured you are.",
+      "desc": "Gain up to [40 - 60]% Damage Reduction based on how Injured you are.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,
@@ -4258,7 +4258,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Great Feast",
-      "desc": "While you have active Minions, your Summons deal #% increased damage, but each Minion Drains # Essence from you per second. \r\n\r\nWhile you have no active Minions, you deal #% increased damage, but # Essence Drains per second.",
+      "desc": "While you have active Minions, your Summons deal [35 - 55]%[x] increased damage, but each Minion Drains 2 Essence from you per second. \n\nWhile you have no active Minions, you deal [35 - 55]%[x] increased damage, but 14 Essence Drains per second.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -4274,7 +4274,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Indomitable",
-      "desc": "Gain Armor and Impairment Reduction equal to #% of your Block Chance.\r\n\r\nCurrent Bonus: #% ",
+      "desc": "Gain up to [30 - 45]% Damage Reduction and Impairment Resistance, based on your Block chance.\n\nCurrent Bonus: 0%",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         0,
@@ -4354,7 +4354,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Long Shadow",
-      "desc": "Lucky Hit: Your Corrupting effects have a #% chance to generate # Essence. ",
+      "desc": "Lucky Hit: Your Corrupting effects have a [50.0 - 80.0]% chance to generate 3 Essence.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         0,
@@ -4370,7 +4370,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Moonrise",
-      "desc": "Damaging an enemy with a Basic Skill grants you #% Attack Speed for # seconds, stacking up to # times. Upon reaching maximum stacks, you enter a Vampiric Bloodrage, gaining #% Basic Skill damage and #% Movement Speed for # seconds.",
+      "desc": "Damaging an enemy with a Basic Skill grants you 4% Attack Speed for 10 seconds, stacking up to 5 times. Upon reaching maximum stacks, you enter a Vampiric Bloodrage, gaining [40 - 60]%[x] Basic Skill damage and 15% Movement Speed for 10 seconds.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -4386,7 +4386,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Northern Guard",
-      "desc": "Blocks have a #% chance to Freeze the attacker for # seconds.",
+      "desc": "Blocks have a [25 - 45]% chance to Freeze the attacker for 3 seconds.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -4402,7 +4402,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Orange Herald",
-      "desc": "Cast Core Skill damage reduces the Cooldown of one of your Skills by # |4seconds;second.",
+      "desc": "Cast Core Skill damage reduces the Cooldown of one of your Skills by [0.7 - 1.0] second.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         1,
@@ -4434,7 +4434,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Protector",
-      "desc": "Damaging an Elite enemy grants you a Barrier for #% of your Maximum Life for # seconds. This effect can only happen once every # seconds.",
+      "desc": "Damaging an Elite enemy grants you a Barrier for [70 - 100]% of your Maximum Life for 10 seconds. This effect can only happen once every 20 seconds.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,
@@ -4562,7 +4562,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Umbral",
-      "desc": "Incapacitating enemies generates # Primary Resource.",
+      "desc": "Incapacitating enemies generates [4.0 - 6.0] Primary Resource.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         1,
@@ -4594,7 +4594,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Unholy Confederate",
-      "desc": "You gain #% increased Movement Speed per active Summon. Casting a Summon Skill doubles this bonus for # seconds.",
+      "desc": "You gain [1.0 - 1.5]%[+] increased Movement Speed per active Summon. Casting a Summon Skill doubles this bonus for 3 seconds.",
       "category": "FILTER_Legendary_Movement",
       "classes": [
         1,
@@ -4706,7 +4706,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Void",
-      "desc": "Darkness Skills Weaken enemies for # seconds. Darkness Skills deal #% increased damage to Weakened enemies.",
+      "desc": "Darkness Skills Weaken enemies for 4 seconds. Darkness Skills deal [10 - 15]%[x] increased damage to Weakened enemies.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -4770,7 +4770,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Thickened Blood",
-      "desc": "Blood Skills deal up to #% increased damage based on how Fortified you are.",
+      "desc": "Blood Skills deal up to [60 - 90]%[x] increased damage based on how Fortified you are.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -4786,7 +4786,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Torment",
-      "desc": "Critical Strikes with Bone Skills increase your Essence Regeneration by #% for # seconds.",
+      "desc": "Critical Strikes with Bone Skills increase your Essence Regeneration by [300.0 - 500.0]%[x] for 4 seconds.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         0,
@@ -4802,7 +4802,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Transfusion",
-      "desc": "Lucky Hit: Blood Skills have up to a #% chance to create a Blood Orb at the target's location.",
+      "desc": "Lucky Hit: Blood Skills have up to a [30 - 50]% chance to create a Blood Orb at the target's location.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -4866,7 +4866,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Ultimate Shadow",
-      "desc": "Your Desecrated Ground deals #% increased damage and Slows enemies by #%.",
+      "desc": "Your Desecrated Ground deals [80 - 120]%[x] increased damage and Slows enemies by 50%.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -4946,7 +4946,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Untimely Death",
-      "desc": "Every #% of your Maximum Life Healed grants you grants you #% increased Blood Skill damage for # seconds.",
+      "desc": "Every 10% of your Maximum Life Healed grants you grants you [60 - 90]%[x] increased Blood Skill damage for 4 seconds.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -5058,7 +5058,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Voracious Rage",
-      "desc": "Killing an enemy with a Core Skill refunds #% of its base cost. Can only happen once per Skill cast.",
+      "desc": "Killing an enemy with a Core Skill refunds [20.0 - 30.0]% of its base cost. Can only happen once per Skill cast.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         1,
@@ -5330,7 +5330,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Blood Boiling Aspect",
-      "desc": "Every # seconds, gain # stack of Overpower. Spending Overpower spawns # Volatile Blood Drop, and collecting it causes it to explode, dealing # Physical damage around you.",
+      "desc": "Every 6 seconds, gain 1 stack of Overpower. Gaining Overpower spawns 1 Volatile Blood Drop, and collecting it causes it to explode, dealing [675 - 974] Physical damage around you.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -5346,7 +5346,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Blood Getter's Aspect",
-      "desc": "Your Skeletal Priests now also empower you at #% effectiveness.",
+      "desc": "Your Skeletal Priests now also empower you at [55 - 75]% effectiveness.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -5378,7 +5378,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Bone Breaker's Aspect",
-      "desc": "Bone Skills deal #% increased damage. This bonus is reduced by #% per subsequent enemy hit.",
+      "desc": "Bone Skills deal [60 - 100]%[x] increased damage. This bonus is reduced by 10% per subsequent enemy hit.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -5426,7 +5426,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Bristleback Aspect",
-      "desc": "When you Dodge or Block an attack you trigger a #% Thorns attack against the attacker.",
+      "desc": "When you Dodge or Block an attack you trigger a [200 - 300]% Thorns attack against the attacker.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -5442,7 +5442,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Bruiser's Aspect",
-      "desc": "Gain #% increased Armor and # Thorns per #% missing Maximum Life.",
+      "desc": "Gain 4%[+] increased Armor and [145 - 218] Thorns per 1% missing Maximum Life.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,
@@ -5474,7 +5474,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Bulwark's Aspect",
-      "desc": "You no longer Dodge, but you gain #% Block Damage Reduction and #% Block Chance.",
+      "desc": "You no longer Dodge, but you gain [20 - 30]% Block Damage Reduction and 15%[+] Block Chance.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         0,
@@ -5490,7 +5490,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Cadaverous Aspect",
-      "desc": "Consuming a Corpse increases your damage by #% for # seconds, up to #%.",
+      "desc": "Consuming a Corpse increases your damage by [9 - 13]%[x] for 5 seconds, up to [45 - 65]%[x].",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -5554,7 +5554,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Coldbringer's Aspect",
-      "desc": "Every # seconds, your Skeletal Mages cast a blizzard that deals # Cold damage and continuously Chills enemies for #% over # seconds.",
+      "desc": "Every 4 seconds, your Skeletal Mages cast a blizzard that deals [135 - 180] Cold damage and continuously Chills enemies for 6% over 8 seconds.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -5586,7 +5586,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Conceited Aspect",
-      "desc": "Deal #% increased damage while you have a Barrier active.",
+      "desc": "Deal [40 - 60]%[x] increased damage while you have a Barrier active.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -5634,7 +5634,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Craven Aspect",
-      "desc": "Each Nearby Hindered enemy grants you #% increased Movement Speed.",
+      "desc": "Each Nearby Hindered enemy grants you [1.0 - 1.5]%[+] increased Movement Speed.",
       "category": "FILTER_Legendary_Movement",
       "classes": [
         1,
@@ -5666,7 +5666,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Crushing Aspect",
-      "desc": "While Fortified, you deal #% increased damage.",
+      "desc": "While Fortified, you deal [45 - 65]%[x] increased damage.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -5762,7 +5762,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Duelist's Aspect",
-      "desc": "While using a One-Handed weapon, attacks increase your Weapon Damage by #%, up to # times. This bonus is lost when swapping weapons.",
+      "desc": "While using a One-Handed weapon, your Attack Speed is increased by [30 - 50]%[+].",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -5810,7 +5810,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Edgemaster's Aspect",
-      "desc": "Skills deal up to #% increased damage based on your available Primary Resource when cast, receiving the maximum benefit while you have full Primary Resource.",
+      "desc": "Skills deal up to [40 - 60]%[x] increased damage based on your available Primary Resource when cast, receiving the maximum benefit while you have full Primary Resource.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -5842,7 +5842,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Eluding Aspect",
-      "desc": "Becoming Crowd Controlled while Injured grants you Unstoppable for # seconds. This effect has a # second Cooldown.",
+      "desc": "Becoming Crowd Controlled while Injured grants you Unstoppable for 4 seconds. This effect has a [6 - 4] second Cooldown.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -5858,7 +5858,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Embattled Aspect",
-      "desc": "Fortify's Drain Rate is increased by #%.",
+      "desc": "Fortify's Drain Rate is increased by [100 - 150]%[+].",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -5874,7 +5874,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Encased Aspect",
-      "desc": "Freezing enemies grants you #% Damage Reduction for # seconds, up to # times.",
+      "desc": "Freezing enemies grants you [6.0 - 8.0]% Damage Reduction for 8 seconds, up to 5 times.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,
@@ -5922,7 +5922,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Enshrouding Aspect",
-      "desc": "Using a Healing Potion increases your Resistance to All Elements by #% for # seconds.\r\n\r\nYou may now drink your Healing Potion while at full Life.",
+      "desc": "Using a Healing Potion increases your Resistance to All Elements by [20 - 30]%[+] for 8 seconds.\n\nYou may now drink your Healing Potion while at full Life.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,
@@ -5970,7 +5970,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Everliving Aspect",
-      "desc": "Each Crowd Controlled enemy Nearby grants #% Damage Reduction, up to # enemies.",
+      "desc": "Each Crowd Controlled enemy Nearby grants [2.0 - 3.0]% Damage Reduction, up to 13 enemies.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,
@@ -6002,7 +6002,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Exploiter's Aspect",
-      "desc": "You have #% increased Crowd Control Duration. While enemies are Unstoppable, you deal #% increased damage to them.",
+      "desc": "You have 50%[+] increased Crowd Control Duration. While enemies are Unstoppable, you deal [30 - 50]%[x] increased damage to them.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -6018,7 +6018,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Fastblood Aspect",
-      "desc": "Blood Orbs reduce your Ultimate Cooldown by # seconds.",
+      "desc": "Blood Orbs reduce your Ultimate Cooldown by [2.00 - 3.00] seconds.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         0,
@@ -6050,7 +6050,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Ferocious Aspect",
-      "desc": "Your Maximum Ferocity stacks are increased by #.",
+      "desc": "Your Maximum Ferocity stacks are increased by [4 - 6].",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -6178,7 +6178,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Ghostwalker Aspect",
-      "desc": "While Unstoppable and for # seconds after, you gain #% increased Movement Speed and are Unhindered.",
+      "desc": "While Unstoppable and for 4 seconds after, you gain [10.0 - 20.0]%[x] increased Movement Speed and are Unhindered.",
       "category": "FILTER_Legendary_Movement",
       "classes": [
         1,
@@ -6290,7 +6290,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Hellbent Commander Aspect",
-      "desc": "You deal #% increased Summon damage.",
+      "desc": "You deal [50 - 70]%[x] increased Summon damage.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -6322,7 +6322,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Hulking Aspect",
-      "desc": "Your Golem has a #% chance to reduce its active Cooldown by # seconds and a #% chance to spawn a Corpse each time it damages an enemy with its normal attack.",
+      "desc": "Your Golem has a [2 - 18]% chance to reduce its active Cooldown by 2 seconds and a [1.0 - 9.0]% chance to spawn a Corpse each time it damages an enemy with its normal attack.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -6514,7 +6514,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Juggernaut's Aspect",
-      "desc": "You gain #% Total Armor, but your Evade has #% increased Cooldown.",
+      "desc": "You gain [100 - 150]%[+] Total Armor, but your Evade has 100% increased Cooldown.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,
@@ -6786,7 +6786,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Necrotic Carapace Aspect",
-      "desc": "When a Corpse is formed from your Skills or your Minions, Fortify for #% of your Maximum Life.",
+      "desc": "When a Corpse is formed from your Skills or your Minions, Fortify for [5 - 7]% of your Maximum Life.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -6802,7 +6802,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Needleflare Aspect",
-      "desc": "Thorns damage dealt has a #% chance to deal damage to all enemies around you and your Minions.",
+      "desc": "Thorns damage dealt has a [40 - 60]% chance to deal damage to all enemies around you and your Minions.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -6914,7 +6914,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Osseous Gale Aspect",
-      "desc": "Bone Storm consumes up to # Corpses to increase its duration by up to # seconds.",
+      "desc": "Bone Storm consumes up to 8 Corpses to increase its duration by up to [5.0 - 15.0] seconds.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -7058,7 +7058,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Protecting Aspect",
-      "desc": "When hit while not Healthy, you form a protective bubble that grants all Players inside Immune. The bubble lasts for # seconds and can only form once every # seconds.",
+      "desc": "When hit while not Healthy, you form a protective bubble that grants all Players inside Immune. The bubble lasts for [4.0 - 6.0] seconds and can only form once every 90 seconds.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,
@@ -7282,7 +7282,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Requiem Aspect",
-      "desc": "You gain # Maximum Essence per active Minion.",
+      "desc": "You gain [7.0 - 10.0] Maximum Essence per active Minion.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         0,
@@ -7346,7 +7346,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Rotting Aspect",
-      "desc": "Decompose can chain and burst up to # additional targets. Explosions from Decompose deal #% increased damage.",
+      "desc": "Decompose can chain and burst up to 4 additional targets. Explosions from Decompose deal [15 - 35]%[x] increased damage.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -7378,7 +7378,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Sacrificial Aspect",
-      "desc": "Your Sacrifice bonuses are increased by #%.",
+      "desc": "Your Sacrifice bonuses are increased by [50 - 80]%.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -7410,7 +7410,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Sapping Aspect",
-      "desc": "Gain # Primary Resource per second for each Nearby enemy affected by your Damage Over Time effects.",
+      "desc": "Gain [1.0 - 1.5] Primary Resource per second for each Nearby enemy affected by your Damage Over Time effects.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         1,
@@ -7474,7 +7474,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Shadow-Soaked Aspect",
-      "desc": "While standing in Desecrated Ground and for # seconds after leaving it you gain #% Movement Speed and are Unhindered.",
+      "desc": "While standing in Desecrated Ground and for 6 seconds after leaving it you gain [20 - 40]%[+] Movement Speed and are Unhindered.",
       "category": "FILTER_Legendary_Movement",
       "classes": [
         0,
@@ -7554,7 +7554,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Shivering Aspect",
-      "desc": "Enemies take up to #% increased damage based on how Chilled or Staggered they have built up.",
+      "desc": "Enemies take up to [60 - 90]%[x] increased damage based on how Chilled or Staggered they have built up.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -7570,7 +7570,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Sickfoot's Aspect",
-      "desc": "Gain up to #% increased Movement and Damage over Time Speed for each Nearby enemy affected by your Damage over Time effects, stacks up to # times.",
+      "desc": "Gain up to [1.0 - 1.5]%[+] increased Movement and Damage over Time Speed for each Nearby enemy affected by your Damage over Time effects, stacks up to 25 times.",
       "category": "FILTER_Legendary_Movement",
       "classes": [
         1,
@@ -7650,7 +7650,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Snap Frozen Aspect",
-      "desc": "Lucky Hit: Dealing Cold damage has up to a #% chance to grant you a Barrier for #% of your Maximum Life for # seconds, stacking up to #%.",
+      "desc": "Lucky Hit: Dealing Cold damage has up to a 20% chance to grant you a Barrier for [6.5 - 10.0]% of your Maximum Life for 5 seconds, stacking up to [19.5 - 30.0]%.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,
@@ -7682,7 +7682,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Snowveiled Aspect",
-      "desc": "While you have a Barrier, gain #% Damage Reduction.",
+      "desc": "While you have a Barrier, gain [20 - 30]% Damage Reduction.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,
@@ -7714,7 +7714,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Splintering Aspect",
-      "desc": "Bone Skills deal #% increased damage to Vulnerable enemies.",
+      "desc": "Bone Skills deal [50 - 70]%[x] increased damage to Vulnerable enemies.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -7762,7 +7762,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Starlight Aspect",
-      "desc": "Every #% of your Life that you Heal grants you #% Primary Resource Cost Reduction for # seconds, up to # seconds.",
+      "desc": "Every 10% of your Life that you Heal grants you [20 - 30]% Primary Resource Cost Reduction for 2 seconds, up to 6 seconds.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         1,
@@ -7810,7 +7810,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Sticker-thought Aspect",
-      "desc": "Gain # Thorns while Channeling and for 3 seconds afterwards.",
+      "desc": "Gain [1,813 - 5,439] Thorns while Channeling and for 3 seconds afterwards.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -7938,7 +7938,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Tidal Aspect",
-      "desc": "Your Maximum Overpower is increased by # while you are Fortified.",
+      "desc": "Your Maximum Overpower is increased by [2 - 4] while you are Fortified.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -7954,7 +7954,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Tides of Blood Aspect",
-      "desc": "Blood Skills deal #% increased damage while you have a stack of Overpower. This bonus is doubled while you are Healthy.",
+      "desc": "Blood Skills deal [25 - 35]%[x] increased damage while you have a stack of Overpower. This bonus is doubled while you are Healthy.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -8050,7 +8050,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Undying Aspect",
-      "desc": "Casting a Skill Heals you for #% of your Maximum Life. Double this bonus while Injured.",
+      "desc": "Casting a Skill Heals you for [2.0 - 3.0]% of your Maximum Life. Double this bonus while Injured.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -8082,7 +8082,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Unyielding Commander's Aspect",
-      "desc": "While Army of the Dead is active, your Minions take #% reduced damage and you deal #% increased Summon Damage.",
+      "desc": "While Army of the Dead is active, your Minions take 90% reduced damage and you deal [70 - 110]%[x] increased Summon Damage.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -8114,7 +8114,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Vanquishing Aspect",
-      "desc": "You deal #% more damage to Incapacitated enemies.",
+      "desc": "You deal [60 - 90]%[x] more damage to Incapacitated enemies.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -8130,7 +8130,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Vehement Brawler's Aspect",
-      "desc": "Casting an Ultimate Skill increases your damage by #% for # seconds. Gain # additional Ultimate Skill Ranks.",
+      "desc": "Casting an Ultimate Skill increases your damage by [35 - 55]%[x] for 8 seconds. Gain 2 additional Ultimate Skill Ranks.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -8226,7 +8226,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Vulpine's Aspect",
-      "desc": "Gain # Primary Resource per second while you have a Barrier.",
+      "desc": "Gain [15 - 25] Primary Resource per second while you have a Barrier.",
       "category": "FILTER_Legendary_Resource",
       "classes": [
         1,
@@ -8274,7 +8274,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Wildbolt Aspect",
-      "desc": "Every # seconds, Distant enemies are Pulled In to you and take #% increased damage from you for # seconds. This effect cannot occur while you are in Stealth.",
+      "desc": "Every [3.5 - 1.5] seconds, Distant enemies are Pulled In to you and take 15%[x] increased damage from you for 3 seconds. This effect cannot occur while you are in Stealth.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -8290,7 +8290,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Wind Striker Aspect",
-      "desc": "Critical Strikes grant #% Movement Speed for # second, up to # seconds.",
+      "desc": "Critical Strikes grant [30.0 - 50.0]%[+] Movement Speed for 1 second, up to 6 seconds.",
       "category": "FILTER_Legendary_Movement",
       "classes": [
         1,
@@ -8338,7 +8338,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Writhing Aspect",
-      "desc": "Enemies take #% increased Damage Over Time for every second they've been affected by a Damage Over Time, up to # seconds.",
+      "desc": "Enemies take [7.5 - 12.5]% increased Damage Over Time for every second they've been affected by a Damage Over Time, up to 10 seconds.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
