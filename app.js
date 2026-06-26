@@ -1804,7 +1804,7 @@
             if (item.aspect && item.aspect !== 'None') {
                 const aspectName = item.aspect;
                 let val = 0;
-                if (item.aspectValues && item.aspectValues.length > 0) val = item.aspectValues[0];
+                if (item.aspectValues && item.aspectValues.length > 0) val = parseFloat(item.aspectValues[0]) || 0;
                 if (!bestAspects[aspectName] || val > bestAspects[aspectName].val) {
                     bestAspects[aspectName] = { val, slotName };
                 }
@@ -1972,7 +1972,7 @@
                     const aspectObj = (window.D4_DATABASE?.aspects || []).find(a => a.name === item.aspect);
                     if (aspectObj && aspectObj.desc) {
                         let v = 0;
-                        if (item.aspectValues && item.aspectValues.length > 0) v = item.aspectValues[0];
+                        if (item.aspectValues && item.aspectValues.length > 0) v = parseFloat(item.aspectValues[0]) || 0;
                         addStat(stats, item.aspect, v, slotName);
                     }
                 }
