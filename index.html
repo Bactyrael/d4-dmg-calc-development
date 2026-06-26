@@ -261,6 +261,111 @@
     </div>
   </div>
 
+  <!-- Defenses & Toughness Panel -->
+  <div class="panel" id="defensive-panel" style="margin-bottom: 20px;">
+    <div class="panel-title"><span class="icon">🛡️</span> Defenses & Toughness</div>
+    <div class="panel-body">
+      
+      <div class="results-grid" style="grid-template-columns: repeat(2, 1fr);">
+        
+        <!-- Global Defenses -->
+        <div class="result-card">
+          <div class="result-title">Global Defenses</div>
+          <div class="result-subtext" style="color: #aaa; margin-bottom: 15px;">Core Survivability Metrics</div>
+          
+          <div class="result-detail" style="margin-top: 5px;">
+            <span>Total Armor:</span>
+            <span id="dash-armor" style="color: #3498db; font-weight: bold;">0</span>
+          </div>
+          <div class="result-detail">
+            <span>Armor DR%:</span>
+            <span id="dash-armor-dr" style="color: #f39c12;">0%</span>
+          </div>
+          <div class="result-detail" style="margin-top: 10px;">
+            <span>All Resistance:</span>
+            <span id="dash-all-resist" style="color: #9b59b6; font-weight: bold;">0</span>
+          </div>
+          <div class="result-detail">
+            <span>Universal DR%:</span>
+            <span id="dash-universal-dr" style="color: #e74c3c; font-weight: bold;">0%</span>
+          </div>
+        </div>
+
+        <!-- Maximum Life (Base) -->
+        <div class="result-card">
+          <div class="result-title">Maximum Life</div>
+          <div class="result-value" id="dash-max-life" style="color: #e74c3c;">0</div>
+          <div class="result-subtext" style="color: #aaa;">Base Health Pool</div>
+        </div>
+
+      </div>
+
+      <h4 style="margin-top: 20px; margin-bottom: 15px; color: var(--accent-blue); border-bottom: 1px solid #333; padding-bottom: 5px;">Effective Health Pool (EHP)</h4>
+      
+      <div class="results-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <!-- Physical -->
+        <div class="result-card" style="padding: 15px;">
+          <div class="result-title" style="font-size: 14px; color: #bdc3c7;">Physical EHP</div>
+          <div class="result-value" id="ehp-physical" style="font-size: 24px;">0</div>
+          <div class="result-detail" style="margin-top: 10px; font-size: 12px;">
+            <span>Final DR:</span>
+            <span id="dr-physical-final">0%</span>
+          </div>
+        </div>
+        
+        <!-- Fire -->
+        <div class="result-card" style="padding: 15px;">
+          <div class="result-title" style="font-size: 14px; color: #e67e22;">Fire EHP</div>
+          <div class="result-value" id="ehp-fire" style="font-size: 24px;">0</div>
+          <div class="result-detail" style="margin-top: 10px; font-size: 12px;">
+            <span>Final DR:</span>
+            <span id="dr-fire-final">0%</span>
+          </div>
+        </div>
+        
+        <!-- Cold -->
+        <div class="result-card" style="padding: 15px;">
+          <div class="result-title" style="font-size: 14px; color: #3498db;">Cold EHP</div>
+          <div class="result-value" id="ehp-cold" style="font-size: 24px;">0</div>
+          <div class="result-detail" style="margin-top: 10px; font-size: 12px;">
+            <span>Final DR:</span>
+            <span id="dr-cold-final">0%</span>
+          </div>
+        </div>
+        
+        <!-- Lightning -->
+        <div class="result-card" style="padding: 15px;">
+          <div class="result-title" style="font-size: 14px; color: #f1c40f;">Lightning EHP</div>
+          <div class="result-value" id="ehp-lightning" style="font-size: 24px;">0</div>
+          <div class="result-detail" style="margin-top: 10px; font-size: 12px;">
+            <span>Final DR:</span>
+            <span id="dr-lightning-final">0%</span>
+          </div>
+        </div>
+        
+        <!-- Poison -->
+        <div class="result-card" style="padding: 15px;">
+          <div class="result-title" style="font-size: 14px; color: #2ecc71;">Poison EHP</div>
+          <div class="result-value" id="ehp-poison" style="font-size: 24px;">0</div>
+          <div class="result-detail" style="margin-top: 10px; font-size: 12px;">
+            <span>Final DR:</span>
+            <span id="dr-poison-final">0%</span>
+          </div>
+        </div>
+        
+        <!-- Shadow -->
+        <div class="result-card" style="padding: 15px;">
+          <div class="result-title" style="font-size: 14px; color: #9b59b6;">Shadow EHP</div>
+          <div class="result-value" id="ehp-shadow" style="font-size: 24px;">0</div>
+          <div class="result-detail" style="margin-top: 10px; font-size: 12px;">
+            <span>Final DR:</span>
+            <span id="dr-shadow-final">0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Results Dashboard -->
   <div class="panel results-panel">
     <div class="panel-title"><span class="icon">🔥</span> Damage Results</div>

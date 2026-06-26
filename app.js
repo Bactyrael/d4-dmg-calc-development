@@ -81,8 +81,28 @@
     resultMult:     document.getElementById('result-multiplicative'),
     resultFinal:    document.getElementById('result-final'),
     resultTotal:    document.getElementById('result-total'),
+    
+
 
     btnNew:    document.getElementById('btn-new'),
+    ehpPhysical: document.getElementById('ehp-physical'),
+    drPhysicalFinal: document.getElementById('dr-physical-final'),
+    dashArmor: document.getElementById('dash-armor'),
+    dashArmorDr: document.getElementById('dash-armor-dr'),
+    dashAllResist: document.getElementById('dash-all-resist'),
+    dashUniversalDr: document.getElementById('dash-universal-dr'),
+    dashMaxLife: document.getElementById('dash-max-life'),
+    ehpFire: document.getElementById('ehp-fire'),
+    drFireFinal: document.getElementById('dr-fire-final'),
+    ehpCold: document.getElementById('ehp-cold'),
+    drColdFinal: document.getElementById('dr-cold-final'),
+    ehpLightning: document.getElementById('ehp-lightning'),
+    drLightningFinal: document.getElementById('dr-lightning-final'),
+    ehpPoison: document.getElementById('ehp-poison'),
+    drPoisonFinal: document.getElementById('dr-poison-final'),
+    ehpShadow: document.getElementById('ehp-shadow'),
+    drShadowFinal: document.getElementById('dr-shadow-final'),
+
     btnSave:   document.getElementById('btn-save'),
     btnLoad:   document.getElementById('btn-load'),
     btnExport: document.getElementById('btn-export'),
@@ -1934,6 +1954,42 @@
         if (critStat && coreVals[critStat] > 0) addStat(stats, 'Critical Strike Chance', coreVals[critStat] * 0.02, `From ${critStat}`);
         if (resGenStat && coreVals[resGenStat] > 0) addStat(stats, 'Resource Generation', coreVals[resGenStat] * 0.03, `From ${resGenStat}`);
 
+
+        // --- Defensive Stats ---
+        const finalArmor = stats['Armor'] ? stats['Armor'].final : 0;
+        let armorDr = 0;
+        if (finalArmor > 0) {
+            armorDr = finalArmor / ((finalArmor * 10 / 9) + 5678);
+        }
+        addStat(stats, 'Physical DR% (Armor)', armorDr * 100, 'Calculated');
+        
+        const finalAllResist = stats['Resistance to All Elements'] ? stats['Resistance to All Elements'].final : 0;
+        
+        const specificResists = ['Physical Resistance', 'Fire Resistance', 'Lightning Resistance', 'Cold Resistance', 'Poison Resistance', 'Shadow Resistance'];
+        specificResists.forEach(res => {
+            let resTotal = (stats[res] ? stats[res].total : 0) + (stats['Resistance to All Elements'] ? stats['Resistance to All Elements'].total : 0);
+            let finalResist = resTotal; // Assuming no multiplicative all resist for now, or it comes from equipment
+            
+            if (!stats[res]) stats[res] = { total: 0, final: 0, flatSources: [], pctSources: [] };
+            stats[res].final = finalResist;
+            
+            if (stats['Resistance to All Elements']) {
+                stats[res].flatSources.push({ name: 'From All Resistance', val: stats['Resistance to All Elements'].total });
+                stats[res].total += stats['Resistance to All Elements'].total;
+            }
+            
+            let resistDr = 0;
+            if (finalResist > 0) {
+                resistDr = finalResist / ((finalResist * 10 / 9) + 1136);
+            }
+            addStat(stats, res.split(' ')[0] + ' DR%', resistDr * 100, 'Calculated');
+        });
+        
+        // Universal DR and Dodge will be calculated here once those tabs exist. For now, 0.
+        const finalUniversalDr = 0;
+        addStat(stats, 'Universal Damage Reduction %', finalUniversalDr * 100, 'Calculated');
+
+
         return stats;
     }
   
@@ -1943,9 +1999,9 @@
       const v = Math.floor(finalVal);
       
       // Global effects
-      if (statName === 'Armor') effects.push(`Reduces Physical damage taken. Cap is 9230.`);
+      if (statName === 'Armor') effects.push(`Reduces Physical damage taken. Max reduction approaches 90%.`);
       if (statName === 'Maximum Life') effects.push(`Increases the amount of damage you can take before dying.`);
-      if (statName === 'Resistance to All Elements') effects.push(`Reduces non-Physical damage taken by +${v}%.`);
+      if (statName.includes('Resistance')) effects.push(`Reduces non-Physical damage taken. Max reduction approaches 90%.`);
       
       // Core Stat Global effects
       if (statName === 'Strength') effects.push(`Increases Armor by +${v * 2}`);
@@ -1999,7 +2055,7 @@
           'Core Stats': ['Strength', 'Intelligence', 'Willpower', 'Dexterity', 'All Stats'],
           'Offensive': ['Damage', 'Critical', 'Vulnerable', 'Attack Speed', 'Overpower'],
           'Defensive': ['Life', 'Armor', 'Resistance', 'Reduction', 'Dodge', 'Block'],
-          'Utility': ['Movement', 'Cooldown', 'Resource', 'Essence', 'Healing', 'Lucky Hit']
+          'Utility': ['Movement', 'Cooldown', 'Resource', 'Essence', 'Healing', 'Lucky Hit', 'Barrier']
       };
       
       const grouped = {
@@ -2011,9 +2067,15 @@
       };
       
       Object.keys(stats).forEach(statName => {
+          // Skip stats that are exclusively displayed in the Toughness Dashboard
+          if (statName.includes('DR%') || statName.includes('Universal Damage Reduction %')) return;
+          
           let matched = false;
           for (const [cat, keywords] of Object.entries(categories)) {
+              // Exact match or contains (avoid 'Damage Reduction' matching 'Damage')
               if (keywords.some(kw => statName.toLowerCase().includes(kw.toLowerCase()))) {
+                  if (cat === 'Offensive' && statName.toLowerCase().includes('damage reduction')) continue;
+
                   grouped[cat].push({ name: statName, val: stats[statName] });
                   matched = true;
                   break;
@@ -2586,6 +2648,7 @@
     
     // Update the Character Sheet UI
     renderCharacterSheet(compiledStats);
+    renderToughnessDashboard(compiledStats);
 
   } catch (e) {
     console.error("calculate() Error:", e);
@@ -2605,6 +2668,76 @@
     });
     currentBuild.additives = values;
     return values;
+  }
+
+  function getDrValues() {
+    if (!dom.drBody) return [];
+    const rows = dom.drBody.querySelectorAll('tr');
+    const values = [];
+    rows.forEach(row => {
+      const nameInput = row.querySelector('.row-name-input');
+      const valueInput = row.querySelector('.row-value-input');
+      values.push({
+        name: nameInput.value,
+        value: parseFloat(valueInput.value) || 0,
+      });
+    });
+    currentBuild.defensiveDr = values;
+    return values;
+  }
+
+  function createDrRow(name, val) {
+    if (!dom.drBody) return null;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><input type="text" class="d4-input row-name-input" value="${name}" placeholder="Source name"></td>
+      <td><input type="number" class="d4-input row-value-input" value="${val}" step="any" placeholder="0"></td>
+      <td><button class="btn-remove">X</button></td>
+    `;
+    
+    tr.querySelector('.btn-remove').addEventListener('click', () => {
+      tr.remove();
+      calculate();
+    });
+    
+    tr.querySelectorAll('input').forEach(i => i.addEventListener('input', calculate));
+    dom.drBody.appendChild(tr);
+    return tr;
+  }
+
+  function getDynamicValues(bodyEl, arrayName) {
+    if (!bodyEl) return [];
+    const rows = bodyEl.querySelectorAll('tr');
+    const values = [];
+    rows.forEach(row => {
+      const nameInput = row.querySelector('.row-name-input');
+      const valueInput = row.querySelector('.row-value-input');
+      values.push({
+        name: nameInput.value,
+        value: parseFloat(valueInput.value) || 0,
+      });
+    });
+    currentBuild[arrayName] = values;
+    return values;
+  }
+
+  function createDodgeRow(bodyEl, arrayName, name, val) {
+    if (!bodyEl) return null;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><input type="text" class="d4-input row-name-input" value="${name}" placeholder="Source name"></td>
+      <td><input type="number" class="d4-input row-value-input" value="${val}" step="any" placeholder="0"></td>
+      <td><button class="btn-remove">X</button></td>
+    `;
+    
+    tr.querySelector('.btn-remove').addEventListener('click', () => {
+      tr.remove();
+      calculate();
+    });
+    
+    tr.querySelectorAll('input').forEach(i => i.addEventListener('input', calculate));
+    bodyEl.appendChild(tr);
+    return tr;
   }
 
   function getMultiplicativeValues() {
@@ -2743,6 +2876,35 @@
     if (dom.coldRes) dom.coldRes.value = b.coldRes || 0;
     if (dom.poisonRes) dom.poisonRes.value = b.poisonRes || 0;
     if (dom.shadowRes) dom.shadowRes.value = b.shadowRes || 0;
+    
+    if (dom.additiveArmor) dom.additiveArmor.value = b.additiveArmor || 0;
+    if (dom.multiplicativeArmor) dom.multiplicativeArmor.value = b.multiplicativeArmor || 0;
+    if (dom.additiveAllResist) dom.additiveAllResist.value = b.additiveAllResist || 0;
+    if (dom.multiplicativeAllResist) dom.multiplicativeAllResist.value = b.multiplicativeAllResist || 0;
+    if (dom.fireResist) dom.fireResist.value = b.fireResist || 0;
+    if (dom.lightningResist) dom.lightningResist.value = b.lightningResist || 0;
+    if (dom.coldResist) dom.coldResist.value = b.coldResist || 0;
+    if (dom.poisonResist) dom.poisonResist.value = b.poisonResist || 0;
+    if (dom.shadowResist) dom.shadowResist.value = b.shadowResist || 0;
+    
+    if (dom.drBody) {
+      dom.drBody.innerHTML = '';
+      if (b.defensiveDr && b.defensiveDr.length) {
+        b.defensiveDr.forEach(d => createDrRow(d.name, d.value));
+      }
+    }
+    if (dom.dodgeAddBody) {
+      dom.dodgeAddBody.innerHTML = '';
+      if (b.dodgeAdd && b.dodgeAdd.length) {
+        b.dodgeAdd.forEach(d => createDodgeRow(dom.dodgeAddBody, 'dodgeAdd', d.name, d.value));
+      }
+    }
+    if (dom.dodgeMultBody) {
+      dom.dodgeMultBody.innerHTML = '';
+      if (b.dodgeMult && b.dodgeMult.length) {
+        b.dodgeMult.forEach(d => createDodgeRow(dom.dodgeMultBody, 'dodgeMult', d.name, d.value));
+      }
+    }
     if (dom.maxLife) dom.maxLife.value = b.maxLife || 1526;
     if (dom.potionCapacity) dom.potionCapacity.value = b.potionCapacity || 0;
     if (dom.healingReceived) dom.healingReceived.value = b.healingReceived || 0;
@@ -2950,7 +3112,7 @@
   // ---- Event Binding ----
   function init() {
     // Base stat inputs → recalculate
-    [dom.weaponDamage, dom.skillDamage, dom.strength, dom.intelligence, dom.willpower, dom.dexterity, dom.level, dom.toughness, dom.armor, dom.physRes, dom.fireRes, dom.lightningRes, dom.coldRes, dom.poisonRes, dom.shadowRes, dom.maxLife, dom.potionCapacity, dom.healingReceived, dom.lifePer5s, dom.summonArmor, dom.damageReductionAll, dom.barrierBonus, dom.dodgeChance, dom.maxEssence, dom.essenceRegen, dom.movementSpeed, dom.luckyHit, dom.ccDuration, dom.expBonus, dom.damageReduction, dom.aps, dom.weaponSpeed].filter(Boolean).forEach(el => {
+    [dom.weaponDamage, dom.skillDamage, dom.strength, dom.intelligence, dom.willpower, dom.dexterity, dom.level, dom.toughness, dom.armor, dom.physRes, dom.fireRes, dom.lightningRes, dom.coldRes, dom.poisonRes, dom.shadowRes, dom.maxLife, dom.potionCapacity, dom.healingReceived, dom.lifePer5s, dom.summonArmor, dom.damageReductionAll, dom.barrierBonus, dom.dodgeChance, dom.maxEssence, dom.essenceRegen, dom.movementSpeed, dom.luckyHit, dom.ccDuration, dom.expBonus, dom.damageReduction, dom.aps, dom.weaponSpeed, dom.additiveArmor, dom.multiplicativeArmor, dom.additiveAllResist, dom.multiplicativeAllResist, dom.fireResist, dom.lightningResist, dom.coldResist, dom.poisonResist, dom.shadowResist].filter(Boolean).forEach(el => {
       el.addEventListener('input', calculate);
       if (el.tagName === 'SELECT') {
         el.addEventListener('change', calculate);
@@ -3107,6 +3269,30 @@
       row.querySelector('.row-name-input').focus();
       calculate();
     });
+
+    if (dom.btnAddDr) {
+      dom.btnAddDr.addEventListener('click', () => {
+        const row = createDrRow('', 0);
+        row.querySelector('.row-name-input').focus();
+        calculate();
+      });
+    }
+
+    if (dom.btnAddDodgeAdd) {
+      dom.btnAddDodgeAdd.addEventListener('click', () => {
+        const row = createDodgeRow(dom.dodgeAddBody, 'dodgeAdd', '', 0);
+        if (row) row.querySelector('.row-name-input').focus();
+        calculate();
+      });
+    }
+
+    if (dom.btnAddDodgeMult) {
+      dom.btnAddDodgeMult.addEventListener('click', () => {
+        const row = createDodgeRow(dom.dodgeMultBody, 'dodgeMult', '', 0);
+        if (row) row.querySelector('.row-name-input').focus();
+        calculate();
+      });
+    }
 
     // Collapsible panels
     document.querySelectorAll('.panel-title[data-toggle]').forEach(title => {
@@ -4573,5 +4759,36 @@ rarity = foundItem.rarity;
     setupModifierListeners('temper', 'temper');
     setupModifierListeners('transfigure', 'transfigure');
   });
+
+  function renderToughnessDashboard(compiledStats) {
+      if (!dom.ehpPhysical) return;
+
+      const maxLife = compiledStats['Maximum Life'] ? compiledStats['Maximum Life'].final : 0;
+      dom.dashMaxLife.textContent = Math.floor(maxLife).toLocaleString();
+
+      const armorTotal = compiledStats['Armor'] ? compiledStats['Armor'].final : 0;
+      const armorDrPct = compiledStats['Physical DR% (Armor)'] ? compiledStats['Physical DR% (Armor)'].final : 0;
+      const allResistTotal = compiledStats['Resistance to All Elements'] ? compiledStats['Resistance to All Elements'].final : 0;
+      const universalDrPct = compiledStats['Universal Damage Reduction %'] ? compiledStats['Universal Damage Reduction %'].final : 0;
+      
+      if (dom.dashArmor) dom.dashArmor.textContent = Math.floor(armorTotal).toLocaleString();
+      if (dom.dashArmorDr) dom.dashArmorDr.textContent = armorDrPct.toFixed(1) + '%';
+      if (dom.dashAllResist) dom.dashAllResist.textContent = Math.floor(allResistTotal).toLocaleString();
+      if (dom.dashUniversalDr) dom.dashUniversalDr.textContent = universalDrPct.toFixed(1) + '%';
+      
+      const elements = ['Physical', 'Fire', 'Cold', 'Lightning', 'Poison', 'Shadow'];
+      elements.forEach(elem => {
+          const resistDrPct = compiledStats[`${elem} DR%`] ? compiledStats[`${elem} DR%`].final : 0;
+          // Armor DR applies to all elemental damage as well as physical
+          const finalElemDr = 1 - ((1 - (armorDrPct/100)) * (1 - (resistDrPct/100)) * (1 - (universalDrPct/100)));
+          const ehpElem = maxLife / (1 - finalElemDr);
+          
+          const ehpEl = document.getElementById(`ehp-${elem.toLowerCase()}`);
+          const drEl = document.getElementById(`dr-${elem.toLowerCase()}-final`);
+          
+          if (ehpEl) ehpEl.textContent = Math.floor(ehpElem).toLocaleString();
+          if (drEl) drEl.textContent = (finalElemDr * 100).toFixed(1) + '%';
+      });
+  }
 
 })();

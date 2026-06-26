@@ -20591,6 +20591,1389 @@ window.D4_DATABASE = {
             {
               "name": "+[1 - 15] Item Quality",
               "shortName": "Item Quality"
+            },
+            {
+              "name": "+[6 - 8]% Cooldown Reduction",
+              "shortName": "Cooldown Reduction"
+            }
+          ]
+        },
+        "chest": {
+          "modifiers": [
+            {
+              "name": "+[981 - 1225] Armor",
+              "shortName": "Armor",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[8 - 10]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "category": "Utility"
+            },
+            {
+              "name": "+[5 - 8]% Cooldown Reduction",
+              "shortName": "Cooldown Reduction",
+              "category": "Utility"
+            },
+            {
+              "name": "+[100 - 121] Intelligence",
+              "shortName": "Intelligence",
+              "category": "Core Stat"
+            },
+            {
+              "name": "+[1226 - 1450] Maximum Life",
+              "shortName": "Maximum Life",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[8 - 9]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility"
+            },
+            {
+              "name": "+[524 - 630] Fire Resistance",
+              "shortName": "Fire Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Lightning Resistance",
+              "shortName": "Lightning Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Poison Resistance",
+              "shortName": "Poison Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Shadow Resistance",
+              "shortName": "Shadow Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Cold Resistance",
+              "shortName": "Cold Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[11 - 15]% Resource Generation",
+              "shortName": "Resource Generation",
+              "category": "Resource"
+            },
+            {
+              "name": "+[1221 - 1526] Thorns",
+              "shortName": "Thorns",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[15 - 20] Maximum Resource",
+              "shortName": "Maximum Resource",
+              "category": "Resource"
+            },
+            {
+              "name": "+[11 - 15]% Healing Received",
+              "shortName": "Healing Received",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[326 - 392] Resistance to All Elements",
+              "shortName": "Resistance to All Elements",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Physical Resistance",
+              "shortName": "Physical Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Blood Mist",
+              "shortName": "Ranks to Blood Mist",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Bone Prison",
+              "shortName": "Ranks to Bone Prison",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Corpse Explosion",
+              "shortName": "Ranks to Corpse Explosion",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[1 - 2] Ranks to Macabre Skills",
+              "shortName": "Ranks to Macabre Skills",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[1 - 2] Ranks to Golem",
+              "shortName": "Ranks to Golem",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[6 - 7]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction",
+              "category": "Resource"
+            },
+            {
+              "name": "+[153 - 184] Life Regeneration",
+              "shortName": "Life Regeneration",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[3 - 4] Essence Regeneration",
+              "shortName": "Essence Regeneration",
+              "category": "Resource"
+            },
+            {
+              "name": "+[10 - 15]% Fortify Generation",
+              "shortName": "Fortify Generation",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[10 - 15]% Barrier Generation",
+              "shortName": "Barrier Generation",
+              "category": "Defensive"
+            }
+          ],
+          "tempers": [
+            {
+              "name": "+[440 - 490] Fire Resistance",
+              "shortName": "Fire Resistance",
+              "category": "Defensive",
+              "manual": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Lightning Resistance",
+              "shortName": "Lightning Resistance",
+              "category": "Defensive",
+              "manual": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Cold Resistance",
+              "shortName": "Cold Resistance",
+              "category": "Defensive",
+              "manual": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Poison Resistance",
+              "shortName": "Poison Resistance",
+              "category": "Defensive",
+              "manual": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Shadow Resistance",
+              "shortName": "Shadow Resistance",
+              "category": "Defensive",
+              "manual": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Physical Resistance",
+              "shortName": "Physical Resistance",
+              "category": "Defensive",
+              "manual": "Natural Resistance"
+            },
+            {
+              "name": "+[20 - 30]% Damage Reduction for Your Summons",
+              "shortName": "Damage Reduction for Your Summons",
+              "category": "Defensive",
+              "manual": "Necromancer Wall"
+            },
+            {
+              "name": "+[7 - 10]% Chance for Minion Attacks to Fortify You for 3% Maximum Life",
+              "shortName": "Chance for Minion Attacks to Fortify You for 3% Maximum Life",
+              "category": "Defensive",
+              "manual": "Necromancer Wall"
+            },
+            {
+              "name": "+[10 - 12]% Minions Inherit +% of Your Thorns",
+              "shortName": "Minions Inherit +% of Your Thorns",
+              "category": "Defensive",
+              "manual": "Necromancer Wall"
+            },
+            {
+              "name": "+[2.5 - 5]% Block Chance",
+              "shortName": "Block Chance",
+              "category": "Defensive",
+              "manual": "Necromancer Wall"
+            },
+            {
+              "name": "+[1000 - 1500] Maximum Life",
+              "shortName": "Maximum Life",
+              "category": "Defensive",
+              "manual": "Wordly Endurance"
+            },
+            {
+              "name": "+[1250 - 2000] Armor",
+              "shortName": "Armor",
+              "category": "Defensive",
+              "manual": "Wordly Endurance"
+            },
+            {
+              "name": "+[60 - 70] Resistance to All Elements",
+              "shortName": "Resistance to All Elements",
+              "category": "Defensive",
+              "manual": "Wordly Endurance"
+            },
+            {
+              "name": "+[2 - 3] Maximum Resolve Stacks",
+              "shortName": "Maximum Resolve Stacks",
+              "category": "Defensive",
+              "manual": "Wordly Endurance"
+            },
+            {
+              "name": "+[484 - 646] Thorns",
+              "shortName": "Thorns",
+              "category": "Utility",
+              "manual": "Natural Schemes"
+            },
+            {
+              "name": "+[10 - 12.5]% Fortify Generation",
+              "shortName": "Fortify Generation",
+              "category": "Utility",
+              "manual": "Natural Schemes"
+            },
+            {
+              "name": "+[10 - 12.5]% Barrier Generation",
+              "shortName": "Barrier Generation",
+              "category": "Utility",
+              "manual": "Natural Schemes"
+            },
+            {
+              "name": "+[2.5 - 5]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility",
+              "manual": "Worldy Fortune"
+            },
+            {
+              "name": "+[10 - 12.5]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "category": "Utility",
+              "manual": "Worldy Fortune"
+            },
+            {
+              "name": "+[12 - 15]% Crowd Control Duration",
+              "shortName": "Crowd Control Duration",
+              "category": "Utility",
+              "manual": "Worldy Fortune"
+            }
+          ],
+          "transfigures": [
+            {
+              "name": "+[3.5 - 5]% Intelligence",
+              "shortName": "Intelligence"
+            },
+            {
+              "name": "+[75 - 100]% Gem Strength",
+              "shortName": "Gem Strength"
+            },
+            {
+              "name": "+[8 - 10]% Total Armor",
+              "shortName": "Total Armor"
+            },
+            {
+              "name": "+[8 - 10]% Resistance to All Elements",
+              "shortName": "Resistance to All Elements"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Corpse Skills",
+              "shortName": "Ranks to Corpse Skills"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Macabre Skills",
+              "shortName": "Ranks to Macabre Skills"
+            },
+            {
+              "name": "+[75 - 100] All Stats",
+              "shortName": "All Stats"
+            },
+            {
+              "name": "+[3.5 - 5]% Critical Strike Chance",
+              "shortName": "Critical Strike Chance"
+            },
+            {
+              "name": "+[8 - 10]% Attack Speed",
+              "shortName": "Attack Speed"
+            },
+            {
+              "name": "+[150 - 180] Intelligence",
+              "shortName": "Intelligence"
+            },
+            {
+              "name": "+[6 - 8]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance"
+            },
+            {
+              "name": "+[6 - 8]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction"
+            },
+            {
+              "name": "+[15 - 20] Maximum Resource",
+              "shortName": "Maximum Resource"
+            },
+            {
+              "name": "+[8 - 10]% Shadow Damage",
+              "shortName": "Shadow Damage"
+            },
+            {
+              "name": "+[8 - 10]% Physical Damage",
+              "shortName": "Physical Damage"
+            },
+            {
+              "name": "+[6 - 8]% Maximum Life",
+              "shortName": "Maximum Life"
+            },
+            {
+              "name": "+[1 - 15] Item Quality",
+              "shortName": "Item Quality"
+            },
+            {
+              "name": "+[6 - 8]% Cooldown Reduction",
+              "shortName": "Cooldown Reduction"
+            }
+          ]
+        },
+        "pants": {
+          "modifiers": [
+            {
+              "name": "+[981 - 1225] Armor",
+              "shortName": "Armor",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[8 - 10]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "category": "Utility"
+            },
+            {
+              "name": "+[5 - 8]% Cooldown Reduction",
+              "shortName": "Cooldown Reduction",
+              "category": "Utility"
+            },
+            {
+              "name": "+[100 - 121] Intelligence",
+              "shortName": "Intelligence",
+              "category": "Core Stat"
+            },
+            {
+              "name": "+[1226 - 1450] Maximum Life",
+              "shortName": "Maximum Life",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[8 - 9]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility"
+            },
+            {
+              "name": "+[524 - 630] Fire Resistance",
+              "shortName": "Fire Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Lightning Resistance",
+              "shortName": "Lightning Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Poison Resistance",
+              "shortName": "Poison Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Shadow Resistance",
+              "shortName": "Shadow Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Cold Resistance",
+              "shortName": "Cold Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[11 - 15]% Resource Generation",
+              "shortName": "Resource Generation",
+              "category": "Resource"
+            },
+            {
+              "name": "+[1221 - 1526] Thorns",
+              "shortName": "Thorns",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[15 - 20] Maximum Resource",
+              "shortName": "Maximum Resource",
+              "category": "Resource"
+            },
+            {
+              "name": "+[11 - 15]% Healing Received",
+              "shortName": "Healing Received",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[326 - 392] Resistance to All Elements",
+              "shortName": "Resistance to All Elements",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Physical Resistance",
+              "shortName": "Physical Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Bone Splinters",
+              "shortName": "Ranks to Bone Splinters",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Decompose",
+              "shortName": "Ranks to Decompose",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Hemorrhage",
+              "shortName": "Ranks to Hemorrhage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Reap",
+              "shortName": "Ranks to Reap",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[1 - 2] Ranks to Basic Skills",
+              "shortName": "Ranks to Basic Skills",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[6 - 7]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction",
+              "category": "Resource"
+            },
+            {
+              "name": "+[153 - 184] Life Regeneration",
+              "shortName": "Life Regeneration",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[3 - 4] Essence Regeneration",
+              "shortName": "Essence Regeneration",
+              "category": "Resource"
+            },
+            {
+              "name": "+[10 - 15]% Fortify Generation",
+              "shortName": "Fortify Generation",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[10 - 15]% Barrier Generation",
+              "shortName": "Barrier Generation",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[1 - 2] Ranks to Skeleton Mage",
+              "shortName": "Ranks to Skeleton Mage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[2 - 3] Potion Capacity",
+              "shortName": "Potion Capacity",
+              "category": "Utility"
+            },
+            {
+              "name": "+[7 - 8]% Dodge Chance",
+              "shortName": "Dodge Chance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[263 - 316] Life on Kill",
+              "shortName": "Life on Kill",
+              "category": "Defensive"
+            }
+          ],
+          "tempers": [
+            {
+              "name": "+[440 - 490] Fire Resistance",
+              "shortName": "Fire Resistance",
+              "category": "Defensive",
+              "manual": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Lightning Resistance",
+              "shortName": "Lightning Resistance",
+              "category": "Defensive",
+              "manual": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Cold Resistance",
+              "shortName": "Cold Resistance",
+              "category": "Defensive",
+              "manual": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Poison Resistance",
+              "shortName": "Poison Resistance",
+              "category": "Defensive",
+              "manual": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Shadow Resistance",
+              "shortName": "Shadow Resistance",
+              "category": "Defensive",
+              "manual": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Physical Resistance",
+              "shortName": "Physical Resistance",
+              "category": "Defensive",
+              "manual": "Natural Resistance"
+            },
+            {
+              "name": "+[20 - 30]% Damage Reduction for Your Summons",
+              "shortName": "Damage Reduction for Your Summons",
+              "category": "Defensive",
+              "manual": "Necromancer Wall"
+            },
+            {
+              "name": "+[7 - 10]% Chance for Minion Attacks to Fortify You for 3% Maximum Life",
+              "shortName": "Chance for Minion Attacks to Fortify You for 3% Maximum Life",
+              "category": "Defensive",
+              "manual": "Necromancer Wall"
+            },
+            {
+              "name": "+[10 - 12]% Minions Inherit +% of Your Thorns",
+              "shortName": "Minions Inherit +% of Your Thorns",
+              "category": "Defensive",
+              "manual": "Necromancer Wall"
+            },
+            {
+              "name": "+[2.5 - 5]% Block Chance",
+              "shortName": "Block Chance",
+              "category": "Defensive",
+              "manual": "Necromancer Wall"
+            },
+            {
+              "name": "+[1000 - 1500] Maximum Life",
+              "shortName": "Maximum Life",
+              "category": "Defensive",
+              "manual": "Wordly Endurance"
+            },
+            {
+              "name": "+[1250 - 2000] Armor",
+              "shortName": "Armor",
+              "category": "Defensive",
+              "manual": "Wordly Endurance"
+            },
+            {
+              "name": "+[60 - 70] Resistance to All Elements",
+              "shortName": "Resistance to All Elements",
+              "category": "Defensive",
+              "manual": "Wordly Endurance"
+            },
+            {
+              "name": "+[2 - 3] Maximum Resolve Stacks",
+              "shortName": "Maximum Resolve Stacks",
+              "category": "Defensive",
+              "manual": "Wordly Endurance"
+            },
+            {
+              "name": "+[484 - 646] Thorns",
+              "shortName": "Thorns",
+              "category": "Utility",
+              "manual": "Natural Schemes"
+            },
+            {
+              "name": "+[10 - 12.5]% Fortify Generation",
+              "shortName": "Fortify Generation",
+              "category": "Utility",
+              "manual": "Natural Schemes"
+            },
+            {
+              "name": "+[10 - 12.5]% Barrier Generation",
+              "shortName": "Barrier Generation",
+              "category": "Utility",
+              "manual": "Natural Schemes"
+            },
+            {
+              "name": "+[2.5 - 5]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility",
+              "manual": "Worldy Fortune"
+            },
+            {
+              "name": "+[10 - 12.5]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "category": "Utility",
+              "manual": "Worldy Fortune"
+            },
+            {
+              "name": "+[12 - 15]% Crowd Control Duration",
+              "shortName": "Crowd Control Duration",
+              "category": "Utility",
+              "manual": "Worldy Fortune"
+            }
+          ],
+          "transfigures": [
+            {
+              "name": "+[3.5 - 5]% Intelligence",
+              "shortName": "Intelligence"
+            },
+            {
+              "name": "+[75 - 100]% Gem Strength",
+              "shortName": "Gem Strength"
+            },
+            {
+              "name": "+[8 - 10]% Total Armor",
+              "shortName": "Total Armor"
+            },
+            {
+              "name": "+[8 - 10]% Resistance to All Elements",
+              "shortName": "Resistance to All Elements"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Basic Skills",
+              "shortName": "Ranks to Basic Skills"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Macabre Skills",
+              "shortName": "Ranks to Macabre Skills"
+            },
+            {
+              "name": "+[75 - 100] All Stats",
+              "shortName": "All Stats"
+            },
+            {
+              "name": "+[3.5 - 5]% Critical Strike Chance",
+              "shortName": "Critical Strike Chance"
+            },
+            {
+              "name": "+[8 - 10]% Attack Speed",
+              "shortName": "Attack Speed"
+            },
+            {
+              "name": "+[150 - 180] Intelligence",
+              "shortName": "Intelligence"
+            },
+            {
+              "name": "+[6 - 8]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance"
+            },
+            {
+              "name": "+[6 - 8]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction"
+            },
+            {
+              "name": "+[15 - 20] Maximum Resource",
+              "shortName": "Maximum Resource"
+            },
+            {
+              "name": "+[8 - 10]% Shadow Damage",
+              "shortName": "Shadow Damage"
+            },
+            {
+              "name": "+[8 - 10]% Physical Damage",
+              "shortName": "Physical Damage"
+            },
+            {
+              "name": "+[6 - 8]% Maximum Life",
+              "shortName": "Maximum Life"
+            },
+            {
+              "name": "+[1 - 15] Item Quality",
+              "shortName": "Item Quality"
+            },
+            {
+              "name": "+[6 - 8]% Cooldown Reduction",
+              "shortName": "Cooldown Reduction"
+            }
+          ]
+        },
+        "gloves": {
+          "modifiers": [
+            {
+              "name": "+[981 - 1225] Armor",
+              "shortName": "Armor",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[5 - 8]% Cooldown Reduction",
+              "shortName": "Cooldown Reduction",
+              "category": "Utility"
+            },
+            {
+              "name": "+[150 - 180] Intelligence",
+              "shortName": "Intelligence",
+              "category": "Core Stat"
+            },
+            {
+              "name": "+[1831 - 2200] Maximum Life",
+              "shortName": "Maximum Life",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[8 - 9]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility"
+            },
+            {
+              "name": "+[524 - 630] Fire Resistance",
+              "shortName": "Fire Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Lightning Resistance",
+              "shortName": "Lightning Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Poison Resistance",
+              "shortName": "Poison Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Shadow Resistance",
+              "shortName": "Shadow Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Cold Resistance",
+              "shortName": "Cold Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Physical Resistance",
+              "shortName": "Physical Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[3 - 4] Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
+              "shortName": "Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
+              "category": "Resource"
+            },
+            {
+              "name": "+[326 - 392] Resistance to All Elements",
+              "shortName": "Resistance to All Elements",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Bone Spear",
+              "shortName": "Ranks to Bone Spear",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Blight",
+              "shortName": "Ranks to Blight",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Sever",
+              "shortName": "Ranks to Sever",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Blood Surge",
+              "shortName": "Ranks to Blood Surge",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Blood Lance",
+              "shortName": "Ranks to Blood Lance",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[6 - 7]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction",
+              "category": "Resource"
+            },
+            {
+              "name": "+[220 - 264] Life Regeneration",
+              "shortName": "Life Regeneration",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[10 - 15]% Fortify Generation",
+              "shortName": "Fortify Generation",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[10 - 15]% Barrier Generation",
+              "shortName": "Barrier Generation",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[1 - 2] Ranks to Core Skills",
+              "shortName": "Ranks to Core Skills",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[263 - 316] Life on Hit",
+              "shortName": "Life on Hit",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[8 - 10]% Attack Speed",
+              "shortName": "Attack Speed",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[6.5 - 8.5]% Critical Strike Chance",
+              "shortName": "Critical Strike Chance",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[1 - 2] Ranks to Skeletal Mage",
+              "shortName": "Ranks to Skeletal Mage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[26 - 50]% Critical Strike Damage [x]",
+              "shortName": "Critical Strike Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[12 - 20]% All Damage [x]",
+              "shortName": "All Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[16 - 28]% Vulnerable Damage [x]",
+              "shortName": "Vulnerable Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[30 - 60]% Damage Over Time [x]",
+              "shortName": "Damage Over Time",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[14 - 24]% Cold Damage [x]",
+              "shortName": "Cold Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[14 - 24]% Shadow Damage [x]",
+              "shortName": "Shadow Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[14 - 24]% Physical Damage [x]",
+              "shortName": "Physical Damage",
+              "category": "Offensive"
+            }
+          ],
+          "tempers": [
+            {
+              "name": "+[20 - 40]% Physical Damage",
+              "shortName": "Physical Damage",
+              "category": "Offensive",
+              "manual": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Fire Damage",
+              "shortName": "Fire Damage",
+              "category": "Offensive",
+              "manual": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Lightning Damage",
+              "shortName": "Lightning Damage",
+              "category": "Offensive",
+              "manual": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Holy Damage",
+              "shortName": "Holy Damage",
+              "category": "Offensive",
+              "manual": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Cold Damage",
+              "shortName": "Cold Damage",
+              "category": "Offensive",
+              "manual": "Elemental Finesse - Night"
+            },
+            {
+              "name": "+[20 - 40]% Poison Damage",
+              "shortName": "Poison Damage",
+              "category": "Offensive",
+              "manual": "Elemental Finesse - Night"
+            },
+            {
+              "name": "+[20 - 40]% Shadow Damage",
+              "shortName": "Shadow Damage",
+              "category": "Offensive",
+              "manual": "Elemental Finesse - Night"
+            },
+            {
+              "name": "+[10 - 30]% Damage",
+              "shortName": "Damage",
+              "category": "Offensive",
+              "manual": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Damage to Crowd Controlled Enemies",
+              "shortName": "Damage to Crowd Controlled Enemies",
+              "category": "Offensive",
+              "manual": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Damage to Close",
+              "shortName": "Damage to Close",
+              "category": "Offensive",
+              "manual": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Damage to Distant",
+              "shortName": "Damage to Distant",
+              "category": "Offensive",
+              "manual": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Blood Damage",
+              "shortName": "Blood Damage",
+              "category": "Offensive",
+              "manual": "Profane Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Bone Damage",
+              "shortName": "Bone Damage",
+              "category": "Offensive",
+              "manual": "Profane Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Summon Damage",
+              "shortName": "Summon Damage",
+              "category": "Offensive",
+              "manual": "Profane Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Macabre Damage",
+              "shortName": "Macabre Damage",
+              "category": "Offensive",
+              "manual": "Shadow Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Darkness Damage",
+              "shortName": "Darkness Damage",
+              "category": "Offensive",
+              "manual": "Shadow Finesse"
+            },
+            {
+              "name": "+[40 - 60]% Damage when Spending Resolve",
+              "shortName": "Damage when Spending Resolve",
+              "category": "Offensive",
+              "manual": "Sharpened Finesse"
+            },
+            {
+              "name": "+[7 - 10]% Damage Per Overpower Stack",
+              "shortName": "Damage Per Overpower Stack",
+              "category": "Offensive",
+              "manual": "Sharpened Finesse"
+            },
+            {
+              "name": "+[30 - 50]% Critical Strike Damage",
+              "shortName": "Critical Strike Damage",
+              "category": "Offensive",
+              "manual": "Worldly Finesse"
+            },
+            {
+              "name": "+[30 - 50]% Damage Over Time",
+              "shortName": "Damage Over Time",
+              "category": "Offensive",
+              "manual": "Worldly Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Vulnerable Damage",
+              "shortName": "Vulnerable Damage",
+              "category": "Offensive",
+              "manual": "Worldly Finesse"
+            },
+            {
+              "name": "+[484 - 646] Thorns",
+              "shortName": "Thorns",
+              "category": "Utility",
+              "manual": "Natural Schemes"
+            },
+            {
+              "name": "+[10 - 12.5]% Fortify Generation",
+              "shortName": "Fortify Generation",
+              "category": "Utility",
+              "manual": "Natural Schemes"
+            },
+            {
+              "name": "+[10 - 12.5]% Barrier Generation",
+              "shortName": "Barrier Generation",
+              "category": "Utility",
+              "manual": "Natural Schemes"
+            },
+            {
+              "name": "+[2.5 - 5]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility",
+              "manual": "Worldy Fortune"
+            },
+            {
+              "name": "+[10 - 12.5]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "category": "Utility",
+              "manual": "Worldy Fortune"
+            },
+            {
+              "name": "+[12 - 15]% Crowd Control Duration",
+              "shortName": "Crowd Control Duration",
+              "category": "Utility",
+              "manual": "Worldy Fortune"
+            }
+          ],
+          "transfigures": [
+            {
+              "name": "+[3.5 - 5]% Intelligence [x]",
+              "shortName": "Intelligence"
+            },
+            {
+              "name": "+[21 - 35]% Chance for Projectiles to Cast Twice",
+              "shortName": "Chance for Projectiles to Cast Twice"
+            },
+            {
+              "name": "+[8 - 10]% Total Armor",
+              "shortName": "Total Armor"
+            },
+            {
+              "name": "+[8 - 10]% Resistance to All Elements",
+              "shortName": "Resistance to All Elements"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Core Skills",
+              "shortName": "Ranks to Core Skills"
+            },
+            {
+              "name": "+[75 - 100] All Stats",
+              "shortName": "All Stats"
+            },
+            {
+              "name": "+[3.5 - 5]% Critical Strike Chance",
+              "shortName": "Critical Strike Chance"
+            },
+            {
+              "name": "+[8 - 10]% Attack Speed",
+              "shortName": "Attack Speed"
+            },
+            {
+              "name": "+[150 - 180] Intelligence",
+              "shortName": "Intelligence"
+            },
+            {
+              "name": "+[6 - 8]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance"
+            },
+            {
+              "name": "+[6 - 8]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction"
+            },
+            {
+              "name": "+[15 - 20] Maximum Resource",
+              "shortName": "Maximum Resource"
+            },
+            {
+              "name": "+[8 - 10]% Shadow Damage [x]",
+              "shortName": "Shadow Damage"
+            },
+            {
+              "name": "+[8 - 10]% Physical Damage [x]",
+              "shortName": "Physical Damage"
+            },
+            {
+              "name": "+[6 - 8]% Maximum Life [x]",
+              "shortName": "Maximum Life"
+            },
+            {
+              "name": "+[1 - 15] Item Quality",
+              "shortName": "Item Quality"
+            },
+            {
+              "name": "+[6 - 8]% Cooldown Reduction",
+              "shortName": "Cooldown Reduction"
+            },
+            {
+              "name": "+[263 - 316] Life on Hit",
+              "shortName": "Life on Hit"
+            }
+          ]
+        },
+        "boots": {
+          "modifiers": [
+            {
+              "name": "+[981 - 1225] Armor",
+              "shortName": "Armor",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[8 - 10]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "category": "Utility"
+            },
+            {
+              "name": "+[20 - 24]% Movement Speed",
+              "shortName": "Movement Speed",
+              "category": "Utility"
+            },
+            {
+              "name": "+[100 - 121] Intelligence",
+              "shortName": "Intelligence",
+              "category": "Core Stat"
+            },
+            {
+              "name": "+[1226 - 1450] Maximum Life",
+              "shortName": "Maximum Life",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[8 - 9]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility"
+            },
+            {
+              "name": "+[524 - 630] Fire Resistance",
+              "shortName": "Fire Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Lightning Resistance",
+              "shortName": "Lightning Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Poison Resistance",
+              "shortName": "Poison Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Shadow Resistance",
+              "shortName": "Shadow Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Cold Resistance",
+              "shortName": "Cold Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[11 - 15]% Resource Generation",
+              "shortName": "Resource Generation",
+              "category": "Resource"
+            },
+            {
+              "name": "+[11 - 15]% Healing Received",
+              "shortName": "Healing Received",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[326 - 392] Resistance to All Elements",
+              "shortName": "Resistance to All Elements",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Physical Resistance",
+              "shortName": "Physical Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Bone Spirit",
+              "shortName": "Ranks to Bone Spirit",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Corpse Tendrils",
+              "shortName": "Ranks to Corpse Tendrils",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Skeletal Warrior",
+              "shortName": "Ranks to Skeletal Warrior",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[1 - 2] Ranks to Corpse Skills",
+              "shortName": "Ranks to Corpse Skills",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[6 - 7]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction",
+              "category": "Resource"
+            },
+            {
+              "name": "+[153 - 184] Life Regeneration",
+              "shortName": "Life Regeneration",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[3 - 4] Essence Regeneration",
+              "shortName": "Essence Regeneration",
+              "category": "Resource"
+            },
+            {
+              "name": "+[10 - 15]% Fortify Generation",
+              "shortName": "Fortify Generation",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[10 - 15]% Barrier Generation",
+              "shortName": "Barrier Generation",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[7 - 8]% Dodge Chance",
+              "shortName": "Dodge Chance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[263 - 316] Life on Kill",
+              "shortName": "Life on Kill",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[1 - 3] Maximum Evade Charges",
+              "shortName": "Maximum Evade Charges",
+              "category": "Mobility"
+            },
+            {
+              "name": "+[1.2 - 1.5] Attacks Reduce Evade's Cooldown by [x] Seconds",
+              "shortName": "Attacks Reduce Evade's Cooldown by [x] Seconds",
+              "category": "Mobility"
+            },
+            {
+              "name": "+[125 - 150]% Evade Grants +[x]% Movement Speed for 1.5 Seconds",
+              "shortName": "Evade Grants +[x]% Movement Speed for 1.5 Seconds",
+              "category": "Mobility"
+            }
+          ],
+          "tempers": [
+            {
+              "name": "+[15 - 25]% Movement Speed",
+              "shortName": "Movement Speed",
+              "category": "Utility",
+              "manual": "Natural Motion"
+            },
+            {
+              "name": "+[25 - 45]% Movement Speed for 4 Seconds After Killing an Elite",
+              "shortName": "Movement Speed for 4 Seconds After Killing an Elite",
+              "category": "Utility",
+              "manual": "Natural Motion"
+            },
+            {
+              "name": "+[5 - 8]% Mobility Cooldown Reduction",
+              "shortName": "Mobility Cooldown Reduction",
+              "category": "Utility",
+              "manual": "Natural Motion"
+            },
+            {
+              "name": "+[17 - 20]% Evade Cooldown Reduction",
+              "shortName": "Evade Cooldown Reduction",
+              "category": "Utility",
+              "manual": "Natural Motion"
+            },
+            {
+              "name": "+[484 - 646] Thorns",
+              "shortName": "Thorns",
+              "category": "Utility",
+              "manual": "Natural Schemes"
+            },
+            {
+              "name": "+[10 - 12.5]% Fortify Generation",
+              "shortName": "Fortify Generation",
+              "category": "Utility",
+              "manual": "Natural Schemes"
+            },
+            {
+              "name": "+[10 - 12.5]% Barrier Generation",
+              "shortName": "Barrier Generation",
+              "category": "Utility",
+              "manual": "Natural Schemes"
+            },
+            {
+              "name": "+[2.5 - 5]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility",
+              "manual": "Worldy Fortune"
+            },
+            {
+              "name": "+[10 - 12.5]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "category": "Utility",
+              "manual": "Worldy Fortune"
+            },
+            {
+              "name": "+[12 - 15]% Crowd Control Duration",
+              "shortName": "Crowd Control Duration",
+              "category": "Utility",
+              "manual": "Worldy Fortune"
+            }
+          ],
+          "transfigures": [
+            {
+              "name": "+[3.5 - 5]% Intelligence",
+              "shortName": "Intelligence"
+            },
+            {
+              "name": "+[75 - 100]% Gem Strength",
+              "shortName": "Gem Strength"
+            },
+            {
+              "name": "+[8 - 10]% Total Armor",
+              "shortName": "Total Armor"
+            },
+            {
+              "name": "+[8 - 10]% Resistance to All Elements",
+              "shortName": "Resistance to All Elements"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Corpse Skills",
+              "shortName": "Ranks to Corpse Skills"
+            },
+            {
+              "name": "+[2 - 3] Ranks to Macabre Skills",
+              "shortName": "Ranks to Macabre Skills"
+            },
+            {
+              "name": "+[75 - 100] All Stats",
+              "shortName": "All Stats"
+            },
+            {
+              "name": "+[3.5 - 5]% Critical Strike Chance",
+              "shortName": "Critical Strike Chance"
+            },
+            {
+              "name": "+[8 - 10]% Attack Speed",
+              "shortName": "Attack Speed"
+            },
+            {
+              "name": "+[150 - 180] Intelligence",
+              "shortName": "Intelligence"
+            },
+            {
+              "name": "+[8 - 10]% Shadow Damage",
+              "shortName": "Shadow Damage"
+            },
+            {
+              "name": "+[8 - 10]% Physical Damage",
+              "shortName": "Physical Damage"
+            },
+            {
+              "name": "+[6 - 8]% Maximum Life",
+              "shortName": "Maximum Life"
+            },
+            {
+              "name": "+[1 - 15] Item Quality",
+              "shortName": "Item Quality"
+            },
+            {
+              "name": "+[6 - 8]% Cooldown Reduction",
+              "shortName": "Cooldown Reduction"
+            },
+            {
+              "name": "+[20 - 30]% Movement Speed",
+              "shortName": "Movement Speed"
             }
           ]
         }
