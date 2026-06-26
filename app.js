@@ -1714,7 +1714,11 @@
           const effQ = getEffectiveQuality(item);
           const baseQMult = 1 + (effQ * 0.01);
           
-          const dbItemArr = window.D4_DATABASE?.itemDatabase?.[slotName] || [];
+          let dbSlotName = slotName;
+          if (slotName === 'Left Ring' || slotName === 'Right Ring') dbSlotName = 'Ring';
+          if (slotName === 'Ranged Weapon' || slotName.startsWith('Weapon')) dbSlotName = 'Mainhand'; // if needed
+          
+          const dbItemArr = window.D4_DATABASE?.itemDatabase?.[dbSlotName] || [];
           const baseItem = dbItemArr.find(i => i.name === item.name) || {};
           
           if (baseItem.armor) {
@@ -1725,13 +1729,19 @@
               addStat(stats, 'Base Weapon Damage', avgDmg * baseQMult);
           }
           if (baseItem.resistance) {
-              addStat(stats, '% Resistance to All Elements', baseItem.resistance * baseQMult);
+              addStat(stats, 'Resistance to All Elements', baseItem.resistance * baseQMult);
           }
           
-          if (item.affixes && item.affixValues) {
+          if (item.affixes) {
               item.affixes.forEach((affixName, i) => {
                   if (!affixName) return;
-                  let v = item.affixValues[i]?.[0] || 0;
+                  let v = 0;
+                  if (item.affixValues && item.affixValues[i] && item.affixValues[i][0] !== undefined) {
+                      v = item.affixValues[i][0];
+                  } else {
+                      const match = affixName.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
+                      if (match) v = parseFloat(match[2].replace(/,/g, ''));
+                  }
                   let isGA = item.greaterAffixes?.[i] || false;
                   let isCapstone = (item.capstoneBonus?.type === 'affix' && item.capstoneBonus?.idx === i);
                   const qMult = baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0);
@@ -1739,10 +1749,16 @@
               });
           }
           
-          if (item.tempering && item.temperValues) {
+          if (item.tempering) {
               item.tempering.forEach((temperName, i) => {
                   if (!temperName) return;
-                  let v = item.temperValues[i]?.[0] || 0;
+                  let v = 0;
+                  if (item.temperValues && item.temperValues[i] && item.temperValues[i][0] !== undefined) {
+                      v = item.temperValues[i][0];
+                  } else {
+                      const match = temperName.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
+                      if (match) v = parseFloat(match[2].replace(/,/g, ''));
+                  }
                   let isGA = item.greaterTempers?.[i] || false;
                   let isCapstone = (item.capstoneBonus?.type === 'temper' && item.capstoneBonus?.idx === i);
                   const qMult = baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0);
@@ -1750,10 +1766,16 @@
               });
           }
           
-          if (item.transfigure && item.transfigureValues) {
+          if (item.transfigure) {
               item.transfigure.forEach((tName, i) => {
                   if (!tName) return;
-                  let v = item.transfigureValues[i]?.[0] || 0;
+                  let v = 0;
+                  if (item.transfigureValues && item.transfigureValues[i] && item.transfigureValues[i][0] !== undefined) {
+                      v = item.transfigureValues[i][0];
+                  } else {
+                      const match = tName.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
+                      if (match) v = parseFloat(match[2].replace(/,/g, ''));
+                  }
                   let isItemQuality = tName.includes('Item Quality');
                   let isCapstone = (item.capstoneBonus?.type === 'transfigure' && item.capstoneBonus?.idx === i);
                   let qMult = 1;
@@ -2272,10 +2294,8 @@
       console.warn('Autosave failed:', e);
     }
     
-    updateSaveProfile();
-    
     // Update the Character Sheet UI
-    const compiledStats = compileCharacterStats(baseEquipped, autoStats);
+    const compiledStats = compileCharacterStats(currentBuild.equipment, autoStats);
     renderCharacterSheet(compiledStats);
 
   } catch (e) {
@@ -2601,130 +2621,7 @@
 
 
 
-  // ---- Maxroll Parsing ----
-  function parseMaxrollStats(text) {
-    const lines = text.split('\n').map(l => l.trim()).filter(l => l);
-    const ignoreList = [
-      'weapon speed',
-      'attack speed bonus',
-      'summon attack speed',
-      'critical strike chance',
-      'thorns'
-    ];
 
-    // Clear existing additive rows first before importing new stats
-    dom.additiveBody.innerHTML = '';
-
-    let count = 0;
-    const parsedStats = {};
-
-    for (let i = 0; i < lines.length - 1; i++) {
-      const name = lines[i];
-      const valStr = lines[i+1];
-      
-      // Check if next line looks like a value (e.g. "5,374" or "1,192.6%")
-      if (/^[\d,.]+[%]?$/.test(valStr)) {
-        const nameLower = name.toLowerCase();
-        const value = parseFloat(valStr.replace(/,/g, '').replace('%', ''));
-
-        if (nameLower === 'base weapon damage') {
-          dom.weaponDamage.value = value;
-          count++;
-        } else if (nameLower === 'strength') {
-          dom.strength.value = value;
-          count++;
-        } else if (nameLower === 'intelligence') {
-          dom.intelligence.value = value;
-          count++;
-        } else if (nameLower === 'willpower') {
-          dom.willpower.value = value;
-          count++;
-        } else if (nameLower === 'dexterity') {
-          dom.dexterity.value = value;
-          count++;
-        } else if (nameLower === 'level') {
-          if (dom.level) dom.level.value = value;
-          count++;
-        } else if (nameLower === 'toughness') {
-          if (dom.toughness) dom.toughness.value = value;
-          count++;
-        } else if (nameLower === 'armor') {
-          if (dom.armor) dom.armor.value = value;
-          count++;
-        } else if (nameLower === 'physical resistance') {
-          if (dom.physRes) dom.physRes.value = value;
-          count++;
-        } else if (nameLower === 'fire resistance') {
-          if (dom.fireRes) dom.fireRes.value = value;
-          count++;
-        } else if (nameLower === 'lightning resistance') {
-          if (dom.lightningRes) dom.lightningRes.value = value;
-          count++;
-        } else if (nameLower === 'cold resistance') {
-          if (dom.coldRes) dom.coldRes.value = value;
-          count++;
-        } else if (nameLower === 'poison resistance') {
-          if (dom.poisonRes) dom.poisonRes.value = value;
-          count++;
-        } else if (nameLower === 'shadow resistance') {
-          if (dom.shadowRes) dom.shadowRes.value = value;
-          count++;
-        } else if (nameLower === 'maximum life') {
-          if (dom.maxLife) dom.maxLife.value = value;
-          count++;
-        } else if (nameLower === 'potion capacity') {
-          if (dom.potionCapacity) dom.potionCapacity.value = value;
-          count++;
-        } else if (nameLower === 'healing received') {
-          if (dom.healingReceived) dom.healingReceived.value = value;
-          count++;
-        } else if (nameLower === 'life per 5 seconds') {
-          if (dom.lifePer5s) dom.lifePer5s.value = value;
-          count++;
-        } else if (nameLower === 'summon armor') {
-          if (dom.summonArmor) dom.summonArmor.value = value;
-          count++;
-        } else if (nameLower === 'all damage reduction') {
-          if (dom.damageReductionAll) dom.damageReductionAll.value = value;
-          count++;
-        } else if (nameLower === 'barrier bonus') {
-          if (dom.barrierBonus) dom.barrierBonus.value = value;
-          count++;
-        } else if (nameLower === 'dodge chance') {
-          if (dom.dodgeChance) dom.dodgeChance.value = value;
-          count++;
-        } else if (nameLower === 'maximum essence') {
-          if (dom.maxEssence) dom.maxEssence.value = value;
-          count++;
-        } else if (nameLower === 'essence regeneration') {
-          if (dom.essenceRegen) dom.essenceRegen.value = value;
-          count++;
-        } else if (nameLower === 'movement speed') {
-          if (dom.movementSpeed) dom.movementSpeed.value = value;
-          count++;
-        } else if (nameLower === 'lucky hit chance bonus') {
-          if (dom.luckyHit) dom.luckyHit.value = value;
-          count++;
-        } else if (nameLower === 'crowd control duration bonus') {
-          if (dom.ccDuration) dom.ccDuration.value = value;
-          count++;
-        } else if (nameLower === 'experience bonus') {
-          if (dom.expBonus) dom.expBonus.value = value;
-          count++;
-        } else if (nameLower === 'damage reduction') {
-          if (dom.damageReduction) dom.damageReduction.value = value;
-          count++;
-        } else if (!ignoreList.includes(nameLower)) {
-          // If it's not a base stat and not in ignore list, it's an additive.
-          // Store in parsedStats using the normalized lower-case name to avoid duplicate additive entries.
-          if (parsedStats[nameLower] === undefined) {
-            parsedStats[nameLower] = { name, value };
-            count++;
-          }
-        }
-        
-        // Skip the value line we just processed
-        i++;
   // ---- Toast Notification ----
   function showToast(message) {
     // Remove existing toast
