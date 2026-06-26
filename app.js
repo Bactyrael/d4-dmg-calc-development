@@ -1791,8 +1791,26 @@
                   if (item.affixValues && item.affixValues[i] && item.affixValues[i][0] !== undefined) {
                       v = item.affixValues[i][0];
                   } else {
-                      const match = affixName.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
-                      if (match) v = parseFloat(match[2].replace(/,/g, ''));
+                      let match = affixName.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
+                      if (match) {
+                          v = parseFloat(match[2].replace(/,/g, ''));
+                      } else {
+                          // Fallback for old saves where affixName doesn't have the range brackets.
+                          // Try to find the stat in the DB by shortName and extract its max.
+                          const currentClassVal = document.getElementById('class-select')?.textContent || 'Necromancer';
+                          let mappedSlot = slotName.toLowerCase();
+                          if (mappedSlot === 'left ring' || mappedSlot === 'right ring') mappedSlot = 'ring';
+                          if (mappedSlot === 'chest armor') mappedSlot = 'chest';
+                          if (mappedSlot.startsWith('weapon') || mappedSlot === 'mainhand' || mappedSlot === 'offhand' || mappedSlot === 'ranged weapon') mappedSlot = 'mainhand';
+                          
+                          const classData = window.D4_DATABASE?.classData?.[currentClassVal]?.equipment?.[mappedSlot] || {};
+                          const dbAffixes = classData.modifiers || [];
+                          const dbMatch = dbAffixes.find(a => a.shortName === affixName || a.name === affixName);
+                          if (dbMatch && dbMatch.name) {
+                              match = dbMatch.name.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
+                              if (match) v = parseFloat(match[2].replace(/,/g, ''));
+                          }
+                      }
                   }
                   let isGA = item.greaterAffixes?.[i] || false;
                   let isCapstone = (item.capstoneBonus?.type === 'affix' && item.capstoneBonus?.idx === i);
@@ -1808,8 +1826,24 @@
                   if (item.temperValues && item.temperValues[i] && item.temperValues[i][0] !== undefined) {
                       v = item.temperValues[i][0];
                   } else {
-                      const match = temperName.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
-                      if (match) v = parseFloat(match[2].replace(/,/g, ''));
+                      let match = temperName.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
+                      if (match) {
+                          v = parseFloat(match[2].replace(/,/g, ''));
+                      } else {
+                          const currentClassVal = document.getElementById('class-select')?.textContent || 'Necromancer';
+                          let mappedSlot = slotName.toLowerCase();
+                          if (mappedSlot === 'left ring' || mappedSlot === 'right ring') mappedSlot = 'ring';
+                          if (mappedSlot === 'chest armor') mappedSlot = 'chest';
+                          if (mappedSlot.startsWith('weapon') || mappedSlot === 'mainhand' || mappedSlot === 'offhand' || mappedSlot === 'ranged weapon') mappedSlot = 'mainhand';
+                          
+                          const classData = window.D4_DATABASE?.classData?.[currentClassVal]?.equipment?.[mappedSlot] || {};
+                          const dbTempers = classData.tempers || [];
+                          const dbMatch = dbTempers.find(a => a.shortName === temperName || a.name === temperName);
+                          if (dbMatch && dbMatch.name) {
+                              match = dbMatch.name.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
+                              if (match) v = parseFloat(match[2].replace(/,/g, ''));
+                          }
+                      }
                   }
                   let isGA = item.greaterTempers?.[i] || false;
                   let isCapstone = (item.capstoneBonus?.type === 'temper' && item.capstoneBonus?.idx === i);
@@ -1819,22 +1853,39 @@
           }
           
           if (item.transfigure) {
-              item.transfigure.forEach((tName, i) => {
-                  if (!tName) return;
+              item.transfigure.forEach((transfigureName, i) => {
+                  if (!transfigureName) return;
                   let v = 0;
                   if (item.transfigureValues && item.transfigureValues[i] && item.transfigureValues[i][0] !== undefined) {
                       v = item.transfigureValues[i][0];
                   } else {
-                      const match = tName.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
-                      if (match) v = parseFloat(match[2].replace(/,/g, ''));
+                      let match = transfigureName.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
+                      if (match) {
+                          v = parseFloat(match[2].replace(/,/g, ''));
+                      } else {
+                          const currentClassVal = document.getElementById('class-select')?.textContent || 'Necromancer';
+                          let mappedSlot = slotName.toLowerCase();
+                          if (mappedSlot === 'left ring' || mappedSlot === 'right ring') mappedSlot = 'ring';
+                          if (mappedSlot === 'chest armor') mappedSlot = 'chest';
+                          if (mappedSlot.startsWith('weapon') || mappedSlot === 'mainhand' || mappedSlot === 'offhand' || mappedSlot === 'ranged weapon') mappedSlot = 'mainhand';
+                          
+                          const classData = window.D4_DATABASE?.classData?.[currentClassVal]?.equipment?.[mappedSlot] || {};
+                          const dbTransfigures = classData.transfigures || [];
+                          const dbMatch = dbTransfigures.find(a => a.shortName === transfigureName || a.name === transfigureName);
+                          if (dbMatch && dbMatch.name) {
+                              match = dbMatch.name.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
+                              if (match) v = parseFloat(match[2].replace(/,/g, ''));
+                          }
+                      }
                   }
-                  let isItemQuality = tName.includes('Item Quality');
-                  let isCapstone = (item.capstoneBonus?.type === 'transfigure' && item.capstoneBonus?.idx === i);
-                  let qMult = 1;
+                  let isItemQuality = transfigureName.includes('Item Quality');
+                  let val = v;
                   if (!isItemQuality) {
-                      qMult = baseQMult + (isCapstone ? 0.50 : 0);
+                      const isCapstone = (item.capstoneBonus?.type === 'transfigure' && item.capstoneBonus?.idx === i);
+                      const qMult = baseQMult + (isCapstone ? 0.50 : 0);
+                      val = Number((v * qMult).toFixed(2));
                   }
-                  addStat(stats, tName, v * qMult, slotName);
+                  addStat(stats, transfigureName, val, slotName + ' (Transfigure)');
               });
           }
           
@@ -2317,9 +2368,7 @@
     currentBuild.dexterity = parseFloat(dom.dexterity.value) || 0;
     currentBuild.aps = parseFloat(dom.aps.value) || 1;
     currentBuild.weaponSpeed = parseFloat(dom.weaponSpeed.value) || 1;
-    if (dom.critChance) currentBuild.critChance = parseFloat(dom.critChance.value) || 0;
-    if (dom.luckyHitChance) currentBuild.luckyHitChance = parseFloat(dom.luckyHitChance.value) || 0;
-    if (dom.attackSpeed) currentBuild.attackSpeed = parseFloat(dom.attackSpeed.value) || 0;
+    currentBuild.weaponSpeed = parseFloat(dom.weaponSpeed.value) || 1;
     if (dom.castSpeed) currentBuild.castSpeed = parseFloat(dom.castSpeed.value) || 0;
     if (dom.level) currentBuild.level = parseInt(dom.level.value) || 70;
     const level = dom.level ? parseInt(dom.level.value) || 70 : 70;
@@ -2376,12 +2425,14 @@
         dom.critChance.title = "Auto-calculated from equipment and stats";
     }
     if (dom.luckyHitChance) {
-        dom.luckyHitChance.value = compiledStats['Lucky Hit Chance'] ? compiledStats['Lucky Hit Chance'].final : 0;
+        const lhcKey = Object.keys(compiledStats).find(k => k.toLowerCase().includes('lucky hit chance'));
+        dom.luckyHitChance.value = lhcKey ? compiledStats[lhcKey].final : 0;
         dom.luckyHitChance.disabled = true;
         dom.luckyHitChance.title = "Auto-calculated from equipment";
     }
     if (dom.attackSpeed) {
-        dom.attackSpeed.value = compiledStats['Attack Speed'] ? compiledStats['Attack Speed'].final : 0;
+        const asKey = Object.keys(compiledStats).find(k => k.toLowerCase().includes('attack speed'));
+        dom.attackSpeed.value = asKey ? compiledStats[asKey].final : 0;
         dom.attackSpeed.disabled = true;
         dom.attackSpeed.title = "Auto-calculated from equipment";
     }
@@ -2390,6 +2441,11 @@
         dom.castSpeed.disabled = true;
         dom.castSpeed.title = "Auto-calculated from equipment";
     }
+
+    if (dom.critChance) currentBuild.critChance = parseFloat(dom.critChance.value) || 0;
+    if (dom.luckyHitChance) currentBuild.luckyHitChance = parseFloat(dom.luckyHitChance.value) || 0;
+    if (dom.attackSpeed) currentBuild.attackSpeed = parseFloat(dom.attackSpeed.value) || 0;
+    if (dom.castSpeed) currentBuild.castSpeed = parseFloat(dom.castSpeed.value) || 0;
 
     const weaponDmg = parseFloat(dom.weaponDamage.value) || 0;
     const skillPct  = parseFloat(dom.skillDamage.value) || 0;
