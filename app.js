@@ -3772,7 +3772,7 @@ rarity = foundItem.rarity;
 
             let placeholder = (min !== null && max !== null) ? `${min}-${max}` : 'value';
             let minAttr = min !== null ? ` min="${min}"` : '';
-            let maxAttr = ''; // Allow overriding max for higher item power tiers
+              let maxAttr = max !== null ? ` max="${max}"` : '';
             let stepAttr = (min !== null && !Number.isInteger(min)) || (max !== null && !Number.isInteger(max)) ? ' step="0.1"' : ' step="1"';
             if (min === null && max === null) stepAttr = ' step="any"';
             const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #8ab4f8; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
@@ -3806,9 +3806,10 @@ rarity = foundItem.rarity;
           if (typeof v === 'string') v = v.replace(/,/g, '');
           let placeholder = min && max ? `${min}-${max}` : 'value';
           let minAttr = min ? ` min="${min}"` : '';
-          let stepAttr = (min && min.includes('.')) || (max && max.includes('.')) ? ' step="0.1"' : ' step="1"';
+            let maxAttr = max ? ` max="${max}"` : '';
+            let stepAttr = (min && min.includes('.')) || (max && max.includes('.')) ? ' step="0.1"' : ' step="1"';
           if (!min && !max) stepAttr = ' step="any"';
-          const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${stepAttr} style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #d18a45; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
+          const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #d18a45; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
           valIndex++;
           return inputHtml;
         });
