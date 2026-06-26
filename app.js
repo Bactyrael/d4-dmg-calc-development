@@ -1899,9 +1899,43 @@
               }
           }
       });
-      
-      return stats;
-  }
+        
+        // Derive stats from Core Stats
+        const selectedClass = document.getElementById('class-select')?.textContent || 'Barbarian';
+        const cls = selectedClass;
+        const strVal = stats['Strength'] ? stats['Strength'].final : 0;
+        const intVal = stats['Intelligence'] ? stats['Intelligence'].final : 0;
+        const willVal = stats['Willpower'] ? stats['Willpower'].final : 0;
+        const dexVal = stats['Dexterity'] ? stats['Dexterity'].final : 0;
+        
+        if (strVal > 0) addStat(stats, 'Armor', strVal * 2, 'From Strength');
+        if (intVal > 0) addStat(stats, 'Resistance to All Elements', intVal * 0.4, 'From Intelligence');
+        if (willVal > 0) {
+            addStat(stats, 'Healing Received', willVal * 0.035, 'From Willpower');
+            addStat(stats, 'Overpower Damage', willVal * 0.25, 'From Willpower');
+        }
+        if (dexVal > 0) addStat(stats, 'Dodge Chance', dexVal * 0.006, 'From Dexterity');
+        
+        // Class-specific derived stats
+        let skillDamageStat = '';
+        let skillDamageFactor = 0;
+        let critStat = '';
+        let resGenStat = '';
+
+        if (cls === 'Barbarian') { skillDamageStat = 'Strength'; skillDamageFactor = 0.11; critStat = 'Dexterity'; resGenStat = 'Willpower'; }
+        else if (cls === 'Paladin') { skillDamageStat = 'Strength'; skillDamageFactor = 0.125; critStat = 'Intelligence'; resGenStat = 'Willpower'; }
+        else if (cls === 'Druid') { skillDamageStat = 'Willpower'; skillDamageFactor = 0.125; critStat = 'Dexterity'; resGenStat = 'Intelligence'; }
+        else if (cls === 'Rogue') { skillDamageStat = 'Dexterity'; skillDamageFactor = 0.11; critStat = 'Intelligence'; resGenStat = 'Strength'; }
+        else if (cls === 'Sorcerer' || cls === 'Necromancer') { skillDamageStat = 'Intelligence'; skillDamageFactor = 0.125; critStat = 'Dexterity'; resGenStat = 'Willpower'; }
+        else if (cls === 'Spiritborn') { skillDamageStat = 'Dexterity'; skillDamageFactor = 0.125; critStat = 'Strength'; resGenStat = 'Intelligence'; }
+        
+        const coreVals = { 'Strength': strVal, 'Intelligence': intVal, 'Willpower': willVal, 'Dexterity': dexVal };
+        if (skillDamageStat && coreVals[skillDamageStat] > 0) addStat(stats, 'Skill Damage', coreVals[skillDamageStat] * skillDamageFactor, `From ${skillDamageStat}`);
+        if (critStat && coreVals[critStat] > 0) addStat(stats, 'Critical Strike Chance', coreVals[critStat] * 0.02, `From ${critStat}`);
+        if (resGenStat && coreVals[resGenStat] > 0) addStat(stats, 'Resource Generation', coreVals[resGenStat] * 0.03, `From ${resGenStat}`);
+
+        return stats;
+    }
   
   function getStatEffects(statName, finalVal) {
       const selectedClass = document.getElementById('class-select')?.textContent || 'Barbarian';
@@ -1915,7 +1949,7 @@
       
       // Core Stat Global effects
       if (statName === 'Strength') effects.push(`Increases Armor by +${v * 2}`);
-      if (statName === 'Intelligence') effects.push(`Increases Resistance to All Elements by +${(v * 0.04).toFixed(2)}%`);
+      if (statName === 'Intelligence') effects.push(`Increases Resistance to All Elements by +${(v * 0.4).toFixed(1)}`);
       if (statName === 'Willpower') {
           effects.push(`Increases Healing Received by +${(v * 0.035).toFixed(2)}%`);
           effects.push(`Increases Overpower Damage by +${(v * 0.25).toFixed(1)}%`);
