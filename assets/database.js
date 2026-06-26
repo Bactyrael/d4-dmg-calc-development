@@ -23684,7 +23684,7 @@ window.D4_DATABASE = {
           ],
           "transfigures": [
             {
-              "name": "Item Quality",
+              "name": "+[1 - 15] Item Quality",
               "desc": "Item Quality"
             },
             {
@@ -23734,6 +23734,50 @@ window.D4_DATABASE = {
             {
               "name": "+[8.0 - 10.0]% Physical Damage [x]",
               "desc": "Physical Damage"
+            },
+            {
+              "name": "+[6.0 - 8.0]% Maximum Life",
+              "desc": "Maximum Life"
+            },
+            {
+              "name": "Gain 20% Damage Reduction. In addition, gain +4 Ranks to all Skills.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Every 4 seconds, you randomly mark a Nearby enemy. Marked enemies are Vulnerable, and your attacks against them are guaranteed to Critically Strike and Overpower. Hitting a marked enemy 20 times clears the mark from them.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Gain a random Shrine effect for 20 seconds after killing an Elite enemy. Can only occur once every 30 seconds.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Lucky Hit: Up to a 25% chance to deal 0 Shadow damage to surrounding enemies and reduce their damage dealt by 20% for 5 seconds.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Increases your Critical Strike Damage by 100%[x].",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Spending your Primary Resource reduces the Resource cost of your Skills and increases your damage by 10%[x] for 3 seconds, up to 50%[x].",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced. Your Primary Resource is doubled but Maximum Life is reduced by 75%.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Enemies afflicted by more Damage over Time than remaining Life are Executed.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Your Skills unleash a divine barrage dealing 0 damage.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Lucky Hit: Up to a 20% chance to trigger a poison nova that applies 0 Poisoning damage over 5 seconds to enemies in the area.",
+              "desc": "Sanctified Modifier"
             }
           ]
         }
