@@ -1704,6 +1704,7 @@
       stats['Intelligence'] = autoStats.intelligence;
       stats['Willpower'] = autoStats.willpower;
       stats['Dexterity'] = autoStats.dexterity;
+      stats['Maximum Life'] = autoStats.maximumLife;
       
       if (!equipped) return stats;
       
@@ -1807,6 +1808,37 @@
                       addStat(stats, name, v);
                   }
               });
+          }
+      });
+      
+      // Combine Base Armor into Armor
+      if (stats['Base Armor']) {
+          stats['Armor'] = (stats['Armor'] || 0) + stats['Base Armor'];
+          delete stats['Base Armor'];
+      }
+      
+      // Post-Compilation Step: Additive Percent Modifiers
+      const additiveScalers = [
+          { flat: 'Strength', pct: ['% Strength'] },
+          { flat: 'Intelligence', pct: ['% Intelligence'] },
+          { flat: 'Willpower', pct: ['% Willpower'] },
+          { flat: 'Dexterity', pct: ['% Dexterity'] },
+          { flat: 'Maximum Life', pct: ['% Maximum Life'] },
+          { flat: 'Armor', pct: ['% Armor', '% Total Armor'] }
+      ];
+
+      additiveScalers.forEach(scaler => {
+          if (stats[scaler.flat] !== undefined) {
+              let totalPct = 0;
+              scaler.pct.forEach(pctKey => {
+                  if (stats[pctKey]) {
+                      totalPct += stats[pctKey];
+                      delete stats[pctKey]; // Remove so it doesn't double-display
+                  }
+              });
+              if (totalPct !== 0) {
+                  stats[scaler.flat] = stats[scaler.flat] * (1 + (totalPct / 100));
+              }
           }
       });
       
@@ -2024,7 +2056,8 @@
         strength: baseStats.str + levelBonus,
         intelligence: baseStats.int + levelBonus,
         willpower: baseStats.will + levelBonus,
-        dexterity: baseStats.dex + levelBonus
+        dexterity: baseStats.dex + levelBonus,
+        maximumLife: dom.maxLife ? parseFloat(dom.maxLife.value) || 0 : 0
     };
     
     ['strength', 'intelligence', 'willpower', 'dexterity'].forEach(stat => {
