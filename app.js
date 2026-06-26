@@ -830,8 +830,13 @@
     
     // Check specific base item weapon type
     if (itemObj && itemObj.name) {
-      const dbItems = getDbItems(slotName);
-      const baseItem = dbItems.find(i => i.name === itemObj.name);
+      let mapped = slotName;
+      if (slotName === 'Left Ring' || slotName === 'Right Ring') mapped = 'Ring';
+      if (slotName === 'Ranged Weapon') mapped = 'Mainhand';
+      if (slotName === 'Bludgeoning Weapon' || slotName === 'Slicing Weapon') mapped = 'Mainhand';
+      
+      const allItems = window.D4_DATABASE?.itemDatabase?.[mapped] || [];
+      const baseItem = allItems.find(i => i.name === itemObj.name);
       
       if (baseItem && baseItem.weaponType) {
         if (baseItem.weaponType.toLowerCase().includes('two-handed')) {
