@@ -23530,7 +23530,158 @@ window.D4_DATABASE = {
               "category": "Offensive"
             }
           ],
-          "tempers": [],
+          "tempers": [
+            {
+              "name": "+[20 - 40]% Physical Damage",
+              "shortName": "Physical Damage",
+              "category": "Offensive",
+              "desc": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Fire Damage",
+              "shortName": "Fire Damage",
+              "category": "Offensive",
+              "desc": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Lightning Damage",
+              "shortName": "Lightning Damage",
+              "category": "Offensive",
+              "desc": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Holy Damage",
+              "shortName": "Holy Damage",
+              "category": "Offensive",
+              "desc": "Elemental Finesse - Day"
+            },
+            {
+              "name": "+[20 - 40]% Cold Damage",
+              "shortName": "Cold Damage",
+              "category": "Offensive",
+              "desc": "Elemental Finesse - Night"
+            },
+            {
+              "name": "+[20 - 40]% Poison Damage",
+              "shortName": "Poison Damage",
+              "category": "Offensive",
+              "desc": "Elemental Finesse - Night"
+            },
+            {
+              "name": "+[20 - 40]% Shadow Damage",
+              "shortName": "Shadow Damage",
+              "category": "Offensive",
+              "desc": "Elemental Finesse - Night"
+            },
+            {
+              "name": "+[10 - 30]% Damage",
+              "shortName": "Damage",
+              "category": "Offensive",
+              "desc": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Damage to Crowd Controlled Enemies",
+              "shortName": "Damage to Crowd Controlled Enemies",
+              "category": "Offensive",
+              "desc": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Damage to Close",
+              "shortName": "Damage to Close",
+              "category": "Offensive",
+              "desc": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Damage to Distant",
+              "shortName": "Damage to Distant",
+              "category": "Offensive",
+              "desc": "Natural Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Blood Damage",
+              "shortName": "Blood Damage",
+              "category": "Offensive",
+              "desc": "Profane Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Bone Damage",
+              "shortName": "Bone Damage",
+              "category": "Offensive",
+              "desc": "Profane Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Summon Damage",
+              "shortName": "Summon Damage",
+              "category": "Offensive",
+              "desc": "Profane Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Macabre Damage",
+              "shortName": "Macabre Damage",
+              "category": "Offensive",
+              "desc": "Shadow Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Darkness Damage",
+              "shortName": "Darkness Damage",
+              "category": "Offensive",
+              "desc": "Shadow Finesse"
+            },
+            {
+              "name": "+[40 - 60]% Damage when Spending Resolve",
+              "shortName": "Damage when Spending Resolve",
+              "category": "Offensive",
+              "desc": "Sharpened Finesse"
+            },
+            {
+              "name": "+[7 - 10]% Damage Per Overpower Stack",
+              "shortName": "Damage Per Overpower Stack",
+              "category": "Offensive",
+              "desc": "Sharpened Finesse"
+            },
+            {
+              "name": "+[30 - 50]% Critical Strike Damage",
+              "shortName": "Critical Strike Damage",
+              "category": "Offensive",
+              "desc": "Worldly Finesse"
+            },
+            {
+              "name": "+[30 - 50]% Damage Over Time",
+              "shortName": "Damage Over Time",
+              "category": "Offensive",
+              "desc": "Worldly Finesse"
+            },
+            {
+              "name": "+[20 - 40]% Vulnerable Damage",
+              "shortName": "Vulnerable Damage",
+              "category": "Offensive",
+              "desc": "Worldly Finesse"
+            },
+            {
+              "name": "+[5.0 - 8.0]% Resource Generation",
+              "shortName": "Resource Generation",
+              "category": "Resource",
+              "desc": "Worldly Stability"
+            },
+            {
+              "name": "+[7.0 - 10.0]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction",
+              "category": "Resource",
+              "desc": "Worldly Stability"
+            },
+            {
+              "name": "+[5 - 12] Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
+              "shortName": "Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
+              "category": "Resource",
+              "desc": "Worldly Stability"
+            },
+            {
+              "name": "+[3.0 - 6.0]% Cooldown Reduction",
+              "shortName": "Cooldown Reduction",
+              "category": "Resource",
+              "desc": "Worldly Stability"
+            }
+          ],
           "transfigures": [
             {
               "name": "Item Quality",
