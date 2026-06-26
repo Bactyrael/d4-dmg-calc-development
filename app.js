@@ -1957,8 +1957,7 @@
                     if (aspectObj && aspectObj.desc) {
                         let v = 0;
                         if (item.aspectValues && item.aspectValues.length > 0) v = item.aspectValues[0];
-                        const clean = cleanStatName(item.aspect);
-                        addStat(stats, clean, v, slotName);
+                        addStat(stats, item.aspect, v, slotName);
                     }
                 }
             }
