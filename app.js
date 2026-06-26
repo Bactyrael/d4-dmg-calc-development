@@ -136,7 +136,7 @@
       coldRes: 0,
       poisonRes: 0,
       shadowRes: 0,
-      maxLife: 0,
+      maxLife: 1526,
       potionCapacity: 0,
       healingReceived: 0,
       lifePer5s: 0,
@@ -1973,7 +1973,7 @@
           else if (cls === 'Barbarian' || cls === 'Paladin' || cls === 'Sorcerer' || cls === 'Necromancer' || cls === 'Rogue') effects.push(`Increases Resource Generation by +${(v * 0.03).toFixed(2)}%`);
       }
       if (statName === 'Dexterity') {
-          if (cls === 'Rogue' || cls === 'Spiritborn') effects.push(`Increases Skill Damage by +${(v * 0.125).toFixed(1)}%`); // Note Rogue is 0.11% in user prompt, wait I will fix rogue to 0.11
+          if (cls === 'Rogue' || cls === 'Spiritborn') effects.push(`Increases Skill Damage by +${(v * 0.11).toFixed(1)}%`); // Note Rogue is 0.11% in user prompt, wait I will fix rogue to 0.11
           else if (cls === 'Barbarian' || cls === 'Druid' || cls === 'Sorcerer' || cls === 'Necromancer') effects.push(`Increases Critical Strike Chance by +${(v * 0.02).toFixed(2)}%`);
       }
 
@@ -2282,7 +2282,7 @@
         baseInt: baseStats.int, levelInt: levelBonus,
         baseWill: baseStats.will, levelWill: levelBonus,
         baseDex: baseStats.dex, levelDex: levelBonus,
-        maximumLife: dom.maxLife ? parseFloat(dom.maxLife.value) || 0 : 0
+        maximumLife: dom.maxLife ? parseFloat(dom.maxLife.value) || 1526 : 1526
     };
     
     const compiledStats = compileCharacterStats(baseEquipped, autoStats);
@@ -2520,7 +2520,7 @@
     currentBuild.coldRes = dom.coldRes ? parseFloat(dom.coldRes.value) || 0 : 0;
     currentBuild.poisonRes = dom.poisonRes ? parseFloat(dom.poisonRes.value) || 0 : 0;
     currentBuild.shadowRes = dom.shadowRes ? parseFloat(dom.shadowRes.value) || 0 : 0;
-    currentBuild.maxLife = dom.maxLife ? parseFloat(dom.maxLife.value) || 0 : 0;
+    currentBuild.maxLife = dom.maxLife ? parseFloat(dom.maxLife.value) || 1526 : 1526;
     currentBuild.potionCapacity = dom.potionCapacity ? parseFloat(dom.potionCapacity.value) || 0 : 0;
     currentBuild.healingReceived = dom.healingReceived ? parseFloat(dom.healingReceived.value) || 0 : 0;
     currentBuild.lifePer5s = dom.lifePer5s ? parseFloat(dom.lifePer5s.value) || 0 : 0;
@@ -2743,7 +2743,7 @@
     if (dom.coldRes) dom.coldRes.value = b.coldRes || 0;
     if (dom.poisonRes) dom.poisonRes.value = b.poisonRes || 0;
     if (dom.shadowRes) dom.shadowRes.value = b.shadowRes || 0;
-    if (dom.maxLife) dom.maxLife.value = b.maxLife || 0;
+    if (dom.maxLife) dom.maxLife.value = b.maxLife || 1526;
     if (dom.potionCapacity) dom.potionCapacity.value = b.potionCapacity || 0;
     if (dom.healingReceived) dom.healingReceived.value = b.healingReceived || 0;
     if (dom.lifePer5s) dom.lifePer5s.value = b.lifePer5s || 0;
