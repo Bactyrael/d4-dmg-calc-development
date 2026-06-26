@@ -57,6 +57,10 @@
     dexterity:      document.getElementById('dexterity'),
     aps:            document.getElementById('aps'),
     weaponSpeed:    document.getElementById('weapon-speed'),
+    critChance:     document.getElementById('critical-chance'),
+    luckyHitChance: document.getElementById('lucky-hit'),
+    attackSpeed:    document.getElementById('attack-speed'),
+    castSpeed:      document.getElementById('cast-speed'),
     baseDmgDisplay: document.getElementById('base-damage-display'),
     classSelect:    document.getElementById('class-select'),
     equipmentGrid:  document.getElementById('equipment-grid'),
@@ -119,6 +123,10 @@
       dexterity: 0,
       aps: 1,
       weaponSpeed: 1,
+      critChance: 5.0,
+      luckyHitChance: 0,
+      attackSpeed: 0,
+      castSpeed: 0,
       level: 0,
       toughness: 0,
       armor: 0,
@@ -1900,38 +1908,45 @@
       let effects = [];
       const v = Math.floor(finalVal);
       
-      // Basic scaling rules
-      // Armor
-      if (statName === 'Armor') {
-          effects.push(`Reduces Physical damage taken. Cap is 9230.`);
-      }
-      if (statName === 'Maximum Life') {
-          effects.push(`Increases the amount of damage you can take before dying.`);
-      }
-      if (statName === 'Resistance to All Elements') {
-          effects.push(`Reduces non-Physical damage taken by +${v}%.`);
-      }
+      // Global effects
+      if (statName === 'Armor') effects.push(`Reduces Physical damage taken. Cap is 9230.`);
+      if (statName === 'Maximum Life') effects.push(`Increases the amount of damage you can take before dying.`);
+      if (statName === 'Resistance to All Elements') effects.push(`Reduces non-Physical damage taken by +${v}%.`);
       
-      // Core Stats
+      // Core Stat Global effects
+      if (statName === 'Strength') effects.push(`Increases Armor by +${v * 2}`);
+      if (statName === 'Intelligence') effects.push(`Increases Resistance to All Elements by +${(v * 0.04).toFixed(2)}%`);
+      if (statName === 'Willpower') {
+          effects.push(`Increases Healing Received by +${(v * 0.035).toFixed(2)}%`);
+          effects.push(`Increases Overpower Damage by +${(v * 0.25).toFixed(1)}%`);
+      }
+      if (statName === 'Dexterity') effects.push(`Increases Dodge Chance by +${(v * 0.006).toFixed(3)}%`);
+
+      // Class specific scaling
+      const cls = selectedClass;
       if (statName === 'Strength') {
-          if (selectedClass === 'Barbarian') effects.push(`Increases Skill Damage by +${(v * 0.1).toFixed(1)}%`);
-          else if (selectedClass === 'Rogue') effects.push(`Increases Resource Generation by +${(v * 0.1).toFixed(1)}%`);
-          else effects.push(`Increases Armor by +${v}`);
+          if (cls === 'Barbarian' || cls === 'Paladin') effects.push(`Increases Skill Damage by +${(v * 0.11).toFixed(1)}%`);
+          else if (cls === 'Rogue') effects.push(`Increases Resource Generation by +${(v * 0.03).toFixed(2)}%`);
+          else if (cls === 'Spiritborn') effects.push(`Increases Critical Strike Chance by +${(v * 0.02).toFixed(2)}%`);
       }
       if (statName === 'Intelligence') {
-          if (selectedClass === 'Sorcerer' || selectedClass === 'Necromancer') effects.push(`Increases Skill Damage by +${(v * 0.1).toFixed(1)}%`);
-          else if (selectedClass === 'Rogue') effects.push(`Increases Critical Strike Chance by +${(v * 0.02).toFixed(2)}%`);
-          else effects.push(`Increases Resistance to All Elements by +${(v * 0.05).toFixed(2)}%`);
+          if (cls === 'Sorcerer' || cls === 'Necromancer') effects.push(`Increases Skill Damage by +${(v * 0.125).toFixed(1)}%`);
+          else if (cls === 'Druid' || cls === 'Spiritborn') effects.push(`Increases Resource Generation by +${(v * 0.03).toFixed(2)}%`);
+          else if (cls === 'Paladin' || cls === 'Rogue') effects.push(`Increases Critical Strike Chance by +${(v * 0.02).toFixed(2)}%`);
       }
       if (statName === 'Willpower') {
-          if (selectedClass === 'Druid') effects.push(`Increases Skill Damage by +${(v * 0.1).toFixed(1)}%`);
-          else if (selectedClass === 'Barbarian' || selectedClass === 'Sorcerer' || selectedClass === 'Necromancer') effects.push(`Increases Resource Generation by +${(v * 0.1).toFixed(1)}%`);
-          else effects.push(`Increases Healing Received by +${(v * 0.1).toFixed(1)}%`);
+          if (cls === 'Druid') effects.push(`Increases Skill Damage by +${(v * 0.125).toFixed(1)}%`);
+          else if (cls === 'Barbarian' || cls === 'Paladin' || cls === 'Sorcerer' || cls === 'Necromancer' || cls === 'Rogue') effects.push(`Increases Resource Generation by +${(v * 0.03).toFixed(2)}%`);
       }
       if (statName === 'Dexterity') {
-          if (selectedClass === 'Rogue') effects.push(`Increases Skill Damage by +${(v * 0.1).toFixed(1)}%`);
-          else if (selectedClass === 'Barbarian' || selectedClass === 'Druid') effects.push(`Increases Critical Strike Chance by +${(v * 0.02).toFixed(2)}%`);
-          else effects.push(`Increases Dodge Chance by +${(v * 0.025).toFixed(2)}%`);
+          if (cls === 'Rogue' || cls === 'Spiritborn') effects.push(`Increases Skill Damage by +${(v * 0.125).toFixed(1)}%`); // Note Rogue is 0.11% in user prompt, wait I will fix rogue to 0.11
+          else if (cls === 'Barbarian' || cls === 'Druid' || cls === 'Sorcerer' || cls === 'Necromancer') effects.push(`Increases Critical Strike Chance by +${(v * 0.02).toFixed(2)}%`);
+      }
+
+      // Rogue exception for dex
+      if (cls === 'Rogue' && statName === 'Dexterity') {
+          effects.pop(); // remove the 0.125%
+          effects.push(`Increases Skill Damage by +${(v * 0.11).toFixed(1)}%`);
       }
 
       return effects;
@@ -2203,14 +2218,23 @@
 
     // Auto-calculate base stats from class and level
     const currentClassName = dom.classSelect ? dom.classSelect.textContent : 'Necromancer';
+    currentBuild.dexterity = parseFloat(dom.dexterity.value) || 0;
+    currentBuild.aps = parseFloat(dom.aps.value) || 1;
+    currentBuild.weaponSpeed = parseFloat(dom.weaponSpeed.value) || 1;
+    if (dom.critChance) currentBuild.critChance = parseFloat(dom.critChance.value) || 0;
+    if (dom.luckyHitChance) currentBuild.luckyHitChance = parseFloat(dom.luckyHitChance.value) || 0;
+    if (dom.attackSpeed) currentBuild.attackSpeed = parseFloat(dom.attackSpeed.value) || 0;
+    if (dom.castSpeed) currentBuild.castSpeed = parseFloat(dom.castSpeed.value) || 0;
+    if (dom.level) currentBuild.level = parseInt(dom.level.value) || 70;
     const level = dom.level ? parseInt(dom.level.value) || 70 : 70;
     const classBaseStats = {
-        Necromancer: { str: 7, int: 10, will: 8, dex: 7 },
-        Barbarian: { str: 10, int: 7, will: 7, dex: 8 },
-        Sorcerer: { str: 7, int: 10, will: 8, dex: 7 },
-        Rogue: { str: 7, int: 7, will: 8, dex: 10 },
-        Druid: { str: 8, int: 7, will: 10, dex: 7 },
-        Spiritborn: { str: 7, int: 7, will: 7, dex: 10 }
+        Barbarian: { str: 10, dex: 8, int: 7, will: 7 },
+        Paladin: { str: 10, dex: 8, int: 7, will: 7 },
+        Druid: { will: 10, int: 8, str: 7, dex: 7 },
+        Rogue: { dex: 10, will: 8, str: 7, int: 7 },
+        Sorcerer: { int: 10, will: 8, str: 7, dex: 7 },
+        Necromancer: { int: 10, will: 8, str: 7, dex: 7 },
+        Spiritborn: { dex: 10, int: 8, str: 7, will: 7 }
     };
     const baseStats = classBaseStats[currentClassName] || { str: 7, int: 7, will: 7, dex: 7 };
     const levelBonus = Math.max(0, level - 1);
@@ -2257,6 +2281,9 @@
     const will      = parseFloat(dom.willpower.value) || 0;
     const dex       = parseFloat(dom.dexterity.value) || 0;
     const aps       = parseFloat(dom.aps.value) || 1;
+    const crit      = (dom.critChance ? parseFloat(dom.critChance.value) : 0) / 100;
+    const atkSpd    = (dom.attackSpeed ? parseFloat(dom.attackSpeed.value) : 0) / 100;
+    const castSpd   = (dom.castSpeed ? parseFloat(dom.castSpeed.value) : 0) / 100;
 
     // Base Damage = Skill% × Weapon Damage
     // Skill damage is a percentage, so: (skillPct / 100) × weaponDmg
@@ -2264,15 +2291,24 @@
 
     // Get Class main stat multiplier
     const selectedClass = dom.classSelect ? dom.classSelect.textContent : 'Barbarian';
-    const mainStatInfo = getClassMainStat(selectedClass);
     
     let mainStatValue = 0;
-    if (mainStatInfo.name === 'Strength') mainStatValue = str;
-    else if (mainStatInfo.name === 'Intelligence') mainStatValue = intel;
-    else if (mainStatInfo.name === 'Willpower') mainStatValue = will;
-    else if (mainStatInfo.name === 'Dexterity') mainStatValue = dex;
+    let mainStatFactor = 0;
+    let mainStatName = 'Strength';
+    let critStatValue = 0;
+    const cls = selectedClass;
     
-    const mainStatMultiplier = 1 + (mainStatValue * mainStatInfo.factor);
+    if (cls === 'Barbarian') { mainStatName = 'Strength'; mainStatValue = str; mainStatFactor = 0.0011; critStatValue = dex; }
+    else if (cls === 'Paladin') { mainStatName = 'Strength'; mainStatValue = str; mainStatFactor = 0.00125; critStatValue = intel; }
+    else if (cls === 'Druid') { mainStatName = 'Willpower'; mainStatValue = will; mainStatFactor = 0.00125; critStatValue = dex; }
+    else if (cls === 'Rogue') { mainStatName = 'Dexterity'; mainStatValue = dex; mainStatFactor = 0.0011; critStatValue = intel; }
+    else if (cls === 'Sorcerer' || cls === 'Necromancer') { mainStatName = 'Intelligence'; mainStatValue = intel; mainStatFactor = 0.00125; critStatValue = dex; }
+    else if (cls === 'Spiritborn') { mainStatName = 'Dexterity'; mainStatValue = dex; mainStatFactor = 0.00125; critStatValue = str; }
+    
+    const mainStatMultiplier = 1 + (mainStatValue * mainStatFactor);
+    
+    const statCritBonus = (critStatValue * 0.0002);
+    const finalCrit = crit + statCritBonus;
 
     // Highlight main stat input group
     const inputGroups = {
@@ -2285,7 +2321,7 @@
     Object.keys(inputGroups).forEach(stat => {
       const group = inputGroups[stat];
       if (group) {
-        if (stat === mainStatInfo.name) {
+        if (stat === mainStatName) {
           group.classList.add('main-stat-active');
         } else {
           group.classList.remove('main-stat-active');
@@ -2387,8 +2423,10 @@
 
     // Final single-hit damage (after 80% monster DR)
     const rawDamage = baseDamage * mainStatMultiplier * finalAdditiveSum * multProduct;
-    const singleHit = rawDamage * MONSTER_DR;
-    const totalDamage = singleHit * aps;
+    const critMultiplier = 1 + finalCrit;
+    const speedMultiplier = 1 + atkSpd + castSpd;
+    const singleHit = rawDamage * MONSTER_DR * critMultiplier;
+    const totalDamage = singleHit * aps * speedMultiplier;
 
     // Update DOM
     dom.baseDmgDisplay.innerHTML = formatNumber(baseDamage);
@@ -2396,7 +2434,7 @@
     dom.multTotal.textContent = formatMultiplier(multProduct);
 
     dom.resultBase.innerHTML = formatNumber(baseDamage);
-    if (dom.resultIntelLabel) dom.resultIntelLabel.textContent = `${mainStatInfo.name} ×`;
+    if (dom.resultIntelLabel) dom.resultIntelLabel.textContent = `${mainStatName} ×`;
     dom.resultIntel.textContent = formatMultiplier(mainStatMultiplier);
     dom.resultAdditive.textContent = formatMultiplier(finalAdditiveSum);
     dom.resultMult.innerHTML = formatNumber(multProduct);
@@ -2639,8 +2677,12 @@
     dom.willpower.value = b.willpower || 0;
     dom.dexterity.value = b.dexterity || 0;
     dom.aps.value = b.aps || 1;
-    if (dom.weaponSpeed) dom.weaponSpeed.value = b.weaponSpeed || 1;
-    if (dom.level) dom.level.value = b.level || 0;
+    dom.weaponSpeed.value = b.weaponSpeed || 1;
+    if (dom.critChance) dom.critChance.value = b.critChance !== undefined ? b.critChance : 5.0;
+    if (dom.luckyHitChance) dom.luckyHitChance.value = b.luckyHitChance || 0;
+    if (dom.attackSpeed) dom.attackSpeed.value = b.attackSpeed || 0;
+    if (dom.castSpeed) dom.castSpeed.value = b.castSpeed || 0;
+    if (dom.level) dom.level.value = b.level || 70;
     if (dom.toughness) dom.toughness.value = b.toughness || 0;
     if (dom.armor) dom.armor.value = b.armor || 0;
     if (dom.physRes) dom.physRes.value = b.physRes || 0;
