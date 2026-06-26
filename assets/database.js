@@ -22675,31 +22675,6 @@ window.D4_DATABASE = {
         "mainhand": {
           "modifiers": [
             {
-              "name": "+[150 - 180] Intelligence",
-              "shortName": "Intelligence",
-              "category": "Core Stat"
-            },
-            {
-              "name": "+[1831 - 2200] Maximum Life",
-              "shortName": "Maximum Life",
-              "category": "Defensive"
-            },
-            {
-              "name": "+[3 - 4] Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
-              "shortName": "Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
-              "category": "Resource"
-            },
-            {
-              "name": "+[526 - 632] Life on Hit",
-              "shortName": "Life on Hit",
-              "category": "Defensive"
-            },
-            {
-              "name": "+[526 - 632] Life On Kill",
-              "shortName": "Life On Kill",
-              "category": "Defensive"
-            },
-            {
               "name": "+[13 - 25]% Critical Strike Damage [x]",
               "shortName": "Critical Strike Damage",
               "category": "Offensive"
@@ -22715,6 +22690,21 @@ window.D4_DATABASE = {
               "category": "Offensive"
             },
             {
+              "name": "+[3 - 4] Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
+              "shortName": "Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
+              "category": "Resource"
+            },
+            {
+              "name": "+[526 - 632] Life on Kill",
+              "shortName": "Life on Kill",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[7 - 10]% Physical Damage [x]",
+              "shortName": "Physical Damage",
+              "category": "Offensive"
+            },
+            {
               "name": "+[7 - 10]% Cold Damage [x]",
               "shortName": "Cold Damage",
               "category": "Offensive"
@@ -22725,26 +22715,24 @@ window.D4_DATABASE = {
               "category": "Offensive"
             },
             {
-              "name": "+[7 - 10]% Physical Damage [x]",
-              "shortName": "Physical Damage",
-              "category": "Offensive"
+              "name": "+[150 - 180] Intelligence",
+              "shortName": "Intelligence",
+              "category": "Core Stat"
             },
             {
-              "name": "+[86 - 143] Weapon Damage",
+              "name": "+[1831 - 2200] Maximum Life",
+              "shortName": "Maximum Life",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[94 - 157] Weapon Damage",
               "shortName": "Weapon Damage",
               "category": "Offensive"
             },
             {
-              "name": "+[6 - 7]% Resource Cost Reduction",
-              "shortName": "Resource Cost Reduction",
-              "category": "Resource",
-              "exclusiveTo": "2H"
-            },
-            {
-              "name": "+[1 - 2] Essence On Kill",
-              "shortName": "Essence On Kill",
-              "category": "Resource",
-              "exclusiveTo": "2H"
+              "name": "+[526 - 632] Life On Hit",
+              "shortName": "Life On Hit",
+              "category": "Defensive"
             }
           ],
           "tempers": [
@@ -22924,7 +22912,100 @@ window.D4_DATABASE = {
               "desc": "Worldly Destruction"
             }
           ],
-          "transfigures": []
+          "transfigures": [
+            {
+              "name": "+[3.5 - 5.0]% Intelligence",
+              "desc": "Intelligence"
+            },
+            {
+              "name": "+[21.0 - 35.0]% Chance for Projectiles to Cast Twice",
+              "desc": "Chance for Projectiles to Cast Twice"
+            },
+            {
+              "name": "+[2 - 3] to Basic Skills",
+              "desc": "Basic Skills"
+            },
+            {
+              "name": "+[75 - 100] All Stats",
+              "desc": "All Stats"
+            },
+            {
+              "name": "+[3.5 - 5.0]% Critical Strike Chance",
+              "desc": "Critical Strike Chance"
+            },
+            {
+              "name": "+[6.0 - 8.0]% Cooldown Reduction",
+              "desc": "Cooldown Reduction"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Attack Speed",
+              "desc": "Attack Speed"
+            },
+            {
+              "name": "+[150 - 180] Intelligence",
+              "desc": "Intelligence"
+            },
+            {
+              "name": "+[263 - 316] Life On Hit",
+              "desc": "Life On Hit"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Shadow Damage [x]",
+              "desc": "Shadow Damage"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Physical Damage [x]",
+              "desc": "Physical Damage"
+            },
+            {
+              "name": "+[6.0 - 8.0]% Maximum Life",
+              "desc": "Maximum Life"
+            },
+            {
+              "name": "+[1 - 15] Item Quality",
+              "desc": "Item Quality"
+            },
+            {
+              "name": "Gain 20% Damage Reduction. In addition, gain +4 Ranks to all Skills.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Every 4 seconds, you randomly mark a Nearby enemy. Marked enemies are Vulnerable, and your attacks against them are guaranteed to Critically Strike and Overpower. Hitting a marked enemy 30 times clears the mark from them.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Gain a random Shrine effect for 20 seconds after killing an Elite enemy. Can only occur once every 30 seconds.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Lucky Hit: Up to a 38% chance to deal 0 Shadow damage to surrounding enemies and reduce their damage dealt by 20% for 5 seconds.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Increases your Critical Strike Damage by 100%[x].",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Spending your Primary Resource reduces the Resource cost of your Skills and increases your damage by 15%[x] for 3 seconds, up to 75%[x].",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced. Your Primary Resource is doubled but Maximum Life is reduced by 75%.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Enemies afflicted by more Damage over Time than remaining Life are Executed.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Your Skills unleash a divine barrage dealing 0 damage.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Lucky Hit: Up to a 30% chance to trigger a poison nova that applies 0 Poisoning damage over 5 seconds to enemies in the area.",
+              "desc": "Sanctified Modifier"
+            }
+          ]
         },
         "offhand": {
           "modifiers": [
