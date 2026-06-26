@@ -22221,166 +22221,155 @@ window.D4_DATABASE = {
           ],
           "tempers": [
             {
+              "name": "+[484 - 646] Thorns",
+              "shortName": "Thorns",
+              "desc": "Natural Schemes"
+            },
+            {
+              "name": "+[10 - 12.5]% Fortify Generation",
+              "shortName": "Fortify Generation",
+              "desc": "Natural Schemes"
+            },
+            {
+              "name": "+[10 - 12.5]% Barrier Generation",
+              "shortName": "Barrier Generation",
+              "desc": "Natural Schemes"
+            },
+            {
               "name": "+[20 - 40]% Physical Damage",
               "shortName": "Physical Damage",
               "category": "Offensive",
-              "manual": "Elemental Finesse - Day"
+              "desc": "Elemental Finesse - Day"
             },
             {
               "name": "+[20 - 40]% Fire Damage",
               "shortName": "Fire Damage",
               "category": "Offensive",
-              "manual": "Elemental Finesse - Day"
+              "desc": "Elemental Finesse - Day"
             },
             {
               "name": "+[20 - 40]% Lightning Damage",
               "shortName": "Lightning Damage",
               "category": "Offensive",
-              "manual": "Elemental Finesse - Day"
+              "desc": "Elemental Finesse - Day"
             },
             {
               "name": "+[20 - 40]% Holy Damage",
               "shortName": "Holy Damage",
               "category": "Offensive",
-              "manual": "Elemental Finesse - Day"
+              "desc": "Elemental Finesse - Day"
             },
             {
               "name": "+[20 - 40]% Cold Damage",
               "shortName": "Cold Damage",
               "category": "Offensive",
-              "manual": "Elemental Finesse - Night"
+              "desc": "Elemental Finesse - Night"
             },
             {
               "name": "+[20 - 40]% Poison Damage",
               "shortName": "Poison Damage",
               "category": "Offensive",
-              "manual": "Elemental Finesse - Night"
+              "desc": "Elemental Finesse - Night"
             },
             {
               "name": "+[20 - 40]% Shadow Damage",
               "shortName": "Shadow Damage",
               "category": "Offensive",
-              "manual": "Elemental Finesse - Night"
+              "desc": "Elemental Finesse - Night"
             },
             {
               "name": "+[10 - 30]% Damage",
               "shortName": "Damage",
               "category": "Offensive",
-              "manual": "Natural Finesse"
+              "desc": "Natural Finesse"
             },
             {
               "name": "+[20 - 40]% Damage to Crowd Controlled Enemies",
               "shortName": "Damage to Crowd Controlled Enemies",
               "category": "Offensive",
-              "manual": "Natural Finesse"
+              "desc": "Natural Finesse"
             },
             {
-              "name": "+[20 - 40]% Damage to Close",
-              "shortName": "Damage to Close",
-              "category": "Offensive",
-              "manual": "Natural Finesse"
+              "name": "+[20 - 40]% Damage to Close Enemies",
+              "shortName": "Damage to Close Enemies",
+              "desc": "Natural Finesse"
             },
             {
-              "name": "+[20 - 40]% Damage to Distant",
-              "shortName": "Damage to Distant",
-              "category": "Offensive",
-              "manual": "Natural Finesse"
+              "name": "+[20 - 40]% Damage to Distant Enemies",
+              "shortName": "Damage to Distant Enemies",
+              "desc": "Natural Finesse"
             },
             {
               "name": "+[20 - 40]% Blood Damage",
               "shortName": "Blood Damage",
               "category": "Offensive",
-              "manual": "Profane Finesse"
+              "desc": "Profane Finesse"
             },
             {
               "name": "+[20 - 40]% Bone Damage",
               "shortName": "Bone Damage",
               "category": "Offensive",
-              "manual": "Profane Finesse"
+              "desc": "Profane Finesse"
             },
             {
               "name": "+[20 - 40]% Summon Damage",
               "shortName": "Summon Damage",
               "category": "Offensive",
-              "manual": "Profane Finesse"
+              "desc": "Profane Finesse"
             },
             {
               "name": "+[20 - 40]% Macabre Damage",
               "shortName": "Macabre Damage",
               "category": "Offensive",
-              "manual": "Shadow Finesse"
+              "desc": "Shadow Finesse"
             },
             {
               "name": "+[20 - 40]% Darkness Damage",
               "shortName": "Darkness Damage",
               "category": "Offensive",
-              "manual": "Shadow Finesse"
+              "desc": "Shadow Finesse"
             },
             {
               "name": "+[40 - 60]% Damage when Spending Resolve",
               "shortName": "Damage when Spending Resolve",
               "category": "Offensive",
-              "manual": "Sharpened Finesse"
+              "desc": "Sharpened Finesse"
             },
             {
               "name": "+[7 - 10]% Damage Per Overpower Stack",
               "shortName": "Damage Per Overpower Stack",
               "category": "Offensive",
-              "manual": "Sharpened Finesse"
+              "desc": "Sharpened Finesse"
             },
             {
               "name": "+[30 - 50]% Critical Strike Damage",
               "shortName": "Critical Strike Damage",
               "category": "Offensive",
-              "manual": "Worldly Finesse"
+              "desc": "Worldly Finesse"
             },
             {
               "name": "+[30 - 50]% Damage Over Time",
               "shortName": "Damage Over Time",
               "category": "Offensive",
-              "manual": "Worldly Finesse"
+              "desc": "Worldly Finesse"
             },
             {
               "name": "+[20 - 40]% Vulnerable Damage",
               "shortName": "Vulnerable Damage",
               "category": "Offensive",
-              "manual": "Worldly Finesse"
+              "desc": "Worldly Finesse"
             },
             {
-              "name": "+[484 - 646] Thorns",
-              "shortName": "Thorns",
-              "category": "Utility",
-              "manual": "Natural Schemes"
+              "name": "+[20 - 40]% Damage to Close",
+              "shortName": "Damage to Close",
+              "category": "Offensive",
+              "desc": "Natural Finesse"
             },
             {
-              "name": "+[10 - 12.5]% Fortify Generation",
-              "shortName": "Fortify Generation",
-              "category": "Utility",
-              "manual": "Natural Schemes"
-            },
-            {
-              "name": "+[10 - 12.5]% Barrier Generation",
-              "shortName": "Barrier Generation",
-              "category": "Utility",
-              "manual": "Natural Schemes"
-            },
-            {
-              "name": "+[2.5 - 5]% Lucky Hit Chance",
-              "shortName": "Lucky Hit Chance",
-              "category": "Utility",
-              "manual": "Worldy Fortune"
-            },
-            {
-              "name": "+[10 - 12.5]% Impairment Reduction",
-              "shortName": "Impairment Reduction",
-              "category": "Utility",
-              "manual": "Worldy Fortune"
-            },
-            {
-              "name": "+[12 - 15]% Crowd Control Duration",
-              "shortName": "Crowd Control Duration",
-              "category": "Utility",
-              "manual": "Worldy Fortune"
+              "name": "+[20 - 40]% Damage to Distant",
+              "shortName": "Damage to Distant",
+              "category": "Offensive",
+              "desc": "Natural Finesse"
             }
           ],
           "transfigures": [
