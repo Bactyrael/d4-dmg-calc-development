@@ -2806,7 +2806,7 @@
 
   } catch (e) {
     console.error("calculate() Error:", e);
-     const container = document.getElementById('compiled-stats-content');
+     const container = document.getElementById('character-sheet-content');
      if (container) container.innerHTML = '<div style="color: red; padding: 10px;"><b>CALC ERROR:</b><br>' + e.stack.replace(/\n/g, '<br>') + '</div>';
     
   }
