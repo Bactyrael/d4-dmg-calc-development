@@ -3723,16 +3723,29 @@ rarity = foundItem.rarity;
       if (currentAspectName !== 'None') {
         const aspectObj = (window.D4_DATABASE?.aspects || []).find(a => a.name === currentAspectName);
         if (aspectObj && aspectObj.desc) {
+          let aspectMult = 1;
+          const ls = slotName.toLowerCase();
+          if (ls.includes('two-handed') || ls === 'two-handed weapon') aspectMult = 2;
+          else if (ls === 'amulet') aspectMult = 1.5;
+
           const vals = itemObj.aspectValues || [];
           let valIndex = 0;
-          aspectDescHtml = aspectObj.desc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
+          aspectDescHtml = aspectObj.desc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, minStr, maxStr) => {
+            let min = minStr ? parseFloat(minStr.replace(/,/g, '')) * aspectMult : null;
+            let max = maxStr ? parseFloat(maxStr.replace(/,/g, '')) * aspectMult : null;
+            
+            if (min !== null) min = parseFloat(min.toFixed(2));
+            if (max !== null) max = parseFloat(max.toFixed(2));
+
             let v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
-            if (typeof v === 'string') v = v.replace(/,/g, '');
-            let placeholder = min && max ? `${min}-${max}` : 'value';
-            let minAttr = min ? ` min="${min}"` : '';
+            if (typeof v === 'string') v = parseFloat(v.replace(/,/g, ''));
+            v = parseFloat(Number(v).toFixed(2));
+
+            let placeholder = (min !== null && max !== null) ? `${min}-${max}` : 'value';
+            let minAttr = min !== null ? ` min="${min}"` : '';
             let maxAttr = ''; // Allow overriding max for higher item power tiers
-            let stepAttr = (min && min.includes('.')) || (max && max.includes('.')) ? ' step="0.1"' : ' step="1"';
-            if (!min && !max) stepAttr = ' step="any"';
+            let stepAttr = (min !== null && !Number.isInteger(min)) || (max !== null && !Number.isInteger(max)) ? ' step="0.1"' : ' step="1"';
+            if (min === null && max === null) stepAttr = ' step="any"';
             const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #8ab4f8; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
             valIndex++;
             return inputHtml;
@@ -4525,10 +4538,15 @@ rarity = foundItem.rarity;
         const itemObj = JSON.parse(box.dataset.value);
         itemObj.aspect = aspectName;
         
+        let aspectMult = 1;
+        const ls = currentModalSlot.toLowerCase();
+        if (ls.includes('two-handed') || ls === 'two-handed weapon') aspectMult = 2;
+        else if (ls === 'amulet') aspectMult = 1.5;
+        
         // Auto-fill max value from database if available
         const aspectObj = window.D4_DATABASE?.aspects?.find(a => a.name === aspectName);
         if (aspectObj && aspectObj.maxValue) {
-          itemObj.aspectValues = [aspectObj.maxValue];
+          itemObj.aspectValues = [parseFloat((aspectObj.maxValue * aspectMult).toFixed(2))];
         } else {
           itemObj.aspectValues = [];
         }
