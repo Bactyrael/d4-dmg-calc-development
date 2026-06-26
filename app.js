@@ -1675,6 +1675,28 @@
     }
   }
 
+  function getEffectiveQuality(itemObj) {
+    let q = itemObj.quality || 0;
+    if (itemObj.transfigure) {
+        itemObj.transfigure.forEach((tName, idx) => {
+            if (tName && tName.includes('Item Quality')) {
+                let v = 0;
+                if (itemObj.transfigureValues && itemObj.transfigureValues[idx] && itemObj.transfigureValues[idx][0] !== undefined) {
+                    v = itemObj.transfigureValues[idx][0];
+                } else {
+                    // Fallback to parsing the max value directly from the affix name (e.g. "+[1 - 15] Item Quality")
+                    const match = tName.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
+                    if (match) {
+                        v = parseFloat(match[2].replace(/,/g, '')) || 0;
+                    }
+                }
+                q += v;
+            }
+        });
+    }
+    return q;
+  }
+
   function calculate() {
     if (isLoading) return;
     try {
@@ -1696,7 +1718,8 @@
           const sName = slotName.toLowerCase();
           const baseItem = (window.D4_DATABASE.itemDatabase[slotName] || []).find(i => i.name === item.name) || {};
           
-          const qMult = 1 + ((item.quality || 0) * 0.01);
+          const effQ = getEffectiveQuality(item);
+          const qMult = 1 + (effQ * 0.01);
             
           if (baseItem.armor) totalArmor += (baseItem.armor * qMult);
           if (baseItem.resistance) totalAllRes += (baseItem.resistance * qMult);
@@ -3215,6 +3238,17 @@ rarity = foundItem.rarity;
       else if (type === 'temper') dbItems = classData.tempers || [];
       else if (type === 'transfigure') dbItems = classData.transfigures || [];
 
+      let isGA = false;
+      if (type === 'affix') isGA = itemObj.greaterAffixes?.[idx] || false;
+      if (type === 'temper') isGA = itemObj.greaterTempers?.[idx] || false;
+      const gaBonus = isGA ? 0.25 : 0;
+
+      let isCapstone = false;
+      if (itemObj.capstoneBonus && itemObj.capstoneBonus.type === type && itemObj.capstoneBonus.idx === idx) {
+          isCapstone = true;
+      }
+      const capstoneBonus = isCapstone ? 0.50 : 0;
+
       obj = dbItems.find(a => a.name === currentName);
       if (!obj && currentName) {
         obj = dbItems.find(a => a.name.toLowerCase().includes(currentName.toLowerCase()));
@@ -3236,33 +3270,57 @@ rarity = foundItem.rarity;
         if (typeof v === 'string') v = v.replace(/,/g, '');
         
         let displayV = v;
-        const qMult = 1 + ((itemObj.quality || 0) * 0.01);
+        const effQ = getEffectiveQuality(itemObj);
+        const qMult = 1 + (effQ * 0.01) + gaBonus + capstoneBonus;
         if (typeof displayV === 'number' || (typeof displayV === 'string' && !isNaN(parseFloat(displayV)))) {
-           displayV = (parseFloat(displayV) * qMult).toFixed(1).replace(/\.0$/, '');
+           // Skip scaling if it is the "Item Quality" transfigure!
+           if (currentName && currentName.includes('Item Quality')) {
+               // keep it exactly as it is (it doesn't scale)
+               displayV = parseFloat(displayV).toFixed(1).replace(/\.0$/, '');
+           } else {
+               displayV = (parseFloat(displayV) * qMult).toFixed(1).replace(/\.0$/, '');
+           }
         }
 
         let placeholder = min && max ? `${min}-${max}` : 'value';
         
         let minAttr = '';
         if (min) {
-            let minScaled = (parseFloat(min.replace(/,/g, '')) * qMult).toFixed(1).replace(/\.0$/, '');
-            minAttr = ` min="${minScaled}"`;
+            if (currentName && currentName.includes('Item Quality')) {
+                let minRaw = parseFloat(min.replace(/,/g, '')).toFixed(1).replace(/\.0$/, '');
+                minAttr = ` min="${minRaw}"`;
+            } else {
+                let minScaled = (parseFloat(min.replace(/,/g, '')) * qMult).toFixed(1).replace(/\.0$/, '');
+                minAttr = ` min="${minScaled}"`;
+            }
         }
         let maxAttr = ''; // Allow overriding max for higher item power tiers
         
         let stepAttr = (min && min.includes('.')) || (max && max.includes('.')) ? ' step="0.1"' : ' step="1"';
         if (!min && !max) stepAttr = ' step="any"';
-        const inputHtml = `<input type="number" class="affix-val-input" data-type="${type}" data-group="${idx}" data-idx="${valIndex}" value="${displayV}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #fff; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
+        const inputHtml = `<input type="number" class="affix-val-input" data-type="${type}" data-group="${idx}" data-idx="${valIndex}" data-baseval="${v}" value="${displayV}" placeholder="${placeholderText}" title="${placeholderText}"${minAttr}${maxAttr}${stepAttr} style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #fff; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
         valIndex++;
         return inputHtml;
       });
       
+      const isItemQuality = currentName && currentName.includes('Item Quality');
+      
+      const gaColor = isGA ? '#ffea00' : '#555';
+      const gaIcon = type !== 'transfigure' ? `<span class="btn-toggle-ga" data-type="${type}" data-idx="${idx}" style="color: ${gaColor}; margin-right: 8px; cursor: pointer; font-size: 1.2em;" title="Toggle Greater Affix">❋</span>` : '';
+      
+      const capstoneColor = isCapstone ? '#00e5ff' : '#555';
+      const capstoneIcon = (type !== 'transfigure' || !isItemQuality) ? `<span class="btn-toggle-capstone" data-type="${type}" data-idx="${idx}" style="color: ${capstoneColor}; margin-right: 8px; cursor: pointer; font-size: 1.2em;" title="Toggle Capstone Bonus">◈</span>` : '';
+      
       return `
-        <div class="affix-filled-row">
+        <div class="affix-filled-row" style="display: flex; align-items: center; justify-content: space-between;">
           <div style="font-size: 0.9rem; line-height: 1.5; color: #ccc; flex: 1;">
             <span style="color: #ff5555; margin-right: 4px; cursor: pointer;" class="btn-remove-affix" data-type="${type}" data-idx="${idx}" title="Remove">✖</span> ${descHtml}
           </div>
-          <button class="edit-btn btn-change-affix" data-type="${type}" data-idx="${idx}" style="padding: 2px 8px; font-size: 0.75rem;">Change</button>
+          <div style="display: flex; align-items: center;">
+            ${gaIcon}
+            ${capstoneIcon}
+            <button class="edit-btn btn-change-affix" data-type="${type}" data-idx="${idx}" style="padding: 2px 8px; font-size: 0.75rem;">Change</button>
+          </div>
         </div>
       `;
     }
@@ -3276,7 +3334,8 @@ rarity = foundItem.rarity;
         if (slotName === 'Left Ring' || slotName === 'Right Ring') dbSlotName = 'Ring';
         const baseItem = window.D4_DATABASE.itemDatabase[dbSlotName]?.find(i => i.name === itemObj.name) || {};
         let extraWeaponInfo = '';
-        const qMult = 1 + ((itemObj.quality || 0) * 0.01);
+        const effQ = getEffectiveQuality(itemObj);
+        const qMult = 1 + (effQ * 0.01);
         
         if (baseItem.armor) {
           const scaledArmor = Math.floor(baseItem.armor * qMult);
@@ -3307,11 +3366,9 @@ rarity = foundItem.rarity;
             <div class="edit-item-name rarity-${rarity}">${itemObj.name}</div>
             <div class="edit-input-row">
               <input type="number" id="edit-power" value="${itemObj.power || 900}"> Item Power
+              &nbsp;&nbsp; Quality: &nbsp; <input type="number" id="edit-quality" value="${itemObj.quality || 0}" min="0" max="25" style="width:50px;"> &nbsp; / 25
             </div>
-            <div class="edit-input-row">
-              Quality: <input type="number" id="edit-quality" value="${itemObj.quality || 0}" min="0" max="25"> / 25
-            </div>
-            ${extraWeaponInfo}
+            <div id="extra-info-container">${extraWeaponInfo}</div>
           </div>
         </div>
         `;
@@ -3425,10 +3482,88 @@ rarity = foundItem.rarity;
     ['edit-power', 'edit-quality'].forEach(id => {
       const el = document.getElementById(id);
       if (el) {
-        el.addEventListener('input', () => {
+        el.addEventListener('input', (e) => {
           itemObj[id === 'edit-power' ? 'power' : 'quality'] = parseInt(el.value) || 0;
           box.dataset.value = JSON.stringify(itemObj);
           calculate();
+          
+          if (id === 'edit-quality') {
+             const effQ = getEffectiveQuality(itemObj);
+             const qMult = 1 + (effQ * 0.01);
+             
+             // 1. Update extraWeaponInfo
+             const container = document.getElementById('extra-info-container');
+             if (container) {
+                let dbSlotName = slotName;
+                if (slotName === 'Left Ring' || slotName === 'Right Ring') dbSlotName = 'Ring';
+                const baseItem = window.D4_DATABASE.itemDatabase[dbSlotName]?.find(i => i.name === itemObj.name) || {};
+                let extraInfo = '';
+                if (baseItem.armor) {
+                  const scaledArmor = Math.floor(baseItem.armor * qMult);
+                  extraInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${scaledArmor.toLocaleString()} Armor</div>`;
+                }
+                if (baseItem.resistance) {
+                  const scaledRes = Math.floor(baseItem.resistance * qMult);
+                  extraInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${scaledRes.toLocaleString()} Resistance to All Elements</div>`;
+                }
+                if (baseItem.weaponType) {
+                  extraInfo += `<div style="font-size:13px; color:#ccc; margin-top: 4px;">Type: <span style="color:#fff;">${baseItem.weaponType}</span></div>`;
+                  if (baseItem.damageRange) {
+                     let dmgStr = baseItem.damageRange;
+                     const match = dmgStr.match(/([\d,]+)\s*-\s*([\d,]+)/);
+                     if (match) {
+                         const min = Math.floor(parseFloat(match[1].replace(/,/g, '')) * qMult);
+                         const max = Math.floor(parseFloat(match[2].replace(/,/g, '')) * qMult);
+                         dmgStr = `${min.toLocaleString()} - ${max.toLocaleString()}`;
+                     }
+                     extraInfo += `<div style="font-size:13px; color:#ccc;">Damage: <span style="color:#fff;">${dmgStr}</span></div>`;
+                  }
+                  if (baseItem.weaponSpeed) extraInfo += `<div style="font-size:13px; color:#ccc;">Speed: <span style="color:#fff;">${baseItem.weaponSpeed}</span></div>`;
+                }
+                container.innerHTML = extraInfo;
+             }
+             
+             // 2. Update affix value inputs dynamically
+             document.querySelectorAll('.affix-val-input').forEach(inp => {
+                 const type = inp.dataset.type;
+                 const groupIdx = parseInt(inp.dataset.group);
+                 const idx = parseInt(inp.dataset.idx);
+                 
+                 let baseValArr = [];
+                 if (type === 'affix') baseValArr = itemObj.affixValues?.[groupIdx] || [];
+                 if (type === 'temper') baseValArr = itemObj.temperValues?.[groupIdx] || [];
+                 if (type === 'transfigure') baseValArr = itemObj.transfigureValues?.[groupIdx] || [];
+                 
+                 let baseVal = baseValArr[idx];
+                 if (baseVal === undefined && inp.dataset.baseval) {
+                     baseVal = parseFloat(inp.dataset.baseval);
+                 }
+                 
+                 let isGA = false;
+                 if (type === 'affix') isGA = itemObj.greaterAffixes?.[groupIdx] || false;
+                 if (type === 'temper') isGA = itemObj.greaterTempers?.[groupIdx] || false;
+                 const gaBonus = isGA ? 0.25 : 0;
+                 
+                 let isCapstone = false;
+                 if (itemObj.capstoneBonus && itemObj.capstoneBonus.type === type && itemObj.capstoneBonus.idx === groupIdx) {
+                     isCapstone = true;
+                 }
+                 const capstoneBonus = isCapstone ? 0.50 : 0;
+                 
+                 const rowQMult = qMult + gaBonus + capstoneBonus;
+                 
+                 if (baseVal !== undefined && !isNaN(baseVal)) {
+                     // Check if this input belongs to the 'Item Quality' transfigure
+                     // To do this properly we'd need to look up its name, but an easy way is to check the DOM text
+                     const rowNameText = inp.closest('.affix-filled-row')?.innerText || '';
+                     let scaled = (baseVal * rowQMult).toFixed(1).replace(/\.0$/, '');
+                     if (rowNameText.includes('Item Quality')) {
+                         scaled = (baseVal).toFixed(1).replace(/\.0$/, ''); // does not scale
+                     }
+                     inp.value = scaled;
+                 }
+             });
+          }
         });
       }
     });
@@ -3517,6 +3652,40 @@ rarity = foundItem.rarity;
       });
     });
 
+    document.querySelectorAll('.btn-toggle-ga').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const type = e.target.dataset.type;
+        const idx = parseInt(e.target.dataset.idx);
+        if (type === 'affix') {
+           if (!itemObj.greaterAffixes) itemObj.greaterAffixes = [];
+           itemObj.greaterAffixes[idx] = !itemObj.greaterAffixes[idx];
+        } else if (type === 'temper') {
+           if (!itemObj.greaterTempers) itemObj.greaterTempers = [];
+           itemObj.greaterTempers[idx] = !itemObj.greaterTempers[idx];
+        }
+        box.dataset.value = JSON.stringify(itemObj);
+        calculate();
+        renderEditTab(slotName);
+      });
+    });
+
+    document.querySelectorAll('.btn-toggle-capstone').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const type = e.target.dataset.type;
+        const idx = parseInt(e.target.dataset.idx);
+        
+        if (itemObj.capstoneBonus && itemObj.capstoneBonus.type === type && itemObj.capstoneBonus.idx === idx) {
+            itemObj.capstoneBonus = null; // Toggle off
+        } else {
+            itemObj.capstoneBonus = { type, idx }; // Replace with new
+        }
+        
+        box.dataset.value = JSON.stringify(itemObj);
+        calculate();
+        renderEditTab(slotName);
+      });
+    });
+
     document.querySelectorAll('.btn-remove-socket').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const idx = parseInt(e.currentTarget.dataset.idx);
@@ -3557,8 +3726,27 @@ rarity = foundItem.rarity;
           
           target.value = val;
           
-          const qMult = 1 + ((itemObj.quality || 0) * 0.01);
-          const baseVal = Number((val / qMult).toFixed(2));
+          const rowNameText = target.closest('.affix-filled-row')?.innerText || '';
+          
+          let isGA = false;
+          if (type === 'affix') isGA = itemObj.greaterAffixes?.[groupIdx] || false;
+          if (type === 'temper') isGA = itemObj.greaterTempers?.[groupIdx] || false;
+          const gaBonus = isGA ? 0.25 : 0;
+          
+          let isCapstone = false;
+          if (itemObj.capstoneBonus && itemObj.capstoneBonus.type === type && itemObj.capstoneBonus.idx === groupIdx) {
+              isCapstone = true;
+          }
+          const capstoneBonus = isCapstone ? 0.50 : 0;
+          
+          let baseVal;
+          if (rowNameText.includes('Item Quality')) {
+              baseVal = val;
+          } else {
+              const effQ = getEffectiveQuality(itemObj);
+              const qMult = 1 + (effQ * 0.01) + gaBonus + capstoneBonus;
+              baseVal = Number((val / qMult).toFixed(2));
+          }
           
           if (type === 'affix') {
             if (!itemObj.affixValues) itemObj.affixValues = {};
@@ -3576,6 +3764,11 @@ rarity = foundItem.rarity;
           
           box.dataset.value = JSON.stringify(itemObj);
           calculate();
+          
+          if (rowNameText.includes('Item Quality')) {
+              const qInput = document.getElementById('edit-quality');
+              if (qInput) qInput.dispatchEvent(new Event('input'));
+          }
         });
       });
   }
