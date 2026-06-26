@@ -4891,9 +4891,20 @@ rarity = foundItem.rarity;
     else if (type === 'temper') dbItems = classData.tempers || [];
     else if (type === 'transfigure') dbItems = classData.transfigures || [];
 
+    let currentlyEquipped = [];
+    if (type === 'affix') currentlyEquipped = itemObj.affixes || [];
+    if (type === 'temper') currentlyEquipped = itemObj.tempering || [];
+    if (type === 'transfigure') currentlyEquipped = itemObj.transfigure || [];
+    
+    let editingAffixName = '';
+    if (window.currentModifierEditing && window.currentModifierEditing.type === type) {
+        editingAffixName = currentlyEquipped[window.currentModifierEditing.idx];
+    }
+
     let items = dbItems.filter(a => {
       if (activeCategory !== 'All Modifiers' && getAffixCategory(a.name) !== activeCategory) return false;
       if (query && !a.name.toLowerCase().includes(query.toLowerCase())) return false;
+      if (a.name !== editingAffixName && currentlyEquipped.includes(a.name)) return false;
       return true;
     });
 
