@@ -1,5 +1,24 @@
 {
   "dependencies": {
     "jsdom": "^29.1.1"
-  }
+  },
+  "name": "d4-damage-calc",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000D\u00004\u0000 \u0000D\u0000a\u0000m\u0000a\u0000g\u0000e\u0000 \u0000C\u0000a\u0000l\u0000c\u0000u\u0000l\u0000a\u0000t\u0000o\u0000r\u0000\r\u0000 \u0000",
+  "main": "add_weapon_stats.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bactyrael/d4-dmg-calc-development.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Bactyrael/d4-dmg-calc-development/issues"
+  },
+  "homepage": "https://github.com/Bactyrael/d4-dmg-calc-development#readme"
 }

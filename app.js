@@ -1691,20 +1691,43 @@
     return q;
   }
 
-  function addStat(stats, rawName, value) {
+  function addStat(stats, rawName, value, sourceName = 'Equipment') {
       if (!rawName) return;
       let cleanName = rawName.replace(/\[.*?\]\s*/, '').replace(/^[\+\-]\s*/, '').trim();
-      stats[cleanName] = (stats[cleanName] || 0) + value;
+      
+      if (!stats[cleanName]) {
+          stats[cleanName] = { 
+              total: 0, 
+              final: 0,
+              flatSources: [], 
+              pctSources: [] 
+          };
+      }
+      
+      let targetList = stats[cleanName].flatSources;
+      let existingSource = targetList.find(s => s.name === sourceName);
+      if (existingSource) {
+          existingSource.val += value;
+      } else {
+          targetList.push({ name: sourceName, val: value });
+      }
+      
+      stats[cleanName].total += value;
+      stats[cleanName].final = stats[cleanName].total;
   }
 
   function compileCharacterStats(equipped, autoStats) {
       const stats = {};
       
-      stats['Strength'] = autoStats.strength;
-      stats['Intelligence'] = autoStats.intelligence;
-      stats['Willpower'] = autoStats.willpower;
-      stats['Dexterity'] = autoStats.dexterity;
-      stats['Maximum Life'] = autoStats.maximumLife;
+      addStat(stats, 'Strength', autoStats.baseStr, 'Base');
+      addStat(stats, 'Strength', autoStats.levelStr, 'Level');
+      addStat(stats, 'Intelligence', autoStats.baseInt, 'Base');
+      addStat(stats, 'Intelligence', autoStats.levelInt, 'Level');
+      addStat(stats, 'Willpower', autoStats.baseWill, 'Base');
+      addStat(stats, 'Willpower', autoStats.levelWill, 'Level');
+      addStat(stats, 'Dexterity', autoStats.baseDex, 'Base');
+      addStat(stats, 'Dexterity', autoStats.levelDex, 'Level');
+      addStat(stats, 'Maximum Life', autoStats.maximumLife, 'Base');
       
       if (!equipped) return stats;
       
@@ -1872,6 +1895,48 @@
       return stats;
   }
   
+  function getStatEffects(statName, finalVal) {
+      const selectedClass = document.getElementById('class-select')?.textContent || 'Barbarian';
+      let effects = [];
+      const v = Math.floor(finalVal);
+      
+      // Basic scaling rules
+      // Armor
+      if (statName === 'Armor') {
+          effects.push(`Reduces Physical damage taken. Cap is 9230.`);
+      }
+      if (statName === 'Maximum Life') {
+          effects.push(`Increases the amount of damage you can take before dying.`);
+      }
+      if (statName === 'Resistance to All Elements') {
+          effects.push(`Reduces non-Physical damage taken by +${v}%.`);
+      }
+      
+      // Core Stats
+      if (statName === 'Strength') {
+          if (selectedClass === 'Barbarian') effects.push(`Increases Skill Damage by +${(v * 0.1).toFixed(1)}%`);
+          else if (selectedClass === 'Rogue') effects.push(`Increases Resource Generation by +${(v * 0.1).toFixed(1)}%`);
+          else effects.push(`Increases Armor by +${v}`);
+      }
+      if (statName === 'Intelligence') {
+          if (selectedClass === 'Sorcerer' || selectedClass === 'Necromancer') effects.push(`Increases Skill Damage by +${(v * 0.1).toFixed(1)}%`);
+          else if (selectedClass === 'Rogue') effects.push(`Increases Critical Strike Chance by +${(v * 0.02).toFixed(2)}%`);
+          else effects.push(`Increases Resistance to All Elements by +${(v * 0.05).toFixed(2)}%`);
+      }
+      if (statName === 'Willpower') {
+          if (selectedClass === 'Druid') effects.push(`Increases Skill Damage by +${(v * 0.1).toFixed(1)}%`);
+          else if (selectedClass === 'Barbarian' || selectedClass === 'Sorcerer' || selectedClass === 'Necromancer') effects.push(`Increases Resource Generation by +${(v * 0.1).toFixed(1)}%`);
+          else effects.push(`Increases Healing Received by +${(v * 0.1).toFixed(1)}%`);
+      }
+      if (statName === 'Dexterity') {
+          if (selectedClass === 'Rogue') effects.push(`Increases Skill Damage by +${(v * 0.1).toFixed(1)}%`);
+          else if (selectedClass === 'Barbarian' || selectedClass === 'Druid') effects.push(`Increases Critical Strike Chance by +${(v * 0.02).toFixed(2)}%`);
+          else effects.push(`Increases Dodge Chance by +${(v * 0.025).toFixed(2)}%`);
+      }
+
+      return effects;
+  }
+
   function renderCharacterSheet(stats) {
       const container = document.getElementById('character-sheet-content');
       if (!container) return;
@@ -1912,7 +1977,11 @@
       for (const [cat, items] of Object.entries(grouped)) {
           if (items.length === 0) continue;
           
-          items.sort((a, b) => b.val - a.val); // sort by value descending
+          items.sort((a, b) => {
+              const valA = typeof a.val === 'object' ? (a.val.final || 0) : a.val;
+              const valB = typeof b.val === 'object' ? (b.val.final || 0) : b.val;
+              return valB - valA;
+          }); // sort by value descending
           
           html += `
           <div style="background: rgba(0,0,0,0.4); border: 1px solid #333; border-radius: 4px; padding: 12px;">
@@ -1921,7 +1990,10 @@
           `;
           
           items.forEach(item => {
-              let valStr = item.val.toFixed(1).replace(/\.0$/, '');
+              let valObj = item.val;
+              let finalVal = typeof valObj === 'object' ? (valObj.final || 0) : valObj;
+              let totalVal = typeof valObj === 'object' ? (valObj.total || 0) : valObj;
+              let valStr = finalVal.toFixed(1).replace(/\.0$/, '');
               let nameStr = item.name;
               
               if (nameStr.startsWith('%')) {
@@ -1929,19 +2001,83 @@
                   valStr += '%';
               } else if (nameStr.includes('%')) {
                   // already has % inside
-              } else if (valStr !== '0') {
+              } else if (valStr !== '0' && !['Strength', 'Intelligence', 'Willpower', 'Dexterity', 'Armor', 'Maximum Life'].includes(nameStr)) {
                   valStr = '+' + valStr;
               }
               
+              // Tooltip Generation
+              let tooltipHTML = '';
+              const effects = getStatEffects(nameStr, finalVal);
+              
+              let itemContrib = 0;
+              if (typeof valObj === 'object' && valObj.flatSources) {
+                  valObj.flatSources.forEach(s => {
+                      if (s.name !== 'Base' && s.name !== 'Level' && s.name !== 'Paragon' && s.name !== 'Base & Level') {
+                          itemContrib += s.val;
+                      }
+                  });
+              }
+
+              tooltipHTML += `
+                  <div class="stat-tooltip">
+                      <div class="stat-tooltip-header">
+                          <span style="color: #d18a45;">${nameStr}:</span> 
+                          <span style="color: #ffca4a;">${finalVal.toFixed(0)}</span>
+                          ${itemContrib > 0 ? `<span style="color: #888;"> (Item Contribution: ${itemContrib.toFixed(0)})</span>` : ''}
+                      </div>
+                      ${effects.map(e => `<div class="stat-tooltip-effect">⬥ ${e}</div>`).join('')}
+                      ${effects.length > 0 ? '<hr class="stat-tooltip-divider">' : ''}
+              `;
+
+              // Sum breakdown
+              if (typeof valObj === 'object' && valObj.flatSources && valObj.flatSources.length > 0) {
+                  tooltipHTML += `
+                      <div class="stat-tooltip-section-title">⬥ Sum: <span style="color: #4cd137;">${totalVal.toFixed(0)}</span></div>
+                  `;
+                  valObj.flatSources.forEach(src => {
+                      let color = '#ccc';
+                      if (src.name === 'Base' || src.name === 'Level') color = '#888';
+                      else if (src.name === 'Paragon') color = '#fbc531';
+                      else color = '#3498db'; // blue for equipment
+
+                      tooltipHTML += `
+                          <div class="stat-tooltip-source">
+                              <span style="color: ${color};">⬥ ${src.name}:</span> ${src.val.toFixed(0)}
+                          </div>
+                      `;
+                  });
+              }
+
+              // Increased breakdown
+              if (typeof valObj === 'object' && valObj.pctSources && valObj.pctSources.length > 0) {
+                  let totalPct = valObj.pctSources.reduce((sum, s) => sum + s.val, 0);
+                  tooltipHTML += `
+                      <div class="stat-tooltip-section-title" style="margin-top: 6px;">⬥ Increased: <span style="color: #4cd137;">+${totalPct.toFixed(1)}%</span></div>
+                  `;
+                  valObj.pctSources.forEach(src => {
+                      tooltipHTML += `
+                          <div class="stat-tooltip-source">
+                              <span style="color: #3498db;">⬥ ${src.name}:</span> <span style="color: #4cd137;">${src.val.toFixed(1)}%</span>
+                          </div>
+                      `;
+                  });
+              }
+
+              tooltipHTML += '</div>';
+
               html += `
-                  <div style="display: flex; justify-content: space-between;">
+                  <div class="stat-row-hoverable" style="display: flex; justify-content: space-between; position: relative; cursor: help;">
                       <span style="color: #ccc;">${nameStr}</span>
                       <span style="color: #fff; font-weight: bold;">${valStr}</span>
+                      ${tooltipHTML}
                   </div>
               `;
           });
           
-          html += `</div></div>`;
+          html += `
+              </div>
+          </div>
+          `;
       }
       
       container.innerHTML = html;
@@ -2084,6 +2220,10 @@
         intelligence: baseStats.int + levelBonus,
         willpower: baseStats.will + levelBonus,
         dexterity: baseStats.dex + levelBonus,
+        baseStr: baseStats.str, levelStr: levelBonus,
+        baseInt: baseStats.int, levelInt: levelBonus,
+        baseWill: baseStats.will, levelWill: levelBonus,
+        baseDex: baseStats.dex, levelDex: levelBonus,
         maximumLife: dom.maxLife ? parseFloat(dom.maxLife.value) || 0 : 0
     };
     
