@@ -626,7 +626,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Biting Cold",
-      "desc": "Cold damage is increased by [15.0 - 20.0]% and makes enemies Vulnerable for 4 seconds.",
+      "desc": "Cold damage is increased by [15.0 - 20.0]% and makes enemies Vulnerable\u00a0for 4 seconds.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -1874,7 +1874,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Frozen Memories",
-      "desc": "Cold damage deals [30 - 45]%[x] increased damage to Chilled enemies, this bonus is tripled against Frozen enemies.",
+      "desc": "Cold\u00a0damage deals [30 - 45]%[x] increased damage to Chilled enemies, this bonus is tripled against Frozen enemies.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -2290,7 +2290,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Inevitable Fate",
-      "desc": "When an enemy falls below #% Life while afflicted with any of your damage over time effects, an explosion occurs every # seconds, dealing # damage for each Element they're afflicted by.",
+      "desc": "When an enemy falls below #% Life while afflicted with any of your damage over time effects, an explosion occurs every # seconds, dealing\u00a0# damage for each Element they're afflicted by.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -3522,7 +3522,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Shredding Blades",
-      "desc": "Conjuration damage makes enemies Vulnerable for # seconds. You deal #% increased damage to Vulnerable enemies.",
+      "desc": "Conjuration damage makes enemies Vulnerable for # seconds.\u00a0You deal #% increased damage to Vulnerable enemies.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -5666,7 +5666,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Crushing Aspect",
-      "desc": "While Fortified, you deal [45 - 65]%[x] increased damage.",
+      "desc": "While Fortified,\u00a0you deal [45 - 65]%[x] increased damage.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -8447,7 +8447,7 @@ window.D4_DATABASE = {
       "desc": "Lucky Hit: Poison or Cold Imbued Skills have up to a 35% chance to deploy a Poison Trap while it is equipped, depending on your equipped Poison Trap's element.Poison Trap gains the Infiltrator Variant for free and deals [75 - 90]%[x] increased damage."
     },
     {
-      "name": "Bane of Ahjad-Den",
+      "name": "Bane of\u00a0Ahjad-Den",
       "desc": "While channeling Whirlwind, you now periodically hurl out a Mighty Throw that deals [75.0 - 90.0]%[x] increased damage."
     },
     {
@@ -8539,7 +8539,7 @@ window.D4_DATABASE = {
       "desc": "Your Core Skills deal [45 - 60]%[x] increased damage for 0 seconds when Consuming 3 Combo Points. Casting Basic Skills always generates 3 Combo Points."
     },
     {
-      "name": "Coop de Grâce",
+      "name": "Coop de Gr\u00e2ce",
       "desc": "Lucky Hit: Damage to Injured enemies has up to a [10 - 15]% chance to spawn a flock of explosive chickens."
     },
     {
@@ -8735,7 +8735,7 @@ window.D4_DATABASE = {
       "desc": "When you Shapeshift into either Werewolf or Werebear form, you gain Berserking for [6 - 8] seconds. Additionally, Berserking grants 1 stack of Ferocity every 1 second while active.Berserking's damage bonus is increased by 10%[+]."
     },
     {
-      "name": "Galvanic Azurite",
+      "name": "Galvanic\u00a0Azurite",
       "desc": "Cast Shock Skill damage leaves enemies Magnetized for 4 seconds, causing them to emit Crackling Energy and receive [40.0 - 60.0]%[x] increased Shock damage from you. Crackling Energy's damage Pulls Magnetized enemies together."
     },
     {
@@ -8927,7 +8927,7 @@ window.D4_DATABASE = {
       "desc": "Gain Earthen Bulwark's Earthen Shrapnel upgrade for free and the damage is increased by [150 - 200]%[x]."
     },
     {
-      "name": "Kilt of Blackwing",
+      "name": "Kilt of\u00a0Blackwing",
       "desc": "Ravens deal [80.0 - 100.0]%[x] increased damage and Shapeshifting into a different form or activating a Companion Skill Summons a Raven that attacks nearby enemies. Summoning a Raven has a chance to call forth an Unkindness for 10 seconds, increasing the number of Ravens Summoned to 3 for the duration."
     },
     {
@@ -9003,7 +9003,7 @@ window.D4_DATABASE = {
       "desc": "Lucky Hit: Dealing damage to an enemy affected by a Trap Skill has up to a 40% chance to: Reduce the active Cooldowns of your Trap Skills by 30% Increase your Trap Skill damage by [9.0 - 12.0]%[x] for 10 seconds, up to [45 - 60]%[x]"
     },
     {
-      "name": "Mjölnic Ryng",
+      "name": "Mj\u00f6lnic Ryng",
       "desc": "While Cataclysm is active, you gain unlimited Spirit and deal [30 - 40]%[x] increased damage."
     },
     {
@@ -9347,7 +9347,7 @@ window.D4_DATABASE = {
       "desc": "Casting an Aura Skill triggers a Consecration beneath you. You gain [80 - 100]% Aura Potency while standing in Consecration."
     },
     {
-      "name": "Sunstained War-Crozier",
+      "name": "Sunstained\u00a0War-Crozier",
       "desc": "Your base Focus Skills benefit from all their Upgrades, and they increase the damage of your Potency Skills by #% for # seconds, up to #%."
     },
     {
@@ -10810,7 +10810,7 @@ window.D4_DATABASE = {
         "type": "Gloves"
       },
       {
-        "name": "Bane of Ahjad-Den",
+        "name": "Bane of\u00a0Ahjad-Den",
         "rarity": "unique",
         "classes": [
           0,
@@ -11570,7 +11570,7 @@ window.D4_DATABASE = {
         "type": "Pants"
       },
       {
-        "name": "Kilt of Blackwing",
+        "name": "Kilt of\u00a0Blackwing",
         "rarity": "unique",
         "classes": [
           0,
@@ -12714,7 +12714,7 @@ window.D4_DATABASE = {
         "type": "Ring"
       },
       {
-        "name": "Galvanic Azurite",
+        "name": "Galvanic\u00a0Azurite",
         "rarity": "unique",
         "classes": [
           1,
@@ -12842,7 +12842,7 @@ window.D4_DATABASE = {
         "type": "Ring"
       },
       {
-        "name": "Mjölnic Ryng",
+        "name": "Mj\u00f6lnic Ryng",
         "rarity": "unique",
         "classes": [
           0,
@@ -13722,7 +13722,7 @@ window.D4_DATABASE = {
         "type": "Mainhand"
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -14387,7 +14387,7 @@ window.D4_DATABASE = {
         "type": "Mainhand"
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -15069,7 +15069,7 @@ window.D4_DATABASE = {
         "type": "Weapon 1"
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -15734,7 +15734,7 @@ window.D4_DATABASE = {
         "type": "Weapon 1"
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -16086,7 +16086,7 @@ window.D4_DATABASE = {
         "type": "Weapon 2"
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -16751,7 +16751,7 @@ window.D4_DATABASE = {
         "type": "Weapon 2"
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -17103,7 +17103,7 @@ window.D4_DATABASE = {
         "type": "Weapon 1 (Bludgeoning)"
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -17768,7 +17768,7 @@ window.D4_DATABASE = {
         "type": "Weapon 1 (Bludgeoning)"
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -18120,7 +18120,7 @@ window.D4_DATABASE = {
         "type": "Weapon 2 (Slashing)"
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -18785,7 +18785,7 @@ window.D4_DATABASE = {
         "type": "Weapon 2 (Slashing)"
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -19137,7 +19137,7 @@ window.D4_DATABASE = {
         "type": "Weapon 3 (Dual Wield 1)"
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -19802,7 +19802,7 @@ window.D4_DATABASE = {
         "type": "Weapon 3 (Dual Wield 1)"
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -20154,7 +20154,7 @@ window.D4_DATABASE = {
         "type": "Weapon 4 (Dual Wield 2)"
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -20819,7 +20819,7 @@ window.D4_DATABASE = {
         "type": "Weapon 4 (Dual Wield 2)"
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -22674,6 +22674,77 @@ window.D4_DATABASE = {
               "shortName": "Movement Speed"
             }
           ]
+        },
+        "mainhand": {
+          "modifiers": [
+            {
+              "name": "+[150 - 180] Intelligence",
+              "shortName": "Intelligence",
+              "category": "Core Stat"
+            },
+            {
+              "name": "+[1831 - 2200] Maximum Life",
+              "shortName": "Maximum Life",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[8 - 9]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility"
+            },
+            {
+              "name": "+[3 - 4] Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
+              "shortName": "Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
+              "category": "Resource"
+            },
+            {
+              "name": "+[526 - 632] Life on Hit",
+              "shortName": "Life on Hit",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[526 - 632] Life On Kill",
+              "shortName": "Life On Kill",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[13 - 25]% Critical Strike Damage [x]",
+              "shortName": "Critical Strike Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[6 - 10]% All Damage [x]",
+              "shortName": "All Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[15 - 30]% Damage Over Time [x]",
+              "shortName": "Damage Over Time",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[7 - 10]% Cold Damage [x]",
+              "shortName": "Cold Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[7 - 10]% Shadow Damage [x]",
+              "shortName": "Shadow Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[7 - 10]% Physical Damage [x]",
+              "shortName": "Physical Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[86 - 143]% Weapon Damage",
+              "shortName": "Weapon Damage",
+              "category": "Offensive"
+            }
+          ],
+          "tempers": [],
+          "transfigures": []
         }
       }
     },
