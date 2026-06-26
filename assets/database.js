@@ -23780,6 +23780,294 @@ window.D4_DATABASE = {
               "desc": "Sanctified Modifier"
             }
           ]
+        },
+        "amulet": {
+          "modifiers": [
+            {
+              "name": "+[981 - 1225] Armor",
+              "shortName": "Armor",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Attack Speed",
+              "shortName": "Attack Speed",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[5.0 - 8.0]% Cooldown Reduction",
+              "shortName": "Cooldown Reduction",
+              "category": "Utility"
+            },
+            {
+              "name": "+[6.5 - 8.5]% Critical Strike Chance",
+              "shortName": "Critical Strike Chance",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[220 - 264] Life Regeneration",
+              "shortName": "Life Regeneration",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[8.0 - 9.0]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility"
+            },
+            {
+              "name": "+[20 - 24]% Movement Speed",
+              "shortName": "Movement Speed",
+              "category": "Utility"
+            },
+            {
+              "name": "+[524 - 630] Fire Resistance",
+              "shortName": "Fire Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Lightning Resistance",
+              "shortName": "Lightning Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Poison Resistance",
+              "shortName": "Poison Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Shadow Resistance",
+              "shortName": "Shadow Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Cold Resistance",
+              "shortName": "Cold Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[15 - 20] Maximum Resource",
+              "shortName": "Maximum Resource",
+              "category": "Resource"
+            },
+            {
+              "name": "+[327 - 392] Resistance to All Elements",
+              "shortName": "Resistance to All Elements",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[6.0 - 7.0]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction",
+              "category": "Resource"
+            },
+            {
+              "name": "+[1 - 2] Essence On Kill",
+              "shortName": "Essence On Kill",
+              "category": "Resource"
+            },
+            {
+              "name": "+[1 - 2] to Basic Skills",
+              "shortName": "Basic Skills",
+              "category": "Utility"
+            },
+            {
+              "name": "+[1 - 2] to Core Skills",
+              "shortName": "Core Skills",
+              "category": "Utility"
+            },
+            {
+              "name": "+[1 - 2] to Macabre Skills",
+              "shortName": "Macabre Skills",
+              "category": "Utility"
+            },
+            {
+              "name": "+[1 - 2] to Curse Skills",
+              "shortName": "Curse Skills",
+              "category": "Utility"
+            },
+            {
+              "name": "+[1 - 2] to Corpse Skills",
+              "shortName": "Corpse Skills",
+              "category": "Utility"
+            },
+            {
+              "name": "+[524 - 630] Physical Resistance",
+              "shortName": "Physical Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[1 - 2] to All Skills",
+              "shortName": "All Skills",
+              "category": "Utility"
+            },
+            {
+              "name": "+[150 - 180] Intelligence",
+              "shortName": "Intelligence",
+              "category": "Core Stat"
+            },
+            {
+              "name": "+[26 - 50]% Critical Strike Damage [x]",
+              "shortName": "Critical Strike Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[12 - 20]% All Damage [x]",
+              "shortName": "All Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[30 - 60]% Damage Over Time [x]",
+              "shortName": "Damage Over Time",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[16 - 28]% Vulnerable Damage [x]",
+              "shortName": "Vulnerable Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[14 - 24]% Cold Damage [x]",
+              "shortName": "Cold Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[14 - 24]% Physical Damage [x]",
+              "shortName": "Physical Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[14 - 24]% Shadow Damage [x]",
+              "shortName": "Shadow Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[1831 - 2200] Maximum Life",
+              "shortName": "Maximum Life",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[1 - 2] to Blood Skills",
+              "shortName": "Blood Skills",
+              "category": "Utility"
+            },
+            {
+              "name": "+[1 - 2] to Bone Skills",
+              "shortName": "Bone Skills",
+              "category": "Utility"
+            },
+            {
+              "name": "+[1 - 2] to Darkness Skills",
+              "shortName": "Darkness Skills",
+              "category": "Utility"
+            },
+            {
+              "name": "+[1 - 2] to Minion Skills",
+              "shortName": "Minion Skills",
+              "category": "Utility"
+            },
+            {
+              "name": "+[526 - 632] Life On Hit",
+              "shortName": "Life On Hit",
+              "category": "Defensive"
+            }
+          ],
+          "tempers": [],
+          "transfigures": [
+            {
+              "name": "+[3.5 - 5.0]% Intelligence",
+              "desc": "Intelligence"
+            },
+            {
+              "name": "+[2 - 3] to All Skills",
+              "desc": "All Skills"
+            },
+            {
+              "name": "+[20.0 - 30.0]% Gem Strength in this Item",
+              "desc": "Gem Strength"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Resistance to All Elements",
+              "desc": "Resistance to All Elements"
+            },
+            {
+              "name": "+[2 - 3] to Core Skills",
+              "desc": "Core Skills"
+            },
+            {
+              "name": "+[75 - 100] All Stats",
+              "desc": "All Stats"
+            },
+            {
+              "name": "+[20 - 30]% Movement Speed",
+              "desc": "Movement Speed"
+            },
+            {
+              "name": "+[6.0 - 8.0]% Lucky Hit Chance",
+              "desc": "Lucky Hit Chance"
+            },
+            {
+              "name": "+[6.0 - 8.0]% Resource Cost Reduction",
+              "desc": "Resource Cost Reduction"
+            },
+            {
+              "name": "+[263 - 316] Life On Hit",
+              "desc": "Life On Hit"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Shadow Damage [x]",
+              "desc": "Shadow Damage"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Physical Damage [x]",
+              "desc": "Physical Damage"
+            },
+            {
+              "name": "+[6.0 - 8.0]% Maximum Life",
+              "desc": "Maximum Life"
+            },
+            {
+              "name": "+[1 - 15] Item Quality",
+              "desc": "Item Quality"
+            },
+            {
+              "name": "Gain 20% Damage Reduction. In addition, gain +4 Ranks to all Skills.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Every 4 seconds, you randomly mark a Nearby enemy. Marked enemies are Vulnerable, and your attacks against them are guaranteed to Critically Strike and Overpower. Hitting a marked enemy 30 times clears the mark from them.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Gain a random Shrine effect for 20 seconds after killing an Elite enemy. Can only occur once every 30 seconds.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Lucky Hit: Up to a 38% chance to deal 0 Shadow damage to surrounding enemies and reduce their damage dealt by 20% for 5 seconds.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Increases your Critical Strike Damage by 100%[x].",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Spending your Primary Resource reduces the Resource cost of your Skills and increases your damage by 15%[x] for 3 seconds, up to 75%[x].",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced. Your Primary Resource is doubled but Maximum Life is reduced by 75%.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Enemies afflicted by more Damage over Time than remaining Life are Executed.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Your Skills unleash a divine barrage dealing 0 damage.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Lucky Hit: Up to a 30% chance to trigger a poison nova that applies 0 Poisoning damage over 5 seconds to enemies in the area.",
+              "desc": "Sanctified Modifier"
+            }
+          ]
         }
       }
     },
