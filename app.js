@@ -4926,12 +4926,17 @@ rarity = foundItem.rarity;
       if (query && !a.name.toLowerCase().includes(query.toLowerCase())) return false;
       if (a.name !== editingAffixName && currentlyEquipped.includes(a.name)) return false;
       
-      // Filter out shield-specific tempers if the equipped offhand is a focus
-      if (type === 'temper' && mapped === 'offhand') {
+      // Filter out shield-specific tempers and modifiers if the equipped offhand is a focus
+      if (mapped === 'offhand') {
         const baseItem = window.D4_DATABASE.itemDatabase['Offhand']?.find(i => i.name === itemObj.name);
-        if (baseItem && baseItem.type === 'Focus') {
-          const shieldManuals = ['Natural Resistance', 'Necromancer Wall', 'Worldly Endurance', 'Wordly Endurance', 'Natural Schemes', 'Worldly Fortune', 'Worldy Fortune'];
-          if (shieldManuals.includes(a.desc)) return false;
+        if (type === 'affix') {
+          if (baseItem && baseItem.type === 'Focus' && a.exclusiveTo === 'Shield') return false;
+          if (baseItem && baseItem.type === 'Shield' && a.exclusiveTo === 'Focus') return false;
+        } else if (type === 'temper') {
+          if (baseItem && baseItem.type === 'Focus') {
+            const shieldManuals = ['Natural Resistance', 'Necromancer Wall', 'Worldly Endurance', 'Wordly Endurance', 'Natural Schemes', 'Worldly Fortune', 'Worldy Fortune'];
+            if (shieldManuals.includes(a.desc)) return false;
+          }
         }
       }
       
