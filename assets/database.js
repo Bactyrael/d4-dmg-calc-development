@@ -23098,6 +23098,76 @@ window.D4_DATABASE = {
               "name": "+[526 - 632] Life On Hit",
               "shortName": "Life On Hit",
               "category": "Defensive"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "category": "Utility"
+            },
+            {
+              "name": "+[220 - 264] Life Regeneration",
+              "shortName": "Life Regeneration",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Fire Resistance",
+              "shortName": "Fire Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Lightning Resistance",
+              "shortName": "Lightning Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Poison Resistance",
+              "shortName": "Poison Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Shadow Resistance",
+              "shortName": "Shadow Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[1221 - 1526] Thorns",
+              "shortName": "Thorns",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[524 - 630] Cold Resistance",
+              "shortName": "Cold Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[11.0 - 15.0]% Healing Received",
+              "shortName": "Healing Received",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[327 - 392] Resistance to All Elements",
+              "shortName": "Resistance to All Elements",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[11.0 - 15.0]% Damage Reduction",
+              "shortName": "Damage Reduction",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Physical Resistance",
+              "shortName": "Physical Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[10.0 - 15.0]% Fortify Generation",
+              "shortName": "Fortify Generation",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[1963 - 2450] Armor",
+              "shortName": "Armor",
+              "category": "Defensive"
             }
           ],
           "tempers": [
@@ -23485,6 +23555,18 @@ window.D4_DATABASE = {
             {
               "name": "Lucky Hit: Up to a 30% chance to trigger a poison nova that applies 0 Poisoning damage over 5 seconds to enemies in the area.",
               "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Total Armor",
+              "desc": "Total Armor"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Resistance to All Elements",
+              "desc": "Resistance to All Elements"
+            },
+            {
+              "name": "+[2 - 3] to Macabre Skills",
+              "desc": "Macabre Skills"
             }
           ]
         },
