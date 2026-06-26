@@ -2230,22 +2230,22 @@
     const compiledStats = compileCharacterStats(baseEquipped, autoStats);
     
     if (dom.strength) {
-        dom.strength.value = Math.floor(compiledStats['Strength'] || 0);
+        dom.strength.value = compiledStats['Strength'] ? Math.floor(compiledStats['Strength'].final) : 0;
         dom.strength.disabled = true;
         dom.strength.title = "Auto-calculated from equipment and level";
     }
     if (dom.intelligence) {
-        dom.intelligence.value = Math.floor(compiledStats['Intelligence'] || 0);
+        dom.intelligence.value = compiledStats['Intelligence'] ? Math.floor(compiledStats['Intelligence'].final) : 0;
         dom.intelligence.disabled = true;
         dom.intelligence.title = "Auto-calculated from equipment and level";
     }
     if (dom.willpower) {
-        dom.willpower.value = Math.floor(compiledStats['Willpower'] || 0);
+        dom.willpower.value = compiledStats['Willpower'] ? Math.floor(compiledStats['Willpower'].final) : 0;
         dom.willpower.disabled = true;
         dom.willpower.title = "Auto-calculated from equipment and level";
     }
     if (dom.dexterity) {
-        dom.dexterity.value = Math.floor(compiledStats['Dexterity'] || 0);
+        dom.dexterity.value = compiledStats['Dexterity'] ? Math.floor(compiledStats['Dexterity'].final) : 0;
         dom.dexterity.disabled = true;
         dom.dexterity.title = "Auto-calculated from equipment and level";
     }
