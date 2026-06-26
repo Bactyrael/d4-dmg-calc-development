@@ -1948,7 +1948,22 @@
                   }
               });
           }
-      });
+      
+            if (item.aspect && item.aspect !== 'None') {
+                if (bestAspects[item.aspect] && bestAspects[item.aspect].slotName !== slotName) {
+                    // Do not apply this duplicate aspect (weaker version)
+                } else {
+                    const aspectObj = (window.D4_DATABASE?.aspects || []).find(a => a.name === item.aspect);
+                    if (aspectObj && aspectObj.desc) {
+                        let v = 0;
+                        if (item.aspectValues && item.aspectValues.length > 0) v = item.aspectValues[0];
+                        const clean = cleanStatName(item.aspect);
+                        addStat(stats, clean, v, slotName);
+                    }
+                }
+            }
+
+        });
       
       // Distribute All Stats
       if (stats['All Stats']) {
