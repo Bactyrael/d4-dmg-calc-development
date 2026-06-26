@@ -3239,14 +3239,42 @@ rarity = foundItem.rarity;
         
         let socketsHtml = '';
         for (let i = 0; i < maxSockets; i++) {
-          const gemText = (itemObj.sockets && itemObj.sockets[i]) ? itemObj.sockets[i] : 'Empty Socket';
-          socketsHtml += `<button class="edit-btn btn-socket" data-idx="${i}" style="flex: 1; padding: 4px;">${gemText}</button>`;
+          const gemName = (itemObj.sockets && itemObj.sockets[i]) ? itemObj.sockets[i] : null;
+          if (gemName) {
+            const gemObj = window.D4_DATABASE?.gems?.find(g => g.name === gemName);
+            let effectStr = gemName;
+            if (gemObj) {
+                const sName = slotName.toLowerCase();
+                const isWeapon = sName.includes('weapon') || sName === 'mainhand' || sName === 'offhand' || sName.includes('slicing');
+                const isArmor = sName === 'helm' || sName === 'chest armor' || sName === 'pants' || sName === 'boots' || sName === 'gloves';
+                const isJewelry = sName === 'amulet' || sName.includes('ring');
+                
+                if (isWeapon) effectStr = gemObj.weaponEffect;
+                else if (isArmor) effectStr = gemObj.armorEffect;
+                else if (isJewelry) effectStr = gemObj.jewelryEffect;
+            }
+            
+            // Format number specifically for potential future scaling (Gem Strength)
+            let formattedEffect = effectStr.replace(/([\d\.]+)/, `<span class="gem-val" data-base="$1" style="color: #fff; font-weight: bold;">$1</span>`);
+            
+            socketsHtml += `
+              <div class="affix-filled-row" style="margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 4px 8px; border-radius: 4px; border: 1px solid #333;">
+                <div style="font-size: 0.9rem; line-height: 1.5; color: #ccc; flex: 1;">
+                  <span style="color: #ff5555; margin-right: 4px; cursor: pointer;" class="btn-remove-socket" data-idx="${i}" title="Remove">✖</span>
+                  <strong style="color: #d18a45; margin-right: 4px; font-size: 0.85em;">${gemName.split(' ')[1] || gemName}:</strong> ${formattedEffect}
+                </div>
+                <button class="edit-btn btn-socket" data-idx="${i}" style="padding: 2px 8px; font-size: 0.75rem;">Change</button>
+              </div>
+            `;
+          } else {
+            socketsHtml += `<div class="btn-change-affix empty-affix-slot btn-socket" data-idx="${i}" style="margin-bottom: 4px; cursor: pointer;">Search for Gem...</div>`;
+          }
         }
 
         return `
         <div class="edit-section">
           <div class="edit-section-title tan">Sockets</div>
-          <div class="edit-section-content" style="display: flex; gap: 8px;">
+          <div class="edit-section-content" style="display: flex; flex-direction: column; gap: 4px;">
             ${socketsHtml}
           </div>
         </div>
@@ -3362,6 +3390,27 @@ rarity = foundItem.rarity;
           switchModalTab('modifiers');
         }
         renderModifierTab(slotName, type);
+      });
+    });
+
+    document.querySelectorAll('.btn-remove-socket').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const idx = parseInt(e.currentTarget.dataset.idx);
+        if (itemObj.sockets) {
+            itemObj.sockets[idx] = null;
+            // Cleanup trailing nulls
+            while(itemObj.sockets.length > 0 && itemObj.sockets[itemObj.sockets.length - 1] === null) {
+              itemObj.sockets.pop();
+            }
+        }
+        box.dataset.value = JSON.stringify(itemObj);
+        
+        renderEditTab(currentModalSlot);
+        switchModalTab('edit');
+        calculate();
+        
+        // Re-render paperdoll for socket updates
+        renderEquipment(document.getElementById('class-select').value, getSavedEquipment());
       });
     });
 
