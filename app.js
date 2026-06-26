@@ -1723,14 +1723,14 @@
           const baseItem = dbItemArr.find(i => i.name === item.name) || {};
           
           if (baseItem.armor) {
-              addStat(stats, 'Base Armor', baseItem.armor * baseQMult);
+              addStat(stats, 'Base Armor', baseItem.armor * baseQMult, slotName);
           }
           if (baseItem.damage) {
               const avgDmg = (baseItem.damage[0] + baseItem.damage[1]) / 2;
-              addStat(stats, 'Base Weapon Damage', avgDmg * baseQMult);
+              addStat(stats, 'Base Weapon Damage', avgDmg * baseQMult, slotName);
           }
           if (baseItem.resistance) {
-              addStat(stats, 'Resistance to All Elements', baseItem.resistance * baseQMult);
+              addStat(stats, 'Resistance to All Elements', baseItem.resistance * baseQMult, slotName);
           }
           
           if (item.affixes) {
@@ -1746,7 +1746,7 @@
                   let isGA = item.greaterAffixes?.[i] || false;
                   let isCapstone = (item.capstoneBonus?.type === 'affix' && item.capstoneBonus?.idx === i);
                   const qMult = baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0);
-                  addStat(stats, affixName, v * qMult);
+                  addStat(stats, affixName, v * qMult, slotName);
               });
           }
           
@@ -1763,7 +1763,7 @@
                   let isGA = item.greaterTempers?.[i] || false;
                   let isCapstone = (item.capstoneBonus?.type === 'temper' && item.capstoneBonus?.idx === i);
                   const qMult = baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0);
-                  addStat(stats, temperName, v * qMult);
+                  addStat(stats, temperName, v * qMult, slotName);
               });
           }
           
@@ -1783,7 +1783,7 @@
                   if (!isItemQuality) {
                       qMult = baseQMult + (isCapstone ? 0.50 : 0);
                   }
-                  addStat(stats, tName, v * qMult);
+                  addStat(stats, tName, v * qMult, slotName);
               });
           }
           
@@ -1805,15 +1805,39 @@
                   if (match) {
                       let v = parseFloat(match[1]);
                       let name = (match[2] ? '%' : '') + match[3];
-                      addStat(stats, name, v);
+                      addStat(stats, name, v, slotName + ' (Gem)');
                   }
               });
           }
       });
       
+      // Distribute All Stats
+      if (stats['All Stats']) {
+          const allStatsObj = stats['All Stats'];
+          const coreStats = ['Strength', 'Intelligence', 'Willpower', 'Dexterity'];
+          coreStats.forEach(core => {
+              if (!stats[core]) stats[core] = { total: 0, final: 0, flatSources: [], pctSources: [] };
+              allStatsObj.flatSources.forEach(src => {
+                  let existingSource = stats[core].flatSources.find(s => s.name === src.name);
+                  if (existingSource) existingSource.val += src.val;
+                  else stats[core].flatSources.push({ name: src.name, val: src.val });
+                  stats[core].total += src.val;
+                  stats[core].final += src.val;
+              });
+          });
+          delete stats['All Stats'];
+      }
+
       // Combine Base Armor into Armor
       if (stats['Base Armor']) {
-          stats['Armor'] = (stats['Armor'] || 0) + stats['Base Armor'];
+          if (!stats['Armor']) stats['Armor'] = { total: 0, final: 0, flatSources: [], pctSources: [] };
+          stats['Base Armor'].flatSources.forEach(src => {
+              let existingSource = stats['Armor'].flatSources.find(s => s.name === src.name);
+              if (existingSource) existingSource.val += src.val;
+              else stats['Armor'].flatSources.push({ name: src.name, val: src.val });
+              stats['Armor'].total += src.val;
+              stats['Armor'].final += src.val;
+          });
           delete stats['Base Armor'];
       }
       
@@ -1832,12 +1856,15 @@
               let totalPct = 0;
               scaler.pct.forEach(pctKey => {
                   if (stats[pctKey]) {
-                      totalPct += stats[pctKey];
+                      totalPct += stats[pctKey].total;
+                      stats[pctKey].flatSources.forEach(src => {
+                          stats[scaler.flat].pctSources.push({ name: src.name, val: src.val });
+                      });
                       delete stats[pctKey]; // Remove so it doesn't double-display
                   }
               });
               if (totalPct !== 0) {
-                  stats[scaler.flat] = stats[scaler.flat] * (1 + (totalPct / 100));
+                  stats[scaler.flat].final = stats[scaler.flat].total * (1 + (totalPct / 100));
               }
           }
       });
