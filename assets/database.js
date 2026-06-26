@@ -22054,22 +22054,27 @@ window.D4_DATABASE = {
               "category": "Defensive"
             },
             {
-              "name": "+[5 - 8]% Cooldown Reduction",
+              "name": "+[8.0 - 10.0]% Attack Speed",
+              "shortName": "Attack Speed",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[5.0 - 8.0]% Cooldown Reduction",
               "shortName": "Cooldown Reduction",
               "category": "Utility"
             },
             {
-              "name": "+[150 - 180] Intelligence",
-              "shortName": "Intelligence",
-              "category": "Core Stat"
+              "name": "+[6.5 - 8.5]% Critical Strike Chance",
+              "shortName": "Critical Strike Chance",
+              "category": "Offensive"
             },
             {
-              "name": "+[1831 - 2200] Maximum Life",
-              "shortName": "Maximum Life",
+              "name": "+[220 - 264] Life Regeneration",
+              "shortName": "Life Regeneration",
               "category": "Defensive"
             },
             {
-              "name": "+[8 - 9]% Lucky Hit Chance",
+              "name": "+[8.0 - 9.0]% Lucky Hit Chance",
               "shortName": "Lucky Hit Chance",
               "category": "Utility"
             },
@@ -22099,9 +22104,54 @@ window.D4_DATABASE = {
               "category": "Defensive"
             },
             {
-              "name": "+[524 - 630] Physical Resistance",
-              "shortName": "Physical Resistance",
+              "name": "+[327 - 392] Resistance to All Elements",
+              "shortName": "Resistance to All Elements",
               "category": "Defensive"
+            },
+            {
+              "name": "+[2 - 3] to Bone Spear",
+              "shortName": "Bone Spear",
+              "category": "Utility"
+            },
+            {
+              "name": "+[2 - 3] to Blight",
+              "shortName": "Blight",
+              "category": "Utility"
+            },
+            {
+              "name": "+[2 - 3] to Sever",
+              "shortName": "Sever",
+              "category": "Utility"
+            },
+            {
+              "name": "+[2 - 3] to Blood Surge",
+              "shortName": "Blood Surge",
+              "category": "Utility"
+            },
+            {
+              "name": "+[2 - 3] to Blood Lance",
+              "shortName": "Blood Lance",
+              "category": "Utility"
+            },
+            {
+              "name": "+[6.0 - 7.0]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction",
+              "category": "Resource"
+            },
+            {
+              "name": "+[263 - 316] Life On Hit",
+              "shortName": "Life On Hit",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[1 - 2] to Core Skills",
+              "shortName": "Core Skills",
+              "category": "Utility"
+            },
+            {
+              "name": "+[1 - 2] to Skeleton Mage",
+              "shortName": "Skeleton Mage",
+              "category": "Utility"
             },
             {
               "name": "+[3 - 4] Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
@@ -22109,79 +22159,24 @@ window.D4_DATABASE = {
               "category": "Resource"
             },
             {
-              "name": "+[326 - 392] Resistance to All Elements",
-              "shortName": "Resistance to All Elements",
+              "name": "+[524 - 630] Physical Resistance",
+              "shortName": "Physical Resistance",
               "category": "Defensive"
             },
             {
-              "name": "+[2 - 3] Ranks to Bone Spear",
-              "shortName": "Ranks to Bone Spear",
-              "category": "Offensive"
-            },
-            {
-              "name": "+[2 - 3] Ranks to Blight",
-              "shortName": "Ranks to Blight",
-              "category": "Offensive"
-            },
-            {
-              "name": "+[2 - 3] Ranks to Sever",
-              "shortName": "Ranks to Sever",
-              "category": "Offensive"
-            },
-            {
-              "name": "+[2 - 3] Ranks to Blood Surge",
-              "shortName": "Ranks to Blood Surge",
-              "category": "Offensive"
-            },
-            {
-              "name": "+[2 - 3] Ranks to Blood Lance",
-              "shortName": "Ranks to Blood Lance",
-              "category": "Offensive"
-            },
-            {
-              "name": "+[6 - 7]% Resource Cost Reduction",
-              "shortName": "Resource Cost Reduction",
-              "category": "Resource"
-            },
-            {
-              "name": "+[220 - 264] Life Regeneration",
-              "shortName": "Life Regeneration",
-              "category": "Defensive"
-            },
-            {
-              "name": "+[10 - 15]% Fortify Generation",
+              "name": "+[10.0 - 15.0]% Fortify Generation",
               "shortName": "Fortify Generation",
               "category": "Defensive"
             },
             {
-              "name": "+[10 - 15]% Barrier Generation",
+              "name": "+[10.0 - 15.0]% Barrier Generation",
               "shortName": "Barrier Generation",
               "category": "Defensive"
             },
             {
-              "name": "+[1 - 2] Ranks to Core Skills",
-              "shortName": "Ranks to Core Skills",
-              "category": "Offensive"
-            },
-            {
-              "name": "+[263 - 316] Life on Hit",
-              "shortName": "Life on Hit",
-              "category": "Defensive"
-            },
-            {
-              "name": "+[8 - 10]% Attack Speed",
-              "shortName": "Attack Speed",
-              "category": "Offensive"
-            },
-            {
-              "name": "+[6.5 - 8.5]% Critical Strike Chance",
-              "shortName": "Critical Strike Chance",
-              "category": "Offensive"
-            },
-            {
-              "name": "+[1 - 2] Ranks to Skeletal Mage",
-              "shortName": "Ranks to Skeletal Mage",
-              "category": "Offensive"
+              "name": "+[150 - 180] Intelligence",
+              "shortName": "Intelligence",
+              "category": "Core Stat"
             },
             {
               "name": "+[26 - 50]% Critical Strike Damage [x]",
@@ -22194,13 +22189,13 @@ window.D4_DATABASE = {
               "category": "Offensive"
             },
             {
-              "name": "+[16 - 28]% Vulnerable Damage [x]",
-              "shortName": "Vulnerable Damage",
+              "name": "+[30 - 60]% Damage Over Time [x]",
+              "shortName": "Damage Over Time",
               "category": "Offensive"
             },
             {
-              "name": "+[30 - 60]% Damage Over Time [x]",
-              "shortName": "Damage Over Time",
+              "name": "+[16 - 28]% Vulnerable Damage [x]",
+              "shortName": "Vulnerable Damage",
               "category": "Offensive"
             },
             {
@@ -22209,14 +22204,19 @@ window.D4_DATABASE = {
               "category": "Offensive"
             },
             {
+              "name": "+[14 - 24]% Physical Damage [x]",
+              "shortName": "Physical Damage",
+              "category": "Offensive"
+            },
+            {
               "name": "+[14 - 24]% Shadow Damage [x]",
               "shortName": "Shadow Damage",
               "category": "Offensive"
             },
             {
-              "name": "+[14 - 24]% Physical Damage [x]",
-              "shortName": "Physical Damage",
-              "category": "Offensive"
+              "name": "+[1831 - 2200] Maximum Life",
+              "shortName": "Maximum Life",
+              "category": "Defensive"
             }
           ],
           "tempers": [
@@ -22385,76 +22385,68 @@ window.D4_DATABASE = {
           ],
           "transfigures": [
             {
-              "name": "+[3.5 - 5]% Intelligence [x]",
-              "shortName": "Intelligence"
+              "name": "+[3.5 - 5.0]% Intelligence",
+              "desc": "Intelligence"
             },
             {
-              "name": "+[21 - 35]% Chance for Projectiles to Cast Twice",
-              "shortName": "Chance for Projectiles to Cast Twice"
+              "name": "+[21.0 - 35.0]% Chance for Projectiles to Cast Twice",
+              "desc": "Chance for Projectiles to Cast Twice"
             },
             {
-              "name": "+[8 - 10]% Total Armor",
-              "shortName": "Total Armor"
+              "name": "+[8.0 - 10.0]% Total Armor",
+              "desc": "Total Armor"
             },
             {
-              "name": "+[8 - 10]% Resistance to All Elements",
-              "shortName": "Resistance to All Elements"
+              "name": "+[8.0 - 10.0]% Resistance to All Elements",
+              "desc": "Resistance to All Elements"
             },
             {
-              "name": "+[2 - 3] Ranks to Core Skills",
-              "shortName": "Ranks to Core Skills"
-            },
-            {
-              "name": "+[75 - 100] All Stats",
-              "shortName": "All Stats"
-            },
-            {
-              "name": "+[3.5 - 5]% Critical Strike Chance",
-              "shortName": "Critical Strike Chance"
-            },
-            {
-              "name": "+[8 - 10]% Attack Speed",
-              "shortName": "Attack Speed"
-            },
-            {
-              "name": "+[150 - 180] Intelligence",
-              "shortName": "Intelligence"
-            },
-            {
-              "name": "+[6 - 8]% Lucky Hit Chance",
-              "shortName": "Lucky Hit Chance"
-            },
-            {
-              "name": "+[6 - 8]% Resource Cost Reduction",
-              "shortName": "Resource Cost Reduction"
-            },
-            {
-              "name": "+[15 - 20] Maximum Resource",
-              "shortName": "Maximum Resource"
-            },
-            {
-              "name": "+[8 - 10]% Shadow Damage [x]",
-              "shortName": "Shadow Damage"
-            },
-            {
-              "name": "+[8 - 10]% Physical Damage [x]",
-              "shortName": "Physical Damage"
-            },
-            {
-              "name": "+[6 - 8]% Maximum Life [x]",
-              "shortName": "Maximum Life"
+              "name": "+[1 - 2] to Core Skills",
+              "desc": "Core Skills"
             },
             {
               "name": "+[1 - 15] Item Quality",
-              "shortName": "Item Quality"
+              "desc": "Item Quality"
             },
             {
-              "name": "+[6 - 8]% Cooldown Reduction",
-              "shortName": "Cooldown Reduction"
+              "name": "Gain 20% Damage Reduction. In addition, gain +4 Ranks to all Skills.",
+              "desc": "Sanctified Modifier"
             },
             {
-              "name": "+[263 - 316] Life on Hit",
-              "shortName": "Life on Hit"
+              "name": "Every 4 seconds, you randomly mark a Nearby enemy. Marked enemies are Vulnerable, and your attacks against them are guaranteed to Critically Strike and Overpower. Hitting a marked enemy 30 times clears the mark from them.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Gain a random Shrine effect for 20 seconds after killing an Elite enemy. Can only occur once every 30 seconds.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Lucky Hit: Up to a 38% chance to deal 0 Shadow damage to surrounding enemies and reduce their damage dealt by 20% for 5 seconds.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Increases your Critical Strike Damage by 100%[x].",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Spending your Primary Resource reduces the Resource cost of your Skills and increases your damage by 15%[x] for 3 seconds, up to 75%[x].",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced. Your Primary Resource is doubled but Maximum Life is reduced by 75%.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Enemies afflicted by more Damage over Time than remaining Life are Executed.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Your Skills unleash a divine barrage dealing 0 damage.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Lucky Hit: Up to a 30% chance to trigger a poison nova that applies 0 Poisoning damage over 5 seconds to enemies in the area.",
+              "desc": "Sanctified Modifier"
             }
           ]
         },
