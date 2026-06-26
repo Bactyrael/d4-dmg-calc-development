@@ -1795,6 +1795,22 @@
       addStat(stats, 'Maximum Life', autoStats.maximumLife, 'Base');
       
       if (!equipped) return stats;
+
+
+        const bestAspects = {};
+        Object.keys(equipped).forEach(slotName => {
+            const item = equipped[slotName];
+            if (!item || !item.name) return;
+            if (item.aspect && item.aspect !== 'None') {
+                const aspectName = item.aspect;
+                let val = 0;
+                if (item.aspectValues && item.aspectValues.length > 0) val = item.aspectValues[0];
+                if (!bestAspects[aspectName] || val > bestAspects[aspectName].val) {
+                    bestAspects[aspectName] = { val, slotName };
+                }
+            }
+        });
+
       
       Object.keys(equipped).forEach(slotName => {
           const item = equipped[slotName];
