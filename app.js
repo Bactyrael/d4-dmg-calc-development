@@ -3267,7 +3267,7 @@ rarity = foundItem.rarity;
               </div>
             `;
           } else {
-            socketsHtml += `<div class="btn-change-affix empty-affix-slot btn-socket" data-idx="${i}" style="margin-bottom: 4px; cursor: pointer;">Search for Gem...</div>`;
+            socketsHtml += `<div class="empty-affix-slot btn-socket" data-idx="${i}" style="margin-bottom: 4px; cursor: pointer;">Search for Gem...</div>`;
           }
         }
 
