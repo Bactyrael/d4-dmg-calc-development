@@ -1161,9 +1161,10 @@
         });
       }
       
+      icon.appendChild(socketContainer); // Move sockets into the icon
+      
       box.appendChild(icon);
       box.appendChild(textContainer);
-      box.appendChild(socketContainer);
       targetCol.appendChild(box);
       box.addEventListener('click', () => openItemModal(slot));
     });
@@ -1697,6 +1698,181 @@
     return q;
   }
 
+  function addStat(stats, rawName, value) {
+      if (!rawName) return;
+      let cleanName = rawName.replace(/\[.*?\]\s*/, '').replace(/^[\+\-]\s*/, '').trim();
+      stats[cleanName] = (stats[cleanName] || 0) + value;
+  }
+
+  function compileCharacterStats(equipped, autoStats) {
+      const stats = {};
+      
+      stats['Strength'] = autoStats.strength;
+      stats['Intelligence'] = autoStats.intelligence;
+      stats['Willpower'] = autoStats.willpower;
+      stats['Dexterity'] = autoStats.dexterity;
+      
+      if (!equipped) return stats;
+      
+      Object.keys(equipped).forEach(slotName => {
+          const item = equipped[slotName];
+          if (!item || !item.name) return;
+          
+          const effQ = getEffectiveQuality(item);
+          const baseQMult = 1 + (effQ * 0.01);
+          
+          const dbItemArr = window.D4_DATABASE?.itemDatabase?.[slotName] || [];
+          const baseItem = dbItemArr.find(i => i.name === item.name) || {};
+          
+          if (baseItem.armor) {
+              addStat(stats, 'Base Armor', baseItem.armor * baseQMult);
+          }
+          if (baseItem.damage) {
+              const avgDmg = (baseItem.damage[0] + baseItem.damage[1]) / 2;
+              addStat(stats, 'Base Weapon Damage', avgDmg * baseQMult);
+          }
+          if (baseItem.resistance) {
+              addStat(stats, '% Resistance to All Elements', baseItem.resistance * baseQMult);
+          }
+          
+          if (item.affixes && item.affixValues) {
+              item.affixes.forEach((affixName, i) => {
+                  if (!affixName) return;
+                  let v = item.affixValues[i]?.[0] || 0;
+                  let isGA = item.greaterAffixes?.[i] || false;
+                  let isCapstone = (item.capstoneBonus?.type === 'affix' && item.capstoneBonus?.idx === i);
+                  const qMult = baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0);
+                  addStat(stats, affixName, v * qMult);
+              });
+          }
+          
+          if (item.tempering && item.temperValues) {
+              item.tempering.forEach((temperName, i) => {
+                  if (!temperName) return;
+                  let v = item.temperValues[i]?.[0] || 0;
+                  let isGA = item.greaterTempers?.[i] || false;
+                  let isCapstone = (item.capstoneBonus?.type === 'temper' && item.capstoneBonus?.idx === i);
+                  const qMult = baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0);
+                  addStat(stats, temperName, v * qMult);
+              });
+          }
+          
+          if (item.transfigure && item.transfigureValues) {
+              item.transfigure.forEach((tName, i) => {
+                  if (!tName) return;
+                  let v = item.transfigureValues[i]?.[0] || 0;
+                  let isItemQuality = tName.includes('Item Quality');
+                  let isCapstone = (item.capstoneBonus?.type === 'transfigure' && item.capstoneBonus?.idx === i);
+                  let qMult = 1;
+                  if (!isItemQuality) {
+                      qMult = baseQMult + (isCapstone ? 0.50 : 0);
+                  }
+                  addStat(stats, tName, v * qMult);
+              });
+          }
+          
+          if (item.sockets) {
+              const sName = slotName.toLowerCase();
+              const isWeapon = sName.includes('weapon') || sName === 'mainhand' || sName === 'offhand';
+              const isJewelry = sName === 'amulet' || sName.includes('ring');
+              
+              item.sockets.forEach(gemName => {
+                  if (!gemName) return;
+                  const gemObj = window.D4_DATABASE?.gems?.find(g => g.name === gemName);
+                  if (!gemObj) return;
+                  
+                  let effect = gemObj.armorEffect;
+                  if (isWeapon) effect = gemObj.weaponEffect;
+                  else if (isJewelry) effect = gemObj.jewelryEffect;
+                  
+                  const match = effect.match(/([\+\-]?[\d\.]+)(%?)\s+(.*)/);
+                  if (match) {
+                      let v = parseFloat(match[1]);
+                      let name = (match[2] ? '%' : '') + match[3];
+                      addStat(stats, name, v);
+                  }
+              });
+          }
+      });
+      
+      return stats;
+  }
+  
+  function renderCharacterSheet(stats) {
+      const container = document.getElementById('character-sheet-content');
+      if (!container) return;
+      
+      if (Object.keys(stats).length === 0) {
+          container.innerHTML = '<div style="color: #777; font-style: italic;">No equipment detected.</div>';
+          return;
+      }
+      
+      const categories = {
+          'Core Stats': ['Strength', 'Intelligence', 'Willpower', 'Dexterity', 'All Stats'],
+          'Offensive': ['Damage', 'Critical', 'Vulnerable', 'Attack Speed', 'Overpower'],
+          'Defensive': ['Life', 'Armor', 'Resistance', 'Reduction', 'Dodge', 'Block'],
+          'Utility': ['Movement', 'Cooldown', 'Resource', 'Essence', 'Healing', 'Lucky Hit']
+      };
+      
+      const grouped = {
+          'Core Stats': [],
+          'Offensive': [],
+          'Defensive': [],
+          'Utility': [],
+          'Other': []
+      };
+      
+      Object.keys(stats).forEach(statName => {
+          let matched = false;
+          for (const [cat, keywords] of Object.entries(categories)) {
+              if (keywords.some(kw => statName.toLowerCase().includes(kw.toLowerCase()))) {
+                  grouped[cat].push({ name: statName, val: stats[statName] });
+                  matched = true;
+                  break;
+              }
+          }
+          if (!matched) grouped['Other'].push({ name: statName, val: stats[statName] });
+      });
+      
+      let html = '';
+      for (const [cat, items] of Object.entries(grouped)) {
+          if (items.length === 0) continue;
+          
+          items.sort((a, b) => b.val - a.val); // sort by value descending
+          
+          html += `
+          <div style="background: rgba(0,0,0,0.4); border: 1px solid #333; border-radius: 4px; padding: 12px;">
+              <h4 style="margin: 0 0 8px 0; color: #d18a45; border-bottom: 1px solid #444; padding-bottom: 4px;">${cat}</h4>
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+          `;
+          
+          items.forEach(item => {
+              let valStr = item.val.toFixed(1).replace(/\.0$/, '');
+              let nameStr = item.name;
+              
+              if (nameStr.startsWith('%')) {
+                  nameStr = nameStr.substring(1).trim();
+                  valStr += '%';
+              } else if (nameStr.includes('%')) {
+                  // already has % inside
+              } else if (valStr !== '0') {
+                  valStr = '+' + valStr;
+              }
+              
+              html += `
+                  <div style="display: flex; justify-content: space-between;">
+                      <span style="color: #ccc;">${nameStr}</span>
+                      <span style="color: #fff; font-weight: bold;">${valStr}</span>
+                  </div>
+              `;
+          });
+          
+          html += `</div></div>`;
+      }
+      
+      container.innerHTML = html;
+  }
+
   function calculate() {
     if (isLoading) return;
     try {
@@ -1814,6 +1990,50 @@
           }
       });
     }
+
+    // Auto-calculate base stats from class and level
+    const currentClassName = dom.classSelect ? dom.classSelect.textContent : 'Necromancer';
+    const level = dom.level ? parseInt(dom.level.value) || 70 : 70;
+    const classBaseStats = {
+        Necromancer: { str: 7, int: 10, will: 8, dex: 7 },
+        Barbarian: { str: 10, int: 7, will: 7, dex: 8 },
+        Sorcerer: { str: 7, int: 10, will: 8, dex: 7 },
+        Rogue: { str: 7, int: 7, will: 8, dex: 10 },
+        Druid: { str: 8, int: 7, will: 10, dex: 7 },
+        Spiritborn: { str: 7, int: 7, will: 7, dex: 10 }
+    };
+    const baseStats = classBaseStats[currentClassName] || { str: 7, int: 7, will: 7, dex: 7 };
+    const levelBonus = Math.max(0, level - 1);
+    
+    const autoStats = {
+        strength: baseStats.str + levelBonus,
+        intelligence: baseStats.int + levelBonus,
+        willpower: baseStats.will + levelBonus,
+        dexterity: baseStats.dex + levelBonus
+    };
+    
+    ['strength', 'intelligence', 'willpower', 'dexterity'].forEach(stat => {
+        const el = dom[stat];
+        if (el) {
+            let current = parseFloat(el.value) || 0;
+            let lastAuto = el.hasAttribute('data-last-auto') ? parseFloat(el.dataset.lastAuto) : null;
+            
+            let unscaledBase = 0;
+            if (stat === 'strength') unscaledBase = baseStats.str;
+            if (stat === 'intelligence') unscaledBase = baseStats.int;
+            if (stat === 'willpower') unscaledBase = baseStats.will;
+            if (stat === 'dexterity') unscaledBase = baseStats.dex;
+            
+            // Update if it's 0, if it matches the last auto value, or if it exactly matches the level 1 unscaled base stat
+            if (current === 0 || current === lastAuto || current === unscaledBase) {
+                el.value = autoStats[stat];
+                el.dataset.lastAuto = autoStats[stat];
+            } else if (lastAuto === null) {
+                // Mark the auto stat so we don't accidentally overwrite manual edits later
+                el.dataset.lastAuto = autoStats[stat];
+            }
+        }
+    });
 
     const weaponDmg = parseFloat(dom.weaponDamage.value) || 0;
     const skillPct  = parseFloat(dom.skillDamage.value) || 0;
@@ -2055,16 +2275,20 @@
     // Auto-save
     try {
       localStorage.setItem(AUTOSAVE_KEY, JSON.stringify(currentBuild));
-    } catch(e) {
-      if (e.name === 'QuotaExceededError') {
-        console.error('Out of storage quota for autosave');
-      }
+    } catch (e) {
+      console.warn('Autosave failed:', e);
     }
-   } catch(e) { 
-     console.error('calculate() error:', e); 
-     alert('Critical error during calculation: ' + e.message);
-   }
+    
+    updateSaveProfile();
+    
+    // Update the Character Sheet UI
+    const compiledStats = compileCharacterStats(baseEquipped, autoStats);
+    renderCharacterSheet(compiledStats);
+
+  } catch (e) {
+    console.error("calculate() Error:", e);
   }
+}
 
   function getAdditiveValues() {
     const rows = dom.additiveBody.querySelectorAll('tr');
