@@ -2578,9 +2578,28 @@
       }
     });
 
-    // Inject additive bonuses from compiledStats
+    // Inject additive & multiplicative bonuses from compiledStats
     dom.additiveBody.querySelectorAll('tr.injected-row').forEach(row => row.remove());
+    dom.multBody.querySelectorAll('tr.injected-row').forEach(row => row.remove());
+    
     Object.keys(compiledStats).forEach(statName => {
+      const val = compiledStats[statName].final;
+      if (!val || val <= 0) return;
+      
+      let isMultiplicativeAspect = false;
+      const aspectObj = (window.D4_DATABASE?.aspects || []).find(a => a.name === statName);
+      if (aspectObj && aspectObj.desc) {
+          const descLower = aspectObj.desc.toLowerCase();
+          if (descLower.includes('[x]') && descLower.includes('increased damage to')) {
+              isMultiplicativeAspect = true;
+          }
+      }
+      
+      if (isMultiplicativeAspect) {
+          createMultiplicativeRow(statName, val.toFixed(2), true);
+          return;
+      }
+
       const lower = statName.toLowerCase();
       if (
         (lower.includes('damage') || lower.includes('critical') || lower.includes('vulnerable') || lower.includes('overpower')) &&
@@ -2590,10 +2609,7 @@
         !lower.includes('weapon damage') &&
         statName !== 'Skill Damage'
       ) {
-        const val = compiledStats[statName].final;
-        if (val && val > 0) {
-          createAdditiveRow(statName, val, true);
-        }
+        createAdditiveRow(statName, val.toFixed(2), true);
       }
     });
 
@@ -2908,17 +2924,26 @@
 
   function getMultiplicativeValues() {
     const rows = dom.multBody.querySelectorAll('tr');
-    const values = [];
+    const allValues = [];
+    const manualValues = [];
     rows.forEach(row => {
       const nameInput = row.querySelector('.row-name-input');
       const valueInput = row.querySelector('.row-value-input');
-      values.push({
+      const isInjected = row.classList.contains('injected-row');
+      const val = parseFloat(valueInput.value) || 0;
+      
+      allValues.push({
         name: nameInput.value,
-        value: parseFloat(valueInput.value) || 0,
+        value: val,
+        isInjected: isInjected
       });
+      
+      if (!isInjected) {
+        manualValues.push({ name: nameInput.value, value: val });
+      }
     });
-    currentBuild.multiplicatives = values;
-    return values;
+    currentBuild.multiplicatives = manualValues;
+    return allValues;
   }
 
   function updateRunningDamages(runningDamages) {
@@ -2994,28 +3019,44 @@
     return tr;
   }
 
-  function createMultiplicativeRow(name = '', value = '') {
+  function createMultiplicativeRow(name = '', value = '', isInjected = false) {
     const tr = document.createElement('tr');
+    if (isInjected) tr.classList.add('injected-row');
+
+    const nameHtml = isInjected
+      ? `<input type="text" class="row-name-input" value="${escapeHtml(name)}" disabled title="From Equipment" style="background: rgba(255,255,255,0.05); color: #aaa;">`
+      : `<input type="text" class="row-name-input" value="${escapeHtml(name)}" placeholder="Multiplier name...">`;
+      
+    const valHtml = isInjected
+      ? `<input type="number" class="row-value-input" value="${value}" disabled title="From Equipment" style="background: rgba(255,255,255,0.05); color: #aaa;">`
+      : `<input type="number" class="row-value-input" value="${value}" step="any" placeholder="0">`;
+      
+    const deleteHtml = isInjected
+      ? `<td></td>`
+      : `<td class="col-delete"><button class="btn-delete" title="Remove">&times;</button></td>`;
+
     tr.innerHTML = `
-      <td><input type="text" class="row-name-input" value="${escapeHtml(name)}" placeholder="Multiplier name..."></td>
-      <td><input type="number" class="row-value-input" value="${value}" step="any" placeholder="0"></td>
+      <td>${nameHtml}</td>
+      <td>${valHtml}</td>
       <td class="formula-value">1.00</td>
-      <td class="running-damage">—</td>
-      <td class="col-delete"><button class="btn-delete" title="Remove">✕</button></td>
+      <td class="running-damage">&mdash;</td>
+      ${deleteHtml}
     `;
 
-    tr.querySelector('.row-name-input').addEventListener('input', calculate);
-    tr.querySelector('.row-value-input').addEventListener('input', calculate);
-    tr.querySelector('.btn-delete').addEventListener('click', () => {
-      tr.style.opacity = '0';
-      tr.style.transform = 'translateX(-10px)';
-      tr.style.transition = 'all 0.2s ease';
-      setTimeout(() => {
-        tr.remove();
-        calculate();
-      }, 200);
-    });
-
+    if (!isInjected) {
+      tr.querySelector('.row-name-input').addEventListener('input', calculate);
+      tr.querySelector('.row-value-input').addEventListener('input', calculate);
+      tr.querySelector('.btn-delete').addEventListener('click', () => {
+        tr.style.opacity = '0';
+        tr.style.transform = 'translateX(-10px)';
+        tr.style.transition = 'all 0.2s ease';
+        setTimeout(() => {
+          tr.remove();
+          calculate();
+        }, 200);
+      });
+    }
+    
     dom.multBody.appendChild(tr);
     return tr;
   }
