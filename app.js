@@ -796,6 +796,19 @@
     'Warlock': [...STANDARD_SLOTS]
   };
 
+  function checkIs2H(itemObj, slotName) {
+      if (!itemObj || !itemObj.name) return false;
+      let dbSlotName = slotName;
+      if (slotName === 'Left Ring' || slotName === 'Right Ring') dbSlotName = 'Ring';
+      if (slotName === 'Ranged Weapon' || slotName.startsWith('Weapon')) dbSlotName = 'Mainhand';
+      const dbItems = window.D4_DATABASE?.itemDatabase?.[dbSlotName] || window.D4_DATABASE?.itemDatabase?.['Mainhand'] || [];
+      const baseItem = dbItems.find(i => i.name === itemObj.name);
+      if (!baseItem) return false;
+      if (baseItem.name && baseItem.name.includes('Two-Handed')) return true;
+      if (baseItem.weaponType && (baseItem.weaponType.includes('Two-Handed') || baseItem.weaponType === 'Staff' || baseItem.weaponType === 'Polearm' || baseItem.weaponType === 'Crossbow' || baseItem.weaponType === 'Bow')) return true;
+      return false;
+  }
+
   function getDbItems(slotName) {
     if (!window.D4_DATABASE || !window.D4_DATABASE.itemDatabase) return [];
     let mapped = slotName;
@@ -1867,7 +1880,8 @@
                   }
                   let isGA = item.greaterAffixes?.[i] || false;
                   let isCapstone = (item.capstoneBonus?.type === 'affix' && item.capstoneBonus?.idx === i);
-                  const qMult = baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0);
+                  const twoHandedMult = checkIs2H(item, slotName) ? 2 : 1;
+                  const qMult = (baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0)) * twoHandedMult;
                   addStat(stats, affixName, v * qMult, slotName);
               });
           }
@@ -1900,7 +1914,8 @@
                   }
                   let isGA = item.greaterTempers?.[i] || false;
                   let isCapstone = (item.capstoneBonus?.type === 'temper' && item.capstoneBonus?.idx === i);
-                  const qMult = baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0);
+                  const twoHandedMult = checkIs2H(item, slotName) ? 2 : 1;
+                  const qMult = (baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0)) * twoHandedMult;
                   addStat(stats, temperName, v * qMult, slotName);
               });
           }
@@ -1908,6 +1923,8 @@
           if (item.transfigure) {
               item.transfigure.forEach((transfigureName, i) => {
                   if (!transfigureName) return;
+                  if (transfigureName.includes('Item Quality')) return; // handled by baseQMult
+                  
                   let v = 0;
                   if (item.transfigureValues && item.transfigureValues[i] && item.transfigureValues[i][0] !== undefined) {
                       v = item.transfigureValues[i][0];
@@ -1931,14 +1948,10 @@
                           }
                       }
                   }
-                  let isItemQuality = transfigureName.includes('Item Quality');
-                  let val = v;
-                  if (!isItemQuality) {
-                      const isCapstone = (item.capstoneBonus?.type === 'transfigure' && item.capstoneBonus?.idx === i);
-                      const qMult = baseQMult + (isCapstone ? 0.50 : 0);
-                      val = Number((v * qMult).toFixed(2));
-                  }
-                  addStat(stats, transfigureName, val, slotName + ' (Transfigure)');
+                  let isCapstone = (item.capstoneBonus?.type === 'transfigure' && item.capstoneBonus?.idx === i);
+                  const twoHandedMult = checkIs2H(item, slotName) ? 2 : 1;
+                  const qMult = (baseQMult + (isCapstone ? 0.50 : 0)) * twoHandedMult;
+                  addStat(stats, transfigureName, v * qMult, slotName + ' (Transfigure)');
               });
           }
           
@@ -3974,7 +3987,8 @@ rarity = foundItem.rarity;
         
         let displayV = v;
         const effQ = getEffectiveQuality(itemObj);
-        const qMult = 1 + (effQ * 0.01) + gaBonus + capstoneBonus;
+        const twoHandedMult = checkIs2H(itemObj, slotName) ? 2 : 1;
+        const qMult = (1 + (effQ * 0.01) + gaBonus + capstoneBonus) * twoHandedMult;
         if (typeof displayV === 'number' || (typeof displayV === 'string' && !isNaN(parseFloat(displayV)))) {
            // Skip scaling if it is the "Item Quality" transfigure!
            if (currentName && currentName.includes('Item Quality')) {
@@ -3998,6 +4012,10 @@ rarity = foundItem.rarity;
             }
         }
         let maxAttr = ''; // Allow overriding max for higher item power tiers
+        if (max && !(currentName && currentName.includes('Item Quality'))) {
+            let maxScaled = (parseFloat(max.replace(/,/g, '')) * qMult).toFixed(1).replace(/\.0$/, '');
+            maxAttr = ` max="${maxScaled}"`;
+        }
         
         let stepAttr = (min && min.includes('.')) || (max && max.includes('.')) ? ' step="0.1"' : ' step="1"';
         if (!min && !max) stepAttr = ' step="any"';
@@ -4253,7 +4271,8 @@ rarity = foundItem.rarity;
                  }
                  const capstoneBonus = isCapstone ? 0.50 : 0;
                  
-                 const rowQMult = qMult + gaBonus + capstoneBonus;
+                 const twoHandedMult = checkIs2H(itemObj, slotName) ? 2 : 1;
+                 const rowQMult = (qMult + gaBonus + capstoneBonus) * twoHandedMult;
                  
                  if (baseVal !== undefined && !isNaN(baseVal)) {
                      // Check if this input belongs to the 'Item Quality' transfigure
@@ -4447,7 +4466,8 @@ rarity = foundItem.rarity;
               baseVal = val;
           } else {
               const effQ = getEffectiveQuality(itemObj);
-              const qMult = 1 + (effQ * 0.01) + gaBonus + capstoneBonus;
+              const twoHandedMult = checkIs2H(itemObj, slotName) ? 2 : 1;
+              const qMult = (1 + (effQ * 0.01) + gaBonus + capstoneBonus) * twoHandedMult;
               baseVal = Number((val / qMult).toFixed(2));
           }
           
