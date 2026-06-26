@@ -24214,6 +24214,30 @@ window.D4_DATABASE = {
               "shortName": "Cooldown Reduction",
               "category": "Resource",
               "desc": "Worldly Stability"
+            },
+            {
+              "name": "+[15 - 25]% Movement Speed",
+              "shortName": "Movement Speed",
+              "category": "Utility",
+              "desc": "Natural Motion"
+            },
+            {
+              "name": "+[25 - 45]% Movement Speed for 4 Seconds After Killing an Elite",
+              "shortName": "Movement Speed for 4 Seconds After Killing an Elite",
+              "category": "Utility",
+              "desc": "Natural Motion"
+            },
+            {
+              "name": "+[5 - 8]% Mobility Cooldown Reduction",
+              "shortName": "Mobility Cooldown Reduction",
+              "category": "Utility",
+              "desc": "Natural Motion"
+            },
+            {
+              "name": "+[17 - 20]% Evade Cooldown Reduction",
+              "shortName": "Evade Cooldown Reduction",
+              "category": "Utility",
+              "desc": "Natural Motion"
             }
           ],
           "transfigures": [
