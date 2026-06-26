@@ -24416,6 +24416,171 @@ window.D4_DATABASE = {
               "desc": "Sanctified Modifier"
             }
           ]
+        },
+        "twohanded": {
+          "modifiers": [
+            {
+              "name": "+[26 - 50]% Critical Strike Damage [x]",
+              "shortName": "Critical Strike Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[12 - 20]% All Damage [x]",
+              "shortName": "All Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[30 - 60]% Damage Over Time [x]",
+              "shortName": "Damage Over Time",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[12.0 - 14.0]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction",
+              "category": "Resource"
+            },
+            {
+              "name": "+[2 - 4] Essence On Kill",
+              "shortName": "Essence On Kill",
+              "category": "Resource"
+            },
+            {
+              "name": "+[6 - 8] Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
+              "shortName": "Lucky Hit: Up to a 15% Chance to Restore Primary Resource",
+              "category": "Resource"
+            },
+            {
+              "name": "+[1052 - 1264] Life on Kill",
+              "shortName": "Life on Kill",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[14 - 20]% Physical Damage [x]",
+              "shortName": "Physical Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[14 - 20]% Cold Damage [x]",
+              "shortName": "Cold Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[14 - 20]% Shadow Damage [x]",
+              "shortName": "Shadow Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[300 - 360] Intelligence",
+              "shortName": "Intelligence",
+              "category": "Core Stat"
+            },
+            {
+              "name": "+[3662 - 4400] Maximum Life",
+              "shortName": "Maximum Life",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[207 - 345] Weapon Damage",
+              "shortName": "Weapon Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[1578 - 1896] Life On Hit",
+              "shortName": "Life On Hit",
+              "category": "Defensive"
+            }
+          ],
+          "tempers": [],
+          "transfigures": [
+            {
+              "name": "+[7.0 - 10.0]% Intelligence",
+              "desc": "Intelligence"
+            },
+            {
+              "name": "+[42.0 - 70.0]% Chance for Projectiles to Cast Twice",
+              "desc": "Chance for Projectiles to Cast Twice"
+            },
+            {
+              "name": "+[150 - 200] All Stats",
+              "desc": "All Stats"
+            },
+            {
+              "name": "+[7.0 - 10.0]% Critical Strike Chance",
+              "desc": "Critical Strike Chance"
+            },
+            {
+              "name": "+[12.0 - 16.0]% Cooldown Reduction",
+              "desc": "Cooldown Reduction"
+            },
+            {
+              "name": "+[16.0 - 20.0]% Attack Speed",
+              "desc": "Attack Speed"
+            },
+            {
+              "name": "+[300 - 360] Intelligence",
+              "desc": "Intelligence"
+            },
+            {
+              "name": "+[526 - 632] Life On Hit",
+              "desc": "Life On Hit"
+            },
+            {
+              "name": "+[16.0 - 20.0]% Shadow Damage [x]",
+              "desc": "Shadow Damage"
+            },
+            {
+              "name": "+[16.0 - 20.0]% Physical Damage [x]",
+              "desc": "Physical Damage"
+            },
+            {
+              "name": "+[12.0 - 16.0]% Maximum Life",
+              "desc": "Maximum Life"
+            },
+            {
+              "name": "+[2 - 30] Item Quality",
+              "desc": "Item Quality"
+            },
+            {
+              "name": "Gain 20% Damage Reduction. In addition, gain +4 Ranks to all Skills.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Every 4 seconds, you randomly mark a Nearby enemy. Marked enemies are Vulnerable, and your attacks against them are guaranteed to Critically Strike and Overpower. Hitting a marked enemy 40 times clears the mark from them.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Gain a random Shrine effect for 20 seconds after killing an Elite enemy. Can only occur once every 30 seconds.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Lucky Hit: Up to a 50% chance to deal 49,752 Shadow damage to surrounding enemies and reduce their damage dealt by 20% for 5 seconds.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Increases your Critical Strike Damage by 100% [x].",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Spending your Primary Resource reduces the Resource cost of your Skills and increases your damage by 20% [x] for 3 seconds, up to 100% [x].",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced. Your Primary Resource is doubled but Maximum Life is reduced by 75%.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Enemies afflicted by more Damage over Time than remaining Life are Executed.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Your Skills unleash a divine barrage dealing 10,780 damage.",
+              "desc": "Sanctified Modifier"
+            },
+            {
+              "name": "Lucky Hit: Up to a 40% chance to trigger a poison nova that applies 331,680 Poisoning damage over 5 seconds to enemies in the area.",
+              "desc": "Sanctified Modifier"
+            }
+          ]
         }
       }
     },
