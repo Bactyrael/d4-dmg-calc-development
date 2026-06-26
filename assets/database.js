@@ -23391,6 +23391,196 @@ window.D4_DATABASE = {
             }
           ],
           "transfigures": []
+        },
+        "ring": {
+          "modifiers": [
+            {
+              "name": "+[981 - 1225] Armor",
+              "shortName": "Armor",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Attack Speed",
+              "shortName": "Attack Speed",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[5.0 - 8.0]% Cooldown Reduction",
+              "shortName": "Cooldown Reduction",
+              "category": "Utility"
+            },
+            {
+              "name": "+[100 - 121] Intelligence",
+              "shortName": "Intelligence",
+              "category": "Core Stat"
+            },
+            {
+              "name": "+[3.5 - 5.0]% Critical Strike Chance",
+              "shortName": "Critical Strike Chance",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[13 - 25]% Critical Strike Damage [x]",
+              "shortName": "Critical Strike Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[6 - 10]% All Damage [x]",
+              "shortName": "All Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[15 - 30]% Damage Over Time [x]",
+              "shortName": "Damage Over Time",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[1226 - 1450] Maximum Life",
+              "shortName": "Maximum Life",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[220 - 264] Life Regeneration",
+              "shortName": "Life Regeneration",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Fire Resistance",
+              "shortName": "Fire Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Lightning Resistance",
+              "shortName": "Lightning Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Poison Resistance",
+              "shortName": "Poison Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Shadow Resistance",
+              "shortName": "Shadow Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Cold Resistance",
+              "shortName": "Cold Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[524 - 630] Physical Resistance",
+              "shortName": "Physical Resistance",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[11.0 - 15.0]% Resource Generation",
+              "shortName": "Resource Generation",
+              "category": "Resource"
+            },
+            {
+              "name": "+[6.0 - 7.0]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility"
+            },
+            {
+              "name": "+[8 - 14]% Vulnerable Damage [x]",
+              "shortName": "Vulnerable Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[327 - 392] Resistance to All Elements",
+              "shortName": "Resistance to All Elements",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[6.0 - 7.0]% Resource Cost Reduction",
+              "shortName": "Resource Cost Reduction",
+              "category": "Resource"
+            },
+            {
+              "name": "+[263 - 316] Life On Hit",
+              "shortName": "Life On Hit",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[1 - 2] Essence On Kill",
+              "shortName": "Essence On Kill",
+              "category": "Resource"
+            },
+            {
+              "name": "+[263 - 316] Life on Kill",
+              "shortName": "Life on Kill",
+              "category": "Defensive"
+            },
+            {
+              "name": "+[7 - 10]% Physical Damage [x]",
+              "shortName": "Physical Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[7 - 10]% Cold Damage [x]",
+              "shortName": "Cold Damage",
+              "category": "Offensive"
+            },
+            {
+              "name": "+[7 - 10]% Shadow Damage [x]",
+              "shortName": "Shadow Damage",
+              "category": "Offensive"
+            }
+          ],
+          "tempers": [],
+          "transfigures": [
+            {
+              "name": "Item Quality",
+              "desc": "Item Quality"
+            },
+            {
+              "name": "+[3.5 - 5.0]% Intelligence",
+              "desc": "Intelligence"
+            },
+            {
+              "name": "+[20.0 - 30.0]% Gem Strength in this Item",
+              "desc": "Gem Strength"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Resistance to All Elements",
+              "desc": "Resistance to All Elements"
+            },
+            {
+              "name": "+[2 - 3] to Curse Skills",
+              "desc": "Curse Skills"
+            },
+            {
+              "name": "+[75 - 100] All Stats",
+              "desc": "All Stats"
+            },
+            {
+              "name": "+[6.0 - 8.0]% Cooldown Reduction",
+              "desc": "Cooldown Reduction"
+            },
+            {
+              "name": "+[150 - 180] Intelligence",
+              "desc": "Intelligence"
+            },
+            {
+              "name": "+[6.0 - 8.0]% Resource Cost Reduction",
+              "desc": "Resource Cost Reduction"
+            },
+            {
+              "name": "+[263 - 316] Life On Hit",
+              "desc": "Life On Hit"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Shadow Damage [x]",
+              "desc": "Shadow Damage"
+            },
+            {
+              "name": "+[8.0 - 10.0]% Physical Damage [x]",
+              "desc": "Physical Damage"
+            }
+          ]
         }
       }
     },
