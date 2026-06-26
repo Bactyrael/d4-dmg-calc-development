@@ -2060,28 +2060,28 @@
         maximumLife: dom.maxLife ? parseFloat(dom.maxLife.value) || 0 : 0
     };
     
-    ['strength', 'intelligence', 'willpower', 'dexterity'].forEach(stat => {
-        const el = dom[stat];
-        if (el) {
-            let current = parseFloat(el.value) || 0;
-            let lastAuto = el.hasAttribute('data-last-auto') ? parseFloat(el.dataset.lastAuto) : null;
-            
-            let unscaledBase = 0;
-            if (stat === 'strength') unscaledBase = baseStats.str;
-            if (stat === 'intelligence') unscaledBase = baseStats.int;
-            if (stat === 'willpower') unscaledBase = baseStats.will;
-            if (stat === 'dexterity') unscaledBase = baseStats.dex;
-            
-            // Update if it's 0, if it matches the last auto value, or if it exactly matches the level 1 unscaled base stat
-            if (current === 0 || current === lastAuto || current === unscaledBase) {
-                el.value = autoStats[stat];
-                el.dataset.lastAuto = autoStats[stat];
-            } else if (lastAuto === null) {
-                // Mark the auto stat so we don't accidentally overwrite manual edits later
-                el.dataset.lastAuto = autoStats[stat];
-            }
-        }
-    });
+    const compiledStats = compileCharacterStats(baseEquipped, autoStats);
+    
+    if (dom.strength) {
+        dom.strength.value = Math.floor(compiledStats['Strength'] || 0);
+        dom.strength.disabled = true;
+        dom.strength.title = "Auto-calculated from equipment and level";
+    }
+    if (dom.intelligence) {
+        dom.intelligence.value = Math.floor(compiledStats['Intelligence'] || 0);
+        dom.intelligence.disabled = true;
+        dom.intelligence.title = "Auto-calculated from equipment and level";
+    }
+    if (dom.willpower) {
+        dom.willpower.value = Math.floor(compiledStats['Willpower'] || 0);
+        dom.willpower.disabled = true;
+        dom.willpower.title = "Auto-calculated from equipment and level";
+    }
+    if (dom.dexterity) {
+        dom.dexterity.value = Math.floor(compiledStats['Dexterity'] || 0);
+        dom.dexterity.disabled = true;
+        dom.dexterity.title = "Auto-calculated from equipment and level";
+    }
 
     const weaponDmg = parseFloat(dom.weaponDamage.value) || 0;
     const skillPct  = parseFloat(dom.skillDamage.value) || 0;
@@ -2328,7 +2328,6 @@
     }
     
     // Update the Character Sheet UI
-    const compiledStats = compileCharacterStats(currentBuild.equipment, autoStats);
     renderCharacterSheet(compiledStats);
 
   } catch (e) {
