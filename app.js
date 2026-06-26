@@ -1753,7 +1753,7 @@
 
   function addStat(stats, rawName, value, sourceName = 'Equipment') {
       if (!rawName) return;
-      let cleanName = rawName.replace(/\[.*?\]\s*/, '').replace(/^[\+\-]\s*/, '').trim();
+      let cleanName = rawName.replace(/\[(?!(?:x|X)\]).*?\]\s*/g, '').replace(/^[\+\-]\s*/, '').trim();
       
       const keepPct = ['% Strength', '% Intelligence', '% Willpower', '% Dexterity', '% Maximum Life', '% Armor', '% Total Armor'];
       if (cleanName.startsWith('%') && !keepPct.includes(cleanName)) {
@@ -2595,7 +2595,7 @@
           }
       }
       
-      if (isMultiplicativeAspect) {
+      if (isMultiplicativeAspect || statName.toLowerCase().includes('[x]')) {
           createMultiplicativeRow(statName, val.toFixed(2), true);
           return;
       }
