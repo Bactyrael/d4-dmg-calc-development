@@ -9468,7 +9468,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Tyrael's Might",
-      "desc": "While at full Life, your Skills unleash a divine barrage dealing 450 damage."
+      "desc": "Gain 20% Damage Reduction. While at full Life, your Skills unleash a divine barrage dealing 5,652 damage."
     },
     {
       "name": "Ugly Bastard Helm",
