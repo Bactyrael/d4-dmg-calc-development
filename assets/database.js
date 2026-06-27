@@ -8660,7 +8660,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Endurant Faith",
-      "desc": "When you would be damaged for at least 30% of your Maximum Life at once, it is instead distributed over the next 4 seconds and reduced by [30 - 40]%."
+      "desc": "When you would be damaged for at least 30% of your Maximum Life at once, it is instead distributed over the next 4 seconds and reduced by [15.0 - 20.0]%."
     },
     {
       "name": "Esadora's Overflowing Cameo",
