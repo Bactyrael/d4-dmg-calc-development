@@ -3732,7 +3732,8 @@ function renderSkills() {
           slot.className = slotClass;
           slot.title = name;
           
-          if (category === 'Basic') {
+          // Execute image loading for all categories
+          if (true) {
               let imgName = name.toLowerCase().replace(/\s+/g, '-');
               let imgSrc = 'assets/skills/' + imgName + '.png';
               
