@@ -9432,7 +9432,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "The Undercrown",
-      "desc": "Your maximum number of Skeleton Warriors and Skeleton Mages is increased by [2 - 4]. Commanding Skeleton Warriors also causes Skeleton Mages to focus the same target for 5 seconds."
+      "desc": "Your maximum number of Skeleton Warriors and Skeleton Mages is increased by 4 and your Summon damage is increased by [15.0 - 25.0]%[x].\n\nCommanding Skeleton Warriors also causes Skeleton Mages to focus the same target for 5 seconds."
     },
     {
       "name": "The Unmaker",
