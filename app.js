@@ -1842,6 +1842,9 @@
           if (baseItem.armor) {
               addStat(stats, 'Base Armor', baseItem.armor * baseQMult, slotName);
           }
+          if (baseItem.blockChance) {
+              addStat(stats, 'Block Chance', baseItem.blockChance, slotName);
+          }
           if (baseItem.damage) {
               const avgDmg = (baseItem.damage[0] + baseItem.damage[1]) / 2;
               addStat(stats, 'Base Weapon Damage', avgDmg * baseQMult, slotName);
@@ -4069,6 +4072,9 @@ rarity = foundItem.rarity;
           const scaledArmor = Math.floor(baseItem.armor * qMult);
           extraWeaponInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${scaledArmor.toLocaleString()} Armor</div>`;
         }
+        if (baseItem.blockChance) {
+          extraWeaponInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${baseItem.blockChance}% Block Chance</div>`;
+        }
         if (baseItem.resistance) {
           const scaledRes = Math.floor(baseItem.resistance * qMult);
           extraWeaponInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${scaledRes.toLocaleString()} Resistance to All Elements</div>`;
@@ -4229,6 +4235,9 @@ rarity = foundItem.rarity;
                 if (baseItem.armor) {
                   const scaledArmor = Math.floor(baseItem.armor * qMult);
                   extraInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${scaledArmor.toLocaleString()} Armor</div>`;
+                }
+                if (baseItem.blockChance) {
+                  extraInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${baseItem.blockChance}% Block Chance</div>`;
                 }
                 if (baseItem.resistance) {
                   const scaledRes = Math.floor(baseItem.resistance * qMult);

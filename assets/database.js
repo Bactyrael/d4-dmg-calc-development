@@ -14740,7 +14740,9 @@ window.D4_DATABASE = {
         "weaponSpeed": "same as mainhand",
         "damageRange": "same as mainhand",
         "sockets": 1,
-        "type": "Shield"
+        "type": "Shield",
+        "armor": 1202,
+        "blockChance": 20
       },
       {
         "name": "Okun's Catalyst",
@@ -14819,7 +14821,9 @@ window.D4_DATABASE = {
         "weaponSpeed": "same as mainhand",
         "damageRange": "same as mainhand",
         "sockets": 1,
-        "type": "Shield"
+        "type": "Shield",
+        "armor": 1202,
+        "blockChance": 20
       },
       {
         "name": "Ward of the White Dove",
@@ -14853,7 +14857,9 @@ window.D4_DATABASE = {
         "damageRange": "same as mainhand",
         "weaponSpeed": "same as mainhand",
         "sockets": 1,
-        "type": "Shield"
+        "type": "Shield",
+        "armor": 1202,
+        "blockChance": 20
       },
       {
         "name": "Enigma Cube",
@@ -23264,16 +23270,6 @@ window.D4_DATABASE = {
             {
               "name": "+[1963 - 2450] Armor",
               "shortName": "Armor",
-              "category": "Defensive"
-            },
-            {
-              "name": "+ 1202 Armor",
-              "shortName": "Armor",
-              "category": "Defensive"
-            },
-            {
-              "name": "+ 20% Block Chance",
-              "shortName": "Block Chance",
               "category": "Defensive"
             }
           ],
