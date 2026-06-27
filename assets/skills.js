@@ -704,35 +704,35 @@ const skillsDatabase = {
         "Curse"
       ],
       "modifiers": [
-        {
-          "name": "Unholy Frenzy",
-          "maxRank": 1
-        },
-        {
-          "name": "Life Tap",
-          "maxRank": 1
-        },
-        {
+          {
           "name": "Dizzying Curse",
           "maxRank": 1
         },
-        {
-          "name": "Resolve",
+          {
+          "name": "Life Tap",
           "maxRank": 1
         },
-        {
-          "name": "Movement Speed",
+          {
+          "name": "Unholy Frenzy",
           "maxRank": 1
         },
-        {
+          {
           "name": "Critical Strike Chance",
           "maxRank": 1
         },
-        {
+          {
           "name": "Cooldown Reduction",
           "maxRank": 1
+        },
+          {
+          "name": "Resolve",
+          "maxRank": 1
+        },
+          {
+          "name": "Movement Speed",
+          "maxRank": 1
         }
-      ]
+        ]
     },
     {
       "name": "Iron Maiden",
