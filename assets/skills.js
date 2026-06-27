@@ -27,6 +27,7 @@ const skillsDatabase = {
           "tags": [
             "Search_Damage"
           ],
+          "baseDamageScalar": 1.125,
           "description": "{c_important}Decompose{/c} causes a burst around the target every second, dealing an additional {c_number}[{payload:burst}|2?|]{/c} damage to them and nearby enemies.",
           "maxRank": 1
         },
