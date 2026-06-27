@@ -132,6 +132,7 @@ const skillsDatabase = {
             "Keyword_Execute",
             "Search_Physical"
           ],
+          "baseDamageScalar": 0.625,
           "description": "{c_important}Reap{/c} becomes a {c_important}Blood{/c} Skill that deals {c_number}[{payload:damage_blood}|2?|]{/c} Physical damage.\\n\\n{c_important}Reap{/c} will {c_important}{u}Execute{/c}{/u} enemies and has a {c_number}50%{/c} chance to form a {c_important}{u}Blood Orb{/u}{/c} if they are killed by it.",
           "maxRank": 1
         },
