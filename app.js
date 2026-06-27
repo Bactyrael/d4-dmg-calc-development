@@ -3638,6 +3638,24 @@
   }
 
   window.selectedSkills = {};
+
+function getSpentSkillPoints() {
+    return Object.values(window.selectedSkills || {}).reduce((sum, val) => sum + val, 0);
+}
+
+function updateSkillPointsUI() {
+    const el = document.getElementById('skill-points-spent');
+    if (el) {
+        const spent = getSpentSkillPoints();
+        el.textContent = spent;
+        if (spent >= 83) {
+            el.style.color = '#ff4444';
+        } else {
+            el.style.color = '#ffd700';
+        }
+    }
+}
+
 function renderSkills() { 
   const container = document.getElementById('skills-container'); 
   if (!container) return; 
@@ -3744,6 +3762,7 @@ function renderSkills() {
               rankDisplay.textContent = (window.selectedSkills[name] || 0) + '/' + maxRank;
               if (window.selectedSkills[name] > 0) slot.classList.add('active');
               else slot.classList.remove('active');
+              updateSkillPointsUI();
           };
           updateDisplay();
           
@@ -3754,6 +3773,9 @@ function renderSkills() {
               }
               const cur = window.selectedSkills[name] || 0;
               if (cur < maxRank) {
+                  if (getSpentSkillPoints() >= 83) {
+                      return; // Max points reached
+                  }
                   window.selectedSkills[name] = cur + 1;
                   updateDisplay();
                   if (typeof recalculate === 'function') recalculate();
