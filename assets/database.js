@@ -23407,6 +23407,80 @@ window.D4_DATABASE = {
               "name": "Lucky Hit: Up to a 40% Chance to Deal +[2400 - 2400] Shadow Damage",
               "shortName": "Lucky Hit: Deal Shadow Damage",
               "desc": "Elemental Surge - Night"
+            },
+            {
+              "name": "+[440 - 490] Fire Resistance",
+              "shortName": "Fire Resistance",
+              "desc": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Lightning Resistance",
+              "shortName": "Lightning Resistance",
+              "desc": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Cold Resistance",
+              "shortName": "Cold Resistance",
+              "desc": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Poison Resistance",
+              "shortName": "Poison Resistance",
+              "desc": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Shadow Resistance",
+              "shortName": "Shadow Resistance",
+              "desc": "Natural Resistance"
+            },
+            {
+              "name": "+[440 - 490] Physical Resistance",
+              "shortName": "Physical Resistance",
+              "desc": "Natural Resistance"
+            },
+            {
+              "name": "+[1,000 - 1,500] Maximum Life",
+              "shortName": "Maximum Life",
+              "desc": "Wordly Endurance"
+            },
+            {
+              "name": "+[1,250 - 2,000] Armor",
+              "shortName": "Armor",
+              "desc": "Wordly Endurance"
+            },
+            {
+              "name": "+[60 - 70] Resistance to All Elements",
+              "shortName": "Resistance to All Elements",
+              "desc": "Wordly Endurance"
+            },
+            {
+              "name": "+[2 - 3] Maximum Resolve Stacks",
+              "shortName": "Maximum Resolve Stacks",
+              "desc": "Wordly Endurance"
+            },
+            {
+              "name": "+[15 - 25]% Movement Speed",
+              "shortName": "Movement Speed",
+              "category": "Utility",
+              "desc": "Natural Motion"
+            },
+            {
+              "name": "+[25 - 45]% Movement Speed for 4 Seconds After Killing an Elite",
+              "shortName": "Movement Speed for 4 Seconds After Killing an Elite",
+              "category": "Utility",
+              "desc": "Natural Motion"
+            },
+            {
+              "name": "+[5 - 8]% Mobility Cooldown Reduction",
+              "shortName": "Mobility Cooldown Reduction",
+              "category": "Utility",
+              "desc": "Natural Motion"
+            },
+            {
+              "name": "+[17 - 20]% Evade Cooldown Reduction",
+              "shortName": "Evade Cooldown Reduction",
+              "category": "Utility",
+              "desc": "Natural Motion"
             }
           ],
           "transfigures": [
