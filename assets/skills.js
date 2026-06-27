@@ -744,35 +744,35 @@ const skillsDatabase = {
         "Damage"
       ],
       "modifiers": [
-        {
+          {
           "name": "Blood Maiden",
           "maxRank": 1
         },
-        {
+          {
           "name": "Torture Artist",
           "maxRank": 1
         },
-        {
+          {
           "name": "Schadenfreude",
           "maxRank": 1
         },
-        {
+          {
           "name": "Ferocity and Overpower",
           "maxRank": 1
         },
-        {
+          {
           "name": "Vulnerable",
           "maxRank": 1
         },
-        {
-          "name": "Essence Generation",
-          "maxRank": 1
-        },
-        {
+          {
           "name": "Execute and Fortify",
           "maxRank": 1
+        },
+          {
+          "name": "Essence Generation",
+          "maxRank": 1
         }
-      ]
+        ]
     }
   ],
   "Ultimate": [
