@@ -8948,7 +8948,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Locran's Talisman",
-      "desc": "Critical Strikes deal [80 - 100]%[x] increased damage but your Critical Strike Chance is reduced by 50%[+]."
+      "desc": "Critical Strikes deal [80.0 - 100.0]%[x] increased damage but your Critical Strike Chance is reduced by 50%[+]."
     },
     {
       "name": "Loyalty's Mantle",
@@ -12072,12 +12072,6 @@ window.D4_DATABASE = {
     ],
     "Amulet": [
       {
-        "name": "Legendary Amulet",
-        "rarity": "legendary",
-        "resistance": 230,
-        "type": "Amulet"
-      },
-      {
         "name": "Banished Lord's Talisman",
         "rarity": "unique",
         "classes": [
@@ -12284,6 +12278,28 @@ window.D4_DATABASE = {
         ],
         "resistance": 230,
         "type": "Amulet"
+      },
+      {
+        "name": "Legendary Amulet",
+        "rarity": "legendary",
+        "resistance": 230,
+        "type": "Amulet"
+      },
+      {
+        "name": "Locran's Talisman",
+        "rarity": "unique",
+        "classes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "type": "Amulet",
+        "armor": 0
       },
       {
         "name": "Malefic Crescent",
