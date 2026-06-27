@@ -3642,7 +3642,22 @@ function renderSkills() {
   const container = document.getElementById('skills-container'); 
   if (!container) return; 
   container.innerHTML = ''; 
-  if (typeof skillsDatabase === 'undefined') return; 
+  if (typeof skillsDatabase === 'undefined') return;\n
+  for (const [category, skills] of Object.entries(skillsDatabase)) { 
+    skills.forEach(skill => {
+        if (!skill.modifiers && skill.enhancement) {
+            skill.modifiers = [
+                { name: skill.enhancement.name, maxRank: skill.enhancement.maxRank }
+            ];
+            if (skill.enhancement.branches) {
+                skill.enhancement.branches.forEach(b => {
+                    skill.modifiers.push({ name: b.name, maxRank: b.maxRank });
+                });
+            }
+        }
+    });
+  }
+ 
   
   container.style.display = 'flex';
   container.style.flexDirection = 'column';
