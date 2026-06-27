@@ -3652,11 +3652,11 @@ function parseD4String(str, skillObj, currentRank) {
         let rankMult = currentRank > 0 ? (1 + ((currentRank - 1) * 0.10)) : 1;
         let percentage = (skillObj.baseDamageScalar * rankMult * 100).toFixed(1) + '%';
         str = str.replace(/\[?\{payload:.*?\}[\s\S]*?\]?/g, percentage);
+        str = str.replace(/\[?\{dot:.*?\}[\s\S]*?\]?/g, `${percentage} x [Damage]`);
     } else {
         str = str.replace(/\[?\{payload:.*?\}[\s\S]*?\]?/g, '?%');
+        str = str.replace(/\[?\{dot:.*?\}[\s\S]*?\]?/g, '?% x [Damage]');
     }
-    
-    str = str.replace(/\{dot:.*?\}/g, 'Damage');
     
     str = str.replace(/\[(\d+(?:\.\d+)?)\*[A-Za-z]+\|.*?\]/g, '$1');
     str = str.replace(/\[Mod\([^)]+\)\?(\d+):(\d+)(?:\|.*?)?\]/g, '$2');

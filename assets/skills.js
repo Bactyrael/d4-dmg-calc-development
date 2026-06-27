@@ -8,13 +8,6 @@ const skillsDatabase = {
         "Search_Shadow"
       ],
       "baseDamageScalar": 1.5,
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "AffixIsEquipped(1944498)>0?25:0",
-          "channellingCost": "AffixIsEquipped(1944498)>0?7.5:0"
-        }
-      ],
       "description": "{if:AffixIsEquipped(1944498)>0}{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|] per second{/c}\\n{/if}{c_label}Generate Essence:{/c_label} {c_resource}[13*PowerFinalizedAttackSpeed|2?|]{/c_resource} per second\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[Mod(2686060764)?70:40|%|]{/c}\\n{/if}Tear the flesh from an enemy, dealing {c_number}[{dot:decomposing}|2?|]{/c} Corrupting damage per second and forming a usable Corpse with the flesh every {c_number}1{/c} second.",
       "maxRank": 15,
       "damageType": "Shadow",
@@ -112,12 +105,6 @@ const skillsDatabase = {
         "Skill_Shadow"
       ],
       "baseDamageScalar": 0.5,
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "AffixIsEquipped(1944498)>0?25:0"
-        }
-      ],
       "description": "{if:AffixIsEquipped(1944498)>0}{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{/if}{c_label}Generate Essence:{/c_label} {c_resource}[Mod(2686060762)?17:15|2?|]{/c_resource}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Sweep an ethereal scythe in front of you, dealing {c_number}[{payload:damage}|2?|]{/c} damage.",
       "maxRank": 15,
       "damageType": "Shadow",
@@ -230,12 +217,6 @@ const skillsDatabase = {
         "Keyword_Blood_Orb"
       ],
       "baseDamageScalar": 0.8,
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "AffixIsEquipped(1944498)>0?25:0"
-        }
-      ],
       "description": "{if:AffixIsEquipped(1944498)>0}{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{/if}{c_label}Generate Essence:{/c_label} {c_resource}13{/c_resource}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Burst an enemy's blood, dealing {c_number}[{payload:damage}|2?|]{/c} damage. {c_important}Hemorrhage{/c} has a {c_number}[0.2*(1+Blood_Orb_Bonus_Chance_Per_Power(484661))*100|%|]{/c} chance to form a {c_important}{u}Blood Orb{/u}{/c}.",
       "maxRank": 15,
       "damageType": "Physical",
@@ -349,12 +330,6 @@ const skillsDatabase = {
         "Skill_Bone"
       ],
       "baseDamageScalar": 0.3,
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "AffixIsEquipped(1944498)>0?25:0"
-        }
-      ],
       "description": "{if:AffixIsEquipped(1944498)>0}{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{/if}{c_label}Generate Essence:{/c} {c_resource}10{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Fire {c_number}3{/c} splinters of bone, dealing {c_number}[{payload:damage}|2?|]{/c} damage each.",
       "maxRank": 15,
       "damageType": "Physical",
@@ -471,12 +446,7 @@ const skillsDatabase = {
         "Skill_Bone"
       ],
       "baseDamageScalar": 1.3,
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "Mod(2686060762)?20:25"
-        }
-      ],
+      "resourceCost": 25,
       "description": "{c_label}Essence Cost:{/c} {c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Conjure a bone spear from the ground that pierces enemies, dealing {c_number}[{payload:damage}|2?|]{/c} damage.",
       "maxRank": 15,
       "damageType": "Physical",
@@ -621,12 +591,7 @@ const skillsDatabase = {
       "tags": [
         "Skill_Shadow"
       ],
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "Mod(2686060762)?16:20"
-        }
-      ],
+      "resourceCost": 20,
       "description": "{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}A specter of you charges forward, dealing {c_number}[{payload:projectile_damage}|2?|]{/c} damage, then attacks with its scythe, dealing {c_number}[{payload:damage_out}|2?|]{/c} damage.",
       "maxRank": 15,
       "damageType": "Shadow",
@@ -746,12 +711,7 @@ const skillsDatabase = {
         "Skill_Shadow",
         "Search_Shadow"
       ],
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?0:20"
-        }
-      ],
+      "resourceCost": 20,
       "description": "{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[Mod(2686060764)?60:40|%|]{/c}\\n{/if}Unleash concentrated blight that deals {c_number}[{payload:projectile_damage}|2?|]{/c} damage and leaves behind a defiled area, dealing {c_number}[{dot:tooltip_dot}|2?|]{/c} Corrupting damage over {c_number}[{buffduration:tooltip_dot}|2?|]{/c} seconds.",
       "maxRank": 15,
       "damageType": "Shadow",
@@ -879,8 +839,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": 4
         }
-      ],
-      "cooldown": "((GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?2.5:2.1)*Table(34,sLevel)*1.5?(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0):0"
+      ]
     },
     {
       "name": "Skeleton Mage",
@@ -889,12 +848,7 @@ const skillsDatabase = {
         "Skill_Primary_Minion"
       ],
       "baseDamageScalar": 0.8,
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": 30
-        }
-      ],
+      "resourceCost": 30,
       "description": "{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Raise a skeletal mage, up to a maximum of {c_number}[Floor((3+Necro_Bonus_Max_Mages+(Mod(582507894)?2:0))*((NecroPetPassiveIsActive(931578)?0.5:1)*(NecroPetPassiveIsActive(931587)?0.5:1)*(NecroPetPassiveIsActive(931594)?0.5:1)))|2?|]{/c} mages. Skeletal mages deal {c_number}[{payload:tooltip_shadow}|2?|]{/c} damage with each attack.",
       "maxRank": 15,
       "damageType": "Physical",
@@ -992,12 +946,7 @@ const skillsDatabase = {
       "tags": [
         "Skill_Blood"
       ],
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?0:30"
-        }
-      ],
+      "resourceCost": 30,
       "description": "{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Draw blood from enemies, dealing {c_number}[{payload:outer_damage}|2?|]{/c} damage, then expel a blood nova, dealing {c_number}[{payload:inner_damage}|2?|]{/c} damage.\\n\\n{c_important}Blood Surge's{/c} nova damage is increased by {c_number}5%{c_lightgray}\\[x\\]{/c}{/c} for each enemy drawn from, up to {c_number}50%{c_lightgray}\\[x\\]{/c}{/c}.",
       "maxRank": 15,
       "damageType": "Physical",
@@ -1142,7 +1091,6 @@ const skillsDatabase = {
           "unk_b8f2b": -1
         }
       ],
-      "cooldown": "(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?30-(GetCollectiblePowerLevel(2353919)-1)-Floor(GetCollectiblePowerLevel(2353919)/10):0",
       "baseDamageScalar": 0.2
     },
     {
@@ -1151,12 +1099,7 @@ const skillsDatabase = {
         "Skill_Blood"
       ],
       "baseDamageScalar": 1.3,
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "Mod(2686060763)?12:15"
-        }
-      ],
+      "resourceCost": 15,
       "description": "{c_label}Essence Cost:{/c} {c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Throw a blood lance, dealing {c_number}[{payload:damage}|2?|]{/c} to an enemy that ricochets to another enemy. Enemies hit are lanced for {if:Mod(582507896)}almost forever{else}{c_number}[{buffduration:lanced}|2?|]{/c} seconds{/if}.\\n\\nWhen {c_important}Blood Lance{/c} hits an enemy, it deals damage to all other lanced enemies.",
       "maxRank": 15,
       "damageType": "Physical",
@@ -1511,7 +1454,6 @@ const skillsDatabase = {
           "unk_b8f2b": -1
         }
       ],
-      "cooldown": 10,
       "baseDamageScalar": 1.3
     },
     {
@@ -1663,8 +1605,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ],
-      "cooldown": "Mod(582507895)?8:24"
+      ]
     },
     {
       "name": "Bone Prison",
@@ -1769,8 +1710,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ],
-      "cooldown": 15
+      ]
     },
     {
       "name": "Bone Spirit",
@@ -1779,12 +1719,6 @@ const skillsDatabase = {
         "Necro_Skill_BoneSpirit"
       ],
       "baseDamageScalar": 1.5,
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "Mod(2686060762)?30:0"
-        }
-      ],
       "description": "{if:1-Mod(2686060762)}{c_label}Charges:{/c} {c_resource}[2+(Mod(2686060761)?1:0)|2?|]{/c}\\n{c_label}Charge Cooldown:{/c_label} {c_resource}[{recharge time}|2?|]{/c} seconds\\n{/if}{if:Mod(2686060762)}{c_label}Essence Cost:{/c} {c_resource}[{resource cost}|2?|]{/c}\\n{/if}{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Conjure a spirit of bone that seeks enemies and explodes, dealing {c_number}[{payload:damage}|2?|]{/c} damage.",
       "maxRank": 15,
       "damageType": "Physical",
@@ -1984,8 +1918,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": 4
         }
-      ],
-      "cooldown": "NecroArmy_Spec_For_Pet_Type(2)==2?10:16"
+      ]
     }
   ],
   "Corruption": [
@@ -2084,8 +2017,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ],
-      "cooldown": 11
+      ]
     },
     {
       "name": "Decrepify",
@@ -2094,12 +2026,7 @@ const skillsDatabase = {
         "Keyword_Weaken"
       ],
       "baseDamageScalar": 0,
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": 10
-        }
-      ],
+      "resourceCost": 10,
       "description": "{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\nCurse the target area. Enemies afflicted by {c_important}Decrepify{/c} are {c_important}{u}Weakened{/c}{/u} and Slowed by {c_number}[0.4*Table(37,sLevel)*100|1%|]{/c} for {c_number}[{buffduration:decrepify_curse}|2?|]{/c} seconds.",
       "maxRank": 15,
       "damageType": "Shadow",
@@ -2185,12 +2112,7 @@ const skillsDatabase = {
         "Search_Physical"
       ],
       "baseDamageScalar": 0.3,
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "Mod(2686060761)?0:10"
-        }
-      ],
+      "resourceCost": 10,
       "description": "{if:Mod(2686060761)}{c_label}Generate Essence:{/c} {c_resource}5{/c}\\n{else}{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{/if}{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Curse the target area. Enemies afflicted by {c_important}Iron Maiden{/c} take {c_number}[{payload:curse_periodic_damage}|2?|]{/c} damage every {c_number}2{/c} seconds and {c_number}[{payload:curse_damage}|2?|]{/c} damage each time they deal direct damage for {c_number}[{buffduration:ironmaiden_curse}|2?|]{/c} seconds.",
       "maxRank": 15,
       "damageType": "Physical",
@@ -2327,12 +2249,6 @@ const skillsDatabase = {
         "Search_ShadowDOT"
       ],
       "baseDamageScalar": 0.1,
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?70-(GetCollectiblePowerLevel(2353919)-1)*2-Floor(GetCollectiblePowerLevel(2353919)/10)*2:0"
-        }
-      ],
       "description": "{c_label}Cooldown:{/c_label} {c_resource}[{cooldown time}|2?|]{/c_resource} seconds\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}{if:GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0}{c_label}Essence Cost:{/c} {c_resource}[{resource cost}|2?|]{/c}\\nConsume surrounding enemies, dealing {c_number}[{dot:tooltip_total_damage}|2?|]{/c} Corrupting damage over {c_number}[{buffduration:caster_skill_active}|2?|]{/c} seconds.\\n\\nEvery {c_number}0.25{/c} seconds of this duration, you absorb the souls of up to {c_number}3{/c} enemies, dealing {c_number}[{payload:soul_damage_core}|2?|]{/c} damage to them. You absorb {c_number}3{/c} souls at a time from Bosses.\\n\\n {c_important}Soulrifts{/c} stacks up to {c_number}10{/c} times.{else}Consume surrounding enemies, dealing {c_number}[{dot:tooltip_total_damage}|2?|]{/c} Corrupting damage over {c_number}[{buffduration:caster_skill_active}|2?|]{/c} seconds.\\n\\nEvery {c_number}0.25{/c} seconds you absorb the souls of {c_number}3{/c} enemies, gaining {c_number}[(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?0:2|2?|]{/c} Essence per enemy. You absorb {c_number}3{/c} souls at a time from Bosses.{/if}",
       "maxRank": 15,
       "modifiers": [
@@ -2456,19 +2372,12 @@ const skillsDatabase = {
           "damageType": 5,
           "unk_b8f2b": 4
         }
-      ],
-      "cooldown": "(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?0:50"
+      ]
     },
     {
       "name": "Bone Storm",
       "tags": [
         "Skill_Bone"
-      ],
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?70-(GetCollectiblePowerLevel(2353919)-1)*2-Floor(GetCollectiblePowerLevel(2353919)/10)*2:0"
-        }
       ],
       "description": "{c_label}Cooldown:{/c} {c_resource}[{cooldown time}|2?|]{/c} seconds\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}40%{/c}\\n{/if}{if:GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0}{c_label}Essence Cost:{/c} {c_resource}[{resource cost}|2?|]{/c}\\nA swirling storm of bones appears at a target location and around your Golem, dealing {c_number}{if:AffixIsEquipped(616076)}[{payload:tooltip_damage_shadow}|2?|]{else}[{payload:tooltip_damage}|2?|]{/if}{/c} damage to surrounding enemies over {c_number}[{buffduration:bonestorm}|2?|]{/c} seconds.{/if}{if:(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?0:1}A swirling storm of bones appears around you and your Golem, dealing {c_number}{if:AffixIsEquipped(616076)}[{payload:tooltip_damage_shadow}|2?|]{else}[{payload:tooltip_damage}|2?|]{/if}{/c} damage to surrounding enemies over {c_number}[{buffduration:bonestorm}|2?|]{/c} seconds.{/if}",
       "maxRank": 15,
@@ -2580,7 +2489,6 @@ const skillsDatabase = {
           "unk_b8f2b": -1
         }
       ],
-      "cooldown": "(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?0:60-(Mod(582507896)?20*Table(37,sLevel):0)",
       "baseDamageScalar": 0.4
     },
     {
@@ -2588,12 +2496,6 @@ const skillsDatabase = {
       "tags": [
         "Skill_Primary_Summoning",
         "Search_CrowdControl"
-      ],
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?70-(GetCollectiblePowerLevel(2353919)-1)*2-Floor(GetCollectiblePowerLevel(2353919)/10)*2:0"
-        }
       ],
       "description": "{c_label}Cooldown:{/c_label} {c_resource}[{cooldown time}|2?|]{/c_resource} seconds\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[(1-Pow(0.9299999999999999,((GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?2:7)*2))*100|%|]{/c}\\n{/if}{if:GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0}{c_label}Essence Cost:{/c} {c_resource}[{resource cost}|2?|]{/c}\\nCall forth the deep buried dead. Volatile Skeletons rapidly emerge over the next {c_number}[{buffduration:raise_army}|2?|]{/c} seconds that explode when around enemies, dealing {c_number}[{payload:explosion_damage}|2?|]{/c} damage.{else}Call forth the deep buried dead. {c_important}Volatile Skeletons{/c} emerge over the next {c_number}[{buffduration:raise_army}|2?|]{/c} seconds that explode when around enemies, dealing {c_number}[{payload:explosion_damage}|2?|]{/c} damage and Stunning them for {c_number}[{buffduration:volatine_stun}|2?|]{/c} seconds.{/if}",
       "maxRank": 15,
@@ -2677,8 +2579,7 @@ const skillsDatabase = {
           "applyFreeze": 1,
           "unk_b8f2b": 4
         }
-      ],
-      "cooldown": "(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?0:Mod(2686060762)?40:60"
+      ]
     },
     {
       "name": "Blood Wave",
@@ -2687,12 +2588,6 @@ const skillsDatabase = {
         "Necro_Skill_BloodWave"
       ],
       "baseDamageScalar": 3,
-      "resourceCost": [
-        {
-          "type": 6,
-          "cost": "Mod(582507896)?50:0"
-        }
-      ],
       "description": "{if:Mod(582507896)>0?0:1}{c_label}Cooldown:{/c_label} {c_resource}[{cooldown time}|2?|]{/c_resource} seconds\\n{/if}{if:Mod(582507896)}{c_label}Essence Cost:{/c} {c_resource}[{resource cost}|2?|]{/c}\\n{/if}{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Conjure a {if:Mod(582507896)>0?0:1}tidal{else}short{/if} wave of blood that deals {c_number}{if:AffixIsEquipped(616076)}[{payload:damage_shadow}|2?|]{else}[{payload:damage}|2?|]{/if}{/c} damage{if:Mod(582507896)>0?0:1} and Knocks Back enemies{/if}.",
       "maxRank": 15,
       "damageType": "Physical",
@@ -2861,8 +2756,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ],
-      "cooldown": "Mod(582507896)?0:50"
+      ]
     }
   ]
 };
