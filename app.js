@@ -3644,7 +3644,6 @@ function renderSkills() {
   container.innerHTML = ''; 
   if (typeof skillsDatabase === 'undefined') return; 
   
-  // Create a flex column layout for the category containers
   container.style.display = 'flex';
   container.style.flexDirection = 'column';
   container.style.gap = '40px';
@@ -3666,82 +3665,35 @@ function renderSkills() {
     skillsList.style.flexDirection = 'row';
     skillsList.style.flexWrap = 'wrap';
     skillsList.style.justifyContent = 'center';
-    skillsList.style.gap = '60px';
+    skillsList.style.gap = '40px';
     
     skills.forEach(skill => { 
       const pdContainer = document.createElement('div');
       pdContainer.style.display = 'flex';
       pdContainer.style.flexDirection = 'column';
-      pdContainer.style.alignItems = 'center';
       
       const pdTitle = document.createElement('div');
-      pdTitle.style.color = '#ccc';
-      pdTitle.style.marginBottom = '15px';
+      pdTitle.style.color = '#fff';
+      pdTitle.style.marginBottom = '8px';
       pdTitle.style.fontWeight = 'bold';
       pdTitle.style.fontSize = '16px';
+      pdTitle.style.borderBottom = '1px solid #444';
+      pdTitle.style.paddingBottom = '4px';
       pdTitle.textContent = skill.name;
       pdContainer.appendChild(pdTitle);
       
       const pd = document.createElement('div');
-      pd.className = 'skill-paperdoll-grid';
-      
-      // Inject SVG for lines
-      // 7 cols, 5 rows. cell=44, gap=15. width=398, height=280.
-      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg.setAttribute('class', 'paperdoll-svg-lines');
-      svg.setAttribute('viewBox', '0 0 398 280');
-      
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', 
-        // Base (199, 258) UP to Split (199, 199)
-        'M 199 258 L 199 199 ' + 
-        // Split LEFT to (81, 199) UP to Jct L (81, 140)
-        'M 199 199 L 81 199 L 81 140 ' + 
-        // Jct L splits: UP to Mod1 (81, 22), LEFT to Mod0 (22, 140) -- wait, let's just draw simple paths
-        'M 81 140 L 81 22 ' + 
-        'M 81 140 L 22 140 L 22 81 ' + 
-        
-        // Split RIGHT to (317, 199) UP to Jct R (317, 140)
-        'M 199 199 L 317 199 L 317 140 ' +
-        // Jct R splits: UP to Mod5 (317, 22), RIGHT to Mod6 (376, 140) -> UP to (376, 81)
-        'M 317 140 L 317 22 ' +
-        'M 317 140 L 376 140 L 376 81 ' +
-        
-        // Split UP to Jct M (199, 140)
-        'M 199 199 L 199 140 ' +
-        // Jct M splits: LEFT to (140, 140) UP to Mod2 (140, 81)
-        'M 199 140 L 140 140 L 140 81 ' +
-        // UP to Mod3 (199, 22)
-        'M 199 140 L 199 22 ' +
-        // RIGHT to (258, 140) UP to Mod4 (258, 81)
-        'M 199 140 L 258 140 L 258 81'
-      );
-      path.setAttribute('stroke', '#a00');
-      path.setAttribute('stroke-width', '4');
-      path.setAttribute('fill', 'none');
-      svg.appendChild(path);
-      
-      // Routing diamonds
-      const addDiamond = (x, y) => {
-          const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-          rect.setAttribute('x', x - 6);
-          rect.setAttribute('y', y - 6);
-          rect.setAttribute('width', 12);
-          rect.setAttribute('height', 12);
-          rect.setAttribute('fill', '#a00');
-          rect.setAttribute('transform', `rotate(45 ${x} ${y})`);
-          svg.appendChild(rect);
-      };
-      addDiamond(199, 199); // Main split
-      addDiamond(81, 140);  // Jct L
-      addDiamond(199, 140); // Jct M
-      addDiamond(317, 140); // Jct R
-      
-      pd.appendChild(svg);
+      pd.className = 'skill-compact-grid';
       
       const createSlot = (name, maxRank, isBase, index) => {
           const slot = document.createElement('div');
-          slot.className = 'paperdoll-slot' + (isBase ? ' pd-base' : ' pd-mod pd-mod-' + index);
+          
+          let slotClass = 'paperdoll-slot';
+          if (isBase) slotClass += ' pd-base';
+          else if (index < 3) slotClass += ' pd-dia pd-mod-' + index;
+          else slotClass += ' pd-cir pd-mod-' + index;
+          
+          slot.className = slotClass;
           
           let imgName = name.toLowerCase().replace(/\s+/g, '-');
           let imgSrc = 'assets/skills/' + imgName + '.png';
