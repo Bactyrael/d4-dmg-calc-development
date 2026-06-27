@@ -734,13 +734,18 @@ const skillsDatabase = {
         "Search_Shadow"
       ],
       "resourceCost": 20,
-      "description": "{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[Mod(2686060764)?60:40|%|]{/c}\\n{/if}Unleash concentrated blight that deals {c_number}[{payload:projectile_damage}|2?|]{/c} damage and leaves behind a defiled area, dealing {c_number}[{dot:tooltip_dot}|2?|]{/c} Corrupting damage over {c_number}[{buffduration:tooltip_dot}|2?|]{/c} seconds.",
+      "description": "{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[Mod(2686060764)?60:40|%|]{/c}\\n{/if}Unleash concentrated blight that deals {c_number}[{payload:projectile_damage}|2?|]{/c} damage and leaves behind a defiled area, dealing {c_number}[{dot:tooltip_dot}|2?|]{/c} Corrupting damage over {c_number}6{/c} seconds.",
       "maxRank": 15,
+      "baseDamageScalar": 0.40,
+      "secondaryScalars": {
+        "tooltip_dot": 2.10
+      },
       "damageType": "Shadow",
       "modifiers": [
         {
           "name": "Volatile Blood",
           "description": "{c_important}Blight{/c} becomes a {c_important}Blood{/c} skill that deals Physical damage. \\n\\n{c_important}Blight's{/c} defiled area instantly bursts, dealing {c_number}[{payload:modc_damage}|2?|]{/c} damage.",
+          "baseDamageScalar": 3.15,
           "maxRank": 1,
           "tags": [
             "Search_Damage",
@@ -757,7 +762,7 @@ const skillsDatabase = {
             "Damage_Override_Cold",
             "Search_Cold"
           ],
-          "description": "{c_important}Blight{/c} deals Cold and Frostbite damage. \\n\\nIts defiled area Pulls in enemies and {c_important}{u}Chills{/u}{/c} for {c_number}[Min(1,0.15*(1+Bonus_Percent_Per_Power(481293)))*100|%|]{/c} every second.",
+          "description": "{c_important}Blight{/c} deals Cold and Frostbite damage. \\n\\nIts defiled area Pulls in enemies and {c_important}{u}Chills{/u}{/c} for {c_number}[15*Table(34,sLevel)|%|]{/c} every second.",
           "maxRank": 1
         },
         {
