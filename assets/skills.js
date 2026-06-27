@@ -243,7 +243,7 @@ const skillsDatabase = {
             "Keyword_Blood_Orb",
             "Search_Cold"
           ],
-          "description": "{c_important}Hemorrhage{/c} deals {c_number}[{payload:damage_cold}|2?|]{/c} Cold damage and {c_important}{u}Freezes{/c}{/u} enemies for {c_number}[{buffduration:freeze}|2?|]{/c} seconds. An enemy can be {c_important}{u}Frozen{/c}{/u} this way once every {c_number}6{/c} seconds.\\n\\nIf {c_important}Hemorrhage{/c} hits an enemy already {c_important}{u}Frozen{/u}{/c}, it has an additional {c_number}50%{/c} chance to form a {c_important}{u}Blood Orb{/u}{/c}.",
+          "description": "{c_important}Hemorrhage{/c} deals {c_number}[{payload:damage_cold}|2?|]{/c} Cold damage and {c_important}{u}Freezes{/c}{/u} enemies for {c_number}3{/c} seconds. An enemy can be {c_important}{u}Frozen{/c}{/u} this way once every {c_number}6{/c} seconds.\\n\\nIf {c_important}Hemorrhage{/c} hits an enemy already {c_important}{u}Frozen{/u}{/c}, it has an additional {c_number}50%{/c} chance to form a {c_important}{u}Blood Orb{/u}{/c}.",
           "maxRank": 1
         },
         {
