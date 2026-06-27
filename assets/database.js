@@ -8560,7 +8560,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Cruor's Embrace",
-      "desc": "Casting Blood Surge picks up 4 Blood Orbs around you to expel smaller blood novas, dealing [50 - 60]% of normal damage."
+      "desc": "Casting Blood Surge picks up 4 Blood Orbs around you to expel smaller blood novas, dealing [80.0 - 100.0]% of normal damage."
     },
     {
       "name": "Dark Howl",
