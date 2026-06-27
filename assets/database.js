@@ -9260,7 +9260,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Shard of Verathiel",
-      "desc": "Basic Skills deal [70 - 100]%[x] increased damage but additionally cost 25 Primary Resource."
+      "desc": "Basic Skills deal [70.0 - 100.0]%[x] increased damage but additionally cost 25 Primary Resource."
     },
     {
       "name": "Shattered Vow",
@@ -13340,215 +13340,6 @@ window.D4_DATABASE = {
     ],
     "Mainhand": [
       {
-        "name": "Bearded Axe",
-        "rarity": "legendary",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Axe",
-        "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1,
-        "sockets": 1,
-        "type": "Axe"
-      },
-      {
-        "name": "Bone Blade",
-        "rarity": "legendary",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Dagger",
-        "damageRange": "1,152 - 1,728",
-        "weaponSpeed": 1.2,
-        "sockets": 1,
-        "type": "Dagger"
-      },
-      {
-        "name": "Bone Wand",
-        "rarity": "legendary",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Wand",
-        "damageRange": "1,152 - 1,728",
-        "weaponSpeed": 1.2,
-        "sockets": 1,
-        "type": "Wand"
-      },
-      {
-        "name": "Bonebreaker",
-        "rarity": "legendary",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Two-Handed Mace",
-        "damageRange": "3,071 - 4,607",
-        "weaponSpeed": 0.9,
-        "sockets": 2,
-        "type": "Two-Handed Mace"
-      },
-      {
-        "name": "Demonblade",
-        "rarity": "legendary",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Two-Handed Sword",
-        "damageRange": "2,764 - 4,146",
-        "weaponSpeed": 1,
-        "sockets": 2,
-        "type": "Two-Handed Sword"
-      },
-      {
-        "name": "Obsidian Blade",
-        "rarity": "legendary",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Sword",
-        "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1,
-        "sockets": 1,
-        "type": "Sword"
-      },
-      {
-        "name": "Ossified Scythe",
-        "rarity": "legendary",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Scythe",
-        "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1,
-        "sockets": 1,
-        "type": "Scythe"
-      },
-      {
-        "name": "Parashu",
-        "rarity": "legendary",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Two-Handed Axe",
-        "damageRange": "3,071 - 4,607",
-        "weaponSpeed": 0.9,
-        "sockets": 2,
-        "type": "Two-Handed Axe"
-      },
-      {
-        "name": "Skullsplitter",
-        "rarity": "legendary",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Mace",
-        "damageRange": "1,256 - 1,884",
-        "weaponSpeed": 1.1,
-        "sockets": 1,
-        "type": "Mace"
-      },
-      {
-        "name": "Sparr",
-        "rarity": "legendary",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Two-Handed Scythe",
-        "damageRange": "3,071 - 4,607",
-        "weaponSpeed": 0.9,
-        "sockets": 2,
-        "type": "Two-Handed Scythe"
-      },
-      {
-        "name": "Spiked Flail",
-        "rarity": "legendary",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Flail",
-        "damageRange": "1,152 - 1,728",
-        "weaponSpeed": 1.2,
-        "sockets": 1,
-        "type": "Flail"
-      },
-      {
         "name": "Ahavarion, Spear of Lycander",
         "rarity": "mythic",
         "classes": [
@@ -13628,6 +13419,25 @@ window.D4_DATABASE = {
         "type": "Sword"
       },
       {
+        "name": "Bearded Axe",
+        "rarity": "legendary",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Axe",
+        "damageRange": "1,256 - 1,884",
+        "weaponSpeed": 1.1,
+        "sockets": 1,
+        "type": "Axe"
+      },
+      {
         "name": "Black River",
         "rarity": "unique",
         "classes": [
@@ -13660,6 +13470,63 @@ window.D4_DATABASE = {
         "damageRange": "3,071 - 4,607",
         "sockets": 2,
         "type": "Two-Handed Scythe"
+      },
+      {
+        "name": "Bone Blade",
+        "rarity": "legendary",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Dagger",
+        "damageRange": "1,152 - 1,728",
+        "weaponSpeed": 1.2,
+        "sockets": 1,
+        "type": "Dagger"
+      },
+      {
+        "name": "Bone Wand",
+        "rarity": "legendary",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Wand",
+        "damageRange": "1,152 - 1,728",
+        "weaponSpeed": 1.2,
+        "sockets": 1,
+        "type": "Wand"
+      },
+      {
+        "name": "Bonebreaker",
+        "rarity": "legendary",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Two-Handed Mace",
+        "damageRange": "3,071 - 4,607",
+        "weaponSpeed": 0.9,
+        "sockets": 2,
+        "type": "Two-Handed Mace"
       },
       {
         "name": "Cassia's Grace",
@@ -13735,6 +13602,25 @@ window.D4_DATABASE = {
           0
         ],
         "type": "Mainhand"
+      },
+      {
+        "name": "Demonblade",
+        "rarity": "legendary",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Two-Handed Sword",
+        "damageRange": "2,764 - 4,146",
+        "weaponSpeed": 1,
+        "sockets": 2,
+        "type": "Two-Handed Sword"
       },
       {
         "name": "Dirge of Odium",
@@ -14049,6 +13935,25 @@ window.D4_DATABASE = {
         "type": "Mainhand"
       },
       {
+        "name": "Obsidian Blade",
+        "rarity": "legendary",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Sword",
+        "damageRange": "1,256 - 1,884",
+        "weaponSpeed": 1.1,
+        "sockets": 1,
+        "type": "Sword"
+      },
+      {
         "name": "Orphan Maker",
         "rarity": "unique",
         "classes": [
@@ -14079,6 +13984,25 @@ window.D4_DATABASE = {
         "type": "Mainhand"
       },
       {
+        "name": "Ossified Scythe",
+        "rarity": "legendary",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Scythe",
+        "damageRange": "1,256 - 1,884",
+        "weaponSpeed": 1.1,
+        "sockets": 1,
+        "type": "Scythe"
+      },
+      {
         "name": "Overkill",
         "rarity": "unique",
         "classes": [
@@ -14092,6 +14016,25 @@ window.D4_DATABASE = {
           0
         ],
         "type": "Mainhand"
+      },
+      {
+        "name": "Parashu",
+        "rarity": "legendary",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Two-Handed Axe",
+        "damageRange": "3,071 - 4,607",
+        "weaponSpeed": 0.9,
+        "sockets": 2,
+        "type": "Two-Handed Axe"
       },
       {
         "name": "Purified Lightbringer",
@@ -14267,6 +14210,25 @@ window.D4_DATABASE = {
         "type": "Mainhand"
       },
       {
+        "name": "Shard of Verathiel",
+        "rarity": "unique",
+        "classes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1,
+        "type": "Sword"
+      },
+      {
         "name": "Shattered Vow",
         "rarity": "mythic",
         "classes": [
@@ -14282,6 +14244,25 @@ window.D4_DATABASE = {
         "type": "Mainhand"
       },
       {
+        "name": "Skullsplitter",
+        "rarity": "legendary",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Mace",
+        "damageRange": "1,256 - 1,884",
+        "weaponSpeed": 1.1,
+        "sockets": 1,
+        "type": "Mace"
+      },
+      {
         "name": "Skyhunter",
         "rarity": "unique",
         "classes": [
@@ -14295,6 +14276,44 @@ window.D4_DATABASE = {
           0
         ],
         "type": "Mainhand"
+      },
+      {
+        "name": "Sparr",
+        "rarity": "legendary",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Two-Handed Scythe",
+        "damageRange": "3,071 - 4,607",
+        "weaponSpeed": 0.9,
+        "sockets": 2,
+        "type": "Two-Handed Scythe"
+      },
+      {
+        "name": "Spiked Flail",
+        "rarity": "legendary",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Flail",
+        "damageRange": "1,152 - 1,728",
+        "weaponSpeed": 1.2,
+        "sockets": 1,
+        "type": "Flail"
       },
       {
         "name": "Spine of Tathamet",
@@ -14485,6 +14504,25 @@ window.D4_DATABASE = {
         "type": "Mainhand"
       },
       {
+        "name": "The Mortacrux",
+        "rarity": "unique",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "weaponType": "Dagger",
+        "damageRange": "1,152 - 1,728",
+        "weaponSpeed": 1.2,
+        "sockets": 1,
+        "type": "Dagger"
+      },
+      {
         "name": "The Oculus",
         "rarity": "unique",
         "classes": [
@@ -14562,25 +14600,6 @@ window.D4_DATABASE = {
           0
         ],
         "type": "Mainhand"
-      },
-      {
-        "name": "The Mortacrux",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "weaponType": "Dagger",
-        "damageRange": "1,152 - 1,728",
-        "weaponSpeed": 1.2,
-        "sockets": 1,
-        "type": "Dagger"
       }
     ],
     "Offhand": [
@@ -15620,6 +15639,25 @@ window.D4_DATABASE = {
         "type": "Weapon 1"
       },
       {
+        "name": "Shard of Verathiel",
+        "rarity": "unique",
+        "classes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1,
+        "type": "Sword"
+      },
+      {
         "name": "Shattered Vow",
         "rarity": "mythic",
         "classes": [
@@ -16635,6 +16673,25 @@ window.D4_DATABASE = {
           0
         ],
         "type": "Weapon 2"
+      },
+      {
+        "name": "Shard of Verathiel",
+        "rarity": "unique",
+        "classes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Shattered Vow",
@@ -17654,6 +17711,25 @@ window.D4_DATABASE = {
         "type": "Weapon 1 (Bludgeoning)"
       },
       {
+        "name": "Shard of Verathiel",
+        "rarity": "unique",
+        "classes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1,
+        "type": "Sword"
+      },
+      {
         "name": "Shattered Vow",
         "rarity": "mythic",
         "classes": [
@@ -18669,6 +18745,25 @@ window.D4_DATABASE = {
           0
         ],
         "type": "Weapon 2 (Slashing)"
+      },
+      {
+        "name": "Shard of Verathiel",
+        "rarity": "unique",
+        "classes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Shattered Vow",
@@ -19688,6 +19783,25 @@ window.D4_DATABASE = {
         "type": "Weapon 3 (Dual Wield 1)"
       },
       {
+        "name": "Shard of Verathiel",
+        "rarity": "unique",
+        "classes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1,
+        "type": "Sword"
+      },
+      {
         "name": "Shattered Vow",
         "rarity": "mythic",
         "classes": [
@@ -20703,6 +20817,25 @@ window.D4_DATABASE = {
           0
         ],
         "type": "Weapon 4 (Dual Wield 2)"
+      },
+      {
+        "name": "Shard of Verathiel",
+        "rarity": "unique",
+        "classes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        "weaponType": "Sword",
+        "weaponSpeed": 1.1,
+        "damageRange": "1,256 - 1,884",
+        "sockets": 1,
+        "type": "Sword"
       },
       {
         "name": "Shattered Vow",
