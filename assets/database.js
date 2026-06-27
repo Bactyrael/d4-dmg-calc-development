@@ -8960,7 +8960,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Mace of King Leoric",
-      "desc": "Your Golem will consume one of your Skeleton Mages or Skeleton Warriors every 8 seconds, healing to full Life and gaining [70 - 80]%[x] increased damage for 10 seconds."
+      "desc": "Your Golem will consume one of your Skeleton Mages or Skeleton Warriors every 8 seconds, healing to full Life and gaining [100.0 - 120.0]%[x] increased damage for 10 seconds."
     },
     {
       "name": "Mad Wolf's Glee",
