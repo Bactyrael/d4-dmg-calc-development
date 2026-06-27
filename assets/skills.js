@@ -490,6 +490,7 @@ const skillsDatabase = {
           "tags": [
             "Search_Damage"
           ],
+          "baseDamageScalar": 0.43,
           "description": "{c_important}Bone Spear{/c} breaks into {c_number}3{/c} piercing bone shards when it is destroyed, dealing {c_number}[{payload:damage_boneshard}|2?|]{/c} damage each.",
           "maxRank": 1
         },
