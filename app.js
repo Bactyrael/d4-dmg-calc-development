@@ -3644,42 +3644,47 @@ function renderSkills() {
   container.innerHTML = ''; 
   if (typeof skillsDatabase === 'undefined') return; 
   
-  // Create a grid layout for the category containers
+  // Create a grid layout for the category containers (clusters)
   container.style.display = 'grid';
-  container.style.gridTemplateColumns = 'repeat(auto-fill, minmax(320px, 1fr))';
-  container.style.gap = '20px';
+  container.style.gridTemplateColumns = '1fr'; // One large window per cluster taking full width
+  container.style.gap = '30px';
   container.style.alignItems = 'start';
   
   for (const [category, skills] of Object.entries(skillsDatabase)) { 
+    // This is the ONE LARGE PAPERDOLL WINDOW per cluster
     const catDiv = document.createElement('div'); 
-    catDiv.className = 'skill-category'; 
-    catDiv.style.background = 'rgba(0,0,0,0.5)';
-    catDiv.style.padding = '15px';
-    catDiv.style.borderRadius = '8px';
-    catDiv.style.border = '1px solid #333';
+    catDiv.className = 'skill-category skill-paperdoll-wrapper'; 
+    catDiv.style.width = '100%';
+    catDiv.style.boxSizing = 'border-box';
     
     const catTitle = document.createElement('h3'); 
-    catTitle.className = 'skill-category-title'; 
+    catTitle.className = 'skill-paperdoll-title'; 
     catTitle.textContent = category + ' Skills'; 
-    catTitle.style.textAlign = 'center';
-    catTitle.style.color = '#da2';
     catDiv.appendChild(catTitle); 
     
+    // The list of all paperdolls in this cluster
     const skillsList = document.createElement('div'); 
     skillsList.className = 'skill-list'; 
     skillsList.style.display = 'flex';
-    skillsList.style.flexDirection = 'column';
-    skillsList.style.gap = '20px';
+    skillsList.style.flexDirection = 'row';
+    skillsList.style.flexWrap = 'wrap';
+    skillsList.style.justifyContent = 'center';
+    skillsList.style.gap = '40px';
     
     skills.forEach(skill => { 
-      // Paperdoll wrapper
-      const pdWrapper = document.createElement('div');
-      pdWrapper.className = 'skill-paperdoll-wrapper';
+      // The individual skill paperdoll container (no wrapper background anymore)
+      const pdContainer = document.createElement('div');
+      pdContainer.style.display = 'flex';
+      pdContainer.style.flexDirection = 'column';
+      pdContainer.style.alignItems = 'center';
       
       const pdTitle = document.createElement('div');
-      pdTitle.className = 'skill-paperdoll-title';
+      pdTitle.style.color = '#ccc';
+      pdTitle.style.marginBottom = '10px';
+      pdTitle.style.fontWeight = 'bold';
+      pdTitle.style.fontSize = '14px';
       pdTitle.textContent = skill.name;
-      pdWrapper.appendChild(pdTitle);
+      pdContainer.appendChild(pdTitle);
       
       const pd = document.createElement('div');
       pd.className = 'skill-paperdoll';
@@ -3738,8 +3743,8 @@ function renderSkills() {
           });
       }
       
-      pdWrapper.appendChild(pd);
-      skillsList.appendChild(pdWrapper); 
+      pdContainer.appendChild(pd);
+      skillsList.appendChild(pdContainer); 
     }); 
     catDiv.appendChild(skillsList); 
     container.appendChild(catDiv); 
