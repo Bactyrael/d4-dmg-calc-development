@@ -231,7 +231,7 @@ const skillsDatabase = {
           "tags": [
             "Search_Damage"
           ],
-          "baseDamageScalar": 0.40,
+          "baseDamageScalar": 0.4,
           "description": "{c_important}Hemorrhage{/c} also deals {c_number}[{payload:damage_aoe}|2?|]{/c} damage to enemies around your target.",
           "maxRank": 1
         },
@@ -970,7 +970,8 @@ const skillsDatabase = {
             "Damage_Override_Physical"
           ],
           "description": "{c_important}Blood Surge{/c} becomes a {c_important}Bone{/c} Skill and, instead of expelling a blood nova, expels {c_number}10{/c} piercing bone shards dealing {c_number}[{payload:shard_damage}|2?|]{/c} damage each.\\n\\nInstead of dealing increased damage, {c_important}Blood Surge{/c} expels {c_number}1{/c} additional shard for each enemy drawn from, up to {c_number}5{/c} additional shards.",
-          "maxRank": 1
+          "maxRank": 1,
+          "baseDamageScalar": 0.6
         },
         {
           "name": "You And What Army?",
@@ -978,7 +979,8 @@ const skillsDatabase = {
             "Search_Minion"
           ],
           "description": "{c_important}Blood Surge{/c} expels smaller blood novas on your {c_important}Minions{/c}, dealing {c_number}[{payload:legendary_minion_nova}|2?|]{/c} damage.\\n\\n{c_important}Blood Surge's{/c} minion nova damage is increased by {c_number}5%{c_lightgray}\\[x\\]{/c}{/c} for each enemy drawn from, up to {c_number}50%{c_lightgray}\\[x\\]{/c}{/c}.",
-          "maxRank": 1
+          "maxRank": 1,
+          "baseDamageScalar": 0.2
         },
         {
           "name": "Bloodbath",
@@ -986,7 +988,8 @@ const skillsDatabase = {
             "Search_Damage"
           ],
           "description": "{c_important}Blood Surge's{/c} nova echoes again after a short delay, dealing {c_number}[{payload:echo_damage}|2?|]{/c} damage.",
-          "maxRank": 1
+          "maxRank": 1,
+          "baseDamageScalar": 1.0
         },
         {
           "name": "Overpower",
@@ -1261,7 +1264,8 @@ const skillsDatabase = {
             "Skill_Bone",
             "Search_Damage",
             "Damage_Override_Physical"
-          ]
+          ],
+          "baseDamageScalar": 1.0
         },
         {
           "name": "Miasma",
@@ -1365,7 +1369,8 @@ const skillsDatabase = {
             "Search_Damage"
           ],
           "maxRank": 1,
-          "description": "{c_important}Skeleton Warriors{/c} lose {c_number}25%{/c} of their Maximum Life per second while in combat and explode on death, dealing {c_number}[{payload:death_explosion}|2?|]{/c} damage.\\n\\n{c_important}Skeleton Warriors{/c} are now raised from a nearby Corpse every {c_number}0.5{/c} seconds."
+          "description": "{c_important}Skeleton Warriors{/c} lose {c_number}25%{/c} of their Maximum Life per second while in combat and explode on death, dealing {c_number}[{payload:death_explosion}|2?|]{/c} damage.\\n\\n{c_important}Skeleton Warriors{/c} are now raised from a nearby Corpse every {c_number}0.5{/c} seconds.",
+          "baseDamageScalar": 1.5
         },
         {
           "name": "Master of Puppets",
@@ -1746,7 +1751,8 @@ const skillsDatabase = {
           "maxRank": 1,
           "tags": [
             "Search_Damage"
-          ]
+          ],
+          "baseDamageScalar": 0.3
         },
         {
           "name": "Unfinished Business",
@@ -1766,7 +1772,8 @@ const skillsDatabase = {
             "Search_Damage"
           ],
           "description": "{c_important}Bone Spirit{/c} no longer seeks enemies and instead spirals around you, piercing through enemies and exploding for {c_number}[{payload:damage_variant_c}|2?|]{/c} damage when it hits them.",
-          "maxRank": 1
+          "maxRank": 1,
+          "baseDamageScalar": 1.0
         },
         {
           "name": "Charges",
@@ -1856,7 +1863,8 @@ const skillsDatabase = {
             "Search_Cooldown"
           ],
           "description": "Commanding your {c_important}Golem{/c} causes it to erupt, dealing {c_number}[{payload:explosion_damage}|2?|]{/c} damage to surrounding enemies.\\n\\nYour {c_important}Golem{/c} passively consumes nearby Corpses every second to reduce its Cooldown by {c_number}2{/c} seconds per Corpse consumed.",
-          "maxRank": 1
+          "maxRank": 1,
+          "baseDamageScalar": 3.0
         },
         {
           "name": "Gravebloom",
@@ -1955,7 +1963,10 @@ const skillsDatabase = {
           "name": "Jaws Of Death",
           "description": "{c_important}Corpse Tendrils{/c} now deals {c_number}[{payload:damage_pull_variantc}|2?|]{/c} damage and no longer has a delay before Pulling in enemies.",
           "maxRank": 1,
-          "tags": []
+          "tags": [],
+          "baseDamageScalar": 1.0,
+          "damageScalePerLevel": 0.25,
+          "damageScalePerFive": 0.5
         },
         {
           "name": "Get Over Here!",
@@ -2146,7 +2157,8 @@ const skillsDatabase = {
             "Search_Damage"
           ],
           "description": "{c_important}Iron Maiden{/c} is also a {c_important}Blood{/c} Skill, causing enemies damaged by it to have a {c_number}5%{/c} chance to form a {c_important}{u}Blood Orb{/c}{/u}. \\n\\nCasting {c_important}Iron Maiden{/c} picks up {c_number}4{/c} {c_important}{u}Blood Orbs{/c}{/u} in the target area and causes them to burst for {c_number}[{payload:blood_explosion}|2?|]{/c} damage.",
-          "maxRank": 1
+          "maxRank": 1,
+          "baseDamageScalar": 1.5
         },
         {
           "name": "Torture Artist",
@@ -2290,7 +2302,8 @@ const skillsDatabase = {
             "Search_CrowdControl"
           ],
           "description": "{c_important}Soulrift{/c} is cast at the target location. Absorbing an enemy's soul deals {c_number}[{payload:soul_absorb_damage}|2?|]{/c} damage and Pulls them in.",
-          "maxRank": 1
+          "maxRank": 1,
+          "baseDamageScalar": 0.25
         },
         {
           "name": "Frozen Wasteland",
@@ -2302,7 +2315,8 @@ const skillsDatabase = {
             "Search_Cold"
           ],
           "description": "{c_important}Soulrift{/c} deals Frostbite damage and {c_important}{u}Chills{/c}{/u} for {c_number}30%{/c} every second. \\n\\nIf {c_important}Soulrift{/c} absorbs the soul of a {c_important}{u}Frozen{/c}{/u} enemy, they shatter and explode for {c_number}[{payload:frozen_damage}|2?|]{/c} damage.",
-          "maxRank": 1
+          "maxRank": 1,
+          "baseDamageScalar": 0.75
         },
         {
           "name": "Damage Bonus",
@@ -2425,7 +2439,8 @@ const skillsDatabase = {
             "Search_Shadow"
           ],
           "description": "{c_important}Bone Storm{/c} becomes a {c_important}Darkness{/c} Skill that deals Shadow damage.\\n\\nEnemies damaged by it suffer an additional {c_number}[{payload:tooltip_dot_damage}|2?|]{/c} Corrupting damage over {c_number}2{/c} seconds.",
-          "maxRank": 1
+          "maxRank": 1,
+          "baseDamageScalar": 0.4
         },
         {
           "name": "Hungry Cyclone",
@@ -2533,7 +2548,8 @@ const skillsDatabase = {
             "Keyword_Freeze",
             "Damage_Override_Cold",
             "Search_Cold"
-          ]
+          ],
+          "baseDamageScalar": 1.5
         },
         {
           "name": "Pile the Bodies",
@@ -2623,7 +2639,8 @@ const skillsDatabase = {
             "Skill_Primary_Core"
           ],
           "description": "{c_important}Blood Wave{/c} becomes a {c_important}Core{/c} Skill, has no Cooldown, but costs {c_number}50{/c} Essence.\\n\\n{c_important}Blood Wave{/c} conjures a shorter wave that deals {c_number}[{payload:damage_core}|2?|]{/c} damage and no longer Knocks Back enemies.",
-          "maxRank": 1
+          "maxRank": 1,
+          "baseDamageScalar": 3.0
         },
         {
           "name": "Path of Darkness",
@@ -2643,7 +2660,8 @@ const skillsDatabase = {
             "Search_Damage"
           ],
           "description": "{c_important}Blood Wave{/c} launches {c_number}1{/c} additional wave, dealing {c_number}[{payload:damage_echo}|2?|]{/c} damage.",
-          "maxRank": 1
+          "maxRank": 1,
+          "baseDamageScalar": 5.0
         },
         {
           "name": "Overpower",
@@ -2786,3 +2804,4 @@ const skillsDatabase = {
     }
   ]
 };
+if (typeof window !== "undefined") window.skillsDatabase = skillsDatabase;
