@@ -2613,7 +2613,7 @@
       const aspectObj = (window.D4_DATABASE?.aspects || []).find(a => a.name === statName);
       if (aspectObj && aspectObj.desc) {
           const descLower = aspectObj.desc.toLowerCase();
-          if (descLower.includes('[x]') && descLower.includes('increased damage to')) {
+          if (descLower.includes('[x]') && descLower.includes('damage')) {
               isMultiplicativeAspect = true;
           }
       }
