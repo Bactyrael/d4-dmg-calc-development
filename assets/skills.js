@@ -781,10 +781,6 @@ const skillsDatabase = {
       "maxRank": 15,
       "modifiers": [
           {
-          "name": "Distilled Anima",
-          "maxRank": 1
-        },
-          {
           "name": "Soul Vortex",
           "maxRank": 1
         },
@@ -807,11 +803,7 @@ const skillsDatabase = {
           {
             "name": "Ferocity",
             "maxRank": 1
-          },
-          {
-          "name": "Distilled Anima",
-          "maxRank": 1
-        }
+          }
         ],
       "damageType": "Shadow",
       "tags": [
