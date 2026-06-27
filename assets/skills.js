@@ -98,7 +98,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ]
+      ],
+      "luckyHitChance": null
     },
     {
       "name": "Reap",
@@ -209,7 +210,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": 4
         }
-      ]
+      ],
+      "luckyHitChance": 30
     },
     {
       "name": "Hemorrhage",
@@ -323,7 +325,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": 4
         }
-      ]
+      ],
+      "luckyHitChance": 50
     },
     {
       "name": "Bone Splinters",
@@ -437,7 +440,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": 4
         }
-      ]
+      ],
+      "luckyHitChance": 30
     }
   ],
   "Core": [
@@ -585,7 +589,8 @@ const skillsDatabase = {
           "combatEffectOverride": 0,
           "unk_b8f2b": 4
         }
-      ]
+      ],
+      "luckyHitChance": 50
     },
     {
       "name": "Sever",
@@ -704,7 +709,8 @@ const skillsDatabase = {
           "unk_b8f2b": 4
         }
       ],
-      "baseDamageScalar": 0.2
+      "baseDamageScalar": 0.2,
+      "luckyHitChance": 40
     },
     {
       "name": "Blight",
@@ -840,7 +846,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": 4
         }
-      ]
+      ],
+      "luckyHitChance": null
     },
     {
       "name": "Skeleton Mage",
@@ -940,7 +947,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": 4
         }
-      ]
+      ],
+      "luckyHitChance": 20
     },
     {
       "name": "Blood Surge",
@@ -1092,7 +1100,8 @@ const skillsDatabase = {
           "unk_b8f2b": -1
         }
       ],
-      "baseDamageScalar": 0.2
+      "baseDamageScalar": 0.2,
+      "luckyHitChance": 12
     },
     {
       "name": "Blood Lance",
@@ -1226,7 +1235,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ]
+      ],
+      "luckyHitChance": 50
     }
   ],
   "Macabre": [
@@ -1323,7 +1333,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ]
+      ],
+      "luckyHitChance": 17
     },
     {
       "name": "Skeleton Warrior",
@@ -1455,7 +1466,8 @@ const skillsDatabase = {
           "unk_b8f2b": -1
         }
       ],
-      "baseDamageScalar": 1.3
+      "baseDamageScalar": 1.3,
+      "luckyHitChance": 20
     },
     {
       "name": "Blood Mist",
@@ -1606,7 +1618,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ]
+      ],
+      "luckyHitChance": 3
     },
     {
       "name": "Bone Prison",
@@ -1811,7 +1824,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ]
+      ],
+      "luckyHitChance": 33
     },
     {
       "name": "Golem",
@@ -1919,7 +1933,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": 4
         }
-      ]
+      ],
+      "luckyHitChance": 20
     }
   ],
   "Corruption": [
@@ -2018,7 +2033,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ]
+      ],
+      "luckyHitChance": null
     },
     {
       "name": "Decrepify",
@@ -2104,7 +2120,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ]
+      ],
+      "luckyHitChance": 100
     },
     {
       "name": "Iron Maiden",
@@ -2235,7 +2252,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ]
+      ],
+      "luckyHitChance": 5
     }
   ],
   "Ultimate": [
@@ -2373,7 +2391,8 @@ const skillsDatabase = {
           "damageType": 5,
           "unk_b8f2b": 4
         }
-      ]
+      ],
+      "luckyHitChance": 20
     },
     {
       "name": "Bone Storm",
@@ -2490,7 +2509,8 @@ const skillsDatabase = {
           "unk_b8f2b": -1
         }
       ],
-      "baseDamageScalar": 0.4
+      "baseDamageScalar": 0.4,
+      "luckyHitChance": 2
     },
     {
       "name": "Army of the Dead",
@@ -2580,7 +2600,8 @@ const skillsDatabase = {
           "applyFreeze": 1,
           "unk_b8f2b": 4
         }
-      ]
+      ],
+      "luckyHitChance": 7
     },
     {
       "name": "Blood Wave",
@@ -2757,7 +2778,8 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ]
+      ],
+      "luckyHitChance": 50
     }
   ]
 };

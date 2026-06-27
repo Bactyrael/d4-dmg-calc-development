@@ -3640,9 +3640,10 @@
   window.selectedSkills = {};
 
 function getBaseDamageScalarFor(skillName) {
-    if (!window.skillsDatabase) return null;
-    for (let cat in window.skillsDatabase) {
-        for (let s of window.skillsDatabase[cat]) {
+    let db = typeof skillsDatabase !== 'undefined' ? skillsDatabase : (window.skillsDatabase || null);
+    if (!db) return null;
+    for (let cat in db) {
+        for (let s of db[cat]) {
             if (s.name === skillName) return s.baseDamageScalar;
             if (s.modifiers) {
                 for (let m of s.modifiers) {
@@ -3697,9 +3698,16 @@ function parseD4String(str, skillObj, currentRank) {
         str = str.replace(/\[\{resource cost\}[\s\S]*?\]/g, skillObj.resourceCost);
     }
     
+    if (skillObj.luckyHitChance) {
+        str = str.replace(/\[\{combat effect chance\}[\s\S]*?\]/g, skillObj.luckyHitChance);
+        str = str.replace(/\{combat effect chance\}/g, skillObj.luckyHitChance);
+    } else {
+        str = str.replace(/\[\{combat effect chance\}[\s\S]*?\]/g, '?');
+        str = str.replace(/\{combat effect chance\}/g, '?');
+    }
+    
     // Strip other remaining {tag:value} things like {shield:barrier}, {buffduration:xxx}
     str = str.replace(/\{[a-zA-Z_]+:[a-zA-Z_]+\}/g, '?');
-    str = str.replace(/\{combat effect chance\}/g, '?');
     str = str.replace(/\{cooldown time\}/g, '?');
     
     // Clean up random brackets with pipes [something|2?|]
