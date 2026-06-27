@@ -809,23 +809,7 @@ const skillsDatabase = {
             "maxRank": 1
           },
           {
-          "name": "Enhanced Soulrift",
-          "maxRank": 1
-        },
-          {
-          "name": "Supreme Soulrift",
-          "maxRank": 1
-        },
-          {
-          "name": "Prime Soulrift",
-          "maxRank": 1
-        },
-          {
           "name": "Distilled Anima",
-          "maxRank": 1
-        },
-          {
-          "name": "Final Soulrift",
           "maxRank": 1
         }
         ],
