@@ -12,22 +12,6 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Damage Bonus",
-          "maxRank": 1
-        },
-        {
-          "name": "Barrier",
-          "maxRank": 1
-        },
-        {
-          "name": "Crowd Control",
-          "maxRank": 1
-        },
-        {
-          "name": "Lucky Hit Chance",
-          "maxRank": 1
-        },
-        {
           "name": "Rip and Tear",
           "maxRank": 1
         },
@@ -37,6 +21,22 @@ const skillsDatabase = {
         },
         {
           "name": "Dry Rot",
+          "maxRank": 1
+        },
+        {
+          "name": "Lucky Hit Chance",
+          "maxRank": 1
+        },
+        {
+          "name": "Crowd Control",
+          "maxRank": 1
+        },
+        {
+          "name": "Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Barrier",
           "maxRank": 1
         }
       ]
@@ -72,11 +72,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Essence Generation",
+          "name": "Critical Strike Chance",
           "maxRank": 1
         },
         {
-          "name": "Critical Strike Chance",
+          "name": "Essence Generation",
           "maxRank": 1
         }
       ]
@@ -92,23 +92,7 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Cast Speed",
-          "maxRank": 1
-        },
-        {
-          "name": "Blood Orb",
-          "maxRank": 1
-        },
-        {
-          "name": "Weaken",
-          "maxRank": 1
-        },
-        {
-          "name": "Overpower",
-          "maxRank": 1
-        },
-        {
-          "name": "Blood Boil",
+          "name": "Soul Rip",
           "maxRank": 1
         },
         {
@@ -116,7 +100,23 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Soul Rip",
+          "name": "Blood Boil",
+          "maxRank": 1
+        },
+        {
+          "name": "Overpower",
+          "maxRank": 1
+        },
+        {
+          "name": "Weaken",
+          "maxRank": 1
+        },
+        {
+          "name": "Cast Speed",
+          "maxRank": 1
+        },
+        {
+          "name": "Blood Orb",
           "maxRank": 1
         }
       ]
@@ -132,15 +132,7 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Projectiles",
-          "maxRank": 1
-        },
-        {
-          "name": "Essence Generation",
-          "maxRank": 1
-        },
-        {
-          "name": "Bouncing Spines",
+          "name": "Shadow Seekers",
           "maxRank": 1
         },
         {
@@ -148,7 +140,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Shadow Seekers",
+          "name": "Bouncing Spines",
           "maxRank": 1
         },
         {
@@ -157,6 +149,14 @@ const skillsDatabase = {
         },
         {
           "name": "Vulnerable",
+          "maxRank": 1
+        },
+        {
+          "name": "Projectiles",
+          "maxRank": 1
+        },
+        {
+          "name": "Essence Generation",
           "maxRank": 1
         }
       ]
@@ -174,23 +174,7 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "First Hit Damage Bonus",
-          "maxRank": 1
-        },
-        {
-          "name": "Cost Reduction",
-          "maxRank": 1
-        },
-        {
-          "name": "Pierce Damage Bonus",
-          "maxRank": 1
-        },
-        {
-          "name": "Resolve",
-          "maxRank": 1
-        },
-        {
-          "name": "Bone Spikes",
+          "name": "Shadow Splitter",
           "maxRank": 1
         },
         {
@@ -198,7 +182,23 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Shadow Splitter",
+          "name": "Bone Spikes",
+          "maxRank": 1
+        },
+        {
+          "name": "Resolve",
+          "maxRank": 1
+        },
+        {
+          "name": "Pierce Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "First Hit Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Cost Reduction",
           "maxRank": 1
         }
       ]
@@ -226,7 +226,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Cost Reduction",
+          "name": "Ferocity",
+          "maxRank": 1
+        },
+        {
+          "name": "Crowd Control and Corpse Generation",
           "maxRank": 1
         },
         {
@@ -234,11 +238,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Ferocity",
-          "maxRank": 1
-        },
-        {
-          "name": "Crowd Control and Corpse Generation",
+          "name": "Cost Reduction",
           "maxRank": 1
         }
       ]
@@ -255,11 +255,7 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Area Damage Bonus",
-          "maxRank": 1
-        },
-        {
-          "name": "Size Bonus",
+          "name": "Volatile Blood",
           "maxRank": 1
         },
         {
@@ -271,15 +267,19 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Volatile Blood",
-          "maxRank": 1
-        },
-        {
           "name": "Lucky Hit Chance",
           "maxRank": 1
         },
         {
           "name": "Crowd Control Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Area Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Size Bonus",
           "maxRank": 1
         }
       ]
@@ -297,15 +297,7 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Duration Damage Bonus",
-          "maxRank": 1
-        },
-        {
-          "name": "Critical Strike Chance",
-          "maxRank": 1
-        },
-        {
-          "name": "Coven",
+          "name": "Singularity",
           "maxRank": 1
         },
         {
@@ -313,7 +305,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Singularity",
+          "name": "Coven",
+          "maxRank": 1
+        },
+        {
+          "name": "Ferocity, Resolve, or Overpower",
           "maxRank": 1
         },
         {
@@ -321,7 +317,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Ferocity, Resolve, or Overpower",
+          "name": "Duration Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Critical Strike Chance",
           "maxRank": 1
         }
       ]
@@ -337,22 +337,6 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Overpower",
-          "maxRank": 1
-        },
-        {
-          "name": "Weaken",
-          "maxRank": 1
-        },
-        {
-          "name": "Fortify",
-          "maxRank": 1
-        },
-        {
-          "name": "Damage Bonus",
-          "maxRank": 1
-        },
-        {
           "name": "Pins and Needles",
           "maxRank": 1
         },
@@ -362,6 +346,22 @@ const skillsDatabase = {
         },
         {
           "name": "Bloodbath",
+          "maxRank": 1
+        },
+        {
+          "name": "Overpower",
+          "maxRank": 1
+        },
+        {
+          "name": "Weaken",
+          "maxRank": 1
+        },
+        {
+          "name": "Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Fortify",
           "maxRank": 1
         }
       ]
@@ -377,14 +377,6 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Overpower",
-          "maxRank": 1
-        },
-        {
-          "name": "Cost Reduction",
-          "maxRank": 1
-        },
-        {
           "name": "Festering Wound",
           "maxRank": 1
         },
@@ -397,11 +389,19 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Fortify",
+          "name": "Overpower",
+          "maxRank": 1
+        },
+        {
+          "name": "Cost Reduction",
           "maxRank": 1
         },
         {
           "name": "Ricochet",
+          "maxRank": 1
+        },
+        {
+          "name": "Fortify",
           "maxRank": 1
         }
       ]
@@ -419,15 +419,7 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Multiple Corpses",
-          "maxRank": 1
-        },
-        {
-          "name": "Corpse Efficiency",
-          "maxRank": 1
-        },
-        {
-          "name": "Bloody Mess",
+          "name": "Shrapnel",
           "maxRank": 1
         },
         {
@@ -435,7 +427,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Shrapnel",
+          "name": "Bloody Mess",
+          "maxRank": 1
+        },
+        {
+          "name": "Essence Generation",
           "maxRank": 1
         },
         {
@@ -443,7 +439,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Essence Generation",
+          "name": "Multiple Corpses",
+          "maxRank": 1
+        },
+        {
+          "name": "Corpse Efficiency",
           "maxRank": 1
         }
       ]
@@ -461,15 +461,7 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Damage Bonus",
-          "maxRank": 1
-        },
-        {
-          "name": "Healing",
-          "maxRank": 1
-        },
-        {
-          "name": "Master of Puppets",
+          "name": "Litany of Death",
           "maxRank": 1
         },
         {
@@ -477,7 +469,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Litany of Death",
+          "name": "Master of Puppets",
+          "maxRank": 1
+        },
+        {
+          "name": "Resolve",
           "maxRank": 1
         },
         {
@@ -485,7 +481,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Resolve",
+          "name": "Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Healing",
           "maxRank": 1
         }
       ]
@@ -502,23 +502,7 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Critical Strike",
-          "maxRank": 1
-        },
-        {
-          "name": "Movement Speed",
-          "maxRank": 1
-        },
-        {
-          "name": "Overpower",
-          "maxRank": 1
-        },
-        {
-          "name": "Vulnerable and Slow",
-          "maxRank": 1
-        },
-        {
-          "name": "Blood Transfusion",
+          "name": "Devouring Mist",
           "maxRank": 1
         },
         {
@@ -526,7 +510,23 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Devouring Mist",
+          "name": "Blood Transfusion",
+          "maxRank": 1
+        },
+        {
+          "name": "Vulnerable and Slow",
+          "maxRank": 1
+        },
+        {
+          "name": "Overpower",
+          "maxRank": 1
+        },
+        {
+          "name": "Critical Strike",
+          "maxRank": 1
+        },
+        {
+          "name": "Movement Speed",
           "maxRank": 1
         }
       ]
@@ -542,14 +542,6 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Cooldown Reduction",
-          "maxRank": 1
-        },
-        {
-          "name": "Essence Generation",
-          "maxRank": 1
-        },
-        {
           "name": "Life Imprisonment",
           "maxRank": 1
         },
@@ -562,11 +554,19 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
+          "name": "Resolve",
+          "maxRank": 1
+        },
+        {
           "name": "Vulnerable",
           "maxRank": 1
         },
         {
-          "name": "Resolve",
+          "name": "Cooldown Reduction",
+          "maxRank": 1
+        },
+        {
+          "name": "Essence Generation",
           "maxRank": 1
         }
       ]
@@ -582,11 +582,15 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Core Skill",
+          "name": "Astral Projection",
           "maxRank": 1
         },
         {
-          "name": "Charges",
+          "name": "Unfinished Business",
+          "maxRank": 1
+        },
+        {
+          "name": "Poltergeists",
           "maxRank": 1
         },
         {
@@ -598,15 +602,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Astral Projection",
+          "name": "Charges",
           "maxRank": 1
         },
         {
-          "name": "Unfinished Business",
-          "maxRank": 1
-        },
-        {
-          "name": "Poltergeists",
+          "name": "Core Skill",
           "maxRank": 1
         }
       ]
@@ -624,14 +624,6 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Damage Bonus",
-          "maxRank": 1
-        },
-        {
-          "name": "Unstoppable",
-          "maxRank": 1
-        },
-        {
           "name": "Gargantua",
           "maxRank": 1
         },
@@ -644,11 +636,19 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
+          "name": "Resolve, Overpower, or Ferocity",
+          "maxRank": 1
+        },
+        {
           "name": "Weaken",
           "maxRank": 1
         },
         {
-          "name": "Resolve, Overpower, or Ferocity",
+          "name": "Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Unstoppable",
           "maxRank": 1
         }
       ]
@@ -666,15 +666,7 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Lucky Hit Chance",
-          "maxRank": 1
-        },
-        {
-          "name": "Vulnerable",
-          "maxRank": 1
-        },
-        {
-          "name": "Bitter Harvest",
+          "name": "Jaws Of Death",
           "maxRank": 1
         },
         {
@@ -682,7 +674,15 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Jaws Of Death",
+          "name": "Bitter Harvest",
+          "maxRank": 1
+        },
+        {
+          "name": "Lucky Hit Chance",
+          "maxRank": 1
+        },
+        {
+          "name": "Vulnerable",
           "maxRank": 1
         },
         {
@@ -705,11 +705,15 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Cooldown Reduction",
+          "name": "Unholy Frenzy",
           "maxRank": 1
         },
         {
-          "name": "Critical Strike Chance",
+          "name": "Life Tap",
+          "maxRank": 1
+        },
+        {
+          "name": "Dizzying Curse",
           "maxRank": 1
         },
         {
@@ -721,15 +725,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Unholy Frenzy",
+          "name": "Critical Strike Chance",
           "maxRank": 1
         },
         {
-          "name": "Life Tap",
-          "maxRank": 1
-        },
-        {
-          "name": "Dizzying Curse",
+          "name": "Cooldown Reduction",
           "maxRank": 1
         }
       ]
@@ -745,11 +745,15 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Essence Generation",
+          "name": "Blood Maiden",
           "maxRank": 1
         },
         {
-          "name": "Execute and Fortify",
+          "name": "Torture Artist",
+          "maxRank": 1
+        },
+        {
+          "name": "Schadenfreude",
           "maxRank": 1
         },
         {
@@ -761,15 +765,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Blood Maiden",
+          "name": "Essence Generation",
           "maxRank": 1
         },
         {
-          "name": "Torture Artist",
-          "maxRank": 1
-        },
-        {
-          "name": "Schadenfreude",
+          "name": "Execute and Fortify",
           "maxRank": 1
         }
       ]
@@ -827,11 +827,15 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Duration Increase",
+          "name": "Hungry Cyclone",
           "maxRank": 1
         },
         {
-          "name": "Damage Reduction",
+          "name": "Shadow And Bone",
+          "maxRank": 1
+        },
+        {
+          "name": "Roll The Bones",
           "maxRank": 1
         },
         {
@@ -843,15 +847,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Hungry Cyclone",
+          "name": "Damage Reduction",
           "maxRank": 1
         },
         {
-          "name": "Shadow And Bone",
-          "maxRank": 1
-        },
-        {
-          "name": "Roll The Bones",
+          "name": "Duration Increase",
           "maxRank": 1
         }
       ]
@@ -867,6 +867,18 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
+          "name": "Dead Cold",
+          "maxRank": 1
+        },
+        {
+          "name": "Pile the Bodies",
+          "maxRank": 1
+        },
+        {
+          "name": "Unyielding Commander",
+          "maxRank": 1
+        },
+        {
           "name": "Corpse Generation",
           "maxRank": 1
         },
@@ -875,23 +887,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Cooldown Reduction",
-          "maxRank": 1
-        },
-        {
           "name": "Damage Bonus",
           "maxRank": 1
         },
         {
-          "name": "Unyielding Commander",
-          "maxRank": 1
-        },
-        {
-          "name": "Pile the Bodies",
-          "maxRank": 1
-        },
-        {
-          "name": "Dead Cold",
+          "name": "Cooldown Reduction",
           "maxRank": 1
         }
       ]
@@ -907,11 +907,15 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Damage Reduction",
+          "name": "Hematolagnia",
           "maxRank": 1
         },
         {
-          "name": "Damage Bonus",
+          "name": "Path of Darkness",
+          "maxRank": 1
+        },
+        {
+          "name": "Tides of Blood",
           "maxRank": 1
         },
         {
@@ -923,15 +927,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Hematolagnia",
+          "name": "Damage Bonus",
           "maxRank": 1
         },
         {
-          "name": "Path of Darkness",
-          "maxRank": 1
-        },
-        {
-          "name": "Tides of Blood",
+          "name": "Damage Reduction",
           "maxRank": 1
         }
       ]
