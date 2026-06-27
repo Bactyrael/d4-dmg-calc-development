@@ -3924,6 +3924,7 @@ function renderSkills() {
                   
                   updateDisplay();
                   if (typeof recalculate === 'function') recalculate();
+                  showSkillTooltip(skillObj, e);
               }
           };
           
@@ -3952,6 +3953,7 @@ function renderSkills() {
                   }
                   updateDisplay();
                   if (typeof recalculate === 'function') recalculate();
+                  showSkillTooltip(skillObj, e);
               }
           };
           
