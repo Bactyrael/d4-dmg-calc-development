@@ -826,35 +826,35 @@ const skillsDatabase = {
         "Damage"
       ],
       "modifiers": [
-        {
-          "name": "Hungry Cyclone",
-          "maxRank": 1
-        },
-        {
-          "name": "Shadow And Bone",
-          "maxRank": 1
-        },
-        {
+          {
           "name": "Roll The Bones",
           "maxRank": 1
         },
-        {
-          "name": "Barrier",
+          {
+          "name": "Shadow And Bone",
           "maxRank": 1
         },
-        {
-          "name": "Vulnerable",
+          {
+          "name": "Hungry Cyclone",
           "maxRank": 1
         },
-        {
+          {
           "name": "Damage Reduction",
           "maxRank": 1
         },
-        {
+          {
           "name": "Duration Increase",
           "maxRank": 1
+        },
+          {
+          "name": "Vulnerable",
+          "maxRank": 1
+        },
+          {
+          "name": "Barrier",
+          "maxRank": 1
         }
-      ]
+        ]
     },
     {
       "name": "Army of the Dead",
@@ -866,35 +866,35 @@ const skillsDatabase = {
         "Damage"
       ],
       "modifiers": [
-        {
+          {
           "name": "Dead Cold",
           "maxRank": 1
         },
-        {
+          {
           "name": "Pile the Bodies",
           "maxRank": 1
         },
-        {
+          {
           "name": "Unyielding Commander",
           "maxRank": 1
         },
-        {
+          {
           "name": "Corpse Generation",
           "maxRank": 1
         },
-        {
+          {
           "name": "Passive Bonus",
           "maxRank": 1
         },
-        {
+          {
           "name": "Damage Bonus",
           "maxRank": 1
         },
-        {
+          {
           "name": "Cooldown Reduction",
           "maxRank": 1
         }
-      ]
+        ]
     },
     {
       "name": "Blood Wave",
@@ -906,35 +906,35 @@ const skillsDatabase = {
         "Damage"
       ],
       "modifiers": [
-        {
+          {
           "name": "Hematolagnia",
           "maxRank": 1
         },
-        {
+          {
           "name": "Path of Darkness",
           "maxRank": 1
         },
-        {
+          {
           "name": "Tides of Blood",
           "maxRank": 1
         },
-        {
+          {
           "name": "Overpower",
           "maxRank": 1
         },
-        {
+          {
           "name": "Blood Orb",
           "maxRank": 1
         },
-        {
-          "name": "Damage Bonus",
-          "maxRank": 1
-        },
-        {
+          {
           "name": "Damage Reduction",
           "maxRank": 1
+        },
+          {
+          "name": "Damage Bonus",
+          "maxRank": 1
         }
-      ]
+        ]
     }
   ]
 };
