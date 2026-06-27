@@ -9388,7 +9388,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "The Gloom Ward",
-      "desc": "Shadow damage infects enemies with Shadowblight for 2 seconds. Every 8th time an enemy receives Shadow damage from you while they are affected by Shadowblight, they take an additional [500 - 600]%[x] of that damage as Corrupting damage over 4 seconds."
+      "desc": "Shadow damage infects enemies with Shadowblight for 2 seconds. Every 6th time an enemy receives Shadow damage from you while they are affected by Shadowblight, they take an additional [500.0 - 600.0]%[x] of that damage as Corrupting damage over 4 seconds."
     },
     {
       "name": "The Grandfather",
