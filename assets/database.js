@@ -8768,7 +8768,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Godslayer Crown",
-      "desc": "When you attempt to Incapacitate an enemy, you mark them and all surrounding enemies, pulling them in and dealing [30 - 40]%[x] increased damage to them."
+      "desc": "When you attempt to Incapacitate an enemy, you mark them and all surrounding enemies, pulling them in and dealing [7.5 - 10.0]%[x] increased damage to them."
     },
     {
       "name": "Gohr's Devastating Grips",
