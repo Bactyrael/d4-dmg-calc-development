@@ -9151,10 +9151,6 @@ window.D4_DATABASE = {
       "desc": "Frost Bolt pierces through Crowd Controlled and Unstoppable enemies and deals [80 - 100]%[x] increased damage."
     },
     {
-      "name": "Ring of Mendeln",
-      "desc": "Every 6th attack from each Minion is empowered, exploding for [975 - 1,650] Physical damage."
-    },
-    {
       "name": "Ring of Red Furor",
       "desc": "After spending 100 Fury within 5 seconds, your next non-Channeled Core or Weapon Mastery Skill Cast within 5 seconds is a guaranteed Critical Strike and deals [50 - 60]%[x] bonus Critical Strike Damage."
     },
@@ -12947,22 +12943,6 @@ window.D4_DATABASE = {
           0,
           0,
           1,
-          0,
-          0
-        ],
-        "resistance": 173,
-        "type": "Ring"
-      },
-      {
-        "name": "Ring of Mendeln",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
           0,
           0
         ],
