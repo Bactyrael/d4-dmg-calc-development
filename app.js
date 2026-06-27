@@ -1998,7 +1998,13 @@
                 const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === item.name);
                 if (uniqueObj && uniqueObj.desc) {
                     let v = 0;
-                    if (item.aspectValues && item.aspectValues.length > 0) v = parseFloat(item.aspectValues[0]) || 0;
+                    if (item.aspectValues && item.aspectValues.length > 0) {
+                        v = parseFloat(item.aspectValues[0]) || 0;
+                    }
+                    if (v === 0) {
+                        let m = uniqueObj.desc.match(/([\d\.]+)(%?)\[x\]/);
+                        if (m) v = parseFloat(m[1]) || 0;
+                    }
                     addStat(stats, item.name, v, slotName);
                 }
             }
