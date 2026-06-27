@@ -3642,7 +3642,8 @@ function renderSkills() {
   const container = document.getElementById('skills-container'); 
   if (!container) return; 
   container.innerHTML = ''; 
-  if (typeof skillsDatabase === 'undefined') return;\n
+  if (typeof skillsDatabase === 'undefined') return;
+
   for (const [category, skills] of Object.entries(skillsDatabase)) { 
     skills.forEach(skill => {
         if (!skill.modifiers && skill.enhancement) {
