@@ -11716,12 +11716,6 @@ window.D4_DATABASE = {
     ],
     "Boots": [
       {
-        "name": "Legendary Boots",
-        "rarity": "legendary",
-        "armor": 801,
-        "type": "Boots"
-      },
-      {
         "name": "100,000 Steps",
         "rarity": "unique",
         "classes": [
@@ -11946,6 +11940,12 @@ window.D4_DATABASE = {
         "type": "Boots"
       },
       {
+        "name": "Legendary Boots",
+        "rarity": "legendary",
+        "armor": 801,
+        "type": "Boots"
+      },
+      {
         "name": "March of the Stalwart Soul",
         "rarity": "unique",
         "classes": [
@@ -12008,6 +12008,22 @@ window.D4_DATABASE = {
         ],
         "armor": 801,
         "type": "Boots"
+      },
+      {
+        "name": "Rakanoth's Wake",
+        "rarity": "unique",
+        "classes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "type": "Boots",
+        "armor": 401
       },
       {
         "name": "Scorn of the Earth",
