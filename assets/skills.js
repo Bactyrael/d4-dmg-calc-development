@@ -762,7 +762,7 @@ const skillsDatabase = {
             "Damage_Override_Cold",
             "Search_Cold"
           ],
-          "description": "{c_important}Blight{/c} deals Cold and Frostbite damage. \\n\\nIts defiled area Pulls in enemies and {c_important}{u}Chills{/u}{/c} for {c_number}[15*Table(34,sLevel)|%|]{/c} every second.",
+          "description": "{c_important}Blight{/c} deals Cold and Frostbite damage. \\n\\nIts defiled area Pulls in enemies and {c_important}{u}Chills{/u}{/c} for {c_number}15%{/c} every second.",
           "maxRank": 1
         },
         {
