@@ -3690,8 +3690,15 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   row.className = 'skill-row indent-' + indentLevel; 
   const nameSpan = document.createElement('span'); 
   nameSpan.className = 'skill-name'; 
-  nameSpan.textContent = name; 
-  if (indentLevel > 0) nameSpan.innerHTML = '<span style="color:#666;">└</span> ' + name; 
+  nameSpan.style.display = 'flex';
+  nameSpan.style.alignItems = 'center';
+  nameSpan.style.gap = '8px';
+  
+  let prefix = indentLevel > 0 ? '<span style="color:#666; margin-right: 4px;">└</span>' : '';
+  let imgName = name.toLowerCase().replace(/\s+/g, '-');
+  let imgSrc = 'assets/skills/' + imgName + '.png';
+  
+  nameSpan.innerHTML = prefix + `<img src="${imgSrc}" style="width:24px; height:24px; border:1px solid #333;" onerror="this.style.display='none'" />` + `<span>${name}</span>`; 
   const controls = document.createElement('div'); 
   controls.className = 'skill-controls'; 
   const minusBtn = document.createElement('button'); 
