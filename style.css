@@ -1926,15 +1926,15 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
 
 /* Modifiers layout */
 /* Left branch */
-.pd-mod-0 { grid-column: 1; grid-row: 2; z-index: 2;}
-.pd-mod-1 { grid-column: 2; grid-row: 1; z-index: 2;}
+
+
 /* Middle branch */
-.pd-mod-2 { grid-column: 3; grid-row: 2; z-index: 2;}
-.pd-mod-3 { grid-column: 4; grid-row: 1; z-index: 2;}
-.pd-mod-4 { grid-column: 5; grid-row: 2; z-index: 2;}
+
+
+
 /* Right branch */
-.pd-mod-5 { grid-column: 6; grid-row: 1; z-index: 2;}
-.pd-mod-6 { grid-column: 7; grid-row: 2; z-index: 2;}
+
+
 
 .paperdoll-slot.pd-mod 
 .paperdoll-slot.pd-mod {
@@ -1973,21 +1973,21 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
 .pd-dia 
 .pd-dia .paperdoll-rank { transform: rotate(-45deg); bottom: -8px; right: -8px; }
 
-.pd-mod-0 { grid-column: 2; grid-row: 1; }
-.pd-mod-1 { grid-column: 3; grid-row: 1; }
-.pd-mod-2 { grid-column: 4; grid-row: 1; }
+
+
+
 
 /* Second row circles */
 .pd-cir { border-radius: 50%; width: 36px; height: 36px; margin: 2px; }
 .pd-cir .paperdoll-rank { bottom: -6px; right: -6px; transform: none; }
 .pd-cir 
 
-.pd-mod-3 { grid-column: 2; grid-row: 2; }
-.pd-mod-4 { grid-column: 3; grid-row: 2; }
+
+
 
 /* Third row circles */
-.pd-mod-5 { grid-column: 2; grid-row: 3; }
-.pd-mod-6 { grid-column: 3; grid-row: 3; }
+
+
 
 /* CSS Shapes for the compact grid */
 .paperdoll-slot {
@@ -2081,3 +2081,12 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
   width: 110%;
   height: 110%;
 }
+
+/* Modifier Layout */
+.pd-mod-0 { grid-column: 2; grid-row: 1; z-index: 2; }
+.pd-mod-1 { grid-column: 3; grid-row: 1; z-index: 2; }
+.pd-mod-2 { grid-column: 4; grid-row: 1; z-index: 2; }
+.pd-mod-3 { grid-column: 2; grid-row: 2; z-index: 2; }
+.pd-mod-4 { grid-column: 3; grid-row: 2; z-index: 2; }
+.pd-mod-5 { grid-column: 2; grid-row: 3; z-index: 2; }
+.pd-mod-6 { grid-column: 3; grid-row: 3; z-index: 2; }
