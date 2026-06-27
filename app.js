@@ -3649,7 +3649,12 @@ function parseD4String(str, skillObj, currentRank) {
     str = str.replace(/\{\/c(?:_[a-zA-Z]+)?\}/g, '');
     
     if (skillObj.baseDamageScalar) {
-        let rankMult = currentRank > 0 ? (1 + ((currentRank - 1) * 0.10)) : 1;
+        let rankMult = 1.0;
+        if (currentRank > 1) {
+            let levelsGained = currentRank - 1;
+            let enhancedIncreases = Math.floor(currentRank / 5);
+            rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
+        }
         let percentage = (skillObj.baseDamageScalar * rankMult * 100).toFixed(1) + '%';
         str = str.replace(/\[\{payload:.*?\}[\s\S]*?\]|\{payload:.*?\}/g, percentage);
         str = str.replace(/\[\{dot:.*?\}[\s\S]*?\]|\{dot:.*?\}/g, percentage);
