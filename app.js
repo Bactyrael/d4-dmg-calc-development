@@ -3727,6 +3727,22 @@ function formatTag(t) {
     return tag;
 }
 
+function getBaseSkillRankFor(skillName) {
+    let db = typeof skillsDatabase !== 'undefined' ? skillsDatabase : (window.skillsDatabase || null);
+    if (!db) return window.selectedSkills[skillName] || 0;
+    for (let cat in db) {
+        for (let s of db[cat]) {
+            if (s.name === skillName) return window.selectedSkills[skillName] || 0;
+            if (s.modifiers) {
+                for (let m of s.modifiers) {
+                    if (m.name === skillName) return window.selectedSkills[s.name] || 0;
+                }
+            }
+        }
+    }
+    return window.selectedSkills[skillName] || 0;
+}
+
 function showSkillTooltip(skillObj, e) {
     if (!tooltipEl) {
         tooltipEl = document.createElement('div');
@@ -3735,7 +3751,8 @@ function showSkillTooltip(skillObj, e) {
         document.body.appendChild(tooltipEl);
     }
     
-    let currentRank = window.selectedSkills[skillObj.name] || 0;
+    let baseRank = getBaseSkillRankFor(skillObj.name);
+    let displayRank = baseRank > 0 ? baseRank : 1; // Unlearned skills show rank 1 stats
     
     let tagsHtml = '';
     if (skillObj.tags && skillObj.tags.length > 0) {
@@ -3758,7 +3775,7 @@ function showSkillTooltip(skillObj, e) {
         statsHtml = `<div class="d4-tooltip-stats">${statsHtml}</div>`;
     }
     
-    let descHtml = parseD4String(skillObj.description, skillObj, currentRank);
+    let descHtml = parseD4String(skillObj.description, skillObj, displayRank);
     
     tooltipEl.innerHTML = `
         <div class="d4-tooltip-header">${skillObj.name}</div>
