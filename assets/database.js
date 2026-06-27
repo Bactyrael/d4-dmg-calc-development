@@ -13158,22 +13158,6 @@ window.D4_DATABASE = {
         "type": "Ring"
       },
       {
-        "name": "Sliver of Hate",
-        "rarity": "unique",
-        "classes": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1
-        ],
-        "resistance": 173,
-        "type": "Ring"
-      },
-      {
         "name": "Tal Rasha's Iridescent Loop",
         "rarity": "unique",
         "classes": [
@@ -13216,22 +13200,6 @@ window.D4_DATABASE = {
           0,
           0,
           0,
-          1
-        ],
-        "resistance": 173,
-        "type": "Ring"
-      },
-      {
-        "name": "Thorn Pulse",
-        "rarity": "unique",
-        "classes": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
           1
         ],
         "resistance": 173,
