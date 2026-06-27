@@ -3748,6 +3748,10 @@ function renderSkills() {
           updateDisplay();
           
           slot.onclick = (e) => {
+              // Restriction: must have a point in base skill to add points to its modifiers
+              if (!isBase && (!window.selectedSkills[baseSkillName] || window.selectedSkills[baseSkillName] === 0)) {
+                  return; // Do nothing if base skill has no points
+              }
               const cur = window.selectedSkills[name] || 0;
               if (cur < maxRank) {
                   window.selectedSkills[name] = cur + 1;
@@ -3760,7 +3764,20 @@ function renderSkills() {
               e.preventDefault();
               if (window.selectedSkills[name] > 0) {
                   window.selectedSkills[name]--;
-                  if (window.selectedSkills[name] === 0) delete window.selectedSkills[name];
+                  if (window.selectedSkills[name] === 0) {
+                      delete window.selectedSkills[name];
+                      // Restriction: If a base skill drops to 0, automatically clear all its modifiers
+                      if (isBase && window.skillsDatabase[category]) {
+                          const skillData = window.skillsDatabase[category].find(s => s.name === name);
+                          if (skillData && skillData.modifiers) {
+                              skillData.modifiers.forEach(mod => {
+                                  delete window.selectedSkills[mod.name];
+                              });
+                          }
+                          // We need to trigger a full UI refresh to clear the active classes from the modifiers
+                          setTimeout(() => renderSkills(), 10);
+                      }
+                  }
                   updateDisplay();
                   if (typeof recalculate === 'function') recalculate();
               }
