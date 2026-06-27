@@ -8452,7 +8452,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Banished Lord's Talisman",
-      "desc": "After you spend 275 of your Primary Resource, gain 4 stacks of Overpower. Your Critical Strikes deal [10 - 12]%[x] increased damage per stack of Overpower."
+      "desc": "After you spend 275 of your Primary Resource, gain 4 stacks of Overpower. Your Critical Strikes deal [5.0 - 7.0]%[x] increased damage per stack of Overpower."
     },
     {
       "name": "Bastion of Sir Matthias",
