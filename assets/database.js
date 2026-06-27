@@ -9176,7 +9176,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Ring of the Sacrilegious Soul",
-      "desc": "Corpse Tendrils gains the effect of every Upgrade and is automatically cast every [8.0 - 6.0] seconds."
+      "desc": "Corpse Tendrils gains the effect of every Upgrade and is automatically triggered once every 16 seconds. This timer is reduced by [1.5 - 2.0] seconds each second while there are corpses by you."
     },
     {
       "name": "Rod of Kepeleke",
