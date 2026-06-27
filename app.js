@@ -3689,7 +3689,17 @@ function parseD4String(str, skillObj, currentRank) {
         str = str.replace(/\[\{dot:.*?\}[\s\S]*?\]|\{dot:.*?\}/g, '?%');
     }
     
-    // Replace Math formulas like [15*Table(34,sLevel)|%|] with just the number + %
+    // Replace Math formulas like [15*Table(34,sLevel)|%|] with scaled value
+    str = str.replace(/\[(\d+(?:\.\d+)?)\*Table\(\d+,sLevel\)(?:\|.*?\|?)?\]/gi, (match, p1) => {
+        let baseVal = parseFloat(p1);
+        let utilMult = 1.0;
+        if (currentRank > 1) {
+            utilMult = 1.0 + ((currentRank - 1) * 0.10);
+        }
+        return (baseVal * utilMult).toFixed(1).replace(/\.0$/, '') + '%';
+    });
+    
+    // Catch-all for any other multiplier like [15*foo] that we don't scale
     str = str.replace(/\[(\d+(?:\.\d+)?)\*[^\]]+\]/g, '$1%');
     
     str = str.replace(/\[Mod\([^)]+\)\?(\d+):(\d+)(?:\|.*?)?\]/g, '$2');
