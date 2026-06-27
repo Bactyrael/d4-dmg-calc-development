@@ -8584,7 +8584,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Deathless Visage",
-      "desc": "Critical Strikes with Bone Spear form an echo that bursts, dealing [30 - 40]%[x] of its normal damage.Bone Spear deals [40 - 50]%[x] increased Critical Strike Damage."
+      "desc": "Critical Strikes with Bone Spear form an echo that bursts, dealing [40.0 - 50.0]%[x] of its normal damage. Bone Spear deals [60.0 - 70.0]%[x] increased Critical Strike Damage."
     },
     {
       "name": "Deathmask of Nirmitruq",
