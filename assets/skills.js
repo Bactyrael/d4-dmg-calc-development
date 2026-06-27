@@ -362,6 +362,9 @@ const skillsDatabase = {
         {
           "name": "Shadow Seekers",
           "maxRank": 1,
+          "secondaryScalars": {
+            "shadow_explosion": 0.08
+          },
           "description": "{c_important}Bone Splinters{/c} becomes a {c_important}Darkness{/c} Skill that deals {c_number}[{payload:shadow_damage}|2?|]{/c} Shadow damage and seeks enemies. \\n\\nWhen a splinter hits an enemy it causes a burst of shadow, dealing an additional {c_number}[{payload:shadow_explosion}|2?|]{/c} damage.",
           "tags": [
             "Skill_Shadow",

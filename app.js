@@ -3683,6 +3683,15 @@ function parseD4String(str, skillObj, currentRank) {
             let scalePerFive = skillObj.damageScalePerFive !== undefined ? skillObj.damageScalePerFive : 0.05;
             rankMult = 1.0 + (levelsGained * scalePerLevel) + (enhancedIncreases * scalePerFive);
         }
+        if (skillObj.secondaryScalars) {
+            for (let payloadKey in skillObj.secondaryScalars) {
+                let secScalar = skillObj.secondaryScalars[payloadKey];
+                let secPercentage = (secScalar * rankMult * 100).toFixed(1) + '%';
+                let regex = new RegExp(`\\[\\{payload:${payloadKey}\\}[\\s\\S]*?\\]|\\{payload:${payloadKey}\\}`, 'g');
+                str = str.replace(regex, secPercentage);
+            }
+        }
+        
         let percentage = (scalar * rankMult * 100).toFixed(1) + '%';
         str = str.replace(/\[\{payload:.*?\}[\s\S]*?\]|\{payload:.*?\}/g, percentage);
         str = str.replace(/\[\{dot:.*?\}[\s\S]*?\]|\{dot:.*?\}/g, percentage);
