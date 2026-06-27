@@ -255,7 +255,7 @@ const skillsDatabase = {
             "Search_Shadow",
             "Skill_Primary_Summoning"
           ],
-          "description": "{c_important}Hemorrhage{/c} becomes a {c_important}Darkness{/c} Skill that deals {c_number}[{payload:damage_shadow}|2?|]{/c} Shadow damage.\\n\\nInstead of forming a {c_important}{u}Blood Orb{/c}{/u}, {c_important}Hemorrhage{/c} Summons a {c_important}Volatile Skeleton{/c} that deals {c_number}[{payload:volatile_skeleton}|2?|]{/c} damage.",
+          "description": "{c_important}Hemorrhage{/c} becomes a {c_important}Darkness{/c} Skill that deals {c_number}[{payload:damage_shadow}|2?|]{/c} Shadow damage.\\n\\nInstead of forming a {c_important}{u}Blood Orb{/c}{/u}, {c_important}Hemorrhage{/c} Summons a {c_important}Volatile Skeleton{/c} that deals {c_number}120%{/c} damage.",
           "maxRank": 1
         },
         {
