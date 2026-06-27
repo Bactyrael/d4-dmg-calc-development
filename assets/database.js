@@ -8920,7 +8920,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Kessime's Legacy",
-      "desc": "Blood Wave now forms a wave on each side of you. Both waves converge at your feet, Pulling In all surrounding enemies and exploding for [375 - 450] damage."
+      "desc": "Blood Wave now forms a wave on each side of you. Both waves converge at your feet, Pulling In all surrounding enemies and exploding for 4710-5652 damage."
     },
     {
       "name": "Khamsin Steppewalkers",
