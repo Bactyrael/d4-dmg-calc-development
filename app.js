@@ -3689,6 +3689,8 @@ function parseD4String(str, skillObj, currentRank) {
                 let secPercentage = (secScalar * rankMult * 100).toFixed(1) + '%';
                 let regex = new RegExp(`\\[\\{payload:${payloadKey}\\}[\\s\\S]*?\\]|\\{payload:${payloadKey}\\}`, 'g');
                 str = str.replace(regex, secPercentage);
+                let regexDot = new RegExp(`\\[\\{dot:${payloadKey}\\}[\\s\\S]*?\\]|\\{dot:${payloadKey}\\}`, 'g');
+                str = str.replace(regexDot, secPercentage);
             }
         }
         
