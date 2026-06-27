@@ -3671,6 +3671,7 @@ function renderSkills() {
       const pdContainer = document.createElement('div');
       pdContainer.style.display = 'flex';
       pdContainer.style.flexDirection = 'column';
+      pdContainer.style.alignItems = 'flex-start';
       
       const pdTitle = document.createElement('div');
       pdTitle.style.color = '#fff';
@@ -3679,6 +3680,7 @@ function renderSkills() {
       pdTitle.style.fontSize = '16px';
       pdTitle.style.borderBottom = '1px solid #444';
       pdTitle.style.paddingBottom = '4px';
+      pdTitle.style.width = '100%';
       pdTitle.textContent = skill.name;
       pdContainer.appendChild(pdTitle);
       
@@ -3694,10 +3696,9 @@ function renderSkills() {
           else slotClass += ' pd-cir pd-mod-' + index;
           
           slot.className = slotClass;
+          slot.title = name;
           
-          let imgName = name.toLowerCase().replace(/\s+/g, '-');
-          let imgSrc = 'assets/skills/' + imgName + '.png';
-          slot.innerHTML = `<img src="${imgSrc}" onerror="this.style.display='none'" title="${name}" />`;
+          // NO IMAGES, JUST CSS SHAPES
           
           const rankDisplay = document.createElement('div');
           rankDisplay.className = 'paperdoll-rank';
