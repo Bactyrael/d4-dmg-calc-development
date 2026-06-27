@@ -611,7 +611,8 @@ const skillsDatabase = {
       "maxRank": 15,
       "baseDamageScalar": 1.0,
       "secondaryScalars": {
-        "projectile_damage": 0.6
+        "projectile_damage": 0.6,
+        "damage_out": 1.0
       },
       "damageType": "Shadow",
       "modifiers": [
