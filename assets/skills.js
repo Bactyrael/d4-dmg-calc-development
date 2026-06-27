@@ -780,35 +780,55 @@ const skillsDatabase = {
       "name": "Soulrift",
       "maxRank": 15,
       "modifiers": [
-        {
-          "name": "Enhanced Soulrift",
-          "maxRank": 1
-        },
-        {
-          "name": "Supreme Soulrift",
-          "maxRank": 1
-        },
-        {
-          "name": "Prime Soulrift",
-          "maxRank": 1
-        },
-        {
+          {
           "name": "Distilled Anima",
           "maxRank": 1
         },
-        {
+          {
           "name": "Soul Vortex",
           "maxRank": 1
         },
-        {
+          {
           "name": "Frozen Wasteland",
           "maxRank": 1
         },
-        {
+          {
+            "name": "Damage Bonus",
+            "maxRank": 1
+          },
+          {
+            "name": "Barrier",
+            "maxRank": 1
+          },
+          {
+            "name": "Vulnerable and Crowd Control",
+            "maxRank": 1
+          },
+          {
+            "name": "Ferocity",
+            "maxRank": 1
+          },
+          {
+          "name": "Enhanced Soulrift",
+          "maxRank": 1
+        },
+          {
+          "name": "Supreme Soulrift",
+          "maxRank": 1
+        },
+          {
+          "name": "Prime Soulrift",
+          "maxRank": 1
+        },
+          {
+          "name": "Distilled Anima",
+          "maxRank": 1
+        },
+          {
           "name": "Final Soulrift",
           "maxRank": 1
         }
-      ],
+        ],
       "damageType": "Shadow",
       "tags": [
         "Ultimate",
