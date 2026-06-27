@@ -3642,11 +3642,20 @@
 function parseD4String(str, skillObj, currentRank) {
     if (!str) return '';
     
+    // Fix escaped brackets for multipliers like \[x\]
+    str = str.replace(/\\\[([x\+])\\\]/g, '[$1]');
+    
     str = str.replace(/\{if:ADVANCED_TOOLTIP\}([\s\S]*?)\{\/if\}/g, '$1');
     str = str.replace(/\{if:.*?\}[\s\S]*?\{\/if\}/g, '');
     
+    // Replace colors (run twice for nesting)
+    str = str.replace(/\{c_([a-zA-Z]+)\}([\s\S]*?)\{\/c(?:_[a-zA-Z]+)?\}/g, '<span class="d4-color-$1">$2</span>');
     str = str.replace(/\{c_([a-zA-Z]+)\}([\s\S]*?)\{\/c(?:_[a-zA-Z]+)?\}/g, '<span class="d4-color-$1">$2</span>');
     str = str.replace(/\{\/c(?:_[a-zA-Z]+)?\}/g, '');
+    
+    // Underlines
+    str = str.replace(/\{u\}([\s\S]*?)\{\/u\}/g, '<span style="text-decoration: underline;">$1</span>');
+    str = str.replace(/\{\/?u\}/g, '');
     
     if (skillObj.baseDamageScalar) {
         let rankMult = 1.0;
@@ -3670,7 +3679,14 @@ function parseD4String(str, skillObj, currentRank) {
         str = str.replace(/\[\{resource cost\}[\s\S]*?\]/g, skillObj.resourceCost);
     }
     
+    // Strip other remaining {tag:value} things like {shield:barrier}, {buffduration:xxx}
+    str = str.replace(/\{[a-zA-Z_]+:[a-zA-Z_]+\}/g, '?');
+    str = str.replace(/\{combat effect chance\}/g, '?');
+    str = str.replace(/\{cooldown time\}/g, '?');
+    
+    // Clean up random brackets with pipes [something|2?|]
     str = str.replace(/\[(.*?)\|.*?\]/g, '$1');
+    
     str = str.replace(/\{icon:bullet,1\.2\}/g, '&bull; ');
     str = str.replace(/\{icon:.*?}/g, '* ');
     
