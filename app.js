@@ -3639,6 +3639,21 @@
 
   window.selectedSkills = {};
 
+function getBaseDamageScalarFor(skillName) {
+    if (!window.skillsDatabase) return null;
+    for (let cat in window.skillsDatabase) {
+        for (let s of window.skillsDatabase[cat]) {
+            if (s.name === skillName) return s.baseDamageScalar;
+            if (s.modifiers) {
+                for (let m of s.modifiers) {
+                    if (m.name === skillName) return m.baseDamageScalar || s.baseDamageScalar;
+                }
+            }
+        }
+    }
+    return null;
+}
+
 function parseD4String(str, skillObj, currentRank) {
     if (!str) return '';
     
@@ -3657,14 +3672,15 @@ function parseD4String(str, skillObj, currentRank) {
     str = str.replace(/\{u\}([\s\S]*?)\{\/u\}/g, '<span style="text-decoration: underline;">$1</span>');
     str = str.replace(/\{\/?u\}/g, '');
     
-    if (skillObj.baseDamageScalar) {
+    let scalar = skillObj.baseDamageScalar || getBaseDamageScalarFor(skillObj.name);
+    if (scalar) {
         let rankMult = 1.0;
         if (currentRank > 1) {
             let levelsGained = currentRank - 1;
             let enhancedIncreases = Math.floor(currentRank / 5);
             rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
         }
-        let percentage = (skillObj.baseDamageScalar * rankMult * 100).toFixed(1) + '%';
+        let percentage = (scalar * rankMult * 100).toFixed(1) + '%';
         str = str.replace(/\[\{payload:.*?\}[\s\S]*?\]|\{payload:.*?\}/g, percentage);
         str = str.replace(/\[\{dot:.*?\}[\s\S]*?\]|\{dot:.*?\}/g, percentage);
     } else {
@@ -3672,7 +3688,9 @@ function parseD4String(str, skillObj, currentRank) {
         str = str.replace(/\[\{dot:.*?\}[\s\S]*?\]|\{dot:.*?\}/g, '?%');
     }
     
-    str = str.replace(/\[(\d+(?:\.\d+)?)\*[A-Za-z]+\|.*?\]/g, '$1');
+    // Replace Math formulas like [15*Table(34,sLevel)|%|] with just the number + %
+    str = str.replace(/\[(\d+(?:\.\d+)?)\*[^\]]+\]/g, '$1%');
+    
     str = str.replace(/\[Mod\([^)]+\)\?(\d+):(\d+)(?:\|.*?)?\]/g, '$2');
     
     if (skillObj.resourceCost) {
