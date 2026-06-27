@@ -23265,6 +23265,16 @@ window.D4_DATABASE = {
               "name": "+[1963 - 2450] Armor",
               "shortName": "Armor",
               "category": "Defensive"
+            },
+            {
+              "name": "+ 1202 Armor",
+              "shortName": "Armor",
+              "category": "Innate"
+            },
+            {
+              "name": "+ 20% Block Chance",
+              "shortName": "Block Chance",
+              "category": "Innate"
             }
           ],
           "tempers": [
