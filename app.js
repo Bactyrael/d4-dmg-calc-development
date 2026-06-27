@@ -3657,7 +3657,16 @@ function renderSkills() {
       skillGroup.className = 'skill-group'; 
       const baseRow = createSkillRow(skill.name, skill.maxRank, 0); 
       skillGroup.appendChild(baseRow); 
-      if (skill.enhancement) { 
+      if (skill.modifiers && skill.modifiers.length > 0) { 
+        const branchContainer = document.createElement('div'); 
+        branchContainer.className = 'skill-branches'; 
+        skill.modifiers.forEach(mod => { 
+          const mRow = createSkillRow(mod.name, mod.maxRank, 1, skill.name, []); 
+          branchContainer.appendChild(mRow); 
+        }); 
+        skillGroup.appendChild(branchContainer); 
+      } else if (skill.enhancement) { 
+        // Fallback for skills that didn't get updated (like Soulrift)
         const enhRow = createSkillRow(skill.enhancement.name, skill.enhancement.maxRank, 1, skill.name); 
         skillGroup.appendChild(enhRow); 
         if (skill.enhancement.branches && skill.enhancement.branches.length > 0) { 

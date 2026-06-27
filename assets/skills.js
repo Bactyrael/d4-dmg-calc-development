@@ -3,114 +3,162 @@ const skillsDatabase = {
     {
       "name": "Decompose",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Decompose",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Rip and Tear",
-            "maxRank": 1
-          },
-          {
-            "name": "Putrid Burst",
-            "maxRank": 1
-          },
-          {
-            "name": "Dry Rot",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Shadow",
       "tags": [
         "Basic",
         "Darkness",
         "Channeled",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Barrier",
+          "maxRank": 1
+        },
+        {
+          "name": "Crowd Control",
+          "maxRank": 1
+        },
+        {
+          "name": "Lucky Hit Chance",
+          "maxRank": 1
+        },
+        {
+          "name": "Rip and Tear",
+          "maxRank": 1
+        },
+        {
+          "name": "Putrid Burst",
+          "maxRank": 1
+        },
+        {
+          "name": "Dry Rot",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Reap",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Reap",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Chilled to the Bone",
-            "maxRank": 1
-          },
-          {
-            "name": "Cull the Weak",
-            "maxRank": 1
-          },
-          {
-            "name": "Harvest",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Shadow",
       "tags": [
         "Basic",
         "Darkness",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Chilled To The Bone",
+          "maxRank": 1
+        },
+        {
+          "name": "Cull The Weak",
+          "maxRank": 1
+        },
+        {
+          "name": "Harvest",
+          "maxRank": 1
+        },
+        {
+          "name": "Essence Generation",
+          "maxRank": 1
+        },
+        {
+          "name": "Critical Strike Chance",
+          "maxRank": 1
+        },
+        {
+          "name": "Ferocity",
+          "maxRank": 1
+        },
+        {
+          "name": "Corpse Generation",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Hemorrhage",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Hemorrhage",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Blood Boil",
-            "maxRank": 1
-          },
-          {
-            "name": "Blood Runs Cold",
-            "maxRank": 1
-          },
-          {
-            "name": "Soul Rip",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Basic",
         "Blood",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Cast Speed",
+          "maxRank": 1
+        },
+        {
+          "name": "Blood Orb",
+          "maxRank": 1
+        },
+        {
+          "name": "Weaken",
+          "maxRank": 1
+        },
+        {
+          "name": "Overpower",
+          "maxRank": 1
+        },
+        {
+          "name": "Blood Boil",
+          "maxRank": 1
+        },
+        {
+          "name": "Blood Runs Cold",
+          "maxRank": 1
+        },
+        {
+          "name": "Soul Rip",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Bone Splinters",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Bone Splinters",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Bouncing Spines",
-            "maxRank": 1
-          },
-          {
-            "name": "Bloody Splinter",
-            "maxRank": 1
-          },
-          {
-            "name": "Shadow Seekers",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Basic",
         "Bone",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Projectiles",
+          "maxRank": 1
+        },
+        {
+          "name": "Essence Generation",
+          "maxRank": 1
+        },
+        {
+          "name": "Bouncing Spines",
+          "maxRank": 1
+        },
+        {
+          "name": "Bloody Splinter",
+          "maxRank": 1
+        },
+        {
+          "name": "Shadow Seekers",
+          "maxRank": 1
+        },
+        {
+          "name": "Resolve",
+          "maxRank": 1
+        },
+        {
+          "name": "Vulnerable",
+          "maxRank": 1
+        }
       ]
     }
   ],
@@ -118,109 +166,127 @@ const skillsDatabase = {
     {
       "name": "Bone Spear",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Bone Spear",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Bone Spikes",
-            "maxRank": 1
-          },
-          {
-            "name": "Blood Spear",
-            "maxRank": 1
-          },
-          {
-            "name": "Shadow Splitter",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Core",
         "Bone",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "First Hit Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Cost Reduction",
+          "maxRank": 1
+        },
+        {
+          "name": "Pierce Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Resolve",
+          "maxRank": 1
+        },
+        {
+          "name": "Bone Spikes",
+          "maxRank": 1
+        },
+        {
+          "name": "Blood Spear",
+          "maxRank": 1
+        },
+        {
+          "name": "Shadow Splitter",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Sever",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Sever",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Reaping Lotus",
-            "maxRank": 1
-          },
-          {
-            "name": "Inexorable Reaper",
-            "maxRank": 1
-          },
-          {
-            "name": "Cold Pursuit",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Shadow",
       "tags": [
         "Core",
         "Darkness",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Cold Pursuit",
+          "maxRank": 1
+        },
+        {
+          "name": "Inexorable Reaper",
+          "maxRank": 1
+        },
+        {
+          "name": "Reaping Lotus",
+          "maxRank": 1
+        },
+        {
+          "name": "Cost Reduction",
+          "maxRank": 1
+        },
+        {
+          "name": "Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Ferocity",
+          "maxRank": 1
+        },
+        {
+          "name": "Crowd Control and Corpse Generation",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Blight",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Blight",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Piercing Darkness",
-            "maxRank": 1
-          },
-          {
-            "name": "Whirlpool",
-            "maxRank": 1
-          },
-          {
-            "name": "Volatile Blood",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Shadow",
       "tags": [
         "Core",
         "Darkness",
         "Damage",
         "Damage over Time"
+      ],
+      "modifiers": [
+        {
+          "name": "Area Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Size Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Whirlpool",
+          "maxRank": 1
+        },
+        {
+          "name": "Piercing Darkness",
+          "maxRank": 1
+        },
+        {
+          "name": "Volatile Blood",
+          "maxRank": 1
+        },
+        {
+          "name": "Lucky Hit Chance",
+          "maxRank": 1
+        },
+        {
+          "name": "Crowd Control Damage Bonus",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Skeleton Mage",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Skeleton Mage",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Singularity",
-            "maxRank": 1
-          },
-          {
-            "name": "Gift of Death",
-            "maxRank": 1
-          },
-          {
-            "name": "Coven",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Core",
@@ -228,62 +294,116 @@ const skillsDatabase = {
         "Summoning",
         "Mage",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Duration Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Critical Strike Chance",
+          "maxRank": 1
+        },
+        {
+          "name": "Coven",
+          "maxRank": 1
+        },
+        {
+          "name": "Gift of Death",
+          "maxRank": 1
+        },
+        {
+          "name": "Singularity",
+          "maxRank": 1
+        },
+        {
+          "name": "Crowd Control Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Ferocity, Resolve, or Overpower",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Blood Surge",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Blood Surge",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Pins and Needles",
-            "maxRank": 1
-          },
-          {
-            "name": "You And What Army?",
-            "maxRank": 1
-          },
-          {
-            "name": "Bloodbath",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Core",
         "Blood",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Overpower",
+          "maxRank": 1
+        },
+        {
+          "name": "Weaken",
+          "maxRank": 1
+        },
+        {
+          "name": "Fortify",
+          "maxRank": 1
+        },
+        {
+          "name": "Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Pins and Needles",
+          "maxRank": 1
+        },
+        {
+          "name": "You And What Army?",
+          "maxRank": 1
+        },
+        {
+          "name": "Bloodbath",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Blood Lance",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Blood Lance",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Festering Wound",
-            "maxRank": 1
-          },
-          {
-            "name": "Gore Quills",
-            "maxRank": 1
-          },
-          {
-            "name": "Blood Seeker",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Core",
         "Blood",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Overpower",
+          "maxRank": 1
+        },
+        {
+          "name": "Cost Reduction",
+          "maxRank": 1
+        },
+        {
+          "name": "Festering Wound",
+          "maxRank": 1
+        },
+        {
+          "name": "Gore Quills",
+          "maxRank": 1
+        },
+        {
+          "name": "Blood Seeker",
+          "maxRank": 1
+        },
+        {
+          "name": "Fortify",
+          "maxRank": 1
+        },
+        {
+          "name": "Ricochet",
+          "maxRank": 1
+        }
       ]
     }
   ],
@@ -291,52 +411,46 @@ const skillsDatabase = {
     {
       "name": "Corpse Explosion",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Corpse Explosion",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Bloody Mess",
-            "maxRank": 1
-          },
-          {
-            "name": "Miasma",
-            "maxRank": 1
-          },
-          {
-            "name": "Shrapnel",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Macabre",
         "Corpse",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Multiple Corpses",
+          "maxRank": 1
+        },
+        {
+          "name": "Corpse Efficiency",
+          "maxRank": 1
+        },
+        {
+          "name": "Bloody Mess",
+          "maxRank": 1
+        },
+        {
+          "name": "Miasma",
+          "maxRank": 1
+        },
+        {
+          "name": "Shrapnel",
+          "maxRank": 1
+        },
+        {
+          "name": "Blood Orb",
+          "maxRank": 1
+        },
+        {
+          "name": "Essence Generation",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Skeleton Warrior",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Skeleton Warrior",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Master of Puppets",
-            "maxRank": 1
-          },
-          {
-            "name": "Service and Sacrifice",
-            "maxRank": 1
-          },
-          {
-            "name": "Litany of Death",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Macabre",
@@ -344,114 +458,162 @@ const skillsDatabase = {
         "Summoning",
         "Warrior",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Healing",
+          "maxRank": 1
+        },
+        {
+          "name": "Master of Puppets",
+          "maxRank": 1
+        },
+        {
+          "name": "Service and Sacrifice",
+          "maxRank": 1
+        },
+        {
+          "name": "Litany of Death",
+          "maxRank": 1
+        },
+        {
+          "name": "Vulnerable",
+          "maxRank": 1
+        },
+        {
+          "name": "Resolve",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Blood Mist",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Blood Mist",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Devouring Mist",
-            "maxRank": 1
-          },
-          {
-            "name": "Blood Rush",
-            "maxRank": 1
-          },
-          {
-            "name": "Blood Transfusion",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Macabre",
         "Blood",
         "Damage",
         "Immunity"
+      ],
+      "modifiers": [
+        {
+          "name": "Critical Strike",
+          "maxRank": 1
+        },
+        {
+          "name": "Movement Speed",
+          "maxRank": 1
+        },
+        {
+          "name": "Overpower",
+          "maxRank": 1
+        },
+        {
+          "name": "Vulnerable and Slow",
+          "maxRank": 1
+        },
+        {
+          "name": "Blood Transfusion",
+          "maxRank": 1
+        },
+        {
+          "name": "Blood Rush",
+          "maxRank": 1
+        },
+        {
+          "name": "Devouring Mist",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Bone Prison",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Bone Prison",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Life Imprisonment",
-            "maxRank": 1
-          },
-          {
-            "name": "Plunging Darkness",
-            "maxRank": 1
-          },
-          {
-            "name": "Bramble",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Macabre",
         "Bone",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Cooldown Reduction",
+          "maxRank": 1
+        },
+        {
+          "name": "Essence Generation",
+          "maxRank": 1
+        },
+        {
+          "name": "Life Imprisonment",
+          "maxRank": 1
+        },
+        {
+          "name": "Plunging Darkness",
+          "maxRank": 1
+        },
+        {
+          "name": "Bramble",
+          "maxRank": 1
+        },
+        {
+          "name": "Vulnerable",
+          "maxRank": 1
+        },
+        {
+          "name": "Resolve",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Bone Spirit",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Bone Spirit",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Poltergeists",
-            "maxRank": 1
-          },
-          {
-            "name": "Unfinished Business",
-            "maxRank": 1
-          },
-          {
-            "name": "Astral Projection",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Macabre",
         "Bone",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Core Skill",
+          "maxRank": 1
+        },
+        {
+          "name": "Charges",
+          "maxRank": 1
+        },
+        {
+          "name": "Maximum Essence",
+          "maxRank": 1
+        },
+        {
+          "name": "Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Astral Projection",
+          "maxRank": 1
+        },
+        {
+          "name": "Unfinished Business",
+          "maxRank": 1
+        },
+        {
+          "name": "Poltergeists",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Golem",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Golem",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Gravebloom",
-            "maxRank": 1
-          },
-          {
-            "name": "Fel Gluttony",
-            "maxRank": 1
-          },
-          {
-            "name": "Gargantua",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Macabre",
@@ -459,6 +621,36 @@ const skillsDatabase = {
         "Summoning",
         "Golem",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Unstoppable",
+          "maxRank": 1
+        },
+        {
+          "name": "Gargantua",
+          "maxRank": 1
+        },
+        {
+          "name": "Fel Gluttony",
+          "maxRank": 1
+        },
+        {
+          "name": "Gravebloom",
+          "maxRank": 1
+        },
+        {
+          "name": "Weaken",
+          "maxRank": 1
+        },
+        {
+          "name": "Resolve, Overpower, or Ferocity",
+          "maxRank": 1
+        }
       ]
     }
   ],
@@ -466,84 +658,120 @@ const skillsDatabase = {
     {
       "name": "Corpse Tendrils",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Corpse Tendrils",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Bitter Harvest",
-            "maxRank": 1
-          },
-          {
-            "name": "Get Over Here!",
-            "maxRank": 1
-          },
-          {
-            "name": "Jaws of Death",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Corruption",
         "Corpse",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Lucky Hit Chance",
+          "maxRank": 1
+        },
+        {
+          "name": "Vulnerable",
+          "maxRank": 1
+        },
+        {
+          "name": "Bitter Harvest",
+          "maxRank": 1
+        },
+        {
+          "name": "Get Over Here!",
+          "maxRank": 1
+        },
+        {
+          "name": "Jaws Of Death",
+          "maxRank": 1
+        },
+        {
+          "name": "Critical Strike Chance",
+          "maxRank": 1
+        },
+        {
+          "name": "Essence Generation",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Decrepify",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Decrepify",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Dizzying Curse",
-            "maxRank": 1
-          },
-          {
-            "name": "Life Tap",
-            "maxRank": 1
-          },
-          {
-            "name": "Unholy Frenzy",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Shadow",
       "tags": [
         "Corruption",
         "Curse"
+      ],
+      "modifiers": [
+        {
+          "name": "Cooldown Reduction",
+          "maxRank": 1
+        },
+        {
+          "name": "Critical Strike Chance",
+          "maxRank": 1
+        },
+        {
+          "name": "Resolve",
+          "maxRank": 1
+        },
+        {
+          "name": "Movement Speed",
+          "maxRank": 1
+        },
+        {
+          "name": "Unholy Frenzy",
+          "maxRank": 1
+        },
+        {
+          "name": "Life Tap",
+          "maxRank": 1
+        },
+        {
+          "name": "Dizzying Curse",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Iron Maiden",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Iron Maiden",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Schadenfreude",
-            "maxRank": 1
-          },
-          {
-            "name": "Torture Artist",
-            "maxRank": 1
-          },
-          {
-            "name": "Blood Maiden",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Corruption",
         "Curse",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Essence Generation",
+          "maxRank": 1
+        },
+        {
+          "name": "Execute and Fortify",
+          "maxRank": 1
+        },
+        {
+          "name": "Ferocity and Overpower",
+          "maxRank": 1
+        },
+        {
+          "name": "Vulnerable",
+          "maxRank": 1
+        },
+        {
+          "name": "Blood Maiden",
+          "maxRank": 1
+        },
+        {
+          "name": "Torture Artist",
+          "maxRank": 1
+        },
+        {
+          "name": "Schadenfreude",
+          "maxRank": 1
+        }
       ]
     }
   ],
@@ -579,85 +807,121 @@ const skillsDatabase = {
     {
       "name": "Bone Storm",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Bone Storm",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Roll the Bones",
-            "maxRank": 1
-          },
-          {
-            "name": "Shadow and Bone",
-            "maxRank": 1
-          },
-          {
-            "name": "Hungry Cyclone",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Ultimate",
         "Bone",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Duration Increase",
+          "maxRank": 1
+        },
+        {
+          "name": "Damage Reduction",
+          "maxRank": 1
+        },
+        {
+          "name": "Barrier",
+          "maxRank": 1
+        },
+        {
+          "name": "Vulnerable",
+          "maxRank": 1
+        },
+        {
+          "name": "Hungry Cyclone",
+          "maxRank": 1
+        },
+        {
+          "name": "Shadow And Bone",
+          "maxRank": 1
+        },
+        {
+          "name": "Roll The Bones",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Army of the Dead",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Army of the Dead",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Dead Cold",
-            "maxRank": 1
-          },
-          {
-            "name": "Pile the Bodies",
-            "maxRank": 1
-          },
-          {
-            "name": "Unyielding Commander",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Ultimate",
         "Summoning",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Corpse Generation",
+          "maxRank": 1
+        },
+        {
+          "name": "Passive Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Cooldown Reduction",
+          "maxRank": 1
+        },
+        {
+          "name": "Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Unyielding Commander",
+          "maxRank": 1
+        },
+        {
+          "name": "Pile the Bodies",
+          "maxRank": 1
+        },
+        {
+          "name": "Dead Cold",
+          "maxRank": 1
+        }
       ]
     },
     {
       "name": "Blood Wave",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Blood Wave",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Tides of Blood",
-            "maxRank": 1
-          },
-          {
-            "name": "Path to Darkness",
-            "maxRank": 1
-          },
-          {
-            "name": "Hematolagnia",
-            "maxRank": 1
-          }
-        ]
-      },
       "damageType": "Physical",
       "tags": [
         "Ultimate",
         "Blood",
         "Damage"
+      ],
+      "modifiers": [
+        {
+          "name": "Damage Reduction",
+          "maxRank": 1
+        },
+        {
+          "name": "Damage Bonus",
+          "maxRank": 1
+        },
+        {
+          "name": "Overpower",
+          "maxRank": 1
+        },
+        {
+          "name": "Blood Orb",
+          "maxRank": 1
+        },
+        {
+          "name": "Hematolagnia",
+          "maxRank": 1
+        },
+        {
+          "name": "Path of Darkness",
+          "maxRank": 1
+        },
+        {
+          "name": "Tides of Blood",
+          "maxRank": 1
+        }
       ]
     }
   ]
