@@ -8840,7 +8840,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Heir of Perdition",
-      "desc": "Succumb to hatred and earn Mother's Favor, increasing your damage dealt by 80%[x]. Slaughter enemies to briefly steal Mother's Favor from surrounding allies."
+      "desc": "Succumb to hatred and earn Mother's Favor. Slaughtering enemies briefly steals 15%[+] Critical Strike Chance from surrounding allies with Mother's Favor. Mother's Favor always grants you 15%[x] increased damage."
     },
     {
       "name": "Hellbrand Signet",
