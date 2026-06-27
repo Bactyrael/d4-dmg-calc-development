@@ -231,6 +231,7 @@ const skillsDatabase = {
           "tags": [
             "Search_Damage"
           ],
+          "baseDamageScalar": 0.40,
           "description": "{c_important}Hemorrhage{/c} also deals {c_number}[{payload:damage_aoe}|2?|]{/c} damage to enemies around your target.",
           "maxRank": 1
         },
