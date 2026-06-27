@@ -9048,7 +9048,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Omen of Pain",
-      "desc": "A dark aura surrounds you, inflicting Decrepify and Iron Maiden on enemies who touch it. Curses inflicted this way spread to surrounding targets every [1.3 - 1.0] seconds and last 4 seconds outside of the aura."
+      "desc": "A dark aura surrounds you, inflicting Decrepify and Iron Maiden on enemies around you and increasing your damage to Close enemies by 15.0%[x].\n\nCurses inflicted this way spread to surrounding targets every second."
     },
     {
       "name": "Onyx Soul",
