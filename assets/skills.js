@@ -20,7 +20,14 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Shadow",
+      "tags": [
+        "Basic",
+        "Darkness",
+        "Channeled",
+        "Damage"
+      ]
     },
     {
       "name": "Reap",
@@ -42,7 +49,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Shadow",
+      "tags": [
+        "Basic",
+        "Darkness",
+        "Damage"
+      ]
     },
     {
       "name": "Hemorrhage",
@@ -64,7 +77,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Basic",
+        "Blood",
+        "Damage"
+      ]
     },
     {
       "name": "Bone Splinters",
@@ -86,7 +105,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Basic",
+        "Bone",
+        "Damage"
+      ]
     }
   ],
   "Core": [
@@ -110,7 +135,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Core",
+        "Bone",
+        "Damage"
+      ]
     },
     {
       "name": "Sever",
@@ -132,7 +163,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Shadow",
+      "tags": [
+        "Core",
+        "Darkness",
+        "Damage"
+      ]
     },
     {
       "name": "Blight",
@@ -154,7 +191,14 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Shadow",
+      "tags": [
+        "Core",
+        "Darkness",
+        "Damage",
+        "Damage over Time"
+      ]
     },
     {
       "name": "Skeleton Mage",
@@ -176,7 +220,15 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Core",
+        "Minion",
+        "Summoning",
+        "Mage",
+        "Damage"
+      ]
     },
     {
       "name": "Blood Surge",
@@ -198,7 +250,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Core",
+        "Blood",
+        "Damage"
+      ]
     },
     {
       "name": "Blood Lance",
@@ -220,7 +278,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Core",
+        "Blood",
+        "Damage"
+      ]
     }
   ],
   "Macabre": [
@@ -244,7 +308,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Macabre",
+        "Corpse",
+        "Damage"
+      ]
     },
     {
       "name": "Skeleton Warrior",
@@ -266,7 +336,15 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Macabre",
+        "Minion",
+        "Summoning",
+        "Warrior",
+        "Damage"
+      ]
     },
     {
       "name": "Blood Mist",
@@ -288,7 +366,14 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Macabre",
+        "Blood",
+        "Damage",
+        "Immunity"
+      ]
     },
     {
       "name": "Bone Prison",
@@ -310,7 +395,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Macabre",
+        "Bone",
+        "Damage"
+      ]
     },
     {
       "name": "Bone Spirit",
@@ -332,7 +423,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Macabre",
+        "Bone",
+        "Damage"
+      ]
     },
     {
       "name": "Golem",
@@ -354,7 +451,15 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Macabre",
+        "Minion",
+        "Summoning",
+        "Golem",
+        "Damage"
+      ]
     }
   ],
   "Corruption": [
@@ -378,7 +483,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Corruption",
+        "Corpse",
+        "Damage"
+      ]
     },
     {
       "name": "Decrepify",
@@ -400,7 +511,12 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Shadow",
+      "tags": [
+        "Corruption",
+        "Curse"
+      ]
     },
     {
       "name": "Iron Maiden",
@@ -422,7 +538,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Corruption",
+        "Curse",
+        "Damage"
+      ]
     }
   ],
   "Ultimate": [
@@ -446,7 +568,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Shadow",
+      "tags": [
+        "Ultimate",
+        "Darkness",
+        "Damage"
+      ]
     },
     {
       "name": "Bone Storm",
@@ -468,7 +596,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Ultimate",
+        "Bone",
+        "Damage"
+      ]
     },
     {
       "name": "Army of the Dead",
@@ -490,7 +624,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Ultimate",
+        "Summoning",
+        "Damage"
+      ]
     },
     {
       "name": "Blood Wave",
@@ -512,7 +652,13 @@ const skillsDatabase = {
             "maxRank": 1
           }
         ]
-      }
+      },
+      "damageType": "Physical",
+      "tags": [
+        "Ultimate",
+        "Blood",
+        "Damage"
+      ]
     }
   ]
 };
