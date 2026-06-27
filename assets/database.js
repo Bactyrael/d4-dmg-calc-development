@@ -8556,7 +8556,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Crown of Lucion",
-      "desc": "Each time you use a Skill with a Primary Resource Cost, gain [10 - 15]%[x] increased damage and Resource Cost is increased by 30%[+] for 6 seconds, stacking up to 6 times."
+      "desc": "Each time you use a Skill with a Primary Resource Cost, gain [5.0 - 7.5]%[x] increased damage and Resource Cost is increased by 30%[+] for 6 seconds, stacking up to 6 times."
     },
     {
       "name": "Cruor's Embrace",
