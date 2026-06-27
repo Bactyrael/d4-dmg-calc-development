@@ -5209,3 +5209,23 @@ rarity = foundItem.rarity;
   }
 
 })();
+
+
+// Tab Persistence
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTab = localStorage.getItem('activeTabId');
+    if (savedTab) {
+        const tabToClick = document.getElementById(savedTab);
+        if (tabToClick) {
+            tabToClick.click();
+        }
+    }
+    
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (e.target.id) {
+                localStorage.setItem('activeTabId', e.target.id);
+            }
+        });
+    });
+});
