@@ -471,6 +471,7 @@ const skillsDatabase = {
             "Search_Damage",
             "Search_Shadow"
           ],
+          "baseDamageScalar": 1.63,
           "description": "{c_important}Bone Spear{/c} becomes a {c_important}Darkness{/c} Skill that deals {c_number}[{payload:damage_shadow}|2?|]{/c} Shadow damage.\\n\\nInstead of piercing through, {c_important}Bone Spear{/c} forks into {c_number}2{/c} piercing spears each time it hits an enemy or wall, up to {c_number}2{/c} times.",
           "maxRank": 1
         },
