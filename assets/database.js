@@ -8792,7 +8792,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Greaves of the Empty Tomb",
-      "desc": "Sever leaves behind Desecrated Ground that deals [300 - 1,200] Corrupting damage over 2 seconds."
+      "desc": "Sever leaves behind Desecrated Ground that deals 7536-30144 Corrupting damage over 2 seconds."
     },
     {
       "name": "Greenwalker's Oath",
