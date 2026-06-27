@@ -3645,20 +3645,21 @@ function parseD4String(str, skillObj, currentRank) {
     str = str.replace(/\{if:ADVANCED_TOOLTIP\}([\s\S]*?)\{\/if\}/g, '$1');
     str = str.replace(/\{if:.*?\}[\s\S]*?\{\/if\}/g, '');
     
-    str = str.replace(/\{c_label\}([\s\S]*?)\{\/c\}/g, '<span class="d4-color-label">$1</span>');
-    str = str.replace(/\{c_number\}([\s\S]*?)\{\/c\}/g, '<span class="d4-color-number">$1</span>');
-    str = str.replace(/\{c_important\}([\s\S]*?)\{\/c\}/g, '<span class="d4-color-important">$1</span>');
-    str = str.replace(/\{c_resource\}([\s\S]*?)\{\/c\}/g, '<span class="d4-color-resource">$1</span>');
-    str = str.replace(/\{c_lightgray\}([\s\S]*?)\{\/c\}/g, '<span class="d4-color-lightgray">$1</span>');
-    str = str.replace(/\{\/c\}/g, '');
+    str = str.replace(/\{c_([a-zA-Z]+)\}([\s\S]*?)\{\/c(?:_[a-zA-Z]+)?\}/g, '<span class="d4-color-$1">$2</span>');
+    str = str.replace(/\{\/c(?:_[a-zA-Z]+)?\}/g, '');
     
     if (skillObj.baseDamageScalar) {
         let rankMult = currentRank > 0 ? (1 + ((currentRank - 1) * 0.10)) : 1;
         let percentage = (skillObj.baseDamageScalar * rankMult * 100).toFixed(1) + '%';
-        str = str.replace(/\[\{payload:.*?\}[\s\S]*?\]/g, percentage);
+        str = str.replace(/\[?\{payload:.*?\}[\s\S]*?\]?/g, percentage);
     } else {
-        str = str.replace(/\[\{payload:.*?\}[\s\S]*?\]/g, '?%');
+        str = str.replace(/\[?\{payload:.*?\}[\s\S]*?\]?/g, '?%');
     }
+    
+    str = str.replace(/\{dot:.*?\}/g, 'Damage');
+    
+    str = str.replace(/\[(\d+(?:\.\d+)?)\*[A-Za-z]+\|.*?\]/g, '$1');
+    str = str.replace(/\[Mod\([^)]+\)\?(\d+):(\d+)(?:\|.*?)?\]/g, '$2');
     
     if (skillObj.resourceCost) {
         str = str.replace(/\[\{resource cost\}[\s\S]*?\]/g, skillObj.resourceCost);
