@@ -2216,3 +2216,82 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
 .d4-color-important { color: #FFAA00; font-weight: 600; }
 .d4-color-resource { color: #00ffff; }
 .d4-color-lightgray { color: #a0a0a0; }
+/* --- Tooltip Overhaul --- */
+.d4-tooltip {
+  position: fixed;
+  background-color: #111111;
+  border: 1px solid #4a4a4a;
+  border-radius: 2px;
+  padding: 16px;
+  width: 340px;
+  pointer-events: none;
+  z-index: 10000;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.9), inset 0 0 20px rgba(0,0,0,0.5);
+  color: #d0c8b0;
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  line-height: 1.5;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+.d4-tooltip.visible {
+  opacity: 1;
+}
+.d4-tooltip-header {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: #f3f3f3;
+  text-align: center;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+.d4-tooltip-tags {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.d4-tooltip-tag {
+  border: 1px solid #333;
+  background: rgba(20,20,20,0.8);
+  padding: 2px 8px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  color: #e0d8c0;
+}
+.d4-divider {
+  border: none;
+  border-top: 1px solid #333;
+  position: relative;
+  margin: 12px 0;
+}
+.d4-divider::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 6px;
+  height: 6px;
+  border: 1px solid #555;
+  background: #111;
+}
+.d4-tooltip-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #a09880;
+  font-family: var(--font-body);
+}
+.d4-tooltip-desc {
+  color: #c0b8a0;
+}
+.d4-color-label { color: #a09880; }
+.d4-color-number { color: #ffd859; }
+.d4-color-important { color: #ffeb99; font-weight: normal; }
+.d4-color-resource { color: #59d8ff; }
+.d4-color-lightgray { color: #888; }

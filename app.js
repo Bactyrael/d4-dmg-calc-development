@@ -3673,6 +3673,12 @@ function parseD4String(str, skillObj, currentRank) {
 
 let tooltipEl = null;
 
+function formatTag(t) {
+    let tag = t.replace('Skill_Primary_', '').replace('Skill_', '').replace('Damage_Override_', '').replace('Keyword_', '');
+    if (tag === 'Shadow') tag = 'Darkness'; // D4 uses Darkness for Shadow skills
+    return tag;
+}
+
 function showSkillTooltip(skillObj, e) {
     if (!tooltipEl) {
         tooltipEl = document.createElement('div');
@@ -3685,15 +3691,20 @@ function showSkillTooltip(skillObj, e) {
     
     let tagsHtml = '';
     if (skillObj.tags && skillObj.tags.length > 0) {
-        tagsHtml = `<div class="d4-tooltip-tags">${skillObj.tags.join(', ')}</div>`;
+        // Filter out Search tags
+        let cleanTags = skillObj.tags.filter(t => !t.startsWith('Search_') && !t.startsWith('Damage_Type_'));
+        if (cleanTags.length > 0) {
+            let tagBoxes = cleanTags.map(t => `<div class="d4-tooltip-tag">${formatTag(t)}</div>`).join('');
+            tagsHtml = `<div class="d4-tooltip-tags">${tagBoxes}</div><hr class="d4-divider">`;
+        }
     }
     
     let statsHtml = '';
     if (skillObj.resourceCost) {
-        statsHtml += `<div>Essence Cost: <span class="d4-color-resource">${skillObj.resourceCost}</span></div>`;
+        statsHtml += `<div><span class="d4-color-label">Essence Cost:</span> <span class="d4-color-number">${skillObj.resourceCost}</span></div>`;
     }
     if (skillObj.cooldown) {
-        statsHtml += `<div>Cooldown: ${skillObj.cooldown} seconds</div>`;
+        statsHtml += `<div><span class="d4-color-label">Cooldown:</span> <span class="d4-color-number">${skillObj.cooldown}</span> seconds</div>`;
     }
     if (statsHtml) {
         statsHtml = `<div class="d4-tooltip-stats">${statsHtml}</div>`;
@@ -3702,10 +3713,7 @@ function showSkillTooltip(skillObj, e) {
     let descHtml = parseD4String(skillObj.description, skillObj, currentRank);
     
     tooltipEl.innerHTML = `
-        <div class="d4-tooltip-header">
-            <span>${skillObj.name}</span>
-            <span style="font-size:12px; color:#aaa;">Rank ${currentRank}/${skillObj.maxRank}</span>
-        </div>
+        <div class="d4-tooltip-header">${skillObj.name}</div>
         ${tagsHtml}
         ${statsHtml}
         <div class="d4-tooltip-desc">${descHtml}</div>
