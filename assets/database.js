@@ -9124,7 +9124,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Rakanoth's Wake",
-      "desc": "When you cast a Skill with a Cooldown, you explode, dealing [450 - 525] Fire damage."
+      "desc": "When you cast a Skill with a Cooldown, you explode, dealing 5652-6594 Fire damage."
     },
     {
       "name": "Ramaladni's Magnum Opus",
