@@ -3773,10 +3773,21 @@ function renderSkills() {
               }
               const cur = window.selectedSkills[name] || 0;
               if (cur < maxRank) {
-                  if (getSpentSkillPoints() >= 83) {
+                  let spent = getSpentSkillPoints();
+                  if (spent >= 83) {
                       return; // Max points reached
                   }
-                  window.selectedSkills[name] = cur + 1;
+                  
+                  if (e.shiftKey) {
+                      // Fill up the skill as much as possible up to maxRank or global cap
+                      let availablePoints = 83 - spent;
+                      let pointsToMax = maxRank - cur;
+                      let pointsToAdd = Math.min(availablePoints, pointsToMax);
+                      window.selectedSkills[name] = cur + pointsToAdd;
+                  } else {
+                      window.selectedSkills[name] = cur + 1;
+                  }
+                  
                   updateDisplay();
                   if (typeof recalculate === 'function') recalculate();
               }
@@ -3785,7 +3796,12 @@ function renderSkills() {
           slot.oncontextmenu = (e) => {
               e.preventDefault();
               if (window.selectedSkills[name] > 0) {
-                  window.selectedSkills[name]--;
+                  if (e.shiftKey) {
+                      window.selectedSkills[name] = 0; // Wipe all points from this skill
+                  } else {
+                      window.selectedSkills[name]--;
+                  }
+                  
                   if (window.selectedSkills[name] === 0) {
                       delete window.selectedSkills[name];
                       // Restriction: If a base skill drops to 0, automatically clear all its modifiers
