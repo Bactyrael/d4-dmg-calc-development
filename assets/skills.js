@@ -581,35 +581,35 @@ const skillsDatabase = {
         "Damage"
       ],
       "modifiers": [
-        {
-          "name": "Astral Projection",
-          "maxRank": 1
-        },
-        {
-          "name": "Unfinished Business",
-          "maxRank": 1
-        },
-        {
+          {
           "name": "Poltergeists",
           "maxRank": 1
         },
-        {
-          "name": "Maximum Essence",
+          {
+          "name": "Unfinished Business",
           "maxRank": 1
         },
-        {
-          "name": "Damage Bonus",
+          {
+          "name": "Astral Projection",
           "maxRank": 1
         },
-        {
+          {
           "name": "Charges",
           "maxRank": 1
         },
-        {
+          {
           "name": "Core Skill",
           "maxRank": 1
+        },
+          {
+          "name": "Damage Bonus",
+          "maxRank": 1
+        },
+          {
+          "name": "Maximum Essence",
+          "maxRank": 1
         }
-      ]
+        ]
     },
     {
       "name": "Golem",
