@@ -5215,7 +5215,7 @@ rarity = foundItem.rarity;
 document.addEventListener('DOMContentLoaded', () => {
     const savedTab = localStorage.getItem('activeTabId');
     if (savedTab) {
-        const tabToClick = document.getElementById(savedTab);
+        const tabToClick = document.querySelector(`.tab-btn[data-target="${savedTab}"]`);
         if (tabToClick) {
             tabToClick.click();
         }
@@ -5223,9 +5223,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            if (e.target.id) {
-                localStorage.setItem('activeTabId', e.target.id);
+            const target = e.currentTarget.dataset.target;
+            if (target) {
+                localStorage.setItem('activeTabId', target);
             }
         });
     });
+});
 });
