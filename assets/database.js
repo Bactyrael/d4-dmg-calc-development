@@ -8824,7 +8824,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Harlequin Crest",
-      "desc": "Gain 20% Damage Reduction. In addition, gain +4 Ranks to all Skills."
+      "desc": "Gain +6 Rank to all Skills."
     },
     {
       "name": "Harmony of Ebewaka",
