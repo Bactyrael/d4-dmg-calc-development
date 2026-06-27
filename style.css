@@ -2019,3 +2019,42 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
 .pd-cir {
   border: 1px solid #555;
 }
+\n
+/* Paperdoll Image Constraints */
+.paperdoll-slot img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none; /* Let clicks pass through to the slot */
+  z-index: 1;
+}
+
+/* Base square constraint */
+.pd-base {
+  overflow: hidden;
+}
+
+/* Diamond image counter-rotation */
+.pd-dia {
+  overflow: hidden;
+}
+.pd-dia img {
+  transform: rotate(-45deg) scale(1.42);
+}
+
+/* Circle image constraint */
+.pd-cir {
+  overflow: hidden;
+  border-radius: 50%;
+}
+.pd-cir img {
+  border-radius: 50%;
+}
+
+/* Ensure rank displays above images */
+.paperdoll-rank {
+  z-index: 2;
+}

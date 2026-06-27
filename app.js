@@ -3703,7 +3703,7 @@ function renderSkills() {
       const pd = document.createElement('div');
       pd.className = 'skill-compact-grid';
       
-      const createSlot = (name, maxRank, isBase, index) => {
+      const createSlot = (name, maxRank, isBase, index, category) => {
           const slot = document.createElement('div');
           
           let slotClass = 'paperdoll-slot';
@@ -3714,7 +3714,15 @@ function renderSkills() {
           slot.className = slotClass;
           slot.title = name;
           
-          // NO IMAGES, JUST CSS SHAPES
+          if (category === 'Basic') {
+              let imgName = name.toLowerCase().replace(/\s+/g, '-');
+              let imgSrc = 'assets/skills/' + imgName + '.png';
+              
+              const img = document.createElement('img');
+              img.src = imgSrc;
+              img.onerror = () => { img.style.display = 'none'; };
+              slot.appendChild(img);
+          }
           
           const rankDisplay = document.createElement('div');
           rankDisplay.className = 'paperdoll-rank';
@@ -3750,11 +3758,11 @@ function renderSkills() {
           return slot;
       };
       
-      pd.appendChild(createSlot(skill.name, skill.maxRank, true, -1));
+      pd.appendChild(createSlot(skill.name, skill.maxRank, true, -1, category));
       
       if (skill.modifiers && skill.modifiers.length > 0) {
           skill.modifiers.forEach((mod, idx) => {
-              pd.appendChild(createSlot(mod.name, mod.maxRank, false, idx));
+              pd.appendChild(createSlot(mod.name, mod.maxRank, false, idx, category));
           });
       }
       
