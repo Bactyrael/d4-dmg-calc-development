@@ -3700,7 +3700,14 @@ function parseD4String(str, skillObj, currentRank) {
     });
     
     // Catch-all for any other multiplier like [15*foo] that we don't scale
-    str = str.replace(/\[(\d+(?:\.\d+)?)\*[^\]]+\]/g, '$1%');
+    str = str.replace(/\[(\d+(?:\.\d+)?)\*([^\]]+)\]/g, (match, p1, p2) => {
+        let val = parseFloat(p1);
+        // If the formula explicitly multiplies by 100 at the end (for percentage formatting)
+        if (p2.includes('*100')) {
+            val = val * 100;
+        }
+        return val + '%';
+    });
     
     str = str.replace(/\[Mod\([^)]+\)\?(\d+):(\d+)(?:\|.*?)?\]/g, '$2');
     
