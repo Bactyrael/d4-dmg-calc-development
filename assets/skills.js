@@ -141,6 +141,7 @@ const skillsDatabase = {
             "Search_Damage",
             "Search_ResourceEssence"
           ],
+          "baseDamageScalar": 0.25,
           "description": "{c_important}Reap{/c} sweeps a second time, dealing {c_number}[{payload:damage_echo}|2?|]{/c} damage and generating {c_number}7.5{/c} Essence.",
           "maxRank": 1
         },
