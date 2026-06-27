@@ -623,35 +623,35 @@ const skillsDatabase = {
         "Damage"
       ],
       "modifiers": [
-        {
+          {
           "name": "Gargantua",
           "maxRank": 1
         },
-        {
+          {
           "name": "Fel Gluttony",
           "maxRank": 1
         },
-        {
+          {
           "name": "Gravebloom",
           "maxRank": 1
         },
-        {
-          "name": "Resolve, Overpower, or Ferocity",
-          "maxRank": 1
-        },
-        {
+          {
           "name": "Weaken",
           "maxRank": 1
         },
-        {
+          {
+          "name": "Resolve, Overpower, or Ferocity",
+          "maxRank": 1
+        },
+          {
           "name": "Damage Bonus",
           "maxRank": 1
         },
-        {
+          {
           "name": "Unstoppable",
           "maxRank": 1
         }
-      ]
+        ]
     }
   ],
   "Corruption": [
