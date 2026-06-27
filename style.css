@@ -1936,7 +1936,6 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
 
 
 
-.paperdoll-slot.pd-mod 
 .paperdoll-slot.pd-mod {
   border-radius: 50%;
   transform: none;
@@ -1963,7 +1962,6 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
 
 /* Top row diamonds */
 .pd-dia { border-radius: 4px; transform: rotate(45deg); width: 34px; height: 34px; margin: 3px; }
-.pd-dia 
 .pd-dia .paperdoll-rank { transform: rotate(-45deg); bottom: -8px; right: -8px; }
 
 
@@ -1973,11 +1971,6 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
 /* Second row circles */
 .pd-cir { border-radius: 50%; width: 36px; height: 36px; margin: 2px; }
 .pd-cir .paperdoll-rank { bottom: -6px; right: -6px; transform: none; }
-.pd-cir 
-
-
-
-
 /* Third row circles */
 
 
@@ -2007,10 +2000,7 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
 .pd-cir {
   border: 1px solid #555;
 }
-\n
 /* Paperdoll Image Constraints */
-.paperdoll-slot 
-
 /* Base square constraint */
 
 
@@ -2018,14 +2008,11 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
 .pd-dia {
   overflow: hidden;
 }
-.pd-dia 
-
 /* Circle image constraint */
 .pd-cir {
   overflow: hidden;
   border-radius: 50%;
 }
-.pd-cir 
 
 /* Ensure rank displays above images */
 .paperdoll-rank {
