@@ -9268,7 +9268,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Shroud of False Death",
-      "desc": "When you would be dealt fatal damage, instead you Heal to full Life, gain a Barrier for 100% of your Maximum Life for 3 seconds, and Knock Back Close enemies. This can only occur once every 300 seconds."
+      "desc": "When you would be dealt fatal damage, instead you Heal to full Life, gain a Barrier for 100% of your Maximum Life for 3 seconds, and Knock Back Close enemies. This power is disabled once used until you return to town."
     },
     {
       "name": "Shroud of Khanduras",
