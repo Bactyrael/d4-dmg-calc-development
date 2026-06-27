@@ -3767,8 +3767,8 @@ function renderSkills() {
                   if (window.selectedSkills[name] === 0) {
                       delete window.selectedSkills[name];
                       // Restriction: If a base skill drops to 0, automatically clear all its modifiers
-                      if (isBase && window.skillsDatabase[category]) {
-                          const skillData = window.skillsDatabase[category].find(s => s.name === name);
+                      if (isBase && skillsDatabase[category]) {
+                          const skillData = skillsDatabase[category].find(s => s.name === name);
                           if (skillData && skillData.modifiers) {
                               skillData.modifiers.forEach(mod => {
                                   delete window.selectedSkills[mod.name];
