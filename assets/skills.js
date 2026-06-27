@@ -24,11 +24,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Lucky Hit Chance",
+          "name": "Crowd Control",
           "maxRank": 1
         },
         {
-          "name": "Crowd Control",
+          "name": "Lucky Hit Chance",
           "maxRank": 1
         },
         {
@@ -92,7 +92,7 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Soul Rip",
+          "name": "Blood Boil",
           "maxRank": 1
         },
         {
@@ -100,15 +100,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Blood Boil",
-          "maxRank": 1
-        },
-        {
-          "name": "Overpower",
-          "maxRank": 1
-        },
-        {
-          "name": "Weaken",
+          "name": "Soul Rip",
           "maxRank": 1
         },
         {
@@ -117,6 +109,14 @@ const skillsDatabase = {
         },
         {
           "name": "Blood Orb",
+          "maxRank": 1
+        },
+        {
+          "name": "Weaken",
+          "maxRank": 1
+        },
+        {
+          "name": "Overpower",
           "maxRank": 1
         }
       ]
@@ -132,7 +132,7 @@ const skillsDatabase = {
       ],
       "modifiers": [
         {
-          "name": "Shadow Seekers",
+          "name": "Bouncing Spines",
           "maxRank": 1
         },
         {
@@ -140,15 +140,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Bouncing Spines",
-          "maxRank": 1
-        },
-        {
-          "name": "Resolve",
-          "maxRank": 1
-        },
-        {
-          "name": "Vulnerable",
+          "name": "Shadow Seekers",
           "maxRank": 1
         },
         {
@@ -157,6 +149,14 @@ const skillsDatabase = {
         },
         {
           "name": "Essence Generation",
+          "maxRank": 1
+        },
+        {
+          "name": "Vulnerable",
+          "maxRank": 1
+        },
+        {
+          "name": "Resolve",
           "maxRank": 1
         }
       ]
