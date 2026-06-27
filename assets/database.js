@@ -9136,7 +9136,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Red Blessing",
-      "desc": "While Healthy, gain 4 Maximum Overpower. Blood Orbs grant 2 stacks of Overpower.You deal [5.33 - 6.67]%[x] increased damage per stack of Overpower."
+      "desc": "While Healthy, gain 4 Maximum Overpower. Blood Orbs grant 2 stacks of Overpower. You deal [5.33 - 6.67]%[x] increased damage per stack of Overpower."
     },
     {
       "name": "Red Sermon",
