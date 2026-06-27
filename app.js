@@ -5230,4 +5230,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-});
