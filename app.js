@@ -3729,7 +3729,10 @@ function renderSkills() {
                       img.style.display = 'none'; 
                   }
               };
-              slot.appendChild(img);
+              const imgContainer = document.createElement('div');
+              imgContainer.className = 'pd-img-container';
+              imgContainer.appendChild(img);
+              slot.appendChild(imgContainer);
           }
           
           const rankDisplay = document.createElement('div');
