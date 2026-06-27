@@ -3703,7 +3703,7 @@ function renderSkills() {
       const pd = document.createElement('div');
       pd.className = 'skill-compact-grid';
       
-      const createSlot = (name, maxRank, isBase, index, category) => {
+      const createSlot = (name, maxRank, isBase, index, category, baseSkillName) => {
           const slot = document.createElement('div');
           
           let slotClass = 'paperdoll-slot';
@@ -3720,7 +3720,15 @@ function renderSkills() {
               
               const img = document.createElement('img');
               img.src = imgSrc;
-              img.onerror = () => { img.style.display = 'none'; };
+              img.onerror = () => { 
+                  // If the direct name fails, try appending the base skill name (e.g. crowd-control-decompose.png)
+                  if (!isBase && baseSkillName && img.src.includes(imgSrc)) {
+                      let baseName = baseSkillName.toLowerCase().replace(/\s+/g, '-');
+                      img.src = 'assets/skills/' + imgName + '-' + baseName + '.png';
+                  } else {
+                      img.style.display = 'none'; 
+                  }
+              };
               slot.appendChild(img);
           }
           
@@ -3758,11 +3766,11 @@ function renderSkills() {
           return slot;
       };
       
-      pd.appendChild(createSlot(skill.name, skill.maxRank, true, -1, category));
+      pd.appendChild(createSlot(skill.name, skill.maxRank, true, -1, category, skill.name));
       
       if (skill.modifiers && skill.modifiers.length > 0) {
           skill.modifiers.forEach((mod, idx) => {
-              pd.appendChild(createSlot(mod.name, mod.maxRank, false, idx, category));
+              pd.appendChild(createSlot(mod.name, mod.maxRank, false, idx, category, skill.name));
           });
       }
       
