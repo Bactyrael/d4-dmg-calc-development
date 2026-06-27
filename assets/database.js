@@ -9392,7 +9392,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "The Grandfather",
-      "desc": "Increases your Critical Strike Damage by 150%[x]."
+      "desc": "Increases your Critical Strike Damage by 120%[x]."
     },
     {
       "name": "The Hand of Naz",
