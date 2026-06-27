@@ -21245,6 +21245,18 @@ window.D4_DATABASE = {
               "name": "+[12 - 15]% Crowd Control Duration",
               "shortName": "Crowd Control Duration",
               "desc": "Worldy Fortune"
+            },
+            {
+              "name": "[10.0 - 12.5]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
+            },
+            {
+              "name": "+[12.0 - 15.0]% Crowd Control Duration",
+              "shortName": "Crowd Control Duration",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
             }
           ],
           "transfigures": [
@@ -21590,6 +21602,24 @@ window.D4_DATABASE = {
               "shortName": "Crowd Control Duration",
               "category": "Utility",
               "manual": "Worldy Fortune"
+            },
+            {
+              "name": "+[2.5 - 5.0]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
+            },
+            {
+              "name": "[10.0 - 12.5]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
+            },
+            {
+              "name": "+[12.0 - 15.0]% Crowd Control Duration",
+              "shortName": "Crowd Control Duration",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
             }
           ],
           "transfigures": [
@@ -21909,6 +21939,24 @@ window.D4_DATABASE = {
               "name": "+[10 - 12.5]% Barrier Generation",
               "shortName": "Barrier Generation",
               "desc": "Natural Schemes"
+            },
+            {
+              "name": "+[2.5 - 5.0]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
+            },
+            {
+              "name": "[10.0 - 12.5]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
+            },
+            {
+              "name": "+[12.0 - 15.0]% Crowd Control Duration",
+              "shortName": "Crowd Control Duration",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
             }
           ],
           "transfigures": [
@@ -22571,6 +22619,24 @@ window.D4_DATABASE = {
               "shortName": "Evade Cooldown Reduction",
               "category": "Utility",
               "desc": "Natural Motion"
+            },
+            {
+              "name": "+[2.5 - 5.0]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
+            },
+            {
+              "name": "[10.0 - 12.5]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
+            },
+            {
+              "name": "+[12.0 - 15.0]% Crowd Control Duration",
+              "shortName": "Crowd Control Duration",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
             }
           ],
           "transfigures": [
@@ -23457,6 +23523,24 @@ window.D4_DATABASE = {
               "name": "+[2 - 3] Maximum Resolve Stacks",
               "shortName": "Maximum Resolve Stacks",
               "desc": "Wordly Endurance"
+            },
+            {
+              "name": "+[2.5 - 5.0]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
+            },
+            {
+              "name": "[10.0 - 12.5]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
+            },
+            {
+              "name": "+[12.0 - 15.0]% Crowd Control Duration",
+              "shortName": "Crowd Control Duration",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
             }
           ],
           "transfigures": [
@@ -24428,6 +24512,24 @@ window.D4_DATABASE = {
               "shortName": "Evade Cooldown Reduction",
               "category": "Utility",
               "desc": "Natural Motion"
+            },
+            {
+              "name": "+[2.5 - 5.0]% Lucky Hit Chance",
+              "shortName": "Lucky Hit Chance",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
+            },
+            {
+              "name": "[10.0 - 12.5]% Impairment Reduction",
+              "shortName": "Impairment Reduction",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
+            },
+            {
+              "name": "+[12.0 - 15.0]% Crowd Control Duration",
+              "shortName": "Crowd Control Duration",
+              "category": "Utility",
+              "desc": "Worldly Fortune"
             }
           ],
           "transfigures": [
