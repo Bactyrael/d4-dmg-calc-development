@@ -779,24 +779,15 @@ const skillsDatabase = {
     {
       "name": "Soulrift",
       "maxRank": 15,
-      "enhancement": {
-        "name": "Enhanced Soulrift",
-        "maxRank": 1,
-        "branches": [
-          {
-            "name": "Distilled Anima",
-            "maxRank": 1
-          },
-          {
-            "name": "Soul Vortex",
-            "maxRank": 1
-          },
-          {
-            "name": "Frozen Wasteland",
-            "maxRank": 1
-          }
-        ]
-      },
+      "modifiers": [
+        { "name": "Enhanced Soulrift", "maxRank": 1 },
+        { "name": "Supreme Soulrift", "maxRank": 1 },
+        { "name": "Prime Soulrift", "maxRank": 1 },
+        { "name": "Distilled Anima", "maxRank": 1 },
+        { "name": "Soul Vortex", "maxRank": 1 },
+        { "name": "Frozen Wasteland", "maxRank": 1 },
+        { "name": "Final Soulrift", "maxRank": 1 }
+      ],
       "damageType": "Shadow",
       "tags": [
         "Ultimate",
