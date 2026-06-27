@@ -781,6 +781,10 @@ const skillsDatabase = {
       "maxRank": 15,
       "modifiers": [
           {
+            "name": "Distilled Anima",
+            "maxRank": 1
+          },
+          {
           "name": "Soul Vortex",
           "maxRank": 1
         },
