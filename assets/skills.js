@@ -346,6 +346,7 @@ const skillsDatabase = {
           "tags": [
             "Search_Damage"
           ],
+          "baseDamageScalar": 0.45,
           "description": "{c_important}Bone Splinters{/c} now deals {c_number}[{payload:bounce_damage}|2?|]{/c} damage with each splinter, bounces off walls, and travels further.",
           "maxRank": 1
         },
