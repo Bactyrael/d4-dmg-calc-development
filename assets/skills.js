@@ -501,35 +501,35 @@ const skillsDatabase = {
         "Immunity"
       ],
       "modifiers": [
-        {
+          {
           "name": "Devouring Mist",
           "maxRank": 1
         },
-        {
+          {
           "name": "Blood Rush",
           "maxRank": 1
         },
-        {
+          {
           "name": "Blood Transfusion",
           "maxRank": 1
         },
-        {
-          "name": "Vulnerable and Slow",
-          "maxRank": 1
-        },
-        {
+          {
           "name": "Overpower",
           "maxRank": 1
         },
-        {
+          {
+          "name": "Vulnerable and Slow",
+          "maxRank": 1
+        },
+          {
           "name": "Critical Strike",
           "maxRank": 1
         },
-        {
+          {
           "name": "Movement Speed",
           "maxRank": 1
         }
-      ]
+        ]
     },
     {
       "name": "Bone Prison",
