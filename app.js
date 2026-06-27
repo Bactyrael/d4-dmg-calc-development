@@ -3701,15 +3701,15 @@ function showSkillTooltip(skillObj, e) {
     
     let descHtml = parseD4String(skillObj.description, skillObj, currentRank);
     
-    tooltipEl.innerHTML = \`
+    tooltipEl.innerHTML = `
         <div class="d4-tooltip-header">
-            <span>\${skillObj.name}</span>
-            <span style="font-size:12px; color:#aaa;">Rank \${currentRank}/\${skillObj.maxRank}</span>
+            <span>${skillObj.name}</span>
+            <span style="font-size:12px; color:#aaa;">Rank ${currentRank}/${skillObj.maxRank}</span>
         </div>
-        \${tagsHtml}
-        \${statsHtml}
-        <div class="d4-tooltip-desc">\${descHtml}</div>
-    \`;
+        ${tagsHtml}
+        ${statsHtml}
+        <div class="d4-tooltip-desc">${descHtml}</div>
+    `;
     
     tooltipEl.classList.add('visible');
     moveSkillTooltip(e);
