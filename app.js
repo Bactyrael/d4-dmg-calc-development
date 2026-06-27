@@ -3639,6 +3639,99 @@
 
   window.selectedSkills = {};
 
+function parseD4String(str, skillObj, currentRank) {
+    if (!str) return '';
+    
+    str = str.replace(/\{if:ADVANCED_TOOLTIP\}([\s\S]*?)\{\/if\}/g, '$1');
+    str = str.replace(/\{if:.*?\}[\s\S]*?\{\/if\}/g, '');
+    
+    str = str.replace(/\{c_label\}([\s\S]*?)\{\/c\}/g, '<span class="d4-color-label">$1</span>');
+    str = str.replace(/\{c_number\}([\s\S]*?)\{\/c\}/g, '<span class="d4-color-number">$1</span>');
+    str = str.replace(/\{c_important\}([\s\S]*?)\{\/c\}/g, '<span class="d4-color-important">$1</span>');
+    str = str.replace(/\{c_resource\}([\s\S]*?)\{\/c\}/g, '<span class="d4-color-resource">$1</span>');
+    str = str.replace(/\{c_lightgray\}([\s\S]*?)\{\/c\}/g, '<span class="d4-color-lightgray">$1</span>');
+    str = str.replace(/\{\/c\}/g, '');
+    
+    if (skillObj.baseDamageScalar) {
+        let rankMult = currentRank > 0 ? (1 + ((currentRank - 1) * 0.10)) : 1;
+        let percentage = (skillObj.baseDamageScalar * rankMult * 100).toFixed(1) + '%';
+        str = str.replace(/\[\{payload:.*?\}[\s\S]*?\]/g, percentage);
+    } else {
+        str = str.replace(/\[\{payload:.*?\}[\s\S]*?\]/g, '?%');
+    }
+    
+    if (skillObj.resourceCost) {
+        str = str.replace(/\[\{resource cost\}[\s\S]*?\]/g, skillObj.resourceCost);
+    }
+    
+    str = str.replace(/\[(.*?)\|.*?\]/g, '$1');
+    str = str.replace(/\{icon:bullet,1\.2\}/g, '&bull; ');
+    str = str.replace(/\{icon:.*?}/g, '* ');
+    
+    return str.replace(/\\n/g, '<br/>').replace(/\n/g, '<br/>');
+}
+
+let tooltipEl = null;
+
+function showSkillTooltip(skillObj, e) {
+    if (!tooltipEl) {
+        tooltipEl = document.createElement('div');
+        tooltipEl.id = 'skill-tooltip';
+        tooltipEl.className = 'd4-tooltip';
+        document.body.appendChild(tooltipEl);
+    }
+    
+    let currentRank = window.selectedSkills[skillObj.name] || 0;
+    
+    let tagsHtml = '';
+    if (skillObj.tags && skillObj.tags.length > 0) {
+        tagsHtml = `<div class="d4-tooltip-tags">${skillObj.tags.join(', ')}</div>`;
+    }
+    
+    let statsHtml = '';
+    if (skillObj.resourceCost) {
+        statsHtml += `<div>Essence Cost: <span class="d4-color-resource">${skillObj.resourceCost}</span></div>`;
+    }
+    if (skillObj.cooldown) {
+        statsHtml += `<div>Cooldown: ${skillObj.cooldown} seconds</div>`;
+    }
+    if (statsHtml) {
+        statsHtml = `<div class="d4-tooltip-stats">${statsHtml}</div>`;
+    }
+    
+    let descHtml = parseD4String(skillObj.description, skillObj, currentRank);
+    
+    tooltipEl.innerHTML = \`
+        <div class="d4-tooltip-header">
+            <span>\${skillObj.name}</span>
+            <span style="font-size:12px; color:#aaa;">Rank \${currentRank}/\${skillObj.maxRank}</span>
+        </div>
+        \${tagsHtml}
+        \${statsHtml}
+        <div class="d4-tooltip-desc">\${descHtml}</div>
+    \`;
+    
+    tooltipEl.classList.add('visible');
+    moveSkillTooltip(e);
+}
+
+function moveSkillTooltip(e) {
+    if (!tooltipEl) return;
+    
+    let x = e.clientX + 15;
+    let y = e.clientY + 15;
+    
+    if (x + 320 > window.innerWidth) x = e.clientX - 335;
+    if (y + tooltipEl.offsetHeight > window.innerHeight) y = window.innerHeight - tooltipEl.offsetHeight - 10;
+    
+    tooltipEl.style.left = x + 'px';
+    tooltipEl.style.top = y + 'px';
+}
+
+function hideSkillTooltip(e) {
+    if (tooltipEl) tooltipEl.classList.remove('visible');
+}
+
 function getSpentSkillPoints() {
     return Object.values(window.selectedSkills || {}).reduce((sum, val) => sum + val, 0);
 }
@@ -3721,7 +3814,7 @@ function renderSkills() {
       const pd = document.createElement('div');
       pd.className = 'skill-compact-grid';
       
-      const createSlot = (name, maxRank, isBase, index, category, baseSkillName) => {
+      const createSlot = (name, maxRank, isBase, index, category, baseSkillName, skillObj) => {
           const slot = document.createElement('div');
           
           let slotClass = 'paperdoll-slot';
@@ -3731,6 +3824,10 @@ function renderSkills() {
           
           slot.className = slotClass;
           slot.title = name;
+          
+          slot.onmouseenter = (e) => showSkillTooltip(skillObj, e);
+          slot.onmousemove = (e) => moveSkillTooltip(e);
+          slot.onmouseleave = (e) => hideSkillTooltip(e);
           
           // Execute image loading for all categories
           if (true) {
@@ -3847,11 +3944,11 @@ function renderSkills() {
           return slot;
       };
       
-      pd.appendChild(createSlot(skill.name, skill.maxRank, true, -1, category, skill.name));
+      pd.appendChild(createSlot(skill.name, skill.maxRank, true, -1, category, skill.name, skill));
       
       if (skill.modifiers && skill.modifiers.length > 0) {
           skill.modifiers.forEach((mod, idx) => {
-              pd.appendChild(createSlot(mod.name, mod.maxRank, false, idx, category, skill.name));
+              pd.appendChild(createSlot(mod.name, mod.maxRank, false, idx, category, skill.name, mod));
           });
       }
       

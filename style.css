@@ -2161,3 +2161,58 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #777;
 }
+/* --- Tooltip CSS --- */
+.d4-tooltip {
+  position: fixed;
+  background-color: #0a0a0a;
+  border: 1px solid #785a28;
+  border-radius: 4px;
+  padding: 12px;
+  width: 320px;
+  pointer-events: none;
+  z-index: 10000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.8), inset 0 0 10px rgba(120, 90, 40, 0.2);
+  color: #c8c8c8;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.4;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+.d4-tooltip.visible {
+  opacity: 1;
+}
+.d4-tooltip-header {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  border-bottom: 1px solid #3a2c16;
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.d4-tooltip-tags {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.d4-tooltip-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+.d4-tooltip-desc {
+  color: #b8b8b8;
+}
+/* D4 Official Colors */
+.d4-color-label { color: #888; }
+.d4-color-number { color: #FFD700; font-weight: 600; }
+.d4-color-important { color: #FFAA00; font-weight: 600; }
+.d4-color-resource { color: #00ffff; }
+.d4-color-lightgray { color: #a0a0a0; }
