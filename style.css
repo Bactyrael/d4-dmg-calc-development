@@ -2145,3 +2145,19 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
   top: -4px;
   left: -22px;
 }
+
+/* Custom Scrollbar for contained windows */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
