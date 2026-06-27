@@ -72,11 +72,11 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Critical Strike Chance",
+          "name": "Essence Generation",
           "maxRank": 1
         },
         {
-          "name": "Essence Generation",
+          "name": "Critical Strike Chance",
           "maxRank": 1
         }
       ]
