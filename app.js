@@ -1552,7 +1552,8 @@
       const activeSkill = currentBuild.activeSkills && currentBuild.activeSkills[i];
       if (activeSkill) {
           let imgName = activeSkill.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
-          sb.style.backgroundImage = `url('assets/skills/${imgName}.png')`;
+          let clsName = currentBuild.class || 'Necromancer';
+          sb.style.backgroundImage = `url('assets/Skills/${clsName}/${imgName}.png')`;
           sb.style.backgroundSize = 'cover';
           sb.style.backgroundPosition = 'center';
           
@@ -1620,7 +1621,8 @@
               const icon = document.createElement('div');
               icon.className = 'skill-assign-icon';
               let imgName = skill.name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
-              icon.style.backgroundImage = `url('assets/skills/${imgName}.png')`;
+              let clsName = currentBuild.class || 'Necromancer';
+              icon.style.backgroundImage = `url('assets/Skills/${clsName}/${imgName}.png')`;
               icon.title = skill.name;
               
               icon.addEventListener('click', () => {
@@ -4718,7 +4720,8 @@ function renderSkills() {
           // Execute image loading for all categories
           if (true) {
               let imgName = name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
-              let imgSrc = 'assets/skills/' + imgName + '.png';
+              let clsName = currentBuild.class || 'Necromancer';
+              let imgSrc = `assets/Skills/${clsName}/${imgName}.png`;
               
               const img = document.createElement('img');
               img.src = imgSrc;
@@ -4726,7 +4729,7 @@ function renderSkills() {
                   // If the direct name fails, try appending the base skill name (e.g. crowd-control-decompose.png)
                   if (!isBase && baseSkillName && img.src.includes(imgSrc)) {
                       let baseName = baseSkillName.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
-                      img.src = 'assets/skills/' + imgName + '-' + baseName + '.png';
+                      img.src = `assets/Skills/${clsName}/${imgName}-${baseName}.png`;
                   } else {
                       img.style.display = 'none'; 
                   }
@@ -4858,7 +4861,8 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   
   let prefix = indentLevel > 0 ? '<span style="color:#666; margin-right: 4px;">└</span>' : '';
   let imgName = name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
-  let imgSrc = 'assets/skills/' + imgName + '.png';
+  let clsName = currentBuild.class || 'Necromancer';
+  let imgSrc = `assets/Skills/${clsName}/${imgName}.png`;
   
   nameSpan.innerHTML = prefix + `<img src="${imgSrc}" style="width:24px; height:24px; border:1px solid #333;" onerror="this.style.display='none'" />` + `<span>${name}</span>`; 
   const controls = document.createElement('div'); 
