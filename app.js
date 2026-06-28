@@ -1660,6 +1660,16 @@ function renderEquipment(className, savedEquipment = {}) {
           e.stopPropagation();
       });
       
+      sb.addEventListener('contextmenu', (e) => {
+          e.preventDefault();
+          if (currentBuild.activeSkills && currentBuild.activeSkills[i]) {
+              currentBuild.activeSkills[i] = null;
+              if (typeof hideSkillTooltip === 'function') hideSkillTooltip();
+              renderEquipment(currentBuild.class, currentBuild.equipment);
+              if (typeof calculate === 'function') calculate();
+          }
+      });
+      
       footer.appendChild(sb);
     }
   }
