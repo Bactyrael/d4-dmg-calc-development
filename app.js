@@ -3743,13 +3743,17 @@ function getBaseDamageScalarFor(skillName) {
 function parseD4String(str, skillObj, currentRank) {
     if (!str) return '';
     
+    // Replace PowerFinalizedAttackSpeed so math evaluator doesn't crash on Generate Essence logic
+    let apsVal = (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.aps) ? currentBuild.aps : 1.2;
+    str = str.replace(/PowerFinalizedAttackSpeed/gi, apsVal.toString());
+    
     // Globally strip embedded Cooldown and Resource Cost blocks, as they are handled by statsHtml at the top
-    str = str.replace(/\{c_label\}Cooldown:\{\/c(?:_label)?\}\s*\{c_resource\}\[\{cooldown time\}[\s\S]*?\]\{\/c(?:_resource)?\}\s*seconds(?:\\n|\r?\n)?/gi, "");
-    str = str.replace(/\{c_label\}Essence Cost:\s*\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
-    str = str.replace(/\{c_label\}Mana Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
-    str = str.replace(/\{c_label\}Fury Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
-    str = str.replace(/\{c_label\}Spirit Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
-    str = str.replace(/\{c_label\}Energy Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Cooldown:\{\/c(?:_label)?\}\s*\{c_resource\}\[\{cooldown time\}[\s\S]*?\][\s\S]*?\{\/c(?:_resource)?\}\s*(?:seconds)?(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Essence Cost:\s*\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Mana Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Fury Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Spirit Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Energy Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
     
     if (skillObj && skillObj.name === "Skeleton Warrior") {
         str = str.replace(/\{c_label\}Cooldown:\{\/c_label\}\s*\{c_resource\}\[\{cooldown time\}[\s\S]*?\]\{\/c_resource\}\s*seconds(?:\\n|\r?\n)?/g, "");
