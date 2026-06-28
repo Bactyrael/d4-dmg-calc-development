@@ -5333,12 +5333,18 @@ rarity = foundItem.rarity;
 
       ${(() => {
         const lowerSlot = slotName.toLowerCase();
-        let maxSockets = 2; // Default to 2
+        let maxSockets = 2; // Default to 2 for helm, chest, pants
         
         if (lowerSlot.includes('glove') || lowerSlot.includes('boot')) {
           maxSockets = 0;
-        } else if (lowerSlot.includes('ring') || lowerSlot.includes('amulet') || lowerSlot.includes('mainhand') || lowerSlot.includes('offhand') || lowerSlot.includes('dual wield') || lowerSlot.includes('slicing')) {
+        } else if (lowerSlot.includes('ring') || lowerSlot.includes('amulet') || lowerSlot.includes('offhand') || lowerSlot.includes('dual wield') || lowerSlot.includes('slicing')) {
           maxSockets = 1;
+        } else if (lowerSlot.includes('mainhand') || lowerSlot.startsWith('weapon')) {
+          if (typeof checkIs2H === 'function' && checkIs2H(itemObj, slotName)) {
+            maxSockets = 2;
+          } else {
+            maxSockets = 1;
+          }
         }
 
         if (maxSockets === 0) return '';
