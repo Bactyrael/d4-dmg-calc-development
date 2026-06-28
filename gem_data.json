@@ -398,5 +398,53 @@
     "weaponEffect": "x16% Lightning Damage Multiplier",
     "armorEffect": "+20 Intelligence",
     "jewelryEffect": "+250 Lightning Resistance"
+  },
+  {
+    "name": "Topaz",
+    "type": "topaz",
+    "quality": "standard",
+    "weaponEffect": "x18% Lightning Damage Multiplier",
+    "armorEffect": "+30 Intelligence",
+    "jewelryEffect": "+450 Lightning Resistance"
+  },
+  {
+    "name": "Flawless Topaz",
+    "type": "topaz",
+    "quality": "flawless",
+    "weaponEffect": "x20% Lightning Damage Multiplier",
+    "armorEffect": "+40 Intelligence",
+    "jewelryEffect": "+900 Lightning Resistance"
+  },
+  {
+    "name": "Royal Topaz",
+    "type": "topaz",
+    "quality": "royal",
+    "weaponEffect": "x22% Lightning Damage Multiplier",
+    "armorEffect": "+60 Intelligence",
+    "jewelryEffect": "+1,750 Lightning Resistance"
+  },
+  {
+    "name": "Grand Topaz",
+    "type": "topaz",
+    "quality": "grand",
+    "weaponEffect": "x24% Lightning Damage Multiplier",
+    "armorEffect": "+90 Intelligence",
+    "jewelryEffect": "+2,625 Lightning Resistance"
+  },
+  {
+    "name": "Horadric Topaz",
+    "type": "topaz",
+    "quality": "horadric",
+    "weaponEffect": "x28% Lightning Damage Multiplier",
+    "armorEffect": "+120 Intelligence",
+    "jewelryEffect": "+3,500 Lightning Resistance"
+  },
+  {
+    "name": "Flawless Horadric Topaz",
+    "type": "topaz",
+    "quality": "flawless horadric",
+    "weaponEffect": "x32% Lightning Damage Multiplier",
+    "armorEffect": "+150 Intelligence",
+    "jewelryEffect": "+4,375 Lightning Resistance"
   }
 ]
