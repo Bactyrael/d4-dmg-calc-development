@@ -472,6 +472,7 @@ const skillsDatabase = {
             "Search_ShadowDOT",
             "Search_Shadow"
           ],
+          "baseDamageScalar": 0.8,
           "description": "{c_important}Blood Lance{/c} becomes a {c_important}Darkness{/c} Skill and deals Shadow damage.\\n\\nEnemies hit are permanently lanced and the lance deals {c_number}[{dot:tooltip_darkness_dot}|2?|]{/c} Corrupting damage per second to them.",
           "maxRank": 1
         },
