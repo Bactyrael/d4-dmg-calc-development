@@ -6083,6 +6083,18 @@ rarity = foundItem.rarity;
 
   // Setup search input listener for modifiers
   document.addEventListener('DOMContentLoaded', () => {
+    // Skill Tree Reset Button
+    const resetBtn = document.getElementById('reset-skill-tree-btn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            if (confirm("Are you sure you want to completely reset your skill tree?")) {
+                window.selectedSkills = {};
+                if (typeof renderSkills === 'function') renderSkills();
+                if (typeof calculate === 'function') calculate();
+            }
+        });
+    }
+
     function setupModifierListeners(type, prefix) {
       const searchInput = document.getElementById(prefix + '-search-input');
       if (searchInput) {
@@ -6161,16 +6173,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    
-    // Skill Tree Reset Button
-    const resetBtn = document.getElementById('reset-skill-tree-btn');
-    if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-            if (confirm("Are you sure you want to completely reset your skill tree?")) {
-                window.selectedSkills = {};
-                if (typeof renderSkills === 'function') renderSkills();
-                if (typeof calculate === 'function') calculate();
-            }
-        });
-    }
 });
