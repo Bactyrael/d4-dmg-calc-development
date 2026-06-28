@@ -4053,6 +4053,7 @@ function parseD4String(str, skillObj, currentRank) {
     // Evaluate specific buff durations globally so child modifiers can access them
     str = str.replace(/\[\{buffduration:bonestorm\}[\s\S]*?\]|\{buffduration:bonestorm\}/g, "10");
     str = str.replace(/\[\{buffduration:barrier\}[\s\S]*?\]|\{buffduration:barrier\}/g, "10");
+    str = str.replace(/\[\{buffduration:lanced\}[\s\S]*?\]|\{buffduration:lanced\}/g, "3");
     
     // Math evaluator for inline formulas [formula|%|]
     str = str.replace(/\[([0-9a-zA-Z.*?/\-()+><,:\s_]+)(?:\|[^\]]*\|?)?\]/g, (match, formula) => {
