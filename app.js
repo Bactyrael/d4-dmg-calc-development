@@ -4291,6 +4291,9 @@ function showSkillTooltip(skillObj, e) {
     if (skillObj.name === "Soulrift" && !skillObj.cooldown) {
         skillObj.cooldown = 50;
     }
+    if (skillObj.name === "Corpse Tendrils" && !skillObj.luckyHitChance) {
+        skillObj.luckyHitChance = 30;
+    }
     skillObj = applyActiveModifiers(skillObj);
     
     if (!tooltipEl) {
