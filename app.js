@@ -4355,8 +4355,8 @@ function showSkillTooltip(skillObj, e) {
         // Find if we have an override
         let hasOverride = dynamicTags.some(t => t.startsWith('Damage_Override_'));
         
-        // Filter out Search tags and internal Keywords
-        let cleanTags = dynamicTags.filter(t => !t.startsWith('Search_') && !t.startsWith('Damage_Type_') && t !== 'Keyword_Hunter');
+        // Filter out Search tags, internal Keywords, and Damage_Override tags
+        let cleanTags = dynamicTags.filter(t => !t.startsWith('Search_') && !t.startsWith('Damage_Type_') && !t.startsWith('Damage_Override_') && t !== 'Keyword_Hunter');
         
         // If an override is present, remove the base elemental Skill_ tags so they don't visually conflict
         if (hasOverride) {
