@@ -1501,6 +1501,7 @@
             
             tooltip.innerHTML = content;
             tooltip.classList.remove('hidden');
+            tooltip.classList.add('visible');
             
             // Initial position update
             const rect = node.getBoundingClientRect();
@@ -1516,7 +1517,10 @@
           
           node.addEventListener('mouseleave', () => {
             const tooltip = document.getElementById('d4-tooltip');
-            if (tooltip) tooltip.classList.add('hidden');
+            if (tooltip) {
+                tooltip.classList.add('hidden');
+                tooltip.classList.remove('visible');
+            }
           });
         });
         
@@ -2356,36 +2360,81 @@
   }
 
   function updateDynamicSkillTags() {
-    let warrior = null;
-    if (typeof skillsDatabase !== 'undefined') {
-        for (let cat in skillsDatabase) {
-            warrior = skillsDatabase[cat].find(s => s.name === "Skeleton Warrior");
-            if (warrior) break;
-        }
-    }
+      let warrior = null;
+      let mage = null;
+      let golem = null;
+      if (typeof skillsDatabase !== 'undefined') {
+          for (let cat in skillsDatabase) {
+              if (!warrior) warrior = skillsDatabase[cat].find(s => s.name === "Skeleton Warrior");
+              if (!mage) mage = skillsDatabase[cat].find(s => s.name === "Skeleton Mage");
+              if (!golem) golem = skillsDatabase[cat].find(s => s.name === "Golem");
+          }
+      }
 
-    if (warrior && currentBuild && currentBuild.bookOfTheDead) {
-        let spec = currentBuild.bookOfTheDead.warriors.spec;
-        let node = currentBuild.bookOfTheDead.warriors.node;
-        
-        // Clear elemental tags
-        warrior.tags = warrior.tags.filter(t => !["Search_Bone", "Search_Blood", "Search_Darkness", "Search_Physical", "Search_Shadow", "Damage_Override_Physical", "Damage_Override_Shadow", "Skill_Bone", "Skill_Blood", "Skill_Shadow"].includes(t));
-        warrior.damageType = "Physical"; // Default back to Physical
-        
-        // Only apply tags if an upgrade or sacrifice is selected
-        if (node !== null) {
-            if (spec === "Skirmisher") {
-                warrior.damageType = "Physical";
-                warrior.tags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
-            } else if (spec === "Defender") {
-                warrior.damageType = "Physical";
-                warrior.tags.push("Search_Physical", "Search_Blood", "Damage_Override_Physical", "Skill_Blood");
-            } else if (spec === "Reaper") {
-                warrior.damageType = "Shadow";
-                warrior.tags.push("Search_Shadow", "Search_Darkness", "Damage_Override_Shadow", "Skill_Shadow");
-            }
-        }
-    }
+      const elementalTags = ["Search_Bone", "Search_Blood", "Search_Darkness", "Search_Physical", "Search_Shadow", "Search_Cold", "Damage_Override_Physical", "Damage_Override_Shadow", "Damage_Override_Cold", "Skill_Bone", "Skill_Blood", "Skill_Shadow", "Skill_Cold"];
+
+      if (warrior && currentBuild && currentBuild.bookOfTheDead) {
+          let spec = currentBuild.bookOfTheDead.warriors.spec;
+          let node = currentBuild.bookOfTheDead.warriors.node;
+          
+          warrior.tags = warrior.tags.filter(t => !elementalTags.includes(t));
+          warrior.damageType = "Physical"; 
+          
+          if (node !== null) {
+              if (spec === "Skirmisher") {
+                  warrior.damageType = "Physical";
+                  warrior.tags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
+              } else if (spec === "Defender") {
+                  warrior.damageType = "Physical";
+                  warrior.tags.push("Search_Physical", "Search_Blood", "Damage_Override_Physical", "Skill_Blood");
+              } else if (spec === "Reaper") {
+                  warrior.damageType = "Shadow";
+                  warrior.tags.push("Search_Shadow", "Search_Darkness", "Damage_Override_Shadow", "Skill_Shadow");
+              }
+          }
+      }
+      
+      if (mage && currentBuild && currentBuild.bookOfTheDead) {
+          let spec = currentBuild.bookOfTheDead.mages.spec;
+          let node = currentBuild.bookOfTheDead.mages.node;
+          
+          mage.tags = mage.tags.filter(t => !elementalTags.includes(t));
+          mage.damageType = "Physical";
+          
+          if (node !== null) {
+              if (spec === "Shadow") {
+                  mage.damageType = "Shadow";
+                  mage.tags.push("Search_Shadow", "Search_Darkness", "Damage_Override_Shadow", "Skill_Shadow");
+              } else if (spec === "Cold") {
+                  mage.damageType = "Cold";
+                  mage.tags.push("Search_Cold", "Damage_Override_Cold", "Skill_Cold");
+              } else if (spec === "Bone") {
+                  mage.damageType = "Physical";
+                  mage.tags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
+              }
+          }
+      }
+      
+      if (golem && currentBuild && currentBuild.bookOfTheDead) {
+          let spec = currentBuild.bookOfTheDead.golems.spec;
+          let node = currentBuild.bookOfTheDead.golems.node;
+          
+          golem.tags = golem.tags.filter(t => !elementalTags.includes(t));
+          golem.damageType = "Physical";
+          
+          if (node !== null) {
+              if (spec === "Bone Golem") {
+                  golem.damageType = "Physical";
+                  golem.tags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
+              } else if (spec === "Blood Golem") {
+                  golem.damageType = "Physical";
+                  golem.tags.push("Search_Physical", "Search_Blood", "Damage_Override_Physical", "Skill_Blood");
+              } else if (spec === "Iron Golem") {
+                  golem.damageType = "Shadow";
+                  golem.tags.push("Search_Shadow", "Search_Darkness", "Damage_Override_Shadow", "Skill_Shadow");
+              }
+          }
+      }
   }
 
   function calculate() {
@@ -3693,8 +3742,8 @@ function parseD4String(str, skillObj, currentRank) {
     if (!str) return '';
     
     // Globally strip embedded Cooldown and Resource Cost blocks, as they are handled by statsHtml at the top
-    str = str.replace(/\{c_label\}Cooldown:\{\/c_label\}\s*\{c_resource\}\[\{cooldown time\}[\s\S]*?\]\{\/c_resource\}\s*seconds(?:\\n|\r?\n)?/gi, "");
-    str = str.replace(/\{c_label\}Essence Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Cooldown:\{\/c(?:_label)?\}\s*\{c_resource\}\[\{cooldown time\}[\s\S]*?\]\{\/c(?:_resource)?\}\s*seconds(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Essence Cost:\s*\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
     str = str.replace(/\{c_label\}Mana Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
     str = str.replace(/\{c_label\}Fury Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
     str = str.replace(/\{c_label\}Spirit Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
@@ -3747,9 +3796,19 @@ function parseD4String(str, skillObj, currentRank) {
     // Assume we don't have this unique item equipped
     str = str.replace(/GetCollectiblePowerEquippedSlotIndex\(\d+\)/gi, "-1");
     
+    // Evaluate {if:AffixIsEquipped(...)}...{else}...{/if} FIRST to prevent nested brace breakage
+    str = str.replace(/\{if:AffixIsEquipped\(\d+\)\}([\s\S]*?)(?:\{else\}([\s\S]*?))?\{\/if\}/gi, (match, trueBranch, falseBranch) => {
+        return falseBranch || "";
+    });
+
     // Evaluate {if:-1>-1?1:0}...{else}...{/if}
     str = str.replace(/\{if:-1>-1\?1:0\}([\s\S]*?)(?:\{else\}([\s\S]*?))?\{\/if\}/gi, (match, trueBranch, falseBranch) => {
         return falseBranch || "";
+    });
+
+    // Evaluate {if:(-1>-1?1:0)?0:1} for Bone Storm
+    str = str.replace(/\{if:\(-1>-1\?1:0\)\?0:1\}([\s\S]*?)(?:\{else\}([\s\S]*?))?\{\/if\}/gi, (match, trueBranch, falseBranch) => {
+        return trueBranch || "";
     });
 
     // Evaluate {if:Mod(...)}...{else}...{/if} blocks dynamically
@@ -3765,11 +3824,6 @@ function parseD4String(str, skillObj, currentRank) {
         if (inverse) isTrue = !isTrue; // >0?0:1 acts as a logical NOT
         
         return isTrue ? trueBranch : (falseBranch || "");
-    });
-    
-    // Evaluate {if:AffixIsEquipped(...)}...{else}...{/if} (Assume false for now)
-    str = str.replace(/\{if:AffixIsEquipped\(\d+\)\}([\s\S]*?)(?:\{else\}([\s\S]*?))?\{\/if\}/gi, (match, trueBranch, falseBranch) => {
-        return falseBranch || "";
     });
     
     str = str.replace(/\{if:.*?\}[\s\S]*?\{\/if\}/g, '');
@@ -3800,6 +3854,10 @@ function parseD4String(str, skillObj, currentRank) {
     }
     if (skillObj.name === "Miasma") {
         str = str.replace(/\[\{dot:miasma_dot_tooltip\}[\s\S]*?\]|\{dot:miasma_dot_tooltip\}/g, (1.45 * rankMult * 100).toFixed(1) + '%');
+    }
+    if (skillObj && skillObj.name === "Soulrift") {
+        str = str.replace(/\[\{buffduration:caster_skill_active\}[\s\S]*?\]|\{buffduration:caster_skill_active\}/g, "8");
+        str = str.replace(/\[\{dot:tooltip_total_damage\}[\s\S]*?\]|\{dot:tooltip_total_damage\}/g, "300%");
     }
     if (skillObj.name === "Blood Mist") {
         str = str.replace(/\[\{cooldown time\}[\s\S]*?\]|\{cooldown time\}/g, "24");
@@ -3836,7 +3894,7 @@ function parseD4String(str, skillObj, currentRank) {
         scalar = 2.5;
     }
     
-    if (scalar) {
+    if (scalar || skillObj.secondaryScalars) {
         if (skillObj.secondaryScalars) {
             for (let payloadKey in skillObj.secondaryScalars) {
                 let secScalar = skillObj.secondaryScalars[payloadKey];
@@ -3848,7 +3906,7 @@ function parseD4String(str, skillObj, currentRank) {
             }
         }
         
-        let percentage = (scalar * rankMult * 100).toFixed(1) + '%';
+        let percentage = scalar ? (scalar * rankMult * 100).toFixed(1) + '%' : '?%';
         str = str.replace(/\[\{payload:.*?\}[\s\S]*?\]|\{payload:.*?\}/g, percentage);
         str = str.replace(/\[\{dot:.*?\}[\s\S]*?\]|\{dot:.*?\}/g, percentage);
     } else {
@@ -3873,7 +3931,8 @@ function parseD4String(str, skillObj, currentRank) {
         mathStr = mathStr.replace(/Table\((\d+),sLevel\)/gi, (match, tableId) => {
             if (tableId === "37") {
                 let levelsGained = currentRank > 1 ? currentRank - 1 : 0;
-                return 1.0 + (levelsGained * 0.04);
+                let enhancedIncreases = Math.floor(currentRank / 5);
+                return 1.0 + (levelsGained * 0.02) + (enhancedIncreases * 0.04);
             }
             return rankMult;
         });
@@ -3889,6 +3948,8 @@ function parseD4String(str, skillObj, currentRank) {
         mathStr = mathStr.replace(/Min\(/gi, 'Math.min(');
         mathStr = mathStr.replace(/Floor\(/gi, 'Math.floor(');
         mathStr = mathStr.replace(/Ceil\(/gi, 'Math.ceil(');
+        
+        mathStr = mathStr.replace(/Necro_BoneStorm_DamageReduction/gi, '0');
 
         let val = 0;
         try {
@@ -3912,11 +3973,11 @@ function parseD4String(str, skillObj, currentRank) {
     }
     
     if (skillObj.luckyHitChance) {
-        str = str.replace(/\[\{combat effect chance\}[\s\S]*?\]/g, skillObj.luckyHitChance);
-        str = str.replace(/\{combat effect chance\}/g, skillObj.luckyHitChance);
+        str = str.replace(/\[\{combat effect chance\}[\s\S]*?\]/g, skillObj.luckyHitChance + '%');
+        str = str.replace(/\{combat effect chance\}/g, skillObj.luckyHitChance + '%');
     } else {
-        str = str.replace(/\[\{combat effect chance\}[\s\S]*?\]/g, '?');
-        str = str.replace(/\{combat effect chance\}/g, '?');
+        str = str.replace(/\[\{combat effect chance\}[\s\S]*?\]/g, '?%');
+        str = str.replace(/\{combat effect chance\}/g, '?%');
     }
     
     
@@ -3980,12 +4041,17 @@ function parseD4String(str, skillObj, currentRank) {
         str = str.replace(/\[\{buffduration:volatine_stun\}[\s\S]*?\]|\{buffduration:volatine_stun\}/g, "2");
     }
     
+    // Evaluate specific buff durations globally so child modifiers can access them
+    str = str.replace(/\[\{buffduration:bonestorm\}[\s\S]*?\]|\{buffduration:bonestorm\}/g, "10");
+    str = str.replace(/\[\{buffduration:barrier\}[\s\S]*?\]|\{buffduration:barrier\}/g, "10");
+    
     // Math evaluator for inline formulas [formula|%|]
-    str = str.replace(/\[([0-9a-zA-Z.*?/\-()+><,:\s]+)(?:\|[^\]]*\|?)?\]/g, (match, formula) => {
+    str = str.replace(/\[([0-9a-zA-Z.*?/\-()+><,:\s_]+)(?:\|[^\]]*\|?)?\]/g, (match, formula) => {
         // Only evaluate if it looks like a math operation
         if (/[+\-*/><]/.test(formula) || /Pow\(/i.test(formula)) {
             let cleanFormula = formula.replace(/Pow\(/gi, "Math.pow(");
             cleanFormula = cleanFormula.replace(/GetCollectiblePowerEquippedSlotIndex\(\d+\)/gi, "-1");
+            cleanFormula = cleanFormula.replace(/Necro_BoneStorm_DamageReduction/gi, "0");
             try {
                 let val = eval(cleanFormula);
                 if (match.includes('%')) {
@@ -4017,11 +4083,33 @@ function parseD4String(str, skillObj, currentRank) {
         // Reaper Sacrifice (reduces by 50%)
         if (passiveId === "931566" && wSpec === "Reaper" && wNode === "sacrifice") return "1";
         
+        const mSpec = currentBuild.bookOfTheDead.mages?.spec;
+        const mNode = currentBuild.bookOfTheDead.mages?.node;
+        
+        // Shadow Sacrifice (reduces by 50%)
+        if (passiveId === "931578" && mSpec === "Shadow" && mNode === "sacrifice") return "1";
+        // Cold Sacrifice (reduces by 50%)
+        if (passiveId === "931587" && mSpec === "Cold" && mNode === "sacrifice") return "1";
+        // Bone Sacrifice (reduces by 50%)
+        if (passiveId === "931594" && mSpec === "Bone" && mNode === "sacrifice") return "1";
+        
         return "0";
     });
     
     // Replace dummy variables
-    str = str.replace(/Affix_Value_2\(2587892\)/g, "0"); // Bonus max warriors from affixes
+    str = str.replace(/Affix_Value_2\(2587892\)/g, () => {
+        let bonus = 0;
+        if (typeof getEquipmentValues === 'function') {
+            const eq = getEquipmentValues();
+            if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("undercrown"))) {
+                bonus += 4;
+            }
+            if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("deathgrip"))) {
+                bonus += 1;
+            }
+        }
+        return bonus.toString();
+    }); // Bonus max warriors from affixes
     str = str.replace(/Affix_Value_1\(2587975\)/g, "0"); // Unknown extra bonus
     
     // Swap "Skeletal warriors" text dynamically based on spec
@@ -4049,10 +4137,37 @@ function parseD4String(str, skillObj, currentRank) {
             
             // Handle Mod(582507894) which represents "Master of Puppets" modifier
             let cleanFormula = formula.replace(/Mod\(582507894\)/g, () => {
-                return (window.selectedSkills && window.selectedSkills["Master of Puppets"]) ? "1" : "0";
+                if (skillObj && skillObj.name === "Skeleton Warrior") {
+                    return (window.selectedSkills && window.selectedSkills["Master of Puppets"]) ? "1" : "0";
+                }
+                return "0";
             });
             // Wipe out any other unknown Mod()
             cleanFormula = cleanFormula.replace(/\(Mod\(\d+\)\?\d+:\d+\)/gi, "0");
+            cleanFormula = cleanFormula.replace(/Necro_Bonus_Max_Mages/gi, () => {
+                let bonus = 0;
+                if (window.selectedSkills && window.selectedSkills["Coven"]) bonus += 2;
+                if (typeof getEquipmentValues === 'function') {
+                    const eq = getEquipmentValues();
+                    if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("undercrown"))) {
+                        bonus += 4;
+                    }
+                    if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("the hand of naz"))) {
+                        bonus += 1;
+                    }
+                }
+                return bonus.toString();
+            });
+            cleanFormula = cleanFormula.replace(/Necro_Bonus_Max_Warriors/gi, () => {
+                let bonus = 0;
+                if (typeof getEquipmentValues === 'function') {
+                    const eq = getEquipmentValues();
+                    if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("undercrown"))) {
+                        bonus += 4;
+                    }
+                }
+                return bonus.toString();
+            });
             
             try {
                 // Pre-process math functions that don't match JS syntax
@@ -4163,6 +4278,9 @@ function applyActiveModifiers(baseSkillObj) {
 }
 
 function showSkillTooltip(skillObj, e) {
+    if (skillObj.name === "Soulrift" && !skillObj.cooldown) {
+        skillObj.cooldown = 50;
+    }
     skillObj = applyActiveModifiers(skillObj);
     
     if (!tooltipEl) {
@@ -4182,13 +4300,28 @@ function showSkillTooltip(skillObj, e) {
         let spec = currentBuild.bookOfTheDead.warriors?.spec;
         let node = currentBuild.bookOfTheDead.warriors?.node;
         if (node !== null) {
-            dynamicTags = dynamicTags.filter(t => !["Search_Bone", "Search_Blood", "Search_Darkness", "Search_Physical", "Search_Shadow", "Damage_Override_Physical", "Damage_Override_Shadow", "Skill_Bone", "Skill_Blood", "Skill_Shadow"].includes(t));
+            dynamicTags = dynamicTags.filter(t => !["Search_Bone", "Search_Blood", "Search_Darkness", "Search_Physical", "Search_Shadow", "Search_Cold", "Damage_Override_Physical", "Damage_Override_Shadow", "Damage_Override_Cold", "Skill_Bone", "Skill_Blood", "Skill_Shadow", "Skill_Cold"].includes(t));
             if (spec === "Skirmisher") {
                 dynamicTags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
             } else if (spec === "Defender") {
                 dynamicTags.push("Search_Physical", "Search_Blood", "Damage_Override_Physical", "Skill_Blood");
             } else if (spec === "Reaper") {
                 dynamicTags.push("Search_Shadow", "Search_Darkness", "Damage_Override_Shadow", "Skill_Shadow");
+            }
+        }
+    }
+    
+    if (skillObj.name === "Skeleton Mage" && currentBuild && currentBuild.bookOfTheDead) {
+        let spec = currentBuild.bookOfTheDead.mages?.spec;
+        let node = currentBuild.bookOfTheDead.mages?.node;
+        if (node !== null) {
+            dynamicTags = dynamicTags.filter(t => !["Search_Bone", "Search_Blood", "Search_Darkness", "Search_Physical", "Search_Shadow", "Search_Cold", "Damage_Override_Physical", "Damage_Override_Shadow", "Damage_Override_Cold", "Skill_Bone", "Skill_Blood", "Skill_Shadow", "Skill_Cold"].includes(t));
+            if (spec === "Shadow") {
+                dynamicTags.push("Search_Shadow", "Search_Darkness", "Damage_Override_Shadow", "Skill_Shadow");
+            } else if (spec === "Cold") {
+                dynamicTags.push("Search_Cold", "Damage_Override_Cold", "Skill_Cold");
+            } else if (spec === "Bone") {
+                dynamicTags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
             }
         }
     }

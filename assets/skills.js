@@ -2574,7 +2574,9 @@ const skillsDatabase = {
     {
       "name": "Bone Storm",
       "tags": [
-        "Skill_Bone"
+        "Skill_Bone",
+        "Skill_Ultimate",
+        "Skill_Macabre"
       ],
       "description": "{c_label}Cooldown:{/c} {c_resource}[{cooldown time}|2?|]{/c} seconds\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}40%{/c}\\n{/if}{if:GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0}{c_label}Essence Cost:{/c} {c_resource}[{resource cost}|2?|]{/c}\\nA swirling storm of bones appears at a target location and around your Golem, dealing {c_number}{if:AffixIsEquipped(616076)}[{payload:tooltip_damage_shadow}|2?|]{else}[{payload:tooltip_damage}|2?|]{/if}{/c} damage to surrounding enemies over {c_number}[{buffduration:bonestorm}|2?|]{/c} seconds.{/if}{if:(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?0:1}A swirling storm of bones appears around you and your Golem, dealing {c_number}{if:AffixIsEquipped(616076)}[{payload:tooltip_damage_shadow}|2?|]{else}[{payload:tooltip_damage}|2?|]{/if}{/c} damage to surrounding enemies over {c_number}[{buffduration:bonestorm}|2?|]{/c} seconds.{/if}",
       "maxRank": 15,
@@ -2688,7 +2690,12 @@ const skillsDatabase = {
         }
       ],
       "baseDamageScalar": 0.4,
-      "luckyHitChance": 2
+      "luckyHitChance": 2,
+      "cooldown": 60,
+      "secondaryScalars": {
+        "tooltip_damage": 4,
+        "tooltip_damage_shadow": 4
+      }
     },
     {
       "name": "Soulrift",
