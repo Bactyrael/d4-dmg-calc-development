@@ -4344,8 +4344,19 @@ function showSkillTooltip(skillObj, e) {
     }
     
     if (dynamicTags.length > 0) {
-        // Filter out Search tags
-        let cleanTags = dynamicTags.filter(t => !t.startsWith('Search_') && !t.startsWith('Damage_Type_'));
+        // Find if we have an override
+        let hasOverride = dynamicTags.some(t => t.startsWith('Damage_Override_'));
+        
+        // Filter out Search tags and internal Keywords
+        let cleanTags = dynamicTags.filter(t => !t.startsWith('Search_') && !t.startsWith('Damage_Type_') && t !== 'Keyword_Hunter');
+        
+        // If an override is present, remove the base elemental Skill_ tags so they don't visually conflict
+        if (hasOverride) {
+            let activeOverride = dynamicTags.find(t => t.startsWith('Damage_Override_'));
+            let newElement = activeOverride.replace('Damage_Override_', 'Skill_');
+            cleanTags = cleanTags.filter(t => !t.startsWith('Skill_') || t === newElement);
+        }
+
         if (cleanTags.length > 0) {
             let tagBoxes = cleanTags.map(t => `<div class="d4-tooltip-tag">${formatTag(t)}</div>`).join('');
             tagsHtml = `<div class="d4-tooltip-tags">${tagBoxes}</div><hr class="d4-divider">`;
@@ -4381,14 +4392,23 @@ function showSkillTooltip(skillObj, e) {
     }
     
     let finalDamageType = skillObj.damageType || "Physical";
-    if (dynamicTags.includes("Damage_Override_Physical") || dynamicTags.includes("Skill_Physical")) finalDamageType = "Physical";
-    else if (dynamicTags.includes("Damage_Override_Shadow") || dynamicTags.includes("Skill_Shadow")) finalDamageType = "Shadow";
-    else if (dynamicTags.includes("Damage_Override_Cold") || dynamicTags.includes("Skill_Cold")) finalDamageType = "Cold";
-    else if (dynamicTags.includes("Damage_Override_Fire") || dynamicTags.includes("Skill_Fire")) finalDamageType = "Fire";
-    else if (dynamicTags.includes("Damage_Override_Lightning") || dynamicTags.includes("Skill_Lightning")) finalDamageType = "Lightning";
-    else if (dynamicTags.includes("Damage_Override_Poison") || dynamicTags.includes("Skill_Poison")) finalDamageType = "Poison";
-    else if (dynamicTags.includes("Damage_Override_Blood") || dynamicTags.includes("Skill_Blood")) finalDamageType = "Physical";
-    else if (dynamicTags.includes("Damage_Override_Bone") || dynamicTags.includes("Skill_Bone")) finalDamageType = "Physical";
+    
+    // Check overrides first
+    if (dynamicTags.includes("Damage_Override_Physical")) finalDamageType = "Physical";
+    else if (dynamicTags.includes("Damage_Override_Shadow")) finalDamageType = "Shadow";
+    else if (dynamicTags.includes("Damage_Override_Cold")) finalDamageType = "Cold";
+    else if (dynamicTags.includes("Damage_Override_Fire")) finalDamageType = "Fire";
+    else if (dynamicTags.includes("Damage_Override_Lightning")) finalDamageType = "Lightning";
+    else if (dynamicTags.includes("Damage_Override_Poison")) finalDamageType = "Poison";
+    else if (dynamicTags.includes("Damage_Override_Blood") || dynamicTags.includes("Damage_Override_Bone")) finalDamageType = "Physical";
+    // Then fallback to base skill tags
+    else if (dynamicTags.includes("Skill_Physical")) finalDamageType = "Physical";
+    else if (dynamicTags.includes("Skill_Shadow")) finalDamageType = "Shadow";
+    else if (dynamicTags.includes("Skill_Cold")) finalDamageType = "Cold";
+    else if (dynamicTags.includes("Skill_Fire")) finalDamageType = "Fire";
+    else if (dynamicTags.includes("Skill_Lightning")) finalDamageType = "Lightning";
+    else if (dynamicTags.includes("Skill_Poison")) finalDamageType = "Poison";
+    else if (dynamicTags.includes("Skill_Blood") || dynamicTags.includes("Skill_Bone")) finalDamageType = "Physical";
 
     let dmgTypeIcon = '';
     if (finalDamageType === "Shadow") dmgTypeIcon = '🟣';
