@@ -3692,6 +3692,14 @@ function getBaseDamageScalarFor(skillName) {
 function parseD4String(str, skillObj, currentRank) {
     if (!str) return '';
     
+    // Globally strip embedded Cooldown and Resource Cost blocks, as they are handled by statsHtml at the top
+    str = str.replace(/\{c_label\}Cooldown:\{\/c_label\}\s*\{c_resource\}\[\{cooldown time\}[\s\S]*?\]\{\/c_resource\}\s*seconds(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Essence Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Mana Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Fury Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Spirit Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Energy Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\]\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    
     if (skillObj && skillObj.name === "Skeleton Warrior") {
         str = str.replace(/\{c_label\}Cooldown:\{\/c_label\}\s*\{c_resource\}\[\{cooldown time\}[\s\S]*?\]\{\/c_resource\}\s*seconds(?:\\n|\r?\n)?/g, "");
     }
@@ -3736,10 +3744,32 @@ function parseD4String(str, skillObj, currentRank) {
     
     str = str.replace(/\{if:ADVANCED_TOOLTIP\}([\s\S]*?)\{\/if\}/g, '$1');
     
+    // Assume we don't have this unique item equipped
+    str = str.replace(/GetCollectiblePowerEquippedSlotIndex\(\d+\)/gi, "-1");
+    
+    // Evaluate {if:-1>-1?1:0}...{else}...{/if}
+    str = str.replace(/\{if:-1>-1\?1:0\}([\s\S]*?)(?:\{else\}([\s\S]*?))?\{\/if\}/gi, (match, trueBranch, falseBranch) => {
+        return falseBranch || "";
+    });
+
     // Evaluate {if:Mod(...)}...{else}...{/if} blocks dynamically
-    str = str.replace(/\{if:(1-)?Mod\((\d+)\)\}([\s\S]*?)(?:\{else\}([\s\S]*?))?\{\/if\}/gi, (match, not, modId, trueBranch, falseBranch) => {
-        let isTrue = not ? true : false; // Assume Mod() is 0 (unselected) by default
+    str = str.replace(/\{if:(1-)?Mod\((\d+)\)(>0\?0:1)?\}([\s\S]*?)(?:\{else\}([\s\S]*?))?\{\/if\}/gi, (match, not, modId, inverse, trueBranch, falseBranch) => {
+        let isSelected = false;
+        // Specifically map Hematolagnia (582507896)
+        if (modId === "582507896" && window.selectedSkills && window.selectedSkills["Hematolagnia"] > 0) {
+            isSelected = true;
+        }
+        
+        let isTrue = isSelected;
+        if (not) isTrue = !isTrue;
+        if (inverse) isTrue = !isTrue; // >0?0:1 acts as a logical NOT
+        
         return isTrue ? trueBranch : (falseBranch || "");
+    });
+    
+    // Evaluate {if:AffixIsEquipped(...)}...{else}...{/if} (Assume false for now)
+    str = str.replace(/\{if:AffixIsEquipped\(\d+\)\}([\s\S]*?)(?:\{else\}([\s\S]*?))?\{\/if\}/gi, (match, trueBranch, falseBranch) => {
+        return falseBranch || "";
     });
     
     str = str.replace(/\{if:.*?\}[\s\S]*?\{\/if\}/g, '');
@@ -3776,7 +3806,8 @@ function parseD4String(str, skillObj, currentRank) {
         str = str.replace(/\[\{buffduration:mistform\}[\s\S]*?\]|\{buffduration:mistform\}/g, "3");
         str = str.replace(/\[\{dot:tooltip_dot\}[\s\S]*?\]|\{dot:tooltip_dot\}/g, (0.35 * rankMult * 12 * 100).toFixed(1) + '%');
     }
-    if (skillObj.name === "Bone Prison") {
+    str = str.replace(/\[\{buffduration:buff_damage_reduction\}[\s\S]*?\]|\{buffduration:buff_damage_reduction\}/g, "10");
+    if (skillObj && skillObj.name === "Bone Prison") {
         str = str.replace(/\[\{cooldown time\}[\s\S]*?\]|\{cooldown time\}/g, "15");
         
         let duration = 6.0 + (2.4 * (currentRank - 1) / 14);
@@ -3944,6 +3975,30 @@ function parseD4String(str, skillObj, currentRank) {
     str = str.replace(/\{buffduration:decrepify_curse\}/g, "30");
     str = str.replace(/\{buffduration:ironmaiden_curse\}/g, "30");
     
+    if (skillObj && skillObj.name === "Army of the Dead") {
+        str = str.replace(/\[\{buffduration:raise_army\}[\s\S]*?\]|\{buffduration:raise_army\}/g, "7");
+        str = str.replace(/\[\{buffduration:volatine_stun\}[\s\S]*?\]|\{buffduration:volatine_stun\}/g, "2");
+    }
+    
+    // Math evaluator for inline formulas [formula|%|]
+    str = str.replace(/\[([0-9a-zA-Z.*?/\-()+><,:\s]+)(?:\|[^\]]*\|?)?\]/g, (match, formula) => {
+        // Only evaluate if it looks like a math operation
+        if (/[+\-*/><]/.test(formula) || /Pow\(/i.test(formula)) {
+            let cleanFormula = formula.replace(/Pow\(/gi, "Math.pow(");
+            cleanFormula = cleanFormula.replace(/GetCollectiblePowerEquippedSlotIndex\(\d+\)/gi, "-1");
+            try {
+                let val = eval(cleanFormula);
+                if (match.includes('%')) {
+                    return Math.floor(val).toString() + '%';
+                }
+                return Math.floor(val).toString();
+            } catch (e) {
+                return match;
+            }
+        }
+        return match;
+    });
+    
     // Clean up random brackets with pipes [something|2?|]
     str = str.replace(/\[(.*?)\|.*?\]/g, '$1');
     
@@ -4000,6 +4055,9 @@ function parseD4String(str, skillObj, currentRank) {
             cleanFormula = cleanFormula.replace(/\(Mod\(\d+\)\?\d+:\d+\)/gi, "0");
             
             try {
+                // Pre-process math functions that don't match JS syntax
+                cleanFormula = cleanFormula.replace(/Pow\(/gi, "Math.pow(");
+                
                 let result = Math.floor(eval(cleanFormula)).toString();
                 str = str.substring(0, floorIndex) + result + str.substring(endIndex);
             } catch (e) {
@@ -4047,7 +4105,66 @@ function getBaseSkillRankFor(skillName) {
     return window.selectedSkills[skillName] || 0;
 }
 
+function applyActiveModifiers(baseSkillObj) {
+    if (!baseSkillObj) return baseSkillObj;
+    
+    // Create a shallow clone to avoid mutating the master database
+    let modified = { ...baseSkillObj };
+    if (baseSkillObj.tags) {
+        modified.tags = [...baseSkillObj.tags];
+    } else {
+        modified.tags = [];
+    }
+    
+    if (baseSkillObj.modifiers) {
+        baseSkillObj.modifiers.forEach(mod => {
+            // Check if the user has put points into this modifier
+            if (window.selectedSkills && window.selectedSkills[mod.name] > 0) {
+                
+                // Append new tags (e.g., Hematolagnia adding Skill_Primary_Core)
+                if (mod.tags) {
+                    mod.tags.forEach(t => {
+                        if (!modified.tags.includes(t)) {
+                            modified.tags.push(t);
+                        }
+                    });
+                }
+                
+                // Specific logic for Hematolagnia: remove Ultimate tag
+                if (mod.name === "Hematolagnia") {
+                    modified.tags = modified.tags.filter(t => t !== "Skill_Ultimate");
+                    modified.cooldown = null; // Removed
+                    modified.resourceCost = 50; // Added
+                }
+                
+                // Override base damage scalar if provided (e.g., Blood Wave 500% -> 300%)
+                if (mod.baseDamageScalar !== undefined) {
+                    if (mod.name === "Hematolagnia") {
+                        modified.baseDamageScalar = mod.baseDamageScalar;
+                    }
+                }
+                
+                // Merge secondaryScalars if provided
+                if (mod.secondaryScalars) {
+                    if (!modified.secondaryScalars) modified.secondaryScalars = {};
+                    for (let key in mod.secondaryScalars) {
+                        modified.secondaryScalars[key] = mod.secondaryScalars[key];
+                    }
+                }
+                
+                // Override cooldown and resource cost if provided
+                if (mod.cooldown !== undefined) modified.cooldown = mod.cooldown;
+                if (mod.resourceCost !== undefined) modified.resourceCost = mod.resourceCost;
+            }
+        });
+    }
+    
+    return modified;
+}
+
 function showSkillTooltip(skillObj, e) {
+    skillObj = applyActiveModifiers(skillObj);
+    
     if (!tooltipEl) {
         tooltipEl = document.createElement('div');
         tooltipEl.id = 'skill-tooltip';

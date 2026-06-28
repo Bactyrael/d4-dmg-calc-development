@@ -2321,7 +2321,10 @@ const skillsDatabase = {
             "Subpower_DesecratedGround"
           ],
           "description": "{c_important}Blood Wave{/c} becomes a {c_important}Darkness{/c} Skill that deals Shadow damage.\\n\\n{c_important}Blood Wave{/c} leaves behind a trail of {c_important}{u}Desecrated Ground{/c}{/u} as it travels that deals {c_number}[{dot:tooltip_dot}|2?|]{/c} Corrupting damage.",
-          "maxRank": 1
+          "maxRank": 1,
+          "secondaryScalars": {
+            "tooltip_dot": 6
+          }
         },
         {
           "name": "Tides of Blood",
@@ -2475,7 +2478,8 @@ const skillsDatabase = {
     {
       "name": "Army of the Dead",
       "tags": [
-        "Skill_Primary_Summoning",
+        "Skill_Ultimate",
+        "Skill_Summon",
         "Search_CrowdControl"
       ],
       "description": "{c_label}Cooldown:{/c_label} {c_resource}[{cooldown time}|2?|]{/c_resource} seconds\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[(1-Pow(0.9299999999999999,((GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?2:7)*2))*100|%|]{/c}\\n{/if}{if:GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0}{c_label}Essence Cost:{/c} {c_resource}[{resource cost}|2?|]{/c}\\nCall forth the deep buried dead. Volatile Skeletons rapidly emerge over the next {c_number}[{buffduration:raise_army}|2?|]{/c} seconds that explode when around enemies, dealing {c_number}[{payload:explosion_damage}|2?|]{/c} damage.{else}Call forth the deep buried dead. {c_important}Volatile Skeletons{/c} emerge over the next {c_number}[{buffduration:raise_army}|2?|]{/c} seconds that explode when around enemies, dealing {c_number}[{payload:explosion_damage}|2?|]{/c} damage and Stunning them for {c_number}[{buffduration:volatine_stun}|2?|]{/c} seconds.{/if}",
@@ -2562,7 +2566,10 @@ const skillsDatabase = {
           "unk_b8f2b": 4
         }
       ],
-      "luckyHitChance": 7
+      "luckyHitChance": 7,
+      "secondaryScalars": {
+        "explosion_damage": 1.2
+      }
     },
     {
       "name": "Bone Storm",
