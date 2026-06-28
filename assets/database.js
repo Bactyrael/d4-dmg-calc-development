@@ -25177,3 +25177,336 @@ window.D4_DATABASE = {
     }
   }
 };
+
+window.D4_DATABASE.runes = [
+    {
+        "name": "Ahu",
+        "type": "Condition",
+        "description": "Lucky Hit: Up to a [100|%|] chance against non-Healthy enemies.",
+        "offering": 15
+    },
+    {
+        "name": "Bac",
+        "type": "Condition",
+        "description": "Travel 5 meters.",
+        "offering": 50
+    },
+    {
+        "name": "Cem",
+        "type": "Condition",
+        "description": "Cast Evade.",
+        "offering": 75
+    },
+    {
+        "name": "Cir",
+        "type": "Condition",
+        "description": "Cast 5 Skills then become exhausted for 3 seconds.",
+        "offering": 300
+    },
+    {
+        "name": "Feo",
+        "type": "Condition",
+        "description": "Become Injured or Crowd Controlled. (Cooldown: 10 seconds)",
+        "offering": 1000
+    },
+    {
+        "name": "Igni",
+        "type": "Condition",
+        "description": "Stores Offering every 0.3 |4second:seconds;. Cast a Non-Basic Skill to gain the stored Offering. (Up to 500 Offering).",
+        "offering": 25
+    },
+    {
+        "name": "Kaa",
+        "type": "Condition",
+        "description": "Lose 25% of your Maximum Life.",
+        "offering": 50
+    },
+    {
+        "name": "Lith",
+        "type": "Condition",
+        "description": "Stand still while fighting for 0.3 |4second:seconds;.",
+        "offering": 25
+    },
+    {
+        "name": "Moni",
+        "type": "Condition",
+        "description": "Cast 2 Mobility or Macabre Skills.",
+        "offering": 100
+    },
+    {
+        "name": "Nagu",
+        "type": "Condition",
+        "description": "Maintain at least 1 active Summon for 5 seconds, gaining Offering for each up to 5 Summon.",
+        "offering": 100
+    },
+    {
+        "name": "Neo",
+        "type": "Condition",
+        "description": "Avoid health damage while fighting for 2 seconds.",
+        "offering": 200
+    },
+    {
+        "name": "Noc",
+        "type": "Condition",
+        "description": "Inflict a Crowd Control, gain double offering if it isn't a Slow or Chill.",
+        "offering": 5
+    },
+    {
+        "name": "Poc",
+        "type": "Condition",
+        "description": "Spend 5% of your Maximum Resource.{/c]",
+        "offering": 5
+    },
+    {
+        "name": "Tam",
+        "type": "Condition",
+        "description": "Cast a non-Channeled Core Skill.",
+        "offering": 25
+    },
+    {
+        "name": "Ur",
+        "type": "Condition",
+        "description": "Your Minion or Companion kills an enemy or dies.",
+        "offering": 10
+    },
+    {
+        "name": "Xol",
+        "type": "Condition",
+        "description": "Invoke a Skill from another Class.",
+        "offering": 150
+    },
+    {
+        "name": "Yax",
+        "type": "Condition",
+        "description": "Drink a Healing Potion.",
+        "offering": 200
+    },
+    {
+        "name": "Yul",
+        "type": "Condition",
+        "description": "Cast a Skill with a Cooldown.",
+        "offering": 50
+    },
+    {
+        "name": "Zan",
+        "type": "Condition",
+        "description": "Cast an Ultimate Skill.",
+        "offering": 200
+    },
+    {
+        "name": "Ceh",
+        "type": "Effect",
+        "description": "Summon a Spirit Wolf Companion to attack enemies for 8 seconds.",
+        "offering": 100
+    },
+    {
+        "name": "Chac",
+        "type": "Effect",
+        "description": "Invoke the Druid's Lightning Bolt, striking a Nearby enemy.",
+        "offering": 20
+    },
+    {
+        "name": "Eom",
+        "type": "Effect",
+        "description": "Reduce your active Cooldowns by 0.1 seconds.",
+        "offering": 100
+    },
+    {
+        "name": "Gar",
+        "type": "Effect",
+        "description": "Gain 2% Critical Strike Chance for 5 seconds, up to 10%.",
+        "offering": 25
+    },
+    {
+        "name": "Jah",
+        "type": "Effect",
+        "description": "Replace your next Evade with the Sorcerer's Teleport Skill, blinking further, dealing damage, and becoming Unstoppable.",
+        "offering": 350
+    },
+    {
+        "name": "Kel",
+        "type": "Effect",
+        "description": "Invoke the Paladins's Rally Skill, gaining Resource and Movement Speed for 8 seconds.",
+        "offering": 500
+    },
+    {
+        "name": "Kry",
+        "type": "Effect",
+        "description": "Invoke the Spiritborn's Vortex Skill, dealing damage and Pulling In enemies.",
+        "offering": 300
+    },
+    {
+        "name": "Lac",
+        "type": "Effect",
+        "description": "Invoke the Barbarian's Challenging Shout Skill, taunting enemies and reducing your damage taken for 3 seconds.",
+        "offering": 400
+    },
+    {
+        "name": "Lum",
+        "type": "Effect",
+        "description": "Restore 3.5 Primary Resource.",
+        "offering": 5
+    },
+    {
+        "name": "Met",
+        "type": "Effect",
+        "description": "You leave the Necromancer's Desecrated Ground behind you for 3 seconds, dealing damage to enemies within.",
+        "offering": 100
+    },
+    {
+        "name": "Mot",
+        "type": "Effect",
+        "description": "Gain 1 |4 shadow:shadows;, from the Rogue's Dark Shroud Skill, reducing damage taken per shadow.",
+        "offering": 150
+    },
+    {
+        "name": "Ner",
+        "type": "Effect",
+        "description": "Invoke the Rogue's Concealment Skill for 5 seconds, gaining Movement Speed, Unstoppable, and Stealth.",
+        "offering": 600
+    },
+    {
+        "name": "Obr",
+        "type": "Effect",
+        "description": "Invoke to create a Warlock's Brimstone at your location.",
+        "offering": 100
+    },
+    {
+        "name": "Ohm",
+        "type": "Effect",
+        "description": "Invoke the Barbarian's War Cry Skill, increasing your damage dealt by 7.5% for 6 seconds.",
+        "offering": 600
+    },
+    {
+        "name": "Ono",
+        "type": "Effect",
+        "description": "Invoke the Druid's Dancing Bolts, seeking and dealing damage to enemies.",
+        "offering": 25
+    },
+    {
+        "name": "Prid",
+        "type": "Effect",
+        "description": "Invoke the Warlock's Dark Prison Skill, tethering enemies to the area for 3 seconds.",
+        "offering": 250
+    },
+    {
+        "name": "Qax",
+        "type": "Effect",
+        "description": "Casting a Skill other than a Basic or Defensive Consumes all of your Primary Resource to increase your damage up to 100% for 1 second.",
+        "offering": 400
+    },
+    {
+        "name": "Qua",
+        "type": "Effect",
+        "description": "Gain 10% Movement Speed for 5 seconds, up to 50%.",
+        "offering": 50
+    },
+    {
+        "name": "Que",
+        "type": "Effect",
+        "description": "Invoke the Druid's Earthen Bulwark Skill for 3 seconds, granting yourself a Barrier.",
+        "offering": 300
+    },
+    {
+        "name": "Random Legendary Rune",
+        "type": "Effect",
+        "description": "",
+        "offering": 0
+    },
+    {
+        "name": "Random Rare or Legendary Rune",
+        "type": "Effect",
+        "description": "",
+        "offering": 0
+    },
+    {
+        "name": "Random Rune",
+        "type": "Effect",
+        "description": "",
+        "offering": 0
+    },
+    {
+        "name": "Tal",
+        "type": "Effect",
+        "description": "Invoke the Spiritborn's Pestilent Swarm, dealing damage to enemies.",
+        "offering": 30
+    },
+    {
+        "name": "Teb",
+        "type": "Effect",
+        "description": "Invoke the Necromancer's Iron Maiden Skill, dealing damage over time and counterattacking damage from enemies.",
+        "offering": 100
+    },
+    {
+        "name": "Tec",
+        "type": "Effect",
+        "description": "Invoke the Barbarian's Earthquake, dealing damage to enemies within.",
+        "offering": 50
+    },
+    {
+        "name": "Thul",
+        "type": "Effect",
+        "description": "Invoke the Sorcerer's Frost Nova Skill, Freezing enemies.",
+        "offering": 250
+    },
+    {
+        "name": "Ton",
+        "type": "Effect",
+        "description": "Invoke the Sorcerer's Meteorites, dealing damage to enemies.",
+        "offering": 20
+    },
+    {
+        "name": "Tun",
+        "type": "Effect",
+        "description": "Invoke the Rogue's Stun Grenades, Stunning and dealing damage to enemies.",
+        "offering": 25
+    },
+    {
+        "name": "Tzic",
+        "type": "Effect",
+        "description": "Invoke the Spiritborn's Concussive Stomp Skill, dealing damage and Knocking Down enemies.",
+        "offering": 200
+    },
+    {
+        "name": "Vex",
+        "type": "Effect",
+        "description": "Gain +1 to all Skills for 10 seconds.",
+        "offering": 100
+    },
+    {
+        "name": "Wat",
+        "type": "Effect",
+        "description": "Invoke the Necromancer's Decrepify Skill, Weakening and Slowing enemies.",
+        "offering": 100
+    },
+    {
+        "name": "Xal",
+        "type": "Effect",
+        "description": "Gain 20% Maximum Life for 6 seconds.",
+        "offering": 300
+    },
+    {
+        "name": "Xan",
+        "type": "Effect",
+        "description": "Your next attack will cause your hits to be a guaranteed Critical Strike and Overpower for 0.35 seconds.",
+        "offering": 300
+    },
+    {
+        "name": "Yom",
+        "type": "Effect",
+        "description": "Invoke the Druid's Petrify Skill, Stunning enemies, restoring Primary Resource.",
+        "offering": 500
+    },
+    {
+        "name": "Zec",
+        "type": "Effect",
+        "description": "Reduce your active Ultimate Cooldown by 1 seconds.",
+        "offering": 100
+    },
+    {
+        "name": "Zid",
+        "type": "Effect",
+        "description": "Invoke the Paladin's Blessed Spear, striking nearby to enemies.",
+        "offering": 25
+    }
+];
