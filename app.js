@@ -4362,7 +4362,7 @@ function showSkillTooltip(skillObj, e) {
         if (hasOverride) {
             let activeOverride = dynamicTags.find(t => t.startsWith('Damage_Override_'));
             let newElement = activeOverride.replace('Damage_Override_', 'Skill_');
-            cleanTags = cleanTags.filter(t => !t.startsWith('Skill_') || t === newElement);
+            cleanTags = cleanTags.filter(t => !t.startsWith('Skill_') || t === newElement || t === 'Skill_Macabre' || t === 'Skill_Summoning' || (newElement === 'Skill_Physical' && (t === 'Skill_Bone' || t === 'Skill_Blood')));
         }
 
         if (cleanTags.length > 0) {
