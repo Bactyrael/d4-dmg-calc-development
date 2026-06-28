@@ -3747,6 +3747,9 @@ function parseD4String(str, skillObj, currentRank) {
     let apsVal = (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.aps) ? currentBuild.aps : 1.2;
     str = str.replace(/PowerFinalizedAttackSpeed/gi, apsVal.toString());
     
+    // Replace Blood Orb Bonus Chance so math evaluator can calculate Hemorrhage properly
+    str = str.replace(/Blood_Orb_Bonus_Chance_Per_Power\(\d+\)/gi, "0");
+    
     // Globally strip embedded Cooldown and Resource Cost blocks, as they are handled by statsHtml at the top
     str = str.replace(/\{c_label\}Cooldown:\{\/c(?:_label)?\}\s*\{c_resource\}\[\{cooldown time\}[\s\S]*?\][\s\S]*?\{\/c(?:_resource)?\}\s*(?:seconds)?(?:\\n|\r?\n)?/gi, "");
     str = str.replace(/\{c_label\}Essence Cost:\s*\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
