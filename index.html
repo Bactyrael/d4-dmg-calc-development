@@ -100,8 +100,11 @@
       <div id="tab-skills" class="tab-pane">
         <div class="skills-header" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: rgba(20,20,20,0.8); border: 1px solid #444; border-radius: 4px 4px 0 0; border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 10;">
           <h2 style="margin: 0; font-size: 1.2rem; color: #fff;">Skill Tree</h2>
-          <div style="font-size: 1.1rem; font-weight: bold; color: #ffd700; text-shadow: 1px 1px 2px #000;">
-            Points Spent: <span id="skill-points-spent">0</span> / 83
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <div style="font-size: 1.1rem; font-weight: bold; color: #ffd700; text-shadow: 1px 1px 2px #000;">
+              Points Spent: <span id="skill-points-spent">0</span> / 83
+            </div>
+            <button id="reset-skill-tree-btn" class="d4-btn" style="padding: 4px 10px; font-size: 0.9rem; background: #660000; border-color: #ff3333; color: #fff;">Reset</button>
           </div>
         </div>
         <div id="skills-container" class="custom-scrollbar" style="display:flex; flex-direction:column; gap:20px; padding:20px; color:#fff; max-height: 600px; overflow-y: auto; border: 1px solid #333; border-top: none; border-radius: 0 0 4px 4px; background: rgba(0,0,0,0.3);"></div>
