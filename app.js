@@ -181,7 +181,14 @@
         warriors: { spec: 'Skirmisher', node: null },
         mages: { spec: 'Shadow Mage', node: null },
         golems: { spec: 'Bone Golem', node: null }
-      }
+      },
+      runes: {
+        slot1: null,
+        slot2: null,
+        slot3: null,
+        slot4: null
+      },
+      activeSkills: [null, null, null, null, null, null]
     };
   }
 
@@ -1537,9 +1544,93 @@
     for (let i = 0; i < 6; i++) {
       const sb = document.createElement('div');
       sb.className = 'skill-box';
+      sb.style.cursor = 'pointer';
+      
+      const activeSkill = currentBuild.activeSkills && currentBuild.activeSkills[i];
+      if (activeSkill) {
+          let imgName = activeSkill.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+          sb.style.backgroundImage = `url('assets/skills/${imgName}.png')`;
+          sb.style.backgroundSize = 'cover';
+          sb.style.backgroundPosition = 'center';
+      }
+      
+      sb.addEventListener('click', (e) => {
+          openSkillAssignmentDropdown(i, sb);
+          e.stopPropagation();
+      });
+      
       footer.appendChild(sb);
     }
   }
+
+  function openSkillAssignmentDropdown(slotIndex, anchorEl) {
+      const dropdown = document.getElementById('skill-assignment-dropdown');
+      if (!dropdown) return;
+      if (!skillsDatabase) return;
+      
+      dropdown.innerHTML = '';
+      
+      const rect = anchorEl.getBoundingClientRect();
+      dropdown.style.left = (rect.left + window.scrollX) + 'px';
+      dropdown.style.top = (rect.top + window.scrollY - 300) + 'px'; // Default above
+      dropdown.classList.remove('hidden');
+      
+      // Empty slot option
+      const noneRow = document.createElement('div');
+      noneRow.className = 'skill-assign-row';
+      const noneIcon = document.createElement('div');
+      noneIcon.className = 'skill-assign-icon empty-slot';
+      noneIcon.innerHTML = '&#10006;'; // X mark
+      noneIcon.title = 'Clear Slot';
+      noneIcon.addEventListener('click', () => {
+          currentBuild.activeSkills[slotIndex] = null;
+          dropdown.classList.add('hidden');
+          renderEquipment(currentBuild.class, currentBuild.equipment);
+      });
+      noneRow.appendChild(noneIcon);
+      dropdown.appendChild(noneRow);
+      
+      for (const [category, skills] of Object.entries(skillsDatabase)) {
+          const row = document.createElement('div');
+          row.className = 'skill-assign-row';
+          let added = false;
+          
+          skills.forEach(skill => {
+              // Base skill
+              const icon = document.createElement('div');
+              icon.className = 'skill-assign-icon';
+              let imgName = skill.name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+              icon.style.backgroundImage = `url('assets/skills/${imgName}.png')`;
+              icon.title = skill.name;
+              
+              icon.addEventListener('click', () => {
+                  currentBuild.activeSkills[slotIndex] = skill.name;
+                  dropdown.classList.add('hidden');
+                  renderEquipment(currentBuild.class, currentBuild.equipment);
+              });
+              row.appendChild(icon);
+              added = true;
+          });
+          if (added) dropdown.appendChild(row);
+      }
+      
+      // Fix positioning if offscreen
+      setTimeout(() => {
+          const ddRect = dropdown.getBoundingClientRect();
+          if (ddRect.top < 0) {
+              dropdown.style.top = (rect.bottom + window.scrollY + 10) + 'px';
+          }
+      }, 0);
+  }
+  
+  document.addEventListener('click', (e) => {
+      const dropdown = document.getElementById('skill-assignment-dropdown');
+      if (dropdown && !dropdown.classList.contains('hidden')) {
+          if (!dropdown.contains(e.target) && !e.target.classList.contains('skill-box')) {
+              dropdown.classList.add('hidden');
+          }
+      }
+  });
 
   function renderLegendaryBonusInputs(className, savedValues) {
     const container = dom.legendaryBonusesContainer;
@@ -3192,11 +3283,19 @@
 
   // ---- Build Management ----
   function loadBuildToUI(build) {
+    if (build.class) {
+      dom.classSelect.value = build.class;
+    }
+    
+    if (!build.activeSkills) {
+      build.activeSkills = [null, null, null, null, null, null];
+    }
+    
     isLoading = true;
     try {
       // Deep clone to prevent calculate() from mutating the data mid-load
       const b = JSON.parse(JSON.stringify(build));
-    currentBuild = b;
+      currentBuild = b;
 
     dom.buildName.textContent = b.name || 'New Build';
     if (dom.classSelect) dom.classSelect.textContent = b.class || 'Barbarian';
