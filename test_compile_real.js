@@ -1,3 +1,4 @@
+global.window = {}; global.document = { getElementById: () => ({ value: '90' }) }; 
 /* ============================================
    D4 Damage Calculator — Application Logic
    ============================================ */
@@ -23,7 +24,7 @@
   let isLoading = false;
 
   // ---- DOM References ----
-  const dom = {
+  const dom = {}; /*
     level:          document.getElementById('level'),
     toughness:      document.getElementById('toughness'),
     armor:          document.getElementById('armor'),
@@ -795,19 +796,6 @@
     'Spiritborn': [...STANDARD_SLOTS],
     'Warlock': [...STANDARD_SLOTS]
   };
-
-  function checkIs2H(itemObj, slotName) {
-      if (!itemObj || !itemObj.name) return false;
-      let dbSlotName = slotName;
-      if (slotName === 'Left Ring' || slotName === 'Right Ring') dbSlotName = 'Ring';
-      if (slotName === 'Ranged Weapon' || slotName.startsWith('Weapon')) dbSlotName = 'Mainhand';
-      const dbItems = window.D4_DATABASE?.itemDatabase?.[dbSlotName] || window.D4_DATABASE?.itemDatabase?.['Mainhand'] || [];
-      const baseItem = dbItems.find(i => i.name === itemObj.name);
-      if (!baseItem) return false;
-      if (baseItem.name && baseItem.name.includes('Two-Handed')) return true;
-      if (baseItem.weaponType && (baseItem.weaponType.includes('Two-Handed') || baseItem.weaponType === 'Staff' || baseItem.weaponType === 'Polearm' || baseItem.weaponType === 'Crossbow' || baseItem.weaponType === 'Bow')) return true;
-      return false;
-  }
 
   function getDbItems(slotName) {
     if (!window.D4_DATABASE || !window.D4_DATABASE.itemDatabase) return [];
@@ -1766,7 +1754,7 @@
 
   function addStat(stats, rawName, value, sourceName = 'Equipment') {
       if (!rawName) return;
-      let cleanName = rawName.replace(/\[(?!(?:x|X)\]).*?\]\s*/g, '').replace(/^[\+\-]\s*/, '').trim();
+      let cleanName = rawName.replace(/\[.*?\]\s*/, '').replace(/^[\+\-]\s*/, '').trim();
       
       const keepPct = ['% Strength', '% Intelligence', '% Willpower', '% Dexterity', '% Maximum Life', '% Armor', '% Total Armor'];
       if (cleanName.startsWith('%') && !keepPct.includes(cleanName)) {
@@ -1817,7 +1805,7 @@
             if (item.aspect && item.aspect !== 'None') {
                 const aspectName = item.aspect;
                 let val = 0;
-                if (item.aspectValues && item.aspectValues.length > 0) val = parseFloat(item.aspectValues[0]) || 0;
+                if (item.aspectValues && item.aspectValues.length > 0) val = item.aspectValues[0];
                 if (!bestAspects[aspectName] || val > bestAspects[aspectName].val) {
                     bestAspects[aspectName] = { val, slotName };
                 }
@@ -1841,9 +1829,6 @@
           
           if (baseItem.armor) {
               addStat(stats, 'Base Armor', baseItem.armor * baseQMult, slotName);
-          }
-          if (baseItem.blockChance) {
-              addStat(stats, 'Block Chance', baseItem.blockChance, slotName);
           }
           if (baseItem.damage) {
               const avgDmg = (baseItem.damage[0] + baseItem.damage[1]) / 2;
@@ -1883,8 +1868,7 @@
                   }
                   let isGA = item.greaterAffixes?.[i] || false;
                   let isCapstone = (item.capstoneBonus?.type === 'affix' && item.capstoneBonus?.idx === i);
-                  const twoHandedMult = checkIs2H(item, slotName) ? 2 : 1;
-                  const qMult = (baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0)) * twoHandedMult;
+                  const qMult = baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0);
                   addStat(stats, affixName, v * qMult, slotName);
               });
           }
@@ -1917,8 +1901,7 @@
                   }
                   let isGA = item.greaterTempers?.[i] || false;
                   let isCapstone = (item.capstoneBonus?.type === 'temper' && item.capstoneBonus?.idx === i);
-                  const twoHandedMult = checkIs2H(item, slotName) ? 2 : 1;
-                  const qMult = (baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0)) * twoHandedMult;
+                  const qMult = baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0);
                   addStat(stats, temperName, v * qMult, slotName);
               });
           }
@@ -1926,8 +1909,6 @@
           if (item.transfigure) {
               item.transfigure.forEach((transfigureName, i) => {
                   if (!transfigureName) return;
-                  if (transfigureName.includes('Item Quality')) return; // handled by baseQMult
-                  
                   let v = 0;
                   if (item.transfigureValues && item.transfigureValues[i] && item.transfigureValues[i][0] !== undefined) {
                       v = item.transfigureValues[i][0];
@@ -1951,10 +1932,14 @@
                           }
                       }
                   }
-                  let isCapstone = (item.capstoneBonus?.type === 'transfigure' && item.capstoneBonus?.idx === i);
-                  const twoHandedMult = checkIs2H(item, slotName) ? 2 : 1;
-                  const qMult = (baseQMult + (isCapstone ? 0.50 : 0)) * twoHandedMult;
-                  addStat(stats, transfigureName, v * qMult, slotName + ' (Transfigure)');
+                  let isItemQuality = transfigureName.includes('Item Quality');
+                  let val = v;
+                  if (!isItemQuality) {
+                      const isCapstone = (item.capstoneBonus?.type === 'transfigure' && item.capstoneBonus?.idx === i);
+                      const qMult = baseQMult + (isCapstone ? 0.50 : 0);
+                      val = Number((v * qMult).toFixed(2));
+                  }
+                  addStat(stats, transfigureName, val, slotName + ' (Transfigure)');
               });
           }
           
@@ -1988,24 +1973,9 @@
                     const aspectObj = (window.D4_DATABASE?.aspects || []).find(a => a.name === item.aspect);
                     if (aspectObj && aspectObj.desc) {
                         let v = 0;
-                        if (item.aspectValues && item.aspectValues.length > 0) v = parseFloat(item.aspectValues[0]) || 0;
+                        if (item.aspectValues && item.aspectValues.length > 0) v = item.aspectValues[0];
                         addStat(stats, item.aspect, v, slotName);
                     }
-                }
-            }
-            
-            if (item.rarity === 'unique' || item.rarity === 'mythic') {
-                const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === item.name);
-                if (uniqueObj && uniqueObj.desc) {
-                    let v = 0;
-                    if (item.aspectValues && item.aspectValues.length > 0) {
-                        v = parseFloat(item.aspectValues[0]) || 0;
-                    }
-                    if (v === 0) {
-                        let m = uniqueObj.desc.match(/([\d\.]+)(%?)\[x\]/);
-                        if (m) v = parseFloat(m[1]) || 0;
-                    }
-                    addStat(stats, item.name, v, slotName);
                 }
             }
 
@@ -2355,42 +2325,8 @@
       container.innerHTML = html;
   }
 
-  function updateDynamicSkillTags() {
-    let warrior = null;
-    if (typeof skillsDatabase !== 'undefined') {
-        for (let cat in skillsDatabase) {
-            warrior = skillsDatabase[cat].find(s => s.name === "Skeleton Warrior");
-            if (warrior) break;
-        }
-    }
-
-    if (warrior && currentBuild && currentBuild.bookOfTheDead) {
-        let spec = currentBuild.bookOfTheDead.warriors.spec;
-        let node = currentBuild.bookOfTheDead.warriors.node;
-        
-        // Clear elemental tags
-        warrior.tags = warrior.tags.filter(t => !["Search_Bone", "Search_Blood", "Search_Darkness", "Search_Physical", "Search_Shadow", "Damage_Override_Physical", "Damage_Override_Shadow", "Skill_Bone", "Skill_Blood", "Skill_Shadow"].includes(t));
-        warrior.damageType = "Physical"; // Default back to Physical
-        
-        // Only apply tags if an upgrade or sacrifice is selected
-        if (node !== null) {
-            if (spec === "Skirmisher") {
-                warrior.damageType = "Physical";
-                warrior.tags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
-            } else if (spec === "Defender") {
-                warrior.damageType = "Physical";
-                warrior.tags.push("Search_Physical", "Search_Blood", "Damage_Override_Physical", "Skill_Blood");
-            } else if (spec === "Reaper") {
-                warrior.damageType = "Shadow";
-                warrior.tags.push("Search_Shadow", "Search_Darkness", "Damage_Override_Shadow", "Skill_Shadow");
-            }
-        }
-    }
-  }
-
   function calculate() {
     if (isLoading) return;
-    updateDynamicSkillTags();
     try {
       // Auto-calculate base weapon damage and armor from equipped items
       const baseEquipped = getEquipmentValues();
@@ -2449,7 +2385,19 @@
         }
       }
     
-    // (Weapon Damage UI update moved below compileCharacterStats)
+    // Update UI and lock inputs if gear is equipped
+    if (totalWeaponDmg > 0) {
+      if (dom.weaponDamage) {
+        dom.weaponDamage.value = totalWeaponDmg;
+        dom.weaponDamage.disabled = true;
+        dom.weaponDamage.title = "Auto-calculated from equipped weapon";
+      }
+    } else {
+      if (dom.weaponDamage) {
+        dom.weaponDamage.disabled = false;
+        dom.weaponDamage.title = "";
+      }
+    }
     
     if (totalWeaponAps > 0) {
       if (dom.weaponSpeed) {
@@ -2529,25 +2477,6 @@
     };
     
     const compiledStats = compileCharacterStats(baseEquipped, autoStats);
-    
-    // Add flat "Weapon Damage" from modifiers
-    if (compiledStats['Weapon Damage']) {
-        totalWeaponDmg += compiledStats['Weapon Damage'].final;
-    }
-    
-    // Update UI and lock inputs if gear is equipped
-    if (totalWeaponDmg > 0) {
-      if (dom.weaponDamage) {
-        dom.weaponDamage.value = totalWeaponDmg;
-        dom.weaponDamage.disabled = true;
-        dom.weaponDamage.title = "Auto-calculated from equipped weapon (Base + Modifiers)";
-      }
-    } else {
-      if (dom.weaponDamage) {
-        dom.weaponDamage.disabled = false;
-        dom.weaponDamage.title = "";
-      }
-    }
     
     if (dom.strength) {
         dom.strength.value = compiledStats['Strength'] ? Math.floor(compiledStats['Strength'].final) : 0;
@@ -2650,29 +2579,9 @@
       }
     });
 
-    // Inject additive & multiplicative bonuses from compiledStats
+    // Inject additive bonuses from compiledStats
     dom.additiveBody.querySelectorAll('tr.injected-row').forEach(row => row.remove());
-    dom.multBody.querySelectorAll('tr.injected-row').forEach(row => row.remove());
-    
     Object.keys(compiledStats).forEach(statName => {
-      const val = compiledStats[statName].final;
-      if (!val || val <= 0) return;
-      
-      let isMultiplicativeAspect = false;
-      const aspectObj = (window.D4_DATABASE?.aspects || []).find(a => a.name === statName) 
-                     || (window.D4_DATABASE?.uniques || []).find(u => u.name === statName);
-      if (aspectObj && aspectObj.desc) {
-          const descLower = aspectObj.desc.toLowerCase();
-          if (descLower.includes('[x]') && descLower.includes('damage')) {
-              isMultiplicativeAspect = true;
-          }
-      }
-      
-      if (isMultiplicativeAspect || statName.toLowerCase().includes('[x]')) {
-          createMultiplicativeRow(statName, val.toFixed(2), true);
-          return;
-      }
-
       const lower = statName.toLowerCase();
       if (
         (lower.includes('damage') || lower.includes('critical') || lower.includes('vulnerable') || lower.includes('overpower')) &&
@@ -2682,7 +2591,10 @@
         !lower.includes('weapon damage') &&
         statName !== 'Skill Damage'
       ) {
-        createAdditiveRow(statName, val.toFixed(2), true);
+        const val = compiledStats[statName].final;
+        if (val && val > 0) {
+          createAdditiveRow(statName, val, true);
+        }
       }
     });
 
@@ -2895,9 +2807,6 @@
 
   } catch (e) {
     console.error("calculate() Error:", e);
-     const container = document.getElementById('character-sheet-content');
-     if (container) container.innerHTML = '<div style="color: red; padding: 10px;"><b>CALC ERROR:</b><br>' + e.stack.replace(/\n/g, '<br>') + '</div>';
-    
   }
 }
 
@@ -2997,26 +2906,17 @@
 
   function getMultiplicativeValues() {
     const rows = dom.multBody.querySelectorAll('tr');
-    const allValues = [];
-    const manualValues = [];
+    const values = [];
     rows.forEach(row => {
       const nameInput = row.querySelector('.row-name-input');
       const valueInput = row.querySelector('.row-value-input');
-      const isInjected = row.classList.contains('injected-row');
-      const val = parseFloat(valueInput.value) || 0;
-      
-      allValues.push({
+      values.push({
         name: nameInput.value,
-        value: val,
-        isInjected: isInjected
+        value: parseFloat(valueInput.value) || 0,
       });
-      
-      if (!isInjected) {
-        manualValues.push({ name: nameInput.value, value: val });
-      }
     });
-    currentBuild.multiplicatives = manualValues;
-    return allValues;
+    currentBuild.multiplicatives = values;
+    return values;
   }
 
   function updateRunningDamages(runningDamages) {
@@ -3092,44 +2992,28 @@
     return tr;
   }
 
-  function createMultiplicativeRow(name = '', value = '', isInjected = false) {
+  function createMultiplicativeRow(name = '', value = '') {
     const tr = document.createElement('tr');
-    if (isInjected) tr.classList.add('injected-row');
-
-    const nameHtml = isInjected
-      ? `<input type="text" class="row-name-input" value="${escapeHtml(name)}" disabled title="From Equipment" style="background: rgba(255,255,255,0.05); color: #aaa;">`
-      : `<input type="text" class="row-name-input" value="${escapeHtml(name)}" placeholder="Multiplier name...">`;
-      
-    const valHtml = isInjected
-      ? `<input type="number" class="row-value-input" value="${value}" disabled title="From Equipment" style="background: rgba(255,255,255,0.05); color: #aaa;">`
-      : `<input type="number" class="row-value-input" value="${value}" step="any" placeholder="0">`;
-      
-    const deleteHtml = isInjected
-      ? `<td></td>`
-      : `<td class="col-delete"><button class="btn-delete" title="Remove">&times;</button></td>`;
-
     tr.innerHTML = `
-      <td>${nameHtml}</td>
-      <td>${valHtml}</td>
+      <td><input type="text" class="row-name-input" value="${escapeHtml(name)}" placeholder="Multiplier name..."></td>
+      <td><input type="number" class="row-value-input" value="${value}" step="any" placeholder="0"></td>
       <td class="formula-value">1.00</td>
-      <td class="running-damage">&mdash;</td>
-      ${deleteHtml}
+      <td class="running-damage">—</td>
+      <td class="col-delete"><button class="btn-delete" title="Remove">✕</button></td>
     `;
 
-    if (!isInjected) {
-      tr.querySelector('.row-name-input').addEventListener('input', calculate);
-      tr.querySelector('.row-value-input').addEventListener('input', calculate);
-      tr.querySelector('.btn-delete').addEventListener('click', () => {
-        tr.style.opacity = '0';
-        tr.style.transform = 'translateX(-10px)';
-        tr.style.transition = 'all 0.2s ease';
-        setTimeout(() => {
-          tr.remove();
-          calculate();
-        }, 200);
-      });
-    }
-    
+    tr.querySelector('.row-name-input').addEventListener('input', calculate);
+    tr.querySelector('.row-value-input').addEventListener('input', calculate);
+    tr.querySelector('.btn-delete').addEventListener('click', () => {
+      tr.style.opacity = '0';
+      tr.style.transform = 'translateX(-10px)';
+      tr.style.transition = 'all 0.2s ease';
+      setTimeout(() => {
+        tr.remove();
+        calculate();
+      }, 200);
+    });
+
     dom.multBody.appendChild(tr);
     return tr;
   }
@@ -3672,694 +3556,39 @@
   }
 
   window.selectedSkills = {};
-
-function getBaseDamageScalarFor(skillName) {
-    let db = typeof skillsDatabase !== 'undefined' ? skillsDatabase : (window.skillsDatabase || null);
-    if (!db) return null;
-    for (let cat in db) {
-        for (let s of db[cat]) {
-            if (s.name === skillName) return s.baseDamageScalar;
-            if (s.modifiers) {
-                for (let m of s.modifiers) {
-                    if (m.name === skillName) return m.baseDamageScalar || s.baseDamageScalar;
-                }
-            }
-        }
-    }
-    return null;
-}
-
-function parseD4String(str, skillObj, currentRank) {
-    if (!str) return '';
-    
-    if (skillObj && skillObj.name === "Skeleton Warrior") {
-        str = str.replace(/\{c_label\}Cooldown:\{\/c_label\}\s*\{c_resource\}\[\{cooldown time\}[\s\S]*?\]\{\/c_resource\}\s*seconds(?:\\n|\r?\n)?/g, "");
-    }
-    
-    if (skillObj && skillObj.name === "Golem") {
-        let gSpec = "Iron Golem"; // default
-        if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.bookOfTheDead && currentBuild.bookOfTheDead.golems) {
-            gSpec = currentBuild.bookOfTheDead.golems.spec;
-        }
-        
-        let typeVal = 2; // Iron
-        if (gSpec === "Bone Golem") typeVal = 0;
-        else if (gSpec === "Blood Golem") typeVal = 1;
-        
-        // Preserve the selected Active and Cooldown blocks
-        let regex = new RegExp(`\\{if:NecroArmy_Spec_For_Pet_Type\\(2\\)==${typeVal}\\}([\\s\\S]*?)\\{\\/if\\}`, 'g');
-        str = str.replace(regex, '$1');
-        
-        let rankMult = 1.0;
-        if (currentRank > 1) {
-            let levelsGained = currentRank - 1;
-            let enhancedIncreases = Math.floor(currentRank / 5);
-            let scalePerLevel = skillObj.damageScalePerLevel !== undefined ? skillObj.damageScalePerLevel : 0.10;
-            let scalePerFive = skillObj.damageScalePerFive !== undefined ? skillObj.damageScalePerFive : 0.05;
-            rankMult = 1.0 + (levelsGained * scalePerLevel) + (enhancedIncreases * scalePerFive);
-        }
-        
-        if (gSpec === "Bone Golem") {
-            str = str.replace(/\[\{cooldown time\}[\s\S]*?\]|\{cooldown time\}/g, "16");
-        } else if (gSpec === "Blood Golem") {
-            str = str.replace(/\[\{cooldown time\}[\s\S]*?\]|\{cooldown time\}/g, "16");
-            str = str.replace(/\[\{payload:tooltip_blood_active\}[\s\S]*?\]|\{payload:tooltip_blood_active\}/g, (1.40 * rankMult * 100).toFixed(1) + '%');
-        } else {
-            // Iron Golem
-            str = str.replace(/\[\{cooldown time\}[\s\S]*?\]|\{cooldown time\}/g, "10");
-            str = str.replace(/\[\{payload:tooltip_slam\}[\s\S]*?\]|\{payload:tooltip_slam\}/g, (2.00 * rankMult * 100).toFixed(1) + '%');
-        }
-    }
-    
-    // Fix escaped brackets for multipliers like \[x\]
-    str = str.replace(/\\\[([x\+])\\\]/g, '[$1]');
-    
-    str = str.replace(/\{if:ADVANCED_TOOLTIP\}([\s\S]*?)\{\/if\}/g, '$1');
-    
-    // Evaluate {if:Mod(...)}...{else}...{/if} blocks dynamically
-    str = str.replace(/\{if:(1-)?Mod\((\d+)\)\}([\s\S]*?)(?:\{else\}([\s\S]*?))?\{\/if\}/gi, (match, not, modId, trueBranch, falseBranch) => {
-        let isTrue = not ? true : false; // Assume Mod() is 0 (unselected) by default
-        return isTrue ? trueBranch : (falseBranch || "");
-    });
-    
-    str = str.replace(/\{if:.*?\}[\s\S]*?\{\/if\}/g, '');
-    
-    // Replace colors (run twice for nesting)
-    str = str.replace(/\{c_([a-zA-Z]+)\}([\s\S]*?)\{\/c(?:_[a-zA-Z]+)?\}/g, '<span class="d4-color-$1">$2</span>');
-    str = str.replace(/\{c_([a-zA-Z]+)\}([\s\S]*?)\{\/c(?:_[a-zA-Z]+)?\}/g, '<span class="d4-color-$1">$2</span>');
-    str = str.replace(/\{\/c(?:_[a-zA-Z]+)?\}/g, '');
-    
-    // Underlines
-    str = str.replace(/\{u\}([\s\S]*?)\{\/u\}/g, '<span style="text-decoration: underline;">$1</span>');
-    str = str.replace(/\{\/?u\}/g, '');
-    
-    let rankMult = 1.0;
-    if (currentRank > 1) {
-        let levelsGained = currentRank - 1;
-        let enhancedIncreases = Math.floor(currentRank / 5);
-        let scalePerLevel = skillObj.damageScalePerLevel !== undefined ? skillObj.damageScalePerLevel : 0.10;
-        let scalePerFive = skillObj.damageScalePerFive !== undefined ? skillObj.damageScalePerFive : 0.05;
-        rankMult = 1.0 + (levelsGained * scalePerLevel) + (enhancedIncreases * scalePerFive);
-    }
-    
-    if (skillObj.name === "Skeleton Warrior" && str.includes("Skeletal")) {
-        str = str.replace(/\[\{payload:tooltip_sword\}[\s\S]*?\]|\{payload:tooltip_sword\}/g, (0.65 * rankMult * 100).toFixed(1) + '%');
-    }
-    if (skillObj.name === "Blood Surge") {
-        str = str.replace(/\[\{payload:inner_damage\}[\s\S]*?\]|\{payload:inner_damage\}/g, (1.00 * rankMult * 100).toFixed(1) + '%');
-    }
-    if (skillObj.name === "Miasma") {
-        str = str.replace(/\[\{dot:miasma_dot_tooltip\}[\s\S]*?\]|\{dot:miasma_dot_tooltip\}/g, (1.45 * rankMult * 100).toFixed(1) + '%');
-    }
-    if (skillObj.name === "Blood Mist") {
-        str = str.replace(/\[\{cooldown time\}[\s\S]*?\]|\{cooldown time\}/g, "24");
-        str = str.replace(/\[\{buffduration:mistform\}[\s\S]*?\]|\{buffduration:mistform\}/g, "3");
-        str = str.replace(/\[\{dot:tooltip_dot\}[\s\S]*?\]|\{dot:tooltip_dot\}/g, (0.35 * rankMult * 12 * 100).toFixed(1) + '%');
-    }
-    if (skillObj.name === "Bone Prison") {
-        str = str.replace(/\[\{cooldown time\}[\s\S]*?\]|\{cooldown time\}/g, "15");
-        
-        let duration = 6.0 + (2.4 * (currentRank - 1) / 14);
-        str = str.replace(/\[\{buffduration:wall_tracker\}[\s\S]*?\]|\{buffduration:wall_tracker\}/g, duration.toFixed(1).replace(/\.0$/, ''));
-        
-        str = str.replace(/\[\{pet_health:bonewall\}[\s\S]*?\]|\{pet_health:bonewall\}/g, (match) => {
-            let maxLife = 1526;
-            if (typeof dom !== 'undefined' && dom.maxLife) {
-                maxLife = parseFloat(dom.maxLife.value) || 1526;
-            }
-            return Math.floor(maxLife * 0.3 * currentRank).toString();
-        });
-    }
-    if (skillObj.name === "Bone Spirit") {
-        str = str.replace(/\[\{recharge time\}[\s\S]*?\]|\{recharge time\}/g, "12");
-    }
-    if (skillObj.name === "Devouring Mist") {
-        str = str.replace(/\[\{dot:tooltip_dot_shadow\}[\s\S]*?\]|\{dot:tooltip_dot_shadow\}/g, (0.5 * rankMult * 12 * 100).toFixed(1) + '%');
-    }
-    if (skillObj.name === "Plunging Darkness") {
-        str = str.replace(/\[\{dot:tooltip_dot\}[\s\S]*?\]|\{dot:tooltip_dot\}/g, (3.0 * rankMult * 100).toFixed(1) + '%');
-    }
-
-    let scalar = skillObj.baseDamageScalar || getBaseDamageScalarFor(skillObj.name);
-    if (skillObj.name === "Unfinished Business") {
-        scalar = 2.5;
-    }
-    
-    if (scalar) {
-        if (skillObj.secondaryScalars) {
-            for (let payloadKey in skillObj.secondaryScalars) {
-                let secScalar = skillObj.secondaryScalars[payloadKey];
-                let secPercentage = (secScalar * rankMult * 100).toFixed(1) + '%';
-                let regex = new RegExp(`\\[\\{payload:${payloadKey}\\}[\\s\\S]*?\\]|\\{payload:${payloadKey}\\}`, 'g');
-                str = str.replace(regex, secPercentage);
-                let regexDot = new RegExp(`\\[\\{dot:${payloadKey}\\}[\\s\\S]*?\\]|\\{dot:${payloadKey}\\}`, 'g');
-                str = str.replace(regexDot, secPercentage);
-            }
-        }
-        
-        let percentage = (scalar * rankMult * 100).toFixed(1) + '%';
-        str = str.replace(/\[\{payload:.*?\}[\s\S]*?\]|\{payload:.*?\}/g, percentage);
-        str = str.replace(/\[\{dot:.*?\}[\s\S]*?\]|\{dot:.*?\}/g, percentage);
-    } else {
-        str = str.replace(/\[\{payload:.*?\}[\s\S]*?\]|\{payload:.*?\}/g, '?%');
-        str = str.replace(/\[\{dot:.*?\}[\s\S]*?\]|\{dot:.*?\}/g, '?%');
-    }
-    
-    // Replace Advanced Math formulas like [Max((0.0007*Pow(Level-1,3.62)+...)*Table(34,sLevel)/10,1)]
-    str = str.replace(/\[([a-zA-Z0-9.*+/\-(),?:]+)(?:\|.*?\|?)?\]/gi, (match, formula) => {
-        // Skip tags like {payload:damage}
-        if (formula.includes('{') || formula.includes('}')) return match;
-
-        let mathStr = formula;
-        
-        let characterLevel = 70;
-        if (typeof document !== 'undefined') {
-            const lvlInput = document.getElementById('character-level');
-            if (lvlInput) characterLevel = parseInt(lvlInput.value) || 70;
-        }
-
-        // Replace Table(34,sLevel) with the correct rankMult variable which correctly factors in the per-5-level scaling
-        mathStr = mathStr.replace(/Table\(\d+,sLevel\)/gi, rankMult);
-
-        // Replace variables
-        mathStr = mathStr.replace(/sLevel/g, currentRank);
-        mathStr = mathStr.replace(/Level/gi, characterLevel);
-
-        // Replace math functions
-        mathStr = mathStr.replace(/Pow\(/gi, 'Math.pow(');
-        mathStr = mathStr.replace(/Round\(/gi, 'Math.round(');
-        mathStr = mathStr.replace(/Max\(/gi, 'Math.max(');
-        mathStr = mathStr.replace(/Min\(/gi, 'Math.min(');
-        mathStr = mathStr.replace(/Floor\(/gi, 'Math.floor(');
-        mathStr = mathStr.replace(/Ceil\(/gi, 'Math.ceil(');
-
-        let val = 0;
-        try {
-            val = eval(mathStr);
-        } catch (e) {
-            return match; // Ignore invalid formulas
-        }
-
-        if (isNaN(val)) return match;
-
-        if (match.includes('%')) {
-             return val.toFixed(1).replace(/\.0$/, '') + '%';
-        }
-        return val.toFixed(1).replace(/\.0$/, '');
-    });
-    
-    str = str.replace(/\[Mod\([^)]+\)\?(\d+):(\d+)(?:\|.*?)?\]/g, '$2');
-    
-    if (skillObj.resourceCost) {
-        str = str.replace(/\[\{resource cost\}[\s\S]*?\]/g, skillObj.resourceCost);
-    }
-    
-    if (skillObj.luckyHitChance) {
-        str = str.replace(/\[\{combat effect chance\}[\s\S]*?\]/g, skillObj.luckyHitChance);
-        str = str.replace(/\{combat effect chance\}/g, skillObj.luckyHitChance);
-    } else {
-        str = str.replace(/\[\{combat effect chance\}[\s\S]*?\]/g, '?');
-        str = str.replace(/\{combat effect chance\}/g, '?');
-    }
-    
-    
-    str = str.replace(/\{cooldown time\}/g, '?');
-    
-    // Evaluate PlayerHealthMax() formulas dynamically based on user's inputted Maximum Life
-    str = str.replace(/\[(?:Max\(1,)?PlayerHealthMax\(\)\*([^|\]]+)(?:\|.*?\|?)?\]/gi, (match, formula) => {
-        if (match.toLowerCase().includes('max(1,')) {
-            if (formula.endsWith(')')) {
-                let open = formula.split('(').length - 1;
-                let close = formula.split(')').length - 1;
-                if (close > open) {
-                    formula = formula.substring(0, formula.lastIndexOf(')'));
-                }
-            }
-        }
-        
-        let maxLife = 1526; // Default level 50 life
-        if (typeof dom !== 'undefined' && dom.maxLife) {
-            maxLife = parseFloat(dom.maxLife.value) || 1526;
-        }
-        
-        let mathRes = formula.replace(/(\d+(?:\.\d+)?)\*Table\(\d+,sLevel\)/gi, (m, p1) => {
-            let baseVal = parseFloat(p1);
-            let utilMult = 1.0;
-            if (typeof currentRank !== 'undefined' && currentRank > 1) {
-                utilMult = 1.0 + ((currentRank - 1) * 0.10);
-            }
-            return baseVal * utilMult;
-        });
-        
-        let coefficient = 0;
-        try {
-            coefficient = eval(mathRes);
-        } catch (e) {
-            coefficient = 0;
-        }
-        
-        return Math.round(maxLife * coefficient).toString();
-    });
-    
-    // Explicit override for missing {fortified:xxx} inside Max()
-    str = str.replace(/\[Max\(1,\{fortified:.*?\}\)(?:\|.*?\|?)?\]/g, (match) => {
-        let maxLife = 1526;
-        if (typeof dom !== 'undefined' && dom.maxLife) {
-            maxLife = parseFloat(dom.maxLife.value) || 1526;
-        }
-        let pct = 0.01;
-        if (str.includes("Blood Lance")) pct = 0.04;
-        if (str.includes("Iron Maiden")) pct = 0.05;
-        
-        return Math.round(maxLife * pct).toString();
-    });
-
-    
-    // Clean up random brackets with pipes [something|2?|]
-    str = str.replace(/\[(.*?)\|.*?\]/g, '$1');
-    
-    // Hardcoded Book of the Dead Passive Evaluation
-    str = str.replace(/NecroPetPassiveIsActive\((\d+)\)/gi, (match, passiveId) => {
-        if (!currentBuild || !currentBuild.bookOfTheDead) return "0";
-        const wSpec = currentBuild.bookOfTheDead.warriors?.spec;
-        const wNode = currentBuild.bookOfTheDead.warriors?.node;
-        
-        // Warriors +2 Skirmisher (Upgrade 1)
-        if (passiveId === "931558" && wSpec === "Skirmisher" && wNode === "1") return "1";
-        // Skirmisher Sacrifice (reduces by 50%)
-        if (passiveId === "931560" && wSpec === "Skirmisher" && wNode === "sacrifice") return "1";
-        // Defender Sacrifice (reduces by 50%)
-        if (passiveId === "931563" && wSpec === "Defender" && wNode === "sacrifice") return "1";
-        // Reaper Sacrifice (reduces by 50%)
-        if (passiveId === "931566" && wSpec === "Reaper" && wNode === "sacrifice") return "1";
-        
-        return "0";
-    });
-    
-    // Replace dummy variables
-    str = str.replace(/Affix_Value_2\(2587892\)/g, "0"); // Bonus max warriors from affixes
-    str = str.replace(/Affix_Value_1\(2587975\)/g, "0"); // Unknown extra bonus
-    
-    // Swap "Skeletal warriors" text dynamically based on spec
-    if (skillObj && skillObj.name === "Skeleton Warrior" && currentBuild && currentBuild.bookOfTheDead) {
-        const wSpec = currentBuild.bookOfTheDead.warriors?.spec;
-        const wNode = currentBuild.bookOfTheDead.warriors?.node;
-        if (wSpec && wNode !== null) {
-            let pluralSpec = wSpec === "Reaper" ? "Reapers" : wSpec + "s";
-            str = str.replace(/Skeletal warriors deal/gi, `Skeletal ${pluralSpec} deal`);
-        }
-    }
-    
-    // Floor math evaluator (handles nested parentheses)
-    let floorIndex = str.indexOf("Floor(");
-    while (floorIndex !== -1) {
-        let openParens = 1;
-        let endIndex = floorIndex + 6;
-        while (endIndex < str.length && openParens > 0) {
-            if (str[endIndex] === '(') openParens++;
-            else if (str[endIndex] === ')') openParens--;
-            endIndex++;
-        }
-        if (openParens === 0) {
-            let formula = str.substring(floorIndex + 6, endIndex - 1);
-            
-            // Handle Mod(582507894) which represents "Master of Puppets" modifier
-            let cleanFormula = formula.replace(/Mod\(582507894\)/g, () => {
-                return (window.selectedSkills && window.selectedSkills["Master of Puppets"]) ? "1" : "0";
-            });
-            // Wipe out any other unknown Mod()
-            cleanFormula = cleanFormula.replace(/\(Mod\(\d+\)\?\d+:\d+\)/gi, "0");
-            
-            try {
-                let result = Math.floor(eval(cleanFormula)).toString();
-                str = str.substring(0, floorIndex) + result + str.substring(endIndex);
-            } catch (e) {
-                // If it fails, just leave it alone and break to prevent infinite loop
-                break;
-            }
-        } else {
-            break;
-        }
-        floorIndex = str.indexOf("Floor(");
-    }
-    
-    
-    str = str.replace(/\{icon:bullet,1\.2\}/g, '&bull; ');
-    str = str.replace(/\{icon:.*?}/g, '* ');
-    
-    // Strip other remaining {tag:value} things like {shield:barrier}, {buffduration:xxx}
-    str = str.replace(/\{[a-zA-Z_]+:[a-zA-Z_]+\}/g, '?');
-    str = str.replace(/\{cooldown time\}/g, '?');
-    
-    return str.replace(/\\n/g, '<br/>').replace(/\n/g, '<br/>');
-}
-
-let tooltipEl = null;
-
-function formatTag(t) {
-    let tag = t.replace('Skill_Primary_', '').replace('Skill_', '').replace('Damage_Override_', '').replace('Keyword_', '');
-    if (tag === 'Shadow') tag = 'Darkness'; // D4 uses Darkness for Shadow skills
-    return tag;
-}
-
-function getBaseSkillRankFor(skillName) {
-    let db = typeof skillsDatabase !== 'undefined' ? skillsDatabase : (window.skillsDatabase || null);
-    if (!db) return window.selectedSkills[skillName] || 0;
-    for (let cat in db) {
-        for (let s of db[cat]) {
-            if (s.name === skillName) return window.selectedSkills[skillName] || 0;
-            if (s.modifiers) {
-                for (let m of s.modifiers) {
-                    if (m.name === skillName) return window.selectedSkills[s.name] || 0;
-                }
-            }
-        }
-    }
-    return window.selectedSkills[skillName] || 0;
-}
-
-function showSkillTooltip(skillObj, e) {
-    if (!tooltipEl) {
-        tooltipEl = document.createElement('div');
-        tooltipEl.id = 'skill-tooltip';
-        tooltipEl.className = 'd4-tooltip';
-        document.body.appendChild(tooltipEl);
-    }
-    
-    let baseRank = getBaseSkillRankFor(skillObj.name);
-    let displayRank = baseRank > 0 ? baseRank : 1; // Unlearned skills show rank 1 stats
-    
-    let tagsHtml = '';
-    let dynamicTags = skillObj.tags ? [...skillObj.tags] : [];
-    
-    if (skillObj.name === "Skeleton Warrior" && currentBuild && currentBuild.bookOfTheDead) {
-        let spec = currentBuild.bookOfTheDead.warriors?.spec;
-        let node = currentBuild.bookOfTheDead.warriors?.node;
-        if (node !== null) {
-            dynamicTags = dynamicTags.filter(t => !["Search_Bone", "Search_Blood", "Search_Darkness", "Search_Physical", "Search_Shadow", "Damage_Override_Physical", "Damage_Override_Shadow", "Skill_Bone", "Skill_Blood", "Skill_Shadow"].includes(t));
-            if (spec === "Skirmisher") {
-                dynamicTags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
-            } else if (spec === "Defender") {
-                dynamicTags.push("Search_Physical", "Search_Blood", "Damage_Override_Physical", "Skill_Blood");
-            } else if (spec === "Reaper") {
-                dynamicTags.push("Search_Shadow", "Search_Darkness", "Damage_Override_Shadow", "Skill_Shadow");
-            }
-        }
-    }
-    
-    if (skillObj.name === "Golem" && currentBuild && currentBuild.bookOfTheDead) {
-        let spec = currentBuild.bookOfTheDead.golems?.spec;
-        let node = currentBuild.bookOfTheDead.golems?.node;
-        if (node !== null) {
-            dynamicTags = dynamicTags.filter(t => !["Search_Bone", "Search_Blood", "Search_Darkness", "Search_Physical", "Search_Shadow", "Damage_Override_Physical", "Damage_Override_Shadow", "Skill_Bone", "Skill_Blood", "Skill_Shadow"].includes(t));
-            if (spec === "Bone Golem") {
-                dynamicTags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
-            } else if (spec === "Blood Golem") {
-                dynamicTags.push("Search_Physical", "Search_Blood", "Damage_Override_Physical", "Skill_Blood");
-            } else if (spec === "Iron Golem") {
-                dynamicTags.push("Search_Shadow", "Search_Darkness", "Damage_Override_Shadow", "Skill_Shadow");
-            }
-        }
-    }
-    
-    if (dynamicTags.length > 0) {
-        // Filter out Search tags
-        let cleanTags = dynamicTags.filter(t => !t.startsWith('Search_') && !t.startsWith('Damage_Type_'));
-        if (cleanTags.length > 0) {
-            let tagBoxes = cleanTags.map(t => `<div class="d4-tooltip-tag">${formatTag(t)}</div>`).join('');
-            tagsHtml = `<div class="d4-tooltip-tags">${tagBoxes}</div><hr class="d4-divider">`;
-        }
-    }
-    
-    let statsHtml = '';
-    if (skillObj.resourceCost) {
-        statsHtml += `<div><span class="d4-color-label">Essence Cost:</span> <span class="d4-color-number">${skillObj.resourceCost}</span></div>`;
-    }
-    if (skillObj.cooldown) {
-        statsHtml += `<div><span class="d4-color-label">Cooldown:</span> <span class="d4-color-number">${skillObj.cooldown}</span> seconds</div>`;
-    }
-    if (statsHtml) {
-        statsHtml = `<div class="d4-tooltip-stats">${statsHtml}</div>`;
-    }
-    
-    let descHtml = parseD4String(skillObj.description, skillObj, displayRank);
-    
-    tooltipEl.innerHTML = `
-        <div class="d4-tooltip-header">${skillObj.name}</div>
-        ${tagsHtml}
-        ${statsHtml}
-        <div class="d4-tooltip-desc">${descHtml}</div>
-    `;
-    
-    tooltipEl.classList.add('visible');
-    moveSkillTooltip(e);
-}
-
-function moveSkillTooltip(e) {
-    if (!tooltipEl) return;
-    
-    let x = e.clientX + 15;
-    let y = e.clientY + 15;
-    
-    if (x + 320 > window.innerWidth) x = e.clientX - 335;
-    if (y + tooltipEl.offsetHeight > window.innerHeight) y = window.innerHeight - tooltipEl.offsetHeight - 10;
-    
-    tooltipEl.style.left = x + 'px';
-    tooltipEl.style.top = y + 'px';
-}
-
-function hideSkillTooltip(e) {
-    if (tooltipEl) tooltipEl.classList.remove('visible');
-}
-
-function getSpentSkillPoints() {
-    return Object.values(window.selectedSkills || {}).reduce((sum, val) => sum + val, 0);
-}
-
-function updateSkillPointsUI() {
-    const el = document.getElementById('skill-points-spent');
-    if (el) {
-        const spent = getSpentSkillPoints();
-        el.textContent = spent;
-        if (spent >= 83) {
-            el.style.color = '#ff4444';
-        } else {
-            el.style.color = '#ffd700';
-        }
-    }
-}
-
 function renderSkills() { 
   const container = document.getElementById('skills-container'); 
   if (!container) return; 
   container.innerHTML = ''; 
-  if (typeof skillsDatabase === 'undefined') return;
-
-  // Dynamically update Skeleton Warrior tags and damage type based on Book of the Dead
-  if (typeof updateDynamicSkillTags === 'function') updateDynamicSkillTags();
-
-
-  for (const [category, skills] of Object.entries(skillsDatabase)) { 
-    skills.forEach(skill => {
-        if (!skill.modifiers && skill.enhancement) {
-            skill.modifiers = [
-                { name: skill.enhancement.name, maxRank: skill.enhancement.maxRank }
-            ];
-            if (skill.enhancement.branches) {
-                skill.enhancement.branches.forEach(b => {
-                    skill.modifiers.push({ name: b.name, maxRank: b.maxRank });
-                });
-            }
-        }
-    });
-  }
- 
-  
-  container.style.display = 'flex';
-  container.style.flexDirection = 'column';
-  container.style.gap = '40px';
-  
+  if (typeof skillsDatabase === 'undefined') return; 
   for (const [category, skills] of Object.entries(skillsDatabase)) { 
     const catDiv = document.createElement('div'); 
-    catDiv.className = 'skill-category skill-paperdoll-wrapper'; 
-    catDiv.style.width = '100%';
-    catDiv.style.boxSizing = 'border-box';
-    
+    catDiv.className = 'skill-category'; 
     const catTitle = document.createElement('h3'); 
-    catTitle.className = 'skill-paperdoll-title'; 
+    catTitle.className = 'skill-category-title'; 
     catTitle.textContent = category + ' Skills'; 
     catDiv.appendChild(catTitle); 
-    
     const skillsList = document.createElement('div'); 
     skillsList.className = 'skill-list'; 
-    skillsList.style.display = 'flex';
-    skillsList.style.flexDirection = 'row';
-    skillsList.style.flexWrap = 'wrap';
-    skillsList.style.justifyContent = 'center';
-    skillsList.style.gap = '40px';
-    
     skills.forEach(skill => { 
-      const pdContainer = document.createElement('div');
-      pdContainer.style.display = 'flex';
-      pdContainer.style.flexDirection = 'column';
-      pdContainer.style.alignItems = 'flex-start';
-      
-      const pdTitle = document.createElement('div');
-      pdTitle.style.color = '#fff';
-      pdTitle.style.marginBottom = '8px';
-      pdTitle.style.fontWeight = 'bold';
-      pdTitle.style.fontSize = '16px';
-      pdTitle.style.borderBottom = '1px solid #444';
-      pdTitle.style.paddingBottom = '4px';
-      pdTitle.style.width = '100%';
-      pdTitle.textContent = skill.name;
-      pdContainer.appendChild(pdTitle);
-      
-      const pd = document.createElement('div');
-      pd.className = 'skill-compact-grid';
-      
-      const createSlot = (name, maxRank, isBase, index, category, baseSkillName, skillObj) => {
-          const slot = document.createElement('div');
-          
-          let slotClass = 'paperdoll-slot';
-          if (isBase) slotClass += ' pd-base';
-          else if (index < 3) slotClass += ' pd-dia pd-mod-' + index;
-          else slotClass += ' pd-cir pd-mod-' + index;
-          
-          slot.className = slotClass;
-          slot.title = name;
-          
-          slot.onmouseenter = (e) => showSkillTooltip(skillObj, e);
-          slot.onmousemove = (e) => moveSkillTooltip(e);
-          slot.onmouseleave = (e) => hideSkillTooltip(e);
-          
-          // Execute image loading for all categories
-          if (true) {
-              let imgName = name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
-              let imgSrc = 'assets/skills/' + imgName + '.png';
-              
-              const img = document.createElement('img');
-              img.src = imgSrc;
-              img.onerror = () => { 
-                  // If the direct name fails, try appending the base skill name (e.g. crowd-control-decompose.png)
-                  if (!isBase && baseSkillName && img.src.includes(imgSrc)) {
-                      let baseName = baseSkillName.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
-                      img.src = 'assets/skills/' + imgName + '-' + baseName + '.png';
-                  } else {
-                      img.style.display = 'none'; 
-                  }
-              };
-              const imgContainer = document.createElement('div');
-              imgContainer.className = 'pd-img-container';
-              imgContainer.appendChild(img);
-              slot.appendChild(imgContainer);
-          }
-          
-          const rankDisplay = document.createElement('div');
-          rankDisplay.className = 'paperdoll-rank';
-          rankDisplay.textContent = (window.selectedSkills[name] || 0) + '/' + maxRank;
-          slot.appendChild(rankDisplay);
-          
-          const updateDisplay = () => {
-              rankDisplay.textContent = (window.selectedSkills[name] || 0) + '/' + maxRank;
-              if (window.selectedSkills[name] > 0) slot.classList.add('active');
-              else slot.classList.remove('active');
-              updateSkillPointsUI();
-          };
-          updateDisplay();
-          
-          slot.onclick = (e) => {
-              // Restriction: must have a point in base skill to add points to its modifiers
-              if (!isBase && (!window.selectedSkills[baseSkillName] || window.selectedSkills[baseSkillName] === 0)) {
-                  return; // Do nothing if base skill has no points
-              }
-              const cur = window.selectedSkills[name] || 0;
-              if (cur < maxRank) {
-                  let spent = getSpentSkillPoints();
-                  if (spent >= 83) {
-                      return; // Max points reached
-                  }
-                  
-                  if (!isBase && skillsDatabase[category]) {
-                      // Mutual Exclusivity logic per row
-                      const baseSkillData = skillsDatabase[category].find(s => s.name === baseSkillName);
-                      if (baseSkillData && baseSkillData.modifiers) {
-                          let groupIndices = [];
-                          if (index >= 0 && index <= 2) groupIndices = [0, 1, 2];
-                          else if (index >= 3 && index <= 4) groupIndices = [3, 4];
-                          else if (index >= 5 && index <= 6) groupIndices = [5, 6];
-                          
-                          groupIndices.forEach(idx => {
-                              if (idx !== index && baseSkillData.modifiers[idx]) {
-                                  const modName = baseSkillData.modifiers[idx].name;
-                                  if (window.selectedSkills[modName] > 0) {
-                                      delete window.selectedSkills[modName];
-                                  }
-                              }
-                          });
-                          // We need a brief timeout to let the global UI refresh to clear active states of wiped siblings
-                          setTimeout(() => renderSkills(), 10);
-                      }
-                  }
-
-                  if (e.shiftKey) {
-                      // Fill up the skill as much as possible up to maxRank or global cap
-                      let availablePoints = 83 - spent;
-                      let pointsToMax = maxRank - cur;
-                      let pointsToAdd = Math.min(availablePoints, pointsToMax);
-                      window.selectedSkills[name] = cur + pointsToAdd;
-                  } else {
-                      window.selectedSkills[name] = cur + 1;
-                  }
-                  
-                  updateDisplay();
-                  if (typeof recalculate === 'function') recalculate();
-                  showSkillTooltip(skillObj, e);
-              }
-          };
-          
-          slot.oncontextmenu = (e) => {
-              e.preventDefault();
-              if (window.selectedSkills[name] > 0) {
-                  if (e.shiftKey) {
-                      window.selectedSkills[name] = 0; // Wipe all points from this skill
-                  } else {
-                      window.selectedSkills[name]--;
-                  }
-                  
-                  if (window.selectedSkills[name] === 0) {
-                      delete window.selectedSkills[name];
-                      // Restriction: If a base skill drops to 0, automatically clear all its modifiers
-                      if (isBase && skillsDatabase[category]) {
-                          const skillData = skillsDatabase[category].find(s => s.name === name);
-                          if (skillData && skillData.modifiers) {
-                              skillData.modifiers.forEach(mod => {
-                                  delete window.selectedSkills[mod.name];
-                              });
-                          }
-                          // We need to trigger a full UI refresh to clear the active classes from the modifiers
-                          setTimeout(() => renderSkills(), 10);
-                      }
-                  }
-                  updateDisplay();
-                  if (typeof recalculate === 'function') recalculate();
-                  showSkillTooltip(skillObj, e);
-              }
-          };
-          
-          return slot;
-      };
-      
-      pd.appendChild(createSlot(skill.name, skill.maxRank, true, -1, category, skill.name, skill));
-      
-      if (skill.modifiers && skill.modifiers.length > 0) {
-          skill.modifiers.forEach((mod, idx) => {
-              pd.appendChild(createSlot(mod.name, mod.maxRank, false, idx, category, skill.name, mod));
-          });
-      }
-      
-      pdContainer.appendChild(pd);
-      skillsList.appendChild(pdContainer); 
+      const skillGroup = document.createElement('div'); 
+      skillGroup.className = 'skill-group'; 
+      const baseRow = createSkillRow(skill.name, skill.maxRank, 0); 
+      skillGroup.appendChild(baseRow); 
+      if (skill.enhancement) { 
+        const enhRow = createSkillRow(skill.enhancement.name, skill.enhancement.maxRank, 1, skill.name); 
+        skillGroup.appendChild(enhRow); 
+        if (skill.enhancement.branches && skill.enhancement.branches.length > 0) { 
+          const branchContainer = document.createElement('div'); 
+          branchContainer.className = 'skill-branches'; 
+          skill.enhancement.branches.forEach(branch => { 
+            const bRow = createSkillRow(branch.name, branch.maxRank, 2, skill.enhancement.name, skill.enhancement.branches.map(b => b.name)); 
+            branchContainer.appendChild(bRow); 
+          }); 
+          skillGroup.appendChild(branchContainer); 
+        } 
+      } 
+      skillsList.appendChild(skillGroup); 
     }); 
     catDiv.appendChild(skillsList); 
     container.appendChild(catDiv); 
@@ -4370,15 +3599,8 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   row.className = 'skill-row indent-' + indentLevel; 
   const nameSpan = document.createElement('span'); 
   nameSpan.className = 'skill-name'; 
-  nameSpan.style.display = 'flex';
-  nameSpan.style.alignItems = 'center';
-  nameSpan.style.gap = '8px';
-  
-  let prefix = indentLevel > 0 ? '<span style="color:#666; margin-right: 4px;">└</span>' : '';
-  let imgName = name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
-  let imgSrc = 'assets/skills/' + imgName + '.png';
-  
-  nameSpan.innerHTML = prefix + `<img src="${imgSrc}" style="width:24px; height:24px; border:1px solid #333;" onerror="this.style.display='none'" />` + `<span>${name}</span>`; 
+  nameSpan.textContent = name; 
+  if (indentLevel > 0) nameSpan.innerHTML = '<span style="color:#666;">└</span> ' + name; 
   const controls = document.createElement('div'); 
   controls.className = 'skill-controls'; 
   const minusBtn = document.createElement('button'); 
@@ -4569,8 +3791,8 @@ rarity = foundItem.rarity;
           const vals = itemObj.aspectValues || [];
           let valIndex = 0;
           aspectDescHtml = aspectObj.desc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, minStr, maxStr) => {
-            let min = minStr ? parseFloat(minStr.replace(/,/g, '')) * aspectMult : (aspectObj.minVal ? parseFloat(aspectObj.minVal) * aspectMult : null);
-            let max = maxStr ? parseFloat(maxStr.replace(/,/g, '')) * aspectMult : (aspectObj.maxVal ? parseFloat(aspectObj.maxVal) * aspectMult : null);
+            let min = minStr ? parseFloat(minStr.replace(/,/g, '')) * aspectMult : null;
+            let max = maxStr ? parseFloat(maxStr.replace(/,/g, '')) * aspectMult : null;
             
             if (min !== null) min = parseFloat(min.toFixed(2));
             if (max !== null) max = parseFloat(max.toFixed(2));
@@ -4709,8 +3931,7 @@ rarity = foundItem.rarity;
         
         let displayV = v;
         const effQ = getEffectiveQuality(itemObj);
-        const twoHandedMult = checkIs2H(itemObj, slotName) ? 2 : 1;
-        const qMult = (1 + (effQ * 0.01) + gaBonus + capstoneBonus) * twoHandedMult;
+        const qMult = 1 + (effQ * 0.01) + gaBonus + capstoneBonus;
         if (typeof displayV === 'number' || (typeof displayV === 'string' && !isNaN(parseFloat(displayV)))) {
            // Skip scaling if it is the "Item Quality" transfigure!
            if (currentName && currentName.includes('Item Quality')) {
@@ -4734,10 +3955,6 @@ rarity = foundItem.rarity;
             }
         }
         let maxAttr = ''; // Allow overriding max for higher item power tiers
-        if (max && !(currentName && currentName.includes('Item Quality'))) {
-            let maxScaled = (parseFloat(max.replace(/,/g, '')) * qMult).toFixed(1).replace(/\.0$/, '');
-            maxAttr = ` max="${maxScaled}"`;
-        }
         
         let stepAttr = (min && min.includes('.')) || (max && max.includes('.')) ? ' step="0.1"' : ' step="1"';
         if (!min && !max) stepAttr = ' step="any"';
@@ -4783,9 +4000,6 @@ rarity = foundItem.rarity;
         if (baseItem.armor) {
           const scaledArmor = Math.floor(baseItem.armor * qMult);
           extraWeaponInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${scaledArmor.toLocaleString()} Armor</div>`;
-        }
-        if (baseItem.blockChance) {
-          extraWeaponInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${baseItem.blockChance}% Block Chance</div>`;
         }
         if (baseItem.resistance) {
           const scaledRes = Math.floor(baseItem.resistance * qMult);
@@ -4948,9 +4162,6 @@ rarity = foundItem.rarity;
                   const scaledArmor = Math.floor(baseItem.armor * qMult);
                   extraInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${scaledArmor.toLocaleString()} Armor</div>`;
                 }
-                if (baseItem.blockChance) {
-                  extraInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${baseItem.blockChance}% Block Chance</div>`;
-                }
                 if (baseItem.resistance) {
                   const scaledRes = Math.floor(baseItem.resistance * qMult);
                   extraInfo += `<div style="font-size:15px; color:#fff; font-weight: bold; margin-top: 4px;">${scaledRes.toLocaleString()} Resistance to All Elements</div>`;
@@ -4999,8 +4210,7 @@ rarity = foundItem.rarity;
                  }
                  const capstoneBonus = isCapstone ? 0.50 : 0;
                  
-                 const twoHandedMult = checkIs2H(itemObj, slotName) ? 2 : 1;
-                 const rowQMult = (qMult + gaBonus + capstoneBonus) * twoHandedMult;
+                 const rowQMult = qMult + gaBonus + capstoneBonus;
                  
                  if (baseVal !== undefined && !isNaN(baseVal)) {
                      // Check if this input belongs to the 'Item Quality' transfigure
@@ -5194,8 +4404,7 @@ rarity = foundItem.rarity;
               baseVal = val;
           } else {
               const effQ = getEffectiveQuality(itemObj);
-              const twoHandedMult = checkIs2H(itemObj, slotName) ? 2 : 1;
-              const qMult = (1 + (effQ * 0.01) + gaBonus + capstoneBonus) * twoHandedMult;
+              const qMult = 1 + (effQ * 0.01) + gaBonus + capstoneBonus;
               baseVal = Number((val / qMult).toFixed(2));
           }
           
@@ -5639,42 +4848,9 @@ rarity = foundItem.rarity;
     else if (type === 'temper') dbItems = classData.tempers || [];
     else if (type === 'transfigure') dbItems = classData.transfigures || [];
 
-    let currentlyEquipped = [];
-    if (type === 'affix') currentlyEquipped = itemObj.affixes || [];
-    if (type === 'temper') currentlyEquipped = itemObj.tempering || [];
-    if (type === 'transfigure') currentlyEquipped = itemObj.transfigure || [];
-    
-    let editingAffixName = '';
-    if (window.currentModifierEditing && window.currentModifierEditing.type === type) {
-        editingAffixName = currentlyEquipped[window.currentModifierEditing.idx];
-    }
-
     let items = dbItems.filter(a => {
       if (activeCategory !== 'All Modifiers' && getAffixCategory(a.name) !== activeCategory) return false;
       if (query && !a.name.toLowerCase().includes(query.toLowerCase())) return false;
-      if (a.name !== editingAffixName && currentlyEquipped.includes(a.name)) return false;
-      
-      // Filter out shield-specific tempers and modifiers if the equipped offhand is a focus
-      if (mapped === 'offhand') {
-        const baseItem = window.D4_DATABASE.itemDatabase['Offhand']?.find(i => i.name === itemObj.name);
-        if (type === 'affix') {
-          if (baseItem && baseItem.type === 'Focus' && a.exclusiveTo === 'Shield') return false;
-          if (baseItem && baseItem.type === 'Shield' && a.exclusiveTo === 'Focus') return false;
-        } else if (type === 'temper') {
-          if (baseItem && baseItem.type === 'Focus') {
-            const shieldManuals = ['Natural Resistance', 'Necromancer Wall', 'Worldly Endurance', 'Wordly Endurance', 'Natural Schemes', 'Worldly Fortune', 'Worldy Fortune'];
-            if (shieldManuals.includes(a.desc)) return false;
-          }
-        }
-      }
-      
-      // Filter out 1H vs 2H specific modifiers on mainhand
-      if (mapped === 'mainhand' && type === 'affix') {
-        const is2H = checkIs2H(itemObj, mapped);
-        if (is2H && a.exclusiveTo === '1H') return false;
-        if (!is2H && a.exclusiveTo === '2H') return false;
-      }
-      
       return true;
     });
 
@@ -5811,22 +4987,18 @@ rarity = foundItem.rarity;
 })();
 
 
-// Tab Persistence
-document.addEventListener('DOMContentLoaded', () => {
-    const savedTab = localStorage.getItem('activeTabId');
-    if (savedTab) {
-        const tabToClick = document.querySelector(`.tab-btn[data-target="${savedTab}"]`);
-        if (tabToClick) {
-            tabToClick.click();
-        }
-    }
-    
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const target = e.currentTarget.dataset.target;
-            if (target) {
-                localStorage.setItem('activeTabId', target);
-            }
-        });
-    });
-});
+const autoStats = { baseStr: 10, levelStr: 10, baseInt: 10, levelInt: 10, baseWill: 10, levelWill: 10, baseDex: 10, levelDex: 10, maximumLife: 100 };
+const equipped = {
+    'Ring': { name: 'Test Ring', aspect: 'Test Aspect', aspectValues: [50] }
+};
+
+window.D4_DATABASE = { aspects: [{name: 'Test Aspect', desc: 'test'}], itemDatabase: {}, classData: { Necromancer: { equipment: { ring: { modifiers: [] } } } } };
+window.equippedItems = equipped;
+
+try {
+    console.log("Running compileCharacterStats...");
+    const stats = compileCharacterStats(equipped, autoStats);
+    console.log("Success! Stats keys:", Object.keys(stats).length);
+} catch (err) {
+    console.error("COMPILE CRASHED:", err.stack);
+}

@@ -1,4 +1,4 @@
-const skillsDatabase = {
+module.exports = {
   "Basic": [
     {
       "name": "Decompose",
@@ -98,8 +98,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ],
-      "luckyHitChance": null
+      ]
     },
     {
       "name": "Reap",
@@ -132,7 +131,6 @@ const skillsDatabase = {
             "Keyword_Execute",
             "Search_Physical"
           ],
-          "baseDamageScalar": 0.625,
           "description": "{c_important}Reap{/c} becomes a {c_important}Blood{/c} Skill that deals {c_number}[{payload:damage_blood}|2?|]{/c} Physical damage.\\n\\n{c_important}Reap{/c} will {c_important}{u}Execute{/c}{/u} enemies and has a {c_number}50%{/c} chance to form a {c_important}{u}Blood Orb{/u}{/c} if they are killed by it.",
           "maxRank": 1
         },
@@ -142,7 +140,6 @@ const skillsDatabase = {
             "Search_Damage",
             "Search_ResourceEssence"
           ],
-          "baseDamageScalar": 0.25,
           "description": "{c_important}Reap{/c} sweeps a second time, dealing {c_number}[{payload:damage_echo}|2?|]{/c} damage and generating {c_number}7.5{/c} Essence.",
           "maxRank": 1
         },
@@ -212,8 +209,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": 4
         }
-      ],
-      "luckyHitChance": 30
+      ]
     },
     {
       "name": "Hemorrhage",
@@ -231,7 +227,6 @@ const skillsDatabase = {
           "tags": [
             "Search_Damage"
           ],
-          "baseDamageScalar": 0.4,
           "description": "{c_important}Hemorrhage{/c} also deals {c_number}[{payload:damage_aoe}|2?|]{/c} damage to enemies around your target.",
           "maxRank": 1
         },
@@ -243,7 +238,7 @@ const skillsDatabase = {
             "Keyword_Blood_Orb",
             "Search_Cold"
           ],
-          "description": "{c_important}Hemorrhage{/c} deals {c_number}[{payload:damage_cold}|2?|]{/c} Cold damage and {c_important}{u}Freezes{/c}{/u} enemies for {c_number}3{/c} seconds. An enemy can be {c_important}{u}Frozen{/c}{/u} this way once every {c_number}6{/c} seconds.\\n\\nIf {c_important}Hemorrhage{/c} hits an enemy already {c_important}{u}Frozen{/u}{/c}, it has an additional {c_number}50%{/c} chance to form a {c_important}{u}Blood Orb{/u}{/c}.",
+          "description": "{c_important}Hemorrhage{/c} deals {c_number}[{payload:damage_cold}|2?|]{/c} Cold damage and {c_important}{u}Freezes{/c}{/u} enemies for {c_number}[{buffduration:freeze}|2?|]{/c} seconds. An enemy can be {c_important}{u}Frozen{/c}{/u} this way once every {c_number}6{/c} seconds.\\n\\nIf {c_important}Hemorrhage{/c} hits an enemy already {c_important}{u}Frozen{/u}{/c}, it has an additional {c_number}50%{/c} chance to form a {c_important}{u}Blood Orb{/u}{/c}.",
           "maxRank": 1
         },
         {
@@ -255,7 +250,7 @@ const skillsDatabase = {
             "Search_Shadow",
             "Skill_Primary_Summoning"
           ],
-          "description": "{c_important}Hemorrhage{/c} becomes a {c_important}Darkness{/c} Skill that deals {c_number}[{payload:damage_shadow}|2?|]{/c} Shadow damage.\\n\\nInstead of forming a {c_important}{u}Blood Orb{/c}{/u}, {c_important}Hemorrhage{/c} Summons a {c_important}Volatile Skeleton{/c} that deals {c_number}120%{/c} damage.",
+          "description": "{c_important}Hemorrhage{/c} becomes a {c_important}Darkness{/c} Skill that deals {c_number}[{payload:damage_shadow}|2?|]{/c} Shadow damage.\\n\\nInstead of forming a {c_important}{u}Blood Orb{/c}{/u}, {c_important}Hemorrhage{/c} Summons a {c_important}Volatile Skeleton{/c} that deals {c_number}[{payload:volatile_skeleton}|2?|]{/c} damage.",
           "maxRank": 1
         },
         {
@@ -328,8 +323,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": 4
         }
-      ],
-      "luckyHitChance": 50
+      ]
     },
     {
       "name": "Bone Splinters",
@@ -346,7 +340,6 @@ const skillsDatabase = {
           "tags": [
             "Search_Damage"
           ],
-          "baseDamageScalar": 0.45,
           "description": "{c_important}Bone Splinters{/c} now deals {c_number}[{payload:bounce_damage}|2?|]{/c} damage with each splinter, bounces off walls, and travels further.",
           "maxRank": 1
         },
@@ -362,9 +355,6 @@ const skillsDatabase = {
         {
           "name": "Shadow Seekers",
           "maxRank": 1,
-          "secondaryScalars": {
-            "shadow_explosion": 0.08
-          },
           "description": "{c_important}Bone Splinters{/c} becomes a {c_important}Darkness{/c} Skill that deals {c_number}[{payload:shadow_damage}|2?|]{/c} Shadow damage and seeks enemies. \\n\\nWhen a splinter hits an enemy it causes a burst of shadow, dealing an additional {c_number}[{payload:shadow_explosion}|2?|]{/c} damage.",
           "tags": [
             "Skill_Shadow",
@@ -447,8 +437,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": 4
         }
-      ],
-      "luckyHitChance": 30
+      ]
     }
   ],
   "Core": [
@@ -471,7 +460,6 @@ const skillsDatabase = {
             "Search_Damage",
             "Search_Shadow"
           ],
-          "baseDamageScalar": 1.63,
           "description": "{c_important}Bone Spear{/c} becomes a {c_important}Darkness{/c} Skill that deals {c_number}[{payload:damage_shadow}|2?|]{/c} Shadow damage.\\n\\nInstead of piercing through, {c_important}Bone Spear{/c} forks into {c_number}2{/c} piercing spears each time it hits an enemy or wall, up to {c_number}2{/c} times.",
           "maxRank": 1
         },
@@ -491,7 +479,6 @@ const skillsDatabase = {
           "tags": [
             "Search_Damage"
           ],
-          "baseDamageScalar": 0.43,
           "description": "{c_important}Bone Spear{/c} breaks into {c_number}3{/c} piercing bone shards when it is destroyed, dealing {c_number}[{payload:damage_boneshard}|2?|]{/c} damage each.",
           "maxRank": 1
         },
@@ -598,8 +585,7 @@ const skillsDatabase = {
           "combatEffectOverride": 0,
           "unk_b8f2b": 4
         }
-      ],
-      "luckyHitChance": 50
+      ]
     },
     {
       "name": "Sever",
@@ -609,11 +595,6 @@ const skillsDatabase = {
       "resourceCost": 20,
       "description": "{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}A specter of you charges forward, dealing {c_number}[{payload:projectile_damage}|2?|]{/c} damage, then attacks with its scythe, dealing {c_number}[{payload:damage_out}|2?|]{/c} damage.",
       "maxRank": 15,
-      "baseDamageScalar": 0.2,
-      "secondaryScalars": {
-        "projectile_damage": 0.6,
-        "damage_out": 1
-      },
       "damageType": "Shadow",
       "modifiers": [
         {
@@ -640,7 +621,6 @@ const skillsDatabase = {
           "tags": [
             "Search_Damage"
           ],
-          "baseDamageScalar": 0.4,
           "description": "{c_important}Sever{/c} sends out {c_number}3{/c} additional specters at its apex that expand out, dealing {c_number}[{payload:lotus_damage_out}|2?|]{/c} damage each.",
           "maxRank": 1
         },
@@ -724,7 +704,7 @@ const skillsDatabase = {
           "unk_b8f2b": 4
         }
       ],
-      "luckyHitChance": 40
+      "baseDamageScalar": 0.2
     },
     {
       "name": "Blight",
@@ -733,18 +713,13 @@ const skillsDatabase = {
         "Search_Shadow"
       ],
       "resourceCost": 20,
-      "description": "{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[Mod(2686060764)?60:40|%|]{/c}\\n{/if}Unleash concentrated blight that deals {c_number}[{payload:projectile_damage}|2?|]{/c} damage and leaves behind a defiled area, dealing {c_number}[{dot:tooltip_dot}|2?|]{/c} Corrupting damage over {c_number}6{/c} seconds.",
+      "description": "{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[Mod(2686060764)?60:40|%|]{/c}\\n{/if}Unleash concentrated blight that deals {c_number}[{payload:projectile_damage}|2?|]{/c} damage and leaves behind a defiled area, dealing {c_number}[{dot:tooltip_dot}|2?|]{/c} Corrupting damage over {c_number}[{buffduration:tooltip_dot}|2?|]{/c} seconds.",
       "maxRank": 15,
-      "baseDamageScalar": 0.4,
-      "secondaryScalars": {
-        "tooltip_dot": 2.1
-      },
       "damageType": "Shadow",
       "modifiers": [
         {
           "name": "Volatile Blood",
           "description": "{c_important}Blight{/c} becomes a {c_important}Blood{/c} skill that deals Physical damage. \\n\\n{c_important}Blight's{/c} defiled area instantly bursts, dealing {c_number}[{payload:modc_damage}|2?|]{/c} damage.",
-          "baseDamageScalar": 3.15,
           "maxRank": 1,
           "tags": [
             "Search_Damage",
@@ -761,7 +736,7 @@ const skillsDatabase = {
             "Damage_Override_Cold",
             "Search_Cold"
           ],
-          "description": "{c_important}Blight{/c} deals Cold and Frostbite damage. \\n\\nIts defiled area Pulls in enemies and {c_important}{u}Chills{/u}{/c} for {c_number}15%{/c} every second.",
+          "description": "{c_important}Blight{/c} deals Cold and Frostbite damage. \\n\\nIts defiled area Pulls in enemies and {c_important}{u}Chills{/u}{/c} for {c_number}[Min(1,0.15*(1+Bonus_Percent_Per_Power(481293)))*100|%|]{/c} every second.",
           "maxRank": 1
         },
         {
@@ -865,8 +840,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": 4
         }
-      ],
-      "luckyHitChance": null
+      ]
     },
     {
       "name": "Skeleton Mage",
@@ -966,8 +940,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": 4
         }
-      ],
-      "luckyHitChance": 20
+      ]
     },
     {
       "name": "Blood Surge",
@@ -986,8 +959,7 @@ const skillsDatabase = {
             "Damage_Override_Physical"
           ],
           "description": "{c_important}Blood Surge{/c} becomes a {c_important}Bone{/c} Skill and, instead of expelling a blood nova, expels {c_number}10{/c} piercing bone shards dealing {c_number}[{payload:shard_damage}|2?|]{/c} damage each.\\n\\nInstead of dealing increased damage, {c_important}Blood Surge{/c} expels {c_number}1{/c} additional shard for each enemy drawn from, up to {c_number}5{/c} additional shards.",
-          "maxRank": 1,
-          "baseDamageScalar": 0.6
+          "maxRank": 1
         },
         {
           "name": "You And What Army?",
@@ -995,8 +967,7 @@ const skillsDatabase = {
             "Search_Minion"
           ],
           "description": "{c_important}Blood Surge{/c} expels smaller blood novas on your {c_important}Minions{/c}, dealing {c_number}[{payload:legendary_minion_nova}|2?|]{/c} damage.\\n\\n{c_important}Blood Surge's{/c} minion nova damage is increased by {c_number}5%{c_lightgray}\\[x\\]{/c}{/c} for each enemy drawn from, up to {c_number}50%{c_lightgray}\\[x\\]{/c}{/c}.",
-          "maxRank": 1,
-          "baseDamageScalar": 0.2
+          "maxRank": 1
         },
         {
           "name": "Bloodbath",
@@ -1004,8 +975,7 @@ const skillsDatabase = {
             "Search_Damage"
           ],
           "description": "{c_important}Blood Surge's{/c} nova echoes again after a short delay, dealing {c_number}[{payload:echo_damage}|2?|]{/c} damage.",
-          "maxRank": 1,
-          "baseDamageScalar": 1
+          "maxRank": 1
         },
         {
           "name": "Overpower",
@@ -1122,8 +1092,7 @@ const skillsDatabase = {
           "unk_b8f2b": -1
         }
       ],
-      "baseDamageScalar": 0.2,
-      "luckyHitChance": 12
+      "baseDamageScalar": 0.2
     },
     {
       "name": "Blood Lance",
@@ -1257,11 +1226,105 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ],
-      "luckyHitChance": 50
+      ]
     }
   ],
   "Macabre": [
+    {
+      "name": "Corpse Explosion",
+      "tags": [
+        "Skill_Corruption"
+      ],
+      "baseDamageScalar": 1.1,
+      "description": "{if:Mod(2686060764)}{c_label}Generate Essence:{/c_label} {c_resource}15{/c_resource}\\n{/if}{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}25%{/c}\\n{/if}Detonate a Corpse, dealing {c_number}[{payload:damage}|2?|]{/c} damage to enemies.",
+      "maxRank": 15,
+      "damageType": "Physical",
+      "modifiers": [
+        {
+          "name": "Shrapnel",
+          "description": "{c_important}Corpse Explosion{/c} is also a {c_important}Bone{/c} Skill and, instead of exploding, fires {c_number}8{/c} piercing bone shards dealing {c_number}[{payload:shard_damage}|2?|]{/c} damage each.",
+          "maxRank": 1,
+          "tags": [
+            "Skill_Bone",
+            "Search_Damage",
+            "Damage_Override_Physical"
+          ]
+        },
+        {
+          "name": "Miasma",
+          "tags": [
+            "Skill_Shadow",
+            "Damage_Override_Shadow",
+            "Search_ShadowDOT",
+            "Search_Damage",
+            "Search_Shadow"
+          ],
+          "description": "{c_important}Corpse Explosion{/c} is also a {c_important}Darkness{/c} Skill and, instead of exploding, releases a vile miasma dealing {c_number}[{dot:miasma_dot_tooltip}|2?|]{/c} Corrupting damage over {c_number}6{/c} seconds.",
+          "maxRank": 1
+        },
+        {
+          "name": "Bloody Mess",
+          "tags": [
+            "Search_Damage",
+            "Search_Copy_Corpse",
+            "Search_Size"
+          ],
+          "description": "{c_important}Corpse Explosion's{/c} Size is increased by {c_number}50%{/c} and damage is increased by {c_number}50%{c_lightgray}\\[x\\]{/c}{/c}.",
+          "maxRank": 1
+        },
+        {
+          "name": "Essence Generation",
+          "maxRank": 1,
+          "description": "Casting {c_important}Corpse Explosion{/c} generates {c_number}15{/c} Essence.",
+          "tags": [
+            "Search_ResourceEssence"
+          ]
+        },
+        {
+          "name": "Blood Orb",
+          "maxRank": 1,
+          "description": "{c_important}Corpse Explosion{/c} has a {c_number}20%{/c} chance to form a {c_important}{u}Blood Orb{/c}{/u}.",
+          "tags": [
+            "Keyword_Blood_Orb"
+          ]
+        },
+        {
+          "name": "Multiple Corpses",
+          "tags": [
+            "Search_Copy_Corpse",
+            "Search_Damage"
+          ],
+          "description": "{c_important}Corpse Explosion{/c} detonates up to {c_number}2{/c} additional corpses.",
+          "maxRank": 1
+        },
+        {
+          "name": "Corpse Efficiency",
+          "description": "Corpses consumed by {c_important}Corpse Explosion{/c} can be consumed {c_number}1{/c} additional time.",
+          "maxRank": 1,
+          "tags": [
+            "Search_Copy_Corpse"
+          ]
+        }
+      ],
+      "payloads": [
+        {
+          "id": 4032599903,
+          "damage": {
+            "type": 0,
+            "scalar": "1.1*Table(34,sLevel)"
+          },
+          "unk_b8f2b": 4
+        },
+        {
+          "id": 1566060496,
+          "damage": {
+            "type": 0,
+            "scalar": "Table(34,sLevel)"
+          },
+          "unk_b8f2b": -1
+        }
+      ]
+    },
     {
       "name": "Skeleton Warrior",
       "tags": [
@@ -1288,8 +1351,7 @@ const skillsDatabase = {
             "Search_Damage"
           ],
           "maxRank": 1,
-          "description": "{c_important}Skeleton Warriors{/c} lose {c_number}25%{/c} of their Maximum Life per second while in combat and explode on death, dealing {c_number}[{payload:death_explosion}|2?|]{/c} damage.\\n\\n{c_important}Skeleton Warriors{/c} are now raised from a nearby Corpse every {c_number}0.5{/c} seconds.",
-          "baseDamageScalar": 1.5
+          "description": "{c_important}Skeleton Warriors{/c} lose {c_number}25%{/c} of their Maximum Life per second while in combat and explode on death, dealing {c_number}[{payload:death_explosion}|2?|]{/c} damage.\\n\\n{c_important}Skeleton Warriors{/c} are now raised from a nearby Corpse every {c_number}0.5{/c} seconds."
         },
         {
           "name": "Master of Puppets",
@@ -1393,8 +1455,7 @@ const skillsDatabase = {
           "unk_b8f2b": -1
         }
       ],
-      "baseDamageScalar": 1.3,
-      "luckyHitChance": 20
+      "baseDamageScalar": 1.3
     },
     {
       "name": "Blood Mist",
@@ -1545,8 +1606,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ],
-      "luckyHitChance": 3
+      ]
     },
     {
       "name": "Bone Prison",
@@ -1670,8 +1730,7 @@ const skillsDatabase = {
           "maxRank": 1,
           "tags": [
             "Search_Damage"
-          ],
-          "baseDamageScalar": 0.3
+          ]
         },
         {
           "name": "Unfinished Business",
@@ -1691,8 +1750,7 @@ const skillsDatabase = {
             "Search_Damage"
           ],
           "description": "{c_important}Bone Spirit{/c} no longer seeks enemies and instead spirals around you, piercing through enemies and exploding for {c_number}[{payload:damage_variant_c}|2?|]{/c} damage when it hits them.",
-          "maxRank": 1,
-          "baseDamageScalar": 1
+          "maxRank": 1
         },
         {
           "name": "Charges",
@@ -1753,8 +1811,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ],
-      "luckyHitChance": 33
+      ]
     },
     {
       "name": "Golem",
@@ -1782,8 +1839,7 @@ const skillsDatabase = {
             "Search_Cooldown"
           ],
           "description": "Commanding your {c_important}Golem{/c} causes it to erupt, dealing {c_number}[{payload:explosion_damage}|2?|]{/c} damage to surrounding enemies.\\n\\nYour {c_important}Golem{/c} passively consumes nearby Corpses every second to reduce its Cooldown by {c_number}2{/c} seconds per Corpse consumed.",
-          "maxRank": 1,
-          "baseDamageScalar": 3
+          "maxRank": 1
         },
         {
           "name": "Gravebloom",
@@ -1863,11 +1919,107 @@ const skillsDatabase = {
           },
           "unk_b8f2b": 4
         }
-      ],
-      "luckyHitChance": 20
+      ]
     }
   ],
   "Corruption": [
+    {
+      "name": "Corpse Tendrils",
+      "tags": [
+        "Skill_Corruption"
+      ],
+      "baseDamageScalar": 0.2,
+      "description": "{c_label}Cooldown:{/c} {c_resource}[{cooldown time}|2?|]{/c} seconds\\n{if:Mod(2686060762)}{c_label}Generate Essence:{/c_label} {c_resource}35{/c_resource}\\n{/if}{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Burst veins out of a Corpse, Slowing enemies by {c_number}50%{/c} for {c_number}1.5{/c} seconds before Pulling them in and dealing {c_number}[{payload:damage_pull}|2?|]{/c} damage.",
+      "maxRank": 15,
+      "damageType": "Physical",
+      "modifiers": [
+        {
+          "name": "Jaws Of Death",
+          "description": "{c_important}Corpse Tendrils{/c} now deals {c_number}[{payload:damage_pull_variantc}|2?|]{/c} damage and no longer has a delay before Pulling in enemies.",
+          "maxRank": 1,
+          "tags": []
+        },
+        {
+          "name": "Get Over Here!",
+          "tags": [
+            "Keyword_Fortify"
+          ],
+          "description": "{c_important}Corpse Tendrils{/c} is no longer cast on a Corpse and is cast on you instead. \\n\\n{c_important}Corpse Tendrils{/c} {c_important}{u}Fortifies{/c}{/u} you for {c_number}5%{/c} of your Maximum Life {c_number}([PlayerHealthMax()*0.05||]){/c} for each enemy it damages.",
+          "maxRank": 1
+        },
+        {
+          "name": "Bitter Harvest",
+          "tags": [
+            "Search_CrowdControl",
+            "Search_Copy_Corpse"
+          ],
+          "description": "{c_important}Corpse Tendrils{/c} no longer consumes the Corpse. Enemies are Immobilized for {c_number}3{/c} seconds after being Pulled in.",
+          "maxRank": 1
+        },
+        {
+          "name": "Lucky Hit Chance",
+          "maxRank": 1,
+          "description": "{c_important}Corpse Tendrils{/c} gains an additional {c_number}40%{c_lightgray}\\[+\\]{/c}{/c} Lucky Hit Chance.",
+          "tags": [
+            "Search_LuckyHit"
+          ]
+        },
+        {
+          "name": "Vulnerable",
+          "maxRank": 1,
+          "description": "{c_important}Corpse Tendrils{/c} makes enemies {c_important}{u}Vulnerable{/c}{/u} for {c_number}4{/c} seconds.",
+          "tags": [
+            "Keyword_Vulnerable"
+          ]
+        },
+        {
+          "name": "Critical Strike Chance",
+          "maxRank": 1,
+          "description": "You gain an additional {c_number}5%{c_lightgray}\\[+\\]{/c}{/c} increased Critical Strike Chance for {c_number}6{/c} seconds against enemies damaged by {c_important}Corpse Tendrils{/c}.",
+          "tags": [
+            "Search_Critical"
+          ]
+        },
+        {
+          "name": "Essence Generation",
+          "maxRank": 1,
+          "description": "Casting {c_important}Corpse Tendrils{/c} generates {c_number}35{/c} Essence.",
+          "tags": [
+            "Search_ResourceEssence"
+          ]
+        }
+      ],
+      "payloads": [
+        {
+          "id": 2841873691,
+          "damage": {
+            "type": 0,
+            "scalar": "0.2*Table(38,sLevel)"
+          },
+          "unk_b8f2b": 4
+        },
+        {
+          "id": 2226505810,
+          "damage": {
+            "type": 0,
+            "scalar": "0.2*Table(38,sLevel)*5"
+          },
+          "unk_b8f2b": 4
+        },
+        {
+          "id": 3069256803,
+          "damage": {
+            "type": 0,
+            "scalar": 0
+          },
+          "fortifiedHealth": {
+            "type": 5,
+            "scalar": 0.05
+          },
+          "unk_b8f2b": -1
+        }
+      ]
+    },
     {
       "name": "Decrepify",
       "tags": [
@@ -1952,8 +2104,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ],
-      "luckyHitChance": 100
+      ]
     },
     {
       "name": "Iron Maiden",
@@ -1975,8 +2126,7 @@ const skillsDatabase = {
             "Search_Damage"
           ],
           "description": "{c_important}Iron Maiden{/c} is also a {c_important}Blood{/c} Skill, causing enemies damaged by it to have a {c_number}5%{/c} chance to form a {c_important}{u}Blood Orb{/c}{/u}. \\n\\nCasting {c_important}Iron Maiden{/c} picks up {c_number}4{/c} {c_important}{u}Blood Orbs{/c}{/u} in the target area and causes them to burst for {c_number}[{payload:blood_explosion}|2?|]{/c} damage.",
-          "maxRank": 1,
-          "baseDamageScalar": 1.5
+          "maxRank": 1
         },
         {
           "name": "Torture Artist",
@@ -2085,8 +2235,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ],
-      "luckyHitChance": 5
+      ]
     }
   ],
   "Ultimate": [
@@ -2120,8 +2269,7 @@ const skillsDatabase = {
             "Search_CrowdControl"
           ],
           "description": "{c_important}Soulrift{/c} is cast at the target location. Absorbing an enemy's soul deals {c_number}[{payload:soul_absorb_damage}|2?|]{/c} damage and Pulls them in.",
-          "maxRank": 1,
-          "baseDamageScalar": 0.25
+          "maxRank": 1
         },
         {
           "name": "Frozen Wasteland",
@@ -2133,8 +2281,7 @@ const skillsDatabase = {
             "Search_Cold"
           ],
           "description": "{c_important}Soulrift{/c} deals Frostbite damage and {c_important}{u}Chills{/c}{/u} for {c_number}30%{/c} every second. \\n\\nIf {c_important}Soulrift{/c} absorbs the soul of a {c_important}{u}Frozen{/c}{/u} enemy, they shatter and explode for {c_number}[{payload:frozen_damage}|2?|]{/c} damage.",
-          "maxRank": 1,
-          "baseDamageScalar": 0.75
+          "maxRank": 1
         },
         {
           "name": "Damage Bonus",
@@ -2226,8 +2373,7 @@ const skillsDatabase = {
           "damageType": 5,
           "unk_b8f2b": 4
         }
-      ],
-      "luckyHitChance": 20
+      ]
     },
     {
       "name": "Bone Storm",
@@ -2257,8 +2403,7 @@ const skillsDatabase = {
             "Search_Shadow"
           ],
           "description": "{c_important}Bone Storm{/c} becomes a {c_important}Darkness{/c} Skill that deals Shadow damage.\\n\\nEnemies damaged by it suffer an additional {c_number}[{payload:tooltip_dot_damage}|2?|]{/c} Corrupting damage over {c_number}2{/c} seconds.",
-          "maxRank": 1,
-          "baseDamageScalar": 0.4
+          "maxRank": 1
         },
         {
           "name": "Hungry Cyclone",
@@ -2345,8 +2490,7 @@ const skillsDatabase = {
           "unk_b8f2b": -1
         }
       ],
-      "baseDamageScalar": 0.4,
-      "luckyHitChance": 2
+      "baseDamageScalar": 0.4
     },
     {
       "name": "Army of the Dead",
@@ -2366,8 +2510,7 @@ const skillsDatabase = {
             "Keyword_Freeze",
             "Damage_Override_Cold",
             "Search_Cold"
-          ],
-          "baseDamageScalar": 1.5
+          ]
         },
         {
           "name": "Pile the Bodies",
@@ -2437,8 +2580,7 @@ const skillsDatabase = {
           "applyFreeze": 1,
           "unk_b8f2b": 4
         }
-      ],
-      "luckyHitChance": 7
+      ]
     },
     {
       "name": "Blood Wave",
@@ -2457,8 +2599,7 @@ const skillsDatabase = {
             "Skill_Primary_Core"
           ],
           "description": "{c_important}Blood Wave{/c} becomes a {c_important}Core{/c} Skill, has no Cooldown, but costs {c_number}50{/c} Essence.\\n\\n{c_important}Blood Wave{/c} conjures a shorter wave that deals {c_number}[{payload:damage_core}|2?|]{/c} damage and no longer Knocks Back enemies.",
-          "maxRank": 1,
-          "baseDamageScalar": 3
+          "maxRank": 1
         },
         {
           "name": "Path of Darkness",
@@ -2478,8 +2619,7 @@ const skillsDatabase = {
             "Search_Damage"
           ],
           "description": "{c_important}Blood Wave{/c} launches {c_number}1{/c} additional wave, dealing {c_number}[{payload:damage_echo}|2?|]{/c} damage.",
-          "maxRank": 1,
-          "baseDamageScalar": 5
+          "maxRank": 1
         },
         {
           "name": "Overpower",
@@ -2617,208 +2757,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ],
-      "luckyHitChance": 50
-    }
-  ],
-  "Corpse": [
-    {
-      "name": "Corpse Explosion",
-      "tags": [
-        "Skill_Corruption"
-      ],
-      "baseDamageScalar": 1.1,
-      "description": "{if:Mod(2686060764)}{c_label}Generate Essence:{/c_label} {c_resource}15{/c_resource}\\n{/if}{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}25%{/c}\\n{/if}Detonate a Corpse, dealing {c_number}[{payload:damage}|2?|]{/c} damage to enemies.",
-      "maxRank": 15,
-      "damageType": "Physical",
-      "modifiers": [
-        {
-          "name": "Shrapnel",
-          "description": "{c_important}Corpse Explosion{/c} is also a {c_important}Bone{/c} Skill and, instead of exploding, fires {c_number}8{/c} piercing bone shards dealing {c_number}[{payload:shard_damage}|2?|]{/c} damage each.",
-          "maxRank": 1,
-          "tags": [
-            "Skill_Bone",
-            "Search_Damage",
-            "Damage_Override_Physical"
-          ],
-          "baseDamageScalar": 1
-        },
-        {
-          "name": "Miasma",
-          "tags": [
-            "Skill_Shadow",
-            "Damage_Override_Shadow",
-            "Search_ShadowDOT",
-            "Search_Damage",
-            "Search_Shadow"
-          ],
-          "description": "{c_important}Corpse Explosion{/c} is also a {c_important}Darkness{/c} Skill and, instead of exploding, releases a vile miasma dealing {c_number}[{dot:miasma_dot_tooltip}|2?|]{/c} Corrupting damage over {c_number}6{/c} seconds.",
-          "maxRank": 1
-        },
-        {
-          "name": "Bloody Mess",
-          "tags": [
-            "Search_Damage",
-            "Search_Copy_Corpse",
-            "Search_Size"
-          ],
-          "description": "{c_important}Corpse Explosion's{/c} Size is increased by {c_number}50%{/c} and damage is increased by {c_number}50%{c_lightgray}\\[x\\]{/c}{/c}.",
-          "maxRank": 1
-        },
-        {
-          "name": "Essence Generation",
-          "maxRank": 1,
-          "description": "Casting {c_important}Corpse Explosion{/c} generates {c_number}15{/c} Essence.",
-          "tags": [
-            "Search_ResourceEssence"
-          ]
-        },
-        {
-          "name": "Blood Orb",
-          "maxRank": 1,
-          "description": "{c_important}Corpse Explosion{/c} has a {c_number}20%{/c} chance to form a {c_important}{u}Blood Orb{/c}{/u}.",
-          "tags": [
-            "Keyword_Blood_Orb"
-          ]
-        },
-        {
-          "name": "Multiple Corpses",
-          "tags": [
-            "Search_Copy_Corpse",
-            "Search_Damage"
-          ],
-          "description": "{c_important}Corpse Explosion{/c} detonates up to {c_number}2{/c} additional corpses.",
-          "maxRank": 1
-        },
-        {
-          "name": "Corpse Efficiency",
-          "description": "Corpses consumed by {c_important}Corpse Explosion{/c} can be consumed {c_number}1{/c} additional time.",
-          "maxRank": 1,
-          "tags": [
-            "Search_Copy_Corpse"
-          ]
-        }
-      ],
-      "payloads": [
-        {
-          "id": 4032599903,
-          "damage": {
-            "type": 0,
-            "scalar": "1.1*Table(34,sLevel)"
-          },
-          "unk_b8f2b": 4
-        },
-        {
-          "id": 1566060496,
-          "damage": {
-            "type": 0,
-            "scalar": "Table(34,sLevel)"
-          },
-          "unk_b8f2b": -1
-        }
-      ],
-      "luckyHitChance": 17
-    },
-    {
-      "name": "Corpse Tendrils",
-      "tags": [
-        "Skill_Corruption"
-      ],
-      "baseDamageScalar": 0.2,
-      "description": "{c_label}Cooldown:{/c} {c_resource}[{cooldown time}|2?|]{/c} seconds\\n{if:Mod(2686060762)}{c_label}Generate Essence:{/c_label} {c_resource}35{/c_resource}\\n{/if}{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Burst veins out of a Corpse, Slowing enemies by {c_number}50%{/c} for {c_number}1.5{/c} seconds before Pulling them in and dealing {c_number}[{payload:damage_pull}|2?|]{/c} damage.",
-      "maxRank": 15,
-      "damageType": "Physical",
-      "modifiers": [
-        {
-          "name": "Jaws Of Death",
-          "description": "{c_important}Corpse Tendrils{/c} now deals {c_number}[{payload:damage_pull_variantc}|2?|]{/c} damage and no longer has a delay before Pulling in enemies.",
-          "maxRank": 1,
-          "tags": [],
-          "baseDamageScalar": 1,
-          "damageScalePerLevel": 0.25,
-          "damageScalePerFive": 0.5
-        },
-        {
-          "name": "Get Over Here!",
-          "tags": [
-            "Keyword_Fortify"
-          ],
-          "description": "{c_important}Corpse Tendrils{/c} is no longer cast on a Corpse and is cast on you instead. \\n\\n{c_important}Corpse Tendrils{/c} {c_important}{u}Fortifies{/c}{/u} you for {c_number}5%{/c} of your Maximum Life {c_number}([PlayerHealthMax()*0.05||]){/c} for each enemy it damages.",
-          "maxRank": 1
-        },
-        {
-          "name": "Bitter Harvest",
-          "tags": [
-            "Search_CrowdControl",
-            "Search_Copy_Corpse"
-          ],
-          "description": "{c_important}Corpse Tendrils{/c} no longer consumes the Corpse. Enemies are Immobilized for {c_number}3{/c} seconds after being Pulled in.",
-          "maxRank": 1
-        },
-        {
-          "name": "Lucky Hit Chance",
-          "maxRank": 1,
-          "description": "{c_important}Corpse Tendrils{/c} gains an additional {c_number}40%{c_lightgray}\\[+\\]{/c}{/c} Lucky Hit Chance.",
-          "tags": [
-            "Search_LuckyHit"
-          ]
-        },
-        {
-          "name": "Vulnerable",
-          "maxRank": 1,
-          "description": "{c_important}Corpse Tendrils{/c} makes enemies {c_important}{u}Vulnerable{/c}{/u} for {c_number}4{/c} seconds.",
-          "tags": [
-            "Keyword_Vulnerable"
-          ]
-        },
-        {
-          "name": "Critical Strike Chance",
-          "maxRank": 1,
-          "description": "You gain an additional {c_number}5%{c_lightgray}\\[+\\]{/c}{/c} increased Critical Strike Chance for {c_number}6{/c} seconds against enemies damaged by {c_important}Corpse Tendrils{/c}.",
-          "tags": [
-            "Search_Critical"
-          ]
-        },
-        {
-          "name": "Essence Generation",
-          "maxRank": 1,
-          "description": "Casting {c_important}Corpse Tendrils{/c} generates {c_number}35{/c} Essence.",
-          "tags": [
-            "Search_ResourceEssence"
-          ]
-        }
-      ],
-      "payloads": [
-        {
-          "id": 2841873691,
-          "damage": {
-            "type": 0,
-            "scalar": "0.2*Table(38,sLevel)"
-          },
-          "unk_b8f2b": 4
-        },
-        {
-          "id": 2226505810,
-          "damage": {
-            "type": 0,
-            "scalar": "0.2*Table(38,sLevel)*5"
-          },
-          "unk_b8f2b": 4
-        },
-        {
-          "id": 3069256803,
-          "damage": {
-            "type": 0,
-            "scalar": 0
-          },
-          "fortifiedHealth": {
-            "type": 5,
-            "scalar": 0.05
-          },
-          "unk_b8f2b": -1
-        }
-      ],
-      "luckyHitChance": null
+      ]
     }
   ]
 };

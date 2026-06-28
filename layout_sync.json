@@ -1,0 +1,209 @@
+{
+  "Decompose": [
+    "Damage Bonus",
+    "Barrier",
+    "Crowd Control",
+    "Lucky Hit Chance",
+    "Rip and Tear",
+    "Putrid Burst",
+    "Dry Rot"
+  ],
+  "Reap": [
+    "Chilled To The Bone",
+    "Cull The Weak",
+    "Harvest",
+    "Ferocity",
+    "Corpse Generation",
+    "Essence Generation",
+    "Critical Strike Chance"
+  ],
+  "Hemorrhage": [
+    "Cast Speed",
+    "Blood Orb",
+    "Weaken",
+    "Overpower",
+    "Blood Boil",
+    "Blood Runs Cold",
+    "Soul Rip"
+  ],
+  "Bone Splinters": [
+    "Projectiles",
+    "Essence Generation",
+    "Bouncing Spines",
+    "Bloody Splinter",
+    "Shadow Seekers",
+    "Resolve",
+    "Vulnerable"
+  ],
+  "Bone Spear": [
+    "First Hit Damage Bonus",
+    "Cost Reduction",
+    "Pierce Damage Bonus",
+    "Resolve",
+    "Bone Spikes",
+    "Blood Spear",
+    "Shadow Splitter"
+  ],
+  "Sever": [
+    "Cold Pursuit",
+    "Inexorable Reaper",
+    "Reaping Lotus",
+    "Cost Reduction",
+    "Damage Bonus",
+    "Ferocity",
+    "Crowd Control and Corpse Generation"
+  ],
+  "Blight": [
+    "Area Damage Bonus",
+    "Size Bonus",
+    "Whirlpool",
+    "Piercing Darkness",
+    "Volatile Blood",
+    "Lucky Hit Chance",
+    "Crowd Control Damage Bonus"
+  ],
+  "Skeleton Mage": [
+    "Duration Damage Bonus",
+    "Critical Strike Chance",
+    "Coven",
+    "Gift of Death",
+    "Singularity",
+    "Crowd Control Damage Bonus",
+    "Ferocity, Resolve, or Overpower"
+  ],
+  "Blood Surge": [
+    "Overpower",
+    "Weaken",
+    "Fortify",
+    "Damage Bonus",
+    "Pins and Needles",
+    "You And What Army?",
+    "Bloodbath"
+  ],
+  "Blood Lance": [
+    "Overpower",
+    "Cost Reduction",
+    "Festering Wound",
+    "Gore Quills",
+    "Blood Seeker",
+    "Fortify",
+    "Ricochet"
+  ],
+  "Corpse Explosion": [
+    "Multiple Corpses",
+    "Corpse Efficiency",
+    "Bloody Mess",
+    "Miasma",
+    "Shrapnel",
+    "Blood Orb",
+    "Essence Generation"
+  ],
+  "Skeleton Warrior": [
+    "Damage Bonus",
+    "Healing",
+    "Master of Puppets",
+    "Service and Sacrifice",
+    "Litany of Death",
+    "Vulnerable",
+    "Resolve"
+  ],
+  "Blood Mist": [
+    "Critical Strike",
+    "Movement Speed",
+    "Overpower",
+    "Vulnerable and Slow",
+    "Blood Transfusion",
+    "Blood Rush",
+    "Devouring Mist"
+  ],
+  "Bone Prison": [
+    "Cooldown Reduction",
+    "Essence Generation",
+    "Life Imprisonment",
+    "Plunging Darkness",
+    "Bramble",
+    "Vulnerable",
+    "Resolve"
+  ],
+  "Bone Spirit": [
+    "Core Skill",
+    "Charges",
+    "Maximum Essence",
+    "Damage Bonus",
+    "Astral Projection",
+    "Unfinished Business",
+    "Poltergeists"
+  ],
+  "Golem": [
+    "Damage Bonus",
+    "Unstoppable",
+    "Gargantua",
+    "Fel Gluttony",
+    "Gravebloom",
+    "Weaken",
+    "Resolve, Overpower, or Ferocity"
+  ],
+  "Corpse Tendrils": [
+    "Lucky Hit Chance",
+    "Vulnerable",
+    "Bitter Harvest",
+    "Get Over Here!",
+    "Jaws Of Death",
+    "Critical Strike Chance",
+    "Essence Generation"
+  ],
+  "Decrepify": [
+    "Cooldown Reduction",
+    "Critical Strike Chance",
+    "Resolve",
+    "Movement Speed",
+    "Unholy Frenzy",
+    "Life Tap",
+    "Dizzying Curse"
+  ],
+  "Iron Maiden": [
+    "Essence Generation",
+    "Execute and Fortify",
+    "Ferocity and Overpower",
+    "Vulnerable",
+    "Blood Maiden",
+    "Torture Artist",
+    "Schadenfreude"
+  ],
+  "Soulrift": [
+    "Enhanced Soulrift",
+    "Supreme Soulrift",
+    "Prime Soulrift",
+    "Distilled Anima",
+    "Soul Vortex",
+    "Frozen Wasteland",
+    "Final Soulrift"
+  ],
+  "Bone Storm": [
+    "Duration Increase",
+    "Damage Reduction",
+    "Barrier",
+    "Vulnerable",
+    "Hungry Cyclone",
+    "Shadow And Bone",
+    "Roll The Bones"
+  ],
+  "Army of the Dead": [
+    "Corpse Generation",
+    "Passive Bonus",
+    "Cooldown Reduction",
+    "Damage Bonus",
+    "Unyielding Commander",
+    "Pile the Bodies",
+    "Dead Cold"
+  ],
+  "Blood Wave": [
+    "Damage Reduction",
+    "Damage Bonus",
+    "Overpower",
+    "Blood Orb",
+    "Hematolagnia",
+    "Path of Darkness",
+    "Tides of Blood"
+  ]
+}
