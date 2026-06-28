@@ -827,13 +827,16 @@
     const currentClassVal = document.getElementById('class-select')?.textContent;
     const d4Idx = currentClassVal ? D4_CLASS_MAP[currentClassVal] : undefined;
     
-    const items = window.D4_DATABASE.itemDatabase[mapped] || [];
-    return items.filter(i => {
-      if (i.classes && d4Idx !== undefined) {
-        if (i.classes[d4Idx] !== 1) return false;
+    const dbItems = window.D4_DATABASE.itemDatabase[mapped] || [];
+    if (d4Idx !== undefined) {
+      let filtered = dbItems.filter(i => !i.classes || i.classes[d4Idx] === 1);
+      if (d4Idx === 2) { // Necromancer
+        const invalidForNecro = ['Ahavarion, Spear of Lycander', 'Eggcecutioner', 'Eggis', 'Shattered Vow'];
+        filtered = filtered.filter(i => !invalidForNecro.includes(i.name));
       }
-      return true;
-    });
+      return filtered;
+    }
+    return dbItems;
   }
 
   function getAspectMultiplier(slotName, itemObj) {
@@ -5339,8 +5342,10 @@ rarity = foundItem.rarity;
           maxSockets = 0;
         } else if (lowerSlot.includes('ring') || lowerSlot.includes('amulet') || lowerSlot.includes('offhand') || lowerSlot.includes('dual wield') || lowerSlot.includes('slicing')) {
           maxSockets = 1;
-        } else if (lowerSlot.includes('mainhand') || lowerSlot.startsWith('weapon')) {
-          if (typeof checkIs2H === 'function' && checkIs2H(itemObj, slotName)) {
+        } else if (lowerSlot.includes('mainhand') || lowerSlot.startsWith('weapon') || lowerSlot.includes('ranged weapon')) {
+          if (lowerSlot.includes('bludgeoning') || lowerSlot.includes('weapon 2 (slashing)') || lowerSlot.includes('ranged weapon')) {
+            maxSockets = 2;
+          } else if (typeof checkIs2H === 'function' && checkIs2H(itemObj, slotName)) {
             maxSockets = 2;
           } else {
             maxSockets = 1;
