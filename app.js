@@ -2892,6 +2892,7 @@
     currentBuild.name = dom.buildName.textContent || 'New Build';
     currentBuild.class = selectedClass;
     currentBuild.equipment = getEquipmentValues();
+    currentBuild.skills = JSON.parse(JSON.stringify(window.selectedSkills || {}));
     
     const nodeElsSave = getNodeEls();
     currentBuild.nodes = nodeElsSave.map((el, i) => {
@@ -3282,6 +3283,7 @@
     });
     renderLegendaryBonusInputs(b.class || 'Barbarian', legBonuses);
     renderEquipment(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', b.equipment || {});
+    window.selectedSkills = b.skills ? JSON.parse(JSON.stringify(b.skills)) : {};
     renderSkills();
 
     // Clear existing rows
