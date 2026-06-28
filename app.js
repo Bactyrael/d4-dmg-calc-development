@@ -3799,7 +3799,7 @@ function parseD4String(str, skillObj, currentRank) {
     str = str.replace(/GetCollectiblePowerEquippedSlotIndex\(\d+\)/gi, "-1");
     
     // Evaluate {if:AffixIsEquipped(...)}...{else}...{/if} FIRST to prevent nested brace breakage
-    str = str.replace(/\{if:AffixIsEquipped\(\d+\)\}([\s\S]*?)(?:\{else\}([\s\S]*?))?\{\/if\}/gi, (match, trueBranch, falseBranch) => {
+    str = str.replace(/\{if:AffixIsEquipped\(\d+\)(?:>0)?\}([\s\S]*?)(?:\{else\}([\s\S]*?))?\{\/if\}/gi, (match, trueBranch, falseBranch) => {
         return falseBranch || "";
     });
 
