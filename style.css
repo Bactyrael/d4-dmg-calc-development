@@ -2295,3 +2295,26 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
 .d4-color-important { color: #ffeb99; font-weight: normal; }
 .d4-color-resource { color: #59d8ff; }
 .d4-color-lightgray { color: #888; }
+
+/* Tooltip Footer (Damage Type) */
+.d4-tooltip-footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #333;
+  margin-top: 16px;
+  padding-top: 8px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #888;
+}
+.d4-tooltip-damage-type {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.d4-tooltip-damage-type.type-shadow { color: #b185db; }
+.d4-tooltip-damage-type.type-physical { color: #888888; }
+.d4-tooltip-damage-type.type-cold { color: #6db6ff; }
+.d4-tooltip-damage-type.type-fire { color: #ff6d3a; }
+.d4-tooltip-damage-type.type-lightning { color: #f9d749; }
+.d4-tooltip-damage-type.type-poison { color: #72cc50; }

@@ -4365,11 +4365,54 @@ function showSkillTooltip(skillObj, e) {
     
     let descHtml = parseD4String(skillObj.description, skillObj, displayRank);
     
+    let modifiersHtml = '';
+    if (skillObj.modifiers && skillObj.modifiers.length > 0) {
+        let activeMods = skillObj.modifiers.filter(mod => window.selectedSkills && window.selectedSkills[mod.name] > 0);
+        if (activeMods.length > 0) {
+            let modLines = activeMods.map(mod => {
+                let mDesc = parseD4String(mod.description, mod, displayRank);
+                return `<div class="d4-tooltip-upgrade">&#9830; ${mDesc}</div>`;
+            }).join('');
+            modifiersHtml = `
+                <div class="d4-tooltip-upgrades-header">MODIFIERS</div>
+                ${modLines}
+            `;
+        }
+    }
+    
+    let finalDamageType = skillObj.damageType || "Physical";
+    if (dynamicTags.includes("Damage_Override_Physical") || dynamicTags.includes("Skill_Physical")) finalDamageType = "Physical";
+    else if (dynamicTags.includes("Damage_Override_Shadow") || dynamicTags.includes("Skill_Shadow")) finalDamageType = "Shadow";
+    else if (dynamicTags.includes("Damage_Override_Cold") || dynamicTags.includes("Skill_Cold")) finalDamageType = "Cold";
+    else if (dynamicTags.includes("Damage_Override_Fire") || dynamicTags.includes("Skill_Fire")) finalDamageType = "Fire";
+    else if (dynamicTags.includes("Damage_Override_Lightning") || dynamicTags.includes("Skill_Lightning")) finalDamageType = "Lightning";
+    else if (dynamicTags.includes("Damage_Override_Poison") || dynamicTags.includes("Skill_Poison")) finalDamageType = "Poison";
+    else if (dynamicTags.includes("Damage_Override_Blood") || dynamicTags.includes("Skill_Blood")) finalDamageType = "Physical";
+    else if (dynamicTags.includes("Damage_Override_Bone") || dynamicTags.includes("Skill_Bone")) finalDamageType = "Physical";
+
+    let dmgTypeIcon = '';
+    if (finalDamageType === "Shadow") dmgTypeIcon = '🟣';
+    else if (finalDamageType === "Cold") dmgTypeIcon = '❄️';
+    else if (finalDamageType === "Fire") dmgTypeIcon = '🔥';
+    else if (finalDamageType === "Lightning") dmgTypeIcon = '⚡';
+    else if (finalDamageType === "Poison") dmgTypeIcon = '🟢';
+    else if (finalDamageType === "Physical") dmgTypeIcon = '⚔️';
+
+    let footerHtml = `
+        <div class="d4-tooltip-footer">
+            <span class="d4-tooltip-damage-type type-${finalDamageType.toLowerCase()}">
+                ${dmgTypeIcon} ${finalDamageType} Damage
+            </span>
+        </div>
+    `;
+    
     tooltipEl.innerHTML = `
         <div class="d4-tooltip-header">${skillObj.name}</div>
         ${tagsHtml}
         ${statsHtml}
         <div class="d4-tooltip-desc">${descHtml}</div>
+        ${modifiersHtml}
+        ${footerHtml}
     `;
     
     tooltipEl.classList.add('visible');
