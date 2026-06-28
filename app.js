@@ -1552,6 +1552,23 @@
           sb.style.backgroundImage = `url('assets/skills/${imgName}.png')`;
           sb.style.backgroundSize = 'cover';
           sb.style.backgroundPosition = 'center';
+          
+          let skillObj = null;
+          if (typeof skillsDatabase !== 'undefined' && skillsDatabase) {
+              for (const cat of Object.keys(skillsDatabase)) {
+                  let found = skillsDatabase[cat].find(s => s.name === activeSkill);
+                  if (found) { skillObj = found; break; }
+              }
+          }
+          if (skillObj) {
+              sb.onmouseenter = (e) => showSkillTooltip(skillObj, e);
+              sb.onmousemove = (e) => moveSkillTooltip(e);
+              sb.onmouseleave = (e) => hideSkillTooltip(e);
+          }
+      } else {
+          sb.onmouseenter = null;
+          sb.onmousemove = null;
+          sb.onmouseleave = null;
       }
       
       sb.addEventListener('click', (e) => {
@@ -1606,8 +1623,14 @@
               icon.addEventListener('click', () => {
                   currentBuild.activeSkills[slotIndex] = skill.name;
                   dropdown.classList.add('hidden');
+                  hideSkillTooltip();
                   renderEquipment(currentBuild.class, currentBuild.equipment);
               });
+              
+              icon.onmouseenter = (e) => showSkillTooltip(skill, e);
+              icon.onmousemove = (e) => moveSkillTooltip(e);
+              icon.onmouseleave = (e) => hideSkillTooltip(e);
+              
               row.appendChild(icon);
               added = true;
           });
