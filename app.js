@@ -1868,6 +1868,15 @@
           cleanName = cleanName.replace(/^%\s*/, '').trim();
       }
       
+      if (cleanName === 'Maximum Resource') {
+          if (currentClassName === 'Necromancer') cleanName = 'Maximum Essence';
+          else if (currentClassName === 'Barbarian') cleanName = 'Maximum Fury';
+          else if (currentClassName === 'Rogue') cleanName = 'Maximum Energy';
+          else if (currentClassName === 'Sorcerer') cleanName = 'Maximum Mana';
+          else if (currentClassName === 'Druid') cleanName = 'Maximum Spirit';
+          else if (currentClassName === 'Spiritborn') cleanName = 'Maximum Vigor';
+      }
+      
       if (!stats[cleanName]) {
           stats[cleanName] = { 
               total: 0, 
@@ -1901,6 +1910,16 @@
       addStat(stats, 'Dexterity', autoStats.baseDex, 'Base');
       addStat(stats, 'Dexterity', autoStats.levelDex, 'Level');
       addStat(stats, 'Maximum Life', autoStats.maximumLife, 'Base');
+      
+      let resourceName = 'Maximum Resource';
+      if (currentClassName === 'Necromancer') resourceName = 'Maximum Essence';
+      else if (currentClassName === 'Barbarian') resourceName = 'Maximum Fury';
+      else if (currentClassName === 'Rogue') resourceName = 'Maximum Energy';
+      else if (currentClassName === 'Sorcerer') resourceName = 'Maximum Mana';
+      else if (currentClassName === 'Druid') resourceName = 'Maximum Spirit';
+      else if (currentClassName === 'Spiritborn') resourceName = 'Maximum Vigor';
+      
+      addStat(stats, resourceName, autoStats.maximumResource, 'Base');
       
       if (!equipped) return stats;
 
@@ -2665,7 +2684,8 @@
         baseInt: baseStats.int, levelInt: levelBonus,
         baseWill: baseStats.will, levelWill: levelBonus,
         baseDex: baseStats.dex, levelDex: levelBonus,
-        maximumLife: dom.maxLife ? parseFloat(dom.maxLife.value) || 1526 : 1526
+        maximumLife: dom.maxLife ? parseFloat(dom.maxLife.value) || 1526 : 1526,
+        maximumResource: 100
     };
     
     const compiledStats = compileCharacterStats(baseEquipped, autoStats);
