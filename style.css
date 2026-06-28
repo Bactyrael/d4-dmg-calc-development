@@ -2372,3 +2372,15 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
 .d4-tooltip-damage-type.type-fire { color: #ff6d3a; }
 .d4-tooltip-damage-type.type-lightning { color: #f9d749; }
 .d4-tooltip-damage-type.type-poison { color: #72cc50; }
+
+/* Empty Socket styles */
+.socket-circle.empty {
+  border: 1.5px solid rgba(180, 180, 180, 0.7);
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.8), 0 0 2px rgba(0,0,0,0.5);
+  width: 14px;
+  height: 14px;
+}
+.paperdoll-slot-icon {
+  position: relative;
+}
