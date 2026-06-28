@@ -1869,13 +1869,13 @@
       }
       
       if (cleanName === 'Maximum Resource') {
-          const cls = currentBuild.class || 'Necromancer';
-          if (cls === 'Necromancer') cleanName = 'Maximum Essence';
-          else if (cls === 'Barbarian') cleanName = 'Maximum Fury';
-          else if (cls === 'Rogue') cleanName = 'Maximum Energy';
-          else if (cls === 'Sorcerer') cleanName = 'Maximum Mana';
-          else if (cls === 'Druid') cleanName = 'Maximum Spirit';
-          else if (cls === 'Spiritborn') cleanName = 'Maximum Vigor';
+          const currClass = currentBuild.class || 'Necromancer';
+          if (currClass === 'Necromancer') cleanName = 'Maximum Essence';
+          else if (currClass === 'Barbarian') cleanName = 'Maximum Fury';
+          else if (currClass === 'Rogue') cleanName = 'Maximum Energy';
+          else if (currClass === 'Sorcerer') cleanName = 'Maximum Mana';
+          else if (currClass === 'Druid') cleanName = 'Maximum Spirit';
+          else if (currClass === 'Spiritborn') cleanName = 'Maximum Vigor';
       }
       
       if (!stats[cleanName]) {
@@ -1913,13 +1913,13 @@
       addStat(stats, 'Maximum Life', autoStats.maximumLife, 'Base');
       
       let resourceName = 'Maximum Resource';
-      const cls = currentBuild.class || 'Necromancer';
-      if (cls === 'Necromancer') resourceName = 'Maximum Essence';
-      else if (cls === 'Barbarian') resourceName = 'Maximum Fury';
-      else if (cls === 'Rogue') resourceName = 'Maximum Energy';
-      else if (cls === 'Sorcerer') resourceName = 'Maximum Mana';
-      else if (cls === 'Druid') resourceName = 'Maximum Spirit';
-      else if (cls === 'Spiritborn') resourceName = 'Maximum Vigor';
+      const currClass = currentBuild.class || 'Necromancer';
+      if (currClass === 'Necromancer') resourceName = 'Maximum Essence';
+      else if (currClass === 'Barbarian') resourceName = 'Maximum Fury';
+      else if (currClass === 'Rogue') resourceName = 'Maximum Energy';
+      else if (currClass === 'Sorcerer') resourceName = 'Maximum Mana';
+      else if (currClass === 'Druid') resourceName = 'Maximum Spirit';
+      else if (currClass === 'Spiritborn') resourceName = 'Maximum Vigor';
       
       addStat(stats, resourceName, autoStats.maximumResource, 'Base');
       
