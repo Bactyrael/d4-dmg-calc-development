@@ -3839,7 +3839,13 @@ function parseD4String(str, skillObj, currentRank) {
         }
 
         // Replace Table(34,sLevel) with the correct rankMult variable which correctly factors in the per-5-level scaling
-        mathStr = mathStr.replace(/Table\(\d+,sLevel\)/gi, rankMult);
+        mathStr = mathStr.replace(/Table\((\d+),sLevel\)/gi, (match, tableId) => {
+            if (tableId === "37") {
+                let levelsGained = currentRank > 1 ? currentRank - 1 : 0;
+                return 1.0 + (levelsGained * 0.04);
+            }
+            return rankMult;
+        });
 
         // Replace variables
         mathStr = mathStr.replace(/sLevel/g, currentRank);
@@ -3934,6 +3940,9 @@ function parseD4String(str, skillObj, currentRank) {
         return Math.round(maxLife * pct).toString();
     });
 
+    
+    str = str.replace(/\{buffduration:decrepify_curse\}/g, "30");
+    str = str.replace(/\{buffduration:ironmaiden_curse\}/g, "30");
     
     // Clean up random brackets with pipes [something|2?|]
     str = str.replace(/\[(.*?)\|.*?\]/g, '$1');
@@ -4187,7 +4196,7 @@ function renderSkills() {
     
     const catTitle = document.createElement('h3'); 
     catTitle.className = 'skill-paperdoll-title'; 
-    catTitle.textContent = category + ' Skills'; 
+    catTitle.textContent = category.endsWith('Skills') ? category : category + ' Skills'; 
     catDiv.appendChild(catTitle); 
     
     const skillsList = document.createElement('div'); 
