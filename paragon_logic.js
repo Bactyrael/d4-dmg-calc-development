@@ -646,8 +646,15 @@ window.renderParagonGrid = function() {
                 else cell.classList.add('type-normal');
                 
                 let myStr = s + "-" + dataIdx;
-                if (pData.nodes && pData.nodes.includes(dataIdx)) {
+                let isActive = pData.nodes && pData.nodes.includes(dataIdx);
+                
+                if (isActive) {
                     cell.classList.add('node-active');
+                    if (!globalReachable.has(myStr)) {
+                        cell.style.backgroundColor = '#ff4444'; // Red for disconnected path
+                        cell.style.boxShadow = '0 0 10px #ff4444';
+                        cell.style.borderColor = '#ff4444';
+                    }
                 } else if (!globalReachable.has(myStr)) {
                     cell.classList.add('node-unreachable');
                     cell.style.opacity = '0.3';

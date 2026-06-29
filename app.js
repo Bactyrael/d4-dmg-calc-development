@@ -65,11 +65,11 @@ function renderActiveRunes() {
   
   // D4 Internal Index mapping:
   const D4_CLASS_MAP = {
-    'Barbarian': 0,
+    'Sorcerer': 0,
     'Druid': 1,
-    'Necromancer': 2,
+    'Barbarian': 2,
     'Rogue': 3,
-    'Sorcerer': 4,
+    'Necromancer': 4,
     'Spiritborn': 5
   };
 
@@ -912,7 +912,7 @@ var currentBuild = createDefaultBuild();
     const dbItems = window.D4_DATABASE.itemDatabase[mapped] || [];
     if (d4Idx !== undefined) {
       let filtered = dbItems.filter(i => !i.classes || i.classes[d4Idx] === 1);
-      if (d4Idx === 2) { // Necromancer
+      if (d4Idx === 4) { // Necromancer
         const invalidForNecro = ['Ahavarion, Spear of Lycander', 'Eggcecutioner', 'Eggis', 'Shattered Vow'];
         filtered = filtered.filter(i => !invalidForNecro.includes(i.name));
       }
@@ -6613,3 +6613,4 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(initParagonUI, 200);
 });
+
