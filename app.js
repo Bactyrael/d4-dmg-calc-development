@@ -2161,7 +2161,7 @@ function renderEquipment(className, savedEquipment = {}) {
                     addStat(stats, 'Maximum Essence', 10, 'Bone Graft (Legendary Node)');
                 }
                 if (legPowers.includes('Paragon_Necro_Legendary_007')) {
-                    addStat(stats, '% Damage Reduction', 15, 'Scent of Death (Legendary Node)');
+                    addStat(stats, 'Universal Damage Reduction %', 15, 'Scent of Death (Legendary Node)');
                 }
             }
         }
@@ -2538,9 +2538,10 @@ function renderEquipment(className, savedEquipment = {}) {
             addStat(stats, res.split(' ')[0] + ' DR%', resistDr * 100, 'Calculated');
         });
         
-        // Universal DR and Dodge will be calculated here once those tabs exist. For now, 0.
-        const finalUniversalDr = 0;
-        addStat(stats, 'Universal Damage Reduction %', finalUniversalDr * 100, 'Calculated');
+        // Apply standalone Universal DR modifiers
+        if (stats['Aspect of Hardened Bones']) {
+            addStat(stats, 'Universal Damage Reduction %', stats['Aspect of Hardened Bones'].total, 'Aspect of Hardened Bones');
+        }
         
         // Post-Compilation Step: Inverse Multiplicative Stats (Dodge Chance, Damage Reduction, etc.)
         // This must run at the very end so that Core Stats (like Dexterity) are included in the inverse multiplicative pool!
@@ -6777,7 +6778,49 @@ rarity = foundItem.rarity;
           const ehpEl = document.getElementById(`ehp-${elem.toLowerCase()}`);
           const drEl = document.getElementById(`dr-${elem.toLowerCase()}-final`);
           
-          if (ehpEl) ehpEl.textContent = Math.floor(ehpElem).toLocaleString();
+          if (ehpEl) {
+              ehpEl.textContent = Math.floor(ehpElem).toLocaleString();
+              
+              const card = ehpEl.parentElement;
+              card.classList.add('stat-row-hoverable');
+              card.style.position = 'relative';
+              
+              const existingTooltip = card.querySelector('.stat-tooltip');
+              if (existingTooltip) existingTooltip.remove();
+              
+              const ehpStep1 = maxLife / (1 - (armorDrPct/100));
+              const ehpStep2 = ehpStep1 / (1 - (universalDrPct/100));
+              const ehpStep3 = ehpStep2 / (1 - (resistDrPct/100));
+              
+              const tooltipHtml = `
+                  <div class="stat-tooltip" style="top: auto; bottom: 100%; left: 0px; z-index: 100; min-width: 250px; margin-bottom: 10px;">
+                      <div class="stat-tooltip-header">
+                          <span style="color: #d18a45;">${elem} EHP Math</span>
+                      </div>
+                      <div class="stat-tooltip-source">
+                          <span style="color: #ccc;">Max Life:</span> <span style="color: #4cd137; float: right;">${Math.floor(maxLife).toLocaleString()}</span>
+                      </div>
+                      <hr class="stat-tooltip-divider">
+                      <div class="stat-tooltip-source">
+                          <span style="color: #ccc;">Armor DR (<span style="color: #e74c3c;">${armorDrPct.toFixed(1)}%</span>):</span> 
+                          <span style="color: #888; float: right;">${Math.floor(ehpStep1).toLocaleString()}</span>
+                      </div>
+                      <div class="stat-tooltip-source">
+                          <span style="color: #ccc;">Universal DR (<span style="color: #e74c3c;">${universalDrPct.toFixed(1)}%</span>):</span> 
+                          <span style="color: #888; float: right;">${Math.floor(ehpStep2).toLocaleString()}</span>
+                      </div>
+                      <div class="stat-tooltip-source">
+                          <span style="color: #ccc;">${elem} Resist DR (<span style="color: #e74c3c;">${resistDrPct.toFixed(1)}%</span>):</span> 
+                          <span style="color: #888; float: right;">${Math.floor(ehpStep3).toLocaleString()}</span>
+                      </div>
+                      <hr class="stat-tooltip-divider">
+                      <div class="stat-tooltip-source" style="font-weight: bold;">
+                          <span style="color: #d18a45;">Total ${elem} EHP:</span> <span style="color: #4cd137; float: right;">${Math.floor(ehpElem).toLocaleString()}</span>
+                      </div>
+                  </div>
+              `;
+              card.insertAdjacentHTML('beforeend', tooltipHtml);
+          }
           if (drEl) drEl.textContent = (finalElemDr * 100).toFixed(1) + '%';
       });
   }
