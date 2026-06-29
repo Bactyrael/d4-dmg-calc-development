@@ -951,239 +951,111 @@ window.renderGlyphTooltip = function(glyphId, level) {
     
     let html = `<div style="font-family: Arial, sans-serif; min-width: 250px;">
         <div style="text-align: center; margin-bottom: 12px;">
+            <div style="color: #c9a55c; font-size: 0.9rem; margin-bottom: 2px;">${g.rarity === 1 ? 'Magic' : (g.rarity === 2 ? 'Rare' : 'Legendary')} Glyph</div>
             <h3 style="margin: 0; color: ${color}; font-size: 1.3rem; text-shadow: 1px 1px 2px #000;">${g.name}</h3>
-            <div style="color: #c9a55c; font-size: 0.9rem; margin-top: 4px;">Glyph Level ${level}</div>
-        </div>
-        <div style="height: 1px; background: #444; margin: 10px 0;"></div>
-        <div style="font-size: 0.95rem; line-height: 1.4; color: #ddd;">`;
+            <div style="color: #ddd; font-weight: bold; font-size: 0.9rem; margin-top: 4px; border-bottom: 1px solid #444; padding-bottom: 4px;">LEVEL ${level}</div>
+        </div>`;
         
-    if (g.affixes && g.affixes.length > 0) {
-        g.affixes.forEach(affixKey => {
-            let affixData = window.D4_PARAGON_DATA.paragonGlyphAffixes[affixKey];
-            if (affixData) {
-                let val = (affixData.base || 0) + ((affixData.perLevel || 0) * (level - 1));
-                if (affixData.displayFactor) val = val / affixData.displayFactor;
-                
-                let desc = affixData.desc || "";
-                
-                // Parse {c_number}+[{GlyphAffixScalar}|1%|]{/c}
-                // We'll just replace the whole placeholder with the formatted number
-                desc = desc.replace(/\{c_[^}]+\}/g, '<span style="color: #fff; font-weight: bold;">');
-                desc = desc.replace(/\{\/c\}/g, '</span>');
-                
-                desc = desc.replace(/\[[^\]]+\]/g, (match) => {
-                    if (match.includes('%')) {
-                        // format to 1 decimal if needed
-                        return (val % 1 !== 0 ? val.toFixed(1) : val) + "%";
-                    }
-                    return val % 1 !== 0 ? val.toFixed(1) : val;
-                });
-                
-                let isLegendary = !affixData.formula; // Usually legendary power lacks formula
-                let bulletColor = isLegendary ? '#e67e22' : '#a38a58';
-                
-                if (isLegendary && level < 46) {
-                   html += `<div style="margin-bottom: 8px; color: #777;">
-                     <span style="color: #666; font-size: 1.1rem; vertical-align: top;">&bull;</span> 
-                     ${desc} <br><span style="font-size:0.8rem; color:#ff4444;">(Requires Level 46)</span>
-                   </div>`;
-                } else {
-                   html += `<div style="margin-bottom: 8px;">
-                     <span style="color: ${bulletColor}; font-size: 1.1rem; vertical-align: top;">&bull;</span> 
-                     ${desc}
-                   </div>`;
-                }
-            }
-        });
-    }
-    
     let radius = 3;
     if (level >= 25 && level <= 49) radius = 4;
     else if (level >= 50) radius = 5;
     
-    html += `</div>
-        <div style="height: 1px; background: #444; margin: 10px 0;"></div>
-        <div style="text-align: center; color: #a38a58; font-size: 0.9rem;">
-            Radius Size: ${radius}
-        </div>
-    </div>`;
-    
-    return html;
-};
-
-window.showNodeDetails = function(nodeId, slotIndex = 0) {
-    const detailsDiv = document.getElementById('paragon-node-details');
-    if (!detailsDiv || !D4_PARAGON_DATA || !D4_PARAGON_DATA.paragonNodes) return;
-    
-    const nData = D4_PARAGON_DATA.paragonNodes[nodeId];
-    if (!nData) {
-        detailsDiv.innerHTML = `<h4 style="margin-top:0; color:#fff;">${nodeId}</h4><p style="color:#aaa; font-size:0.9rem;">Generic Node</p>`;
-        return;
+    html += `<div style="color: #c9a55c; font-size: 0.95rem; margin-bottom: 4px;">Radius Size: <span style="color: #fff;">${radius}</span></div>`;
+    if (radius === 5) {
+        html += `<div style="color: #e67e22; font-size: 0.85rem; margin-bottom: 10px;">&bull; Radius size is at max.</div>`;
     }
     
-    let nodeTypeStr = "Common Node";
-    if (nData.socket) { nodeTypeStr = "Glyph Socket"; }
-    else if (nData.rarity === 2) { nodeTypeStr = "Magic Node"; }
-    else if (nData.rarity === 3) { nodeTypeStr = "Rare Node"; }
-    else if (nData.rarity === 4) { nodeTypeStr = "Legendary Node"; }
-    else if (nData.rarity === 5) { nodeTypeStr = "Board Attachment Gate"; }
+    let formatDesc = (desc, val) => {
+        if (!desc) return "";
+        let d = desc.replace(/\{c_[^}]+\}/g, '<span style="color: #fff; font-weight: bold;">');
+        d = d.replace(/\{\/c\}/g, '</span>');
+        d = d.replace(/\[[^\]]+\]/g, (match) => {
+            let isX = match.includes('%x');
+            let isPct = match.includes('%');
+            let str = val % 1 !== 0 ? val.toFixed(1) : val;
+            if (isX) return str + "%[x]";
+            if (isPct) return str + "%";
+            return str;
+        });
+        d = d.replace(/\\\[x\\\]/g, '[x]');
+        return d;
+    };
     
-    let displayNameFinal = nData.name;
-    if (nData.socket) displayNameFinal = "Glyph Socket";
+    let baseBonuses = [];
+    let addBonus = null;
+    let reqs = null;
+    let legBonus = null;
     
-    if (!displayNameFinal || (nData.rarity === 0 && !nData.socket)) {
-        displayNameFinal = nodeTypeStr;
-        nodeTypeStr = "";
-    }
-    
-    let headerColor = '#fff';
-    if (nData.socket) headerColor = '#c9a55c';
-    else if (nData.rarity === 2) headerColor = '#3498db'; // Magic (Blue)
-    else if (nData.rarity === 3) headerColor = '#f1c40f'; // Rare (Yellow/Gold)
-    else if (nData.rarity === 4) headerColor = '#e67e22'; // Legendary (Orange)
-    
-    let html = `<div style="font-family: Arial, sans-serif; min-width: 200px;">
-        <div style="text-align: center; margin-bottom: 12px;">
-            <h3 style="margin: 0; color: ${headerColor}; font-size: 1.2rem; text-shadow: 1px 1px 2px #000;">${displayNameFinal}</h3>
-            ${nodeTypeStr ? `<div style="color: #888; font-size: 0.85rem; margin-top: 4px;">${nodeTypeStr}</div>` : ''}
-        </div>`;
-    
-    html += `<div style="display: flex; align-items: center; justify-content: center; margin: 15px 0;">`;
-    html += `<div style="height: 1px; background: #333; flex: 1;"></div>`;
-    html += `<div style="color: #555; margin: 0 15px; font-size: 0.7rem;">&#9670;</div>`;
-    html += `<div style="height: 1px; background: #333; flex: 1;"></div>`;
-    html += `</div>`;
-    
-    html += `<div style="text-align: left; padding: 0 5px;">`;
-    
-    if (nData.description) {
-        html += `<div style="color: #e67e22; font-size: 0.95rem; margin-bottom: 12px; line-height: 1.4;">${nData.description}</div>`;
-    }
-    
-    if (nData.attributes && window.D4_PARAGON_FORMULAS) {
-        nData.attributes.forEach(attr => {
-            let rawValue = 0;
-            if (attr.formula && window.D4_PARAGON_FORMULAS.attributeFormulas[attr.formula]) {
-                let fList = window.D4_PARAGON_FORMULAS.attributeFormulas[attr.formula];
-                rawValue = parseFloat(fList[0].formula) || 0;
-            } else if (attr.value !== undefined) {
-                rawValue = attr.value;
-            }
+    if (g.affixes && g.affixes.length > 0) {
+        g.affixes.forEach(affixKey => {
+            let affixData = window.D4_PARAGON_DATA.paragonGlyphAffixes[affixKey];
+            if (!affixData) return;
             
-            let attrMeta = window.D4_PARAGON_FORMULAS.attributes[attr.id];
-            if (attrMeta) {
-                let descString = window.D4_PARAGON_FORMULAS.attributeDescriptions[attrMeta.name];
-                if (descString) {
-                    let parsed = window.cleanAttributeDescription(descString, rawValue);
-                    let sign = parsed.value >= 0 ? '+' : '';
-                    
-                    let valStr = parsed.isPercent ? (parsed.value.toFixed(1) + '%') : (parsed.value % 1 !== 0 ? parsed.value.toFixed(1) : parsed.value);
-                    
-                    html += `<div style="color: #ccc; margin-bottom: 6px; font-size: 0.95rem; display: flex; align-items: flex-start;">`;
-                    html += `<span style="color: #666; margin-right: 8px; font-size: 0.7rem; margin-top: 3px;">&#9670;</span>`;
-                    html += `<span>${sign}${valStr} ${parsed.name}</span>`;
-                    html += `</div>`;
+            let val = (affixData.base || 0) + ((affixData.perLevel || 0) * (level - 1));
+            // Hack for D4 parsing rules:
+            if (affixData.operation === 1) val = val / 10;
+            else if (affixData.operation === 4) val = val * 100;
+            else if (affixData.operation === 5) val = val; // Usually no value needed, text is hardcoded
+            else if (affixData.displayFactor) val = val / affixData.displayFactor;
+            
+            if (affixData.thresholds && affixData.power) {
+                let pData = window.D4_PARAGON_DATA.skills ? window.D4_PARAGON_DATA.skills[affixData.power] : null;
+                if (pData && pData.desc) {
+                    addBonus = formatDesc(pData.desc, val);
                 }
+                
+                let tData = window.D4_PARAGON_DATA.paragonThresholds ? window.D4_PARAGON_DATA.paragonThresholds[affixData.thresholds[0]] : null;
+                if (tData && tData.attributes) {
+                    reqs = tData.attributes.map(a => {
+                        let attrName = "Stat";
+                        if (a.id === 12) attrName = "Dexterity";
+                        if (a.id === 9) attrName = "Strength";
+                        if (a.id === 11) attrName = "Willpower";
+                        if (a.id === 10) attrName = "Intelligence";
+                        return `+${a.value} ${attrName}`;
+                    });
+                }
+            } else if (affixData.requiredRank >= 2 || affixKey.includes('Legendary')) {
+                legBonus = formatDesc(affixData.desc, val);
+            } else {
+                baseBonuses.push(formatDesc(affixData.desc, val));
             }
         });
     }
     
-    // Parse Bonus Thresholds (Requirements)
-    if (nData.thresholds && nData.thresholds.length > 0 && nData.thresholdAttributes) {
-        let tData = null;
-        for (let t of nData.thresholds) {
-            if (window.D4_PARAGON_FORMULAS.paragonThresholds && window.D4_PARAGON_FORMULAS.paragonThresholds[t]) {
-                let th = window.D4_PARAGON_FORMULAS.paragonThresholds[t];
-                let clsIdx = -1;
-                let classStr = "";
-                if (typeof currentBuild !== 'undefined' && currentBuild.class) classStr = currentBuild.class.toLowerCase();
-                
-                if (classStr === 'sorcerer') clsIdx = 0;
-                else if (classStr === 'druid') clsIdx = 1;
-                else if (classStr === 'barbarian') clsIdx = 2;
-                else if (classStr === 'rogue') clsIdx = 3;
-                else if (classStr === 'necromancer') clsIdx = 4;
-                else if (classStr === 'spiritborn') clsIdx = 5;
-                else if (classStr === 'paladin') clsIdx = 6;
-                else if (classStr === 'warlock') clsIdx = 7;
-                
-                if (clsIdx !== -1 && th.classFilter && th.classFilter[clsIdx]) {
-                    tData = th;
-                    break;
-                }
-            }
-        }
-        
-        if (tData && tData.attributes && tData.attributes.length > 0) {
-            let reqAttr = tData.attributes[0];
-            let reqName = "";
-            let reqVal = 0;
-            
-            if (reqAttr) {
-                let reqAttrMeta = window.D4_PARAGON_FORMULAS.attributes[reqAttr.id];
-                if (reqAttrMeta) reqName = reqAttrMeta.name.split('_')[0]; // Dexterity_Total -> Dexterity
-                
-                if (reqAttr.formula || typeof reqAttr.value === 'string') {
-                    let fStr = reqAttr.formula || reqAttr.value;
-                    let replaced = String(fStr).replace(/ParagonBoardEquipIndex/g, slotIndex);
-                    try { reqVal = Math.round(eval(replaced)); } catch(e) { reqVal = parseFloat(fStr) || 0; }
-                } else {
-                    reqVal = reqAttr.value;
-                }
-            }
-            
-            let bonusText = "";
-            nData.thresholdAttributes.forEach(attrIdx => {
-                let attr = nData.attributes[attrIdx];
-                if (attr) {
-                    let rawValue = 0;
-                    if (attr.formula && window.D4_PARAGON_FORMULAS.attributeFormulas[attr.formula]) {
-                        let fList = window.D4_PARAGON_FORMULAS.attributeFormulas[attr.formula];
-                        rawValue = parseFloat(fList[0].formula) || 0;
-                    } else if (attr.value !== undefined) {
-                        rawValue = attr.value;
-                    }
-                    
-                    let attrMeta = window.D4_PARAGON_FORMULAS.attributes[attr.id];
-                    if (attrMeta) {
-                        let descString = window.D4_PARAGON_FORMULAS.attributeDescriptions[attrMeta.name];
-                        if (descString) {
-                            let parsed = window.cleanAttributeDescription(descString, rawValue);
-                            let sign = parsed.value >= 0 ? '+' : '';
-                            let valStr = parsed.isPercent ? (parsed.value.toFixed(1) + '%') : (parsed.value % 1 !== 0 ? parsed.value.toFixed(1) : parsed.value);
-                            bonusText = `${sign}${valStr} ${parsed.name}`;
-                        }
-                    }
-                }
-            });
-            
-            if (bonusText) {
-                let playerStatVal = 0;
-                if (window.compiledStats && reqName) {
-                    let keys = Object.keys(window.compiledStats);
-                    let exactKey = keys.find(k => k.toLowerCase() === reqName.toLowerCase());
-                    if (exactKey) playerStatVal = window.compiledStats[exactKey].final;
-                }
-                
-                let met = playerStatVal >= reqVal;
-                let color = met ? '#4CAF50' : '#ff4444';
-                
-                html += `<div style="margin-top: 15px;">`;
-                html += `<div style="color: #c9a55c; font-size: 0.9rem; margin-bottom: 8px;">Bonus: Another ${bonusText} if requirements met:</div>`;
-                html += `<div style="color: #ccc; margin-bottom: 6px; font-size: 0.95rem; display: flex; align-items: flex-start;">`;
-                html += `<span style="color: #666; margin-right: 8px; font-size: 0.7rem; margin-top: 3px;">&#9670;</span>`;
-                html += `<span><span style="color: ${color};">${met ? '' : '+'}${Math.floor(playerStatVal)}</span> <span style="color: #888;">/ ${reqVal}</span> ${reqName}</span>`;
-                html += `</div>`;
-                html += `<div style="color: ${color}; font-size: 0.85rem; margin-top: 4px;">${met ? 'Requirements met' : 'Requirements not met'}</div>`;
-                html += `</div>`;
-            }
-        }
+    if (baseBonuses.length > 0) {
+        html += `<div style="color: #c9a55c; font-size: 0.95rem; margin-top: 8px;">Bonus:</div>`;
+        baseBonuses.forEach(b => {
+            html += `<div style="color: #ddd; font-size: 0.9rem; margin-left: 8px; margin-bottom: 4px;"><span style="color: #a38a58;">&bull;</span> ${b}</div>`;
+        });
     }
     
-    html += `</div></div>`;
-    detailsDiv.innerHTML = html;
-};
+    if (addBonus) {
+        html += `<div style="color: #c9a55c; font-size: 0.95rem; margin-top: 8px;">Additional Bonus:</div>`;
+        html += `<div style="color: #999; font-size: 0.8rem; margin-bottom: 4px;">(if requirements met)</div>`;
+        html += `<div style="color: #ddd; font-size: 0.9rem; margin-left: 8px; margin-bottom: 4px;"><span style="color: #a38a58;">&bull;</span> ${addBonus}</div>`;
+    }
+    
+    if (reqs && reqs.length > 0) {
+        html += `<div style="color: #c9a55c; font-size: 0.95rem; margin-top: 8px;">Requirements:</div>`;
+        html += `<div style="color: #999; font-size: 0.8rem; margin-bottom: 4px;">(purchased in radius range)</div>`;
+        reqs.forEach(r => {
+            html += `<div style="color: #aaa; font-size: 0.9rem; margin-left: 8px; margin-bottom: 4px;"><span style="color: #666;">&bull;</span> ${r}</div>`;
+        });
+    }
+    
+    if (legBonus) {
+        html += `<div style="color: #c9a55c; font-size: 0.95rem; margin-top: 8px;">Legendary Bonus:</div>`;
+        if (level < 46) {
+            html += `<div style="color: #ff4444; font-size: 0.8rem; margin-bottom: 4px;">(Requires Level 46)</div>`;
+        }
+        let lColor = level >= 46 ? '#e67e22' : '#777';
+        html += `<div style="color: ${lColor}; font-size: 0.9rem; margin-left: 8px; margin-bottom: 4px;"><span style="color: ${lColor};">&starf;</span> ${legBonus}</div>`;
+    }
 
+    html += `</div>`;
+    return html;
+};
 window.calculateParagonStats = function() {
     let stats = {};
     return stats;
