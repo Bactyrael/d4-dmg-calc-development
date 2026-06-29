@@ -830,6 +830,11 @@ window.renderParagonGrid = function() {
                     if (!pData.nodes) pData.nodes = [];
                     const idx = pData.nodes.indexOf(dataIdx);
                     
+                    if (nodeName.toLowerCase().includes('socket') && idx !== -1) {
+                        if (window.openGlyphModal) window.openGlyphModal(s, dataIdx);
+                        return;
+                    }
+                    
                     if (idx === -1) {
                         if (!globalReachable.has(myStr)) return;
                         if (getTotalParagonPointsSpent() >= 342) {
