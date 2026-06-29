@@ -947,11 +947,12 @@ window.renderGlyphTooltip = function(glyphId, level) {
         else return "";
     }
     
-    let color = g.rarity === 1 ? '#3498db' : (g.rarity === 2 ? '#f1c40f' : '#e67e22');
+    let gRarity = level >= 46 ? 'Legendary' : 'Rare';
+    let color = level >= 46 ? '#e67e22' : '#f1c40f';
     
     let html = `<div style="font-family: Arial, sans-serif; min-width: 250px;">
         <div style="text-align: center; margin-bottom: 12px;">
-            <div style="color: #c9a55c; font-size: 0.9rem; margin-bottom: 2px;">${g.rarity === 1 ? 'Magic' : (g.rarity === 2 ? 'Rare' : 'Legendary')} Glyph</div>
+            <div style="color: #c9a55c; font-size: 0.9rem; margin-bottom: 2px;">${gRarity} Glyph</div>
             <h3 style="margin: 0; color: ${color}; font-size: 1.3rem; text-shadow: 1px 1px 2px #000;">${g.name}</h3>
             <div style="color: #ddd; font-weight: bold; font-size: 0.9rem; margin-top: 4px; border-bottom: 1px solid #444; padding-bottom: 4px;">LEVEL ${level}</div>
         </div>`;
@@ -969,7 +970,7 @@ window.renderGlyphTooltip = function(glyphId, level) {
         if (!desc) return "";
         let d = desc.replace(/\{c_[^}]+\}/g, '<span style="color: #fff; font-weight: bold;">');
         d = d.replace(/\{\/c\}/g, '</span>');
-        d = d.replace(/\[[^\]]+\]/g, (match) => {
+        d = d.replace(/\[\{[^\]]+\}\]/g, (match) => {
             let isX = match.includes('%x');
             let isPct = match.includes('%');
             let str = val % 1 !== 0 ? val.toFixed(1) : val;
@@ -977,7 +978,9 @@ window.renderGlyphTooltip = function(glyphId, level) {
             if (isPct) return str + "%";
             return str;
         });
+        // Clean up escaped brackets like \[x\]
         d = d.replace(/\\\[x\\\]/g, '[x]');
+        d = d.replace(/\\\[\+\\\]/g, '[+]');
         return d;
     };
     
