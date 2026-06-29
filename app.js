@@ -5438,6 +5438,7 @@ rarity = foundItem.rarity;
           const gemName = (itemObj.sockets && itemObj.sockets[i]) ? itemObj.sockets[i] : null;
           if (gemName) {
             const gemObj = window.D4_DATABASE?.gems?.find(g => g.name === gemName);
+            const runeObj = window.D4_DATABASE?.runes?.find(r => r.name === gemName);
             let effectStr = gemName;
             if (gemObj) {
                 const sName = slotName.toLowerCase();
@@ -5448,6 +5449,8 @@ rarity = foundItem.rarity;
                 if (isWeapon) effectStr = gemObj.weaponEffect;
                 else if (isArmor) effectStr = gemObj.armorEffect;
                 else if (isJewelry) effectStr = gemObj.jewelryEffect;
+            } else if (runeObj) {
+                effectStr = runeObj.description;
             }
             
             // Format number specifically for potential future scaling (Gem Strength)
@@ -6106,7 +6109,13 @@ rarity = foundItem.rarity;
     if (!list) return;
     list.innerHTML = '';
     
-    let items = window.D4_DATABASE?.gems || [];
+    let items = [...(window.D4_DATABASE?.gems || [])];
+    
+    if (window.currentSocketIndex === 0) {
+      items = items.concat((window.D4_DATABASE?.runes || []).filter(r => r.type === 'Ritual'));
+    } else if (window.currentSocketIndex === 1) {
+      items = items.concat((window.D4_DATABASE?.runes || []).filter(r => r.type === 'Invocation'));
+    }
     
     // Filter
     items = items.filter(g => {
@@ -6137,8 +6146,13 @@ rarity = foundItem.rarity;
       row.style.padding = '8px 12px';
       
       let effect = item.armorEffect;
-      if (isWeapon) effect = item.weaponEffect;
-      else if (isJewelry) effect = item.jewelryEffect;
+      let isRune = item.type === 'Ritual' || item.type === 'Invocation';
+      if (isRune) {
+        effect = item.description;
+      } else {
+        if (isWeapon) effect = item.weaponEffect;
+        else if (isJewelry) effect = item.jewelryEffect;
+      }
       
       let color = '#fff';
       if (item.type === 'ruby') color = '#e74c3c';
@@ -6148,11 +6162,17 @@ rarity = foundItem.rarity;
       if (item.type === 'sapphire') color = '#3498db';
       if (item.type === 'diamond') color = '#bdc3c7';
       if (item.type === 'skull') color = '#ecf0f1';
+      if (isRune) color = '#ffcc00'; // Runes are gold
+      
+      let offeringHTML = '';
+      if (isRune) {
+          offeringHTML = ` <span style="color: #a8a8a8; font-size: 0.8em;">(Offering: ${item.offering})</span>`;
+      }
       
       row.innerHTML = `
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
           <div class="socket-circle filled" style="background: ${color}; width: 16px; height: 16px;"></div>
-          <div class="item-name" style="color: ${color}; font-weight: bold;">${item.name}</div>
+          <div class="item-name" style="color: ${color}; font-weight: bold;">${item.name}${offeringHTML}</div>
         </div>
         <div style="font-size: 0.85rem; color: #aaa; margin-left: 28px;">${effect}</div>
       `;
