@@ -76,14 +76,7 @@ window.getActiveLegendaryPowers = function() {
     return powers;
 };
 
-window.getCompiledParagonStats = function() {
-  let stats = {};
-  
-  if (!window.D4_PARAGON_FORMULAS || !window.D4_PARAGON_DATA) return stats;
-
-  let activeReachableNodes = getGlobalReachableActiveNodes();
-  
-  function cleanAttributeDescription(desc, rawValue) {
+window.cleanAttributeDescription = function(desc, rawValue) {
     if (!desc) return { name: "Unknown Stat", value: rawValue, isPercent: false };
     
     // Extract base name by stripping format blocks
@@ -108,7 +101,14 @@ window.getCompiledParagonStats = function() {
     }
     
     return { name: statName, value: scaledValue, isPercent };
-  }
+};
+
+window.getCompiledParagonStats = function() {
+  let stats = {};
+  
+  if (!window.D4_PARAGON_FORMULAS || !window.D4_PARAGON_DATA) return stats;
+
+  let activeReachableNodes = getGlobalReachableActiveNodes();
 
   activeReachableNodes.visited.forEach(nodeStr => {
     let parts = nodeStr.split('-');
@@ -140,7 +140,7 @@ window.getCompiledParagonStats = function() {
       let descString = window.D4_PARAGON_FORMULAS.attributeDescriptions[internalName];
       if (!descString) return;
       
-      let parsed = cleanAttributeDescription(descString, rawValue);
+      let parsed = window.cleanAttributeDescription(descString, rawValue);
       
       if (!stats[parsed.name]) {
         stats[parsed.name] = { value: 0, isPercent: parsed.isPercent };
@@ -907,11 +907,71 @@ window.showNodeDetails = function(nodeId) {
         return;
     }
     
-    let html = `<h4 style="margin-top:0; color:#fff; margin-bottom: 5px;">${nData.name || nodeId}</h4>`;
-    if (nData.description) {
-        html += `<div style="color: #4CAF50; font-size: 0.95rem; margin-bottom: 10px;">${nData.description}</div>`;
+    let nodeTypeStr = "Common Node";
+    if (nData.rarity === 2) { nodeTypeStr = "Magic Node"; }
+    else if (nData.rarity === 3) { nodeTypeStr = "Rare Node"; }
+    else if (nData.rarity === 4) { nodeTypeStr = "Legendary Node"; }
+    else if (nData.rarity === 5) { nodeTypeStr = "Board Attachment Gate"; }
+    
+    let displayName = nData.name;
+    if (!displayName || nData.rarity === 0) {
+        displayName = nodeTypeStr;
+        nodeTypeStr = "";
     }
     
+    let html = `<div style="text-align: center; padding: 5px;">`;
+    
+    let nameColor = '#fff';
+    if (nData.rarity === 2) nameColor = '#3498db'; // Magic blue
+    else if (nData.rarity === 3) nameColor = '#f1c40f'; // Rare yellow
+    else if (nData.rarity === 4) nameColor = '#e67e22'; // Legendary orange
+    
+    html += `<h4 style="margin: 0; color: ${nameColor}; font-size: 1.15rem; font-weight: normal; letter-spacing: 0.5px;">${displayName}</h4>`;
+    if (nodeTypeStr) {
+        html += `<div style="color: #777; font-size: 0.85rem; margin-top: 4px;">${nodeTypeStr}</div>`;
+    }
+    
+    html += `<div style="display: flex; align-items: center; justify-content: center; margin: 15px 0;">`;
+    html += `<div style="height: 1px; background: #333; flex: 1;"></div>`;
+    html += `<div style="color: #555; margin: 0 15px; font-size: 0.7rem;">&#9670;</div>`;
+    html += `<div style="height: 1px; background: #333; flex: 1;"></div>`;
+    html += `</div>`;
+    
+    html += `<div style="text-align: left; padding: 0 5px;">`;
+    
+    if (nData.description) {
+        html += `<div style="color: #e67e22; font-size: 0.95rem; margin-bottom: 12px; line-height: 1.4;">${nData.description}</div>`;
+    }
+    
+    if (nData.attributes && window.D4_PARAGON_FORMULAS) {
+        nData.attributes.forEach(attr => {
+            let rawValue = 0;
+            if (attr.formula && window.D4_PARAGON_FORMULAS.attributeFormulas[attr.formula]) {
+                let fList = window.D4_PARAGON_FORMULAS.attributeFormulas[attr.formula];
+                rawValue = parseFloat(fList[0].formula) || 0;
+            } else if (attr.value !== undefined) {
+                rawValue = attr.value;
+            }
+            
+            let attrMeta = window.D4_PARAGON_FORMULAS.attributes[attr.id];
+            if (attrMeta) {
+                let descString = window.D4_PARAGON_FORMULAS.attributeDescriptions[attrMeta.name];
+                if (descString) {
+                    let parsed = window.cleanAttributeDescription(descString, rawValue);
+                    let sign = parsed.value >= 0 ? '+' : '';
+                    
+                    let valStr = parsed.isPercent ? (parsed.value.toFixed(1) + '%') : (parsed.value % 1 !== 0 ? parsed.value.toFixed(1) : parsed.value);
+                    
+                    html += `<div style="color: #ccc; margin-bottom: 6px; font-size: 0.95rem; display: flex; align-items: flex-start;">`;
+                    html += `<span style="color: #666; margin-right: 8px; font-size: 0.7rem; margin-top: 3px;">&#9670;</span>`;
+                    html += `<span>${sign}${valStr} ${parsed.name}</span>`;
+                    html += `</div>`;
+                }
+            }
+        });
+    }
+    
+    html += `</div></div>`;
     detailsDiv.innerHTML = html;
 };
 
