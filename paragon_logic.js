@@ -935,28 +935,31 @@ window.showNodeDetails = function(nodeId, slotIndex = 0) {
     }
     
     let nodeTypeStr = "Common Node";
-    if (nData.rarity === 2) { nodeTypeStr = "Magic Node"; }
+    if (nData.socket) { nodeTypeStr = "Glyph Socket"; }
+    else if (nData.rarity === 2) { nodeTypeStr = "Magic Node"; }
     else if (nData.rarity === 3) { nodeTypeStr = "Rare Node"; }
     else if (nData.rarity === 4) { nodeTypeStr = "Legendary Node"; }
     else if (nData.rarity === 5) { nodeTypeStr = "Board Attachment Gate"; }
     
-    let displayName = nData.name;
-    if (!displayName || nData.rarity === 0) {
-        displayName = nodeTypeStr;
+    let displayNameFinal = nData.name;
+    if (nData.socket) displayNameFinal = "Glyph Socket";
+    
+    if (!displayNameFinal || (nData.rarity === 0 && !nData.socket)) {
+        displayNameFinal = nodeTypeStr;
         nodeTypeStr = "";
     }
     
-    let html = `<div style="text-align: center; padding: 5px;">`;
+    let headerColor = '#fff';
+    if (nData.socket) headerColor = '#c9a55c';
+    else if (nData.rarity === 2) headerColor = '#3498db'; // Magic (Blue)
+    else if (nData.rarity === 3) headerColor = '#f1c40f'; // Rare (Yellow/Gold)
+    else if (nData.rarity === 4) headerColor = '#e67e22'; // Legendary (Orange)
     
-    let nameColor = '#fff';
-    if (nData.rarity === 2) nameColor = '#3498db'; // Magic blue
-    else if (nData.rarity === 3) nameColor = '#f1c40f'; // Rare yellow
-    else if (nData.rarity === 4) nameColor = '#e67e22'; // Legendary orange
-    
-    html += `<h4 style="margin: 0; color: ${nameColor}; font-size: 1.15rem; font-weight: normal; letter-spacing: 0.5px;">${displayName}</h4>`;
-    if (nodeTypeStr) {
-        html += `<div style="color: #777; font-size: 0.85rem; margin-top: 4px;">${nodeTypeStr}</div>`;
-    }
+    let html = `<div style="font-family: Arial, sans-serif; min-width: 200px;">
+        <div style="text-align: center; margin-bottom: 12px;">
+            <h3 style="margin: 0; color: ${headerColor}; font-size: 1.2rem; text-shadow: 1px 1px 2px #000;">${displayNameFinal}</h3>
+            ${nodeTypeStr ? `<div style="color: #888; font-size: 0.85rem; margin-top: 4px;">${nodeTypeStr}</div>` : ''}
+        </div>`;
     
     html += `<div style="display: flex; align-items: center; justify-content: center; margin: 15px 0;">`;
     html += `<div style="height: 1px; background: #333; flex: 1;"></div>`;
