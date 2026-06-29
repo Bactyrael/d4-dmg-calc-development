@@ -992,9 +992,18 @@ window.renderGlyphTooltip = function(glyphId, level) {
         });
         
         d = d.replace(/\[\{[^\]]+\]/g, (match) => {
-            let isX = match.includes('%x');
+            let formatMatch = match.match(/\|(\d*)%([x]*)\|/);
+            let dec = formatMatch && formatMatch[1] ? parseInt(formatMatch[1]) : (val % 1 !== 0 ? 1 : 0);
+            let isX = formatMatch && formatMatch[2] === 'x';
             let isPct = match.includes('%');
-            let str = val % 1 !== 0 ? val.toFixed(1) : val;
+            
+            // D4 engine TRUNCATES instead of rounding (e.g. 9.38125 -> 9.3)
+            let factor = Math.pow(10, dec);
+            let truncVal = Math.floor(val * factor) / factor;
+            
+            // Remove trailing zeroes if it's supposed to be clean
+            let str = (dec === 0 && truncVal % 1 === 0) ? truncVal.toString() : truncVal.toFixed(dec);
+            
             if (isX) return str + "%[x]";
             if (isPct) return str + "%";
             return str;

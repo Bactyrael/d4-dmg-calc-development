@@ -1,0 +1,480 @@
+Enchanter (2 | DF: 500):
+  L15: Raw=3.08, MyLogic=3.08
+  L150: Raw=18.26, MyLogic=18.26
+Unleash (1 | DF: 100):
+  L15: Raw=720.00, MyLogic=72.00
+  L150: Raw=4770.00, MyLogic=477.00
+Elementalist (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Adept (2 | DF: 500):
+  L15: Raw=4.67, MyLogic=4.67
+  L150: Raw=27.56, MyLogic=27.56
+Conjurer (2 | DF: 500):
+  L15: Raw=4.67, MyLogic=4.67
+  L150: Raw=27.56, MyLogic=27.56
+Charged (2 | DF: 500):
+  L15: Raw=4.10, MyLogic=4.10
+  L150: Raw=24.35, MyLogic=24.35
+Torch (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Pyromaniac (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Cryopathy (2 | DF: 500):
+  L15: Raw=3.08, MyLogic=3.08
+  L150: Raw=18.26, MyLogic=18.26
+Tactician (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Guzzler (2 | DF: 500):
+  L15: Raw=2.29, MyLogic=2.29
+  L150: Raw=11.59, MyLogic=11.59
+Reinforced (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Warding (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Territorial (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Flamefeeder (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Exploit (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Winter (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Electrocute (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Destruction (2 | DF: 500):
+  L15: Raw=4.10, MyLogic=4.10
+  L150: Raw=24.35, MyLogic=24.35
+Control (2 | DF: 500):
+  L15: Raw=3.08, MyLogic=3.08
+  L150: Raw=18.26, MyLogic=18.26
+Ambidextrous (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Might (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Cleaver (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Seething (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Crusher (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Executioner (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Ire (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Marshal (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Bloodfeeder (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Wrath (2 | DF: 500):
+  L15: Raw=3.08, MyLogic=3.08
+  L150: Raw=18.26, MyLogic=18.26
+Weapon Master (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Mortal Draw (2 | DF: 500):
+  L15: Raw=3.79, MyLogic=3.79
+  L150: Raw=27.45, MyLogic=27.45
+Revenge (1 | DF: 100):
+  L15: Raw=480.00, MyLogic=48.00
+  L150: Raw=3180.00, MyLogic=318.00
+Undaunted (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Dominate (2 | DF: 500):
+  L15: Raw=3.60, MyLogic=3.60
+  L150: Raw=23.85, MyLogic=23.85
+Disembowel (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Brawl (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Poise (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Fang and Claw (1 | DF: 100):
+  L15: Raw=720.00, MyLogic=72.00
+  L150: Raw=4770.00, MyLogic=477.00
+Earth and Sky (1 | DF: 100):
+  L15: Raw=720.00, MyLogic=72.00
+  L150: Raw=4770.00, MyLogic=477.00
+Wilds (2 | DF: 500):
+  L15: Raw=5.13, MyLogic=5.13
+  L150: Raw=30.44, MyLogic=30.44
+Werebear (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Werewolf (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Human (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Bane (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Keeper (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Fulminate (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Tracker (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Outmatch (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Spirit (2 | DF: 500):
+  L15: Raw=4.10, MyLogic=4.10
+  L150: Raw=24.35, MyLogic=24.35
+Shapeshifter (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Versatility (1 | DF: 100):
+  L15: Raw=720.00, MyLogic=72.00
+  L150: Raw=4770.00, MyLogic=477.00
+Closer (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Ranger (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Chip (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Grenadier (2 | DF: 500):
+  L15: Raw=2.73, MyLogic=2.73
+  L150: Raw=16.23, MyLogic=16.23
+Fluidity (1 | DF: 100):
+  L15: Raw=720.00, MyLogic=72.00
+  L150: Raw=4770.00, MyLogic=477.00
+Devious (1 | DF: 100):
+  L15: Raw=720.00, MyLogic=72.00
+  L150: Raw=4770.00, MyLogic=477.00
+Infusion (2 | DF: 500):
+  L15: Raw=3.08, MyLogic=3.08
+  L150: Raw=18.26, MyLogic=18.26
+Combat (2 | DF: 500):
+  L15: Raw=4.10, MyLogic=4.10
+  L150: Raw=24.35, MyLogic=24.35
+Canny (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Efficacy (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Snare (2 | DF: 500):
+  L15: Raw=2.73, MyLogic=2.73
+  L150: Raw=16.23, MyLogic=16.23
+Exploit (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Control (2 | DF: 500):
+  L15: Raw=3.08, MyLogic=3.08
+  L150: Raw=18.26, MyLogic=18.26
+Turf (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Pride (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Ambush (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Tracker (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Bane (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Sacrificial (1 | DF: 100):
+  L15: Raw=720.00, MyLogic=72.00
+  L150: Raw=4770.00, MyLogic=477.00
+Corporeal (1 | DF: 100):
+  L15: Raw=720.00, MyLogic=72.00
+  L150: Raw=4770.00, MyLogic=477.00
+Blood-drinker (1 | DF: 100):
+  L15: Raw=720.00, MyLogic=72.00
+  L150: Raw=4770.00, MyLogic=477.00
+Control (2 | DF: 500):
+  L15: Raw=3.08, MyLogic=3.08
+  L150: Raw=18.26, MyLogic=18.26
+Deadraiser (1 | DF: 100):
+  L15: Raw=480.00, MyLogic=48.00
+  L150: Raw=3180.00, MyLogic=318.00
+Mage (2 | DF: 500):
+  L15: Raw=4.10, MyLogic=4.10
+  L150: Raw=24.35, MyLogic=24.35
+Amplify (1 | DF: 100):
+  L15: Raw=720.00, MyLogic=72.00
+  L150: Raw=4770.00, MyLogic=477.00
+Golem (2 | DF: 500):
+  L15: Raw=4.10, MyLogic=4.10
+  L150: Raw=24.35, MyLogic=24.35
+Scourge (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Essence (2 | DF: 500):
+  L15: Raw=4.10, MyLogic=4.10
+  L150: Raw=24.35, MyLogic=24.35
+Warrior (2 | DF: 500):
+  L15: Raw=4.10, MyLogic=4.10
+  L150: Raw=24.35, MyLogic=24.35
+Gravekeeper (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Abyssal (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Protector (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Undaunted (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Dominate (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Imbiber (2 | DF: 500):
+  L15: Raw=2.29, MyLogic=2.29
+  L150: Raw=11.59, MyLogic=11.59
+Diminish (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Darkness (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Exploit (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Dominate (2 | DF: 500):
+  L15: Raw=3.60, MyLogic=3.60
+  L150: Raw=23.85, MyLogic=23.85
+Revenge (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Twister (2 | DF: 500):
+  L15: Raw=15.25, MyLogic=15.25
+  L150: Raw=65.88, MyLogic=65.88
+Rumble (2 | DF: 500):
+  L15: Raw=15.25, MyLogic=15.25
+  L150: Raw=65.88, MyLogic=65.88
+Explosive (2 | DF: 500):
+  L15: Raw=15.25, MyLogic=15.25
+  L150: Raw=65.88, MyLogic=65.88
+Nightstalker (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Stalagmite (2 | DF: 500):
+  L15: Raw=3.30, MyLogic=3.30
+  L150: Raw=20.65, MyLogic=20.65
+Invocation (2 | DF: 500):
+  L15: Raw=6.63, MyLogic=6.63
+  L150: Raw=31.94, MyLogic=31.94
+Tectonic (2 | DF: 500):
+  L15: Raw=3.08, MyLogic=3.08
+  L150: Raw=18.26, MyLogic=18.26
+Electrocution (2 | DF: 500):
+  L15: Raw=15.25, MyLogic=15.25
+  L150: Raw=65.88, MyLogic=65.88
+Exhumation (2 | DF: 500):
+  L15: Raw=4.60, MyLogic=4.60
+  L150: Raw=24.85, MyLogic=24.85
+Desecration (2 | DF: 500):
+  L15: Raw=15.25, MyLogic=15.25
+  L150: Raw=65.88, MyLogic=65.88
+Fitness (2 | DF: 500):
+  L15: Raw=3.08, MyLogic=3.08
+  L150: Raw=18.26, MyLogic=18.26
+Menagerist (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Jagged Plume (2 | DF: 500):
+  L15: Raw=3.08, MyLogic=3.08
+  L150: Raw=18.26, MyLogic=18.26
+Hone (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Talon (2 | DF: 500):
+  L15: Raw=3.08, MyLogic=3.08
+  L150: Raw=18.26, MyLogic=18.26
+Innate (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Wildfire (2 | DF: 500):
+  L15: Raw=3.08, MyLogic=3.08
+  L150: Raw=18.26, MyLogic=18.26
+Colossal (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Ritual (2 | DF: 500):
+  L15: Raw=0.34, MyLogic=0.34
+  L150: Raw=1.69, MyLogic=1.69
+Consumption (2 | DF: 500):
+  L15: Raw=4.60, MyLogic=4.60
+  L150: Raw=24.85, MyLogic=24.85
+Hubris (1 | DF: 100):
+  L15: Raw=720.00, MyLogic=72.00
+  L150: Raw=4770.00, MyLogic=477.00
+Fester (2 | DF: 500):
+  L15: Raw=3.08, MyLogic=3.08
+  L150: Raw=18.26, MyLogic=18.26
+Eliminator (1 | DF: 100):
+  L15: Raw=313.19, MyLogic=31.32
+  L150: Raw=1404.67, MyLogic=140.47
+Challenger (1 | DF: 100):
+  L15: Raw=313.19, MyLogic=31.32
+  L150: Raw=1404.67, MyLogic=140.47
+Headhunter (1 | DF: 100):
+  L15: Raw=313.19, MyLogic=31.32
+  L150: Raw=1404.67, MyLogic=140.47
+Fulminate (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Spirit (2 | DF: 500):
+  L15: Raw=4.10, MyLogic=4.10
+  L150: Raw=24.35, MyLogic=24.35
+Outmatch (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Headhunter (1 | DF: 100):
+  L15: Raw=313.19, MyLogic=31.32
+  L150: Raw=1404.67, MyLogic=140.47
+Revenge (1 | DF: 100):
+  L15: Raw=480.00, MyLogic=48.00
+  L150: Raw=3180.00, MyLogic=318.00
+Sentinel (2 | DF: 500):
+  L15: Raw=3.60, MyLogic=3.60
+  L150: Raw=23.85, MyLogic=23.85
+Honed (2 | DF: 500):
+  L15: Raw=3.60, MyLogic=3.60
+  L150: Raw=23.85, MyLogic=23.85
+Law (2 | DF: 500):
+  L15: Raw=3.60, MyLogic=3.60
+  L150: Raw=23.85, MyLogic=23.85
+Arbiter  (2 | DF: 500):
+  L15: Raw=3.30, MyLogic=3.30
+  L150: Raw=20.65, MyLogic=20.65
+Resplendence (1 | DF: 100):
+  L15: Raw=720.00, MyLogic=72.00
+  L150: Raw=4770.00, MyLogic=477.00
+Judicator (2 | DF: 500):
+  L15: Raw=3.30, MyLogic=3.30
+  L150: Raw=20.65, MyLogic=20.65
+Feverous (2 | DF: 500):
+  L15: Raw=3.30, MyLogic=3.30
+  L150: Raw=20.65, MyLogic=20.65
+Apostle (2 | DF: 500):
+  L15: Raw=3.30, MyLogic=3.30
+  L150: Raw=20.65, MyLogic=20.65
+Chip (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Diminish (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Chip (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Exploit (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Outmatch (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Spirit (2 | DF: 500):
+  L15: Raw=4.10, MyLogic=4.10
+  L150: Raw=24.35, MyLogic=24.35
+Turf (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Blood Frenzy (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Eliminator (1 | DF: 100):
+  L15: Raw=313.19, MyLogic=31.32
+  L150: Raw=1404.67, MyLogic=140.47
+Death Aura (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Occultist (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Unbound (1 | DF: 100):
+  L15: Raw=720.00, MyLogic=72.00
+  L150: Raw=4770.00, MyLogic=477.00
+Hellforge (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Abyssal (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Ichor Carapace (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Wrath (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Eldritch Sight (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Entropy (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Vanguard (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Mastermind (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Archfiend (2 | DF: 500):
+  L15: Raw=1.79, MyLogic=1.79
+  L150: Raw=9.38, MyLogic=9.38
+Control (2 | DF: 500):
+  L15: Raw=3.08, MyLogic=3.08
+  L150: Raw=18.26, MyLogic=18.26
+Destruction (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Attrition (1 | DF: 100):
+  L15: Raw=600.00, MyLogic=60.00
+  L150: Raw=3975.00, MyLogic=397.50
+Demonologist (2 | DF: 500):
+  L15: Raw=2.05, MyLogic=2.05
+  L150: Raw=12.17, MyLogic=12.17
+Empowered (2 | DF: 500):
+  L15: Raw=0.18, MyLogic=0.18
+  L150: Raw=0.94, MyLogic=0.94
+Retribution (1 | DF: 100):
+  L15: Raw=480.00, MyLogic=48.00
+  L150: Raw=3180.00, MyLogic=318.00
+Volley (2 | DF: 500):
+  L15: Raw=15.25, MyLogic=15.25
+  L150: Raw=65.88, MyLogic=65.88
+Eclipse (2 | DF: 500):
+  L15: Raw=2.73, MyLogic=2.73
+  L150: Raw=16.23, MyLogic=16.23
+Assassin (2 | DF: 500):
+  L15: Raw=2.73, MyLogic=2.73
+  L150: Raw=16.23, MyLogic=16.23

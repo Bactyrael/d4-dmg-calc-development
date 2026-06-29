@@ -1,0 +1,366 @@
+ID: 751203 | OP: 1 | Base: 250 | PerLevel: 25 | DF: 100 | Formula: ParagonGlyphAdditive_Rare_BonusToNodes
+Desc: Grants {c_number}+[{GlyphAffixScalar}|1%|]{/c} bonus to all Rare nodes within range.
+
+ID: 758502 | OP: 2 | Base: 2.3 | PerLevel: 0.1695 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Intelligence within range, {c_important}Conjuration{/c} Skills gain {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 758567 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to Burning targets.
+
+ID: 758571 | OP: 2 | Base: 1.5 | PerLevel: 0.1125 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to Crowd Controlled targets.
+
+ID: 759335 | OP: 2 | Base: 2.5 | PerLevel: 0.1875 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence within range, {c_important}Companion{/c} Skills deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 971197 | OP: 2 | Base: 2 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Intelligence purchased within range, {c_important}{u}Crackling Energy{/u}{/c} deals {c_number}+[{GlyphAffixScalar}|2%|]{/c} increased damage.
+
+ID: 971225 | OP: 2 | Base: 1 | PerLevel: 0.05625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to {c_important}{u}Vulnerable{/u}{/c} targets.
+
+ID: 971229 | OP: 2 | Base: 2 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Critical Strike Damage.
+
+ID: 971463 | OP: 2 | Base: 1 | PerLevel: 0.05625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Strength purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage while wielding a Sword.
+
+ID: 971468 | OP: 2 | Base: 1 | PerLevel: 0.05625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Strength purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage while wielding a Mace or Flail.
+
+ID: 971470 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Strength purchased within range, you deal {c_number}+[{GlyphAffixScalar}|2%|]{/c} increased damage while wielding an Axe.
+
+ID: 971471 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Strength purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage while wielding a Polearm.
+
+ID: 971474 | OP: 2 | Base: 1 | PerLevel: 0.05625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Strength purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage while {c_important}{u}Berserking{/u}{/c}.
+
+ID: 971478 | OP: 2 | Base: 1 | PerLevel: 0.05625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to Bleeding targets.
+
+ID: 971490 | OP: 2 | Base: 1.5 | PerLevel: 0.1125 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Critical Strike Damage.
+
+ID: 971494 | OP: 2 | Base: 1.34 | PerLevel: 0.17525 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, Skills that swap to a different weapon deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 971497 | OP: 2 | Base: 1 | PerLevel: 0.05625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage while {c_important}{u}Fortified{/u}{/c}.
+
+ID: 971498 | OP: 2 | Base: 1.5 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage per {c_important}{u}Overpower{/u}{/c} charge.
+
+ID: 971502 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Bleeding damage.
+
+ID: 1025587 | OP: 2 | Base: 1.5 | PerLevel: 0.1125 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 1025785 | OP: 2 | Base: 2.3 | PerLevel: 0.1695 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Intelligence within range, {c_important}Mastery{/c} Skills gain {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 1026041 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Burning damage.
+
+ID: 1026737 | OP: 2 | Base: 1.5 | PerLevel: 0.1125 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to {c_important}{u}Chilled{/u}{/c} targets.
+
+ID: 1026844 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to Close targets.
+
+ID: 1026998 | OP: 2 | Base: 1.325 | PerLevel: 0.06890625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage while {c_important}{u}Healthy{/u}{/c}.
+
+ID: 1028932 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage while in Werebear form.
+
+ID: 1028934 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage while in Werewolf form.
+
+ID: 1028946 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage while in Human form.
+
+ID: 1028951 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Poison damage.
+
+ID: 1028952 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Lightning damage.
+
+ID: 1028953 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to Poisoned targets.
+
+ID: 1029102 | OP: 2 | Base: 2 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Critical Strike Damage.
+
+ID: 1029584 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Strength purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to Close targets.
+
+ID: 1029585 | OP: 2 | Base: 1 | PerLevel: 0.05625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Strength purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to {c_important}{u}Vulnerable{/u}{/c} targets.
+
+ID: 1029586 | OP: 2 | Base: 1.5 | PerLevel: 0.1125 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to Crowd Controlled targets.
+
+ID: 1029587 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Strength purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Poison damage.
+
+ID: 1029588 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to Poisoned targets.
+
+ID: 1029591 | OP: 2 | Base: 1.5 | PerLevel: 0.1125 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, Skills that are {c_important}Imbued{/c} deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 1029592 | OP: 2 | Base: 2 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Critical Strike Damage.
+
+ID: 1029604 | OP: 2 | Base: 1.3333 | PerLevel: 0.1 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, {c_important}Trap{/c} Skills deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 1029605 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Strength purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to targets affected by {c_important}Trap{/c} Skills.
+
+ID: 1030239 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Dexterity purchased within range, {c_important}Cutthroat{/c} Skills deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 1030242 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Dexterity purchased within range, {c_important}Marksman{/c} Skills deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 1030244 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Physical damage.
+
+ID: 1030695 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Non-physical damage.
+
+ID: 1031014 | OP: 2 | Base: 1.5 | PerLevel: 0.1125 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to Crowd Controlled targets.
+
+ID: 1031832 | OP: 2 | Base: 2 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, {c_important}Skeletal Warriors{/c} deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 1031840 | OP: 2 | Base: 2 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}[{GlyphAffixScalar}|1+%|]{/c} increased Critical Strike Damage.
+
+ID: 1031882 | OP: 1 | Base: 200 | PerLevel: 20 | DF: 100 | Formula: ParagonGlyphAdditive_Rare_BonusToNodes
+Desc: Paragon nodes within range gain {c_number}+[{GlyphAffixScalar}|1%|]{/c} bonus to their Minion damage and damage reduction modifiers.
+
+ID: 1031889 | OP: 2 | Base: 2 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Intelligence purchased within range, {c_important}Skeleton Mages{/c} deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 1031892 | OP: 2 | Base: 2 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, {c_important}Golems{/c} gain {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 1068542 | OP: 2 | Base: 1.325 | PerLevel: 0.06890625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage while {c_important}{u}Healthy{/u}{/c}.
+
+ID: 1068823 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage while {c_important}{u}Fortified{/u}{/c}.
+
+ID: 1224822 | OP: 1 | Base: 300 | PerLevel: 30 | DF: 100 | Formula: ParagonGlyphAdditive_Rare_BonusToNodes
+Desc: Grants {c_number}+[{GlyphAffixScalar}|1%|]{/c} bonus to all Magic nodes within range.
+
+ID: 1475146 | OP: 1 | Base: 250 | PerLevel: 25 | DF: 100 | Formula: ParagonGlyphAdditive_Rare_BonusToNodes
+Desc: Grants {c_number}+[{GlyphAffixScalar}|1%|]{/c} bonus to all Magic nodes within range.
+
+ID: 1475148 | OP: 1 | Base: 200 | PerLevel: 20 | DF: 100 | Formula: ParagonGlyphAdditive_Rare_BonusToNodes
+Desc: Grants {c_number}+[{GlyphAffixScalar}|1%|]{/c} bonus to all Rare nodes within range.
+
+ID: 1621715 | OP: 2 | Base: 10 | PerLevel: 0.375 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Strength purchased within range, your {c_important}Dust Devils{/c} deal {c_number}[{GlyphAffixScalar}|1%+|]{/c} increased damage.
+
+ID: 1622830 | OP: 2 | Base: 10 | PerLevel: 0.375 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Strength purchased within range, your {c_important}Earthquakes{/c} deal {c_number}[{GlyphAffixScalar}|1%+|]{/c} increased damage.
+
+ID: 1622893 | OP: 2 | Base: 10 | PerLevel: 0.375 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Dexterity purchased within range, your {c_important}Stun Grenades{/c} deal {c_number}[{GlyphAffixScalar}|1%+|]{/c} increased damage.
+
+ID: 1622959 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Shadow damage.
+
+ID: 1623726 | OP: 2 | Base: 1.5 | PerLevel: 0.1285 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Intelligence purchased within range, your {c_important}Ice Spikes{/c} deal {c_number}[{GlyphAffixScalar}|1%+|]{/c} increased damage.
+
+ID: 1623750 | OP: 2 | Base: 4 | PerLevel: 0.1875 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, your {c_important}Conjuration{/c} Skills gain {c_number}[{GlyphAffixScalar}|1%+|]{/c} Critical Strike Damage.
+
+ID: 1624742 | OP: 2 | Base: 1.5 | PerLevel: 0.1125 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, your {c_important}Earth{/c} Skills gain {c_number}[{GlyphAffixScalar}|1%+|]{/c} Critical Strike Damage.
+
+ID: 1628743 | OP: 2 | Base: 10 | PerLevel: 0.375 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Willpower purchased within range, your {c_important}Lightning Bolts{/c} and {c_important}Dancing Bolts{/c} deal {c_number}[{GlyphAffixScalar}|1%+|]{/c} increased damage.
+
+ID: 1629215 | OP: 2 | Base: 2.5 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Intelligence purchased within range, your {c_important}Corpse{/c} Skills deal {c_number}[{GlyphAffixScalar}|1%+|]{/c} increased damage.
+
+ID: 1631007 | OP: 2 | Base: 10 | PerLevel: 0.375 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, your {c_important}Desecrated Ground{/c} deals {c_number}[{GlyphAffixScalar}|1%+|]{/c} increased damage.
+
+ID: 1701296 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Corrupting damage.
+
+ID: 1701308 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|2%|]{/c} increased Shadow damage.
+
+ID: 2063986 | OP: 2 | Base: 1.5 | PerLevel: 0.1125 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Critical Strike Damage.
+
+ID: 2066790 | OP: 2 | Base: 1.5 | PerLevel: 0.1125 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Damage with {c_important}Eagle{/c} Skills.
+
+ID: 2067499 | OP: 2 | Base: 1.5 | PerLevel: 0.1125 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Dexterity purchased within range, you gain {c_number}+[{GlyphAffixScalar}|1%|]{/c} {c_important}Storm Feather{/c} potency.
+
+ID: 2067551 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Strength purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Damage with your {c_important}Jaguar{/c} Skills.
+
+ID: 2067565 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Strength purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage with {c_important}Incarnate{/c} Skills.
+
+ID: 2067640 | OP: 2 | Base: 1.5 | PerLevel: 0.1125 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Fire Damage.
+
+ID: 2069254 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Strength purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage with {c_important}Gorilla{/c} Skills.
+
+ID: 2069917 | OP: 2 | Base: 0.2 | PerLevel: 0.01 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you gain {c_number}+[{GlyphAffixScalar}|2%|]{/c} increased {c_important}Mystic Circle{/c} potency.
+
+ID: 2072207 | OP: 2 | Base: 2.5 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, your {c_important}Pestilent Swarms{/c} deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 2072570 | OP: 2 | Base: 1.5 | PerLevel: 0.1125 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Damage with {c_important}Centipede{/c} skills.
+
+ID: 2073360 | OP: 1 | Base: 200 | PerLevel: 8.085 | DF: 100 | Formula: ParagonGlyphAdditive_Rare_BonusToNodes
+Desc: Grants {c_number}+[{GlyphAffixScalar}|1%|]{/c} bonus to all Normal nodes within range.
+
+ID: 2077021 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Lightning damage.
+
+ID: 2077110 | OP: 2 | Base: 2 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Critical Strike Damage.
+
+ID: 2477900 | OP: 2 | Base: 1.5 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Strength purchased within range, your {c_important}Juggernaut{/c} skills deal {c_number}[{GlyphAffixScalar}|1%+|]{/c} increased damage.
+
+ID: 2478502 | OP: 2 | Base: 1.5 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Critical Strike Damage.
+
+ID: 2478919 | OP: 2 | Base: 1.5 | PerLevel: 0.1285 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, your {c_important}{u}Arbiter{/u}{/c} Wing Attacks deal {c_number}[{GlyphAffixScalar}|1%+|]{/c} increased damage.
+
+ID: 2478921 | OP: 2 | Base: 1.5 | PerLevel: 0.1285 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Strength purchased within range, your {c_important}Disciple{/c} skills deal {c_number}[{GlyphAffixScalar}|1%+|]{/c} increased damage.
+
+ID: 2478923 | OP: 2 | Base: 1.5 | PerLevel: 0.1285 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, your {c_important}Zealot{/c} skills deal {c_number}[{GlyphAffixScalar}|1%+|]{/c} increased damage.
+
+ID: 2478929 | OP: 2 | Base: 1.5 | PerLevel: 0.1285 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, your {c_important}Judicator{/c} skills deal {c_number}[{GlyphAffixScalar}|1%+|]{/c} increased damage.
+
+ID: 2479235 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Physical damage.
+
+ID: 2481243 | OP: 2 | Base: 1.5 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Strength purchased within range, your {c_important}{u}Judgement{/u}{/c} deals {c_number}[{GlyphAffixScalar}|1%+|]{/c} increased damage.
+
+ID: 2506076 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Physical damage.
+
+ID: 2506136 | OP: 2 | Base: 1 | PerLevel: 0.05625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to {c_important}{u}Vulnerable{/u}{/c} targets.
+
+ID: 2506834 | OP: 2 | Base: 2 | PerLevel: 0.15 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Critical Strike Damage.
+
+ID: 2506849 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Strength purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to Close targets.
+
+ID: 2529817 | OP: 2 | Base: 1 | PerLevel: 0.05625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to Bleeding targets.
+
+ID: 2530675 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage with {c_important}Occult{/c} Skills.
+
+ID: 2531455 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage with {c_important}Hellfire{/c} Skills.
+
+ID: 2531540 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage with {c_important}Abyss{/c} Skills.
+
+ID: 2531987 | OP: 2 | Base: 1 | PerLevel: 0.05625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage with {c_important}Demonology{/c} Skills.
+
+ID: 2531998 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased Critical Strike Damage.
+
+ID: 2532089 | OP: 2 | Base: 1 | PerLevel: 0.05625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to {c_important}{u}Vulnerable{/u}{/c} targets.
+
+ID: 2532206 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, your Skills deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage when empowered by {c_important}{u}Volatility{/u}{/c}.
+
+ID: 2532869 | OP: 2 | Base: 1 | PerLevel: 0.05625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Willpower purchased within range, your {c_important}{u}Demonform{/u}{/c} damage bonus is increased by {c_number}+[{GlyphAffixScalar}|1%|]{/c}.
+
+ID: 2532955 | OP: 2 | Base: 1 | PerLevel: 0.05625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage with {c_important}Abyss{/c} Skills.
+
+ID: 2532980 | OP: 2 | Base: 1 | PerLevel: 0.05625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage with {c_important}Archfiend{/c} Skills.
+
+ID: 2533059 | OP: 2 | Base: 1.5 | PerLevel: 0.1125 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to Crowd Controlled targets.
+
+ID: 2533451 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage with {c_important}Demonology{/c} Skills.
+
+ID: 2533648 | OP: 2 | Base: 0.1 | PerLevel: 0.005625 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, you deal {c_number}+[{GlyphAffixScalar}|2%|]{/c} increased {c_important}{u}Overpower{/u}{/c} damage per stack.
+
+ID: 2617853 | OP: 2 | Base: 1.3333 | PerLevel: 0.1 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, {c_important}Grenade{/c} Skills deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 2620283 | OP: 2 | Base: 1.3333 | PerLevel: 0.1 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Strength purchased within range, you gain {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage to Elites.
+
+ID: 2620499 | OP: 2 | Base: 10 | PerLevel: 0.375 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Dexterity purchased within range, your {c_important}Arrow Storms{/c} deal {c_number}[{GlyphAffixScalar}|1%+|]{/c} increased damage.
+
+ID: 2620518 | OP: 2 | Base: 1.3333 | PerLevel: 0.1 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, {c_important}Shade{/c} Skills deal {c_number}+[{GlyphAffixScalar}|1%|]{/c} increased damage.
+
+ID: 2630163 | OP: 2 | Base: 1 | PerLevel: 0.075 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, your {c_important}{u}Hex{/u}{/c} damage bonus is increased by {c_number}+[{GlyphAffixScalar}|1%|]{/c}.
+
+ID: 9920000 | OP: 2 | Base: 10 | PerLevel: 1 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Strength purchased within range, your {c_important}Dust Devils{/c} deal {c_number}[{GlyphAffixScalar}|1%|]{c_gray}\[+\]{/c}{/c} increased damage.
+
+ID: 9920002 | OP: 2 | Base: 10 | PerLevel: 1 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Strength purchased within range, your {c_important}Earthquakes{/c} deal {c_number}[{GlyphAffixScalar}|1%|]{c_gray}\[+\]{/c}{/c} increased damage.
+
+ID: 9920004 | OP: 2 | Base: 10 | PerLevel: 1 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Willpower purchased within range, your {c_important}Lightning Bolts{/c} and {c_important}Dancing Bolts{/c} deal {c_number}[{GlyphAffixScalar}|1%|]{c_gray}\[+\]{/c}{/c} increased damage.
+
+ID: 9920006 | OP: 2 | Base: 1.5 | PerLevel: 0.3 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, your {c_important}Earth Skills{/c} gains {c_number}[{GlyphAffixScalar}|1%|]{c_gray}\[+\]{/c}{/c} Critical Strike Damage.
+
+ID: 9920008 | OP: 2 | Base: 2.5 | PerLevel: 0.4 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Intelligence purchased within range, your {c_important}Corpse{/c} skills deal {c_number}[{GlyphAffixScalar}|1%|]{c_gray}\[+\]{/c}{/c} increased damage.
+
+ID: 9920010 | OP: 2 | Base: 10 | PerLevel: 1 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Willpower purchased within range, your {c_important}Desecrated Ground{/c} deals {c_number}[{GlyphAffixScalar}|1%|]{c_gray}\[+\]{/c}{/c} increased damage.
+
+ID: 9920012 | OP: 2 | Base: 10 | PerLevel: 1 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Dexterity purchased within range, your {c_important}Stun Grenades{/c} deal {c_number}[{GlyphAffixScalar}|1%|]{c_gray}\[+\]{/c}{/c} increased damage.
+
+ID: 9920014 | OP: 2 | Base: 1 | PerLevel: 0.2 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Intelligence purchased within range, you deal {c_number}[{GlyphAffixScalar}|1%|]{c_gray}\[+\]{/c}{/c} increased Shadow damage.
+
+ID: 9920016 | OP: 2 | Base: 1.5 | PerLevel: 0.3 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatMain
+Desc: For every 5 Intelligence purchased within range, your {c_important}Ice Spikes{/c} deal {c_number}[{GlyphAffixScalar}|1%|]{c_gray}\[+\]{/c}{/c} increased damage.
+
+ID: 9920018 | OP: 2 | Base: 4 | PerLevel: 0.5 | DF: 500 | Formula: ParagonGlyphAdditive_Rare_StatSide
+Desc: For every 5 Dexterity purchased within range, your {c_important}Conjuration{/c} Skills gain {c_number}[{GlyphAffixScalar}|1%|]{c_gray}\[+\]{/c}{/c} Critical Strike Damage.
+
