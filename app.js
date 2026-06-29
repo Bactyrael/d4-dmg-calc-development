@@ -1541,8 +1541,7 @@ function renderEquipment(className, savedEquipment = {}) {
               let level = document.getElementById('character-level') ? parseInt(document.getElementById('character-level').value) || 50 : 50;
               let warriorRank = 1;
               if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.skills) {
-                 const node = currentBuild.skills.find(s => s.name === "Skeleton Warrior");
-                 if (node) warriorRank = node.rank;
+                 warriorRank = currentBuild.skills["Skeleton Warrior"] || currentBuild.skills["Necromancer_SkeletonWarrior"] || 1;
                  // Add item bonuses
                  if (typeof calculate === 'function') {
                     // Try to extract from the stats panel if it exists
