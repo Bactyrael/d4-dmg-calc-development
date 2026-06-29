@@ -124,10 +124,10 @@
           <div style="color: #aaa; font-size: 1.1rem;">Total Points Spent: <span id="paragon-points-spent" style="color: #c9a55c; font-weight: bold;">0</span> / 342</div>
           <button id="reset-paragon-btn" class="d4-btn" style="margin-left: auto;">Reset Paragon</button>
         </div>
-        <div id="paragon-container" class="custom-scrollbar" style="display:flex; flex-direction:column; gap:20px; padding:20px; color:#fff; max-height: 85vh; overflow-y: auto; border: 1px solid #333; border-top: none; border-radius: 0 0 4px 4px; background: rgba(0,0,0,0.3);">
+        <div id="paragon-container" class="custom-scrollbar" style="display:flex; flex-direction:column; gap:20px; padding:20px; color:#fff; height: 800px; border: 1px solid #333; border-top: none; border-radius: 0 0 4px 4px; background: rgba(0,0,0,0.3);">
           
           <!-- Board Selectors container -->
-          <div class="paragon-boards-layout" style="display: flex; gap: 20px;">
+          <div class="paragon-boards-layout" style="display: flex; gap: 20px; flex: 1; min-height: 0;">
             <!-- Left Sidebar (Board selection) -->
             <div class="paragon-board-list" style="width: 280px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px;">
               <div class="paragon-board-slot active" data-slot="0">
@@ -153,7 +153,7 @@
             </div>
 
             <!-- Right Main Area (The Grid) -->
-            <div class="paragon-board-main" style="flex: 1; display: flex; gap: 20px; height: 85vh;">
+            <div class="paragon-board-main" style="flex: 1; display: flex; gap: 20px; height: 100%;">
               <div id="paragon-viewport" class="d4-panel" style="flex: 1; position: relative; overflow: hidden; cursor: grab; padding: 0; background: #0a0a0e; user-select: none;">
                 <div id="paragon-surface" style="position: absolute; transform-origin: 0 0; width: 0px; height: 0px;">
                   <!-- Boards rendered here via JS -->

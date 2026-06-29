@@ -522,6 +522,43 @@ window.renderParagonGrid = function() {
         boardWrapper.style.borderRadius = '8px';
         boardWrapper.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
         
+        // Add Board Label (Number + Name) in top left
+        const boardLabel = document.createElement('div');
+        boardLabel.style.position = 'absolute';
+        boardLabel.style.top = '10px';
+        boardLabel.style.left = '10px';
+        boardLabel.style.display = 'flex';
+        boardLabel.style.alignItems = 'center';
+        boardLabel.style.gap = '10px';
+        boardLabel.style.zIndex = '5';
+        boardLabel.style.pointerEvents = 'none'; // click through to the board
+        
+        let numSquare = document.createElement('div');
+        numSquare.style.width = '24px';
+        numSquare.style.height = '24px';
+        numSquare.style.border = (activeParagonSlot === s) ? '1px solid #c9a55c' : '1px solid #ff2222';
+        if (s === 0) numSquare.style.borderColor = '#c9a55c'; // Start board always gold? Or match red
+        numSquare.style.display = 'flex';
+        numSquare.style.alignItems = 'center';
+        numSquare.style.justifyContent = 'center';
+        numSquare.style.color = '#fff';
+        numSquare.style.fontWeight = 'bold';
+        numSquare.style.fontSize = '1.1rem';
+        numSquare.style.textShadow = '0 0 5px #000';
+        numSquare.textContent = (s + 1).toString();
+        if (s === 0) numSquare.textContent = '1';
+        
+        let nameText = document.createElement('div');
+        nameText.style.color = '#c9a55c';
+        nameText.style.fontWeight = 'bold';
+        nameText.style.fontSize = '1.1rem';
+        nameText.style.textShadow = '0 0 5px #000';
+        nameText.textContent = bData.name || "Start";
+        
+        boardLabel.appendChild(numSquare);
+        boardLabel.appendChild(nameText);
+        boardWrapper.appendChild(boardLabel);
+        
         // Add click listener to select this board in the controls
         boardWrapper.addEventListener('click', (e) => {
             if (e.target === boardWrapper) {
