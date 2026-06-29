@@ -70,9 +70,9 @@ window.getActiveLegendaryPowers = function() {
           }
           if (socketDataIdx !== -1) {
               let lvl = pData.glyph.level || 1;
-              let radius = 2;
-              if (lvl >= 15 && lvl <= 45) radius = 3;
-              else if (lvl >= 46) radius = 4;
+              let radius = 3;
+              if (lvl >= 25 && lvl <= 49) radius = 4;
+              else if (lvl >= 50) radius = 5;
               
               let socketX = socketDataIdx % 21;
               let socketY = Math.floor(socketDataIdx / 21);
@@ -1279,9 +1279,9 @@ window.openGlyphModal = function(slotIdx, nodeIdx) {
 };
 
 function updateGlyphRadiusDisplay(level) {
-    let radius = 2;
-    if (level >= 15 && level <= 45) radius = 3;
-    else if (level >= 46) radius = 4;
+    let radius = 3;
+    if (level >= 25 && level <= 49) radius = 4;
+    else if (level >= 50) radius = 5;
     document.getElementById('paragon-glyph-radius-display').textContent = 'Radius: ' + radius;
 }
 
