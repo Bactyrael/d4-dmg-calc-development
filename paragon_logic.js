@@ -981,12 +981,14 @@ window.showNodeDetails = function(nodeId, slotIndex = 0) {
                 let classStr = "";
                 if (typeof currentBuild !== 'undefined' && currentBuild.class) classStr = currentBuild.class.toLowerCase();
                 
-                if (classStr === 'barbarian') clsIdx = 0;
+                if (classStr === 'sorcerer') clsIdx = 0;
                 else if (classStr === 'druid') clsIdx = 1;
-                else if (classStr === 'necromancer') clsIdx = 2;
+                else if (classStr === 'barbarian') clsIdx = 2;
                 else if (classStr === 'rogue') clsIdx = 3;
-                else if (classStr === 'sorcerer') clsIdx = 4;
+                else if (classStr === 'necromancer') clsIdx = 4;
                 else if (classStr === 'spiritborn') clsIdx = 5;
+                else if (classStr === 'paladin') clsIdx = 6;
+                else if (classStr === 'warlock') clsIdx = 7;
                 
                 if (clsIdx !== -1 && th.classFilter && th.classFilter[clsIdx]) {
                     tData = th;
