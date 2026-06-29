@@ -25390,24 +25390,6 @@ window.D4_DATABASE.runes = [
         "offering": 300
     },
     {
-        "name": "Random Legendary Rune",
-        "type": "Effect",
-        "description": "",
-        "offering": 0
-    },
-    {
-        "name": "Random Rare or Legendary Rune",
-        "type": "Effect",
-        "description": "",
-        "offering": 0
-    },
-    {
-        "name": "Random Rune",
-        "type": "Effect",
-        "description": "",
-        "offering": 0
-    },
-    {
         "name": "Tal",
         "type": "Effect",
         "description": "Invoke the Spiritborn's Pestilent Swarm, dealing damage to enemies.",
