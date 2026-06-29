@@ -1537,6 +1537,25 @@ function renderEquipment(className, savedEquipment = {}) {
             const isSacrifice = node.classList.contains('sacrifice');
             const nodeNum = node.dataset.node;
             
+            
+              let level = document.getElementById('character-level') ? parseInt(document.getElementById('character-level').value) || 50 : 50;
+              let warriorRank = 1;
+              if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.skills) {
+                 const node = currentBuild.skills.find(s => s.name === "Skeleton Warrior");
+                 if (node) warriorRank = node.rank;
+                 // Add item bonuses
+                 if (typeof calculate === 'function') {
+                    // Try to extract from the stats panel if it exists
+                    // Actually, if we just use the dom element:
+                 }
+              }
+              // The exact formula: Max((0.0007377*Pow(Level-1,3.6292)+2+(1+Round(Level*0.1))*SkillRank(439912))*Table(34,SkillRank(439912)),1)
+              let powVal = Math.pow(level - 1, 3.6292);
+              let rankMult = 1.0 + ((warriorRank - 1) * 0.10); // Approximation of Table 34
+              let thornsBase = (0.0007377 * powVal) + 2 + ((1 + Math.round(level * 0.1)) * warriorRank);
+              let thornsValue = Math.max(thornsBase * rankMult, 1);
+              thornsValue = Math.floor(thornsValue);
+
             const BOTD_DATA = {
               'Skirmisher': {
                 desc: 'Skirmishers slice up enemies, dealing high damage to a single target.',
@@ -1551,7 +1570,7 @@ function renderEquipment(className, savedEquipment = {}) {
                 desc: 'Defenders are durable protectors, dealing less damage but retaining strong survivability.',
                 tagline: '<span class="d4-tooltip-keyword">Skeleton Warrior</span> is also a <span class="d4-tooltip-keyword">Blood</span> Skill.',
                 upgrades: [
-                  `Defenders gain <span class="d4-tooltip-number">X</span> Thorns. Whenever they are damaged, their bones splinter and deal <span class="d4-tooltip-number">50%</span> of their Thorns to nearby enemies.<br><br>Commanding your Defenders causes them to Taunt nearby enemies for <span class="d4-tooltip-number">6</span> seconds.`,
+                  `Defenders gain <span class="d4-tooltip-number">${thornsValue}</span> Thorns. Whenever they are damaged, their bones splinter and deal <span class="d4-tooltip-number">50%</span> of their Thorns to nearby enemies.<br><br>Commanding your Defenders causes them to Taunt nearby enemies for <span class="d4-tooltip-number">6</span> seconds.`,
                   `Defenders have a <span class="d4-tooltip-number">10%</span> chance to form a <span class="d4-tooltip-keyword-underline">Blood Orb</span> when they deal damage.`
                 ],
                 sacrifice: `You gain <span class="d4-tooltip-number">40%</span>[+] Resistance to All Elements, but the amount of Defenders you can Summon is reduced by <span class="d4-tooltip-number">50%</span>.`
