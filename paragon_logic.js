@@ -776,7 +776,7 @@ window.renderParagonGrid = function() {
                 }
 
                 cell.addEventListener('mouseenter', () => {
-                    if (window.showNodeDetails) window.showNodeDetails(nodeName);
+                    if (window.showNodeDetails) window.showNodeDetails(nodeName, s);
                 });
                 
                 cell.addEventListener('click', (e) => {
@@ -897,7 +897,7 @@ window.renderParagonGrid = function() {
     }
 };
 
-window.showNodeDetails = function(nodeId) {
+window.showNodeDetails = function(nodeId, slotIndex = 0) {
     const detailsDiv = document.getElementById('paragon-node-details');
     if (!detailsDiv || !D4_PARAGON_DATA || !D4_PARAGON_DATA.paragonNodes) return;
     
@@ -969,6 +969,96 @@ window.showNodeDetails = function(nodeId) {
                 }
             }
         });
+    }
+    
+    // Parse Bonus Thresholds (Requirements)
+    if (nData.thresholds && nData.thresholds.length > 0 && nData.thresholdAttributes) {
+        let tData = null;
+        for (let t of nData.thresholds) {
+            if (window.D4_PARAGON_FORMULAS.paragonThresholds && window.D4_PARAGON_FORMULAS.paragonThresholds[t]) {
+                let th = window.D4_PARAGON_FORMULAS.paragonThresholds[t];
+                let clsIdx = -1;
+                let classStr = "";
+                if (typeof currentBuild !== 'undefined' && currentBuild.class) classStr = currentBuild.class.toLowerCase();
+                
+                if (classStr === 'barbarian') clsIdx = 0;
+                else if (classStr === 'druid') clsIdx = 1;
+                else if (classStr === 'necromancer') clsIdx = 2;
+                else if (classStr === 'rogue') clsIdx = 3;
+                else if (classStr === 'sorcerer') clsIdx = 4;
+                else if (classStr === 'spiritborn') clsIdx = 5;
+                
+                if (clsIdx !== -1 && th.classFilter && th.classFilter[clsIdx]) {
+                    tData = th;
+                    break;
+                }
+            }
+        }
+        
+        if (tData && tData.attributes && tData.attributes.length > 0) {
+            let reqAttr = tData.attributes[0];
+            let reqName = "";
+            let reqVal = 0;
+            
+            if (reqAttr) {
+                let reqAttrMeta = window.D4_PARAGON_FORMULAS.attributes[reqAttr.id];
+                if (reqAttrMeta) reqName = reqAttrMeta.name.split('_')[0]; // Dexterity_Total -> Dexterity
+                
+                if (reqAttr.formula || typeof reqAttr.value === 'string') {
+                    let fStr = reqAttr.formula || reqAttr.value;
+                    let replaced = String(fStr).replace(/ParagonBoardEquipIndex/g, slotIndex);
+                    try { reqVal = Math.round(eval(replaced)); } catch(e) { reqVal = parseFloat(fStr) || 0; }
+                } else {
+                    reqVal = reqAttr.value;
+                }
+            }
+            
+            let bonusText = "";
+            nData.thresholdAttributes.forEach(attrIdx => {
+                let attr = nData.attributes[attrIdx];
+                if (attr) {
+                    let rawValue = 0;
+                    if (attr.formula && window.D4_PARAGON_FORMULAS.attributeFormulas[attr.formula]) {
+                        let fList = window.D4_PARAGON_FORMULAS.attributeFormulas[attr.formula];
+                        rawValue = parseFloat(fList[0].formula) || 0;
+                    } else if (attr.value !== undefined) {
+                        rawValue = attr.value;
+                    }
+                    
+                    let attrMeta = window.D4_PARAGON_FORMULAS.attributes[attr.id];
+                    if (attrMeta) {
+                        let descString = window.D4_PARAGON_FORMULAS.attributeDescriptions[attrMeta.name];
+                        if (descString) {
+                            let parsed = window.cleanAttributeDescription(descString, rawValue);
+                            let sign = parsed.value >= 0 ? '+' : '';
+                            let valStr = parsed.isPercent ? (parsed.value.toFixed(1) + '%') : (parsed.value % 1 !== 0 ? parsed.value.toFixed(1) : parsed.value);
+                            bonusText = `${sign}${valStr} ${parsed.name}`;
+                        }
+                    }
+                }
+            });
+            
+            if (bonusText) {
+                let playerStatVal = 0;
+                if (window.compiledStats && reqName) {
+                    let keys = Object.keys(window.compiledStats);
+                    let exactKey = keys.find(k => k.toLowerCase() === reqName.toLowerCase());
+                    if (exactKey) playerStatVal = window.compiledStats[exactKey].final;
+                }
+                
+                let met = playerStatVal >= reqVal;
+                let color = met ? '#4CAF50' : '#ff4444';
+                
+                html += `<div style="margin-top: 15px;">`;
+                html += `<div style="color: #c9a55c; font-size: 0.9rem; margin-bottom: 8px;">Bonus: Another ${bonusText} if requirements met:</div>`;
+                html += `<div style="color: #ccc; margin-bottom: 6px; font-size: 0.95rem; display: flex; align-items: flex-start;">`;
+                html += `<span style="color: #666; margin-right: 8px; font-size: 0.7rem; margin-top: 3px;">&#9670;</span>`;
+                html += `<span><span style="color: ${color};">${met ? '' : '+'}${Math.floor(playerStatVal)}</span> <span style="color: #888;">/ ${reqVal}</span> ${reqName}</span>`;
+                html += `</div>`;
+                html += `<div style="color: ${color}; font-size: 0.85rem; margin-top: 4px;">${met ? 'Requirements met' : 'Requirements not met'}</div>`;
+                html += `</div>`;
+            }
+        }
     }
     
     html += `</div></div>`;
