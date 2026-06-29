@@ -1357,19 +1357,17 @@ function renderEquipment(className, savedEquipment = {}) {
         if (gem) {
             circle.className = 'socket-circle filled';
             circle.title = gem;
-            if (gem.includes('Ruby')) circle.style.background = '#e74c3c';
-            else if (gem.includes('Amethyst')) circle.style.background = '#9b59b6';
-            else if (gem.includes('Emerald')) circle.style.background = '#2ecc71';
-            else if (gem.includes('Topaz')) circle.style.background = '#f1c40f';
-            else if (gem.includes('Sapphire')) circle.style.background = '#3498db';
-            else if (gem.includes('Diamond')) circle.style.background = '#bdc3c7';
-            else if (gem.includes('Skull')) circle.style.background = '#ecf0f1';
-            
             const isRune = window.D4_DATABASE?.runes?.some(r => r.name === gem);
             if (isRune) {
                 circle.style.background = `url('assets/images/Runes/rune_${gem.toLowerCase()}.png')`;
                 circle.style.backgroundSize = 'cover';
                 circle.style.border = '1px solid #d18a45';
+                circle.style.borderRadius = '50%';
+            } else {
+                let gemFileName = gem.toLowerCase().replace(/ /g, '_') + '_gem.png';
+                circle.style.background = `url('assets/images/Gems/${gemFileName}')`;
+                circle.style.backgroundSize = 'cover';
+                circle.style.border = '1px solid #666';
                 circle.style.borderRadius = '50%';
             }
         } else {
@@ -6267,6 +6265,9 @@ rarity = foundItem.rarity;
       if (isRune) {
           offeringHTML = ` <span style="color: #a8a8a8; font-size: 0.8em;">(Offering: ${item.offering})</span>`;
           iconHTML = `<div style="width: 24px; height: 24px; background-image: url('assets/images/Runes/rune_${item.name.toLowerCase()}.png'); background-size: cover; background-position: center; border-radius: 50%; border: 1px solid #d18a45;"></div>`;
+      } else {
+          let gemFileName = item.name.toLowerCase().replace(/ /g, '_') + '_gem.png';
+          iconHTML = `<div style="width: 24px; height: 24px; background-image: url('assets/images/Gems/${gemFileName}'); background-size: cover; background-position: center; border-radius: 50%; border: 1px solid #666;"></div>`;
       }
       
       row.innerHTML = `
