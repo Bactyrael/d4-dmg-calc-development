@@ -120,7 +120,73 @@
       </div>
       <!-- Paragon Tab -->
       <div id="tab-paragon" class="tab-pane">
-        <h3 style="text-align:center; color:#ccc; margin-top:20px;">Paragon Boards (Coming Soon)</h3>
+        <div class="paragon-header" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: rgba(20,20,20,0.8); border: 1px solid #444; border-radius: 4px 4px 0 0; border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 10;">
+          <div style="flex: 1;">
+            <h2 style="margin: 0; font-size: 1.2rem; color: #fff;">Paragon Boards</h2>
+          </div>
+          <div style="flex: 1; text-align: center;">
+            <div style="display: inline-block; font-size: 1.1rem; font-weight: bold; color: #00e5ff; text-shadow: 1px 1px 2px #000;">
+              Points Spent: <span id="paragon-points-spent">0</span> / 300
+            </div>
+          </div>
+          <div style="flex: 1; display: flex; justify-content: flex-end;">
+            <button id="reset-paragon-btn" class="d4-btn" style="padding: 4px 10px; font-size: 0.9rem; background: #660000; border-color: #ff3333; color: #fff;">Reset</button>
+          </div>
+        </div>
+        <div id="paragon-container" class="custom-scrollbar" style="display:flex; flex-direction:column; gap:20px; padding:20px; color:#fff; max-height: 700px; overflow-y: auto; border: 1px solid #333; border-top: none; border-radius: 0 0 4px 4px; background: rgba(0,0,0,0.3);">
+          
+          <!-- Board Selectors container -->
+          <div class="paragon-boards-layout" style="display: flex; gap: 20px;">
+            <!-- Left Sidebar (Board selection) -->
+            <div class="paragon-board-list" style="width: 280px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px;">
+              <div class="paragon-board-slot active" data-slot="0">
+                <div class="slot-label">Starting Board</div>
+                <div class="slot-name" id="paragon-slot-0-name">Start</div>
+              </div>
+              <div class="paragon-board-slot empty" data-slot="1">
+                <div class="slot-label">Board 2</div>
+                <div class="slot-name" id="paragon-slot-1-name">+ Add Board</div>
+              </div>
+              <div class="paragon-board-slot empty" data-slot="2">
+                <div class="slot-label">Board 3</div>
+                <div class="slot-name" id="paragon-slot-2-name">+ Add Board</div>
+              </div>
+              <div class="paragon-board-slot empty" data-slot="3">
+                <div class="slot-label">Board 4</div>
+                <div class="slot-name" id="paragon-slot-3-name">+ Add Board</div>
+              </div>
+              <div class="paragon-board-slot empty" data-slot="4">
+                <div class="slot-label">Board 5</div>
+                <div class="slot-name" id="paragon-slot-4-name">+ Add Board</div>
+              </div>
+            </div>
+
+            <!-- Right Main Area (The Grid) -->
+            <div class="paragon-board-main" style="flex: 1; display: flex; gap: 20px;">
+              <!-- Grid container -->
+              <div class="paragon-grid-wrapper" style="flex: 1; max-width: 650px;">
+                <div class="paragon-board-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                  <div style="display: flex; gap: 10px; align-items: center;">
+                    <select id="paragon-board-select" class="d4-input" style="width: 250px; font-size: 1rem;"></select>
+                    <button id="paragon-rotate-btn" class="d4-btn" style="padding: 4px 10px; font-size: 0.9rem;">Rotate</button>
+                  </div>
+                  <div class="board-points" style="color: #aaa; font-size: 0.9rem;">Points in Board: <span id="board-points-spent">0</span></div>
+                </div>
+                
+                <div class="paragon-grid-container" style="background: rgba(10, 10, 10, 0.9); border: 2px solid #444; border-radius: 4px; padding: 4px; aspect-ratio: 1/1;">
+                  <div id="paragon-grid" class="paragon-grid"></div>
+                </div>
+              </div>
+              
+              <!-- Inspector/Info Panel -->
+              <div class="paragon-inspector" style="width: 250px; flex-shrink: 0; background: rgba(15, 15, 15, 0.9); border: 1px solid #333; border-radius: 4px; padding: 15px;">
+                <div id="paragon-node-details">
+                  <div style="color: #777; font-style: italic; text-align: center; margin-top: 100px;">Hover over a node to view its stats.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -579,13 +645,11 @@
         <label for="new-build-class" style="display: block; margin-bottom: 8px; color: var(--text-secondary); font-size: 0.875rem;">Class</label>
         <select id="new-build-class" class="dropdown" style="width: 100%; box-sizing: border-box;">
           <option value="Barbarian">Barbarian</option>
-          <option value="Necromancer">Necromancer</option>
-          <option value="Sorcerer">Sorcerer</option>
-          <option value="Rogue">Rogue</option>
           <option value="Druid">Druid</option>
-          <option value="Paladin">Paladin</option>
+          <option value="Necromancer">Necromancer</option>
+          <option value="Rogue">Rogue</option>
+          <option value="Sorcerer">Sorcerer</option>
           <option value="Spiritborn">Spiritborn</option>
-          <option value="Warlock">Warlock</option>
         </select>
       </div>
       
@@ -600,6 +664,8 @@
   <div id="d4-context-menu" class="d4-context-menu hidden"></div>
   <script src="assets/database.js"></script>
   <script src="assets/skills.js"></script>
-  <script src="app.js"></script>
+  <script src="assets/paragon.js"></script>
+    <script src="paragon_logic.js?v=1"></script>
+  <script src="app.js?v=2"></script>
 </body>
 </html>

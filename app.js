@@ -56,7 +56,6 @@ function renderActiveRunes() {
    D4 Damage Calculator — Application Logic
    ============================================ */
 
-(function () {
   'use strict';
 
   // ---- Constants ----
@@ -66,11 +65,11 @@ function renderActiveRunes() {
   
   // D4 Internal Index mapping:
   const D4_CLASS_MAP = {
-    'Sorcerer': 0,
+    'Barbarian': 0,
     'Druid': 1,
-    'Barbarian': 2,
+    'Necromancer': 2,
     'Rogue': 3,
-    'Necromancer': 4,
+    'Sorcerer': 4,
     'Spiritborn': 5
   };
 
@@ -181,8 +180,30 @@ function renderActiveRunes() {
     legendaryBonusesContainer: document.getElementById('legendary-bonuses-container'),
   };
 
-  // ---- State ----
-  let currentBuild = createDefaultBuild();
+  window.addEventListener('error', function(e) {
+  const debug = document.getElementById('debug-console') || (function() {
+    const d = document.createElement('div');
+    d.id = 'debug-console';
+    d.style.position = 'fixed';
+    d.style.bottom = '0';
+    d.style.left = '0';
+    d.style.width = '100%';
+    d.style.maxHeight = '50vh';
+    d.style.overflow = 'auto';
+    d.style.background = 'rgba(255, 0, 0, 0.9)';
+    d.style.color = 'white';
+    d.style.padding = '15px';
+    d.style.zIndex = '99999';
+    d.style.whiteSpace = 'pre-wrap';
+    d.style.fontFamily = 'monospace';
+    document.body.appendChild(d);
+    return d;
+  })();
+  debug.textContent += '[ERROR] ' + e.message + '\n' + (e.error ? e.error.stack : '') + '\n\n';
+});
+
+// Global state variables
+var currentBuild = createDefaultBuild();
 
   // ---- Build Model ----
   function createDefaultBuild(name = 'New Build', className = 'Barbarian') {
@@ -191,6 +212,13 @@ function renderActiveRunes() {
       class: className,
       weaponDamage: 0,
       skillDamage: 0,
+      paragon: [
+        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1 },
+        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1 },
+        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1 },
+        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1 },
+        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1 }
+      ],
       strength: 0,
       intelligence: 0,
       willpower: 0,
@@ -3515,6 +3543,15 @@ function renderEquipment(className, savedEquipment = {}) {
     try {
       // Deep clone to prevent calculate() from mutating the data mid-load
       const b = JSON.parse(JSON.stringify(build));
+      
+      // Ensure paragon array exists and has 5 slots for backwards compatibility
+      if (!b.paragon || !Array.isArray(b.paragon) || b.paragon.length < 5) {
+        if (!Array.isArray(b.paragon)) b.paragon = [];
+        while(b.paragon.length < 5) {
+          b.paragon.push({ boardId: null, nodes: [], glyphId: null, glyphLevel: 1 });
+        }
+      }
+      
       currentBuild = b;
 
     dom.buildName.textContent = b.name || 'New Build';
@@ -3914,9 +3951,17 @@ function renderEquipment(className, savedEquipment = {}) {
         renderAdditionalBonusInputs(dom.classSelect.textContent, currentAddSave);
         renderLegendaryBonusInputs(dom.classSelect.textContent, currentLegSave);
         
-        // Auto clear equipment to prevent slot mismatches ONLY if triggered by a real user interaction
+        // Auto clear equipment and paragon to prevent slot mismatches ONLY if triggered by a real user interaction
         if (e.isTrusted) {
           currentBuild.equipment = {};
+          if (currentBuild.paragon) {
+             for (let i = 0; i < 5; i++) {
+                 currentBuild.paragon[i] = { boardId: '', nodes: [] };
+             }
+          }
+          if (typeof renderParagonGrid === 'function') {
+              renderParagonGrid();
+          }
         }
         renderEquipment(dom.classSelect.textContent, currentBuild ? currentBuild.equipment : {});
         calculate();
@@ -6539,7 +6584,6 @@ rarity = foundItem.rarity;
       });
   }
 
-})();
 
 
 // Tab Persistence
@@ -6560,4 +6604,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+});
+
+// ---- Paragon Board UI Logic ----
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(initParagonUI, 200);
 });
