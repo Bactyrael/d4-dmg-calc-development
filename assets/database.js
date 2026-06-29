@@ -25216,12 +25216,6 @@ window.D4_DATABASE.runes = [
         "offering": 25
     },
     {
-        "name": "Kaa",
-        "type": "Condition",
-        "description": "Lose 25% of your Maximum Life.",
-        "offering": 50
-    },
-    {
         "name": "Lith",
         "type": "Condition",
         "description": "Stand still while fighting for 0.3 |4second:seconds;.",
@@ -25348,12 +25342,6 @@ window.D4_DATABASE.runes = [
         "offering": 5
     },
     {
-        "name": "Met",
-        "type": "Effect",
-        "description": "You leave the Necromancer's Desecrated Ground behind you for 3 seconds, dealing damage to enemies within.",
-        "offering": 100
-    },
-    {
         "name": "Mot",
         "type": "Effect",
         "description": "Gain 1 |4 shadow:shadows;, from the Rogue's Dark Shroud Skill, reducing damage taken per shadow.",
@@ -25376,12 +25364,6 @@ window.D4_DATABASE.runes = [
         "type": "Effect",
         "description": "Invoke the Barbarian's War Cry Skill, increasing your damage dealt by 7.5% for 6 seconds.",
         "offering": 600
-    },
-    {
-        "name": "Ono",
-        "type": "Effect",
-        "description": "Invoke the Druid's Dancing Bolts, seeking and dealing damage to enemies.",
-        "offering": 25
     },
     {
         "name": "Prid",
@@ -25483,12 +25465,6 @@ window.D4_DATABASE.runes = [
         "name": "Xal",
         "type": "Effect",
         "description": "Gain 20% Maximum Life for 6 seconds.",
-        "offering": 300
-    },
-    {
-        "name": "Xan",
-        "type": "Effect",
-        "description": "Your next attack will cause your hits to be a guaranteed Critical Strike and Overpower for 0.35 seconds.",
         "offering": 300
     },
     {
