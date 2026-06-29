@@ -12291,6 +12291,7 @@ window.D4_DATABASE = {
           1
         ],
         "type": "Amulet",
+        "resistance": 230,
         "armor": 0
       },
       {

@@ -2087,7 +2087,7 @@ function renderEquipment(className, savedEquipment = {}) {
       if (!rawName) return;
       let cleanName = rawName.replace(/\[(?!(?:x|X)\]).*?\]\s*/g, '').replace(/^[\+\-]\s*/, '').trim();
       
-      const keepPct = ['% Strength', '% Intelligence', '% Willpower', '% Dexterity', '% Maximum Life', '% Armor', '% Total Armor'];
+      const keepPct = ['% Strength', '% Intelligence', '% Willpower', '% Dexterity', '% Maximum Life', '% Armor', '% Total Armor', '% Resistance to All Elements'];
       if (cleanName.startsWith('%') && !keepPct.includes(cleanName)) {
           cleanName = cleanName.replace(/^%\s*/, '').trim();
       }
@@ -2120,7 +2120,12 @@ function renderEquipment(className, savedEquipment = {}) {
       }
       
       stats[cleanName].total += value;
-      stats[cleanName].final = stats[cleanName].total;
+      if (stats[cleanName].pctSources && stats[cleanName].pctSources.length > 0) {
+          let totalPct = stats[cleanName].pctSources.reduce((sum, s) => sum + s.val, 0);
+          stats[cleanName].final = stats[cleanName].total * (1 + (totalPct / 100));
+      } else {
+          stats[cleanName].final = stats[cleanName].total;
+      }
   }
 
   function compileCharacterStats(equipped, autoStats) {
@@ -2135,6 +2140,9 @@ function renderEquipment(className, savedEquipment = {}) {
         addStat(stats, 'Dexterity', autoStats.baseDex, 'Base');
         addStat(stats, 'Dexterity', autoStats.levelDex, 'Level');
         addStat(stats, 'Maximum Life', autoStats.maximumLife, 'Base');
+        
+        // Base Character Combat Stats
+        addStat(stats, 'Critical Strike Chance', 5, 'Base');
         
         if (typeof window.getCompiledParagonStats === 'function') {
             const pStats = window.getCompiledParagonStats();
@@ -2402,6 +2410,39 @@ function renderEquipment(className, savedEquipment = {}) {
           });
           delete stats['Base Armor'];
       }
+
+        // Book of the Dead Sacrifice Bonuses (Base Stats)
+        if (currentBuild?.bookOfTheDead) {
+            const sacrificialKey = Object.keys(stats).find(k => k.toLowerCase() === 'sacrificial aspect');
+            const sacEffectiveness = sacrificialKey ? stats[sacrificialKey].final : 0;
+            const sacMultiplier = 1 + (sacEffectiveness / 100);
+            
+            // Warriors
+            if (currentBuild.bookOfTheDead.warriors?.node === 'sacrifice') {
+                if (currentBuild.bookOfTheDead.warriors.spec === 'Skirmisher') {
+                    addStat(stats, 'Critical Strike Chance', 5 * sacMultiplier, 'Book of the Dead (Skirmisher Sacrifice)');
+                } else if (currentBuild.bookOfTheDead.warriors.spec === 'Defender') {
+                    addStat(stats, '% Resistance to All Elements', 40 * sacMultiplier, 'Book of the Dead (Defender Sacrifice)');
+                }
+            }
+            
+            // Mages
+            if (currentBuild.bookOfTheDead.mages?.node === 'sacrifice') {
+                if (currentBuild.bookOfTheDead.mages.spec === 'Shadow Mage') {
+                    addStat(stats, 'Maximum Essence', 20 * sacMultiplier, 'Book of the Dead (Shadow Mage Sacrifice)');
+                    addStat(stats, 'Essence Generation %', 20 * sacMultiplier, 'Book of the Dead (Shadow Mage Sacrifice)');
+                }
+            }
+            
+            // Golems
+            if (currentBuild.bookOfTheDead.golems?.node === 'sacrifice') {
+                if (currentBuild.bookOfTheDead.golems.spec === 'Bone Golem') {
+                    addStat(stats, 'Attack Speed', 10 * sacMultiplier, 'Book of the Dead (Bone Golem Sacrifice)');
+                } else if (currentBuild.bookOfTheDead.golems.spec === 'Blood Golem') {
+                    addStat(stats, '% Maximum Life', 20 * sacMultiplier, 'Book of the Dead (Blood Golem Sacrifice)');
+                }
+            }
+        }
       
       // Post-Compilation Step: Additive Percent Modifiers
       const additiveScalers = [
@@ -2410,7 +2451,8 @@ function renderEquipment(className, savedEquipment = {}) {
           { flat: 'Willpower', pct: ['% Willpower'] },
           { flat: 'Dexterity', pct: ['% Dexterity'] },
           { flat: 'Maximum Life', pct: ['% Maximum Life'] },
-          { flat: 'Armor', pct: ['% Armor', '% Total Armor'] }
+          { flat: 'Armor', pct: ['% Armor', '% Total Armor'] },
+          { flat: 'Resistance to All Elements', pct: ['% Resistance to All Elements'] }
       ];
 
       additiveScalers.forEach(scaler => {
@@ -2478,15 +2520,15 @@ function renderEquipment(className, savedEquipment = {}) {
         
         const specificResists = ['Physical Resistance', 'Fire Resistance', 'Lightning Resistance', 'Cold Resistance', 'Poison Resistance', 'Shadow Resistance'];
         specificResists.forEach(res => {
-            let resTotal = (stats[res] ? stats[res].total : 0) + (stats['Resistance to All Elements'] ? stats['Resistance to All Elements'].total : 0);
+            let resTotal = (stats[res] ? stats[res].total : 0) + (stats['Resistance to All Elements'] ? stats['Resistance to All Elements'].final : 0);
             let finalResist = resTotal; // Assuming no multiplicative all resist for now, or it comes from equipment
             
             if (!stats[res]) stats[res] = { total: 0, final: 0, flatSources: [], pctSources: [] };
             stats[res].final = finalResist;
             
             if (stats['Resistance to All Elements']) {
-                stats[res].flatSources.push({ name: 'From All Resistance', val: stats['Resistance to All Elements'].total });
-                stats[res].total += stats['Resistance to All Elements'].total;
+                stats[res].flatSources.push({ name: 'From All Resistance', val: stats['Resistance to All Elements'].final });
+                stats[res].total += stats['Resistance to All Elements'].final;
             }
             
             let resistDr = 0;
@@ -2500,40 +2542,6 @@ function renderEquipment(className, savedEquipment = {}) {
         const finalUniversalDr = 0;
         addStat(stats, 'Universal Damage Reduction %', finalUniversalDr * 100, 'Calculated');
         
-        // Book of the Dead Sacrifice Bonuses (Base Stats)
-        if (currentBuild?.bookOfTheDead) {
-            const sacrificialKey = Object.keys(stats).find(k => k.toLowerCase() === 'sacrificial aspect');
-            const sacEffectiveness = sacrificialKey ? stats[sacrificialKey].final : 0;
-            const sacMultiplier = 1 + (sacEffectiveness / 100);
-            
-            // Warriors
-            if (currentBuild.bookOfTheDead.warriors?.node === 'sacrifice') {
-                if (currentBuild.bookOfTheDead.warriors.spec === 'Skirmisher') {
-                    addStat(stats, 'Critical Strike Chance %', 5 * sacMultiplier, 'Book of the Dead (Skirmisher Sacrifice)');
-                } else if (currentBuild.bookOfTheDead.warriors.spec === 'Defender') {
-                    addStat(stats, 'Resistance to All Elements', 40 * sacMultiplier, 'Book of the Dead (Defender Sacrifice)');
-                }
-            }
-            
-            // Mages
-            if (currentBuild.bookOfTheDead.mages?.node === 'sacrifice') {
-                if (currentBuild.bookOfTheDead.mages.spec === 'Shadow') {
-                    addStat(stats, 'Maximum Essence', 20 * sacMultiplier, 'Book of the Dead (Shadow Mage Sacrifice)');
-                    addStat(stats, 'Essence Generation %', 20 * sacMultiplier, 'Book of the Dead (Shadow Mage Sacrifice)');
-                }
-            }
-            
-            // Golems
-            if (currentBuild.bookOfTheDead.golems?.node === 'sacrifice') {
-                if (currentBuild.bookOfTheDead.golems.spec === 'Bone Golem') {
-                    addStat(stats, 'Attack Speed Bonus %', 10 * sacMultiplier, 'Book of the Dead (Bone Golem Sacrifice)');
-                } else if (currentBuild.bookOfTheDead.golems.spec === 'Blood Golem') {
-                    // Blood Golem is a 20%[x] Maximum Life multiplier! We inject it as % Maximum Life which acts as a multiplier in the engine.
-                    addStat(stats, '% Maximum Life', 20 * sacMultiplier, 'Book of the Dead (Blood Golem Sacrifice)');
-                }
-            }
-        }
-
         // Post-Compilation Step: Inverse Multiplicative Stats (Dodge Chance, Damage Reduction, etc.)
         // This must run at the very end so that Core Stats (like Dexterity) are included in the inverse multiplicative pool!
         const inverseMultiplicativeKeys = Object.keys(stats).filter(k => k.includes('Dodge Chance') || k.includes('Damage Reduction'));
@@ -2699,21 +2707,39 @@ function renderEquipment(className, savedEquipment = {}) {
 
               // Sum breakdown
               if (typeof valObj === 'object' && valObj.flatSources && valObj.flatSources.length > 0) {
-                  tooltipHTML += `
-                      <div class="stat-tooltip-section-title">⬥ Sum: <span style="color: #4cd137;">${totalVal.toFixed(0)}</span></div>
-                  `;
-                  valObj.flatSources.forEach(src => {
-                      let color = '#ccc';
-                      if (src.name === 'Base' || src.name === 'Level') color = '#888';
-                      else if (src.name === 'Paragon') color = '#fbc531';
-                      else color = '#3498db'; // blue for equipment
-
+                  const addSources = valObj.flatSources.filter(s => !s.isMultiplier);
+                  const multSources = valObj.flatSources.filter(s => s.isMultiplier);
+                  
+                  if (addSources.length > 0) {
                       tooltipHTML += `
-                          <div class="stat-tooltip-source">
-                              <span style="color: ${color};">⬥ ${src.name}:</span> ${src.val.toFixed(0)}
-                          </div>
+                          <div class="stat-tooltip-section-title">⬥ Sum: <span style="color: #4cd137;">${totalVal.toFixed(0)}</span></div>
                       `;
-                  });
+                      addSources.forEach(src => {
+                          let color = '#ccc';
+                          if (src.name === 'Base' || src.name === 'Level') color = '#888';
+                          else if (src.name === 'Paragon') color = '#fbc531';
+                          else color = '#3498db'; // blue for equipment
+
+                          tooltipHTML += `
+                              <div class="stat-tooltip-source">
+                                  <span style="color: ${color};">⬥ ${src.name}:</span> ${src.val.toFixed(0)}
+                              </div>
+                          `;
+                      });
+                  }
+                  
+                  if (multSources.length > 0) {
+                      tooltipHTML += `
+                          <div class="stat-tooltip-section-title" style="margin-top: 6px;">⬥ Multipliers:</div>
+                      `;
+                      multSources.forEach(src => {
+                          tooltipHTML += `
+                              <div class="stat-tooltip-source">
+                                  <span style="color: #e74c3c;">⬥ ${src.name}:</span> <span style="color: #e74c3c;">x${src.val.toFixed(2)}</span>
+                              </div>
+                          `;
+                      });
+                  }
               }
 
               // Increased breakdown
@@ -3013,7 +3039,7 @@ function renderEquipment(className, savedEquipment = {}) {
     }
 
     if (dom.critChance) {
-        dom.critChance.value = 5.0 + (compiledStats['Critical Strike Chance'] ? compiledStats['Critical Strike Chance'].final : 0);
+        dom.critChance.value = (compiledStats['Critical Strike Chance'] ? compiledStats['Critical Strike Chance'].final : 0).toFixed(2);
         dom.critChance.disabled = true;
         dom.critChance.title = "Auto-calculated from equipment and stats";
     }
@@ -3215,9 +3241,9 @@ function renderEquipment(className, savedEquipment = {}) {
                   createMultiplicativeRow('Reaper Sacrifice (Book of the Dead)', (15 * sacMultiplier).toFixed(2), true);
               }
               if (currentBuild.bookOfTheDead.mages?.node === 'sacrifice') {
-                  if (currentBuild.bookOfTheDead.mages.spec === 'Cold') {
+                  if (currentBuild.bookOfTheDead.mages.spec === 'Cold Mage') {
                       createMultiplicativeRow('Cold Mage Sacrifice [Vulnerable] (Book of the Dead)', (20 * sacMultiplier).toFixed(2), true);
-                  } else if (currentBuild.bookOfTheDead.mages.spec === 'Bone') {
+                  } else if (currentBuild.bookOfTheDead.mages.spec === 'Bone Mage') {
                       createMultiplicativeRow('Bone Mage Sacrifice [Overpowered] (Book of the Dead)', (20 * sacMultiplier).toFixed(2), true);
                   }
               }
@@ -4287,20 +4313,20 @@ function parseD4String(str, skillObj, currentRank) {
     str = str.replace(/Blood_Orb_Bonus_Chance_Per_Power\(\d+\)/gi, "0");
     
     // Globally strip embedded Cooldown and Resource Cost blocks, as they are handled by statsHtml at the top
-    str = str.replace(/\{c_label\}Cooldown:\{\/c(?:_label)?\}\s*\{c_resource\}\[\{cooldown time\}[\s\S]*?\][\s\S]*?\{\/c(?:_resource)?\}\s*(?:seconds)?(?:\\n|\r?\n)?/gi, "");
-    str = str.replace(/\{c_label\}Essence Cost:\s*\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
-    str = str.replace(/\{c_label\}Mana Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
-    str = str.replace(/\{c_label\}Fury Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
-    str = str.replace(/\{c_label\}Spirit Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Cooldown:\{\/c(?:_label)?\}\s*\{c_resource\}\[\{cooldown time\}[\s\.,\d]*?\][\s\S]*?\{\/c(?:_resource)?\}\s*(?:seconds)?(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Essence Cost:\s*\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\.,\d]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Mana Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\.,\d]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Fury Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\.,\d]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Spirit Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\.,\d]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
 
     let maxLife = 1526; // Default level 50 life
     if (typeof dom !== 'undefined' && dom.maxLife) {
         maxLife = parseFloat(dom.maxLife.value) || 1526;
     }
-    str = str.replace(/\{c_label\}Energy Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Energy Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\.,\d]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
     
     if (skillObj && skillObj.name === "Skeleton Warrior") {
-        str = str.replace(/\{c_label\}Cooldown:\{\/c_label\}\s*\{c_resource\}\[\{cooldown time\}[\s\S]*?\]\{\/c_resource\}\s*seconds(?:\\n|\r?\n)?/g, "");
+        str = str.replace(/\{c_label\}Cooldown:\{\/c_label\}\s*\{c_resource\}\[\{cooldown time\}[\s\.,\d]*?\]\{\/c_resource\}\s*seconds(?:\\n|\r?\n)?/g, "");
     }
     
     if (skillObj && skillObj.name === "Golem") {
@@ -4327,14 +4353,14 @@ function parseD4String(str, skillObj, currentRank) {
         }
         
         if (gSpec === "Bone Golem") {
-            str = str.replace(/\[\{cooldown time\}[\s\S]*?\]|\{cooldown time\}/g, "16");
+            str = str.replace(/\[\{cooldown time\}[\s\.,\d]*?\]|\{cooldown time\}/g, "16");
         } else if (gSpec === "Blood Golem") {
-            str = str.replace(/\[\{cooldown time\}[\s\S]*?\]|\{cooldown time\}/g, "16");
-            str = str.replace(/\[\{payload:tooltip_blood_active\}[\s\S]*?\]|\{payload:tooltip_blood_active\}/g, (1.40 * rankMult * 100).toFixed(1) + '%');
+            str = str.replace(/\[\{cooldown time\}[\s\.,\d]*?\]|\{cooldown time\}/g, "16");
+            str = str.replace(/\[\{payload:tooltip_blood_active\}[\s\.,\d]*?\]|\{payload:tooltip_blood_active\}/g, (1.40 * rankMult * 100).toFixed(1) + '%');
         } else {
             // Iron Golem
-            str = str.replace(/\[\{cooldown time\}[\s\S]*?\]|\{cooldown time\}/g, "10");
-            str = str.replace(/\[\{payload:tooltip_slam\}[\s\S]*?\]|\{payload:tooltip_slam\}/g, (2.00 * rankMult * 100).toFixed(1) + '%');
+            str = str.replace(/\[\{cooldown time\}[\s\.,\d]*?\]|\{cooldown time\}/g, "10");
+            str = str.replace(/\[\{payload:tooltip_slam\}[\s\.,\d]*?\]|\{payload:tooltip_slam\}/g, (2.00 * rankMult * 100).toFixed(1) + '%');
         }
     }
     
@@ -4397,31 +4423,31 @@ function parseD4String(str, skillObj, currentRank) {
     }
     
     if (skillObj.name === "Skeleton Warrior" && str.includes("Skeletal")) {
-        str = str.replace(/\[\{payload:tooltip_sword\}[\s\S]*?\]|\{payload:tooltip_sword\}/g, (0.65 * rankMult * 100).toFixed(1) + '%');
+        str = str.replace(/\[\{payload:tooltip_sword\}[\s\.,\d]*?\]|\{payload:tooltip_sword\}/g, (0.65 * rankMult * 100).toFixed(1) + '%');
     }
     if (skillObj.name === "Blood Surge") {
-        str = str.replace(/\[\{payload:inner_damage\}[\s\S]*?\]|\{payload:inner_damage\}/g, (1.00 * rankMult * 100).toFixed(1) + '%');
+        str = str.replace(/\[\{payload:inner_damage\}[\s\.,\d]*?\]|\{payload:inner_damage\}/g, (1.00 * rankMult * 100).toFixed(1) + '%');
     }
     if (skillObj.name === "Miasma") {
-        str = str.replace(/\[\{dot:miasma_dot_tooltip\}[\s\S]*?\]|\{dot:miasma_dot_tooltip\}/g, (1.45 * rankMult * 100).toFixed(1) + '%');
+        str = str.replace(/\[\{dot:miasma_dot_tooltip\}[\s\.,\d]*?\]|\{dot:miasma_dot_tooltip\}/g, (1.45 * rankMult * 100).toFixed(1) + '%');
     }
     if (skillObj && skillObj.name === "Soulrift") {
-        str = str.replace(/\[\{buffduration:caster_skill_active\}[\s\S]*?\]|\{buffduration:caster_skill_active\}/g, "8");
-        str = str.replace(/\[\{dot:tooltip_total_damage\}[\s\S]*?\]|\{dot:tooltip_total_damage\}/g, "300%");
+        str = str.replace(/\[\{buffduration:caster_skill_active\}[\s\.,\d]*?\]|\{buffduration:caster_skill_active\}/g, "8");
+        str = str.replace(/\[\{dot:tooltip_total_damage\}[\s\.,\d]*?\]|\{dot:tooltip_total_damage\}/g, "300%");
     }
     if (skillObj.name === "Blood Mist") {
-        str = str.replace(/\[\{cooldown time\}[\s\S]*?\]|\{cooldown time\}/g, "24");
-        str = str.replace(/\[\{buffduration:mistform\}[\s\S]*?\]|\{buffduration:mistform\}/g, "3");
-        str = str.replace(/\[\{dot:tooltip_dot\}[\s\S]*?\]|\{dot:tooltip_dot\}/g, (0.35 * rankMult * 12 * 100).toFixed(1) + '%');
+        str = str.replace(/\[\{cooldown time\}[\s\.,\d]*?\]|\{cooldown time\}/g, "24");
+        str = str.replace(/\[\{buffduration:mistform\}[\s\.,\d]*?\]|\{buffduration:mistform\}/g, "3");
+        str = str.replace(/\[\{dot:tooltip_dot\}[\s\.,\d]*?\]|\{dot:tooltip_dot\}/g, (0.35 * rankMult * 12 * 100).toFixed(1) + '%');
     }
-    str = str.replace(/\[\{buffduration:buff_damage_reduction\}[\s\S]*?\]|\{buffduration:buff_damage_reduction\}/g, "10");
+    str = str.replace(/\[\{buffduration:buff_damage_reduction\}[\s\.,\d]*?\]|\{buffduration:buff_damage_reduction\}/g, "10");
     if (skillObj && skillObj.name === "Bone Prison") {
-        str = str.replace(/\[\{cooldown time\}[\s\S]*?\]|\{cooldown time\}/g, "15");
+        str = str.replace(/\[\{cooldown time\}[\s\.,\d]*?\]|\{cooldown time\}/g, "15");
         
         let duration = 6.0 + (2.4 * (currentRank - 1) / 14);
-        str = str.replace(/\[\{buffduration:wall_tracker\}[\s\S]*?\]|\{buffduration:wall_tracker\}/g, duration.toFixed(1).replace(/\.0$/, ''));
+        str = str.replace(/\[\{buffduration:wall_tracker\}[\s\.,\d]*?\]|\{buffduration:wall_tracker\}/g, duration.toFixed(1).replace(/\.0$/, ''));
         
-        str = str.replace(/\[\{pet_health:bonewall\}[\s\S]*?\]|\{pet_health:bonewall\}/g, (match) => {
+        str = str.replace(/\[\{pet_health:bonewall\}[\s\.,\d]*?\]|\{pet_health:bonewall\}/g, (match) => {
             let maxLife = 1526;
             if (typeof dom !== 'undefined' && dom.maxLife) {
                 maxLife = parseFloat(dom.maxLife.value) || 1526;
@@ -4430,13 +4456,13 @@ function parseD4String(str, skillObj, currentRank) {
         });
     }
     if (skillObj.name === "Bone Spirit") {
-        str = str.replace(/\[\{recharge time\}[\s\S]*?\]|\{recharge time\}/g, "12");
+        str = str.replace(/\[\{recharge time\}[\s\.,\d]*?\]|\{recharge time\}/g, "12");
     }
     if (skillObj.name === "Devouring Mist") {
-        str = str.replace(/\[\{dot:tooltip_dot_shadow\}[\s\S]*?\]|\{dot:tooltip_dot_shadow\}/g, (0.5 * rankMult * 12 * 100).toFixed(1) + '%');
+        str = str.replace(/\[\{dot:tooltip_dot_shadow\}[\s\.,\d]*?\]|\{dot:tooltip_dot_shadow\}/g, (0.5 * rankMult * 12 * 100).toFixed(1) + '%');
     }
     if (skillObj.name === "Plunging Darkness") {
-        str = str.replace(/\[\{dot:tooltip_dot\}[\s\S]*?\]|\{dot:tooltip_dot\}/g, (3.0 * rankMult * 100).toFixed(1) + '%');
+        str = str.replace(/\[\{dot:tooltip_dot\}[\s\.,\d]*?\]|\{dot:tooltip_dot\}/g, (3.0 * rankMult * 100).toFixed(1) + '%');
     }
 
     let scalar = skillObj.baseDamageScalar || getBaseDamageScalarFor(skillObj.name);
@@ -4519,14 +4545,14 @@ function parseD4String(str, skillObj, currentRank) {
     str = str.replace(/\[Mod\([^)]+\)\?(\d+):(\d+)(?:\|.*?)?\]/g, '$2');
     
     if (skillObj.resourceCost) {
-        str = str.replace(/\[\{resource cost\}[\s\S]*?\]/g, skillObj.resourceCost);
+        str = str.replace(/\[\{resource cost\}[\s\.,\d]*?\]/g, skillObj.resourceCost);
     }
     
     if (skillObj.luckyHitChance) {
-        str = str.replace(/\[\{combat effect chance\}[\s\S]*?\]/g, skillObj.luckyHitChance + '%');
+        str = str.replace(/\[\{combat effect chance\}[\s\.,\d]*?\]/g, skillObj.luckyHitChance + '%');
         str = str.replace(/\{combat effect chance\}/g, skillObj.luckyHitChance + '%');
     } else {
-        str = str.replace(/\[\{combat effect chance\}[\s\S]*?\]/g, '?%');
+        str = str.replace(/\[\{combat effect chance\}[\s\.,\d]*?\]/g, '?%');
         str = str.replace(/\{combat effect chance\}/g, '?%');
     }
     
@@ -4587,17 +4613,17 @@ function parseD4String(str, skillObj, currentRank) {
     str = str.replace(/\{buffduration:ironmaiden_curse\}/g, "30");
     
     if (skillObj && skillObj.name === "Army of the Dead") {
-        str = str.replace(/\[\{buffduration:raise_army\}[\s\S]*?\]|\{buffduration:raise_army\}/g, "7");
-        str = str.replace(/\[\{buffduration:volatine_stun\}[\s\S]*?\]|\{buffduration:volatine_stun\}/g, "2");
+        str = str.replace(/\[\{buffduration:raise_army\}[\s\.,\d]*?\]|\{buffduration:raise_army\}/g, "7");
+        str = str.replace(/\[\{buffduration:volatine_stun\}[\s\.,\d]*?\]|\{buffduration:volatine_stun\}/g, "2");
     }
     
     // Evaluate specific buff durations globally so child modifiers can access them
-    str = str.replace(/\[\{buffduration:bonestorm\}[\s\S]*?\]|\{buffduration:bonestorm\}/g, "10");
-    str = str.replace(/\[\{buffduration:barrier\}[\s\S]*?\]|\{buffduration:barrier\}/g, "10");
-    str = str.replace(/\[\{buffduration:lanced\}[\s\S]*?\]|\{buffduration:lanced\}/g, "3");
+    str = str.replace(/\[\{buffduration:bonestorm\}[\s\.,\d]*?\]|\{buffduration:bonestorm\}/g, "10");
+    str = str.replace(/\[\{buffduration:barrier\}[\s\.,\d]*?\]|\{buffduration:barrier\}/g, "10");
+    str = str.replace(/\[\{buffduration:lanced\}[\s\.,\d]*?\]|\{buffduration:lanced\}/g, "3");
     
     // Shield / Barrier specific replacements
-    str = str.replace(/\[\{shield:barrier\}[\s\S]*?\]|\{shield:barrier\}/g, () => {
+    str = str.replace(/\[\{shield:barrier\}[\s\.,\d]*?\]|\{shield:barrier\}/g, () => {
         return Math.floor(maxLife * 0.10).toString();
     });
     
@@ -4643,11 +4669,11 @@ function parseD4String(str, skillObj, currentRank) {
         const mNode = currentBuild.bookOfTheDead.mages?.node;
         
         // Shadow Sacrifice (reduces by 50%)
-        if (passiveId === "931578" && mSpec === "Shadow" && mNode === "sacrifice") return "1";
+        if (passiveId === "931578" && mSpec === "Shadow Mage" && mNode === "sacrifice") return "1";
         // Cold Sacrifice (reduces by 50%)
-        if (passiveId === "931587" && mSpec === "Cold" && mNode === "sacrifice") return "1";
+        if (passiveId === "931587" && mSpec === "Cold Mage" && mNode === "sacrifice") return "1";
         // Bone Sacrifice (reduces by 50%)
-        if (passiveId === "931594" && mSpec === "Bone" && mNode === "sacrifice") return "1";
+        if (passiveId === "931594" && mSpec === "Bone Mage" && mNode === "sacrifice") return "1";
         
         return "0";
     });
