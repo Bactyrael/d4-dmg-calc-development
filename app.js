@@ -213,11 +213,11 @@ var currentBuild = createDefaultBuild();
       weaponDamage: 0,
       skillDamage: 0,
       paragon: [
-        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1 },
-        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1 },
-        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1 },
-        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1 },
-        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1 }
+        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1, rotation: 0, connection: null },
+        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1, rotation: 0, connection: { parentSlot: null, parentGate: null, selfGate: null } },
+        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1, rotation: 0, connection: { parentSlot: null, parentGate: null, selfGate: null } },
+        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1, rotation: 0, connection: { parentSlot: null, parentGate: null, selfGate: null } },
+        { boardId: null, nodes: [], glyphId: null, glyphLevel: 1, rotation: 0, connection: { parentSlot: null, parentGate: null, selfGate: null } }
       ],
       strength: 0,
       intelligence: 0,
@@ -3548,7 +3548,8 @@ function renderEquipment(className, savedEquipment = {}) {
       if (!b.paragon || !Array.isArray(b.paragon) || b.paragon.length < 5) {
         if (!Array.isArray(b.paragon)) b.paragon = [];
         while(b.paragon.length < 5) {
-          b.paragon.push({ boardId: null, nodes: [], glyphId: null, glyphLevel: 1 });
+          const isStart = b.paragon.length === 0;
+          b.paragon.push({ boardId: null, nodes: [], glyphId: null, glyphLevel: 1, rotation: 0, connection: isStart ? null : { parentSlot: null, parentGate: null, selfGate: null } });
         }
       }
       

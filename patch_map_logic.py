@@ -1,4 +1,9 @@
+import re
 
+with open('paragon_logic.js', 'r', encoding='utf-8') as f:
+    js = f.read()
+
+new_js = """
 // paragon_logic.js
 // Handles all Paragon Board logic, UI, node selection, and stats calculation
 
@@ -629,3 +634,8 @@ window.calculateParagonStats = function() {
     let stats = {};
     return stats;
 };
+"""
+
+with open('paragon_logic.js', 'w', encoding='utf-8') as f:
+    f.write(new_js)
+print("Rewrote paragon_logic.js")
