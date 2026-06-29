@@ -4057,6 +4057,11 @@ function parseD4String(str, skillObj, currentRank) {
     str = str.replace(/\{c_label\}Mana Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
     str = str.replace(/\{c_label\}Fury Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
     str = str.replace(/\{c_label\}Spirit Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+
+    let maxLife = 1526; // Default level 50 life
+    if (typeof dom !== 'undefined' && dom.maxLife) {
+        maxLife = parseFloat(dom.maxLife.value) || 1526;
+    }
     str = str.replace(/\{c_label\}Energy Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\S]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
     
     if (skillObj && skillObj.name === "Skeleton Warrior") {
@@ -4355,6 +4360,11 @@ function parseD4String(str, skillObj, currentRank) {
     str = str.replace(/\[\{buffduration:bonestorm\}[\s\S]*?\]|\{buffduration:bonestorm\}/g, "10");
     str = str.replace(/\[\{buffduration:barrier\}[\s\S]*?\]|\{buffduration:barrier\}/g, "10");
     str = str.replace(/\[\{buffduration:lanced\}[\s\S]*?\]|\{buffduration:lanced\}/g, "3");
+    
+    // Shield / Barrier specific replacements
+    str = str.replace(/\[\{shield:barrier\}[\s\S]*?\]|\{shield:barrier\}/g, () => {
+        return Math.floor(maxLife * 0.10).toString();
+    });
     
     // Math evaluator for inline formulas [formula|%|]
     str = str.replace(/\[([0-9a-zA-Z.*?/\-()+><,:\s_]+)(?:\|[^\]]*\|?)?\]/g, (match, formula) => {
