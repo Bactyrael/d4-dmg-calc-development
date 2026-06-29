@@ -5782,12 +5782,13 @@ rarity = foundItem.rarity;
         }
         box.dataset.value = JSON.stringify(itemObj);
         
-        renderEditTab(currentModalSlot);
-        switchModalTab('edit');
         calculate();
         
         // Re-render paperdoll for socket updates
         renderEquipment(document.getElementById('class-select').textContent, getEquipmentValues());
+        
+        // Re-open item modal to properly bind new event listeners to the fresh DOM elements
+        openItemModal(currentModalSlot);
       });
     });
 
