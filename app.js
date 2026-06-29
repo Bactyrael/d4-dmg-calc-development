@@ -2124,19 +2124,41 @@ function renderEquipment(className, savedEquipment = {}) {
   }
 
   function compileCharacterStats(equipped, autoStats) {
-      const stats = {};
-      
-      addStat(stats, 'Strength', autoStats.baseStr, 'Base');
-      addStat(stats, 'Strength', autoStats.levelStr, 'Level');
-      addStat(stats, 'Intelligence', autoStats.baseInt, 'Base');
-      addStat(stats, 'Intelligence', autoStats.levelInt, 'Level');
-      addStat(stats, 'Willpower', autoStats.baseWill, 'Base');
-      addStat(stats, 'Willpower', autoStats.levelWill, 'Level');
-      addStat(stats, 'Dexterity', autoStats.baseDex, 'Base');
-      addStat(stats, 'Dexterity', autoStats.levelDex, 'Level');
-      addStat(stats, 'Maximum Life', autoStats.maximumLife, 'Base');
-      
-      let resourceName = 'Maximum Resource';
+        const stats = {};
+        
+        addStat(stats, 'Strength', autoStats.baseStr, 'Base');
+        addStat(stats, 'Strength', autoStats.levelStr, 'Level');
+        addStat(stats, 'Intelligence', autoStats.baseInt, 'Base');
+        addStat(stats, 'Intelligence', autoStats.levelInt, 'Level');
+        addStat(stats, 'Willpower', autoStats.baseWill, 'Base');
+        addStat(stats, 'Willpower', autoStats.levelWill, 'Level');
+        addStat(stats, 'Dexterity', autoStats.baseDex, 'Base');
+        addStat(stats, 'Dexterity', autoStats.levelDex, 'Level');
+        addStat(stats, 'Maximum Life', autoStats.maximumLife, 'Base');
+        
+        if (typeof window.getCompiledParagonStats === 'function') {
+            const pStats = window.getCompiledParagonStats();
+            for (let [k, v] of Object.entries(pStats)) {
+                let statName = k;
+                if (v.isPercent && ['Strength', 'Intelligence', 'Willpower', 'Dexterity', 'Maximum Life', 'Armor', 'Total Armor'].includes(statName)) {
+                    statName = '% ' + statName;
+                }
+                addStat(stats, statName, v.value, 'Paragon Board');
+            }
+            
+            // Add static Legendary powers that provide base stats
+            if (typeof window.getActiveLegendaryPowers === 'function') {
+                const legPowers = window.getActiveLegendaryPowers();
+                if (legPowers.includes('Paragon_Necro_Legendary_017')) {
+                    addStat(stats, 'Maximum Essence', 10, 'Bone Graft (Legendary Node)');
+                }
+                if (legPowers.includes('Paragon_Necro_Legendary_007')) {
+                    addStat(stats, '% Damage Reduction', 15, 'Scent of Death (Legendary Node)');
+                }
+            }
+        }
+        
+        let resourceName = 'Maximum Resource';
       const currClass = currentBuild.class || 'Necromancer';
       if (currClass === 'Necromancer') resourceName = 'Maximum Essence';
       else if (currClass === 'Barbarian') resourceName = 'Maximum Fury';
@@ -3071,6 +3093,85 @@ function renderEquipment(className, savedEquipment = {}) {
         createAdditiveRow(statName, val.toFixed(2), true);
       }
     });
+      
+      // Inject Dynamic Legendary Node Powers
+      if (typeof window.getActiveLegendaryPowers === 'function') {
+          const legPowers = window.getActiveLegendaryPowers();
+          
+          // Cult Leader (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_001')) {
+              const asKey = Object.keys(compiledStats).find(k => k.toLowerCase().includes('attack speed'));
+              const attackSpeed = asKey ? compiledStats[asKey].final : 0;
+              
+              if (attackSpeed >= 20) {
+                  // Cult Leader: 40%x damage per 20% attack speed breakpoint
+                  const cultBonus = Math.floor(attackSpeed / 20) * 40;
+                  if (cultBonus > 0) {
+                      createMultiplicativeRow('Cult Leader (Legendary Node)', cultBonus.toFixed(2), true);
+                  }
+              }
+          }
+          
+          // Bone Graft (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_017')) {
+              createMultiplicativeRow('Bone Graft (Legendary Node)', '40.00', true);
+          }
+          
+          // Flesh-eater (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_008')) {
+              createMultiplicativeRow('Flesh-eater (Legendary Node)', '60.00', true);
+          }
+          
+          // Scent of Death (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_007')) {
+              createMultiplicativeRow('Scent of Death (Legendary Node)', '45.00', true);
+          }
+          
+          // Wither (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_016')) {
+              createMultiplicativeRow('Wither (Legendary Node)', '60.00', true);
+          }
+          
+          // Frailty (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_018')) {
+              createMultiplicativeRow('Frailty (Legendary Node)', '60.00', true);
+          }
+          
+          // Hulking Monstrosity (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_005')) {
+              // Always active base multiplier
+              createMultiplicativeRow('Hulking Monstrosity Base (Legendary Node)', '100.00', true);
+              
+              // Find Sacrificial Aspect effectiveness
+              const sacrificialKey = Object.keys(compiledStats).find(k => k.toLowerCase() === 'sacrificial aspect');
+              const sacEffectiveness = sacrificialKey ? compiledStats[sacrificialKey].final : 0;
+              const sacMultiplier = 1 + (sacEffectiveness / 100);
+              
+              // Warrior Sacrifice
+              const wNode = currentBuild.bookOfTheDead?.warriors?.node;
+              if (wNode === 'sacrifice') {
+                  const wVal = 60 * sacMultiplier;
+                  createMultiplicativeRow('Hulking Monstrosity Warriors (Legendary Node)', wVal.toFixed(2), true);
+              }
+              
+              // Mage Sacrifice
+              const mNode = currentBuild.bookOfTheDead?.mages?.node;
+              if (mNode === 'sacrifice') {
+                  const mVal = 60 * sacMultiplier;
+                  createMultiplicativeRow('Hulking Monstrosity Mages (Legendary Node)', mVal.toFixed(2), true);
+              }
+          }
+          
+          // Blood Begets Blood (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_011')) {
+              createMultiplicativeRow('Blood Begets Blood (Legendary Node)', '60.00', true);
+          }
+          
+          // Bloodbath (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_010')) {
+              createMultiplicativeRow('Bloodbath (Legendary Node)', '80.00', true);
+          }
+      }
 
     // Additive: 1 + sum all (value / 100)
     const additives = getAdditiveValues();
@@ -3082,18 +3183,29 @@ function renderEquipment(className, savedEquipment = {}) {
     const nodeEls = getNodeEls();
     const addBonusVals = getAdditionalBonusValues();
     const legVals = getLegendaryBonusValues();
-    const staticMults = [
-      getNodeValue(nodeEls[0], 1),
-      getNodeValue(nodeEls[1], 2),
-      getNodeValue(nodeEls[2], 3),
-      getNodeValue(nodeEls[3], 4),
-      addBonusVals[0],
-      addBonusVals[1],
-      addBonusVals[2],
-      addBonusVals[3],
-      addBonusVals[4],
-      legVals[0], legVals[1], legVals[2], legVals[3], legVals[4]
-    ];
+    
+    let staticMults = [];
+    const hasInteractiveBoard = currentBuild && currentBuild.paragon && currentBuild.paragon[0] && currentBuild.paragon[0].boardId;
+    
+    // Hide legacy dropdowns if using new interactive board
+    if (dom.nodesContainer && dom.nodesContainer.parentElement) {
+        dom.nodesContainer.parentElement.style.display = hasInteractiveBoard ? 'none' : 'block';
+    }
+    
+    if (!hasInteractiveBoard) {
+        staticMults = [
+          getNodeValue(nodeEls[0], 1),
+          getNodeValue(nodeEls[1], 2),
+          getNodeValue(nodeEls[2], 3),
+          getNodeValue(nodeEls[3], 4),
+          addBonusVals[0],
+          addBonusVals[1],
+          addBonusVals[2],
+          addBonusVals[3],
+          addBonusVals[4],
+          legVals[0], legVals[1], legVals[2], legVals[3], legVals[4]
+        ];
+    }
 
     function getNodeValue(el, index) {
       if (!el) return 0;

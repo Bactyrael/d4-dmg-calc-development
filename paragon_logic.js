@@ -44,7 +44,115 @@ var isDragging = false;
 var lastMouse = { x: 0, y: 0 };
 var pendingAttach = null; // { slot: 0, gateIdx: 10, gateSide: 'North' }
 
-// Global Pathfinding functions (Retained from before)
+// Global Palet isPanning = false;
+let startPanX = 0, startPanY = 0;
+
+// Expose these for external stat compilers (like app.js)
+window.getActiveLegendaryPowers = function() {
+    let powers = [];
+    if (!window.D4_PARAGON_DATA) return powers;
+
+    let activeReachableNodes = getGlobalReachableActiveNodes();
+    if (!activeReachableNodes || !activeReachableNodes.visited) return powers;
+
+    activeReachableNodes.visited.forEach(nodeStr => {
+        let parts = nodeStr.split('-');
+        let slotId = parseInt(parts[0]);
+        let dataIdx = parseInt(parts[1]);
+        
+        let boardState = currentBuild.paragon[slotId];
+        if (!boardState || !boardState.boardId) return;
+        
+        let bData = window.D4_PARAGON_DATA.paragonBoards[boardState.boardId];
+        if (!bData || !bData.nodes[dataIdx]) return;
+        
+        let nodeName = bData.nodes[dataIdx];
+        let nodeInfo = window.D4_PARAGON_DATA.paragonNodes[nodeName];
+        if (nodeInfo && nodeInfo.power) {
+            powers.push(nodeInfo.power);
+        }
+    });
+
+    return powers;
+};
+
+window.getCompiledParagonStats = function() {
+  let stats = {};
+  
+  if (!window.D4_PARAGON_FORMULAS || !window.D4_PARAGON_DATA) return stats;
+
+  let activeReachableNodes = getGlobalReachableActiveNodes();
+  
+  function cleanAttributeDescription(desc, rawValue) {
+    if (!desc) return { name: "Unknown Stat", value: rawValue, isPercent: false };
+    
+    // Extract base name by stripping format blocks
+    let statName = desc.replace(/\[.*?\]/g, '').replace(/^[+-\s]+/, '').trim();
+    
+    let isPercent = false;
+    let scaledValue = rawValue;
+    
+    // e.g. [{value}*100|%|]
+    let match = desc.match(/\[\{(.*?)\}\*?(\d*)\|?(.*?)\|\]/);
+    if (match) {
+        let mult = parseFloat(match[2]);
+        if (!isNaN(mult)) scaledValue = rawValue * mult;
+        if (match[3] && match[3].includes('%')) isPercent = true;
+    }
+    
+    if (desc.includes('*100')) {
+        scaledValue = rawValue * 100;
+    }
+    if (desc.includes('|%|') || desc.includes('%')) {
+        isPercent = true;
+    }
+    
+    return { name: statName, value: scaledValue, isPercent };
+  }
+
+  activeReachableNodes.visited.forEach(nodeStr => {
+    let parts = nodeStr.split('-');
+    let slotId = parseInt(parts[0]);
+    let dataIdx = parseInt(parts[1]);
+    
+    let boardState = currentBuild.paragon[slotId];
+    if (!boardState || !boardState.boardId) return;
+    
+    let bData = window.D4_PARAGON_DATA.paragonBoards[boardState.boardId];
+    if (!bData || !bData.nodes[dataIdx]) return;
+    
+    let nodeName = bData.nodes[dataIdx];
+    let nodeInfo = window.D4_PARAGON_DATA.paragonNodes[nodeName];
+    if (!nodeInfo || !nodeInfo.attributes) return;
+    
+    nodeInfo.attributes.forEach(attr => {
+      let formArray = window.D4_PARAGON_FORMULAS.attributeFormulas[attr.formula];
+      if (!formArray || formArray.length === 0) return;
+      
+      let rawFormula = formArray[0].formula;
+      let rawValue = parseFloat(rawFormula);
+      if (isNaN(rawValue)) return; // fallback for complex formulas
+      
+      let attrMeta = window.D4_PARAGON_FORMULAS.attributes[attr.id];
+      if (!attrMeta) return;
+      
+      let internalName = attrMeta.name;
+      let descString = window.D4_PARAGON_FORMULAS.attributeDescriptions[internalName];
+      if (!descString) return;
+      
+      let parsed = cleanAttributeDescription(descString, rawValue);
+      
+      if (!stats[parsed.name]) {
+        stats[parsed.name] = { value: 0, isPercent: parsed.isPercent };
+      }
+      stats[parsed.name].value += parsed.value;
+    });
+  });
+  
+  return stats;
+};
+
+// Graph Logic
 function buildGlobalGraph(ignoredNodeStr = null) {
     let activeNodes = new Set();
     for (let s = 0; s < 5; s++) {
@@ -830,7 +938,15 @@ window.populateBoardModalGrid = function() {
     else if (classKey === 'spiritborn') classKey = 'spirit';
 
     for (const [bId, bd] of Object.entries(boardsData)) {
-        if ((bId.toLowerCase().includes(classKey) || bId.toLowerCase().includes('generic')) && !bId.toLowerCase().includes('start')) {
+        if (bId.toLowerCase().includes(classKey) || bId.toLowerCase().includes('generic')) {
+            const bName = (bd.name || bId).toLowerCase();
+            const bIdLower = bId.toLowerCase();
+            
+            // Exclude starter boards (which often have "Start" in the name or end in "_0" / "_00")
+            if (bName.includes('start') || bIdLower.includes('start') || bIdLower.endsWith('_00') || bIdLower.endsWith('_0')) {
+                continue;
+            }
+            
             let used = false;
             for(let i=1; i<5; i++) {
                 if(currentBuild.paragon[i] && currentBuild.paragon[i].boardId === bId) used = true;
@@ -911,5 +1027,7 @@ window.populateBoardModalGrid = function() {
         grid.appendChild(card);
     }
 };
+
+
 
 
