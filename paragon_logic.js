@@ -831,7 +831,16 @@ window.renderParagonGrid = function() {
                     const idx = pData.nodes.indexOf(dataIdx);
                     
                     if (nodeName.toLowerCase().includes('socket') && idx !== -1) {
-                        if (window.openGlyphModal) window.openGlyphModal(s, dataIdx);
+                        showToast("Opening Glyph Menu...");
+                        try {
+                            if (window.openGlyphModal) {
+                                window.openGlyphModal(s, dataIdx);
+                            } else {
+                                showToast("openGlyphModal is not defined!");
+                            }
+                        } catch (err) {
+                            showToast("Error opening glyph menu: " + err.message);
+                        }
                         return;
                     }
                     
@@ -1222,7 +1231,11 @@ window.populateBoardModalGrid = function() {
 window.activeGlyphSocket = { slot: -1, nodeIdx: -1 };
 
 window.openGlyphModal = function(slotIdx, nodeIdx) {
-    if (!window.D4_PARAGON_DATA || !window.D4_PARAGON_DATA.paragonGlyphs) return;
+    try {
+        if (!window.D4_PARAGON_DATA || !window.D4_PARAGON_DATA.paragonGlyphs) {
+            showToast("Glyph data not loaded yet.");
+            return;
+        }
     window.activeGlyphSocket = { slot: slotIdx, nodeIdx: nodeIdx };
     
     let currentGlyphData = currentBuild.paragon[slotIdx].glyph || { id: null, level: 1 };
@@ -1278,12 +1291,17 @@ window.openGlyphModal = function(slotIdx, nodeIdx) {
         grid.appendChild(card);
     });
     
+    
     document.getElementById('paragon-glyph-level-slider').value = currentGlyphData.level;
     document.getElementById('paragon-glyph-level-input').value = currentGlyphData.level;
     
     updateGlyphRadiusDisplay(currentGlyphData.level);
     
     document.getElementById('paragon-glyph-modal').style.display = 'block';
+    } catch(err) {
+        console.error(err);
+        showToast("Error opening modal: " + err.message);
+    }
 };
 
 function updateGlyphRadiusDisplay(level) {
