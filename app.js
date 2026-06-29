@@ -2499,6 +2499,40 @@ function renderEquipment(className, savedEquipment = {}) {
         // Universal DR and Dodge will be calculated here once those tabs exist. For now, 0.
         const finalUniversalDr = 0;
         addStat(stats, 'Universal Damage Reduction %', finalUniversalDr * 100, 'Calculated');
+        
+        // Book of the Dead Sacrifice Bonuses (Base Stats)
+        if (currentBuild?.bookOfTheDead) {
+            const sacrificialKey = Object.keys(stats).find(k => k.toLowerCase() === 'sacrificial aspect');
+            const sacEffectiveness = sacrificialKey ? stats[sacrificialKey].final : 0;
+            const sacMultiplier = 1 + (sacEffectiveness / 100);
+            
+            // Warriors
+            if (currentBuild.bookOfTheDead.warriors?.node === 'sacrifice') {
+                if (currentBuild.bookOfTheDead.warriors.spec === 'Skirmisher') {
+                    addStat(stats, 'Critical Strike Chance %', 5 * sacMultiplier, 'Book of the Dead (Skirmisher Sacrifice)');
+                } else if (currentBuild.bookOfTheDead.warriors.spec === 'Defender') {
+                    addStat(stats, 'Resistance to All Elements', 40 * sacMultiplier, 'Book of the Dead (Defender Sacrifice)');
+                }
+            }
+            
+            // Mages
+            if (currentBuild.bookOfTheDead.mages?.node === 'sacrifice') {
+                if (currentBuild.bookOfTheDead.mages.spec === 'Shadow') {
+                    addStat(stats, 'Maximum Essence', 20 * sacMultiplier, 'Book of the Dead (Shadow Mage Sacrifice)');
+                    addStat(stats, 'Essence Generation %', 20 * sacMultiplier, 'Book of the Dead (Shadow Mage Sacrifice)');
+                }
+            }
+            
+            // Golems
+            if (currentBuild.bookOfTheDead.golems?.node === 'sacrifice') {
+                if (currentBuild.bookOfTheDead.golems.spec === 'Bone Golem') {
+                    addStat(stats, 'Attack Speed Bonus %', 10 * sacMultiplier, 'Book of the Dead (Bone Golem Sacrifice)');
+                } else if (currentBuild.bookOfTheDead.golems.spec === 'Blood Golem') {
+                    // Blood Golem is a 20%[x] Maximum Life multiplier! We inject it as % Maximum Life which acts as a multiplier in the engine.
+                    addStat(stats, '% Maximum Life', 20 * sacMultiplier, 'Book of the Dead (Blood Golem Sacrifice)');
+                }
+            }
+        }
 
         // Post-Compilation Step: Inverse Multiplicative Stats (Dodge Chance, Damage Reduction, etc.)
         // This must run at the very end so that Core Stats (like Dexterity) are included in the inverse multiplicative pool!
@@ -3139,32 +3173,57 @@ function renderEquipment(className, savedEquipment = {}) {
           
           // Hulking Monstrosity (Necromancer)
           if (legPowers.includes('Paragon_Necro_Legendary_005')) {
-              // Always active base multiplier
-              createMultiplicativeRow('Hulking Monstrosity Base (Legendary Node)', '100.00', true);
-              
               // Find Sacrificial Aspect effectiveness
               const sacrificialKey = Object.keys(compiledStats).find(k => k.toLowerCase() === 'sacrificial aspect');
               const sacEffectiveness = sacrificialKey ? compiledStats[sacrificialKey].final : 0;
               const sacMultiplier = 1 + (sacEffectiveness / 100);
               
-              // Warrior Sacrifice
+              const sacrificeBase = 0.60 * sacMultiplier;
+              const M = 1 + sacrificeBase; // "M" multiplier for one sacrifice
+              
               const wNode = currentBuild.bookOfTheDead?.warriors?.node;
-              if (wNode === 'sacrifice') {
-                  const wVal = 60 * sacMultiplier;
-                  createMultiplicativeRow('Hulking Monstrosity Warriors (Legendary Node)', wVal.toFixed(2), true);
+              const mNode = currentBuild.bookOfTheDead?.mages?.node;
+              
+              const isWSacrificed = (wNode === 'sacrifice');
+              const isMSacrificed = (mNode === 'sacrifice');
+              
+              let finalRowValue = 100; // Base 100% if no sacrifices
+              
+              if (isWSacrificed && isMSacrificed) {
+                  // Both Sacrificed: M^2
+                  finalRowValue = Math.pow(M, 2) * 100;
+              } else if (isWSacrificed || isMSacrificed) {
+                  // Only one sacrificed: (1 + M)
+                  finalRowValue = (1 + M) * 100;
               }
               
-              // Mage Sacrifice
-              const mNode = currentBuild.bookOfTheDead?.mages?.node;
-              if (mNode === 'sacrifice') {
-                  const mVal = 60 * sacMultiplier;
-                  createMultiplicativeRow('Hulking Monstrosity Mages (Legendary Node)', mVal.toFixed(2), true);
-              }
+              createMultiplicativeRow('Hulking Monstrosity (Legendary Node)', finalRowValue.toFixed(2), true);
           }
           
           // Blood Begets Blood (Necromancer)
           if (legPowers.includes('Paragon_Necro_Legendary_011')) {
               createMultiplicativeRow('Blood Begets Blood (Legendary Node)', '60.00', true);
+          }
+          
+          // Book of the Dead Multiplicative Sacrifices
+          if (currentBuild?.bookOfTheDead) {
+              const sacrificialKey = Object.keys(compiledStats).find(k => k.toLowerCase() === 'sacrificial aspect');
+              const sacEffectiveness = sacrificialKey ? compiledStats[sacrificialKey].final : 0;
+              const sacMultiplier = 1 + (sacEffectiveness / 100);
+              
+              if (currentBuild.bookOfTheDead.warriors?.node === 'sacrifice' && currentBuild.bookOfTheDead.warriors.spec === 'Reaper') {
+                  createMultiplicativeRow('Reaper Sacrifice (Book of the Dead)', (15 * sacMultiplier).toFixed(2), true);
+              }
+              if (currentBuild.bookOfTheDead.mages?.node === 'sacrifice') {
+                  if (currentBuild.bookOfTheDead.mages.spec === 'Cold') {
+                      createMultiplicativeRow('Cold Mage Sacrifice [Vulnerable] (Book of the Dead)', (20 * sacMultiplier).toFixed(2), true);
+                  } else if (currentBuild.bookOfTheDead.mages.spec === 'Bone') {
+                      createMultiplicativeRow('Bone Mage Sacrifice [Overpowered] (Book of the Dead)', (20 * sacMultiplier).toFixed(2), true);
+                  }
+              }
+              if (currentBuild.bookOfTheDead.golems?.node === 'sacrifice' && currentBuild.bookOfTheDead.golems.spec === 'Iron Golem') {
+                  createMultiplicativeRow('Iron Golem Sacrifice [Crit Damage] (Book of the Dead)', (15 * sacMultiplier).toFixed(2), true);
+              }
           }
           
           // Bloodbath (Necromancer)
