@@ -6111,19 +6111,28 @@ rarity = foundItem.rarity;
     
     let items = [...(window.D4_DATABASE?.gems || [])];
     
-    const eq = window.savedEquipment[slotName] || {};
+    const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
+    let eq = {};
+    if (box && box.dataset.value) {
+        try { eq = JSON.parse(box.dataset.value); } catch(e){}
+    }
     const maxSockets = getMaxSockets(slotName, eq);
     
     let globalRuneCount = 0;
-    for (const [s, sEq] of Object.entries(window.savedEquipment || {})) {
-        if (sEq && sEq.sockets) {
-            sEq.sockets.forEach(gemName => {
-                if (gemName && window.D4_DATABASE?.runes?.some(r => r.name === gemName)) {
-                    globalRuneCount++;
+    document.querySelectorAll('.equipment-slot-box').forEach(b => {
+        if (b.dataset.value) {
+            try {
+                const bEq = JSON.parse(b.dataset.value);
+                if (bEq && bEq.sockets) {
+                    bEq.sockets.forEach(gemName => {
+                        if (gemName && window.D4_DATABASE?.runes?.some(r => r.name === gemName)) {
+                            globalRuneCount++;
+                        }
+                    });
                 }
-            });
+            } catch(e){}
         }
-    }
+    });
     
     const currentGemName = eq.sockets ? eq.sockets[window.currentSocketIndex] : null;
     const isReplacingRune = currentGemName && window.D4_DATABASE?.runes?.some(r => r.name === currentGemName);
