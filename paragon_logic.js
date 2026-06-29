@@ -1,4 +1,39 @@
 
+window.getTotalParagonPointsSpent = function() {
+    let totalSpent = 0;
+    let connectedBoards = 0;
+    for(let i=0; i<5; i++) {
+        if (currentBuild.paragon[i] && currentBuild.paragon[i].nodes) {
+            totalSpent += currentBuild.paragon[i].nodes.length;
+            if (i > 0 && currentBuild.paragon[i].boardId) connectedBoards++;
+        }
+    }
+    totalSpent -= connectedBoards;
+    if (currentBuild.paragon[0] && currentBuild.paragon[0].nodes.length > 0) {
+        totalSpent -= 1;
+    }
+    return Math.max(0, totalSpent);
+};
+
+window.showToast = function(msg) {
+    let container = document.getElementById('toast-container');
+    if (!container) return;
+    
+    let toast = document.createElement('div');
+    toast.className = 'd4-toast';
+    toast.textContent = msg;
+    container.appendChild(toast);
+    
+    // trigger reflow
+    void toast.offsetWidth;
+    toast.classList.add('show');
+    
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+};
+
 // paragon_logic.js
 // Handles all Paragon Board logic, UI, node selection, and stats calculation
 
@@ -277,44 +312,50 @@ window.initParagonUI = function() {
         });
     }
     
-    const confirmBtn = document.getElementById('paragon-modal-confirm');
-    if (confirmBtn) {
-        confirmBtn.addEventListener('click', () => {
-            const select = document.getElementById('paragon-modal-board-select');
-            const boardId = select.value;
-            if (boardId && pendingAttach) {
-                // Find empty slot
-                let emptySlot = -1;
-                for(let i=1; i<5; i++) {
-                    if (!currentBuild.paragon[i] || !currentBuild.paragon[i].boardId) {
-                        emptySlot = i; break;
-                    }
-                }
-                
-                if (emptySlot === -1) {
-                    alert("Max 5 boards reached!");
-                    return;
-                }
-                
-                let pData = currentBuild.paragon[emptySlot];
-                pData.boardId = boardId;
-                pData.nodes = [];
-                pData.rotation = 0;
-                
-                let selfGateIdx = getOppositeGateIndex(pendingAttach.gateSide, 0);
-                pData.connection = {
-                    parentSlot: pendingAttach.slot,
-                    parentGate: pendingAttach.gateIdx,
-                    selfGate: selfGateIdx
-                };
-                
-                document.getElementById('paragon-attach-modal').style.display = 'none';
-                pendingAttach = null;
-                saveBuild();
-                renderParagonGrid();
+    const radiusInput = document.getElementById('paragon-modal-radius');
+    if (radiusInput) {
+        radiusInput.addEventListener('input', () => {
+            if (pendingAttach && document.getElementById('paragon-attach-modal').style.display === 'block') {
+                populateBoardModalGrid();
             }
         });
     }
+    
+    window.attachBoardFromModal = function(boardId) {
+        if (boardId && pendingAttach) {
+            let emptySlot = -1;
+            for(let i=1; i<5; i++) {
+                if (!currentBuild.paragon[i] || !currentBuild.paragon[i].boardId) {
+                    emptySlot = i; break;
+                }
+            }
+            if (emptySlot === -1) {
+                showToast("Max 5 boards reached!");
+                return;
+            }
+            let pData = currentBuild.paragon[emptySlot];
+            pData.boardId = boardId;
+            pData.rotation = 0;
+            let selfGateIdx = getOppositeGateIndex(pendingAttach.gateSide, 0);
+            pData.nodes = [selfGateIdx]; // Automatically activate selfGate
+            pData.connection = {
+                parentSlot: pendingAttach.slot,
+                parentGate: pendingAttach.gateIdx,
+                selfGate: selfGateIdx
+            };
+            // Also ensure parentGate is active
+            let parentPData = currentBuild.paragon[pendingAttach.slot];
+            if (!parentPData.nodes) parentPData.nodes = [];
+            if (!parentPData.nodes.includes(pendingAttach.gateIdx)) {
+                parentPData.nodes.push(pendingAttach.gateIdx);
+            }
+            
+            document.getElementById('paragon-attach-modal').style.display = 'none';
+            pendingAttach = null;
+            saveBuild();
+            renderParagonGrid();
+        }
+    };
 
     // Controls Events
     const select = document.getElementById('paragon-board-select');
@@ -344,13 +385,13 @@ window.initParagonUI = function() {
     if (removeBtn) {
         removeBtn.addEventListener('click', () => {
             if (activeParagonSlot === 0) {
-                alert("Cannot remove the Start Board.");
+                showToast("Cannot remove the Start Board.");
                 return;
             }
             // Check if any board depends on this one
             for(let i=1; i<5; i++) {
                 if (currentBuild.paragon[i].connection && currentBuild.paragon[i].connection.parentSlot === activeParagonSlot && currentBuild.paragon[i].boardId) {
-                    alert("Cannot remove this board because another board is attached to it.");
+                    showToast("Cannot remove this board because another board is attached to it.");
                     return;
                 }
             }
@@ -367,14 +408,16 @@ window.initParagonUI = function() {
     if(resetBtn) {
         resetBtn.addEventListener('click', () => {
             if (confirm("Reset entirely?")) {
+                let startBoardId = currentBuild.paragon[0] ? currentBuild.paragon[0].boardId : null;
                 currentBuild.paragon = [
-                    { boardId: null, nodes: [], glyphId: null, glyphLevel: 1, rotation: 0, connection: null },
+                    { boardId: startBoardId, nodes: [], glyphId: null, glyphLevel: 1, rotation: 0, connection: null },
                     { boardId: null, nodes: [], glyphId: null, glyphLevel: 1, rotation: 0, connection: { parentSlot: null, parentGate: null, selfGate: null } },
                     { boardId: null, nodes: [], glyphId: null, glyphLevel: 1, rotation: 0, connection: { parentSlot: null, parentGate: null, selfGate: null } },
                     { boardId: null, nodes: [], glyphId: null, glyphLevel: 1, rotation: 0, connection: { parentSlot: null, parentGate: null, selfGate: null } },
                     { boardId: null, nodes: [], glyphId: null, glyphLevel: 1, rotation: 0, connection: { parentSlot: null, parentGate: null, selfGate: null } }
                 ];
-                document.getElementById('paragon-board-controls').style.display = 'none';
+                let controls = document.getElementById('paragon-board-controls');
+                if (controls) controls.style.display = 'none';
                 saveBuild();
                 renderParagonGrid();
             }
@@ -394,29 +437,7 @@ function updateSurfaceTransform() {
 window.renderParagonGrid = function() {
     const surface = document.getElementById('paragon-surface');
     if (!surface) return;
-    surface.innerHTML = '';
-    
-    if (!D4_PARAGON_DATA || !D4_PARAGON_DATA.paragonBoards) {
-        return;
-    }
-    
-    // Total spent
-    let totalSpent = 0;
-    for(let i=0; i<5; i++) {
-        if (currentBuild.paragon[i] && currentBuild.paragon[i].nodes) {
-            totalSpent += currentBuild.paragon[i].nodes.length;
-        }
-    }
-    if (document.getElementById('paragon-points-spent')) {
-        document.getElementById('paragon-points-spent').textContent = totalSpent;
-    }
-
-    // Global Pathfinding
-    const { visited, crossEdges, activeNodes } = getGlobalReachableActiveNodes();
-    const globalReachable = getReachableNodesMap(visited, crossEdges, activeNodes);
-    
-    const boardsData = D4_PARAGON_DATA.paragonBoards;
-    
+    const boardsData = window.D4_PARAGON_DATA.paragonBoards;
     // Enforce Slot 0 Start Board if null
     if (!currentBuild.paragon[0].boardId) {
         let classKey = currentBuild.class.toLowerCase();
@@ -426,12 +447,46 @@ window.renderParagonGrid = function() {
         else if (classKey === 'spiritborn') classKey = 'spirit';
         
         for (const [bId, bData] of Object.entries(boardsData)) {
-            if (bId.toLowerCase().includes(classKey) && bId.toLowerCase().includes('start')) {
+            let n = (bData.name || "").toLowerCase();
+            if (bId.toLowerCase().includes(classKey) && (bId.toLowerCase().includes('start') || bId.toLowerCase().endsWith('_00') || bId.toLowerCase().endsWith('_0') || n.includes('start'))) {
                 currentBuild.paragon[0].boardId = bId;
                 break;
             }
         }
     }
+    
+    // Auto-activate start node
+    if (currentBuild.paragon[0].boardId) {
+        let b0Data = boardsData[currentBuild.paragon[0].boardId];
+        if (b0Data) {
+            let startIdx = b0Data.nodes.findIndex(n => n && n.toLowerCase().includes('start'));
+            if (startIdx !== -1) {
+                if (!currentBuild.paragon[0].nodes) currentBuild.paragon[0].nodes = [];
+                if (!currentBuild.paragon[0].nodes.includes(startIdx)) {
+                    currentBuild.paragon[0].nodes.push(startIdx);
+                }
+            }
+        }
+    }
+    surface.innerHTML = '';
+    
+    if (!D4_PARAGON_DATA || !D4_PARAGON_DATA.paragonBoards) {
+        return;
+    }
+    
+    // Total spent
+    let totalSpent = getTotalParagonPointsSpent();
+    if (document.getElementById('paragon-points-spent')) {
+        document.getElementById('paragon-points-spent').textContent = totalSpent;
+    }
+
+    // Global Pathfinding
+    const { visited, crossEdges, activeNodes } = getGlobalReachableActiveNodes();
+    const globalReachable = getReachableNodesMap(visited, crossEdges, activeNodes);
+    
+    // boardsData already declared above
+    
+
     
     // Connected checks
     let isGateConnected = (s, gIdx) => {
@@ -543,37 +598,10 @@ window.renderParagonGrid = function() {
                             }
                         }
                         if (emptySlot === -1) {
-                            alert("You have reached the maximum of 5 boards.");
+                            showToast("You have reached the maximum of 5 boards.");
                         } else {
                             pendingAttach = { slot: s, gateIdx: dataIdx, gateSide: getGateSide(dataIdx, rotation) };
-                            
-                            // Populate modal
-                            const mSelect = document.getElementById('paragon-modal-board-select');
-                            mSelect.innerHTML = '<option value="">-- Select Board --</option>';
-                            let matchingBoards = [];
-                            let classKey = currentBuild.class.toLowerCase();
-                            if (classKey === 'necromancer') classKey = 'necro';
-                            else if (classKey === 'sorcerer') classKey = 'sorc';
-                            else if (classKey === 'barbarian') classKey = 'barb';
-                            else if (classKey === 'spiritborn') classKey = 'spirit';
-                
-                            for (const [bId, bd] of Object.entries(boardsData)) {
-                                if ((bId.toLowerCase().includes(classKey) || bId.toLowerCase().includes('generic')) && !bId.toLowerCase().includes('start')) {
-                                    // Make sure it's not already used
-                                    let used = false;
-                                    for(let i=1; i<5; i++) {
-                                        if(currentBuild.paragon[i] && currentBuild.paragon[i].boardId === bId) used = true;
-                                    }
-                                    if (!used) matchingBoards.push({ id: bId, name: bd.name || bId });
-                                }
-                            }
-                            matchingBoards.sort((a, b) => a.name.localeCompare(b.name));
-                            for (const b of matchingBoards) {
-                                const opt = document.createElement('option');
-                                opt.value = b.id; opt.textContent = b.name;
-                                mSelect.appendChild(opt);
-                            }
-                            
+                            populateBoardModalGrid();
                             document.getElementById('paragon-attach-modal').style.display = 'block';
                         }
                         return; // Done
@@ -582,23 +610,92 @@ window.renderParagonGrid = function() {
                     if (!pData.nodes) pData.nodes = [];
                     const idx = pData.nodes.indexOf(dataIdx);
                     
-                    if (idx > -1) {
-                        if (!canRemoveNodeGlobal(dataIdx, s)) {
-                            alert("Cannot remove this node because other active nodes depend on it.");
-                            return;
-                        }
-                        pData.nodes.splice(idx, 1);
-                    } else {
+                    if (idx === -1) {
                         if (!globalReachable.has(myStr)) return;
-                        if (pData.nodes.length >= 225) {
-                            alert("Max nodes reached for this board!");
+                        if (getTotalParagonPointsSpent() >= 342) {
+                            showToast("You have reached the maximum of 342 Paragon Points!");
                             return;
                         }
                         pData.nodes.push(dataIdx);
+                        saveBuild();
+                        renderParagonGrid();
+                    }
+                });
+                
+                cell.addEventListener('contextmenu', (e) => {
+                    e.preventDefault(); // Prevent default right-click menu
+                    e.stopPropagation();
+                    
+                    let isParentGate = false;
+                    let attachedChildSlot = -1;
+                    for(let i=1; i<5; i++) {
+                        let conn = currentBuild.paragon[i].connection;
+                        if (conn && conn.parentSlot === s && conn.parentGate === dataIdx && currentBuild.paragon[i].boardId) {
+                            isParentGate = true;
+                            attachedChildSlot = i;
+                            break;
+                        }
                     }
                     
-                    saveBuild();
-                    renderParagonGrid();
+                    let isSelfGate = (s !== 0 && currentBuild.paragon[s].connection && currentBuild.paragon[s].connection.selfGate === dataIdx);
+                    
+                    if (isParentGate || isSelfGate) {
+                        let targetSlot = isParentGate ? attachedChildSlot : s;
+                        let childData = currentBuild.paragon[targetSlot];
+                        if (childData && childData.nodes.length > 1) {
+                            showToast("Cannot refund this gate because the attached board has active nodes.");
+                            return;
+                        }
+                        if (confirm("Refund this gate and remove the attached board?")) {
+                            let pSlotToClear = -1;
+                            let pGateToClear = -1;
+                            
+                            if (isParentGate) {
+                                pSlotToClear = s;
+                                pGateToClear = dataIdx;
+                            } else {
+                                pSlotToClear = currentBuild.paragon[s].connection.parentSlot;
+                                pGateToClear = currentBuild.paragon[s].connection.parentGate;
+                            }
+                            
+                            currentBuild.paragon[targetSlot] = { boardId: null, nodes: [], glyphId: null, glyphLevel: 1, rotation: 0, connection: { parentSlot: null, parentGate: null, selfGate: null } };
+                            
+                            if (pSlotToClear !== -1) {
+                                let parentData = currentBuild.paragon[pSlotToClear];
+                                if (parentData && parentData.nodes) {
+                                    let pIdx = parentData.nodes.indexOf(pGateToClear);
+                                    if (pIdx > -1) parentData.nodes.splice(pIdx, 1);
+                                }
+                            }
+                            
+                            // Clear floating controls if that board was removed
+                            if (activeParagonSlot === targetSlot) {
+                                document.getElementById('paragon-board-controls').style.display = 'none';
+                                activeParagonSlot = 0;
+                            }
+                            
+                            saveBuild();
+                            renderParagonGrid();
+                        }
+                        return;
+                    }
+                    
+                    if (!pData.nodes) pData.nodes = [];
+                    const idx = pData.nodes.indexOf(dataIdx);
+                    
+                    if (idx > -1) {
+                        if (s === 0 && nodeName && nodeName.toLowerCase().includes('start')) {
+                            showToast("Cannot remove the starting node.");
+                            return;
+                        }
+                        if (!canRemoveNodeGlobal(dataIdx, s)) {
+                            showToast("Cannot remove this node because other active nodes depend on it.");
+                            return;
+                        }
+                        pData.nodes.splice(idx, 1);
+                        saveBuild();
+                        renderParagonGrid();
+                    }
                 });
             }
             boardWrapper.appendChild(cell);
@@ -628,4 +725,104 @@ window.showNodeDetails = function(nodeId) {
 window.calculateParagonStats = function() {
     let stats = {};
     return stats;
+};
+
+
+window.populateBoardModalGrid = function() {
+    const grid = document.getElementById('paragon-modal-board-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    
+    let radius = parseInt(document.getElementById('paragon-modal-radius').value) || 3;
+    let boardsData = window.D4_PARAGON_DATA.paragonBoards;
+    let pNodes = window.D4_PARAGON_DATA.paragonNodes;
+    
+    let matchingBoards = [];
+    let classKey = currentBuild.class.toLowerCase();
+    if (classKey === 'necromancer') classKey = 'necro';
+    else if (classKey === 'sorcerer') classKey = 'sorc';
+    else if (classKey === 'barbarian') classKey = 'barb';
+    else if (classKey === 'spiritborn') classKey = 'spirit';
+
+    for (const [bId, bd] of Object.entries(boardsData)) {
+        if ((bId.toLowerCase().includes(classKey) || bId.toLowerCase().includes('generic')) && !bId.toLowerCase().includes('start')) {
+            let used = false;
+            for(let i=1; i<5; i++) {
+                if(currentBuild.paragon[i] && currentBuild.paragon[i].boardId === bId) used = true;
+            }
+            if (!used) {
+                // Calculate Stats in radius
+                let stats = {Str: 0, Int: 0, Will: 0, Dex: 0};
+                let socketIdx = bd.nodes.findIndex(n => n && n.toLowerCase().includes('socket'));
+                if (socketIdx !== -1) {
+                    let sX = socketIdx % 21; let sY = Math.floor(socketIdx / 21);
+                    for(let i=0; i<441; i++) {
+                        let n = bd.nodes[i];
+                        if(!n) continue;
+                        let x = i%21; let y = Math.floor(i/21);
+                        let dist = Math.abs(x - sX) + Math.abs(y - sY);
+                        if (dist <= radius) {
+                            let nData = pNodes[n];
+                            if (!nData) {
+                                if (n.includes('_Str')) stats.Str += 5;
+                                if (n.includes('_Int')) stats.Int += 5;
+                                if (n.includes('_Will')) stats.Will += 5;
+                                if (n.includes('_Dex')) stats.Dex += 5;
+                            } else {
+                                if (nData.tags) {
+                                    let sMap = { 'Search_Strength': 'Str', 'Search_Intelligence': 'Int', 'Search_Willpower': 'Will', 'Search_Dexterity': 'Dex' };
+                                    for(let attr of (nData.attributes || [])) {
+                                        if (attr.formula && attr.formula.includes('CoreStat')) {
+                                            let s = Object.keys(sMap).find(t => nData.tags.includes(t));
+                                            if (s) {
+                                                let val = 10;
+                                                if (attr.formula.includes('Magic')) val = 7;
+                                                stats[sMap[s]] += val;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                matchingBoards.push({ id: bId, name: bd.name || bId, stats });
+            }
+        }
+    }
+    
+    matchingBoards.sort((a, b) => a.name.localeCompare(b.name));
+    
+    for (const b of matchingBoards) {
+        const card = document.createElement('div');
+        card.style.background = 'rgba(20, 20, 30, 0.9)';
+        card.style.border = '1px solid #445';
+        card.style.borderRadius = '4px';
+        card.style.padding = '10px';
+        card.style.cursor = 'pointer';
+        card.style.transition = 'all 0.2s';
+        
+        card.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: #c9a55c; border: 2px solid #521; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #000;">
+                    ${b.name.substring(0,2)}
+                </div>
+                <div style="color: #f0c040; font-weight: bold; font-size: 0.95rem;">${b.name}</div>
+            </div>
+            <div style="font-size: 0.85rem; color: #aaa;">
+                Str: <span style="color: #e8e6e3;">${b.stats.Str}</span> 
+                Int: <span style="color: #f0c040;">${b.stats.Int}</span> 
+                Will: <span style="color: #e8e6e3;">${b.stats.Will}</span> 
+                Dex: <span style="color: #e8e6e3;">${b.stats.Dex}</span>
+            </div>
+        `;
+        
+        card.addEventListener('mouseenter', () => { card.style.borderColor = '#c9a55c'; card.style.background = 'rgba(30,30,45,1)'; });
+        card.addEventListener('mouseleave', () => { card.style.borderColor = '#445'; card.style.background = 'rgba(20,20,30,0.9)'; });
+        card.addEventListener('click', () => {
+            attachBoardFromModal(b.id);
+        });
+        
+        grid.appendChild(card);
+    }
 };
