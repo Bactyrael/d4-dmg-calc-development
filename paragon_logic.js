@@ -60,19 +60,56 @@ function buildGlobalGraph(ignoredNodeStr = null) {
     }
 
     let crossEdges = {}; 
-    for (let s = 1; s < 5; s++) {
-        let pData = currentBuild.paragon[s];
-        if (pData && pData.boardId && pData.connection) {
-            let conn = pData.connection;
-            if (conn.parentSlot !== null && conn.parentGate !== null && conn.selfGate !== null && conn.parentSlot !== "") {
-                let parentStr = conn.parentSlot + "-" + conn.parentGate;
-                let childStr = s + "-" + conn.selfGate;
+    
+    // Implicit Grid-Based Linking
+    // A board is at gridX, gridY. We check all pairs to see if they are adjacent and gates line up.
+    for (let i = 0; i < 5; i++) {
+        let p1 = currentBuild.paragon[i];
+        if (!p1 || !p1.boardId) continue;
+        let gX1 = p1.gridX || 0; let gY1 = p1.gridY || 0;
+        
+        for (let j = i + 1; j < 5; j++) {
+            let p2 = currentBuild.paragon[j];
+            if (!p2 || !p2.boardId) continue;
+            let gX2 = p2.gridX || 0; let gY2 = p2.gridY || 0;
+            
+            // Check adjacency
+            let dx = gX2 - gX1;
+            let dy = gY2 - gY1;
+            
+            if (Math.abs(dx) + Math.abs(dy) === 1) { // Exactly 1 unit apart (orthogonally adjacent)
+                // They are adjacent. Find the facing gate sides.
+                // If dx = 1, board 2 is EAST of board 1. Board 1 needs an EAST gate, Board 2 needs a WEST gate.
+                let requiredSide1, requiredSide2;
+                if (dx === 1) { requiredSide1 = "East"; requiredSide2 = "West"; }
+                else if (dx === -1) { requiredSide1 = "West"; requiredSide2 = "East"; }
+                else if (dy === 1) { requiredSide1 = "South"; requiredSide2 = "North"; }
+                else if (dy === -1) { requiredSide1 = "North"; requiredSide2 = "South"; }
                 
-                if (!crossEdges[parentStr]) crossEdges[parentStr] = [];
-                crossEdges[parentStr].push(childStr);
+                // Now find if p1 has a gate facing requiredSide1, and p2 has a gate facing requiredSide2.
+                let b1Data = window.D4_PARAGON_DATA.paragonBoards[p1.boardId];
+                let b2Data = window.D4_PARAGON_DATA.paragonBoards[p2.boardId];
                 
-                if (!crossEdges[childStr]) crossEdges[childStr] = [];
-                crossEdges[childStr].push(parentStr);
+                let g1Idx = -1, g2Idx = -1;
+                for(let k=0; k<441; k++) {
+                    if (b1Data.nodes[k] && b1Data.nodes[k].toLowerCase().includes('gate')) {
+                        if (getGateSide(k, p1.rotation || 0) === requiredSide1) g1Idx = k;
+                    }
+                }
+                for(let k=0; k<441; k++) {
+                    if (b2Data.nodes[k] && b2Data.nodes[k].toLowerCase().includes('gate')) {
+                        if (getGateSide(k, p2.rotation || 0) === requiredSide2) g2Idx = k;
+                    }
+                }
+                
+                if (g1Idx !== -1 && g2Idx !== -1) {
+                    let str1 = i + "-" + g1Idx;
+                    let str2 = j + "-" + g2Idx;
+                    if (!crossEdges[str1]) crossEdges[str1] = [];
+                    crossEdges[str1].push(str2);
+                    if (!crossEdges[str2]) crossEdges[str2] = [];
+                    crossEdges[str2].push(str1);
+                }
             }
         }
     }
@@ -198,8 +235,10 @@ function getReachableNodesMap(visited, crossEdges, activeNodes) {
 
 function canRemoveNodeGlobal(nodeIdx, slotId) {
     let targetStr = slotId + "-" + nodeIdx;
-    const { visited, activeNodes } = getGlobalReachableActiveNodes(targetStr);
-    return visited.size === activeNodes.size;
+    const before = getGlobalReachableActiveNodes();
+    const after = getGlobalReachableActiveNodes(targetStr);
+    // If removing it doesn't reduce the number of reachable active nodes (other than itself), it's fine to remove!
+    return after.visited.size >= before.visited.size - 1;
 }
 
 function getGateSide(gateIdx, rotation) {
@@ -229,21 +268,9 @@ function getOppositeGateIndex(sideStr, rotation) {
 }
 
 function calculateBoardPosition(slotIndex) {
-    if (slotIndex === 0) return { x: 0, y: 0 };
     let pData = currentBuild.paragon[slotIndex];
-    if (!pData || !pData.connection || pData.connection.parentSlot === null) return { x: 0, y: 0 };
-    
-    let parentPos = calculateBoardPosition(pData.connection.parentSlot);
-    let parentPData = currentBuild.paragon[pData.connection.parentSlot];
-    let parentSide = getGateSide(pData.connection.parentGate, parentPData.rotation || 0);
-    
-    let offset = 480; // Board size visually + some padding
-    if (parentSide === "North") return { x: parentPos.x, y: parentPos.y - offset };
-    if (parentSide === "South") return { x: parentPos.x, y: parentPos.y + offset };
-    if (parentSide === "East")  return { x: parentPos.x + offset, y: parentPos.y };
-    if (parentSide === "West")  return { x: parentPos.x - offset, y: parentPos.y };
-    
-    return parentPos;
+    if (!pData || pData.boardId === null) return { x: 0, y: 0 };
+    return { x: (pData.gridX || 0) * 480, y: (pData.gridY || 0) * 480 };
 }
 
 window.initParagonUI = function() {
@@ -336,7 +363,20 @@ window.initParagonUI = function() {
             let pData = currentBuild.paragon[emptySlot];
             pData.boardId = boardId;
             pData.rotation = 0;
-            let selfGateIdx = getOppositeGateIndex(pendingAttach.gateSide, 0);
+            
+              let parentData = currentBuild.paragon[pendingAttach.slot];
+              let pGridX = parentData.gridX || 0;
+              let pGridY = parentData.gridY || 0;
+              let side = pendingAttach.gateSide;
+              
+              pData.gridX = pGridX;
+              pData.gridY = pGridY;
+              if (side === "North") pData.gridY -= 1;
+              if (side === "South") pData.gridY += 1;
+              if (side === "East") pData.gridX += 1;
+              if (side === "West") pData.gridX -= 1;
+              
+              let selfGateIdx = getOppositeGateIndex(pendingAttach.gateSide, 0);
             pData.nodes = [selfGateIdx]; // Automatically activate selfGate
             pData.connection = {
                 parentSlot: pendingAttach.slot,
@@ -490,13 +530,9 @@ window.renderParagonGrid = function() {
     
     // Connected checks
     let isGateConnected = (s, gIdx) => {
-        for(let i=1; i<5; i++) {
-            let conn = currentBuild.paragon[i].connection;
-            if (conn && conn.parentSlot === s && conn.parentGate === gIdx && currentBuild.paragon[i].boardId) return true;
-        }
-        if (s !== 0 && currentBuild.paragon[s].connection && currentBuild.paragon[s].connection.selfGate === gIdx) return true;
-        return false;
-    };
+          let str = s + "-" + gIdx;
+          return crossEdges[str] && crossEdges[str].length > 0;
+      };
     
     for (let s = 0; s < 5; s++) {
         const pData = currentBuild.paragon[s];
@@ -569,6 +605,11 @@ window.renderParagonGrid = function() {
                 if (controls) {
                     controls.style.display = 'block';
                     document.getElementById('paragon-active-board-name').textContent = `Slot ${s}: ${bData.name}`;
+                    
+                    let rotBtn = document.getElementById('paragon-rotate-btn');
+                    let remBtn = document.getElementById('paragon-remove-btn');
+                    if (rotBtn) rotBtn.style.display = (s === 0) ? 'none' : 'inline-block';
+                    if (remBtn) remBtn.style.display = (s === 0) ? 'none' : 'inline-block';
                     
                     const select = document.getElementById('paragon-board-select');
                     select.disabled = (s !== 0); // Only allow changing board 0, others are fixed once attached? Actually let's just disable it to prevent bugs with connections.
@@ -863,3 +904,5 @@ window.populateBoardModalGrid = function() {
         grid.appendChild(card);
     }
 };
+
+
