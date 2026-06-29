@@ -1331,9 +1331,9 @@ window.openGlyphModal = function(slotIdx, nodeIdx) {
     else if (classStr === 'warlock') clsIdx = 7;
     
     const grid = document.getElementById('paragon-glyph-grid');
-    grid.innerHTML = '';
+    if (grid) grid.innerHTML = '';
     
-    let allGlyphs = Object.values(window.D4_PARAGON_DATA.paragonGlyphs);
+    let allGlyphs = Object.entries(window.D4_PARAGON_DATA.paragonGlyphs).map(([k, v]) => ({ ...v, stringKey: k }));
     
     // Sort Necro glyphs first or just filter by class
     let availableGlyphs = allGlyphs.filter(g => {
