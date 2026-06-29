@@ -626,7 +626,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Biting Cold",
-      "desc": "Cold damage is increased by [15.0 - 20.0]% and makes enemies Vulnerable for 4 seconds.",
+      "desc": "Cold damage is increased by [15.0 - 20.0]% and makes enemies Vulnerable\u00a0for 4 seconds.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -1874,7 +1874,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Frozen Memories",
-      "desc": "Cold damage deals [30 - 45]%[x] increased damage to Chilled enemies, this bonus is tripled against Frozen enemies.",
+      "desc": "Cold\u00a0damage deals [30 - 45]%[x] increased damage to Chilled enemies, this bonus is tripled against Frozen enemies.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -2290,7 +2290,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Inevitable Fate",
-      "desc": "When an enemy falls below #% Life while afflicted with any of your damage over time effects, an explosion occurs every # seconds, dealing # damage for each Element they're afflicted by.",
+      "desc": "When an enemy falls below #% Life while afflicted with any of your damage over time effects, an explosion occurs every # seconds, dealing\u00a0# damage for each Element they're afflicted by.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -3522,7 +3522,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Shredding Blades",
-      "desc": "Conjuration damage makes enemies Vulnerable for # seconds. You deal #% increased damage to Vulnerable enemies.",
+      "desc": "Conjuration damage makes enemies Vulnerable for # seconds.\u00a0You deal #% increased damage to Vulnerable enemies.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
@@ -5666,7 +5666,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Crushing Aspect",
-      "desc": "While Fortified, you deal [45 - 65]%[x] increased damage.",
+      "desc": "While Fortified,\u00a0you deal [45 - 65]%[x] increased damage.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,
@@ -8447,7 +8447,7 @@ window.D4_DATABASE = {
       "desc": "Lucky Hit: Poison or Cold Imbued Skills have up to a 35% chance to deploy a Poison Trap while it is equipped, depending on your equipped Poison Trap's element.Poison Trap gains the Infiltrator Variant for free and deals [75 - 90]%[x] increased damage."
     },
     {
-      "name": "Bane of Ahjad-Den",
+      "name": "Bane of\u00a0Ahjad-Den",
       "desc": "While channeling Whirlwind, you now periodically hurl out a Mighty Throw that deals [75.0 - 90.0]%[x] increased damage."
     },
     {
@@ -8539,7 +8539,7 @@ window.D4_DATABASE = {
       "desc": "Your Core Skills deal [45 - 60]%[x] increased damage for 0 seconds when Consuming 3 Combo Points. Casting Basic Skills always generates 3 Combo Points."
     },
     {
-      "name": "Coop de Grâce",
+      "name": "Coop de Gr\u00e2ce",
       "desc": "Lucky Hit: Damage to Injured enemies has up to a [10 - 15]% chance to spawn a flock of explosive chickens."
     },
     {
@@ -8735,7 +8735,7 @@ window.D4_DATABASE = {
       "desc": "When you Shapeshift into either Werewolf or Werebear form, you gain Berserking for [6 - 8] seconds. Additionally, Berserking grants 1 stack of Ferocity every 1 second while active.Berserking's damage bonus is increased by 10%[+]."
     },
     {
-      "name": "Galvanic Azurite",
+      "name": "Galvanic\u00a0Azurite",
       "desc": "Cast Shock Skill damage leaves enemies Magnetized for 4 seconds, causing them to emit Crackling Energy and receive [40.0 - 60.0]%[x] increased Shock damage from you. Crackling Energy's damage Pulls Magnetized enemies together."
     },
     {
@@ -8927,7 +8927,7 @@ window.D4_DATABASE = {
       "desc": "Gain Earthen Bulwark's Earthen Shrapnel upgrade for free and the damage is increased by [150 - 200]%[x]."
     },
     {
-      "name": "Kilt of Blackwing",
+      "name": "Kilt of\u00a0Blackwing",
       "desc": "Ravens deal [80.0 - 100.0]%[x] increased damage and Shapeshifting into a different form or activating a Companion Skill Summons a Raven that attacks nearby enemies. Summoning a Raven has a chance to call forth an Unkindness for 10 seconds, increasing the number of Ravens Summoned to 3 for the duration."
     },
     {
@@ -9003,7 +9003,7 @@ window.D4_DATABASE = {
       "desc": "Lucky Hit: Dealing damage to an enemy affected by a Trap Skill has up to a 40% chance to: Reduce the active Cooldowns of your Trap Skills by 30% Increase your Trap Skill damage by [9.0 - 12.0]%[x] for 10 seconds, up to [45 - 60]%[x]"
     },
     {
-      "name": "Mjölnic Ryng",
+      "name": "Mj\u00f6lnic Ryng",
       "desc": "While Cataclysm is active, you gain unlimited Spirit and deal [30 - 40]%[x] increased damage."
     },
     {
@@ -9343,7 +9343,7 @@ window.D4_DATABASE = {
       "desc": "Casting an Aura Skill triggers a Consecration beneath you. You gain [80 - 100]% Aura Potency while standing in Consecration."
     },
     {
-      "name": "Sunstained War-Crozier",
+      "name": "Sunstained\u00a0War-Crozier",
       "desc": "Your base Focus Skills benefit from all their Upgrades, and they increase the damage of your Potency Skills by #% for # seconds, up to #%."
     },
     {
@@ -10798,7 +10798,7 @@ window.D4_DATABASE = {
         "type": "Gloves"
       },
       {
-        "name": "Bane of Ahjad-Den",
+        "name": "Bane of\u00a0Ahjad-Den",
         "rarity": "unique",
         "classes": [
           0,
@@ -11558,7 +11558,7 @@ window.D4_DATABASE = {
         "type": "Pants"
       },
       {
-        "name": "Kilt of Blackwing",
+        "name": "Kilt of\u00a0Blackwing",
         "rarity": "unique",
         "classes": [
           0,
@@ -12734,7 +12734,7 @@ window.D4_DATABASE = {
         "type": "Ring"
       },
       {
-        "name": "Galvanic Azurite",
+        "name": "Galvanic\u00a0Azurite",
         "rarity": "unique",
         "classes": [
           1,
@@ -12862,7 +12862,7 @@ window.D4_DATABASE = {
         "type": "Ring"
       },
       {
-        "name": "Mjölnic Ryng",
+        "name": "Mj\u00f6lnic Ryng",
         "rarity": "unique",
         "classes": [
           0,
@@ -13561,7 +13561,7 @@ window.D4_DATABASE = {
         "type": "Mainhand"
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -14378,7 +14378,7 @@ window.D4_DATABASE = {
         "type": "Mainhand"
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -15066,7 +15066,7 @@ window.D4_DATABASE = {
         "type": "Weapon 1"
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -15750,7 +15750,7 @@ window.D4_DATABASE = {
         "type": "Weapon 1"
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -16102,7 +16102,7 @@ window.D4_DATABASE = {
         "type": "Weapon 2"
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -16786,7 +16786,7 @@ window.D4_DATABASE = {
         "type": "Weapon 2"
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -17138,7 +17138,7 @@ window.D4_DATABASE = {
         "type": "Weapon 1 (Bludgeoning)"
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -17822,7 +17822,7 @@ window.D4_DATABASE = {
         "type": "Weapon 1 (Bludgeoning)"
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -18174,7 +18174,7 @@ window.D4_DATABASE = {
         "type": "Weapon 2 (Slashing)"
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -18858,7 +18858,7 @@ window.D4_DATABASE = {
         "type": "Weapon 2 (Slashing)"
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -19210,7 +19210,7 @@ window.D4_DATABASE = {
         "type": "Weapon 3 (Dual Wield 1)"
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -19894,7 +19894,7 @@ window.D4_DATABASE = {
         "type": "Weapon 3 (Dual Wield 1)"
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -20246,7 +20246,7 @@ window.D4_DATABASE = {
         "type": "Weapon 4 (Dual Wield 2)"
       },
       {
-        "name": "Coop de Grâce",
+        "name": "Coop de Gr\u00e2ce",
         "rarity": "unique",
         "classes": [
           0,
@@ -20930,7 +20930,7 @@ window.D4_DATABASE = {
         "type": "Weapon 4 (Dual Wield 2)"
       },
       {
-        "name": "Sunstained War-Crozier",
+        "name": "Sunstained\u00a0War-Crozier",
         "rarity": "unique",
         "classes": [
           0,
@@ -25123,289 +25123,289 @@ window.D4_DATABASE = {
   "runes": [
     {
       "name": "Ahu",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Lucky Hit: Up to a [100|%|] chance against non-Healthy enemies.",
       "offering": 15
     },
     {
       "name": "Bac",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Travel 5 meters.",
       "offering": 50
     },
     {
       "name": "Cem",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Cast Evade.",
       "offering": 75
     },
     {
       "name": "Cir",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Cast 5 Skills then become exhausted for 3 seconds.",
       "offering": 300
     },
     {
       "name": "Feo",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Become Injured or Crowd Controlled. (Cooldown: 10 seconds)",
       "offering": 1000
     },
     {
       "name": "Igni",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Stores Offering every 0.3 |4second:seconds;. Cast a Non-Basic Skill to gain the stored Offering. (Up to 500 Offering).",
       "offering": 25
     },
     {
       "name": "Lith",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Stand still while fighting for 0.3 |4second:seconds;.",
       "offering": 25
     },
     {
       "name": "Moni",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Cast 2 Mobility or Macabre Skills.",
       "offering": 100
     },
     {
       "name": "Nagu",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Maintain at least 1 active Summon for 5 seconds, gaining Offering for each up to 5 Summon.",
       "offering": 100
     },
     {
       "name": "Neo",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Avoid health damage while fighting for 2 seconds.",
       "offering": 200
     },
     {
       "name": "Noc",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Inflict a Crowd Control, gain double offering if it isn't a Slow or Chill.",
       "offering": 5
     },
     {
       "name": "Poc",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Spend 5% of your Maximum Resource.{/c]",
       "offering": 5
     },
     {
       "name": "Tam",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Cast a non-Channeled Core Skill.",
       "offering": 25
     },
     {
       "name": "Ur",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Your Minion or Companion kills an enemy or dies.",
       "offering": 10
     },
     {
       "name": "Xol",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Invoke a Skill from another Class.",
       "offering": 150
     },
     {
       "name": "Yax",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Drink a Healing Potion.",
       "offering": 200
     },
     {
       "name": "Yul",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Cast a Skill with a Cooldown.",
       "offering": 50
     },
     {
       "name": "Zan",
-      "type": "Condition",
+      "type": "Ritual",
       "description": "Cast an Ultimate Skill.",
       "offering": 200
     },
     {
       "name": "Ceh",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Summon a Spirit Wolf Companion to attack enemies for 8 seconds.",
       "offering": 100
     },
     {
       "name": "Chac",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Druid's Lightning Bolt, striking a Nearby enemy.",
       "offering": 20
     },
     {
       "name": "Eom",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Reduce your active Cooldowns by 0.1 seconds.",
       "offering": 100
     },
     {
       "name": "Gar",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Gain 2% Critical Strike Chance for 5 seconds, up to 10%.",
       "offering": 25
     },
     {
       "name": "Jah",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Replace your next Evade with the Sorcerer's Teleport Skill, blinking further, dealing damage, and becoming Unstoppable.",
       "offering": 350
     },
     {
       "name": "Kel",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Paladins's Rally Skill, gaining Resource and Movement Speed for 8 seconds.",
       "offering": 500
     },
     {
       "name": "Kry",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Spiritborn's Vortex Skill, dealing damage and Pulling In enemies.",
       "offering": 300
     },
     {
       "name": "Lac",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Barbarian's Challenging Shout Skill, taunting enemies and reducing your damage taken for 3 seconds.",
       "offering": 400
     },
     {
       "name": "Lum",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Restore 3.5 Primary Resource.",
       "offering": 5
     },
     {
       "name": "Mot",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Gain 1 |4 shadow:shadows;, from the Rogue's Dark Shroud Skill, reducing damage taken per shadow.",
       "offering": 150
     },
     {
       "name": "Ner",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Rogue's Concealment Skill for 5 seconds, gaining Movement Speed, Unstoppable, and Stealth.",
       "offering": 600
     },
     {
       "name": "Obr",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke to create a Warlock's Brimstone at your location.",
       "offering": 100
     },
     {
       "name": "Ohm",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Barbarian's War Cry Skill, increasing your damage dealt by 7.5% for 6 seconds.",
       "offering": 600
     },
     {
       "name": "Prid",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Warlock's Dark Prison Skill, tethering enemies to the area for 3 seconds.",
       "offering": 250
     },
     {
       "name": "Qax",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Casting a Skill other than a Basic or Defensive Consumes all of your Primary Resource to increase your damage up to 100% for 1 second.",
       "offering": 400
     },
     {
       "name": "Qua",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Gain 10% Movement Speed for 5 seconds, up to 50%.",
       "offering": 50
     },
     {
       "name": "Que",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Druid's Earthen Bulwark Skill for 3 seconds, granting yourself a Barrier.",
       "offering": 300
     },
     {
       "name": "Tal",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Spiritborn's Pestilent Swarm, dealing damage to enemies.",
       "offering": 30
     },
     {
       "name": "Teb",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Necromancer's Iron Maiden Skill, dealing damage over time and counterattacking damage from enemies.",
       "offering": 100
     },
     {
       "name": "Tec",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Barbarian's Earthquake, dealing damage to enemies within.",
       "offering": 50
     },
     {
       "name": "Thul",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Sorcerer's Frost Nova Skill, Freezing enemies.",
       "offering": 250
     },
     {
       "name": "Ton",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Sorcerer's Meteorites, dealing damage to enemies.",
       "offering": 20
     },
     {
       "name": "Tun",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Rogue's Stun Grenades, Stunning and dealing damage to enemies.",
       "offering": 25
     },
     {
       "name": "Tzic",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Spiritborn's Concussive Stomp Skill, dealing damage and Knocking Down enemies.",
       "offering": 200
     },
     {
       "name": "Vex",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Gain +1 to all Skills for 10 seconds.",
       "offering": 100
     },
     {
       "name": "Wat",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Necromancer's Decrepify Skill, Weakening and Slowing enemies.",
       "offering": 100
     },
     {
       "name": "Xal",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Gain 20% Maximum Life for 6 seconds.",
       "offering": 300
     },
     {
       "name": "Yom",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Druid's Petrify Skill, Stunning enemies, restoring Primary Resource.",
       "offering": 500
     },
     {
       "name": "Zec",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Reduce your active Ultimate Cooldown by 1 seconds.",
       "offering": 100
     },
     {
       "name": "Zid",
-      "type": "Effect",
+      "type": "Invocation",
       "description": "Invoke the Paladin's Blessed Spear, striking nearby to enemies.",
       "offering": 25
     }
