@@ -977,8 +977,19 @@ window.renderGlyphTooltip = function(glyphId, level) {
         d = d.replace(/\{b\}/g, '<b>');
         d = d.replace(/\{\/b\}/g, '</b>');
         
-        // Strip unresolvable stat formulas like ([0.03*PlayerHealthMax()||])
-        d = d.replace(/\(\[[^\]]+\]\)/g, '');
+        // Strip unresolvable flat stat formulas like ([0.03*PlayerHealthMax()||])
+        d = d.replace(/\(\[[^\]]+\|\|\]\)/g, '');
+        
+        // Evaluate dynamic percentage formulas like [(Resource_STARTING_PERCENT(5)?1.5:1.5)*0.1*100|%|]
+        d = d.replace(/\[([^\]]+)\|%\|\]/g, (match, formula) => {
+            let clean = formula.replace(/[a-zA-Z_]+\([^)]*\)/g, '1'); 
+            try {
+                let evalVal = eval(clean);
+                return Number(evalVal.toFixed(1)) + '%';
+            } catch(e) {
+                return match;
+            }
+        });
         
         d = d.replace(/\[\{[^\]]+\]/g, (match) => {
             let isX = match.includes('%x');
@@ -1007,8 +1018,9 @@ window.renderGlyphTooltip = function(glyphId, level) {
             let val = (affixData.base || 0) + ((affixData.perLevel || 0) * (level - 1));
             // Hack for D4 parsing rules:
             if (affixData.operation === 1) val = val / 10;
+            else if (affixData.operation === 2) val = val;
             else if (affixData.operation === 4) val = val * 100;
-            else if (affixData.operation === 5) val = val; // Usually no value needed, text is hardcoded
+            else if (affixData.operation === 5) val = val;
             else if (affixData.displayFactor) val = val / affixData.displayFactor;
             
             if (affixData.thresholds && affixData.power) {
