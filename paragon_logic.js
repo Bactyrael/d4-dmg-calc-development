@@ -970,6 +970,16 @@ window.renderGlyphTooltip = function(glyphId, level) {
         if (!desc) return "";
         let d = desc.replace(/\{c_[^}]+\}/g, '<span style="color: #fff; font-weight: bold;">');
         d = d.replace(/\{\/c\}/g, '</span>');
+        
+        // Handle bold and underline tags
+        d = d.replace(/\{u\}/g, '<u style="border-bottom: 1px dotted #ccc; text-decoration: none;">');
+        d = d.replace(/\{\/u\}/g, '</u>');
+        d = d.replace(/\{b\}/g, '<b>');
+        d = d.replace(/\{\/b\}/g, '</b>');
+        
+        // Strip unresolvable stat formulas like ([0.03*PlayerHealthMax()||])
+        d = d.replace(/\(\[[^\]]+\]\)/g, '');
+        
         d = d.replace(/\[\{[^\]]+\]/g, (match) => {
             let isX = match.includes('%x');
             let isPct = match.includes('%');
