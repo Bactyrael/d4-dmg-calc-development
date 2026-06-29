@@ -970,7 +970,7 @@ window.renderGlyphTooltip = function(glyphId, level) {
         if (!desc) return "";
         let d = desc.replace(/\{c_[^}]+\}/g, '<span style="color: #fff; font-weight: bold;">');
         d = d.replace(/\{\/c\}/g, '</span>');
-        d = d.replace(/\[\{[^\]]+\}\]/g, (match) => {
+        d = d.replace(/\[\{[^\]]+\]/g, (match) => {
             let isX = match.includes('%x');
             let isPct = match.includes('%');
             let str = val % 1 !== 0 ? val.toFixed(1) : val;
