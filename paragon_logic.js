@@ -941,7 +941,11 @@ window.renderParagonGrid = function() {
 window.renderGlyphTooltip = function(glyphId, level) {
     if (!window.D4_PARAGON_DATA || !window.D4_PARAGON_DATA.paragonGlyphs) return "";
     let g = window.D4_PARAGON_DATA.paragonGlyphs[glyphId];
-    if (!g) return "";
+    if (!g) {
+        let found = Object.values(window.D4_PARAGON_DATA.paragonGlyphs).find(glyph => glyph.id == glyphId);
+        if (found) g = found;
+        else return "";
+    }
     
     let color = g.rarity === 1 ? '#3498db' : (g.rarity === 2 ? '#f1c40f' : '#e67e22');
     
