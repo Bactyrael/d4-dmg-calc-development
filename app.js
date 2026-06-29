@@ -1310,6 +1310,14 @@ function renderEquipment(className, savedEquipment = {}) {
             else if (gem.includes('Sapphire')) circle.style.background = '#3498db';
             else if (gem.includes('Diamond')) circle.style.background = '#bdc3c7';
             else if (gem.includes('Skull')) circle.style.background = '#ecf0f1';
+            
+            const isRune = window.D4_DATABASE?.runes?.some(r => r.name === gem);
+            if (isRune) {
+                circle.style.background = `url('assets/images/Runes/rune_${gem.toLowerCase()}.png')`;
+                circle.style.backgroundSize = 'cover';
+                circle.style.border = '1px solid #d18a45';
+                circle.style.borderRadius = '50%';
+            }
         } else {
             circle.className = 'socket-circle empty';
             circle.title = 'Empty Socket';
@@ -5460,7 +5468,7 @@ rarity = foundItem.rarity;
               <div class="affix-filled-row" style="margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 4px 8px; border-radius: 4px; border: 1px solid #333;">
                 <div style="font-size: 0.9rem; line-height: 1.5; color: #ccc; flex: 1;">
                   <span style="color: #ff5555; margin-right: 4px; cursor: pointer;" class="btn-remove-socket" data-idx="${i}" title="Remove">✖</span>
-                  <strong style="color: #d18a45; margin-right: 4px; font-size: 0.85em;">${gemName.split(' ')[1] || gemName}:</strong> ${formattedEffect}
+                  <strong style="color: #d18a45; margin-right: 4px; font-size: 0.85em;">${gemName}:</strong> ${formattedEffect}
                 </div>
                 <button class="edit-btn btn-socket" data-idx="${i}" style="padding: 2px 8px; font-size: 0.75rem;">Change</button>
               </div>
@@ -6199,13 +6207,15 @@ rarity = foundItem.rarity;
       if (isRune) color = '#ffcc00'; // Runes are gold
       
       let offeringHTML = '';
+      let iconHTML = `<div class="socket-circle filled" style="background: ${color}; width: 16px; height: 16px;"></div>`;
       if (isRune) {
           offeringHTML = ` <span style="color: #a8a8a8; font-size: 0.8em;">(Offering: ${item.offering})</span>`;
+          iconHTML = `<div style="width: 24px; height: 24px; background-image: url('assets/images/Runes/rune_${item.name.toLowerCase()}.png'); background-size: cover; background-position: center; border-radius: 50%; border: 1px solid #d18a45;"></div>`;
       }
       
       row.innerHTML = `
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
-          <div class="socket-circle filled" style="background: ${color}; width: 16px; height: 16px;"></div>
+          ${iconHTML}
           <div class="item-name" style="color: ${color}; font-weight: bold;">${item.name}${offeringHTML}</div>
         </div>
         <div style="font-size: 0.85rem; color: #aaa; margin-left: 28px;">${effect}</div>
