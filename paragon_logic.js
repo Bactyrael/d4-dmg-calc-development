@@ -1285,18 +1285,6 @@ window.populateBoardModalGrid = function() {
         
         card.addEventListener('mouseenter', () => { card.style.borderColor = '#c9a55c'; card.style.background = 'rgba(30,30,45,1)'; });
         card.addEventListener('mouseleave', () => { card.style.borderColor = '#445'; card.style.background = 'rgba(20,20,30,0.9)'; });
-        card.addEventListener('mouseenter', () => {
-            const detailsDiv = document.getElementById('paragon-node-details');
-            if (detailsDiv) {
-                let lvl = parseInt(document.getElementById('paragon-glyph-level-slider').value) || 1;
-                detailsDiv.innerHTML = window.renderGlyphTooltip(g.id, lvl);
-            }
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            const detailsDiv = document.getElementById('paragon-node-details');
-            if (detailsDiv) detailsDiv.innerHTML = '<div style="color: #666; font-style: italic; text-align: center; margin-top: 50px;">Hover over a node to see details</div>';
-        });
 
         card.addEventListener('click', () => {
             attachBoardFromModal(b.id);
@@ -1364,8 +1352,21 @@ window.openGlyphModal = function(slotIdx, nodeIdx) {
         let color = g.rarity === 1 ? '#3498db' : (g.rarity === 2 ? '#f1c40f' : '#e67e22');
         card.innerHTML = `<h4 style="margin: 0 0 5px 0; color: ${color};">${g.name}</h4>`;
         
+        card.addEventListener('mouseenter', () => {
+            const detailsDiv = document.getElementById('paragon-node-details');
+            if (detailsDiv) {
+                let lvl = parseInt(document.getElementById('paragon-glyph-level-slider').value) || 1;
+                detailsDiv.innerHTML = window.renderGlyphTooltip(g.stringKey, lvl);
+            }
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            const detailsDiv = document.getElementById('paragon-node-details');
+            if (detailsDiv) detailsDiv.innerHTML = '<div style="color: #666; font-style: italic; text-align: center; margin-top: 50px;">Hover over a node to see details</div>';
+        });
+
         card.addEventListener('click', () => {
-            currentBuild.paragon[slotIdx].glyph.id = g.id;
+            currentBuild.paragon[slotIdx].glyph.id = g.stringKey;
             saveBuild();
             renderParagonGrid();
             window.openGlyphModal(slotIdx, nodeIdx); // refresh
