@@ -982,7 +982,7 @@ window.renderParagonGrid = function() {
     if (window.updateLeftPanel) window.updateLeftPanel();
 };
 
-window.renderGlyphTooltip = function(glyphId, level) {
+window.renderGlyphTooltip = function(glyphId, level, slotIndex) {
     if (!window.D4_PARAGON_DATA || !window.D4_PARAGON_DATA.paragonGlyphs) return "";
     let g = window.D4_PARAGON_DATA.paragonGlyphs[glyphId];
     if (!g) {
@@ -1098,13 +1098,27 @@ window.renderGlyphTooltip = function(glyphId, level) {
                 
                 let tData = window.D4_PARAGON_DATA.paragonThresholds ? window.D4_PARAGON_DATA.paragonThresholds[affixData.thresholds[0]] : null;
                 if (tData && tData.attributes) {
+                    let reqMet = false;
+                    if (slotIndex !== undefined && slotIndex !== -1 && window.getGlyphStatsInRadius) {
+                        let currentStats = window.getGlyphStatsInRadius(slotIndex, {id: glyphId, level: level});
+                        let reqAttrId = tData.attributes[0].id;
+                        let reqVal = tData.attributes[0].value;
+                        let curVal = 0;
+                        if (reqAttrId === 9 || reqAttrId === 18) curVal = currentStats.Strength;
+                        else if (reqAttrId === 10 || reqAttrId === 19) curVal = currentStats.Intelligence;
+                        else if (reqAttrId === 11 || reqAttrId === 20) curVal = currentStats.Willpower;
+                        else if (reqAttrId === 12 || reqAttrId === 21) curVal = currentStats.Dexterity;
+                        
+                        if (curVal >= reqVal) reqMet = true;
+                    }
+                    
                     reqs = tData.attributes.map(a => {
                         let attrName = "Stat";
                         if (a.id === 12) attrName = "Dexterity";
                         if (a.id === 9) attrName = "Strength";
                         if (a.id === 11) attrName = "Willpower";
                         if (a.id === 10) attrName = "Intelligence";
-                        return `+${a.value} ${attrName}`;
+                        return { text: `+${a.value} ${attrName}`, met: reqMet };
                     });
                 }
             } else if (affixData.requiredRank >= 2 || affixKey.includes('Legendary')) {
@@ -1122,17 +1136,24 @@ window.renderGlyphTooltip = function(glyphId, level) {
         });
     }
     
+    let reqsMetAll = reqs ? reqs.every(r => r.met) : false;
+    
     if (addBonus) {
-        html += `<div style="color: #c9a55c; font-size: 0.95rem; margin-top: 8px;">Additional Bonus:</div>`;
+        let titleColor = reqsMetAll ? '#c9a55c' : '#777';
+        let bulletColor = reqsMetAll ? '#a38a58' : '#555';
+        let textColor = reqsMetAll ? '#ddd' : '#777';
+        html += `<div style="color: ${titleColor}; font-size: 0.95rem; margin-top: 8px;">Additional Bonus:</div>`;
         html += `<div style="color: #999; font-size: 0.8rem; margin-bottom: 4px;">(if requirements met)</div>`;
-        html += `<div style="color: #ddd; font-size: 0.9rem; margin-left: 8px; margin-bottom: 4px;"><span style="color: #a38a58;">&bull;</span> ${addBonus}</div>`;
+        html += `<div style="color: ${textColor}; font-size: 0.9rem; margin-left: 8px; margin-bottom: 4px;"><span style="color: ${bulletColor};">&bull;</span> ${addBonus}</div>`;
     }
     
     if (reqs && reqs.length > 0) {
-        html += `<div style="color: #c9a55c; font-size: 0.95rem; margin-top: 8px;">Requirements:</div>`;
+        let titleColor = reqsMetAll ? '#c9a55c' : '#c9a55c';
+        html += `<div style="color: ${titleColor}; font-size: 0.95rem; margin-top: 8px;">Requirements:</div>`;
         html += `<div style="color: #999; font-size: 0.8rem; margin-bottom: 4px;">(purchased in radius range)</div>`;
         reqs.forEach(r => {
-            html += `<div style="color: #aaa; font-size: 0.9rem; margin-left: 8px; margin-bottom: 4px;"><span style="color: #666;">&bull;</span> ${r}</div>`;
+            let color = r.met ? '#27ae60' : '#aaa';
+            html += `<div style="color: ${color}; font-size: 0.9rem; margin-left: 8px; margin-bottom: 4px;"><span style="color: #666;">&bull;</span> ${r.text}</div>`;
         });
     }
     
