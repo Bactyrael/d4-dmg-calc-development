@@ -118,9 +118,18 @@ window.NODE_IMAGES = {
 
 window.getNodeImageUrl = function(nodeName, nData) {
     if (!nodeName) return '';
-    let clean = nodeName.toLowerCase().replace(/_/g, ' ').trim();
-    let nameMatch = window.NODE_IMAGES[clean] || window.NODE_IMAGES[clean + ' (paragon node)'] || window.NODE_IMAGES[clean + ' node'];
-    if (nameMatch) return 'assets/images/Necromancer/Paragon Nodes/' + nameMatch;
+    let cleanKey = nodeName.toLowerCase().replace(/_/g, ' ').trim();
+    let displayName = (nData && nData.name) ? nData.name.toLowerCase().trim() : '';
+    
+    // First try the display name (for Rare/Legendary nodes like "Aggression")
+    if (displayName) {
+        let nameMatch = window.NODE_IMAGES[displayName] || window.NODE_IMAGES[displayName + ' (paragon node)'] || window.NODE_IMAGES[displayName + ' node'];
+        if (nameMatch) return 'assets/images/Necromancer/Paragon Nodes/' + nameMatch;
+    }
+    
+    // Fallback to the raw key
+    let keyMatch = window.NODE_IMAGES[cleanKey] || window.NODE_IMAGES[cleanKey + ' (paragon node)'] || window.NODE_IMAGES[cleanKey + ' node'];
+    if (keyMatch) return 'assets/images/Necromancer/Paragon Nodes/' + keyMatch;
     
     if (nData) {
         let isMagic = (nData.rarity === 2);
@@ -159,7 +168,7 @@ window.getNodeImageUrl = function(nodeName, nData) {
     }
     
     // Fallbacks for start/gate
-    if (clean.includes('start')) return 'assets/images/Necromancer/Paragon Nodes/prime_starter.png';
+    if (cleanKey.includes('start')) return 'assets/images/Necromancer/Paragon Nodes/prime_starter.png';
     return '';
 };
 
