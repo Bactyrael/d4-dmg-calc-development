@@ -6952,9 +6952,10 @@ function renderCalcSkills() {
                 let imgName = displayImgName.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
                 let clsName = (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.class) ? currentBuild.class : 'Necromancer';
                 let iconUrl = `assets/Skills/${clsName}/${imgName}.png`;
+                let baseNameSlug = baseSkill.name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+                let fallbackUrl = `assets/Skills/${clsName}/${imgName}-${baseNameSlug}.png`;
                 
-                let iconHtml = iconUrl 
-                    ? `<img src="${iconUrl}" style="width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px;" onerror="this.style.display='none'">` 
+                let iconHtml = `<img src="${iconUrl}" style="width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px;" onerror="if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src='${fallbackUrl}';}else{this.outerHTML='<div style=\'width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #222; color: #888;\'>?</div>';}">`; height: 48px; border: 1px solid #c9a55c; border-radius: 4px;" onerror="this.style.display='none'">` 
                     : `<div style="width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #222; color: #888;">?</div>`;
                 
                 card.innerHTML = `
@@ -6962,7 +6963,7 @@ function renderCalcSkills() {
                     ${iconHtml}
                     <div style="flex: 1;">
                       <h3 style="margin: 0; color: #fff; font-size: 1.2rem; display: flex; justify-content: space-between;">
-                        ${modSkill.name}
+                        ${displayImgName}
                         <span style="font-size: 0.9rem; color: #888;">Rank ${window.selectedSkills[baseSkill.name]}</span>
                       </h3>
                       <div style="color: #aaa; font-size: 0.9rem; margin-top: 10px; font-family: monospace;">
