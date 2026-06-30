@@ -6932,7 +6932,8 @@ function getActiveConditions() {
         healthy: document.getElementById('cond-healthy')?.checked || false,
         injured: document.getElementById('cond-injured')?.checked || false,
         cc: document.getElementById('cond-cc')?.checked || false,
-        overpower: document.getElementById('cond-overpower')?.checked || false
+        overpower: document.getElementById('cond-overpower')?.checked || false,
+        elite: document.getElementById('cond-elite')?.checked || false
     };
 }
 
@@ -6988,6 +6989,9 @@ function calculateSkillAdditiveBucket(skill) {
         addStat('Damage to Crowd Controlled Enemies');
         addStat('Damage to Slowed Enemies');
         addStat('Damage to Stunned Enemies');
+    }
+    if (conds.elite) {
+        addStat('Damage to Elites');
     }
     
     // Fortify is a player state, assume 100% if they have fortify generation, but we'll just check if they have Max Life fortify
