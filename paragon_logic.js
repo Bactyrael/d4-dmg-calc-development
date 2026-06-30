@@ -130,6 +130,58 @@ window.cleanAttributeDescription = function(desc, rawValue) {
     return { name: statName, value: scaledValue, isPercent };
 };
 
+window.getGlyphNodeMultiplier = function(slotId, dataIdx, nData) {
+    if (!window.D4_PARAGON_DATA || !currentBuild.paragon[slotId]) return 1;
+    let pData = currentBuild.paragon[slotId];
+    if (!pData.glyph || !pData.glyph.id) return 1;
+    
+    let bData = window.D4_PARAGON_DATA.paragonBoards[pData.boardId];
+    if (!bData || !bData.nodes) return 1;
+    
+    let socketDataIdx = -1;
+    for (let i = 0; i < 441; i++) {
+        if (bData.nodes[i] && bData.nodes[i].toLowerCase().includes('socket')) {
+            socketDataIdx = i;
+            break;
+        }
+    }
+    if (socketDataIdx === -1) return 1;
+    
+    let lvl = pData.glyph.level || 1;
+    let radius = 3;
+    if (lvl >= 25 && lvl <= 49) radius = 4;
+    else if (lvl >= 50) radius = 5;
+    
+    let sX = socketDataIdx % 21;
+    let sY = Math.floor(socketDataIdx / 21);
+    let dX = dataIdx % 21;
+    let dY = Math.floor(dataIdx / 21);
+    let dist = Math.abs(dX - sX) + Math.abs(dY - sY);
+    if (dist > radius) return 1;
+    
+    let g = window.D4_PARAGON_DATA.paragonGlyphs[pData.glyph.id];
+    if (!g && window.D4_PARAGON_DATA.paragonGlyphs) {
+        let found = Object.values(window.D4_PARAGON_DATA.paragonGlyphs).find(glyph => glyph.id == pData.glyph.id);
+        if (found) g = found;
+    }
+    if (!g || !g.affixes) return 1;
+    
+    let multiplier = 1;
+    g.affixes.forEach(affixKey => {
+        let affixData = window.D4_PARAGON_DATA.paragonGlyphAffixes[affixKey];
+        if (!affixData) return;
+        
+        if (affixData.affectedRarity && affixData.affectedRarity === nData.rarity) {
+            let val = (affixData.base || 0) + ((affixData.perLevel || 0) * (lvl - 1));
+            if (affixData.operation === 1) val = val / 10;
+            else if (affixData.operation === 4) val = val * 100;
+            else if (affixData.displayFactor) val = val / affixData.displayFactor;
+            multiplier += (val / 100);
+        }
+    });
+    return multiplier;
+};
+
 window.getCompiledParagonStats = function() {
   let stats = {};
   
@@ -159,6 +211,9 @@ window.getCompiledParagonStats = function() {
       let rawFormula = formArray[0].formula;
       let rawValue = parseFloat(rawFormula);
       if (isNaN(rawValue)) return; // fallback for complex formulas
+      
+      let mult = window.getGlyphNodeMultiplier(slotId, dataIdx, nodeInfo);
+      rawValue = rawValue * mult;
       
       let attrMeta = window.D4_PARAGON_FORMULAS.attributes[attr.id];
       if (!attrMeta) return;
@@ -935,7 +990,7 @@ window.renderParagonGrid = function() {
                 }
 
                 cell.addEventListener('mouseenter', () => {
-                    if (window.showNodeDetails) window.showNodeDetails(nodeName, s);
+                    if (window.showNodeDetails) window.showNodeDetails(nodeName, s, dataIdx);
                 });
                 
                 cell.addEventListener('click', (e) => {
@@ -1260,7 +1315,7 @@ window.renderGlyphTooltip = function(glyphId, level, slotIndex) {
     return html;
 };
 
-window.showNodeDetails = function(nodeName, slotIndex = 0) {
+window.showNodeDetails = function(nodeName, slotIndex = 0, dataIdx = -1) {
     const detailsDiv = document.getElementById('paragon-node-details');
     if (!detailsDiv || !window.D4_PARAGON_DATA || !window.D4_PARAGON_FORMULAS) return;
     
@@ -1311,9 +1366,15 @@ window.showNodeDetails = function(nodeName, slotIndex = 0) {
         let descString = window.D4_PARAGON_FORMULAS.attributeDescriptions[attrMeta.name];
         if (!descString) return "";
         
+        let mult = 1;
+        if (dataIdx !== -1) mult = window.getGlyphNodeMultiplier(slotIndex, dataIdx, nData);
+        rawValue = rawValue * mult;
+        
         let parsed = window.cleanAttributeDescription(descString, rawValue);
         let valStr = (parsed.value % 1 !== 0) ? parsed.value.toFixed(1) : parsed.value;
-        return `+${valStr}${parsed.isPercent ? '%' : ''} ${parsed.name}`;
+        
+        let displayColor = mult > 1 ? '#00ff00' : '#ddd';
+        return `<span style="color: ${displayColor}">+${valStr}${parsed.isPercent ? '%' : ''} ${parsed.name}</span>`;
     };
 
     if (nData.attributes) {
