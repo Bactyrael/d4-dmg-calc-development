@@ -4021,7 +4021,30 @@ function renderEquipment(className, savedEquipment = {}) {
           calculate();
         });
       }
-          // Global click listener to close context menu
+          
+      // Calculation Sub-tabs logic
+      document.querySelectorAll('.calc-nav-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('.calc-nav-btn').forEach(b => {
+            b.classList.remove('active');
+            b.style.background = 'transparent';
+            b.style.borderLeftColor = 'transparent';
+            b.style.color = '#aaa';
+          });
+          const target = e.target;
+          target.classList.add('active');
+          target.style.background = 'rgba(255,255,255,0.05)';
+          target.style.borderLeftColor = '#c9a55c';
+          target.style.color = '#fff';
+
+          document.querySelectorAll('.calc-pane-content').forEach(pane => pane.style.display = 'none');
+          const targetId = target.getAttribute('data-target');
+          if (targetId) {
+            document.getElementById(targetId).style.display = 'block';
+          }
+        });
+      });
+// Global click listener to close context menu
     document.addEventListener('click', (e) => {
       const menu = document.getElementById('d4-context-menu');
       if (menu && !menu.classList.contains('hidden')) {
