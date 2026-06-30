@@ -5337,7 +5337,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   let clsName = currentBuild.class || 'Necromancer';
   let imgSrc = `assets/Skills/${clsName}/${imgName}.png`;
   
-  nameSpan.innerHTML = prefix + `<img src="${imgSrc}" style="width:24px; height:24px; border:1px solid #333;" onerror="this.style.display='none'" />` + `<span>${name}</span>`; 
+  nameSpan.innerHTML = prefix + `<img src="${imgSrc}" style="width:24px; height:24px; border:1px solid #333;" onerror="this.outerHTML='<div style=\'width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #222; color: #888;\'>?</div>'" />` + `<span>${name}</span>`; 
   const controls = document.createElement('div'); 
   controls.className = 'skill-controls'; 
   const minusBtn = document.createElement('button'); 
@@ -6940,11 +6940,18 @@ function renderCalcSkills() {
                 card.style.marginBottom = '15px';
                 card.style.boxShadow = '0 4px 12px rgba(0,0,0,0.5)';
                 
-                let iconUrl = '';
-                if (window.NODE_IMAGES && window.NODE_IMAGES[modSkill.name.toLowerCase()]) {
-                    // Try to guess path, typically it's assets/images/Necromancer/Skills/...
-                    iconUrl = 'assets/images/Necromancer/Skills/' + window.NODE_IMAGES[modSkill.name.toLowerCase()];
+                let displayImgName = baseSkill.name;
+                if (baseSkill.modifiers) {
+                    for (let i = baseSkill.modifiers.length - 1; i >= 0; i--) {
+                        if (window.selectedSkills[baseSkill.modifiers[i].name] > 0) {
+                            displayImgName = baseSkill.modifiers[i].name;
+                            break;
+                        }
+                    }
                 }
+                let imgName = displayImgName.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+                let clsName = (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.class) ? currentBuild.class : 'Necromancer';
+                let iconUrl = `assets/Skills/${clsName}/${imgName}.png`;
                 
                 let iconHtml = iconUrl 
                     ? `<img src="${iconUrl}" style="width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px;" onerror="this.style.display='none'">` 
