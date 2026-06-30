@@ -1183,16 +1183,38 @@ window.showNodeDetails = function(nodeName, slotIndex = 0) {
         nData.thresholds.forEach(tKey => {
             let tData = window.D4_PARAGON_DATA.paragonThresholds ? window.D4_PARAGON_DATA.paragonThresholds[tKey] : null;
             if (tData && tData.attributes) {
+                
+                // Class filter check
+                let classStr = currentBuild.class || 'barbarian';
+                let clsIdx = 0;
+                if (classStr === 'barbarian') clsIdx = 0;
+                else if (classStr === 'druid') clsIdx = 1;
+                else if (classStr === 'necromancer') clsIdx = 2;
+                else if (classStr === 'rogue') clsIdx = 3;
+                else if (classStr === 'sorcerer') clsIdx = 4;
+                else if (classStr === 'spiritborn') clsIdx = 5;
+                else if (classStr === 'paladin') clsIdx = 6;
+                else if (classStr === 'warlock') clsIdx = 7;
+                
+                if (tData.classFilter && !tData.classFilter[clsIdx]) return;
+                
                 tData.attributes.forEach(a => {
                     let attrName = "Stat";
-                    if (a.id === 12) attrName = "Dexterity";
-                    if (a.id === 9) attrName = "Strength";
-                    if (a.id === 10) attrName = "Intelligence";
-                    if (a.id === 11) attrName = "Willpower";
+                    if (a.id === 12 || a.id === 21) attrName = "Dexterity";
+                    if (a.id === 9 || a.id === 18) attrName = "Strength";
+                    if (a.id === 10 || a.id === 19) attrName = "Intelligence";
+                    if (a.id === 11 || a.id === 20) attrName = "Willpower";
+                    
+                    let reqVal = a.value;
+                    if (typeof reqVal === 'string') {
+                        try {
+                            reqVal = eval(reqVal.replace(/ParagonBoardEquipIndex/g, slotIndex));
+                        } catch(e) {}
+                    }
                     
                     html += `<div style="margin-bottom: 8px; color: #aaa;">
                         <span style="color: #666; font-size: 1.1rem; vertical-align: top;">&diams;</span> 
-                        <span style="color: #ff4444;">+0</span> / ${a.value} ${attrName}
+                        <span style="color: #ff4444;">+0</span> / ${reqVal} ${attrName}
                     </div>`;
                 });
             }
