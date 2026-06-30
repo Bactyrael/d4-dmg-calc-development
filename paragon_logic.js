@@ -315,7 +315,9 @@ window.cleanAttributeDescription = function(desc, rawValue, attr) {
     
     if (statName.includes('{value1}')) {
         let paramName = '';
-        if (attr && attr.param && PARAM_TAG_MAP[String(attr.param)]) {
+        if (attr && attr.id === 588 && attr.param === 2) {
+              paramName = 'Golems';
+          } else if (attr && attr.param && PARAM_TAG_MAP[String(attr.param)]) {
             paramName = PARAM_TAG_MAP[String(attr.param)];
         }
         statName = statName.replace(/\{value1\}/g, paramName);
