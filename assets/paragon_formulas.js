@@ -121,7 +121,7 @@ window.D4_PARAGON_FORMULAS = {
         "desc": "After spending {c_number}75{/c} Spirit, you deal {c_number}40%{c_lightgray}\\[x\\]{/c}{/c} increased damage for {c_number}5{/c} seconds. Your Ultimate Skills deal {c_number}1%{c_lightgray}\\[x\\]{/c}{/c} increased damage per Spirit when cast. "
     },
     "Paragon_Necro_Legendary_017": {
-        "desc": "Your {c_important}Bone{/c} Skills deal {c_number}40%{c_lightgray}\\[x\\]{/c}{/c} increased damage and your Maximum Essence is increased by {c_number}10{/c}."
+        "desc": "Your {c_important}Bone{/c} Skills deal {c_number}60%{c_lightgray}\\[x\\]{/c}{/c} increased damage and your Maximum Essence is increased by {c_number}10{/c}."
     },
     "Paragon_Barb_Legendary_017": {
         "desc": "Swapping weapons grants you {c_number}4{/c} {c_important}Fury{/c}. You deal {c_number}75%{c_lightgray}\\[x\\]{/c}{/c} increased damage to {c_important}{u}Injured{/u}{/c} and {c_important}{u}Healthy{/u}{/c} enemies.  "
