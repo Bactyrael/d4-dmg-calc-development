@@ -336,7 +336,7 @@ var currentBuild = createDefaultBuild();
   // ---- Necromancer legendary node options ----
   const NECROMANCER_NODES = [
     { label: 'None',                value: 0   },
-    { label: 'Bone Graft: 40%',     value: 40  },
+    { label: 'Bone Graft: 60%',     value: 60  },
     { label: 'Bloodbath: 80%',      value: 80  },
     { label: 'Blood Begets Blood: 60%', value: 60 },
     { label: 'Cult Leader: 200%',   value: 200 },
@@ -3118,7 +3118,22 @@ function renderEquipment(className, savedEquipment = {}) {
           
           // Bone Graft (Necromancer)
           if (legPowers.includes('Paragon_Necro_Legendary_017')) {
-              createMultiplicativeRow('Bone Graft (Legendary Node)', '40.00', true);
+              let isBone = false;
+              if (dom.mainSkillSelect && typeof skillsDatabase !== 'undefined') {
+                  const mainSkillName = dom.mainSkillSelect.value;
+                  for (const cat in skillsDatabase) {
+                      const found = skillsDatabase[cat].find(s => s.name === mainSkillName);
+                      if (found && found.tags) {
+                          const lower = found.tags.map(t => t.toLowerCase());
+                          if (lower.includes('search_bone') || lower.includes('skill_bone')) {
+                              isBone = true;
+                          }
+                      }
+                  }
+              }
+              if (isBone) {
+                  createMultiplicativeRow('Bone Graft (Legendary Node)', '60.00', true);
+              }
           }
           
           // Flesh-eater (Necromancer)
