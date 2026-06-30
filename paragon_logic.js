@@ -108,6 +108,7 @@ window.NODE_IMAGES = {
     "restorative": "Restorative.png",
     "ruin (paragon node)": "Ruin (Paragon Node).png",
     "scent of death": "Scent of Death.png",
+    "seethe": "Seethe.png",
     "shadow resilience": "Shadow Resilience.png",
     "shadow resilience_frailty": "Shadow Resilience_frailty.png",
     "shaper of bone": "Shaper of Bone.png",
