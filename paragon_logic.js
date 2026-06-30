@@ -1,4 +1,37 @@
 
+window.GLYPH_IMAGES = {
+    'Abyssal': 'abyssal.png',
+    'Amplify': 'Amplify.png',
+    'Blood-drinker': 'Blood-drinker.png',
+    'Control': 'Control (Necromancer).png',
+    'Corporeal': 'Corporeal.png',
+    'Darkness': 'Darkness.png',
+    'Deadraiser': 'Deadriser.png',
+    'Desecration': 'Desecration.png',
+    'Dominate': 'Dominate (Necromancer).png',
+    'Eliminator': 'Eliminator.png',
+    'Essence': 'Essence.png',
+    'Exhumation': 'Exhumation.png',
+    'Exploit': 'Exploit (Necromancer).png',
+    'Golem': 'Golem.png',
+    'Gravekeeper': 'Gravekeeper.png',
+    'Imbiber': 'Imbiber (Necromancer).png',
+    'Mage': 'Mage.png',
+    'Revenge': 'Revenge (Necromancer).png',
+    'Sacrificial': 'Sacrificial.png',
+    'Scourge': 'Scourge.png',
+    'Territorial': 'Territorial (Necromancer).png',
+    'Undaunted': 'Undaunted (Necromancer).png',
+    'Warrior': 'Warrior.png'
+};
+
+window.getGlyphImageUrl = function(glyphName) {
+    if (window.GLYPH_IMAGES && window.GLYPH_IMAGES[glyphName]) {
+        return 'assets/images/Necromancer/Glyphs/' + window.GLYPH_IMAGES[glyphName];
+    }
+    return '';
+};
+
 window.getTotalParagonPointsSpent = function() {
     let totalSpent = 0;
     let connectedBoards = 0;
