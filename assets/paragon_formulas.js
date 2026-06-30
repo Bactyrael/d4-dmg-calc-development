@@ -112,7 +112,7 @@ window.D4_PARAGON_FORMULAS = {
         "desc": "{c_important}{u}Blood Orbs{/u}{/c} grant {c_number}15%{c_lightgray}\\[x\\]{/c}{/c} increased damage, up to {c_number}60%{c_lightgray}\\[x\\]{/c}{/c}, for {c_number}10{/c} seconds."
     },
     "Paragon_Necro_Legendary_016": {
-        "desc": "Your Shadow damage has a {c_number}20%{/c} chance to deal {c_number}300%{c_lightgray}\\[x\\]{/c}{/c} increased damage."
+        "desc": "Your Shadow and Cold damage has a {c_number}20%{/c} chance to deal {c_number}300%{c_lightgray}\\[x\\]{/c}{/c} increased damage."
     },
     "Paragon_Druid_Legendary_017": {
         "desc": "Deal {c_number}40%{c_lightgray}\\[x\\]{/c}{/c} increased damage against Poisoned enemies.\r\n{c_label}Lucky Hit:{/c} {c_important}Nature Magic{/c} Skills have up to a {c_number}40%{/c} chance to Poison the enemy for {c_number}[{payload:poison_tooltip}|2?|]{/c} damage over {c_number}4{/c} seconds."
