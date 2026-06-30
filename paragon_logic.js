@@ -1128,16 +1128,21 @@ window.showNodeDetails = function(nodeName, slotIndex = 0) {
         return;
     }
     
-    let rColor = '#fff'; let rText = "Normal Node";
-    if (nData.rarity === 2) { rColor = '#3498db'; rText = 'Magic Node'; }
-    if (nData.rarity === 3) { rColor = '#f1c40f'; rText = 'Rare Node'; }
-    if (nData.rarity === 4) { rColor = '#e67e22'; rText = 'Legendary Node'; }
+    let rColor = '#fff'; let rText = ""; let titleText = nData.name;
+    if (nData.rarity === 0 || nData.rarity === 1 || !nData.rarity) { rColor = '#fff'; titleText = "Common Node"; }
+    if (nData.rarity === 2) { rColor = '#3498db'; titleText = "Magic Node"; }
+    if (nData.rarity === 3) { rColor = '#f1c40f'; rText = 'Rare Node'; titleText = nData.name || "Rare Node"; }
+    if (nData.rarity === 4) { rColor = '#e67e22'; rText = 'Legendary Node'; titleText = nData.name || "Legendary Node"; }
     
     let html = `<div style="font-family: Arial, sans-serif; box-sizing: border-box; width: 100%;">
         <div style="text-align: center; margin-bottom: 12px;">
-            <h3 style="margin: 0; color: ${rColor}; font-size: 1.3rem; text-shadow: 1px 1px 2px #000;">${nData.name || nodeName}</h3>
-            <div style="color: #777; font-size: 0.9rem; margin-top: 4px;">${rText}</div>
-        </div>
+            <h3 style="margin: 0; color: ${rColor}; font-size: 1.3rem; text-shadow: 1px 1px 2px #000;">${titleText}</h3>`;
+            
+    if (rText) {
+        html += `<div style="color: #777; font-size: 0.9rem; margin-top: 4px;">${rText}</div>`;
+    }
+    
+    html += `</div>
         <div style="height: 1px; background: #444; margin: 10px 0;"></div>
         <div style="font-size: 0.95rem; line-height: 1.4; color: #ddd;">`;
 
