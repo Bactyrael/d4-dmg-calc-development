@@ -409,7 +409,7 @@ function calculateBoardPosition(slotIndex) {
 }
 
 window.initParagonUI = function() {
-    if (!D4_PARAGON_DATA) return;
+    if (!window.D4_PARAGON_DATA) return;
     
     const viewport = document.getElementById('paragon-viewport');
     const surface = document.getElementById('paragon-surface');
@@ -645,7 +645,7 @@ window.renderParagonGrid = function() {
     }
     surface.innerHTML = '';
     
-    if (!D4_PARAGON_DATA || !D4_PARAGON_DATA.paragonBoards) {
+    if (!window.D4_PARAGON_DATA || !window.D4_PARAGON_DATA.paragonBoards) {
         return;
     }
     
