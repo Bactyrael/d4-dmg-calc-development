@@ -6958,8 +6958,7 @@ function renderCalcSkills() {
                 let baseNameSlug = baseSkill.name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
                 let fallbackUrl = `assets/Skills/${clsName}/${imgName}-${baseNameSlug}.png`;
                 
-                let iconHtml = `<img src="${iconUrl}" style="width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px;" onerror="if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src='${fallbackUrl}';}else{this.outerHTML='<div style=\'width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #222; color: #888;\'>?</div>';}">`; height: 48px; border: 1px solid #c9a55c; border-radius: 4px;" onerror="this.style.display='none'">` 
-                    : `<div style="width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #222; color: #888;">?</div>`;
+                let iconHtml = `<img src="${iconUrl}" style="width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px;" onerror="if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src='${fallbackUrl}';}else{this.outerHTML='<div style=\'width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #222; color: #888;\'>?</div>';}">`;
                 
                 card.innerHTML = `
                   <div style="display: flex; align-items: flex-start; gap: 15px;">
