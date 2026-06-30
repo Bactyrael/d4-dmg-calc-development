@@ -1025,6 +1025,16 @@ window.renderGlyphTooltip = function(glyphId, level) {
             if (!affixData) return;
             
             let val = (affixData.base || 0) + ((affixData.perLevel || 0) * (level - 1));
+            
+            // Manual overrides for datamined JSON discrepancies
+            const hotfixMultipliers = {
+                'Control': 2/3 // Nerfed in-game, JSON still has 1.5/0.1125
+            };
+            
+            if (hotfixMultipliers[g.name] && affixData.operation === 2) {
+                val = val * hotfixMultipliers[g.name];
+            }
+
             // Hack for D4 parsing rules:
             if (affixData.operation === 1) val = val / 10;
             else if (affixData.operation === 2) val = val;
