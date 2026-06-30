@@ -936,6 +936,8 @@ window.renderParagonGrid = function() {
         }
         surface.appendChild(boardWrapper);
     }
+    
+    if (window.updateLeftPanel) window.updateLeftPanel();
 };
 
 window.renderGlyphTooltip = function(glyphId, level) {
@@ -1503,3 +1505,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+window.updateLeftPanel = function() {
+    const container = document.getElementById('paragon-left-panel-content');
+    if (!container || !window.D4_PARAGON_DATA) return;
+    
+    let html = '';
+    
+    for (let i = 0; i < 5; i++) {
+        let pData = currentBuild.paragon[i];
+        if (!pData || !pData.boardId) continue;
+        
+        let boardName = "Start";
+        if (pData.boardId.toLowerCase() !== 'start' && !pData.boardId.toLowerCase().includes('start')) {
+            let bData = window.D4_PARAGON_DATA.paragonBoards[pData.boardId];
+            boardName = bData ? (bData.name || pData.boardId) : pData.boardId;
+        }
+        
+        let boardHtml = `<div style="display: flex; align-items: center; gap: 8px; font-size: 0.95rem;">
+            <div style="color: #aaa; font-size: 1.1rem; display: flex; align-items: center;">&#x25C8;</div>
+            <div style="color: #e67e22; font-weight: bold; white-space: nowrap;">${boardName}</div>`;
+            
+        if (pData.glyph && pData.glyph.id) {
+            let gData = window.D4_PARAGON_DATA.paragonGlyphs[pData.glyph.id];
+            let glyphName = gData ? gData.name : pData.glyph.id;
+            boardHtml += `<div style="color: #666; margin: 0 2px;">/</div>
+                <div style="color: #c9a55c; font-size: 1.1rem; display: flex; align-items: center;">&#x25C9;</div>
+                <div style="color: #e67e22; font-weight: bold; white-space: nowrap;">${glyphName}</div>
+                <div style="color: #3498db; margin-left: 2px;">Lv. ${pData.glyph.level || 1}</div>`;
+        }
+        
+        boardHtml += `</div>`;
+        html += boardHtml;
+    }
+    
+    container.innerHTML = html;
+};

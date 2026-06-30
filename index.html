@@ -129,27 +129,13 @@
           <!-- Board Selectors container -->
           <div class="paragon-boards-layout" style="display: flex; gap: 20px; flex: 1; min-height: 0;">
             <!-- Left Sidebar (Board selection) -->
-            <div class="paragon-board-list" style="width: 280px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px;">
-              <div class="paragon-board-slot active" data-slot="0">
-                <div class="slot-label">Starting Board</div>
-                <div class="slot-name" id="paragon-slot-0-name">Start</div>
-              </div>
-              <div class="paragon-board-slot empty" data-slot="1">
-                <div class="slot-label">Board 2</div>
-                <div class="slot-name" id="paragon-slot-1-name">+ Add Board</div>
-              </div>
-              <div class="paragon-board-slot empty" data-slot="2">
-                <div class="slot-label">Board 3</div>
-                <div class="slot-name" id="paragon-slot-2-name">+ Add Board</div>
-              </div>
-              <div class="paragon-board-slot empty" data-slot="3">
-                <div class="slot-label">Board 4</div>
-                <div class="slot-name" id="paragon-slot-3-name">+ Add Board</div>
-              </div>
-              <div class="paragon-board-slot empty" data-slot="4">
-                <div class="slot-label">Board 5</div>
-                <div class="slot-name" id="paragon-slot-4-name">+ Add Board</div>
-              </div>
+            <div class="paragon-board-list" id="paragon-left-panel" style="width: 320px; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; font-family: Arial, sans-serif; background: #0a0a0e; border: 1px solid #333; border-radius: 4px; padding: 10px;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 5px; color: #fff; font-weight: bold; font-size: 1.1rem; cursor: pointer;">
+                    Boards Used <span style="font-size: 0.7rem;">&#x25B2;</span>
+                </div>
+                <div id="paragon-left-panel-content" style="display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Filled dynamically via JS -->
+                </div>
             </div>
 
             <!-- Right Main Area (The Grid) -->
@@ -701,7 +687,7 @@
   <script src="assets/skills.js"></script>
   <script src="assets/paragon.js?v=2"></script>
   <script src="assets/paragon_formulas.js"></script>
-    <script src="paragon_logic.js?v=21"></script>
+    <script src="paragon_logic.js?v=23"></script>
   <script src="app.js?v=4"></script>
   <div id="toast-container"></div>
 </body>
