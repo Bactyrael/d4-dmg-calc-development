@@ -1,4 +1,222 @@
 window.D4_PARAGON_FORMULAS = {
+    "legendaryPowers": {
+    "Paragon_Barb_Legendary_011": {
+        "desc": "For every {c_number}300{/c} Fury you spend, gain {c_number}2%{/c} of your Maximum Life {c_number}([0.02*PlayerHealthMax()||]){/c} as {c_important}{u}Fortify{/u}{/c}. Deal {c_number}45%{c_lightgray}\\[x\\]{/c}{/c} increased damage while {c_important}{u}Fortified{/u}{/c}."
+    },
+    "Paragon_Barb_Legendary_009": {
+        "desc": "{c_important}{u}Berserking{/u}{/c} now additionally grants {c_number}15%{c_lightgray}\\[+\\]{/c}{/c} Attack Speed. You deal {c_number}45%{c_lightgray}\\[x\\]{/c}{/c} increased Fire and Physical damage."
+    },
+    "Paragon_Barb_Legendary_005": {
+        "desc": "Increases the power of your {c_important}Shout{/c} Skills by {c_number}35%{/c}."
+    },
+    "Paragon_Barb_Legendary_004": {
+        "desc": "Killing an enemy affected by a Damage Over Time effect has {c_number}10%{/c} chance to grant {c_important}{u}Berserking{/u}{/c} for {c_number}5{/c} seconds. Your damage is increased by {c_number}60%{c_lightgray}\\[x\\]{/c}{/c} while {c_important}{u}Berserking{/u}{/c}."
+    },
+    "Paragon_Barb_Legendary_002": {
+        "desc": "Applying a Damage Over Time effect to a {c_important}{u}Vulnerable{/u}{/c} enemy deals {c_number}75%{c_lightgray}\\[x\\]{/c}{/c} increased damage."
+    },
+    "Paragon_Barb_Legendary_001": {
+        "desc": "Skills that cast {c_important}Earthquakes{/c} and {c_important}Dust Devils{/c} deal {c_number}45%{c_lightgray}\\[x\\]{/c}{/c} increased damage."
+    },
+    "Paragon_Sorc_Legendary_001": {
+        "desc": "Deal {c_number}90%{c_lightgray}\\[x\\]{/c}{/c} increased Burning damage."
+    },
+    "Paragon_Sorc_Legendary_002": {
+        "desc": "{c_important}Pyromancy{/c} Skills have a {c_number}5%{c_lightgray}\\[+\\]{/c}{/c} increased Critical Strike Chance and all of your Skills deal increased Direct damage equal to {c_number}10%{/c} of your Critical Strike Damage Bonus, up to {c_number}70%{c_lightgray}\\[x\\]{/c}{/c}.\r\n\r\nCurrent Direct Damage Bonus: {c_number}[Min((ComputeCritDamageScalar()*(1+Crit_Damage_Percent)*(1+Multiplicative_Crit_Damage_Percent)-1)*0.1,0.7)*100|%x|]{/c}"
+    },
+    "Paragon_Sorc_Legendary_005": {
+        "desc": "Deal {c_number}60%{c_lightgray}\\[x\\]{/c}{/c} increased damage to {c_important}{u}Vulnerable{/u}{/c} enemies."
+    },
+    "Paragon_Sorc_Legendary_006": {
+        "desc": "Your {c_important}Frost{/c} Skills deal {c_number}35%{c_lightgray}\\[x\\]{/c}{/c} increased damage. This bonus is doubled and granted to all Skills if the enemy is {c_important}{u}Frozen{/u}{/c} or a Boss."
+    },
+    "Paragon_Sorc_Legendary_007": {
+        "desc": "Hitting enemies at least {c_number}8{/c} times in a second with {c_important}Shock{/c} Skills grants {c_number}30{/c} Mana Regeneration and increases your damage by {c_number}50%{c_lightgray}\\[x\\]{/c}{/c} for {c_number}2{/c} seconds."
+    },
+    "Paragon_Sorc_Legendary_008": {
+        "desc": "While you have {c_important}{u}Crackling Energy{/u}{/c} charges, you deal {c_number}45%{c_lightgray}\\[x\\]{/c}{/c} increased damage. When you reach full charges, your {c_important}{u}Crackling Energy{/u}{/c} damage is increased by {c_number}4{/c} times this amount until you run out of charges."
+    },
+    "Paragon_Sorc_Legendary_011": {
+        "desc": "Your {c_important}Conjuration{/c} Skills have a {c_number}20%{c_lightgray}\\[x\\]{/c}{/c} reduced Cooldown or Mana cost. Casting a {c_important}Conjuration{/c} Skill increases your damage with their element by {c_number}50%{c_lightgray}\\[x\\]{/c}{/c} for {c_number}6{/c} seconds."
+    },
+    "Paragon_Sorc_Legendary_015": {
+        "desc": "Increases your {c_important}Enchantment{/c} Potency by {c_number}30%{c_lightgray}\\[+\\]{/c}{/c}. \r\nEach equipped {c_important}Enchantment{/c} grants {c_number}40%{c_lightgray}\\[x\\]{/c}{/c} increased damage with their main element, and {c_number}60%{c_lightgray}\\[x\\]{/c}{/c} increased damage for the second {c_important}Enchantment{/c} if it is a different element."
+    },
+    "Paragon_Barb_Legendary_014": {
+        "desc": "You deal {c_number}25%{c_lightgray}\\[x\\]{/c}{/c} increased damage to {c_important}{u}Vulnerable{/u}{/c} enemies. You deal {c_number}25%{c_lightgray}\\[x\\]{/c}{/c} increased damage while you have {c_important}{u}Overpower{/u}{/c} charges."
+    },
+    "Paragon_Barb_Legendary_015": {
+        "desc": "Every {c_number}12{/c} seconds, gain a charge of {c_important}{u}Overpower{/u}{/c}. Whenever you attack while having an {c_important}{u}Overpower{/u}{/c} charge, your Ultimate Skills deal {c_number}10%{c_lightgray}\\[x\\]{/c}{/c} increased damage for {c_number}10{/c} seconds, up to {c_number}80%{c_lightgray}\\[x\\]{/c}{/c}. "
+    },
+    "Paragon_Barb_Legendary_016": {
+        "desc": "Consecutive attacking with the same weapon increases your Critical Strike chance by {c_number}5%{c_lightgray}\\[+\\]{/c}{/c} and Critical Strike Damage by {c_number}50%{c_lightgray}\\[x\\]{/c}{/c} for {c_number}4{/c} seconds."
+    },
+    "Paragon_Druid_Legendary_003": {
+        "desc": "{c_important}Storm{/c} Skills deal {c_number}70%{c_lightgray}\\[x\\]{/c}{/c} increased damage, and {c_number}5%{c_lightgray}\\[x\\]{/c}{/c} Critical Strike Chance."
+    },
+    "Paragon_Druid_Legendary_006": {
+        "desc": "Your {c_important}Earth{/c} Skills deal {c_number}70%{c_lightgray}\\[x\\]{/c}{/c} increased Critical Strike Damage."
+    },
+    "Paragon_Druid_Legendary_007": {
+        "desc": "While in Werebear form, you deal {c_number}30%{c_lightgray}\\[x\\]{/c}{/c} increased damage or {c_number}45%{c_lightgray}\\[x\\]{/c}{/c} when you are at full Life. You have {c_number}1%{c_lightgray}\\[x\\]{/c}{/c} increased Overpower damage, up to {c_number}25%{c_lightgray}\\[x\\]{/c}{/c}, for every {c_number}1%{c_lightgray}\\[x\\]{/c}{/c} difference in current Life percent and Fortified Life percent between you and the enemy."
+    },
+    "Paragon_Druid_Legendary_010": {
+        "desc": "Critical Strikes with {c_important}Werewolf{/c} Skills restore {c_number}2{/c} Spirit and deal {c_number}70%{c_lightgray}\\[x\\]{/c}{/c} increased damage."
+    },
+    "Paragon_Druid_Legendary_012": {
+        "desc": "While a Poisoned enemy is Nearby, you deal {c_number}35%{c_lightgray}\\[x\\]{/c}{/c} increased damage, plus an additional {c_number}5%{c_lightgray}\\[x\\]{/c}{/c} for each additional Poisoned enemy, up to {c_number}4{/c}."
+    },
+    "Paragon_Druid_Legendary_013": {
+        "desc": "After Shapeshifting, your Spirit costs are reduced by {c_number}5%{/c} for {c_number}10{/c} seconds, up to {c_number}45%{/c}. If you reach {c_number}10{/c} stacks, this bonus resets and reduces the Cooldown of your {c_important}Ultimate{/c} Skill by {c_number}5{/c} seconds."
+    },
+    "Paragon_Rogue_Legendary_002": {
+        "desc": "You gain {c_number}25%{c_lightgray}\\[x\\]{/c}{/c} Resistance to All Elements. You gain {c_number}60%{c_lightgray}\\[x\\]{/c}{/c} increased Poison, Shadow, and Cold damage."
+    },
+    "Paragon_Rogue_Legendary_006": {
+        "desc": "Enemies damaged by your {c_important}Marksman{/c} Skills take {c_number}60%{c_lightgray}\\[x\\]{/c}{/c} increased damage from your {c_important}Cutthroat{/c} Skills, and vice versa."
+    },
+    "Paragon_Rogue_Legendary_007": {
+        "desc": "You deal {c_number}50%{c_lightgray}\\[x\\]{/c}{/c} increased damage, doubled against Crowd Controlled enemies."
+    },
+    "Paragon_Rogue_Legendary_008": {
+        "desc": "You deal {c_number}60%{c_lightgray}\\[x\\]{/c}{/c} increased Critical Strike Damage and Damage Over Time to enemies affected by your {c_important}Trap{/c} Skills."
+    },
+    "Paragon_Rogue_Legendary_009": {
+        "desc": "Your {c_important}Core{/c} Skills deal {c_number}60%{c_lightgray}\\[x\\]{/c}{/c} increased damage. When {c_important}Inner Sight's{/c} gauge becomes full, you gain {c_number}100%{c_lightgray}\\[+\\]{/c}{/c} Dodge Chance for {c_number}2.0{/c} seconds."
+    },
+    "Paragon_Rogue_Legendary_010": {
+        "desc": "You deal {c_number}60%{c_lightgray}\\[x\\]{/c}{/c} increased {c_important}{u}Vulnerable{/u}{/c} damage. The first time you hit a {c_important}{u}Vulnerable{/u}{/c} enemy, their damage is reduced by {c_number}20%{c_lightgray}\\[x\\]{/c}{/c} for {c_number}6{/c} seconds."
+    },
+    "Paragon_Rogue_Legendary_011": {
+        "desc": "Your {c_important}Ultimate{/c} Skills gain an additional {c_number}30%{c_lightgray}\\[x\\]{/c}{/c} damage from your Damage with Ultimate bonus and grant this bonus to all other Skills for {c_number}10{/c} seconds when cast.\r\n\r\nCurrent Bonus: {c_number}[Min(0.6,0.3*Damage_Percent_Bonus_Per_Skill_Tag(1856650534))*100|%x|]{/c}\r\nMaximum Bonus: {c_number}60%{c_lightgray}\\[x\\]{/c}{/c}"
+    },
+    "Paragon_Rogue_Legendary_012": {
+        "desc": "Your {c_important}Combo Point{/c} bonuses are increased by {c_number}60%{c_lightgray}\\[x\\]{/c}{/c}."
+    },
+    "Paragon_Necro_Legendary_001": {
+        "desc": "Your Minions deal {c_number}40%{c_lightgray}\\[x\\]{/c}{/c} increased damage for each {c_number}20%{/c} of Attack Speed Bonus they have, up to a maximum of 100% Attack Speed Bonus."
+    },
+    "Paragon_Necro_Legendary_005": {
+        "desc": "Your Golem has {c_number}40%{c_lightgray}\\[x\\]{/c}{/c} increased Maximum Life and deals {c_number}100%{c_lightgray}\\[x\\]{/c}{/c} increased damage. Skeletal Mages and Warriors Sacrifice Bonuses grant an additional {c_number}60%{c_lightgray}\\[x\\]{/c}{/c} Golem damage."
+    },
+    "Paragon_Necro_Legendary_007": {
+        "desc": "You gain {c_number}15%{/c} Damage Reduction and deal {c_number}45%{c_lightgray}\\[x\\]{/c}{/c} increased damage."
+    },
+    "Paragon_Necro_Legendary_008": {
+        "desc": "Consuming a Corpse grants {c_number}60%{c_lightgray}\\[x\\]{/c}{/c} increased damage for {c_number}8{/c} seconds."
+    },
+    "Paragon_Necro_Legendary_010": {
+        "desc": "You deal {c_number}20%{c_lightgray}\\[x\\]{/c}{/c} increased damage while you have a stack of {c_important}{u}Overpower{/u}{/c}. After gaining or losing a stack of {c_important}{u}Overpower{/u}{/c}, you deal {c_number}50%{c_lightgray}\\[x\\]{/c}{/c} increased damage for {c_number}5{/c} seconds. "
+    },
+    "Paragon_Necro_Legendary_011": {
+        "desc": "{c_important}{u}Blood Orbs{/u}{/c} grant {c_number}15%{c_lightgray}\\[x\\]{/c}{/c} increased damage, up to {c_number}60%{c_lightgray}\\[x\\]{/c}{/c}, for {c_number}10{/c} seconds."
+    },
+    "Paragon_Necro_Legendary_016": {
+        "desc": "Your Shadow damage has a {c_number}20%{/c} chance to deal {c_number}300%{c_lightgray}\\[x\\]{/c}{/c} increased damage."
+    },
+    "Paragon_Druid_Legendary_017": {
+        "desc": "Deal {c_number}40%{c_lightgray}\\[x\\]{/c}{/c} increased damage against Poisoned enemies.\r\n{c_label}Lucky Hit:{/c} {c_important}Nature Magic{/c} Skills have up to a {c_number}40%{/c} chance to Poison the enemy for {c_number}[{payload:poison_tooltip}|2?|]{/c} damage over {c_number}4{/c} seconds."
+    },
+    "Paragon_Druid_Legendary_018": {
+        "desc": "After spending {c_number}75{/c} Spirit, you deal {c_number}40%{c_lightgray}\\[x\\]{/c}{/c} increased damage for {c_number}5{/c} seconds. Your Ultimate Skills deal {c_number}1%{c_lightgray}\\[x\\]{/c}{/c} increased damage per Spirit when cast. "
+    },
+    "Paragon_Necro_Legendary_017": {
+        "desc": "Your {c_important}Bone{/c} Skills deal {c_number}40%{c_lightgray}\\[x\\]{/c}{/c} increased damage and your Maximum Essence is increased by {c_number}10{/c}."
+    },
+    "Paragon_Barb_Legendary_017": {
+        "desc": "Swapping weapons grants you {c_number}4{/c} {c_important}Fury{/c}. You deal {c_number}75%{c_lightgray}\\[x\\]{/c}{/c} increased damage to {c_important}{u}Injured{/u}{/c} and {c_important}{u}Healthy{/u}{/c} enemies.  "
+    },
+    "Paragon_Spiritborn_Legendary_001": {
+        "desc": "When you Dodge or Block an attack you gain {c_number}20%{c_lightgray}\\[+\\]{/c}{/c} increased Attack Speed and {c_number}45%{c_lightgray}\\[x\\]{/c}{/c} increased Damage for {c_number}8{/c} seconds."
+    },
+    "Paragon_Spiritborn_Legendary_002": {
+        "desc": "When you use a Cooldown you gain {c_number}35%{/c} Thorns for {c_number}5{/c} seconds."
+    },
+    "Paragon_Spiritborn_Legendary_003": {
+        "desc": "You do {c_number}2%{c_lightgray}\\[x\\]{/c}{/c} increased damage for each {c_number}3%{/c} of your Maximum Life you have as a {c_important}{u}Barrier{/u}{/c}."
+    },
+    "Paragon_Spiritborn_Legendary_004": {
+        "desc": "After Healing for {c_number}100%{/c} of your Maximum Life you afflict Close enemies, dealing {c_number}[{dot:poison_dot}|2?|]{/c} Poisoning damage over {c_number}[{buffduration:poison_dot}||]{/c} seconds and causing them to take {c_number}80%{c_lightgray}\\[x\\]{/c}{/c} more Poisoning damage."
+    },
+    "Paragon_Spiritborn_Legendary_005": {
+        "desc": "{c_label}Lucky Hit:{/c} Up to a {c_number}30%{/c} chance to Knock Down {c_important}{u}Vulnerable{/u}{/c} enemies. You deal {c_number}30%{c_lightgray}\\[x\\]{/c}{/c} increased damage, doubled against Crowd Controlled enemies."
+    },
+    "Paragon_Spiritborn_Legendary_006": {
+        "desc": "Gain {c_number}1{c_lightgray}\\[+\\]{/c}{/c} additional {c_important}Evade{/c} Charge. After moving {c_number}10{/c} meters, you deal {c_number}6.0%{c_lightgray}\\[x\\]{/c}{/c} increased damage for {c_number}5{/c} seconds. This can stack up to {c_number}20{/c} times but will no longer refresh at Maximum."
+    },
+    "Paragon_Spiritborn_Legendary_007": {
+        "desc": "You deal bonus damage equal to {c_number}7.5%{c_lightgray}\\[x\\]{/c}{/c} of all your bonuses to Damage with Physical, Fire, Lightning, Cold, Poison, and Shadow combined, up to {c_number}60%{c_lightgray}\\[x\\]{/c}{/c} total.\r\n\r\nCurrent Bonus: {c_number}[Bonus_Percent_Per_Power(2058843)*100|%2|]{/c}"
+    },
+    "Paragon_Druid_Legendary_019": {
+        "desc": "Casting a {c_important}Companion{/c} Skill grants {c_number}20%{c_lightgray}\\[x\\]{/c}{/c} increased {c_important}Companion{/c} damage for {c_number}10{/c} seconds, stacking up to {c_number}80%{c_lightgray}\\[x\\]{/c}{/c}."
+    },
+    "Paragon_Spiritborn_Legendary_008": {
+        "desc": "Every {c_number}3rd{/c} consecutive Cast of the same {c_important}Basic{/c} Skill increases all purchased Skills' Ranks by {c_number}5{/c} for {c_number}5{/c} seconds.\r\n\r\nEvery {c_number}3rd{/c} consecutive Cast of the same {c_important}Core{/c} or {c_important}Potency{/c} Skill reduces all Skills' active Cooldowns by {c_number}30%{/c}."
+    },
+    "Paragon_Rogue_Legendary_017": {
+        "desc": "Casting a {c_important}Mobility{/c} or {c_important}Subterfuge{/c} Skill increases your damage by {c_number}60%{c_lightgray}\\[x\\]{/c}{/c} for {c_number}10{/c} seconds."
+    },
+    "Paragon_Necro_Legendary_018": {
+        "desc": "Deal {c_number}60%{c_lightgray}\\[x\\]{/c}{/c} increased damage to Cursed enemies."
+    },
+    "Paragon_Sorc_Legendary_017": {
+        "desc": "Casting a {c_important}Pyromancy{/c}, {c_important}Shock{/c}, or {c_important}Frost{/c} Skill increases your {c_important}Burning{/c}, {c_important}Shocking{/c}, or {c_important}Frostbite{/c} damage by {c_number}10%{/c} for {c_number}[Min(0.4,(1+Multiplicative_Nonphysical_Damage_Percent_Bonus)*(1+NonPhysical_Damage_Percent_Bonus)*0.1)||]{/c} seconds. Each element only stacks once, maxing at {c_number}30%{/c}, with each element active."
+    },
+    "Paragon_Paladin_Legendary_001": {
+        "desc": "You deal increased damage equal to {c_number}125%{/c} of your Damage Reduction granted from Armor.\r\n\r\nCurrent Bonus: {c_number}[Min(1.5,ComputeArmorDamageReduction()*1.25)*100|1x%|]{/c}"
+    },
+    "Paragon_Paladin_Legendary_002": {
+        "desc": "You deal increased damage equal to {c_number}110%{/c} of your Block chance.\r\n\r\nCurrent Bonus: {c_number}[Min(1,Block_Chance)*1.1*100|1x%|]{/c}"
+    },
+    "Paragon_Paladin_Legendary_003": {
+        "desc": "You gain {c_number}35%{c_lightgray}\\[x\\]{/c}{/c} increased Critical Strike damage and {c_number}3%{c_lightgray}\\[+\\]{/c}{/c} Critical Strike chance for each stack of Fervor you have."
+    },
+    "Paragon_Paladin_Legendary_004": {
+        "desc": "Your {c_important}Zealot{/c} skills gain {c_number}15.0%{c_lightgray}\\[+\\]{/c}{/c} increased Attack Speed.  \r\nYou deal increased damage equal to {c_number}65%{/c} of your Bonus Attack Speed."
+    },
+    "Paragon_Paladin_Legendary_006": {
+        "desc": "While moving and for {c_number}2{/c} seconds after, you deal {c_number}80%{c_lightgray}\\[x\\]{/c}{/c} increased damage and have {c_number}30%{c_lightgray}\\[+\\]{/c}{/c} Cooldown Reduction."
+    },
+    "Paragon_Paladin_Legendary_005": {
+        "desc": "While in {c_important}{u}Arbiter{/u}{/c} you deal {c_number}90%{c_lightgray}\\[x\\]{/c}{/c} increased damage to {c_important}{u}Vulnerable{/u}{/c} enemies."
+    },
+    "Paragon_Paladin_Legendary_007": {
+        "desc": "{c_important}{u}Judging{/c}{/u} an enemy causes them to take {c_number}90%{c_lightgray}\\[x\\]{/c}{/c} more damage from you until they die."
+    },
+    "Paragon_Paladin_Legendary_008": {
+        "desc": "You deal {c_number}90%{c_lightgray}\\[x\\]{/c}{/c} increased damage while {c_important}{u}Fortified{/u}{/c}."
+    },
+    "Paragon_Paladin_Legendary_009": {
+        "desc": "While at least one ally or mercenary is within one of your {c_important}Auras{/c} you deal {c_number}90%{c_lightgray}\\[x\\]{/c}{/c} increased damage."
+    },
+    "Paragon_Warlock_Legendary_001": {
+        "desc": "Each demon you've summoned in the last {c_number}6{/c} seconds increases your damage by {c_number}15%{c_lightgray}\\[x\\]{/c}{/c} up to {c_number}105%{c_lightgray}\\[x\\]{/c}{/c}."
+    },
+    "Paragon_Warlock_Legendary_002": {
+        "desc": "Damaging enemies with {c_important}Demonology{/c} Skills shreds their soul, permanently increasing all damage you deal to them by {c_number}40%{c_lightgray}\\[x\\]{/c}{/c} and gaining {c_number}2%{c_lightgray}\\[+\\]{/c}{/c} per hit, up to {c_number}120%{c_lightgray}\\[x\\]{/c}{/c}."
+    },
+    "Paragon_Warlock_Legendary_003": {
+        "desc": "While in {c_important}{u}Demonform{/u}{/c}, your {c_important}Demonology{/c} Skill damage is increased by {c_number}3%{c_lightgray}\\[x\\]{/c}{/c} for every point of {c_important}Dominance{/c} you currently have. \r\nWhile not in {c_important}{u}Demonform{/u}{/c}, you gain {c_number}1{/c} {c_important}Dominance{/c} every {c_number}2{/c} seconds."
+    },
+    "Paragon_Warlock_Legendary_004": {
+        "desc": "{c_important}Hellfire{/c} Skills deal {c_number}450%{c_lightgray}\\[x\\]{/c}{/c} increased damage to {c_important}{u}Healthy{/u}{/c} enemies."
+    },
+    "Paragon_Warlock_Legendary_005": {
+        "desc": "{c_important}Abyss{/c} Skills deal {c_number}45%{c_lightgray}\\[x\\]{/c}{/c} increased damage to Crowd Controlled enemies and {c_number}65%{c_lightgray}\\[x\\]{/c}{/c} increased damage to Elites."
+    },
+    "Paragon_Warlock_Legendary_006": {
+        "desc": "Applying {c_important}{u}Hex{/u}{/c}, {c_important}{u}Vulnerable{/u}{/c}, or {c_important}{u}Weakened{/u}{/c} to enemies permanently reduces the damage they deal to you by {c_number}25%{/c} and they take {c_number}75%{c_lightgray}\\[x\\]{/c}{/c} increased damage from you."
+    },
+    "Paragon_Warlock_Legendary_007": {
+        "desc": "You gain {c_number}90%{c_lightgray}\\[x\\]{/c}{/c} increased damage for {c_number}15{/c} seconds after Casting a {c_important}Sigil{/c} Skill. {c_important}Greater Demons{/c} now count as {c_number}10{/c} kills when dying within {c_important}Sigils{/c}. "
+    },
+    "Paragon_Warlock_Legendary_008": {
+        "desc": "Your {c_important}Occult{/c} Skills deal {c_number}100%{c_lightgray}\\[x\\]{/c}{/c} increased damage while you have {c_important}{u}Overpower{/u}{/c}, but when you lose a stack you either gain {c_number}2{/c} stacks or lose {c_number}1{/c} additional stack."
+    },
+    "Paragon_Warlock_Legendary_010": {
+        "desc": "Spending {c_important}Dominance{/c} to {c_important}Summon{/c} a demon reduces the {c_important}Wrath{/c} cost of your {c_important}Demonology{/c} Skills by {c_number}50%{/c} and increases all of your damage by {c_number}80%{c_lightgray}\\[x\\]{/c}{/c} for {c_number}12{/c} seconds."
+    }
+},
   "attributeFormulas": {
     "BinaryCostScalar_IsTorment": [
       {

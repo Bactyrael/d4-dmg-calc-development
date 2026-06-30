@@ -1668,7 +1668,16 @@ window.showNodeDetails = function(nodeName, slotIndex = 0, dataIdx = -1) {
         return `<span style="color: ${displayColor}">+${valStr}${parsed.isPercent ? '%' : ''} ${parsed.name}</span>`;
     };
 
-    if (nData.attributes) {
+    if (nData.power && window.D4_PARAGON_FORMULAS.legendaryPowers && window.D4_PARAGON_FORMULAS.legendaryPowers[nData.power]) {
+          let rawDesc = window.D4_PARAGON_FORMULAS.legendaryPowers[nData.power].desc;
+          // clean the description
+          rawDesc = rawDesc.replace(/\{c_[^}]+\}/g, '').replace(/\{\/c\}/g, '').replace(/\\\[x\\\]/g, '[x]');
+          html += `<div style="margin-bottom: 8px; color: #c9a55c; font-style: italic;">
+              ${rawDesc}
+          </div>`;
+      }
+      
+      if (nData.attributes) {
         nData.attributes.forEach((attr) => {
             let f = formatAttr(attr);
             if (f) {
