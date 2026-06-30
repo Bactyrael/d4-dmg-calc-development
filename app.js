@@ -3266,7 +3266,7 @@ function renderEquipment(className, savedEquipment = {}) {
 
     // Multiplicative: product of all (1 + value/100)
     const multiplicatives = getMultiplicativeValues();
-    const nodeEls = getNodeEls();
+    const nodeEls = []; // Replaced by dynamic nodes
     const addBonusVals = getAdditionalBonusValues();
     const legVals = getLegendaryBonusValues();
     
@@ -3823,11 +3823,11 @@ function renderEquipment(className, savedEquipment = {}) {
     if (dom.damageReduction) dom.damageReduction.value = b.damageReduction || 0;
 
     const nodes = b.nodes || [0,0,0,0];
-    renderNodeInputs(b.class || 'Barbarian', nodes);
+    
     
     const glyphs = b.glyphs || [0,0,0,0,0,0,0,0,0,0];
     const addBonuses = glyphs.slice(0, 5);
-    renderAdditionalBonusInputs(b.class || 'Barbarian', addBonuses);
+    
     
     // For legacy saves where level was packed into addBonuses
     const legBonuses = glyphs.slice(5, 10).map((v, i) => {
@@ -3836,7 +3836,7 @@ function renderEquipment(className, savedEquipment = {}) {
         }
         return v;
     });
-    renderLegendaryBonusInputs(b.class || 'Barbarian', legBonuses);
+    
     renderEquipment(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', b.equipment || {});
     window.selectedSkills = b.skills ? JSON.parse(JSON.stringify(b.skills)) : {};
     renderSkills();
@@ -4128,7 +4128,7 @@ function renderEquipment(className, savedEquipment = {}) {
         if (currentBuild && currentBuild.class === selectedClass) return; // Prevent spurious resets
         
         const currentNodes = getNodeEls().map(el => el ? parseFloat(el.value) || 0 : 0);
-        renderNodeInputs(dom.classSelect.textContent, currentNodes);
+        
         // When changing class, get the current state to pass through (it handles resets gracefully)
         const currentAddSave = [];
         const currentLegSave = [];
@@ -4147,8 +4147,8 @@ function renderEquipment(className, savedEquipment = {}) {
           }
         }
         
-        renderAdditionalBonusInputs(dom.classSelect.textContent, currentAddSave);
-        renderLegendaryBonusInputs(dom.classSelect.textContent, currentLegSave);
+        
+        
         
         // Auto clear equipment and paragon to prevent slot mismatches ONLY if triggered by a real user interaction
         if (e.isTrusted) {
@@ -5350,9 +5350,9 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     } catch(e) {}
     
     // If we didn't load a build, run the default render
-    renderNodeInputs(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', [0,0,0,0]);
-    renderAdditionalBonusInputs(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', [0,0,0,0,0]);
-    renderLegendaryBonusInputs(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', [0,0,0,0,0]);
+    
+    
+    
     renderEquipment(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', {});
   }
 
