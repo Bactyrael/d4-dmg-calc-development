@@ -313,6 +313,10 @@ window.cleanAttributeDescription = function(desc, rawValue, attr) {
         }
         statName = statName.replace(/\{value1\}/g, paramName);
     }
+      
+      if (statName.includes('Damage to Shadow Enemies')) {
+          statName = statName.replace('Shadow Enemies', 'Shadow Damage Over Time-Affected Enemies');
+      }
     
     // Strip tags like {c_important} and {/c}
     statName = statName.replace(/\{c_[^}]+\}/g, '').replace(/\{\/c\}/g, '').replace(/\s+/g, ' ').trim();
