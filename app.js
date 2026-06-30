@@ -3066,6 +3066,24 @@ function renderEquipment(className, savedEquipment = {}) {
     dom.additiveBody.querySelectorAll('tr.injected-row').forEach(row => row.remove());
     dom.multBody.querySelectorAll('tr.injected-row').forEach(row => row.remove());
     
+    let lowerTags = [];
+    if (dom.mainSkillSelect && typeof skillsDatabase !== 'undefined') {
+        const mainSkillName = dom.mainSkillSelect.value;
+        let mainSkill = null;
+        if (mainSkillName) {
+            for (const cat in skillsDatabase) {
+                const found = skillsDatabase[cat].find(s => s.name === mainSkillName);
+                if (found) { 
+                    mainSkill = typeof applyActiveModifiers === 'function' ? applyActiveModifiers(found) : found; 
+                    break; 
+                }
+            }
+        }
+        if (mainSkill && mainSkill.tags) {
+            lowerTags = mainSkill.tags.map(t => t.toLowerCase());
+        }
+    }
+
     Object.keys(compiledStats).forEach(statName => {
       const val = compiledStats[statName].final;
       if (!val || val <= 0) return;
@@ -3086,15 +3104,23 @@ function renderEquipment(className, savedEquipment = {}) {
       }
 
       const lower = statName.toLowerCase();
-      if (
-        (lower.includes('damage') || lower.includes('critical') || lower.includes('vulnerable') || lower.includes('overpower')) &&
-        !lower.includes('reduction') &&
-        !lower.includes('chance') &&
-        !lower.includes('base damage') &&
-        !lower.includes('weapon damage') &&
-        statName !== 'Skill Damage'
-      ) {
-        createAdditiveRow(statName, val.toFixed(2), true);
+      if (!lower.includes('damage') || lower.includes('reduction') || lower.includes('taken') || lower.includes('weapon damage') || statName === 'Skill Damage') return;
+      
+      let matches = false;
+      if (lowerTags.includes('search_bone') && lower.includes('bone damage')) matches = true;
+      if (lowerTags.includes('search_shadow') && lower.includes('shadow damage')) matches = true;
+      if (lowerTags.includes('search_shadowdot') && lower.includes('shadow damage over time')) matches = true;
+      if (lowerTags.includes('search_cold') && lower.includes('cold damage')) matches = true;
+      if (lowerTags.includes('search_physical') && lower.includes('physical damage')) matches = true;
+      if (lowerTags.includes('search_damageovertime') && lower.includes('damage over time')) matches = true;
+      
+      // Highly conditionals always on for now
+      if (lower.includes('damage vs') || lower.includes('damage to') || lower.includes('damage while') || lower.includes('damage for') || lower.includes('critical') || lower.includes('vulnerable') || lower.includes('overpower') || statName === 'Damage' || lower.includes('core skill damage') || lower.includes('basic skill damage') || lower.includes('macabre skill damage')) {
+          matches = true;
+      }
+      
+      if (matches || lowerTags.length === 0) {
+          createAdditiveRow(statName, val.toFixed(2), true);
       }
     });
       
