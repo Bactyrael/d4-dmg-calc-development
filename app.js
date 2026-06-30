@@ -1038,13 +1038,23 @@ var currentBuild = createDefaultBuild();
                   const nData = window.D4_PARAGON_DATA.paragonNodes[nodeName];
                   if (nData && nData.attributes) {
                       nData.attributes.forEach(attr => {
-                          if (attr.id === 9 || attr.id === 18) stats.Strength += attr.value;
-                          else if (attr.id === 10 || attr.id === 19) stats.Intelligence += attr.value;
-                          else if (attr.id === 11 || attr.id === 20) stats.Willpower += attr.value;
-                          else if (attr.id === 12 || attr.id === 21) stats.Dexterity += attr.value;
+                          if (attr.value !== undefined) {
+                              if (attr.id === 9 || attr.id === 18) stats.Strength += attr.value;
+                              else if (attr.id === 10 || attr.id === 19) stats.Intelligence += attr.value;
+                              else if (attr.id === 11 || attr.id === 20) stats.Willpower += attr.value;
+                              else if (attr.id === 12 || attr.id === 21) stats.Dexterity += attr.value;
+                          } else if (attr.formula && attr.formula.includes('CoreStat') && nData.tags) {
+                              let sMap = { 'Search_Strength': 'Strength', 'Search_Intelligence': 'Intelligence', 'Search_Willpower': 'Willpower', 'Search_Dexterity': 'Dexterity' };
+                              let s = Object.keys(sMap).find(t => nData.tags.includes(t));
+                              if (s) {
+                                  let val = 10;
+                                  if (attr.formula.includes('Magic')) val = 7;
+                                  else if (attr.formula.includes('Normal')) val = 5;
+                                  stats[sMap[s]] += val;
+                              }
+                          }
                       });
                   } else {
-                      // Fallback for datamine misses
                       if (nodeName.toLowerCase().includes('_str')) stats.Strength += 5;
                       if (nodeName.toLowerCase().includes('_int')) stats.Intelligence += 5;
                       if (nodeName.toLowerCase().includes('_will')) stats.Willpower += 5;
@@ -1053,7 +1063,6 @@ var currentBuild = createDefaultBuild();
               }
           }
       });
-      
       return stats;
   }
 

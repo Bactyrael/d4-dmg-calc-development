@@ -59,11 +59,11 @@ window.getActiveLegendaryPowers = function() {
   
   for (let s = 0; s < 5; s++) {
       let pData = currentBuild.paragon[s];
-      if (pData && pData.boardId && pData.glyph && pData.glyph.id && pData.nodes) {
+      if (pData && pData.boardId && pData.glyph && pData.glyph.id) {
           let bData = window.D4_PARAGON_DATA.paragonBoards[pData.boardId];
           let socketDataIdx = -1;
           for (let i = 0; i < 441; i++) {
-              if (bData && bData.nodes[i] && bData.nodes[i].toLowerCase().includes('socket') && pData.nodes.includes(i)) {
+              if (bData && bData.nodes[i] && bData.nodes[i].toLowerCase().includes('socket')) {
                   socketDataIdx = i;
                   break;
               }
@@ -779,6 +779,23 @@ window.renderParagonGrid = function() {
                 else if (nodeName.toLowerCase().includes('rare')) cell.classList.add('type-rare');
                 else if (nodeName.toLowerCase().includes('magic')) cell.classList.add('type-magic');
                 else cell.classList.add('type-normal');
+                
+                // Check radius
+                let inRadius = false;
+                for (let g of glyphsActive) {
+                    if (g.slotId === s) {
+                        let dX = dataIdx % 21;
+                        let dY = Math.floor(dataIdx / 21);
+                        let dist = Math.abs(dX - g.x) + Math.abs(dY - g.y);
+                        if (dist <= g.radius) {
+                            inRadius = true;
+                            break;
+                        }
+                    }
+                }
+                if (inRadius) {
+                    cell.classList.add('node-in-radius');
+                }
                 
                 let myStr = s + "-" + dataIdx;
                 let isActive = pData.nodes && pData.nodes.includes(dataIdx);
