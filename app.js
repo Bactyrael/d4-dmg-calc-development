@@ -2955,6 +2955,8 @@ function renderEquipment(className, savedEquipment = {}) {
     // Add flat "Weapon Damage" from modifiers
     if (compiledStats['Weapon Damage']) {
         totalWeaponDmg += compiledStats['Weapon Damage'].final;
+        if (typeof window.weaponMinDmg !== 'undefined') window.weaponMinDmg += compiledStats['Weapon Damage'].final;
+        if (typeof window.weaponMaxDmg !== 'undefined') window.weaponMaxDmg += compiledStats['Weapon Damage'].final;
     }
     
     // Update UI and lock inputs if gear is equipped
