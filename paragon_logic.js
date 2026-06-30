@@ -41,6 +41,7 @@ window.NODE_IMAGES = {
     "blood-empowered": "Blood-Empowered.png",
     "bloodbath": "Bloodbath.png",
     "blooddrinker": "Blooddrinker.png",
+    "board attachment gate": "Board Attachment Gate.png",
     "bone graft": "Bone Graft.png",
     "borrowed strength": "Borrowed Strength.png",
     "calcified": "Calcified.png",
@@ -172,6 +173,7 @@ window.getNodeImageUrl = function(nodeName, nData) {
     }
     
     // Fallbacks for start/gate
+    if (cleanKey.includes('gate') || cleanKey.includes('boardattachment')) return 'assets/images/Necromancer/Paragon Nodes/Board Attachment Gate.png';
     if (cleanKey.includes('start')) return 'assets/images/Necromancer/Paragon Nodes/prime.png';
     return '';
 };
@@ -1121,10 +1123,22 @@ window.renderParagonGrid = function() {
             const nodeName = bData.nodes[dataIdx];
             if (!nodeName) {
                 cell.classList.add('empty-space');
-            } else {
-                let isGate = nodeName.toLowerCase().includes('gate');
-                if (isGate) cell.classList.add('type-gate');
-                else if (nodeName.toLowerCase().includes('socket')) {
+              } else {
+                  let isGate = nodeName.toLowerCase().includes('gate');
+                  if (isGate) {
+                      cell.classList.add('type-gate');
+                      if (window.getNodeImageUrl) {
+                          let nodeImg = window.getNodeImageUrl(nodeName, null);
+                          if (nodeImg) {
+                              cell.style.backgroundImage = `url('${nodeImg}')`;
+                              cell.style.backgroundSize = '100% 100%';
+                              cell.style.backgroundRepeat = 'no-repeat';
+                              cell.style.backgroundPosition = 'center';
+                              cell.style.borderRadius = '50%';
+                          }
+                      }
+                  }
+                  else if (nodeName.toLowerCase().includes('socket')) {
                     cell.classList.add('type-glyph');
                     if (pData && pData.glyph && pData.glyph.id) {
                         let gData = window.D4_PARAGON_DATA.paragonGlyphs[pData.glyph.id];
