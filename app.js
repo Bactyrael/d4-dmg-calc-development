@@ -3465,7 +3465,7 @@ function renderEquipment(className, savedEquipment = {}) {
     renderToughnessDashboard(compiledStats);
     
     renderActiveRunes();
-
+    if (typeof renderCalcSkills === 'function') renderCalcSkills();
   } catch (e) {
     console.error("calculate() Error:", e);
      const container = document.getElementById('character-sheet-content');
