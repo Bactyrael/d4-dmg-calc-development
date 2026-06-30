@@ -1115,7 +1115,7 @@ window.showNodeDetails = function(nodeName, slotIndex = 0) {
     let isSocket = nodeName && nodeName.toLowerCase().includes('socket');
     
     if (isSocket && pData && pData.glyph && pData.glyph.id) {
-        detailsDiv.innerHTML = window.renderGlyphTooltip(pData.glyph.id, pData.glyph.level || 1);
+        detailsDiv.innerHTML = window.renderGlyphTooltip(pData.glyph.id, pData.glyph.level || 1, slotIndex);
         return;
     }
     
@@ -1420,7 +1420,7 @@ window.openGlyphModal = function(slotIdx, nodeIdx) {
             const detailsDiv = document.getElementById('paragon-node-details');
             if (detailsDiv) {
                 let lvl = parseInt(document.getElementById('paragon-glyph-level-slider').value) || 1;
-                detailsDiv.innerHTML = window.renderGlyphTooltip(g.stringKey, lvl);
+                detailsDiv.innerHTML = window.renderGlyphTooltip(g.stringKey, lvl, window.activeGlyphSocket.slot);
             }
         });
         

@@ -1006,224 +1006,150 @@ var currentBuild = createDefaultBuild();
     ];
   }
 
-  function getAdditionalBonusValues() {
-    const selectedClass = dom.classSelect ? dom.classSelect.textContent : 'Barbarian';
-    const classData = CLASS_PARAGON_DATA[selectedClass];
-    const vals = [];
-    for (let i = 1; i <= 5; i++) {
-      if (classData) {
-        const sel = document.getElementById(`additional-bonus-sel-${i}`);
-        if (sel && sel.value) {
-          const glyphName = sel.value;
-          const glyphInfo = classData.addBonuses.find(g => g.label.startsWith(glyphName));
-          if (glyphInfo && glyphInfo.value === 'custom') {
-            const customInp = document.getElementById(`add-bonus-custom-${i}`);
-            const val = customInp ? parseFloat(customInp.value) || 0 : 0;
-            vals.push(val);
-            const disp = document.getElementById(`additional-bonus-disp-${i}`);
-            if (disp) disp.textContent = val + '%';
-          } else {
-            vals.push(glyphInfo ? glyphInfo.value : 0);
-            const disp = document.getElementById(`additional-bonus-disp-${i}`);
-            if (disp) disp.textContent = (glyphInfo ? glyphInfo.value : 0) + '%';
-          }
-        } else {
-          vals.push(0);
-          const disp = document.getElementById(`additional-bonus-disp-${i}`);
-          if (disp) disp.textContent = '0%';
-        }
-      } else {
-        const inp = document.getElementById(`additional-bonus-${i}`);
-        vals.push(inp ? parseFloat(inp.value) || 0 : 0);
-      }
-    }
-    return vals;
-  }
-
-  function renderAdditionalBonusInputs(className, savedValues) {
-    const container = dom.additionalBonusesContainer;
-    if (!container) return;
-    const classData = CLASS_PARAGON_DATA[className];
-    container.innerHTML = '';
-    
-    const sv = Array.isArray(savedValues) ? savedValues : [0,0,0,0,0];
-
-    for (let i = 1; i <= 5; i++) {
-      const group = document.createElement('div');
-      group.className = 'input-group';
-      const label = document.createElement('label');
-      label.textContent = `Additional Bonus ${i}`;
-      // Label appended later to place it underneath
+  
+  window.getGlyphStatsInRadius = function getGlyphStatsInRadius(slotIndex, glyphData) {
+      const stats = { Strength: 0, Dexterity: 0, Intelligence: 0, Willpower: 0 };
+      if (!currentBuild || !currentBuild.paragon || !currentBuild.paragon[slotIndex]) return stats;
+      const pData = currentBuild.paragon[slotIndex];
+      if (!pData.boardId || !pData.nodes) return stats;
       
-      const saved = sv[i - 1];
-
-      if (classData) {
-        const rowDiv = document.createElement('div');
-        rowDiv.style.display = 'flex';
-        rowDiv.style.gap = '0.25rem';
-        rowDiv.style.alignItems = 'center';
-        
-        const sel = document.createElement('select');
-        sel.id = `additional-bonus-sel-${i}`;
-        sel.style.flex = '2';
-        
-        const noneOpt = document.createElement('option');
-        noneOpt.value = '';
-        noneOpt.textContent = 'None';
-        sel.appendChild(noneOpt);
-        
-        classData.addBonuses.forEach(opt => {
-          const o = document.createElement('option');
-          const glyphName = opt.label.split(':')[0]; // e.g. "Abyssal"
-          o.value = glyphName;
-          o.textContent = glyphName; // Only display the name, without the percentage
-          sel.appendChild(o);
-        });
-        
-        const disp = document.createElement('span');
-        disp.id = `additional-bonus-disp-${i}`;
-        disp.style.flex = '1';
-        disp.style.textAlign = 'right';
-        disp.style.fontSize = '0.85rem';
-        disp.style.color = 'var(--primary)';
-        disp.style.fontWeight = '600';
-        disp.textContent = '0%';
-        
-        if (typeof saved === 'object' && saved !== null) {
-          sel.value = saved.name || '';
-        } else {
-          sel.value = '';
-        }
-        
-        function handleCustomAddInput() {
-          const glyphInfo = classData.addBonuses.find(g => g.label.startsWith(sel.value));
-          let customInp = document.getElementById(`add-bonus-custom-${i}`);
-          if (glyphInfo && glyphInfo.value === 'custom') {
-            if (!customInp) {
-              customInp = document.createElement('input');
-              customInp.type = 'number';
-              customInp.id = `add-bonus-custom-${i}`;
-              customInp.style.flex = '1';
-              customInp.style.marginLeft = '0.25rem';
-              customInp.style.width = '60px';
-              customInp.placeholder = '%';
-              
-              customInp.value = (typeof saved === 'object' && saved !== null) ? (saved.customValue || 0) : 0;
-              
-              customInp.addEventListener('input', () => {
-                disp.textContent = customInp.value ? `${customInp.value}%` : '0%';
-                calculate();
-              });
-              rowDiv.insertBefore(customInp, disp);
-            }
-            disp.textContent = customInp.value ? `${customInp.value}%` : '0%';
-          } else {
-            if (customInp) customInp.remove();
-            disp.textContent = (glyphInfo ? glyphInfo.value : 0) + '%';
+      const bData = window.D4_PARAGON_DATA?.paragonBoards?.[pData.boardId.replace(/\\/g, '')];
+      if (!bData || !bData.nodes) return stats;
+      
+      const socketDataIdx = bData.nodes.findIndex(n => n && n.toLowerCase().includes('socket'));
+      if (socketDataIdx === -1) return stats;
+      
+      const sX = socketDataIdx % 21;
+      const sY = Math.floor(socketDataIdx / 21);
+      
+      const lvl = glyphData.level || 1;
+      let radius = 3;
+      if (lvl >= 25 && lvl <= 49) radius = 4;
+      else if (lvl >= 50) radius = 5;
+      
+      pData.nodes.forEach(nIdx => {
+          const nX = nIdx % 21;
+          const nY = Math.floor(nIdx / 21);
+          const dist = Math.abs(nX - sX) + Math.abs(nY - sY);
+          
+          if (dist <= radius) {
+              const nodeName = bData.nodes[nIdx];
+              if (nodeName) {
+                  const nData = window.D4_PARAGON_DATA.paragonNodes[nodeName];
+                  if (nData && nData.attributes) {
+                      nData.attributes.forEach(attr => {
+                          if (attr.id === 9 || attr.id === 18) stats.Strength += attr.value;
+                          else if (attr.id === 10 || attr.id === 19) stats.Intelligence += attr.value;
+                          else if (attr.id === 11 || attr.id === 20) stats.Willpower += attr.value;
+                          else if (attr.id === 12 || attr.id === 21) stats.Dexterity += attr.value;
+                      });
+                  } else {
+                      // Fallback for datamine misses
+                      if (nodeName.toLowerCase().includes('_str')) stats.Strength += 5;
+                      if (nodeName.toLowerCase().includes('_int')) stats.Intelligence += 5;
+                      if (nodeName.toLowerCase().includes('_will')) stats.Willpower += 5;
+                      if (nodeName.toLowerCase().includes('_dex')) stats.Dexterity += 5;
+                  }
+              }
           }
-        }
-        
-        handleCustomAddInput();
-        
-        sel.addEventListener('change', () => {
-          handleCustomAddInput();
-          updateAdditionalBonusDropdowns();
-          calculate();
-        });
-        
-        rowDiv.appendChild(sel);
-        rowDiv.appendChild(disp);
-        group.appendChild(rowDiv);
-        group.appendChild(label); // Moved label below the input
-      } else {
-        const inp = document.createElement('input');
-        inp.type = 'number';
-        inp.id = `additional-bonus-${i}`;
-        inp.value = (typeof saved === 'number') ? saved : 0;
-        inp.step = 'any';
-        inp.placeholder = '0';
-        inp.addEventListener('input', calculate);
-        group.appendChild(inp);
-        group.appendChild(label); // Moved label below the input
-      }
-      container.appendChild(group);
-    }
-    updateAdditionalBonusDropdowns();
-    calculate();
+      });
+      
+      return stats;
   }
 
-  function updateAdditionalBonusDropdowns() {
-    const selected = [];
-    for (let i = 1; i <= 5; i++) {
-      const sel = document.getElementById(`additional-bonus-sel-${i}`);
-      if (sel && sel.value) {
-        selected.push(sel.value);
-      }
-    }
-    for (let i = 1; i <= 5; i++) {
-      const sel = document.getElementById(`additional-bonus-sel-${i}`);
-      if (sel) {
-        Array.from(sel.options).forEach(opt => {
-          if (opt.value && selected.includes(opt.value) && opt.value !== sel.value) {
-            opt.disabled = true;
-          } else {
-            opt.disabled = false;
+  function getAdditionalBonusValues() {
+      const selectedClass = dom.classSelect ? dom.classSelect.textContent : 'Barbarian';
+      const classData = CLASS_PARAGON_DATA[selectedClass];
+      const vals = [];
+      if (currentBuild && currentBuild.paragon) {
+          for (let i = 0; i < 5; i++) {
+              let pData = currentBuild.paragon[i];
+              if (pData && pData.glyph && pData.glyph.id) {
+                  let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
+                  if (gData && classData && classData.addBonuses) {
+                      let gName = gData.name;
+                      let glyphInfo = classData.addBonuses.find(g => g.label.startsWith(gName));
+                      
+                      let meetsReq = false;
+                      let hasThresholdData = false;
+                      if (gData.affixes) {
+                          for (let affixKey of gData.affixes) {
+                              let affixInfo = window.D4_PARAGON_DATA.paragonGlyphAffixes?.[affixKey];
+                              if (affixInfo && affixInfo.thresholds && affixInfo.thresholds.length > 0) {
+                                  let tData = window.D4_PARAGON_DATA.paragonThresholds?.[affixInfo.thresholds[0]];
+                                  if (tData && tData.attributes && tData.attributes.length > 0) {
+                                      hasThresholdData = true;
+                                      let reqAttrId = tData.attributes[0].id;
+                                      let reqVal = tData.attributes[0].value;
+                                      
+                                      let currentStats = getGlyphStatsInRadius(i, pData.glyph);
+                                      let curVal = 0;
+                                      if (reqAttrId === 9 || reqAttrId === 18) curVal = currentStats.Strength;
+                                      else if (reqAttrId === 10 || reqAttrId === 19) curVal = currentStats.Intelligence;
+                                      else if (reqAttrId === 11 || reqAttrId === 20) curVal = currentStats.Willpower;
+                                      else if (reqAttrId === 12 || reqAttrId === 21) curVal = currentStats.Dexterity;
+                                      
+                                      if (curVal >= reqVal) meetsReq = true;
+                                  }
+                              }
+                          }
+                      }
+                      
+                      if (glyphInfo && meetsReq) {
+                          vals.push(glyphInfo.value === 'custom' ? 0 : glyphInfo.value);
+                      } else {
+                          vals.push(0);
+                      }
+                  } else {
+                      vals.push(0);
+                  }
+              } else {
+                  vals.push(0);
+              }
           }
-        });
+      } else {
+          vals.push(0,0,0,0,0);
       }
-    }
+      return vals;
   }
 
   function getLegendaryBonusValues() {
-    const selectedClass = dom.classSelect ? dom.classSelect.textContent : 'Barbarian';
-    const classData = CLASS_PARAGON_DATA[selectedClass];
-    const vals = [];
-    for (let i = 1; i <= 5; i++) {
-      if (classData) {
-        // Read directly from the Additional Bonus section
-        const sel = document.getElementById(`additional-bonus-sel-${i}`);
-        const lvl = document.getElementById(`legendary-bonus-lvl-${i}`);
-        const disp = document.getElementById(`legendary-bonus-disp-${i}`);
-        
-        if (sel && lvl && sel.value) {
-          const glyphName = sel.value;
-          const level = Math.max(1, Math.min(150, parseInt(lvl.value) || 1));
-          
-          if (level < 46) {
-            vals.push(0);
-            if (disp) disp.textContent = '0.0% (Lvl < 46)';
-          } else {
-            const glyphInfo = classData.legBonuses.find(g => g.label === glyphName);
-            if (glyphInfo) {
-              let rawBonus = glyphInfo.min + ((glyphInfo.max - glyphInfo.min) * ((level - 1) / 149));
-              let finalBonus = rawBonus;
-              let isEffective = false;
-              if (glyphName === 'Essence') {
-                finalBonus = rawBonus * 0.8; // Active 80% of the time (not healthy condition)
-                isEffective = true;
+      const selectedClass = dom.classSelect ? dom.classSelect.textContent : 'Barbarian';
+      const classData = CLASS_PARAGON_DATA[selectedClass];
+      const vals = [];
+      if (currentBuild && currentBuild.paragon) {
+          for (let i = 0; i < 5; i++) {
+              let pData = currentBuild.paragon[i];
+              if (pData && pData.glyph && pData.glyph.id && pData.glyph.level >= 46) {
+                  let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
+                  if (gData && classData && classData.legBonuses) {
+                      let gName = gData.name;
+                      let glyphInfo = classData.legBonuses.find(g => g.label === gName);
+                      if (glyphInfo) {
+                          let min = glyphInfo.min; let max = glyphInfo.max;
+                          let rawBonus = min + ((max - min) * ((Math.min(100, pData.glyph.level) - 1) / 149));
+                          
+                          if (gName === 'Essence') {
+                              rawBonus = rawBonus * 0.8;
+                          }
+                          vals.push(rawBonus);
+                      } else {
+                          vals.push(0);
+                      }
+                  } else {
+                      vals.push(0);
+                  }
+              } else {
+                  vals.push(0);
               }
-              vals.push(finalBonus);
-              if (disp) {
-                disp.textContent = finalBonus.toFixed(1) + '%' + (isEffective ? ' (Effective)' : '');
-              }
-            } else {
-              vals.push(0);
-              if (disp) disp.textContent = '0.0%';
-            }
           }
-        } else {
-          vals.push(0);
-          if (disp) disp.textContent = '0.0%';
-        }
       } else {
-        const inp = document.getElementById(`legendary-bonus-inp-${i}`);
-        vals.push(inp ? parseFloat(inp.value) || 0 : 0);
+          vals.push(0,0,0,0,0);
       }
-    }
-    return vals;
+      return vals;
   }
 
-  function getEquipmentValues() {
+function getEquipmentValues() {
     const vals = {};
     const container = document.getElementById('tab-equipment');
     if (!container) return vals;
@@ -3831,7 +3757,7 @@ function renderEquipment(className, savedEquipment = {}) {
     
     // For legacy saves where level was packed into addBonuses
     const legBonuses = glyphs.slice(5, 10).map((v, i) => {
-        if (CLASS_PARAGON_DATA[b.class || 'Barbarian'] && addBonuses[i] !== null && typeof addBonuses[i] === 'object') {
+        if (CLASS_PARAGON_DATA[currentBuild.class || 'Barbarian'] && addBonuses[i] !== null && typeof addBonuses[i] === 'object') {
             return addBonuses[i].level || v || 1;
         }
         return v;
