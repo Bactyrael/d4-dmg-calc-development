@@ -644,10 +644,35 @@ window.renderParagonGrid = function() {
         }
     }
     surface.innerHTML = '';
-    
-    if (!window.D4_PARAGON_DATA || !window.D4_PARAGON_DATA.paragonBoards) {
-        return;
-    }
+        if (!window.D4_PARAGON_DATA || !window.D4_PARAGON_DATA.paragonBoards) {
+          return;
+      }
+      
+      let glyphsActive = [];
+      for (let s = 0; s < 5; s++) {
+          let pData = currentBuild.paragon[s];
+          if (pData && pData.boardId && pData.glyph && pData.glyph.id) {
+              let bData = window.D4_PARAGON_DATA.paragonBoards[pData.boardId];
+              let socketDataIdx = -1;
+              if (bData && bData.nodes) {
+                  for (let i = 0; i < 441; i++) {
+                      if (bData.nodes[i] && bData.nodes[i].toLowerCase().includes('socket')) {
+                          socketDataIdx = i;
+                          break;
+                      }
+                  }
+              }
+              if (socketDataIdx !== -1) {
+                  let lvl = pData.glyph.level || 1;
+                  let radius = 3;
+                  if (lvl >= 25 && lvl <= 49) radius = 4;
+                  else if (lvl >= 50) radius = 5;
+                  let socketX = socketDataIdx % 21;
+                  let socketY = Math.floor(socketDataIdx / 21);
+                  glyphsActive.push({ slotId: s, radius: radius, x: socketX, y: socketY });
+              }
+          }
+      }
     
     // Total spent
     let totalSpent = getTotalParagonPointsSpent();
