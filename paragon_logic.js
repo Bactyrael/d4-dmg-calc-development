@@ -297,7 +297,8 @@ const PARAM_TAG_MAP = {
     '2': 'Lightning',
     '3': 'Cold',
     '4': 'Poison',
-    '5': 'Shadow'
+    '5': 'Shadow',
+    '1781953454': 'Blood'
 };
 
 window.cleanAttributeDescription = function(desc, rawValue, attr) {
