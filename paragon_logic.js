@@ -1029,7 +1029,8 @@ window.renderGlyphTooltip = function(glyphId, level) {
             // Manual overrides for datamined JSON discrepancies
             const hotfixMultipliers = {
                 'Control': 2/3, // Nerfed in-game, JSON still has 1.5/0.1125
-                'Darkness': 2/3 // Nerfed in-game, JSON still has 1.0/0.075
+                'Darkness': 2/3, // Nerfed in-game, JSON still has 1.0/0.075
+                'Exhumation': 2/3 // Nerfed in-game, JSON still has 2.5/0.1875
             };
             
             if (hotfixMultipliers[g.name] && affixData.operation === 2) {
