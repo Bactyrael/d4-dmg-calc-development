@@ -63,6 +63,7 @@ window.NODE_IMAGES = {
     "frailty": "Frailty.png",
     "frenzied golem": "Frenzied Golem.png",
     "gloom (paragon node)": "Gloom (Paragon Node).png",
+    "glyph socket": "Glyph Socket.png",
     "gnawing darkness": "Gnawing Darkness.png",
     "grasp": "grasp.png",
     "guarded advance": "Guarded Advance.png",
@@ -1139,22 +1140,42 @@ window.renderParagonGrid = function() {
                       }
                   }
                   else if (nodeName.toLowerCase().includes('socket')) {
-                    cell.classList.add('type-glyph');
-                    if (pData && pData.glyph && pData.glyph.id) {
-                        let gData = window.D4_PARAGON_DATA.paragonGlyphs[pData.glyph.id];
-                        let glyphName = gData ? gData.name : pData.glyph.id;
-                        let imgUrl = window.getGlyphImageUrl ? window.getGlyphImageUrl(glyphName) : '';
-                        if (imgUrl) {
-                            cell.style.backgroundImage = `url('${imgUrl}')`;
-                            cell.style.backgroundSize = 'contain';
-                            cell.style.backgroundRepeat = 'no-repeat';
-                            cell.style.backgroundPosition = 'center';
-                            cell.style.backgroundColor = '#1a1a1a'; // Darker background to make icon pop
-                            // Remove default border radius if we want it square, or keep it round
-                            cell.style.borderRadius = '50%';
-                        }
-                    }
-                }
+                      cell.classList.add('type-glyph');
+                      let socketImg = '';
+                      if (window.NODE_IMAGES && window.NODE_IMAGES['glyph socket']) {
+                          socketImg = 'assets/images/Necromancer/Paragon Nodes/' + window.NODE_IMAGES['glyph socket'];
+                      }
+                      
+                      let glyphUrl = '';
+                      if (pData && pData.glyph && pData.glyph.id) {
+                          let gData = window.D4_PARAGON_DATA.paragonGlyphs[pData.glyph.id];
+                          let glyphName = gData ? gData.name : pData.glyph.id;
+                          glyphUrl = window.getGlyphImageUrl ? window.getGlyphImageUrl(glyphName) : '';
+                      }
+                      
+                      if (glyphUrl && socketImg) {
+                          cell.style.backgroundImage = `url('${glyphUrl}'), url('${socketImg}')`;
+                          cell.style.backgroundSize = 'contain, 100% 100%';
+                          cell.style.backgroundRepeat = 'no-repeat, no-repeat';
+                          cell.style.backgroundPosition = 'center, center';
+                          cell.style.backgroundColor = 'transparent';
+                          cell.style.borderRadius = '50%';
+                      } else if (glyphUrl) {
+                          cell.style.backgroundImage = `url('${glyphUrl}')`;
+                          cell.style.backgroundSize = 'contain';
+                          cell.style.backgroundRepeat = 'no-repeat';
+                          cell.style.backgroundPosition = 'center';
+                          cell.style.backgroundColor = '#1a1a1a';
+                          cell.style.borderRadius = '50%';
+                      } else if (socketImg) {
+                          cell.style.backgroundImage = `url('${socketImg}')`;
+                          cell.style.backgroundSize = '100% 100%';
+                          cell.style.backgroundRepeat = 'no-repeat';
+                          cell.style.backgroundPosition = 'center';
+                          cell.style.backgroundColor = 'transparent';
+                          cell.style.borderRadius = '50%';
+                      }
+                  }
                 else {
                     let nData = window.D4_PARAGON_DATA && window.D4_PARAGON_DATA.paragonNodes ? window.D4_PARAGON_DATA.paragonNodes[nodeName] : null;
                     
