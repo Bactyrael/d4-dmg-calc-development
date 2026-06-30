@@ -2391,23 +2391,26 @@ function renderEquipment(className, savedEquipment = {}) {
           { flat: 'Resistance to All Elements', pct: ['% Resistance to All Elements'] }
       ];
 
-      additiveScalers.forEach(scaler => {
-          if (stats[scaler.flat] !== undefined) {
-              let totalPct = 0;
-              scaler.pct.forEach(pctKey => {
-                  if (stats[pctKey]) {
-                      totalPct += stats[pctKey].total;
-                      stats[pctKey].flatSources.forEach(src => {
-                          stats[scaler.flat].pctSources.push({ name: src.name, val: src.val });
-                      });
-                      delete stats[pctKey]; // Remove so it doesn't double-display
-                  }
-              });
-              if (totalPct !== 0) {
-                  stats[scaler.flat].final = stats[scaler.flat].total * (1 + (totalPct / 100));
-              }
-          }
-      });
+        additiveScalers.forEach(scaler => {
+            if (!stats[scaler.flat]) {
+                stats[scaler.flat] = { total: 0, final: 0, flatSources: [], pctSources: [] };
+            }
+            
+            let totalPct = 0;
+            scaler.pct.forEach(pctKey => {
+                if (stats[pctKey]) {
+                    totalPct += stats[pctKey].total;
+                    stats[pctKey].flatSources.forEach(src => {
+                        stats[scaler.flat].pctSources.push({ name: src.name, val: src.val });
+                    });
+                    delete stats[pctKey]; // Remove so it doesn't double-display
+                }
+            });
+            
+            if (totalPct !== 0) {
+                stats[scaler.flat].final = stats[scaler.flat].total * (1 + (totalPct / 100));
+            }
+        });
         
         // Derive stats from Core Stats
         const selectedClass = document.getElementById('class-select')?.textContent || 'Barbarian';
