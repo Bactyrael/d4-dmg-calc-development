@@ -1091,7 +1091,7 @@ var currentBuild = createDefaultBuild();
                                       let reqAttrId = tData.attributes[0].id;
                                       let reqVal = tData.attributes[0].value;
                                       
-                                      let currentStats = getGlyphStatsInRadius(i, pData.glyph);
+                                      let currentStats = window.getGlyphStatsInRadius(i, pData.glyph);
                                       let curVal = 0;
                                       if (reqAttrId === 9 || reqAttrId === 18) curVal = currentStats.Strength;
                                       else if (reqAttrId === 10 || reqAttrId === 19) curVal = currentStats.Intelligence;
