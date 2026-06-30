@@ -1044,8 +1044,9 @@ var currentBuild = createDefaultBuild();
                               else if (attr.id === 11 || attr.id === 20) stats.Willpower += attr.value;
                               else if (attr.id === 12 || attr.id === 21) stats.Dexterity += attr.value;
                           } else if (attr.formula && attr.formula.includes('CoreStat') && nData.tags) {
-                              let sMap = { 'Search_Strength': 'Strength', 'Search_Intelligence': 'Intelligence', 'Search_Willpower': 'Willpower', 'Search_Dexterity': 'Dexterity' };
-                              let s = Object.keys(sMap).find(t => nData.tags.includes(t));
+                              let sMap = { 'search_strength': 'Strength', 'search_intelligence': 'Intelligence', 'search_willpower': 'Willpower', 'search_dexterity': 'Dexterity' };
+                              let tagLower = nData.tags.map(t => t.toLowerCase());
+                              let s = Object.keys(sMap).find(t => tagLower.includes(t));
                               if (s) {
                                   let val = 10;
                                   if (attr.formula.includes('Magic')) val = 7;
