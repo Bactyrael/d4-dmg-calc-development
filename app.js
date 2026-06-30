@@ -2934,6 +2934,7 @@ function renderEquipment(className, savedEquipment = {}) {
     };
     
     const compiledStats = compileCharacterStats(baseEquipped, autoStats);
+    window.D4_COMPILED_STATS = compiledStats;
     
     // Add flat "Weapon Damage" from modifiers
     if (compiledStats['Weapon Damage']) {

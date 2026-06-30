@@ -1250,6 +1250,7 @@ window.showNodeDetails = function(nodeName, slotIndex = 0) {
         
         html += bonusStrs.join(" and ") + " if requirements met:</div>";
         
+        let allReqsMet = true;
         nData.thresholds.forEach(tKey => {
             let tData = window.D4_PARAGON_DATA.paragonThresholds ? window.D4_PARAGON_DATA.paragonThresholds[tKey] : null;
             if (tData && tData.attributes) {
@@ -1282,14 +1283,28 @@ window.showNodeDetails = function(nodeName, slotIndex = 0) {
                         } catch(e) {}
                     }
                     
+                    let curVal = 0;
+                    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS[attrName]) {
+                        curVal = Math.floor(window.D4_COMPILED_STATS[attrName].final || 0);
+                    }
+                    
+                    let reqMet = curVal >= reqVal;
+                    if (!reqMet) allReqsMet = false;
+                    
+                    let valColor = reqMet ? '#27ae60' : '#ff4444';
+                    
                     html += `<div style="margin-bottom: 8px; color: #aaa;">
                         <span style="color: #666; font-size: 1.1rem; vertical-align: top;">&diams;</span> 
-                        <span style="color: #ff4444;">+0</span> / ${reqVal} ${attrName}
+                        <span style="color: ${valColor};">+${curVal}</span> / ${reqVal} ${attrName}
                     </div>`;
                 });
             }
         });
-        html += `<div style="color: #ff4444; font-size: 0.85rem; margin-top: 5px;">Requirements not met</div>`;
+        if (!allReqsMet) {
+            html += `<div style="color: #ff4444; font-size: 0.85rem; margin-top: 5px;">Requirements not met</div>`;
+        } else {
+            html += `<div style="color: #27ae60; font-size: 0.85rem; margin-top: 5px;">Requirements met</div>`;
+        }
     }
     
     if (nData.description) {
