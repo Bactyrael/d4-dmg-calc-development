@@ -90,6 +90,7 @@ window.NODE_IMAGES = {
     "meticulous": "Meticulous.png",
     "miscreation": "Miscreation.png",
     "mutation": "Mutation.png",
+    "necromancer starter node": "necromancer starter node.png",
     "overlord (paragon node)": "Overlord (Paragon Node).png",
     "poison conditioned": "Poison Conditioned.png",
     "powerhouse": "Powerhouse.png",
