@@ -2812,8 +2812,8 @@ function renderEquipment(className, savedEquipment = {}) {
       let totalAllRes = 0;
   
       if (baseEquipped) {
-        let mainhandDmg = 0;
-        let offhandDmg = 0;
+        let mainhandDmg = 0; let mainhandMin = 0; let mainhandMax = 0;
+        let offhandDmg = 0; let offhandMin = 0; let offhandMax = 0;
         let hasShield = false;
   
         Object.keys(baseEquipped).forEach(slotName => {
@@ -2834,6 +2834,8 @@ function renderEquipment(className, savedEquipment = {}) {
                   const min = parseFloat(match[1].replace(/,/g, ''));
                   const max = parseFloat(match[2].replace(/,/g, ''));
                   mainhandDmg = ((min + max) / 2) * qMult;
+                  mainhandMin = min * qMult;
+                  mainhandMax = max * qMult;
               }
               if (baseItem.weaponSpeed && typeof baseItem.weaponSpeed === 'number') {
                   totalWeaponAps = baseItem.weaponSpeed;
@@ -2849,6 +2851,8 @@ function renderEquipment(className, savedEquipment = {}) {
                       const min = parseFloat(match[1].replace(/,/g, ''));
                       const max = parseFloat(match[2].replace(/,/g, ''));
                       offhandDmg = ((min + max) / 2) * qMult;
+                      offhandMin = min * qMult;
+                      offhandMax = max * qMult;
                   }
               }
           }
@@ -2856,8 +2860,12 @@ function renderEquipment(className, savedEquipment = {}) {
   
         if (hasShield) {
             totalWeaponDmg = mainhandDmg * 2;
+            window.weaponMinDmg = mainhandMin * 2;
+            window.weaponMaxDmg = mainhandMax * 2;
         } else {
             totalWeaponDmg = mainhandDmg + offhandDmg;
+            window.weaponMinDmg = mainhandMin + offhandMin;
+            window.weaponMaxDmg = mainhandMax + offhandMax;
         }
       }
     
