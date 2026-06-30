@@ -21288,7 +21288,7 @@ window.D4_PARAGON_FORMULAS = {
     "Flat_Damage_Shield_On_Kill": "+[{value}||] Life as Barrier On Kill",
     "Attack_Speed_Percent_Bonus_For_Power": "+[{value2}*100|1%|] {c_important}{value1}{/c} Attack Speed",
     "Damage_Bonus_To_Low_Health": "+[{value}*100|1%|] Damage to Injured Enemies",
-    "Damage_Bonus_To_HIgh_Health": "+[{value}*100|1%|] Damage to Healthy Enemies",
+    "Damage_Bonus_To_High_Health": "+[{value}*100|1%|] Damage to Healthy Enemies",
     "Flat_Heal_Absorb": "{c_label}Lucky Hit:{/c} Up to a 5% Chance to Absorb [{value}||] Life",
     "Damage_Reduction_During_Evade": "[{value}*100|1%|] Damage Reduction while Evading",
     "No_Damage_Taken_Flat_Hitpoints_Regen_Per_Second": "+[{value}*5||] Life per 5 Seconds",
