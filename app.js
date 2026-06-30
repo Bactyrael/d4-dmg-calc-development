@@ -2799,8 +2799,7 @@ function renderEquipment(className, savedEquipment = {}) {
   }
 
   function calculate() {
-    if (typeof renderCalcSkills === 'function') renderCalcSkills();
-    if (isLoading) return;
+        if (isLoading) return;
     updateDynamicSkillTags();
     try {
       // Auto-calculate base weapon damage and armor from equipped items
