@@ -1138,9 +1138,12 @@ window.renderGlyphTooltip = function(glyphId, level, slotIndex) {
     
     let gRarity = level >= 46 ? 'Legendary' : 'Rare';
     let color = level >= 46 ? '#e67e22' : '#f1c40f';
+    let imgUrl = window.getGlyphImageUrl ? window.getGlyphImageUrl(g.name) : '';
+    let imgHtml = imgUrl ? `<img src="${imgUrl}" style="width: 48px; height: 48px; object-fit: contain; margin-bottom: 4px;">` : '';
     
     let html = `<div style="font-family: Arial, sans-serif; width: 100%; box-sizing: border-box;">
         <div style="text-align: center; margin-bottom: 12px;">
+            ${imgHtml}
             <div style="color: ${color}; font-size: 0.9rem; margin-bottom: 2px;">${gRarity} Glyph</div>
             <h3 style="margin: 0; color: ${color}; font-size: 1.3rem; text-shadow: 1px 1px 2px #000;">${g.name}</h3>
             <div style="color: #ddd; font-weight: bold; font-size: 0.9rem; margin-top: 4px; border-bottom: 1px solid #444; padding-bottom: 4px;">LEVEL ${level}</div>
@@ -1643,7 +1646,9 @@ window.openGlyphModal = function(slotIdx, nodeIdx) {
         card.style.flexDirection = 'column';
         
         let color = g.rarity === 1 ? '#3498db' : (g.rarity === 2 ? '#f1c40f' : '#e67e22');
-        card.innerHTML = `<h4 style="margin: 0 0 5px 0; color: ${color};">${g.name}</h4>`;
+        let imgUrl = window.getGlyphImageUrl ? window.getGlyphImageUrl(g.name) : '';
+        let headerHtml = imgUrl ? `<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;"><img src="${imgUrl}" style="width: 24px; height: 24px; object-fit: contain;"><h4 style="margin: 0; color: ${color};">${g.name}</h4></div>` : `<h4 style="margin: 0 0 5px 0; color: ${color};">${g.name}</h4>`;
+        card.innerHTML = headerHtml;
         
         card.addEventListener('mouseenter', () => {
             const detailsDiv = document.getElementById('paragon-node-details');
@@ -1758,8 +1763,10 @@ window.updateLeftPanel = function() {
         if (pData.glyph && pData.glyph.id) {
             let gData = window.D4_PARAGON_DATA.paragonGlyphs[pData.glyph.id];
             let glyphName = gData ? gData.name : pData.glyph.id;
+            let imgUrl = window.getGlyphImageUrl ? window.getGlyphImageUrl(glyphName) : '';
+            let glyphIconHtml = imgUrl ? `<img src="${imgUrl}" style="width: 20px; height: 20px; object-fit: contain;">` : `&#x25C9;`;
             boardHtml += `<div style="color: #666; margin: 0 2px;">/</div>
-                <div style="color: #c9a55c; font-size: 1.1rem; display: flex; align-items: center;">&#x25C9;</div>
+                <div style="color: #c9a55c; font-size: 1.1rem; display: flex; align-items: center;">${glyphIconHtml}</div>
                 <div style="color: #e67e22; font-weight: bold; white-space: nowrap;">${glyphName}</div>
                 <div style="color: #3498db; margin-left: 2px;">Lv. ${pData.glyph.level || 1}</div>`;
         }
