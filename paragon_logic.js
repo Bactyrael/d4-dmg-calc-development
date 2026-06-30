@@ -944,7 +944,23 @@ window.renderParagonGrid = function() {
             } else {
                 let isGate = nodeName.toLowerCase().includes('gate');
                 if (isGate) cell.classList.add('type-gate');
-                else if (nodeName.toLowerCase().includes('socket')) cell.classList.add('type-glyph');
+                else if (nodeName.toLowerCase().includes('socket')) {
+                    cell.classList.add('type-glyph');
+                    if (pData && pData.glyph && pData.glyph.id) {
+                        let gData = window.D4_PARAGON_DATA.paragonGlyphs[pData.glyph.id];
+                        let glyphName = gData ? gData.name : pData.glyph.id;
+                        let imgUrl = window.getGlyphImageUrl ? window.getGlyphImageUrl(glyphName) : '';
+                        if (imgUrl) {
+                            cell.style.backgroundImage = `url('${imgUrl}')`;
+                            cell.style.backgroundSize = 'contain';
+                            cell.style.backgroundRepeat = 'no-repeat';
+                            cell.style.backgroundPosition = 'center';
+                            cell.style.backgroundColor = '#1a1a1a'; // Darker background to make icon pop
+                            // Remove default border radius if we want it square, or keep it round
+                            cell.style.borderRadius = '50%';
+                        }
+                    }
+                }
                 else if (nodeName.toLowerCase().includes('legendary') || nodeName.toLowerCase().includes('start')) cell.classList.add('type-legendary');
                 else if (nodeName.toLowerCase().includes('rare')) cell.classList.add('type-rare');
                 else if (nodeName.toLowerCase().includes('magic')) cell.classList.add('type-magic');
