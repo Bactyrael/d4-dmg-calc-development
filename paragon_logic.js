@@ -1104,6 +1104,57 @@ window.renderGlyphTooltip = function(glyphId, level) {
     html += `</div>`;
     return html;
 };
+
+window.showNodeDetails = function(nodeName, slotIndex = 0) {
+    const detailsDiv = document.getElementById('paragon-node-details');
+    if (!detailsDiv || !window.D4_PARAGON_DATA) return;
+    
+    // Check if it's a socket and has an active glyph
+    let pData = currentBuild.paragon[slotIndex];
+    let isSocket = nodeName && nodeName.toLowerCase().includes('socket');
+    
+    if (isSocket && pData && pData.glyph && pData.glyph.id) {
+        detailsDiv.innerHTML = window.renderGlyphTooltip(pData.glyph.id, pData.glyph.level || 1);
+        return;
+    }
+    
+    const nData = window.D4_PARAGON_DATA.paragonNodes ? window.D4_PARAGON_DATA.paragonNodes[nodeName] : null;
+    if (!nData) {
+        // Fallback for generic nodes without detailed descriptions
+        let color = '#fff';
+        if (nodeName.toLowerCase().includes('magic')) color = '#3498db';
+        if (nodeName.toLowerCase().includes('rare')) color = '#f1c40f';
+        if (nodeName.toLowerCase().includes('legendary')) color = '#e67e22';
+        
+        let cleanedName = nodeName.replace(/_/g, ' ');
+        detailsDiv.innerHTML = `<h4 style="margin-top:0; color:${color};">${cleanedName}</h4>`;
+        return;
+    }
+    
+    let html = `<div style="font-family: Arial, sans-serif; box-sizing: border-box;">
+        <h4 style="margin: 0 0 5px 0; color: #fff;">${nData.name || nodeName}</h4>`;
+        
+    if (nData.description) {
+        let cleanDesc = nData.description;
+        // Basic format cleanup
+        cleanDesc = cleanDesc.replace(/\{c_[^}]+\}/g, '<span style="color: #c9a55c;">');
+        cleanDesc = cleanDesc.replace(/\{\/c\}/g, '</span>');
+        cleanDesc = cleanDesc.replace(/\[\{[^}]+\}\|[^|]+\|\]/g, (match) => {
+            // Very naive evaluation for simple static tooltip
+            let formatMatch = match.match(/\|([^|]+)\|/);
+            if (formatMatch && formatMatch[1]) {
+                if (formatMatch[1].includes('%')) return "X%";
+            }
+            return "X";
+        });
+
+        html += `<div style="color: #4CAF50; font-size: 0.95rem; margin-top: 8px;">${cleanDesc}</div>`;
+    }
+    
+    html += `</div>`;
+    detailsDiv.innerHTML = html;
+};
+
 window.calculateParagonStats = function() {
     let stats = {};
     return stats;
