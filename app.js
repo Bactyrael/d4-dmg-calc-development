@@ -6971,16 +6971,19 @@ function renderCalcSkills() {
                       <div style="color: #aaa; font-size: 0.9rem; margin-top: 10px; font-family: monospace;">
                         ${(function() {
                             let html = '';
+                            let rank = window.selectedSkills[baseSkill.name] || 1;
+                            let rankMultiplier = 1 + (rank - 1) * 0.1;
+
                             if (modSkill.baseDamageScalar) {
-                                let pct = (modSkill.baseDamageScalar * 100).toFixed(1).replace('.0', '');
+                                let pct = (modSkill.baseDamageScalar * rankMultiplier * 100).toFixed(1).replace('.0', '');
                                 html += `<div style="margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
-                                  <span style="color: #555;">├</span> Base Damage (${pct}%): <span style="color: #fff;">TBD - TBD</span>
+                                  <span style="color: #555;">├</span> Damage (${pct}%): <span style="color: #fff;">TBD - TBD</span>
                                 </div>`;
                             }
                             if (modSkill.secondaryScalars) {
                                 for (const [key, val] of Object.entries(modSkill.secondaryScalars)) {
                                     let label = key.replace(/_/g, ' ').replace(/tooltip /i, '').replace(/dot/i, 'DoT').replace(/\b\w/g, c => c.toUpperCase());
-                                    let pct = (val * 100).toFixed(1).replace('.0', '');
+                                    let pct = (val * rankMultiplier * 100).toFixed(1).replace('.0', '');
                                     html += `<div style="margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
                                       <span style="color: #555;">├</span> ${label} (${pct}%): <span style="color: #fff;">TBD - TBD</span>
                                     </div>`;
