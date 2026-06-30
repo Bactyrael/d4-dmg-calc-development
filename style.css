@@ -2542,3 +2542,18 @@ input[type="number"].aspect-val-input { -moz-appearance: auto; }
     opacity: 1;
     transform: translateX(0);
 }
+
+
+/* Paragon Glyph Radius Highlights */
+.node-in-radius {
+  position: relative;
+}
+.node-in-radius::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(231, 76, 60, 0.25);
+  border: 1px solid rgba(231, 76, 60, 0.7);
+  pointer-events: none;
+  z-index: 10;
+}
