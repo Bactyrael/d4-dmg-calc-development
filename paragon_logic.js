@@ -32,6 +32,137 @@ window.getGlyphImageUrl = function(glyphName) {
     return '';
 };
 
+
+window.NODE_IMAGES = {
+    "aggression": "Aggression.png",
+    "armor-clad": "Armor-Clad.png",
+    "blood begets blood": "Blood Begets Blood.png",
+    "blood-empowered": "Blood-Empowered.png",
+    "bloodbath": "Bloodbath.png",
+    "blooddrinker": "Blooddrinker.png",
+    "bone graft": "Bone Graft.png",
+    "borrowed strength": "Borrowed Strength.png",
+    "calcified": "Calcified.png",
+    "calculated": "Calculated.png",
+    "corrective": "Corrective.png",
+    "culler": "Culler.png",
+    "cult leader": "Cult Leader.png",
+    "custody": "Custody.png",
+    "deathbringer": "Deathbringer.png",
+    "deathmarked": "Deathmarked.png",
+    "dexterity_normal_paragon_node": "dexterity_normal_paragon_node.png",
+    "dragging shadows": "Dragging Shadows.png",
+    "entomb": "Entomb.png",
+    "eradicate": "Eradicate.png",
+    "erudite": "Erudite.png",
+    "erudite_flesh-eater": "Erudite_flesh-eater.png",
+    "flesh-eater": "Flesh-Eater.png",
+    "flesh-horror": "Flesh-Horror.png",
+    "frailty": "Frailty.png",
+    "frenzied golem": "Frenzied Golem.png",
+    "gloom (paragon node)": "Gloom (Paragon Node).png",
+    "gnawing darkness": "Gnawing Darkness.png",
+    "grasp_starter": "grasp_starter.png",
+    "guarded advance": "Guarded Advance.png",
+    "hardened": "Hardened.png",
+    "hulking monstrosity": "Hulking Monstrosity.png",
+    "infused caster": "Infused Caster.png",
+    "infused golem": "Infused Golem.png",
+    "infused warrior": "Infused Warrior.png",
+    "intelligence_normal_paragon_node": "intelligence_normal_paragon_node.png",
+    "invigorated": "Invigorated.png",
+    "knowledge_starter": "knowledge_starter.png",
+    "lingering shadows": "Lingering Shadows.png",
+    "lingering shadows_frailty": "Lingering Shadows_frailty.png",
+    "magic_armor_clad": "magic_armor_clad.png",
+    "magic_damage_paragon": "magic_damage_paragon.png",
+    "magic_dexterity_paragon": "magic_dexterity_paragon.png",
+    "magic_intelligence_paragon": "magic_intelligence_paragon.png",
+    "magic_life_paragon": "magic_life_paragon.png",
+    "magic_minion_damage": "magic_minion_damage.png",
+    "magic_minion_damage_paragon": "magic_minion_damage_paragon.png",
+    "magic_strength_paragon": "magic_strength_paragon.png",
+    "magic_willpower_paragon": "magic_willpower_paragon.png",
+    "malediction": "Malediction.png",
+    "miscreation": "Miscreation.png",
+    "mutation": "Mutation.png",
+    "overlord (paragon node)": "Overlord (Paragon Node).png",
+    "poison conditioned": "Poison Conditioned.png",
+    "powerhouse": "Powerhouse.png",
+    "preservation": "Preservation.png",
+    "preservation_frailty": "Preservation_frailty.png",
+    "prime_starter": "prime_starter.png",
+    "puppeteer": "Puppeteer.png",
+    "recuperate": "Recuperate.png",
+    "recuperate_flesh-eater": "Recuperate_flesh-eater.png",
+    "reinvigorate": "Reinvigorate.png",
+    "relentless": "Relentless.png",
+    "remedy": "Remedy.png",
+    "resilience_starter": "resilience_starter.png",
+    "restorative": "Restorative.png",
+    "ruin (paragon node)": "Ruin (Paragon Node).png",
+    "scent of death": "Scent of Death.png",
+    "shadow resilience": "Shadow Resilience.png",
+    "shadow resilience_frailty": "Shadow Resilience_frailty.png",
+    "shaper of bone": "Shaper of Bone.png",
+    "stifle": "Stifle.png",
+    "strength_normal_paragon_node": "strength_normal_paragon_node.png",
+    "suffused resilience": "Suffused Resilience.png",
+    "targeted": "Targeted.png",
+    "tenacity": "Tenacity.png",
+    "thick hide (paragon node)": "Thick Hide (Paragon Node).png",
+    "vampiric": "vampiric.png",
+    "willpower_normal_paragon_node": "willpower_normal_paragon_node.png",
+    "wither": "Wither.png"
+};
+
+window.getNodeImageUrl = function(nodeName, nData) {
+    if (!nodeName) return '';
+    let clean = nodeName.toLowerCase().replace(/_/g, ' ').trim();
+    let nameMatch = window.NODE_IMAGES[clean] || window.NODE_IMAGES[clean + ' (paragon node)'] || window.NODE_IMAGES[clean + ' node'];
+    if (nameMatch) return 'assets/images/Necromancer/Paragon Nodes/' + nameMatch;
+    
+    if (nData) {
+        let isMagic = (nData.rarity === 2);
+        let isNormal = (nData.rarity === 1 || nData.rarity === 0);
+        
+        let primaryAttr = 'damage'; // default
+        if (nData.attributes && nData.attributes.length > 0) {
+            let formAttr = window.D4_PARAGON_FORMULAS.attributes[nData.attributes[0].id];
+            if (formAttr) {
+                let aName = formAttr.name.toLowerCase();
+                if (aName.includes('strength')) primaryAttr = 'strength';
+                else if (aName.includes('dexterity')) primaryAttr = 'dexterity';
+                else if (aName.includes('intelligence')) primaryAttr = 'intelligence';
+                else if (aName.includes('willpower')) primaryAttr = 'willpower';
+                else if (aName.includes('life')) primaryAttr = 'life';
+                else if (aName.includes('armor')) primaryAttr = 'armor_clad';
+                else if (aName.includes('minion')) primaryAttr = 'minion_damage';
+            }
+        }
+        
+        if (isNormal) {
+            if (primaryAttr === 'strength') return 'assets/images/Necromancer/Paragon Nodes/strength_normal_paragon_node.png';
+            if (primaryAttr === 'dexterity') return 'assets/images/Necromancer/Paragon Nodes/dexterity_normal_paragon_node.png';
+            if (primaryAttr === 'intelligence') return 'assets/images/Necromancer/Paragon Nodes/intelligence_normal_paragon_node.png';
+            if (primaryAttr === 'willpower') return 'assets/images/Necromancer/Paragon Nodes/willpower_normal_paragon_node.png';
+            return 'assets/images/Necromancer/Paragon Nodes/strength_normal_paragon_node.png'; // fallback
+        }
+        
+        if (isMagic) {
+            let magicKey = 'magic_' + primaryAttr + '_paragon';
+            if (window.NODE_IMAGES[magicKey]) return 'assets/images/Necromancer/Paragon Nodes/' + window.NODE_IMAGES[magicKey];
+            let altKey = 'magic_' + primaryAttr;
+            if (window.NODE_IMAGES[altKey]) return 'assets/images/Necromancer/Paragon Nodes/' + window.NODE_IMAGES[altKey];
+            return 'assets/images/Necromancer/Paragon Nodes/magic_damage_paragon.png'; // fallback
+        }
+    }
+    
+    // Fallbacks for start/gate
+    if (clean.includes('start')) return 'assets/images/Necromancer/Paragon Nodes/prime_starter.png';
+    return '';
+};
+
 window.getTotalParagonPointsSpent = function() {
     let totalSpent = 0;
     let connectedBoards = 0;
@@ -997,10 +1128,25 @@ window.renderParagonGrid = function() {
                         }
                     }
                 }
-                else if (nodeName.toLowerCase().includes('legendary') || nodeName.toLowerCase().includes('start')) cell.classList.add('type-legendary');
-                else if (nodeName.toLowerCase().includes('rare')) cell.classList.add('type-rare');
-                else if (nodeName.toLowerCase().includes('magic')) cell.classList.add('type-magic');
-                else cell.classList.add('type-normal');
+                else {
+                    let nData = window.D4_PARAGON_DATA && window.D4_PARAGON_DATA.paragonNodes ? window.D4_PARAGON_DATA.paragonNodes[nodeName] : null;
+                    
+                    if (nodeName.toLowerCase().includes('legendary') || nodeName.toLowerCase().includes('start')) cell.classList.add('type-legendary');
+                    else if (nodeName.toLowerCase().includes('rare')) cell.classList.add('type-rare');
+                    else if (nodeName.toLowerCase().includes('magic')) cell.classList.add('type-magic');
+                    else cell.classList.add('type-normal');
+                    
+                    if (window.getNodeImageUrl) {
+                        let nodeImg = window.getNodeImageUrl(nodeName, nData);
+                        if (nodeImg) {
+                            cell.style.backgroundImage = `url('${nodeImg}')`;
+                            cell.style.backgroundSize = '100% 100%';
+                            cell.style.backgroundRepeat = 'no-repeat';
+                            cell.style.backgroundPosition = 'center';
+                            if (cell.classList.contains('type-normal')) cell.style.borderRadius = '50%';
+                        }
+                    }
+                }
                 
                 // Check radius
                 let inRadius = false;
