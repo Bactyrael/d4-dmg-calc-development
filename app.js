@@ -5046,18 +5046,18 @@ function showSkillTooltip(skillObj, e) {
         let breakdownHtml = '';
     if (skillObj.baseDamageScalar) {
         let b = getSkillDamageBreakdown(skillObj, displayRank);
-        let addStr = ((b.additiveMult - 1) * 100).toFixed(1).replace('.0', '');
+        let addStr = Number(((b.additiveMult - 1) * 100).toFixed(6));
         
         breakdownHtml = `
             <div class="d4-tooltip-upgrades-header" style="margin-top: 15px;">DAMAGE BREAKDOWN</div>
             <div style="font-size: 0.9rem; color: #ccc; margin-bottom: 3px; display: flex; justify-content: space-between;">
-              <span>${b.mainStatName} Multiplier:</span> <span style="color: #fff;">x${b.mainStatMult.toFixed(2)}</span>
+              <span>${b.mainStatName} Multiplier:</span> <span style="color: #fff;">x${Number(b.mainStatMult.toFixed(6))}</span>
             </div>
             <div style="font-size: 0.9rem; color: #ccc; margin-bottom: 3px; display: flex; justify-content: space-between;">
               <span>Additive Stats:</span> <span style="color: #fff;">+${addStr}%</span>
             </div>
             <div style="font-size: 0.9rem; color: #ccc; margin-bottom: 3px; display: flex; justify-content: space-between;">
-              <span>Multiplicative Stats:</span> <span style="color: #fff;">x${b.multiMult.toFixed(2)}</span>
+              <span>Multiplicative Stats:</span> <span style="color: #fff;">x${Number(b.multiMult.toFixed(6))}</span>
             </div>
             <div style="font-size: 0.95rem; color: #c9a55c; margin-bottom: 5px; margin-top: 5px; display: flex; justify-content: space-between; font-weight: bold; border-top: 1px solid #333; padding-top: 5px;">
               <span>Final Damage:</span> <span>${b.minStr} - ${b.maxStr}</span>
@@ -7003,18 +7003,20 @@ function calculateSkillAdditiveBucket(skill) {
     }
 
     // Conditional Additives
-    if (conds.vulnerable) addStat('Damage to Vulnerable Enemies');
-    if (conds.close) addStat('Damage to Close Enemies');
-    if (conds.distant) addStat('Damage to Distant Enemies');
+    if (conds.vulnerable) { addStat('Damage to Vulnerable Enemies'); addStat('Vulnerable Damage'); }
+    if (conds.close) { addStat('Damage to Close Enemies'); addStat('Close Damage'); }
+    if (conds.distant) { addStat('Damage to Distant Enemies'); addStat('Distant Damage'); }
     if (conds.healthy) addStat('Damage while Healthy');
     if (conds.injured) addStat('Damage while Injured');
     if (conds.cc) {
         addStat('Damage to Crowd Controlled Enemies');
         addStat('Damage to Slowed Enemies');
         addStat('Damage to Stunned Enemies');
+        addStat('Crowd Control Damage');
     }
     if (conds.elite) {
         addStat('Damage to Elites');
+        addStat('Elite Damage');
     }
     
     // Fortify is a player state, assume 100% if they have fortify generation, but we'll just check if they have Max Life fortify
@@ -7154,20 +7156,20 @@ function renderCalcSkills() {
 
                               if (modSkill.baseDamageScalar) {
                                   let pct = (modSkill.baseDamageScalar * 100).toFixed(1).replace('.0', '');
-                                  let addStr = ((b.additiveMult - 1) * 100).toFixed(1).replace('.0', '');
+                                  let addStr = Number(((b.additiveMult - 1) * 100).toFixed(6));
                                   html += `<details style="margin-bottom: 4px;">
                                     <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none;">
                                       <span style="color: #555;">├</span> Damage (${pct}%): <span style="color: #fff; font-weight: bold;">${b.minStr} - ${b.maxStr}</span>
                                     </summary>
                                     <div style="margin-left: 20px; font-size: 0.9em; color: #aaa; margin-top: 6px; border-left: 1px solid #444; padding-left: 10px; margin-bottom: 6px;">
                                       <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
-                                        <span style="color: #555;">└</span> ${b.mainStatName} Multiplier: <span style="color: #fff;">x${b.mainStatMult.toFixed(2)}</span>
+                                        <span style="color: #555;">└</span> ${b.mainStatName} Multiplier: <span style="color: #fff;">x${Number(b.mainStatMult.toFixed(6))}</span>
                                       </div>
                                       <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
                                         <span style="color: #555;">└</span> Additive Multiplier: <span style="color: #fff;">1 + (${addStr}%)</span>
                                       </div>
                                       <div style="display: flex; align-items: center; gap: 5px;">
-                                        <span style="color: #555;">└</span> Multiplicative Multiplier: <span style="color: #fff;">x${b.multiMult.toFixed(2)}</span>
+                                        <span style="color: #555;">└</span> Multiplicative Multiplier: <span style="color: #fff;">x${Number(b.multiMult.toFixed(6))}</span>
                                       </div>
                                     </div>
                                   </details>`;
