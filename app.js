@@ -6973,19 +6973,25 @@ function renderCalcSkills() {
                             let html = '';
                             let rank = window.selectedSkills[baseSkill.name] || 1;
                             let rankMultiplier = 1 + (rank - 1) * 0.1;
+                            let wpMin = window.weaponMinDmg || 0;
+                            let wpMax = window.weaponMaxDmg || 0;
 
                             if (modSkill.baseDamageScalar) {
                                 let pct = (modSkill.baseDamageScalar * rankMultiplier * 100).toFixed(1).replace('.0', '');
+                                let minStr = Math.floor(wpMin * modSkill.baseDamageScalar * rankMultiplier).toLocaleString();
+                                let maxStr = Math.floor(wpMax * modSkill.baseDamageScalar * rankMultiplier).toLocaleString();
                                 html += `<div style="margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
-                                  <span style="color: #555;">├</span> Damage (${pct}%): <span style="color: #fff;">TBD - TBD</span>
+                                  <span style="color: #555;">├</span> Damage (${pct}%): <span style="color: #fff;">${minStr} - ${maxStr}</span>
                                 </div>`;
                             }
                             if (modSkill.secondaryScalars) {
                                 for (const [key, val] of Object.entries(modSkill.secondaryScalars)) {
                                     let label = key.replace(/_/g, ' ').replace(/tooltip /i, '').replace(/dot/i, 'DoT').replace(/\b\w/g, c => c.toUpperCase());
                                     let pct = (val * rankMultiplier * 100).toFixed(1).replace('.0', '');
+                                    let minStr = Math.floor(wpMin * val * rankMultiplier).toLocaleString();
+                                    let maxStr = Math.floor(wpMax * val * rankMultiplier).toLocaleString();
                                     html += `<div style="margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
-                                      <span style="color: #555;">├</span> ${label} (${pct}%): <span style="color: #fff;">TBD - TBD</span>
+                                      <span style="color: #555;">├</span> ${label} (${pct}%): <span style="color: #fff;">${minStr} - ${maxStr}</span>
                                     </div>`;
                                 }
                             }
