@@ -2084,7 +2084,7 @@ function renderEquipment(className, savedEquipment = {}) {
             const pStats = window.getCompiledParagonStats();
             for (let [k, v] of Object.entries(pStats)) {
                 let statName = k;
-                if (v.isPercent && ['Strength', 'Intelligence', 'Willpower', 'Dexterity', 'Maximum Life', 'Armor', 'Total Armor'].includes(statName)) {
+                if (v.isPercent && ['Strength', 'Intelligence', 'Willpower', 'Dexterity', 'Maximum Life', 'Armor', 'Total Armor', 'Resistance to All Elements'].includes(statName)) {
                     statName = '% ' + statName;
                 }
                 addStat(stats, statName, v.value, 'Paragon Board');

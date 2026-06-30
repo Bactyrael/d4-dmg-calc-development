@@ -259,7 +259,7 @@ window.getCompiledParagonThresholdStats = function(compiledStats, addStatFn) {
         
         let parsed = window.cleanAttributeDescription(descString, rawValue);
         let statName = parsed.name;
-        if (parsed.isPercent && ['Strength', 'Intelligence', 'Willpower', 'Dexterity', 'Maximum Life', 'Armor', 'Total Armor'].includes(statName)) {
+        if (parsed.isPercent && ['Strength', 'Intelligence', 'Willpower', 'Dexterity', 'Maximum Life', 'Armor', 'Total Armor', 'Resistance to All Elements'].includes(statName)) {
             statName = '% ' + statName;
         }
         
