@@ -7032,6 +7032,9 @@ function calculateSkillAdditiveBucket(skill) {
         addStat('Damage to Elites');
         addStat('Elite Damage');
     }
+    if (conds.overpower) {
+        addStat('Overpower Damage');
+    }
     
     // Fortify is a player state, assume 100% if they have fortify generation, but we'll just check if they have Max Life fortify
     // We'll leave conditional player states simple for now.
