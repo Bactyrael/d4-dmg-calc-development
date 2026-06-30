@@ -77,6 +77,7 @@ function renderActiveRunes() {
 
   // ---- DOM References ----
   const dom = {
+    mainSkillSelect: document.getElementById('main-skill-select'),
     level:          document.getElementById('level'),
     toughness:      document.getElementById('toughness'),
     armor:          document.getElementById('armor'),
@@ -3579,9 +3580,10 @@ function renderEquipment(className, savedEquipment = {}) {
   }
 
   // ---- Row Management ----
-  function createAdditiveRow(name = '', value = '', isInjected = false) {
+  function createAdditiveRow(name = '', value = '', isInjected = false, isSkillInjected = false) {
     const tr = document.createElement('tr');
     if (isInjected) tr.classList.add('injected-row');
+    if (isSkillInjected) tr.classList.add('injected-row-skill');
 
     const nameHtml = isInjected
       ? `<input type="text" class="row-name-input" value="${escapeHtml(name)}" disabled title="From Equipment" style="background: rgba(255,255,255,0.05); color: #aaa;">`
@@ -4996,6 +4998,31 @@ function updateSkillPointsUI() {
         } else {
             el.style.color = '#ffd700';
         }
+    }
+}
+
+
+function populateMainSkillSelect() {
+    if (!dom.mainSkillSelect) return;
+    const currentVal = dom.mainSkillSelect.value;
+    dom.mainSkillSelect.innerHTML = '<option value="">-- Custom --</option>';
+    
+    if (typeof skillsDatabase !== 'undefined' && currentBuild && currentBuild.class) {
+        const clsDb = skillsDatabase; // The global skillsDatabase has categories with skills
+        // Actually skillsDatabase has categories like 'Basic', 'Core'
+        for (const cat in clsDb) {
+            clsDb[cat].forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s.name;
+                opt.textContent = s.name;
+                dom.mainSkillSelect.appendChild(opt);
+            });
+        }
+    }
+    
+    // Restore value if possible
+    if (currentVal) {
+        dom.mainSkillSelect.value = currentVal;
     }
 }
 

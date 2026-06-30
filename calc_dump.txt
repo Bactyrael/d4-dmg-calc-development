@@ -1,0 +1,439 @@
+function calculate() {
+    if (isLoading) return;
+    updateDynamicSkillTags();
+    try {
+      // Auto-calculate base weapon damage and armor from equipped items
+      const baseEquipped = getEquipmentValues();
+      let totalArmor = 0;
+      let totalWeaponDmg = 0;
+      let totalWeaponAps = 0;
+      let totalAllRes = 0;
+  
+      if (baseEquipped) {
+        let mainhandDmg = 0;
+        let offhandDmg = 0;
+        let hasShield = false;
+  
+        Object.keys(baseEquipped).forEach(slotName => {
+          const item = baseEquipped[slotName];
+          if (!item || !item.name) return;
+          const sName = slotName.toLowerCase();
+          const baseItem = (window.D4_DATABASE.itemDatabase[slotName] || []).find(i => i.name === item.name) || {};
+          
+          const effQ = getEffectiveQuality(item);
+          const qMult = 1 + (effQ * 0.01);
+            
+          if (baseItem.armor) totalArmor += (baseItem.armor * qMult);
+          if (baseItem.resistance) totalAllRes += (baseItem.resistance * qMult);
+          
+          if (sName === 'mainhand' && baseItem.damageRange) {
+              const match = baseItem.damageRange.match(/([\d,]+)\s*-\s*([\d,]+)/);
+              if (match) {
+                  const min = parseFloat(match[1].replace(/,/g, ''));
+                  const max = parseFloat(match[2].replace(/,/g, ''));
+                  mainhandDmg = ((min + max) / 2) * qMult;
+              }
+              if (baseItem.weaponSpeed && typeof baseItem.weaponSpeed === 'number') {
+                  totalWeaponAps = baseItem.weaponSpeed;
+              }
+          }
+  
+          if (sName === 'offhand') {
+              if (baseItem.weaponType === 'Shield') {
+                  hasShield = true;
+              } else if (baseItem.damageRange) {
+                  const match = baseItem.damageRange.match(/([\d,]+)\s*-\s*([\d,]+)/);
+                  if (match) {
+                      const min = parseFloat(match[1].replace(/,/g, ''));
+                      const max = parseFloat(match[2].replace(/,/g, ''));
+                      offhandDmg = ((min + max) / 2) * qMult;
+                  }
+              }
+          }
+        });
+  
+        if (hasShield) {
+            totalWeaponDmg = mainhandDmg * 2;
+        } else {
+            totalWeaponDmg = mainhandDmg + offhandDmg;
+        }
+      }
+    
+    // (Weapon Damage UI update moved below compileCharacterStats)
+    
+    if (totalWeaponAps > 0) {
+      if (dom.weaponSpeed) {
+        dom.weaponSpeed.value = totalWeaponAps;
+        dom.weaponSpeed.disabled = true;
+        dom.weaponSpeed.title = "Auto-calculated from equipped weapon";
+      }
+    } else {
+      if (dom.weaponSpeed) {
+        dom.weaponSpeed.disabled = false;
+        dom.weaponSpeed.title = "";
+      }
+    }
+    
+    if (totalArmor > 0) {
+      if (dom.armor) {
+        dom.armor.value = totalArmor;
+        dom.armor.disabled = true;
+        dom.armor.title = "Auto-calculated from equipped armor";
+      }
+    } else {
+      if (dom.armor) {
+        dom.armor.disabled = false;
+        dom.armor.title = "";
+      }
+    }
+
+    const resFields = [dom.fireRes, dom.lightningRes, dom.coldRes, dom.poisonRes, dom.shadowRes];
+    if (totalAllRes > 0) {
+      resFields.forEach(el => {
+          if (el) {
+              el.value = totalAllRes;
+              el.disabled = true;
+              el.title = "Auto-calculated from equipped jewelry";
+          }
+      });
+    } else {
+      resFields.forEach(el => {
+          if (el) {
+              el.disabled = false;
+              el.title = "";
+          }
+      });
+    }
+
+    // Auto-calculate base stats from class and level
+    const currentClassName = dom.classSelect ? dom.classSelect.textContent : 'Necromancer';
+    currentBuild.dexterity = parseFloat(dom.dexterity.value) || 0;
+    currentBuild.aps = parseFloat(dom.aps.value) || 1;
+    currentBuild.weaponSpeed = parseFloat(dom.weaponSpeed.value) || 1;
+    currentBuild.weaponSpeed = parseFloat(dom.weaponSpeed.value) || 1;
+    if (dom.castSpeed) currentBuild.castSpeed = parseFloat(dom.castSpeed.value) || 0;
+    if (dom.level) currentBuild.level = parseInt(dom.level.value) || 70;
+    const level = dom.level ? parseInt(dom.level.value) || 70 : 70;
+    const classBaseStats = {
+        Barbarian: { str: 10, dex: 8, int: 7, will: 7 },
+        Paladin: { str: 10, dex: 8, int: 7, will: 7 },
+        Druid: { will: 10, int: 8, str: 7, dex: 7 },
+        Rogue: { dex: 10, will: 8, str: 7, int: 7 },
+        Sorcerer: { int: 10, will: 8, str: 7, dex: 7 },
+        Necromancer: { int: 10, will: 8, str: 7, dex: 7 },
+        Spiritborn: { dex: 10, int: 8, str: 7, will: 7 }
+    };
+    const baseStats = classBaseStats[currentClassName] || { str: 7, int: 7, will: 7, dex: 7 };
+    const levelBonus = Math.max(0, level - 1);
+    
+    const autoStats = {
+        strength: baseStats.str + levelBonus,
+        intelligence: baseStats.int + levelBonus,
+        willpower: baseStats.will + levelBonus,
+        dexterity: baseStats.dex + levelBonus,
+        baseStr: baseStats.str, levelStr: levelBonus,
+        baseInt: baseStats.int, levelInt: levelBonus,
+        baseWill: baseStats.will, levelWill: levelBonus,
+        baseDex: baseStats.dex, levelDex: levelBonus,
+        maximumLife: dom.maxLife ? parseFloat(dom.maxLife.value) || 1526 : 1526,
+        maximumResource: 100
+    };
+    
+    const compiledStats = compileCharacterStats(baseEquipped, autoStats);
+    window.D4_COMPILED_STATS = compiledStats;
+    
+    // Add flat "Weapon Damage" from modifiers
+    if (compiledStats['Weapon Damage']) {
+        totalWeaponDmg += compiledStats['Weapon Damage'].final;
+    }
+    
+    // Update UI and lock inputs if gear is equipped
+    if (totalWeaponDmg > 0) {
+      if (dom.weaponDamage) {
+        dom.weaponDamage.value = totalWeaponDmg;
+        dom.weaponDamage.disabled = true;
+        dom.weaponDamage.title = "Auto-calculated from equipped weapon (Base + Modifiers)";
+      }
+    } else {
+      if (dom.weaponDamage) {
+        dom.weaponDamage.disabled = false;
+        dom.weaponDamage.title = "";
+      }
+    }
+    
+    if (dom.strength) {
+        dom.strength.value = compiledStats['Strength'] ? Math.floor(compiledStats['Strength'].final) : 0;
+        dom.strength.disabled = true;
+        dom.strength.title = "Auto-calculated from equipment and level";
+    }
+    if (dom.intelligence) {
+        dom.intelligence.value = compiledStats['Intelligence'] ? Math.floor(compiledStats['Intelligence'].final) : 0;
+        dom.intelligence.disabled = true;
+        dom.intelligence.title = "Auto-calculated from equipment and level";
+    }
+    if (dom.willpower) {
+        dom.willpower.value = compiledStats['Willpower'] ? Math.floor(compiledStats['Willpower'].final) : 0;
+        dom.willpower.disabled = true;
+        dom.willpower.title = "Auto-calculated from equipment and level";
+    }
+    if (dom.dexterity) {
+        dom.dexterity.value = compiledStats['Dexterity'] ? Math.floor(compiledStats['Dexterity'].final) : 0;
+        dom.dexterity.disabled = true;
+        dom.dexterity.title = "Auto-calculated from equipment and level";
+    }
+
+    if (dom.critChance) {
+        dom.critChance.value = (compiledStats['Critical Strike Chance'] ? compiledStats['Critical Strike Chance'].final : 0).toFixed(2);
+        dom.critChance.disabled = true;
+        dom.critChance.title = "Auto-calculated from equipment and stats";
+    }
+    if (dom.luckyHitChance) {
+        const lhcKey = Object.keys(compiledStats).find(k => k.toLowerCase().includes('lucky hit chance'));
+        dom.luckyHitChance.value = lhcKey ? compiledStats[lhcKey].final : 0;
+        dom.luckyHitChance.disabled = true;
+        dom.luckyHitChance.title = "Auto-calculated from equipment";
+    }
+    if (dom.attackSpeed) {
+        const asKey = Object.keys(compiledStats).find(k => k.toLowerCase().includes('attack speed'));
+        dom.attackSpeed.value = asKey ? compiledStats[asKey].final : 0;
+        dom.attackSpeed.disabled = true;
+        dom.attackSpeed.title = "Auto-calculated from equipment";
+    }
+    if (dom.castSpeed) {
+        dom.castSpeed.value = compiledStats['Cast Speed'] ? compiledStats['Cast Speed'].final : 0;
+        dom.castSpeed.disabled = true;
+        dom.castSpeed.title = "Auto-calculated from equipment";
+    }
+
+    if (dom.critChance) currentBuild.critChance = parseFloat(dom.critChance.value) || 0;
+    if (dom.luckyHitChance) currentBuild.luckyHitChance = parseFloat(dom.luckyHitChance.value) || 0;
+    if (dom.attackSpeed) currentBuild.attackSpeed = parseFloat(dom.attackSpeed.value) || 0;
+    if (dom.castSpeed) currentBuild.castSpeed = parseFloat(dom.castSpeed.value) || 0;
+
+    const weaponDmg = parseFloat(dom.weaponDamage.value) || 0;
+    const skillPct  = parseFloat(dom.skillDamage.value) || 0;
+    const str       = parseFloat(dom.strength.value) || 0;
+    const intel     = parseFloat(dom.intelligence.value) || 0;
+    const will      = parseFloat(dom.willpower.value) || 0;
+    const dex       = parseFloat(dom.dexterity.value) || 0;
+    const aps       = parseFloat(dom.aps.value) || 1;
+    const crit      = (dom.critChance ? parseFloat(dom.critChance.value) : 0) / 100;
+    const atkSpd    = (dom.attackSpeed ? parseFloat(dom.attackSpeed.value) : 0) / 100;
+    const castSpd   = (dom.castSpeed ? parseFloat(dom.castSpeed.value) : 0) / 100;
+
+    // Base Damage = Skill% × Weapon Damage
+    // Skill damage is a percentage, so: (skillPct / 100) × weaponDmg
+    const baseDamage = (skillPct / 100) * weaponDmg;
+
+    // Get Class main stat multiplier
+    const selectedClass = dom.classSelect ? dom.classSelect.textContent : 'Barbarian';
+    
+    let mainStatValue = 0;
+    let mainStatFactor = 0;
+    let mainStatName = 'Strength';
+    let critStatValue = 0;
+    const cls = selectedClass;
+    
+    if (cls === 'Barbarian') { mainStatName = 'Strength'; mainStatValue = str; mainStatFactor = 0.0011; }
+    else if (cls === 'Paladin') { mainStatName = 'Strength'; mainStatValue = str; mainStatFactor = 0.00125; }
+    else if (cls === 'Druid') { mainStatName = 'Willpower'; mainStatValue = will; mainStatFactor = 0.00125; }
+    else if (cls === 'Rogue') { mainStatName = 'Dexterity'; mainStatValue = dex; mainStatFactor = 0.0011; }
+    else if (cls === 'Sorcerer' || cls === 'Necromancer') { mainStatName = 'Intelligence'; mainStatValue = intel; mainStatFactor = 0.00125; }
+    else if (cls === 'Spiritborn') { mainStatName = 'Dexterity'; mainStatValue = dex; mainStatFactor = 0.00125; }
+    
+    const mainStatMultiplier = 1 + (mainStatValue * mainStatFactor);
+
+    // Highlight main stat input group
+    const inputGroups = {
+      Strength: dom.strength ? dom.strength.closest('.input-group') : null,
+      Intelligence: dom.intelligence ? dom.intelligence.closest('.input-group') : null,
+      Willpower: dom.willpower ? dom.willpower.closest('.input-group') : null,
+      Dexterity: dom.dexterity ? dom.dexterity.closest('.input-group') : null
+    };
+
+    Object.keys(inputGroups).forEach(stat => {
+      const group = inputGroups[stat];
+      if (group) {
+        if (stat === mainStatName) {
+          group.classList.add('main-stat-active');
+        } else {
+          group.classList.remove('main-stat-active');
+        }
+      }
+    });
+
+    // Inject additive & multiplicative bonuses from compiledStats
+    dom.additiveBody.querySelectorAll('tr.injected-row').forEach(row => row.remove());
+    dom.multBody.querySelectorAll('tr.injected-row').forEach(row => row.remove());
+    
+    Object.keys(compiledStats).forEach(statName => {
+      const val = compiledStats[statName].final;
+      if (!val || val <= 0) return;
+      
+      let isMultiplicativeAspect = false;
+      const aspectObj = (window.D4_DATABASE?.aspects || []).find(a => a.name === statName) 
+                     || (window.D4_DATABASE?.uniques || []).find(u => u.name === statName);
+      if (aspectObj && aspectObj.desc) {
+          const descLower = aspectObj.desc.toLowerCase();
+          if (descLower.includes('[x]') && descLower.includes('damage')) {
+              isMultiplicativeAspect = true;
+          }
+      }
+      
+      if (isMultiplicativeAspect || statName.toLowerCase().includes('[x]')) {
+          createMultiplicativeRow(statName, val.toFixed(2), true);
+          return;
+      }
+
+      const lower = statName.toLowerCase();
+      if (
+        (lower.includes('damage') || lower.includes('critical') || lower.includes('vulnerable') || lower.includes('overpower')) &&
+        !lower.includes('reduction') &&
+        !lower.includes('chance') &&
+        !lower.includes('base damage') &&
+        !lower.includes('weapon damage') &&
+        statName !== 'Skill Damage'
+      ) {
+        createAdditiveRow(statName, val.toFixed(2), true);
+      }
+    });
+      
+      // Inject Dynamic Legendary Node Powers
+      if (typeof window.getActiveLegendaryPowers === 'function') {
+          const legPowers = window.getActiveLegendaryPowers();
+          
+          // Cult Leader (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_001')) {
+              const asKey = Object.keys(compiledStats).find(k => k.toLowerCase().includes('attack speed'));
+              const attackSpeed = asKey ? compiledStats[asKey].final : 0;
+              
+              if (attackSpeed >= 20) {
+                  // Cult Leader: 40%x damage per 20% attack speed breakpoint
+                  const cultBonus = Math.floor(attackSpeed / 20) * 40;
+                  if (cultBonus > 0) {
+                      createMultiplicativeRow('Cult Leader (Legendary Node)', cultBonus.toFixed(2), true);
+                  }
+              }
+          }
+          
+          // Bone Graft (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_017')) {
+              createMultiplicativeRow('Bone Graft (Legendary Node)', '40.00', true);
+          }
+          
+          // Flesh-eater (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_008')) {
+              createMultiplicativeRow('Flesh-eater (Legendary Node)', '60.00', true);
+          }
+          
+          // Scent of Death (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_007')) {
+              createMultiplicativeRow('Scent of Death (Legendary Node)', '45.00', true);
+          }
+          
+          // Wither (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_016')) {
+              createMultiplicativeRow('Wither (Legendary Node)', '60.00', true);
+          }
+          
+          // Frailty (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_018')) {
+              createMultiplicativeRow('Frailty (Legendary Node)', '60.00', true);
+          }
+          
+          // Hulking Monstrosity (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_005')) {
+              // Find Sacrificial Aspect effectiveness
+              const sacrificialKey = Object.keys(compiledStats).find(k => k.toLowerCase() === 'sacrificial aspect');
+              const sacEffectiveness = sacrificialKey ? compiledStats[sacrificialKey].final : 0;
+              const sacMultiplier = 1 + (sacEffectiveness / 100);
+              
+              const sacrificeBase = 0.60 * sacMultiplier;
+              const M = 1 + sacrificeBase; // "M" multiplier for one sacrifice
+              
+              const wNode = currentBuild.bookOfTheDead?.warriors?.node;
+              const mNode = currentBuild.bookOfTheDead?.mages?.node;
+              
+              const isWSacrificed = (wNode === 'sacrifice');
+              const isMSacrificed = (mNode === 'sacrifice');
+              
+              let finalRowValue = 100; // Base 100% if no sacrifices
+              
+              if (isWSacrificed && isMSacrificed) {
+                  // Both Sacrificed: M^2
+                  finalRowValue = Math.pow(M, 2) * 100;
+              } else if (isWSacrificed || isMSacrificed) {
+                  // Only one sacrificed: (1 + M)
+                  finalRowValue = (1 + M) * 100;
+              }
+              
+              createMultiplicativeRow('Hulking Monstrosity (Legendary Node)', finalRowValue.toFixed(2), true);
+          }
+          
+          // Blood Begets Blood (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_011')) {
+              createMultiplicativeRow('Blood Begets Blood (Legendary Node)', '60.00', true);
+          }
+          
+          // Book of the Dead Multiplicative Sacrifices
+          if (currentBuild?.bookOfTheDead) {
+              const sacrificialKey = Object.keys(compiledStats).find(k => k.toLowerCase() === 'sacrificial aspect');
+              const sacEffectiveness = sacrificialKey ? compiledStats[sacrificialKey].final : 0;
+              const sacMultiplier = 1 + (sacEffectiveness / 100);
+              
+              if (currentBuild.bookOfTheDead.warriors?.node === 'sacrifice' && currentBuild.bookOfTheDead.warriors.spec === 'Reaper') {
+                  createMultiplicativeRow('Reaper Sacrifice (Book of the Dead)', (15 * sacMultiplier).toFixed(2), true);
+              }
+              if (currentBuild.bookOfTheDead.mages?.node === 'sacrifice') {
+                  if (currentBuild.bookOfTheDead.mages.spec === 'Cold Mage') {
+                      createMultiplicativeRow('Cold Mage Sacrifice [Vulnerable] (Book of the Dead)', (20 * sacMultiplier).toFixed(2), true);
+                  } else if (currentBuild.bookOfTheDead.mages.spec === 'Bone Mage') {
+                      createMultiplicativeRow('Bone Mage Sacrifice [Overpowered] (Book of the Dead)', (20 * sacMultiplier).toFixed(2), true);
+                  }
+              }
+              if (currentBuild.bookOfTheDead.golems?.node === 'sacrifice' && currentBuild.bookOfTheDead.golems.spec === 'Iron Golem') {
+                  createMultiplicativeRow('Iron Golem Sacrifice [Crit Damage] (Book of the Dead)', (15 * sacMultiplier).toFixed(2), true);
+              }
+          }
+          
+          // Bloodbath (Necromancer)
+          if (legPowers.includes('Paragon_Necro_Legendary_010')) {
+              createMultiplicativeRow('Bloodbath (Legendary Node)', '80.00', true);
+          }
+      }
+
+    // Additive: 1 + sum all (value / 100)
+    const additives = getAdditiveValues();
+    const additiveRawSum = additives.reduce((sum, a) => sum + (a.value / 100), 0);
+    const additiveSum = 1 + additiveRawSum;
+
+    // Multiplicative: product of all (1 + value/100)
+    const multiplicatives = getMultiplicativeValues();
+    const nodeEls = []; // Replaced by dynamic nodes
+    const addBonusVals = getAdditionalBonusValues();
+    const legVals = getLegendaryBonusValues();
+    
+    let staticMults = [];
+    const hasInteractiveBoard = currentBuild && currentBuild.paragon && currentBuild.paragon[0] && currentBuild.paragon[0].boardId;
+    
+    // Hide legacy dropdowns if using new interactive board
+    if (dom.nodesContainer && dom.nodesContainer.parentElement) {
+        dom.nodesContainer.parentElement.style.display = hasInteractiveBoard ? 'none' : 'block';
+    }
+    
+    if (!hasInteractiveBoard) {
+        staticMults = [
+          getNodeValue(nodeEls[0], 1),
+          getNodeValue(nodeEls[1], 2),
+          getNodeValue(nodeEls[2], 3),
+          getNodeValue(nodeEls[3], 4),
+          addBonusVals[0],
+          addBonusVals[1],
+          addBonusVals[2],
+          addBonusVals[3],
+          addBonusVals[4],
+          legVals[0], legVals[1], legVals[2], legVals[3], legVals[4]
+        ];
+    }
+
+    

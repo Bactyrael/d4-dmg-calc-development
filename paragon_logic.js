@@ -290,7 +290,15 @@ window.getActiveLegendaryPowers = function() {
     return powers;
 };
 
-const PARAM_TAG_MAP = { '-1393374579': 'Corpse' };
+const PARAM_TAG_MAP = { 
+    '-1393374579': 'Corpse',
+    '0': 'Physical',
+    '1': 'Fire',
+    '2': 'Lightning',
+    '3': 'Cold',
+    '4': 'Poison',
+    '5': 'Shadow'
+};
 
 window.cleanAttributeDescription = function(desc, rawValue, attr) {
     if (!desc) return { name: "Unknown Stat", value: rawValue, isPercent: false };
