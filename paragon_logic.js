@@ -950,9 +950,9 @@ window.renderGlyphTooltip = function(glyphId, level) {
     let gRarity = level >= 46 ? 'Legendary' : 'Rare';
     let color = level >= 46 ? '#e67e22' : '#f1c40f';
     
-    let html = `<div style="font-family: Arial, sans-serif; min-width: 250px;">
+    let html = `<div style="font-family: Arial, sans-serif; width: 100%; box-sizing: border-box;">
         <div style="text-align: center; margin-bottom: 12px;">
-            <div style="color: #c9a55c; font-size: 0.9rem; margin-bottom: 2px;">${gRarity} Glyph</div>
+            <div style="color: ${color}; font-size: 0.9rem; margin-bottom: 2px;">${gRarity} Glyph</div>
             <h3 style="margin: 0; color: ${color}; font-size: 1.3rem; text-shadow: 1px 1px 2px #000;">${g.name}</h3>
             <div style="color: #ddd; font-weight: bold; font-size: 0.9rem; margin-top: 4px; border-bottom: 1px solid #444; padding-bottom: 4px;">LEVEL ${level}</div>
         </div>`;
