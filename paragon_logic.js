@@ -1031,7 +1031,8 @@ window.renderGlyphTooltip = function(glyphId, level) {
                 'Control': 2/3, // Nerfed in-game, JSON still has 1.5/0.1125
                 'Darkness': 2/3, // Nerfed in-game, JSON still has 1.0/0.075
                 'Exhumation': 2/3, // Nerfed in-game, JSON still has 2.5/0.1875
-                'Mage': 2/3 // Nerfed in-game, JSON still has 2.0/0.15
+                'Mage': 2/3, // Nerfed in-game, JSON still has 2.0/0.15
+                'Scourge': 0.7 // Nerfed in-game, JSON still has 1.0/0.075
             };
             
             if (hotfixMultipliers[g.name] && affixData.operation === 2) {
