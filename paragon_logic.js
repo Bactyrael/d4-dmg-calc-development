@@ -300,7 +300,8 @@ const PARAM_TAG_MAP = {
     '5': 'Shadow',
     '1781953454': 'Blood',
     '-466600286': 'Bone',
-    '6': 'Essence'
+    '6': 'Essence',
+    '-1745774146': 'Summon'
 };
 
 window.cleanAttributeDescription = function(desc, rawValue, attr) {
