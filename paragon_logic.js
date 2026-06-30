@@ -1107,9 +1107,8 @@ window.renderGlyphTooltip = function(glyphId, level) {
 
 window.showNodeDetails = function(nodeName, slotIndex = 0) {
     const detailsDiv = document.getElementById('paragon-node-details');
-    if (!detailsDiv || !window.D4_PARAGON_DATA) return;
+    if (!detailsDiv || !window.D4_PARAGON_DATA || !window.D4_PARAGON_FORMULAS) return;
     
-    // Check if it's a socket and has an active glyph
     let pData = currentBuild.paragon[slotIndex];
     let isSocket = nodeName && nodeName.toLowerCase().includes('socket');
     
@@ -1120,38 +1119,99 @@ window.showNodeDetails = function(nodeName, slotIndex = 0) {
     
     const nData = window.D4_PARAGON_DATA.paragonNodes ? window.D4_PARAGON_DATA.paragonNodes[nodeName] : null;
     if (!nData) {
-        // Fallback for generic nodes without detailed descriptions
         let color = '#fff';
         if (nodeName.toLowerCase().includes('magic')) color = '#3498db';
         if (nodeName.toLowerCase().includes('rare')) color = '#f1c40f';
         if (nodeName.toLowerCase().includes('legendary')) color = '#e67e22';
-        
         let cleanedName = nodeName.replace(/_/g, ' ');
         detailsDiv.innerHTML = `<h4 style="margin-top:0; color:${color};">${cleanedName}</h4>`;
         return;
     }
     
-    let html = `<div style="font-family: Arial, sans-serif; box-sizing: border-box;">
-        <h4 style="margin: 0 0 5px 0; color: #fff;">${nData.name || nodeName}</h4>`;
-        
-    if (nData.description) {
-        let cleanDesc = nData.description;
-        // Basic format cleanup
-        cleanDesc = cleanDesc.replace(/\{c_[^}]+\}/g, '<span style="color: #c9a55c;">');
-        cleanDesc = cleanDesc.replace(/\{\/c\}/g, '</span>');
-        cleanDesc = cleanDesc.replace(/\[\{[^}]+\}\|[^|]+\|\]/g, (match) => {
-            // Very naive evaluation for simple static tooltip
-            let formatMatch = match.match(/\|([^|]+)\|/);
-            if (formatMatch && formatMatch[1]) {
-                if (formatMatch[1].includes('%')) return "X%";
-            }
-            return "X";
-        });
+    let rColor = '#fff'; let rText = "Normal Node";
+    if (nData.rarity === 2) { rColor = '#3498db'; rText = 'Magic Node'; }
+    if (nData.rarity === 3) { rColor = '#f1c40f'; rText = 'Rare Node'; }
+    if (nData.rarity === 4) { rColor = '#e67e22'; rText = 'Legendary Node'; }
+    
+    let html = `<div style="font-family: Arial, sans-serif; box-sizing: border-box; width: 100%;">
+        <div style="text-align: center; margin-bottom: 12px;">
+            <h3 style="margin: 0; color: ${rColor}; font-size: 1.3rem; text-shadow: 1px 1px 2px #000;">${nData.name || nodeName}</h3>
+            <div style="color: #777; font-size: 0.9rem; margin-top: 4px;">${rText}</div>
+        </div>
+        <div style="height: 1px; background: #444; margin: 10px 0;"></div>
+        <div style="font-size: 0.95rem; line-height: 1.4; color: #ddd;">`;
 
-        html += `<div style="color: #4CAF50; font-size: 0.95rem; margin-top: 8px;">${cleanDesc}</div>`;
+    let formatAttr = (attr) => {
+        if (!window.D4_PARAGON_FORMULAS) return "";
+        let formArray = window.D4_PARAGON_FORMULAS.attributeFormulas[attr.formula];
+        if (!formArray || formArray.length === 0) return "";
+        let rawValue = parseFloat(formArray[0].formula);
+        let attrMeta = window.D4_PARAGON_FORMULAS.attributes[attr.id];
+        if (!attrMeta) return "";
+        let descString = window.D4_PARAGON_FORMULAS.attributeDescriptions[attrMeta.name];
+        if (!descString) return "";
+        
+        let parsed = window.cleanAttributeDescription(descString, rawValue);
+        let valStr = (parsed.value % 1 !== 0) ? parsed.value.toFixed(1) : parsed.value;
+        return `+${valStr}${parsed.isPercent ? '%' : ''} ${parsed.name}`;
+    };
+
+    if (nData.attributes) {
+        nData.attributes.forEach((attr) => {
+            let f = formatAttr(attr);
+            if (f) {
+                html += `<div style="margin-bottom: 8px;">
+                    <span style="color: #666; font-size: 1.1rem; vertical-align: top;">&diams;</span> ${f}
+                </div>`;
+            }
+        });
     }
     
-    html += `</div>`;
+    if (nData.thresholds && nData.thresholds.length > 0 && nData.thresholdAttributes && nData.thresholdAttributes.length > 0) {
+        html += `<div style="margin-top: 15px; margin-bottom: 8px; color: #c9a55c;">Bonus: Another `;
+        
+        let bonusStrs = [];
+        nData.thresholdAttributes.forEach(idx => {
+            if (nData.attributes[idx]) {
+                let f = formatAttr(nData.attributes[idx]);
+                if(f) bonusStrs.push(f);
+            }
+        });
+        
+        html += bonusStrs.join(" and ") + " if requirements met:</div>";
+        
+        nData.thresholds.forEach(tKey => {
+            let tData = window.D4_PARAGON_DATA.paragonThresholds ? window.D4_PARAGON_DATA.paragonThresholds[tKey] : null;
+            if (tData && tData.attributes) {
+                tData.attributes.forEach(a => {
+                    let attrName = "Stat";
+                    if (a.id === 12) attrName = "Dexterity";
+                    if (a.id === 9) attrName = "Strength";
+                    if (a.id === 10) attrName = "Intelligence";
+                    if (a.id === 11) attrName = "Willpower";
+                    
+                    html += `<div style="margin-bottom: 8px; color: #aaa;">
+                        <span style="color: #666; font-size: 1.1rem; vertical-align: top;">&diams;</span> 
+                        <span style="color: #ff4444;">+0</span> / ${a.value} ${attrName}
+                    </div>`;
+                });
+            }
+        });
+        html += `<div style="color: #ff4444; font-size: 0.85rem; margin-top: 5px;">Requirements not met</div>`;
+    }
+    
+    if (nData.description) {
+        let cleanDesc = nData.description;
+        cleanDesc = cleanDesc.replace(/\{c_[^}]+\}/g, '<span style="color: #c9a55c;">');
+        cleanDesc = cleanDesc.replace(/\{\/c\}/g, '</span>');
+        cleanDesc = cleanDesc.replace(/\[\{[^}]+\}\|([^|]+)\|\]/g, (match, formatStr) => {
+            if (formatStr.includes('%')) return "X%";
+            return "X";
+        });
+        html += `<div style="color: #c9a55c; font-size: 0.95rem; margin-top: 15px;">${cleanDesc}</div>`;
+    }
+
+    html += `</div></div>`;
     detailsDiv.innerHTML = html;
 };
 
