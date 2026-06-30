@@ -62,7 +62,7 @@ window.NODE_IMAGES = {
     "frenzied golem": "Frenzied Golem.png",
     "gloom (paragon node)": "Gloom (Paragon Node).png",
     "gnawing darkness": "Gnawing Darkness.png",
-    "grasp_starter": "grasp_starter.png",
+    "grasp": "grasp.png",
     "guarded advance": "Guarded Advance.png",
     "hardened": "Hardened.png",
     "hulking monstrosity": "Hulking Monstrosity.png",
@@ -71,7 +71,7 @@ window.NODE_IMAGES = {
     "infused warrior": "Infused Warrior.png",
     "intelligence_normal_paragon_node": "intelligence_normal_paragon_node.png",
     "invigorated": "Invigorated.png",
-    "knowledge_starter": "knowledge_starter.png",
+    "knowledge": "knowledge.png",
     "lingering shadows": "Lingering Shadows.png",
     "lingering shadows_frailty": "Lingering Shadows_frailty.png",
     "magic_armor_clad": "magic_armor_clad.png",
@@ -91,14 +91,14 @@ window.NODE_IMAGES = {
     "powerhouse": "Powerhouse.png",
     "preservation": "Preservation.png",
     "preservation_frailty": "Preservation_frailty.png",
-    "prime_starter": "prime_starter.png",
+    "prime": "prime.png",
     "puppeteer": "Puppeteer.png",
     "recuperate": "Recuperate.png",
     "recuperate_flesh-eater": "Recuperate_flesh-eater.png",
     "reinvigorate": "Reinvigorate.png",
     "relentless": "Relentless.png",
     "remedy": "Remedy.png",
-    "resilience_starter": "resilience_starter.png",
+    "resilience": "resilience.png",
     "restorative": "Restorative.png",
     "ruin (paragon node)": "Ruin (Paragon Node).png",
     "scent of death": "Scent of Death.png",
@@ -168,7 +168,7 @@ window.getNodeImageUrl = function(nodeName, nData) {
     }
     
     // Fallbacks for start/gate
-    if (cleanKey.includes('start')) return 'assets/images/Necromancer/Paragon Nodes/prime_starter.png';
+    if (cleanKey.includes('start')) return 'assets/images/Necromancer/Paragon Nodes/prime.png';
     return '';
 };
 
