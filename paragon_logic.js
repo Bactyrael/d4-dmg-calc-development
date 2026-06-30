@@ -283,11 +283,24 @@ window.getActiveLegendaryPowers = function() {
     return powers;
 };
 
-window.cleanAttributeDescription = function(desc, rawValue) {
+const PARAM_TAG_MAP = { '-1393374579': 'Corpse' };
+
+window.cleanAttributeDescription = function(desc, rawValue, attr) {
     if (!desc) return { name: "Unknown Stat", value: rawValue, isPercent: false };
     
     // Extract base name by stripping format blocks
     let statName = desc.replace(/\[.*?\]/g, '').replace(/^[+-\s]+/, '').trim();
+    
+    if (statName.includes('{value1}')) {
+        let paramName = '';
+        if (attr && attr.param && PARAM_TAG_MAP[String(attr.param)]) {
+            paramName = PARAM_TAG_MAP[String(attr.param)];
+        }
+        statName = statName.replace(/\{value1\}/g, paramName);
+    }
+    
+    // Strip tags like {c_important} and {/c}
+    statName = statName.replace(/\{c_[^}]+\}/g, '').replace(/\{\/c\}/g, '').replace(/\s+/g, ' ').trim();
     
     let isPercent = false;
     let scaledValue = rawValue;
@@ -402,7 +415,7 @@ window.getCompiledParagonStats = function() {
       let descString = window.D4_PARAGON_FORMULAS.attributeDescriptions[internalName];
       if (!descString) return;
       
-      let parsed = window.cleanAttributeDescription(descString, rawValue);
+      let parsed = window.cleanAttributeDescription(descString, rawValue, attr);
       
       if (!stats[parsed.name]) {
         stats[parsed.name] = { value: 0, isPercent: parsed.isPercent };
@@ -495,7 +508,7 @@ window.getCompiledParagonThresholdStats = function(compiledStats, addStatFn) {
         let descString = window.D4_PARAGON_FORMULAS.attributeDescriptions[internalName];
         if (!descString) return;
         
-        let parsed = window.cleanAttributeDescription(descString, rawValue);
+        let parsed = window.cleanAttributeDescription(descString, rawValue, attr);
         let statName = parsed.name;
         if (parsed.isPercent && ['Strength', 'Intelligence', 'Willpower', 'Dexterity', 'Maximum Life', 'Armor', 'Total Armor', 'Resistance to All Elements'].includes(statName)) {
             statName = '% ' + statName;
@@ -1619,7 +1632,7 @@ window.showNodeDetails = function(nodeName, slotIndex = 0, dataIdx = -1) {
         if (dataIdx !== -1) mult = window.getGlyphNodeMultiplier(slotIndex, dataIdx, nData);
         rawValue = rawValue * mult;
         
-        let parsed = window.cleanAttributeDescription(descString, rawValue);
+        let parsed = window.cleanAttributeDescription(descString, rawValue, attr);
         let valStr = (parsed.value % 1 !== 0) ? parsed.value.toFixed(1) : parsed.value;
         
         let displayColor = mult > 1 ? '#00ff00' : '#ddd';
