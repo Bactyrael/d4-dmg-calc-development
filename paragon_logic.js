@@ -338,6 +338,9 @@ window.getCompiledParagonThresholdStats = function(compiledStats, addStatFn) {
         let rawValue = parseFloat(rawFormula);
         if (isNaN(rawValue)) return;
         
+        let mult = window.getGlyphNodeMultiplier(slotId, dataIdx, nodeInfo);
+        rawValue = rawValue * mult;
+        
         let attrMeta = window.D4_PARAGON_FORMULAS.attributes[attr.id];
         if (!attrMeta) return;
         
