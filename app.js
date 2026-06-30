@@ -3796,7 +3796,8 @@ function renderEquipment(className, savedEquipment = {}) {
         return v;
     });
     
-    renderEquipment(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', b.equipment || {});
+    if (typeof populateMainSkillSelect === 'function') populateMainSkillSelect();
+      renderEquipment(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', b.equipment || {});
     window.selectedSkills = b.skills ? JSON.parse(JSON.stringify(b.skills)) : {};
     renderSkills();
 
@@ -3980,7 +3981,21 @@ function renderEquipment(className, savedEquipment = {}) {
       }
     });
     
-    // Global click listener to close context menu
+
+      if (dom.mainSkillSelect) {
+        dom.mainSkillSelect.addEventListener('change', () => {
+          if (dom.mainSkillSelect.value && typeof skillsDatabase !== 'undefined') {
+            for (const cat in skillsDatabase) {
+              const found = skillsDatabase[cat].find(s => s.name === dom.mainSkillSelect.value);
+              if (found && found.baseDamageScalar) {
+                dom.skillDamage.value = (found.baseDamageScalar * 100).toFixed(2);
+              }
+            }
+          }
+          calculate();
+        });
+      }
+          // Global click listener to close context menu
     document.addEventListener('click', (e) => {
       const menu = document.getElementById('d4-context-menu');
       if (menu && !menu.classList.contains('hidden')) {
