@@ -2479,6 +2479,8 @@ function renderEquipment(className, savedEquipment = {}) {
             addStat(stats, 'Universal Damage Reduction %', stats['Aspect of Hardened Bones'].total, 'Aspect of Hardened Bones');
         }
         
+        if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
+
         // Post-Compilation Step: Inverse Multiplicative Stats (Dodge Chance, Damage Reduction, etc.)
         // This must run at the very end so that Core Stats (like Dexterity) are included in the inverse multiplicative pool!
         const inverseMultiplicativeKeys = Object.keys(stats).filter(k => k.includes('Dodge Chance') || k.includes('Damage Reduction'));

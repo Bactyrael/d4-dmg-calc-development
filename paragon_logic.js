@@ -179,6 +179,96 @@ window.getCompiledParagonStats = function() {
   return stats;
 };
 
+window.getCompiledParagonThresholdStats = function(compiledStats, addStatFn) {
+  if (!window.D4_PARAGON_FORMULAS || !window.D4_PARAGON_DATA || !compiledStats || typeof addStatFn !== 'function') return;
+  
+  let activeReachableNodes = getGlobalReachableActiveNodes();
+  
+  activeReachableNodes.visited.forEach(nodeStr => {
+    let parts = nodeStr.split('-');
+    let slotId = parseInt(parts[0]);
+    let dataIdx = parseInt(parts[1]);
+    
+    let boardState = currentBuild.paragon[slotId];
+    if (!boardState || !boardState.boardId) return;
+    
+    let bData = window.D4_PARAGON_DATA.paragonBoards[boardState.boardId];
+    if (!bData || !bData.nodes[dataIdx]) return;
+    
+    let nodeName = bData.nodes[dataIdx];
+    let nodeInfo = window.D4_PARAGON_DATA.paragonNodes[nodeName];
+    if (!nodeInfo || !nodeInfo.thresholds || !nodeInfo.thresholdAttributes || nodeInfo.thresholds.length === 0) return;
+    
+    let allReqsMet = true;
+    nodeInfo.thresholds.forEach(tKey => {
+      let tData = window.D4_PARAGON_DATA.paragonThresholds ? window.D4_PARAGON_DATA.paragonThresholds[tKey] : null;
+      if (tData && tData.attributes) {
+        let classStr = currentBuild.class || 'barbarian';
+        let clsIdx = 0;
+        if (classStr === 'barbarian') clsIdx = 0;
+        else if (classStr === 'druid') clsIdx = 1;
+        else if (classStr === 'necromancer') clsIdx = 2;
+        else if (classStr === 'rogue') clsIdx = 3;
+        else if (classStr === 'sorcerer') clsIdx = 4;
+        else if (classStr === 'spiritborn') clsIdx = 5;
+        else if (classStr === 'paladin') clsIdx = 6;
+        else if (classStr === 'warlock') clsIdx = 7;
+        
+        if (tData.classFilter && !tData.classFilter[clsIdx]) return;
+        
+        tData.attributes.forEach(a => {
+          let attrName = "Stat";
+          if (a.id === 12 || a.id === 21) attrName = "Dexterity";
+          if (a.id === 9 || a.id === 18) attrName = "Strength";
+          if (a.id === 10 || a.id === 19) attrName = "Intelligence";
+          if (a.id === 11 || a.id === 20) attrName = "Willpower";
+          
+          let reqVal = a.value;
+          if (typeof reqVal === 'string') {
+            try { reqVal = eval(reqVal.replace(/ParagonBoardEquipIndex/g, slotId)); } catch(e) {}
+          }
+          
+          let curVal = 0;
+          if (compiledStats[attrName]) {
+            curVal = Math.floor(compiledStats[attrName].final || 0);
+          }
+          
+          if (curVal < reqVal) allReqsMet = false;
+        });
+      }
+    });
+    
+    if (allReqsMet) {
+      nodeInfo.thresholdAttributes.forEach(idx => {
+        let attr = nodeInfo.attributes[idx];
+        if (!attr) return;
+        
+        let formArray = window.D4_PARAGON_FORMULAS.attributeFormulas[attr.formula];
+        if (!formArray || formArray.length === 0) return;
+        
+        let rawFormula = formArray[0].formula;
+        let rawValue = parseFloat(rawFormula);
+        if (isNaN(rawValue)) return;
+        
+        let attrMeta = window.D4_PARAGON_FORMULAS.attributes[attr.id];
+        if (!attrMeta) return;
+        
+        let internalName = attrMeta.name;
+        let descString = window.D4_PARAGON_FORMULAS.attributeDescriptions[internalName];
+        if (!descString) return;
+        
+        let parsed = window.cleanAttributeDescription(descString, rawValue);
+        let statName = parsed.name;
+        if (parsed.isPercent && ['Strength', 'Intelligence', 'Willpower', 'Dexterity', 'Maximum Life', 'Armor', 'Total Armor'].includes(statName)) {
+            statName = '% ' + statName;
+        }
+        
+        addStatFn(compiledStats, statName, parsed.value, 'Paragon Rare Threshold');
+      });
+    }
+  });
+};
+
 // Graph Logic
 function buildGlobalGraph(ignoredNodeStr = null) {
     let activeNodes = new Set();
