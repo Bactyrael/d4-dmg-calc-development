@@ -5630,6 +5630,12 @@ rarity = foundItem.rarity;
             if (min !== null) min = parseFloat(min.toFixed(2));
             if (max !== null) max = parseFloat(max.toFixed(2));
 
+            // Custom integer rounding overrides
+            if (aspectObj.name === 'Tidal Aspect') {
+                if (min !== null) min = Math.floor(min);
+                if (max !== null) max = Math.floor(max);
+            }
+
             let v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
             if (typeof v === 'string') v = parseFloat(v.replace(/,/g, ''));
             v = parseFloat(Number(v).toFixed(2));
