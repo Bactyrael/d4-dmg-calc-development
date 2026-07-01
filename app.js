@@ -7063,7 +7063,15 @@ function calculateSkillAdditiveBucket(skill) {
     const stats = window.D4_COMPILED_STATS;
     const conds = getActiveConditions();
     const tags = (skill.tags || []).map(t => t.toLowerCase());
-    const dType = (skill.damageType || '').toLowerCase();
+    let dType = (skill.damageType || '').toLowerCase();
+    
+    if (tags.includes('damage_override_cold')) dType = 'cold';
+    if (tags.includes('damage_override_physical')) dType = 'physical';
+    if (tags.includes('damage_override_shadow')) dType = 'shadow';
+    if (tags.includes('damage_override_poison')) dType = 'poison';
+    if (tags.includes('damage_override_lightning')) dType = 'lightning';
+    if (tags.includes('damage_override_fire')) dType = 'fire';
+    if (tags.includes('damage_override_bone')) dType = 'bone';
     
     let bucket = 0;
     let components = [];
@@ -7148,6 +7156,15 @@ function calculateSkillMultiplicativeBucket(skill) {
     const stats = window.D4_COMPILED_STATS;
     const conds = getActiveConditions();
     const tags = (skill.tags || []).map(t => t.toLowerCase());
+    
+    let dType = (skill.damageType || '').toLowerCase();
+    if (tags.includes('damage_override_cold')) dType = 'cold';
+    if (tags.includes('damage_override_physical')) dType = 'physical';
+    if (tags.includes('damage_override_shadow')) dType = 'shadow';
+    if (tags.includes('damage_override_poison')) dType = 'poison';
+    if (tags.includes('damage_override_lightning')) dType = 'lightning';
+    if (tags.includes('damage_override_fire')) dType = 'fire';
+    if (tags.includes('damage_override_bone')) dType = 'bone';
     
     let bucket = 1;
     let components = [];
