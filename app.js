@@ -7155,13 +7155,14 @@ function calculateSkillAdditiveBucket(skill) {
     }
 
     // Conditional Additives
-    if (conds.vulnerable) { addStat('Damage to Vulnerable Enemies'); addStat('Vulnerable Damage'); }
-    if (conds.close) { addStat('Damage to Close Enemies'); addStat('Close Damage'); }
-    if (conds.distant) { addStat('Damage to Distant Enemies'); addStat('Distant Damage'); }
-    if (conds.healthy) addStat('Damage while Healthy');
+    if (conds.vulnerable) { addStat('Damage to Vulnerable Enemies'); addStat('Vulnerable Damage'); addStat('Damage to Vulnerable'); }
+    if (conds.close) { addStat('Damage to Close Enemies'); addStat('Close Damage'); addStat('Damage to Close'); }
+    if (conds.distant) { addStat('Damage to Distant Enemies'); addStat('Distant Damage'); addStat('Damage to Distant'); }
+    if (conds.healthy) { addStat('Damage while Healthy'); addStat('Damage While Healthy'); }
     if (conds.injured) addStat('Damage while Injured');
     if (conds.cc) {
         addStat('Damage to Crowd Controlled Enemies');
+        addStat('Damage to Crowd Controlled');
         addStat('Damage to Slowed Enemies');
         addStat('Damage to Stunned Enemies');
         addStat('Crowd Control Damage');
