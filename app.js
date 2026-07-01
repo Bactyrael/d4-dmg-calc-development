@@ -7362,16 +7362,19 @@ function renderCalcSkills() {
                             if (modSkill.secondaryScalars) {
                                 for (const [key, val] of Object.entries(modSkill.secondaryScalars)) {
                                     let label = key.replace(/_/g, ' ').replace(/tooltip /i, '').replace(/dot/i, 'DoT').replace(/\b\w/g, c => c.toUpperCase());
+                                    let scalarVal = typeof val === 'object' ? val.scalar : val;
                                     let secSkill = JSON.parse(JSON.stringify(modSkill));
-                                    secSkill.baseDamageScalar = val;
-                                    let pct = (val * finalScalar * 100).toFixed(1).replace('.0', '');
-                                      let minStr = Math.floor(wpMin * val * finalScalar).toLocaleString();
-                                      let maxStr = Math.floor(wpMax * val * finalScalar).toLocaleString();
-                                      let b2 = getSkillDamageBreakdown(secSkill, rank);
-                                      let addStr2 = Number(((b2.additiveMult - 1) * 100).toFixed(6));
-                                      let canCrit = !key.toLowerCase().includes('dot');
-                                      let critMinStr = Math.floor(wpMin * val * b2.finalScalar * (b2.critAdditiveMult / b2.additiveMult) * (b2.critMultiMult / b2.multiMult)).toLocaleString();
-                                      let critMaxStr = Math.floor(wpMax * val * b2.finalScalar * (b2.critAdditiveMult / b2.additiveMult) * (b2.critMultiMult / b2.multiMult)).toLocaleString();
+                                    if (typeof val === 'object' && val.tags) secSkill.tags = [...val.tags];
+                                    secSkill.baseDamageScalar = scalarVal;
+                                    let b2 = getSkillDamageBreakdown(secSkill, rank);
+                                    let pct = (scalarVal * b2.finalScalar * 100).toFixed(1).replace('.0', '');
+                                    let minStr = Math.floor(wpMin * scalarVal * b2.finalScalar).toLocaleString();
+                                    let maxStr = Math.floor(wpMax * scalarVal * b2.finalScalar).toLocaleString();
+                                    
+                                    let addStr2 = Number(((b2.additiveMult - 1) * 100).toFixed(6));
+                                    let canCrit = !key.toLowerCase().includes('dot');
+                                    let critMinStr = Math.floor(wpMin * scalarVal * b2.finalScalar * (b2.critAdditiveMult / b2.additiveMult) * (b2.critMultiMult / b2.multiMult)).toLocaleString();
+                                    let critMaxStr = Math.floor(wpMax * scalarVal * b2.finalScalar * (b2.critAdditiveMult / b2.additiveMult) * (b2.critMultiMult / b2.multiMult)).toLocaleString();
                                       
                                     html += `<details style="margin-bottom: 4px;">
                                       <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none;">
