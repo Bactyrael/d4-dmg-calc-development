@@ -4930,6 +4930,10 @@ function applyActiveModifiers(baseSkillObj) {
         modified.tags = [];
     }
     
+    if (baseSkillObj.secondaryScalars) {
+        modified.secondaryScalars = { ...baseSkillObj.secondaryScalars };
+    }
+    
     if (baseSkillObj.modifiers) {
         baseSkillObj.modifiers.forEach(mod => {
             // Check if the user has put points into this modifier
@@ -4949,6 +4953,11 @@ function applyActiveModifiers(baseSkillObj) {
                     modified.tags = modified.tags.filter(t => t !== "Skill_Ultimate");
                     modified.cooldown = null; // Removed
                     modified.resourceCost = 50; // Added
+                }
+                
+                // Specific logic for Shadow And Bone: remove Bone tag
+                if (mod.name === "Shadow And Bone") {
+                    modified.tags = modified.tags.filter(t => !t.toLowerCase().includes('bone'));
                 }
                 
                 // Override base damage scalar if provided (e.g., Blood Wave 500% -> 300%)
