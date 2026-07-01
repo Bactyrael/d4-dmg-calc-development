@@ -1582,6 +1582,7 @@ window.renderGlyphTooltip = function(glyphId, level, slotIndex) {
             const hotfixMultipliers = {
                 'Control': 2/3, // Nerfed in-game, JSON still has 1.5/0.1125
                 'Darkness': 0.66, // Nerfed in-game, JSON still has 1.0/0.075
+                'Desecration': 0.99, // 9.9% base, caps at 65.2%
                 'Exhumation': 2/3, // Nerfed in-game, JSON still has 2.5/0.1875
                 'Mage': 2/3, // Nerfed in-game, JSON still has 2.0/0.15
                 'Scourge': 0.7 // Nerfed in-game, JSON still has 1.0/0.075
