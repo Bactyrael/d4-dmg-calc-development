@@ -1553,6 +1553,7 @@ window.renderGlyphTooltip = function(glyphId, level, slotIndex) {
     };
     
     let baseBonuses = [];
+    let globalStatTracker = "";
     let addBonus = null;
     let reqs = null;
     let legBonus = null;
@@ -1618,7 +1619,6 @@ window.renderGlyphTooltip = function(glyphId, level, slotIndex) {
             } else if (affixData.requiredRank >= 2 || affixKey.includes('Legendary')) {
                 legBonus = formatDesc(affixData.desc, val);
             } else {
-                let statTracker = "";
                 if (affixData.convertedAttributes && affixData.convertedAttributes.length > 0) {
                     let reqAttrId = affixData.convertedAttributes[0].from?.id;
                     if (reqAttrId && slotIndex !== undefined && slotIndex !== -1 && window.getGlyphStatsInRadius) {
@@ -1630,16 +1630,16 @@ window.renderGlyphTooltip = function(glyphId, level, slotIndex) {
                         else if (reqAttrId === 11 || reqAttrId === 20) { curVal = currentStats.Willpower; attrName = "Willpower"; }
                         else if (reqAttrId === 12 || reqAttrId === 21) { curVal = currentStats.Dexterity; attrName = "Dexterity"; }
                         
-                        statTracker = ` <span style="color: #999; font-size: 0.85em; font-style: italic;">(${curVal} ${attrName} in radius)</span>`;
+                        globalStatTracker = ` <span style="color: #999; font-size: 0.85em; font-style: italic;">(${curVal} ${attrName} in radius)</span>`;
                     }
                 }
-                baseBonuses.push(formatDesc(affixData.desc, val) + statTracker);
+                baseBonuses.push(formatDesc(affixData.desc, val));
             }
         });
     }
     
     if (baseBonuses.length > 0) {
-        html += `<div style="color: #c9a55c; font-size: 0.95rem; margin-top: 8px;">Bonus:</div>`;
+        html += `<div style="color: #c9a55c; font-size: 0.95rem; margin-top: 8px;">Bonus:${globalStatTracker}</div>`;
         baseBonuses.forEach(b => {
             html += `<div style="color: #ddd; font-size: 0.9rem; margin-left: 8px; margin-bottom: 4px;"><span style="color: #a38a58;">&bull;</span> ${b}</div>`;
         });
