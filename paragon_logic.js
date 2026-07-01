@@ -1565,6 +1565,19 @@ window.renderGlyphTooltip = function(glyphId, level, slotIndex) {
             
             let val = (affixData.base || 0) + ((affixData.perLevel || 0) * (level - 1));
             
+            // Dominate S14 override
+            if (affixKey === 'OverpowerDamage_Willpower_Side') {
+                if (level < 12) val = 1.0;
+                else if (level < 30) val = 1.1;
+                else if (level < 48) val = 1.2;
+                else if (level < 66) val = 1.3;
+                else if (level < 84) val = 1.4;
+                else if (level < 102) val = 1.5;
+                else if (level < 120) val = 1.6;
+                else if (level < 138) val = 1.7;
+                else val = 1.8;
+            }
+            
             // Manual overrides for datamined JSON discrepancies
             const hotfixMultipliers = {
                 'Control': 2/3, // Nerfed in-game, JSON still has 1.5/0.1125
