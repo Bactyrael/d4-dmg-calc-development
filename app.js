@@ -5125,8 +5125,21 @@ function showSkillTooltip(skillObj, e) {
             <div style="font-size: 0.9rem; color: #ccc; margin-bottom: 3px; display: flex; justify-content: space-between;">
               <span>Multiplicative Stats:</span> <span style="color: #fff;">x${Number(b.multiMult.toFixed(6))}</span>
             </div>
+            <details style="margin-bottom: 5px;">
+              <summary style="font-size: 0.85rem; color: #88a; cursor: pointer; user-select: none;">Show Multipliers</summary>
+              <div style="padding-left: 10px; margin-top: 3px;">
+                 ${(b.multiplicativeComponents || []).map(comp => 
+                   `<div style="font-size: 0.8rem; color: #aaa; display: flex; justify-content: space-between;">
+                     <span>${comp.name}</span> <span>x${Number(comp.value.toFixed(4))}</span>
+                    </div>`
+                 ).join('')}
+              </div>
+            </details>
             <div style="font-size: 0.95rem; color: #c9a55c; margin-bottom: 5px; margin-top: 5px; display: flex; justify-content: space-between; font-weight: bold; border-top: 1px solid #333; padding-top: 5px;">
               <span>Final Damage:</span> <span>${b.minStr} - ${b.maxStr}</span>
+            </div>
+            <div style="font-size: 0.95rem; color: #f9d85c; margin-bottom: 5px; display: flex; justify-content: space-between; font-weight: bold;">
+              <span>Critical Hit:</span> <span>${b.critStrMin} - ${b.critStrMax}</span>
             </div>
         `;
     }
@@ -7134,6 +7147,12 @@ function calculateSkillMultiplicativeBucket(skill) {
     let bucket = 1;
     let components = [];
     
+    // Apply Native Vulnerable Multiplier if applicable
+    if (conds.vulnerable) {
+        bucket *= 1.2;
+        components.push({ name: 'Vulnerable (Native)', value: 1.2 });
+    }
+    
     // Iterate over all stats to find multiplicative ones
     for (let key in stats) {
         if (!stats.hasOwnProperty(key)) continue;
@@ -7367,6 +7386,43 @@ function getSkillDamageBreakdown(skillObj, displayRank) {
         maxDmg = Math.floor(wpMax * skillObj.baseDamageScalar * finalScalar);
     }
 
+    let canCrit = true; // For base breakdown, we assume true unless explicitly overridden outside or if it's a DoT
+    let critMin = 0;
+    let critMax = 0;
+    let critStrMin = "0";
+    let critStrMax = "0";
+
+    // Grab additive crit damage
+    let additiveCritBonus = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Critical Strike Damage']) ? window.D4_COMPILED_STATS['Critical Strike Damage'].final / 100 : 0;
+    let critAdditiveMult = additiveMult + additiveCritBonus;
+
+    // Grab multiplicative crit multipliers
+    let critMultiMult = multiMult * 1.5; // Base native 1.5x for critical hits
+    
+    if (window.D4_COMPILED_STATS) {
+        // The Grandfather: 120%[x] -> 2.2x
+        let gf = window.D4_COMPILED_STATS['The Grandfather'];
+        if (gf && gf.final > 0) {
+            critMultiMult *= (1 + (gf.final / 100));
+        }
+        
+        // Blood Moon Breeches: 60%[x] conditionally (if cursed, but let's assume active if equipped for now, or check conditions)
+        let bmb = window.D4_COMPILED_STATS['Blood Moon Breeches'];
+        if (bmb && bmb.final > 0) {
+            // Note: This applies strictly to enemies affected by curses, but as a generic multiplier we can assume it for the calculator
+            critMultiMult *= (1 + (bmb.final / 100));
+        }
+    }
+
+    let finalCritScalar = rankMultiplier * mainStatMult * critAdditiveMult * critMultiMult;
+
+    if (skillObj.baseDamageScalar) {
+        critMin = Math.floor(wpMin * skillObj.baseDamageScalar * finalCritScalar);
+        critMax = Math.floor(wpMax * skillObj.baseDamageScalar * finalCritScalar);
+        critStrMin = critMin.toLocaleString();
+        critStrMax = critMax.toLocaleString();
+    }
+
     return {
         mainStatName,
         mainStatMult,
@@ -7377,6 +7433,11 @@ function getSkillDamageBreakdown(skillObj, displayRank) {
         wpMax,
         minStr: minDmg.toLocaleString(),
         maxStr: maxDmg.toLocaleString(),
-        rankMultiplier
+        rankMultiplier,
+        critStrMin,
+        critStrMax,
+        critMultiMult,
+        critAdditiveMult,
+        multiplicativeComponents: multiData.components
     };
 }
