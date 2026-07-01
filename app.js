@@ -3836,12 +3836,6 @@ function renderEquipment(className, savedEquipment = {}) {
           if (el.type === 'checkbox') el.checked = false;
           else if (el.type === 'number') el.value = 0;
       });
-      document.querySelectorAll('.calc-monster-type').forEach(el => {
-        el.addEventListener('change', () => {
-          saveBuild();
-          renderCalcSkills();
-        });
-      });
     }
     
     if (dom.drBody) {
@@ -4097,6 +4091,13 @@ function renderEquipment(className, savedEquipment = {}) {
       document.querySelectorAll('.calc-condition').forEach(chk => {
     chk.addEventListener('change', () => {
       if (typeof renderCalcSkills === 'function') renderCalcSkills();
+    });
+    
+    document.querySelectorAll('.calc-buff, .calc-monster-type').forEach(el => {
+      el.addEventListener('change', () => {
+        saveBuild();
+        if (typeof renderCalcSkills === 'function') renderCalcSkills();
+      });
     });
   });
 
