@@ -2090,7 +2090,8 @@ function renderEquipment(className, savedEquipment = {}) {
             
             if (activeBuffs.weakened) {
                 let weakDr = 20;
-                if (activeConds.elite) weakDr = 15;
+                if (activeConds.monsterType === 'elite') weakDr = 15;
+                if (activeConds.monsterType === 'boss') weakDr = 10;
                 // Currently no dedicated boss condition, assume boss is elite for now, or you could add one later.
                 addStat(stats, 'Universal Damage Reduction %', weakDr, 'Weakened Buff');
             }
@@ -3817,7 +3818,10 @@ function renderEquipment(className, savedEquipment = {}) {
       if (document.getElementById('cond-injured')) document.getElementById('cond-injured').checked = b.conditions.injured || false;
       if (document.getElementById('cond-cc')) document.getElementById('cond-cc').checked = b.conditions.cc || false;
       if (document.getElementById('cond-overpower')) document.getElementById('cond-overpower').checked = b.conditions.overpower || false;
-      if (document.getElementById('cond-elite')) document.getElementById('cond-elite').checked = b.conditions.elite || false;
+      if (b.conditions.monsterType) {
+          const mTypeRadio = document.querySelector(`input[name="monster_type"][value="${b.conditions.monsterType}"]`);
+          if (mTypeRadio) mTypeRadio.checked = true;
+        }
     } else {
       document.querySelectorAll('.calc-condition').forEach(el => el.checked = false);
     }
@@ -3831,6 +3835,12 @@ function renderEquipment(className, savedEquipment = {}) {
       document.querySelectorAll('.calc-buff').forEach(el => {
           if (el.type === 'checkbox') el.checked = false;
           else if (el.type === 'number') el.value = 0;
+      });
+      document.querySelectorAll('.calc-monster-type').forEach(el => {
+        el.addEventListener('change', () => {
+          saveBuild();
+          renderCalcSkills();
+        });
       });
     }
     
@@ -7005,7 +7015,7 @@ function getActiveConditions() {
         injured: document.getElementById('cond-injured')?.checked || false,
         cc: document.getElementById('cond-cc')?.checked || false,
         overpower: document.getElementById('cond-overpower')?.checked || false,
-        elite: document.getElementById('cond-elite')?.checked || false
+        monsterType: document.querySelector('input[name="monster_type"]:checked')?.value || 'elite'
     };
 }
 
@@ -7072,7 +7082,7 @@ function calculateSkillAdditiveBucket(skill) {
         addStat('Damage to Stunned Enemies');
         addStat('Crowd Control Damage');
     }
-    if (conds.elite) {
+    if (conds.monsterType === 'elite' || conds.monsterType === 'boss') {
         addStat('Damage to Elites');
         addStat('Elite Damage');
     }
