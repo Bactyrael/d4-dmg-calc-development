@@ -7527,20 +7527,26 @@ function getSkillDamageBreakdown(skillObj, displayRank) {
     let critAdditiveMult = additiveMult + additiveCritBonus;
 
     // Grab multiplicative crit multipliers
+    let critMultiplicativeComponents = [];
     let critMultiMult = multiMult * 1.5; // Base native 1.5x for critical hits
+    critMultiplicativeComponents.push({ name: 'Base Critical Strike', value: 1.5 });
     
     if (window.D4_COMPILED_STATS) {
         // The Grandfather: 120%[x] -> 2.2x
         let gf = window.D4_COMPILED_STATS['The Grandfather'];
         if (gf && gf.final > 0) {
-            critMultiMult *= (1 + (gf.final / 100));
+            let gfVal = (1 + (gf.final / 100));
+            critMultiMult *= gfVal;
+            critMultiplicativeComponents.push({ name: 'The Grandfather', value: gfVal });
         }
         
         // Blood Moon Breeches: 60%[x] conditionally (if cursed, but let's assume active if equipped for now, or check conditions)
         let bmb = window.D4_COMPILED_STATS['Blood Moon Breeches'];
         if (bmb && bmb.final > 0) {
             // Note: This applies strictly to enemies affected by curses, but as a generic multiplier we can assume it for the calculator
-            critMultiMult *= (1 + (bmb.final / 100));
+            let bmbVal = (1 + (bmb.final / 100));
+            critMultiMult *= bmbVal;
+            critMultiplicativeComponents.push({ name: 'Blood Moon Breeches', value: bmbVal });
         }
 
         // Dynamically grab any generic Critical Strike Damage [x] multipliers
@@ -7550,7 +7556,9 @@ function getSkillDamageBreakdown(skillObj, displayRank) {
             if (!stat || stat.final === 0) continue;
             let lowerKey = key.toLowerCase();
             if ((lowerKey.includes('[x]') || stat.isMultiplicative) && (lowerKey.includes('critical') || lowerKey.includes('crit '))) {
-                critMultiMult *= (1 + (stat.final / 100));
+                let critVal = (1 + (stat.final / 100));
+                critMultiMult *= critVal;
+                critMultiplicativeComponents.push({ name: key, value: critVal });
             }
         }
     }
