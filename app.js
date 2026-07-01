@@ -7327,7 +7327,6 @@ function renderCalcSkills() {
                         ${(function() {
                             let html = '';
                             let rank = window.selectedSkills[baseSkill.name] || 1;
-                            let rankMultiplier = 1 + (rank - 1) * 0.1;
                             let wpMin = window.weaponMinDmg || 0;
                             let wpMax = window.weaponMaxDmg || 0;
 
@@ -7440,7 +7439,15 @@ function renderCalcSkills() {
 
 
 function getSkillDamageBreakdown(skillObj, displayRank) {
-    let rankMultiplier = 1 + ((displayRank || 1) - 1) * 0.1;
+    let rank = displayRank || 1;
+    let rankMultiplier = 1.0;
+    if (rank > 1) {
+        let levelsGained = rank - 1;
+        let enhancedIncreases = Math.floor(rank / 5);
+        let scalePerLevel = skillObj.damageScalePerLevel !== undefined ? skillObj.damageScalePerLevel : 0.10;
+        let scalePerFive = skillObj.damageScalePerFive !== undefined ? skillObj.damageScalePerFive : 0.05;
+        rankMultiplier = 1.0 + (levelsGained * scalePerLevel) + (enhancedIncreases * scalePerFive);
+    }
     let wpMin = window.weaponMinDmg || 0;
     let wpMax = window.weaponMaxDmg || 0;
 
