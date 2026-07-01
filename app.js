@@ -4552,7 +4552,7 @@ function parseD4String(str, skillObj, currentRank) {
         str = str.replace(/\[\{cooldown time\}[\s\.,\d]*?\]|\{cooldown time\}/g, "24");
         str = str.replace(/\[\{buffduration:mistform\}[\s\.,\d]*?\]|\{buffduration:mistform\}/g, "3");
         str = str.replace(/\[\{dot:tooltip_dot\}[\s\.,\d]*?\]|\{dot:tooltip_dot\}/g, (4.2 * rankMult * 100).toFixed(1) + '%');
-        str = str.replace(/\[\{dot:tooltip_dot_shadow\}[\s\.,\d]*?\]|\{dot:tooltip_dot_shadow\}/g, (0.5 * rankMult * 100).toFixed(1) + '%');
+        str = str.replace(/\[\{dot:tooltip_dot_shadow\}[\s\.,\d]*?\]|\{dot:tooltip_dot_shadow\}/g, (6.0 * rankMult * 100).toFixed(1) + '%');
     }
     str = str.replace(/\[\{buffduration:buff_damage_reduction\}[\s\.,\d]*?\]|\{buffduration:buff_damage_reduction\}/g, "10");
     if (skillObj && skillObj.name === "Bone Prison") {
