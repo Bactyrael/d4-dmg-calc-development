@@ -7048,6 +7048,7 @@ function calculateSkillAdditiveBucket(skill) {
     // Generic Additives
     addStat('Damage');
     addStat('Skill Damage'); // Additive specific to skills
+    addStat('Damage Per Overpower Stack');
 
     // Type Additives
     if (dType === 'shadow' || tags.includes('skill_shadow') || tags.includes('search_shadow')) addStat('Shadow Damage');
@@ -7102,6 +7103,7 @@ function calculateSkillMultiplicativeBucket(skill) {
     const tags = (skill.tags || []).map(t => t.toLowerCase());
     
     let bucket = 1;
+    let components = [];
     
     // Iterate over all stats to find multiplicative ones
     for (let key in stats) {
@@ -7235,11 +7237,17 @@ function renderCalcSkills() {
                                       <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
                                         <span style="color: #555;">└</span> ${b.mainStatName} Multiplier: <span style="color: #fff;">x${Number(b.mainStatMult.toFixed(6))}</span>
                                       </div>
-                                      <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
-                                        <span style="color: #555;">└</span> Additive Multiplier: <span style="color: #fff;">1 + (${addStr}%)</span>
+                                      <div style="margin-bottom: 3px;">
+                                        <div style="display: flex; align-items: center; gap: 5px;">
+                                          <span style="color: #555;">└</span> Additive Multiplier: <span style="color: #fff;">1 + (${addStr}%)</span>
+                                        </div>
+                                        ${(b.additiveComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: +${(comp.value * 100).toFixed(1).replace('.0', '')}%</div>`).join('')}
                                       </div>
-                                      <div style="display: flex; align-items: center; gap: 5px;">
-                                        <span style="color: #555;">└</span> Multiplicative Multiplier: <span style="color: #fff;">x${Number(b.multiMult.toFixed(6))}</span>
+                                      <div>
+                                        <div style="display: flex; align-items: center; gap: 5px;">
+                                          <span style="color: #555;">└</span> Multiplicative Multiplier: <span style="color: #fff;">x${Number(b.multiMult.toFixed(6))}</span>
+                                        </div>
+                                        ${(b.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
                                       </div>
                                     </div>
                                   </details>`;
@@ -7308,14 +7316,16 @@ function getSkillDamageBreakdown(skillObj, displayRank) {
     let mainStatPct = statVal * factor;
     let mainStatMult = 1 + (mainStatPct / 100);
 
-    let additiveMult = typeof calculateSkillAdditiveBucket === 'function' ? 1 + calculateSkillAdditiveBucket(skillObj) : 1;
+    let addData = typeof calculateSkillAdditiveBucket === 'function' ? calculateSkillAdditiveBucket(skillObj) : { total: 0, components: [] };
+    let additiveMult = 1 + addData.total;
     
     // In our compile logic, main stat was incorrectly added to the additive 'Skill Damage' stat.
     // We remove it here so it is purely multiplicative as per D4 math.
     additiveMult -= (mainStatPct / 100);
     if (additiveMult < 1) additiveMult = 1; // safety
 
-    let multiMult = typeof calculateSkillMultiplicativeBucket === 'function' ? calculateSkillMultiplicativeBucket(skillObj) : 1;
+    let multiData = typeof calculateSkillMultiplicativeBucket === 'function' ? calculateSkillMultiplicativeBucket(skillObj) : { total: 1, components: [] };
+    let multiMult = multiData.total;
     
     let finalScalar = rankMultiplier * mainStatMult * additiveMult * multiMult;
 
