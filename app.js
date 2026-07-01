@@ -7221,7 +7221,7 @@ function calculateSkillMultiplicativeBucket(skill) {
             // Check if it applies to this skill
             let applies = false;
             
-            if (lowerKey.includes('damage') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
+            if (lowerKey.includes('damage') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
                 // Generic damage multiplier (e.g. 20% [x] Damage)
                 applies = true;
             }
@@ -7238,7 +7238,12 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (lowerKey.includes('physical') && (tags.includes('skill_physical') || tags.includes('search_physical') || dType === 'physical')) applies = true;
             
             // Catch-all for purely generic aspect multipliers
-            if (!lowerKey.includes('damage') && !lowerKey.includes('shadow') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
+            if (!lowerKey.includes('damage') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('shadow') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
+                applies = true;
+            }
+            
+            // Explicit Damage over Time check
+            if ((lowerKey.includes('over time') || lowerKey.includes('dot')) && tags.includes('search_dot')) {
                 applies = true;
             }
 
