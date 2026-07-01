@@ -7138,7 +7138,7 @@ function calculateSkillAdditiveBucket(skill) {
     // Category Additives
     if (tags.includes('keyword_core')) addStat('Core Skill Damage');
     if (tags.includes('keyword_basic')) addStat('Basic Skill Damage');
-    if (tags.includes('keyword_macabre')) addStat('Macabre Skill Damage');
+    if (tags.includes('keyword_macabre') || tags.some(t => t.toLowerCase().includes('macabre')) || ['Bone Prison', 'Blood Mist', 'Golem', 'Bone Spirit'].includes(skillObj.name)) addStat('Macabre Skill Damage');
     if (tags.includes('keyword_corruption')) addStat('Corruption Skill Damage');
     if (tags.some(t => t.includes('summon'))) {
         addStat('Summoning Skill Damage');
@@ -7236,7 +7236,7 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (lowerKey.includes('bone') && (tags.includes('skill_bone') || tags.includes('search_bone') || dType === 'bone')) applies = true;
             if (lowerKey.includes('blood') && tags.includes('skill_blood')) applies = true;
             if (lowerKey.includes('core') && tags.includes('keyword_core')) applies = true;
-            if (lowerKey.includes('macabre') && tags.includes('keyword_macabre')) applies = true;
+            if (lowerKey.includes('macabre') && (tags.includes('keyword_macabre') || tags.some(t => t.toLowerCase().includes('macabre')) || ['Bone Prison', 'Blood Mist', 'Golem', 'Bone Spirit'].includes(skillObj.name))) applies = true;
             if (lowerKey.includes('cold') && (tags.includes('skill_cold') || tags.includes('search_cold') || dType === 'cold')) applies = true;
             if (lowerKey.includes('poison') && (tags.includes('skill_poison') || tags.includes('search_poison') || dType === 'poison')) applies = true;
             if (lowerKey.includes('lightning') && (tags.includes('skill_lightning') || tags.includes('search_lightning') || dType === 'lightning')) applies = true;
