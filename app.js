@@ -4968,7 +4968,30 @@ function applyActiveModifiers(baseSkillObj) {
             }
         });
     }
+        }
     
+    if (modified.tags) {
+        const lowerTags = modified.tags.map(t => t.toLowerCase());
+        let override = null;
+        if (lowerTags.includes('damage_override_cold')) override = 'Cold';
+        else if (lowerTags.includes('damage_override_physical')) override = 'Physical';
+        else if (lowerTags.includes('damage_override_shadow')) override = 'Shadow';
+        else if (lowerTags.includes('damage_override_poison')) override = 'Poison';
+        else if (lowerTags.includes('damage_override_lightning')) override = 'Lightning';
+        else if (lowerTags.includes('damage_override_fire')) override = 'Fire';
+        
+        if (override) {
+            const elements = ['Cold', 'Physical', 'Shadow', 'Poison', 'Lightning', 'Fire'];
+            elements.forEach(el => {
+                if (el !== override) {
+                    modified.tags = modified.tags.filter(t => t.toLowerCase() !== \`skill_\${el.toLowerCase()}\` && t.toLowerCase() !== \`search_\${el.toLowerCase()}\`);
+                }
+            });
+            if (!modified.tags.some(t => t.toLowerCase() === \`skill_\${override.toLowerCase()}\`)) modified.tags.push(\`Skill_\${override}\`);
+            if (!modified.tags.some(t => t.toLowerCase() === \`search_\${override.toLowerCase()}\`)) modified.tags.push(\`Search_\${override}\`);
+        }
+    }
+
     return modified;
 }
 
