@@ -1754,7 +1754,8 @@ const skillsDatabase = {
             "Keyword_Unstoppable"
           ],
           "description": "{c_important}Blood Mist{/c} becomes a {c_important}Mobility{/c} Skill and its Cooldown is reduced to {c_number}8{/c} seconds.\\n\\nInstead of dispersing you into a bloody mist, {c_important}Blood Mist{/c} consumes a nearby corpse to teleport you to the target location and grants {c_important}{u}Unstoppable{/c}{/u} for {c_number}[3*Table(37,sLevel)|1|]{/c} seconds.",
-          "maxRank": 1
+          "maxRank": 1,
+          "baseDamageScalar": 0
         },
         {
           "name": "Blood Transfusion",
