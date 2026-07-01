@@ -4969,6 +4969,13 @@ function applyActiveModifiers(baseSkillObj) {
                     }
                 }
                 
+                // Specific logic for Dead Cold: remove explosion damage
+                if (mod.name === "Dead Cold") {
+                    if (modified.secondaryScalars && modified.secondaryScalars.explosion_damage) {
+                        delete modified.secondaryScalars.explosion_damage;
+                    }
+                }
+                
                 // Override base damage scalar if provided (e.g., Blood Wave 500% -> 300%)
                 if (mod.baseDamageScalar !== undefined) {
                     modified.baseDamageScalar = mod.baseDamageScalar;
