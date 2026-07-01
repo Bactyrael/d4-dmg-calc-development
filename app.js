@@ -7136,10 +7136,22 @@ function calculateSkillAdditiveBucket(skill) {
     if (dType === 'fire' || tags.includes('skill_fire') || tags.includes('search_fire')) addStat('Fire Damage');
 
     // Category Additives
-    if (tags.includes('keyword_core')) addStat('Core Skill Damage');
-    if (tags.includes('keyword_basic')) addStat('Basic Skill Damage');
-    if (tags.includes('keyword_macabre') || tags.some(t => t.toLowerCase().includes('macabre')) || ['Bone Prison', 'Blood Mist', 'Golem', 'Bone Spirit'].includes(skill.name)) addStat('Macabre Skill Damage');
-    if (tags.includes('keyword_corruption')) addStat('Corruption Skill Damage');
+    if (tags.includes('keyword_core')) {
+        addStat('Core Skill Damage');
+        addStat('Core Damage');
+    }
+    if (tags.includes('keyword_basic')) {
+        addStat('Basic Skill Damage');
+        addStat('Basic Damage');
+    }
+    if (tags.includes('keyword_macabre') || tags.some(t => t.toLowerCase().includes('macabre')) || ['Bone Prison', 'Blood Mist', 'Golem', 'Bone Spirit'].includes(skill.name)) {
+        addStat('Macabre Skill Damage');
+        addStat('Macabre Damage');
+    }
+    if (tags.includes('keyword_corruption')) {
+        addStat('Corruption Skill Damage');
+        addStat('Corruption Damage');
+    }
     if (tags.some(t => t.includes('summon'))) {
         addStat('Summoning Skill Damage');
         addStat('Summoning Damage');
