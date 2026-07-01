@@ -7127,6 +7127,10 @@ function calculateSkillAdditiveBucket(skill) {
     if (dType === 'bone' || tags.includes('skill_bone') || tags.includes('search_bone')) addStat('Bone Damage');
     if (tags.includes('skill_blood')) addStat('Blood Damage');
     if (tags.includes('skill_darkness')) addStat('Darkness Damage');
+    if (dType === 'cold' || tags.includes('skill_cold') || tags.includes('search_cold')) addStat('Cold Damage');
+    if (dType === 'poison' || tags.includes('skill_poison') || tags.includes('search_poison')) addStat('Poison Damage');
+    if (dType === 'lightning' || tags.includes('skill_lightning') || tags.includes('search_lightning')) addStat('Lightning Damage');
+    if (dType === 'fire' || tags.includes('skill_fire') || tags.includes('search_fire')) addStat('Fire Damage');
 
     // Category Additives
     if (tags.includes('keyword_core')) addStat('Core Skill Damage');
@@ -7139,6 +7143,10 @@ function calculateSkillAdditiveBucket(skill) {
     if (tags.includes('search_dot')) {
         addStat('Damage over Time');
         if (dType === 'shadow' || tags.includes('skill_shadow')) addStat('Shadow Damage over Time');
+        if (dType === 'poison' || tags.includes('skill_poison')) addStat('Poison Damage over Time');
+        if (dType === 'fire' || tags.includes('skill_fire')) { addStat('Fire Damage over Time'); addStat('Burning Damage'); }
+        if (dType === 'cold' || tags.includes('skill_cold')) addStat('Cold Damage over Time');
+        if (dType === 'physical' || tags.includes('skill_physical')) { addStat('Physical Damage over Time'); addStat('Bleeding Damage'); }
     }
 
     // Conditional Additives
