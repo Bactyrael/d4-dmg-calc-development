@@ -2067,7 +2067,12 @@ function renderEquipment(className, savedEquipment = {}) {
       }
   }
 
-  function compileCharacterStats(equipped, autoStats) {
+  function cleanStatName(name) {
+    if (!name) return name;
+    return name.replace(/^\+?\[[\d\.,]+\s*-\s*[\d\.,]+\]%?\s*/, '');
+}
+
+function compileCharacterStats(equipped, autoStats) {
         const stats = {};
         
         addStat(stats, 'Strength', autoStats.baseStr, 'Base');
