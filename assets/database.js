@@ -7939,7 +7939,7 @@ window.D4_DATABASE = {
     {
       "name": "Tidal Aspect",
       "desc": "Your Maximum Overpower is increased by [2 - 4] while you are Fortified.",
-      "category": "FILTER_Legendary_Offensive",
+      "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
         1,
