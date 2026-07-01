@@ -4090,6 +4090,16 @@ function renderEquipment(className, savedEquipment = {}) {
     });
     
     document.querySelectorAll('.calc-buff, .calc-monster-type').forEach(el => {
+      if (el.type === 'number') {
+        el.addEventListener('input', function() {
+          let val = parseInt(this.value);
+          let max = parseInt(this.getAttribute('max'));
+          let min = parseInt(this.getAttribute('min'));
+          if (isNaN(val)) return;
+          if (!isNaN(max) && val > max) this.value = max;
+          if (!isNaN(min) && val < min) this.value = min;
+        });
+      }
       el.addEventListener('change', () => {
         saveBuild();
         if (typeof renderCalcSkills === 'function') renderCalcSkills();
