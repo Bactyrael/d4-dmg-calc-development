@@ -2098,9 +2098,7 @@ function renderEquipment(className, savedEquipment = {}) {
             if (activeBuffs.ferocity > 0) {
                 addStat(stats, 'Attack Speed', activeBuffs.ferocity * 5, 'Ferocity Stacks');
             }
-            if (activeBuffs.overpower > 0) {
-                addStat(stats, 'Damage Per Overpower Stack', activeBuffs.overpower * 15, 'Overpower Stacks');
-            }
+            addStat(stats, 'Damage Per Overpower Stack', 15, 'Inherent Overpower Bonus');
             if (activeBuffs.resolve > 0) {
                 addStat(stats, '% Armor', 25, 'Resolve Buff');
             }
@@ -7048,7 +7046,18 @@ function calculateSkillAdditiveBucket(skill) {
     // Generic Additives
     addStat('Damage');
     addStat('Skill Damage'); // Additive specific to skills
-    addStat('Damage Per Overpower Stack');
+        if (stats['Damage Per Overpower Stack'] && stats['Damage Per Overpower Stack'].final) {
+        let opStacks = 0;
+        if (typeof getActiveBuffs === 'function') {
+            let activeBuffs = getActiveBuffs();
+            opStacks = activeBuffs.overpower || 0;
+        }
+        if (opStacks > 0) {
+            let val = (stats['Damage Per Overpower Stack'].final * opStacks) / 100;
+            bucket += val;
+            components.push({ name: 'Damage Per Overpower Stack (x' + opStacks + ')', value: val });
+        }
+    }
 
     // Type Additives
     if (dType === 'shadow' || tags.includes('skill_shadow') || tags.includes('search_shadow')) addStat('Shadow Damage');
