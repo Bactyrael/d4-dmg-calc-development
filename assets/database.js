@@ -22456,7 +22456,7 @@ window.D4_DATABASE = {
               "desc": "Sharpened Finesse"
             },
             {
-              "name": "+[7 - 10]% Damage Per Overpower Stack",
+              "name": "+[3 - 4.5]% Damage Per Overpower Stack",
               "shortName": "Damage Per Overpower Stack",
               "category": "Offensive",
               "desc": "Sharpened Finesse"
@@ -23015,7 +23015,7 @@ window.D4_DATABASE = {
               "desc": "Sharpened Finesse"
             },
             {
-              "name": "+[7 - 10]% Damage Per Overpower Stack",
+              "name": "+[3 - 4.5]% Damage Per Overpower Stack",
               "shortName": "Damage Per Overpower Stack",
               "category": "Offensive",
               "desc": "Sharpened Finesse"
@@ -23481,7 +23481,7 @@ window.D4_DATABASE = {
               "desc": "Sharpened Finesse"
             },
             {
-              "name": "+[7 - 10]% Damage Per Overpower Stack",
+              "name": "+[3 - 4.5]% Damage Per Overpower Stack",
               "shortName": "Damage Per Overpower Stack",
               "category": "Offensive",
               "desc": "Sharpened Finesse"
@@ -24020,7 +24020,7 @@ window.D4_DATABASE = {
               "desc": "Sharpened Finesse"
             },
             {
-              "name": "+[7 - 10]% Damage Per Overpower Stack",
+              "name": "+[3 - 4.5]% Damage Per Overpower Stack",
               "shortName": "Damage Per Overpower Stack",
               "category": "Offensive",
               "desc": "Sharpened Finesse"
@@ -24542,7 +24542,7 @@ window.D4_DATABASE = {
               "desc": "Sharpened Finesse"
             },
             {
-              "name": "+[7 - 10]% Damage Per Overpower Stack",
+              "name": "+[3 - 4.5]% Damage Per Overpower Stack",
               "shortName": "Damage Per Overpower Stack",
               "category": "Offensive",
               "desc": "Sharpened Finesse"
@@ -24918,7 +24918,7 @@ window.D4_DATABASE = {
               "desc": "Sharpened Finesse"
             },
             {
-              "name": "+[7 - 10]% Damage Per Overpower Stack",
+              "name": "+[3 - 4.5]% Damage Per Overpower Stack",
               "shortName": "Damage Per Overpower Stack",
               "category": "Offensive",
               "desc": "Sharpened Finesse"
