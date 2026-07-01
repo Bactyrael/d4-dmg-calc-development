@@ -4960,6 +4960,11 @@ function applyActiveModifiers(baseSkillObj) {
                 if (mod.name === "Shadow And Bone") {
                     modified.tags = modified.tags.filter(t => !t.toLowerCase().includes('bone'));
                 }
+
+                // Specific logic for Devouring Mist: remove Blood tag
+                if (mod.name === "Devouring Mist") {
+                    modified.tags = modified.tags.filter(t => !t.toLowerCase().includes('blood'));
+                }
                 
                 // Override base damage scalar if provided (e.g., Blood Wave 500% -> 300%)
                 if (mod.baseDamageScalar !== undefined) {
