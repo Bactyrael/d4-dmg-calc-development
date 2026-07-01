@@ -7519,6 +7519,7 @@ function getSkillDamageBreakdown(skillObj, displayRank) {
         critStrMax,
         critMultiMult,
         critAdditiveMult,
+        additiveComponents: addData.components,
         multiplicativeComponents: multiData.components
     };
 }
