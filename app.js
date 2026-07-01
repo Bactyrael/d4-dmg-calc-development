@@ -7336,30 +7336,8 @@ function renderCalcSkills() {
         return;
     }
 
-    // Dynamic Skill Sliders
+    // Dynamic Skill Sliders state init
     window.skillSliderValues = window.skillSliderValues || {};
-    let hasSliders = false;
-    let slidersHtml = `<div style="background: rgba(20,20,25,0.9); border: 1px solid #334; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
-        <h4 style="margin: 0 0 10px 0; color: #aaa; font-size: 0.9em; text-transform: uppercase;">Variable Modifiers</h4>`;
-        
-    if (window.selectedSkills['Pile the Bodies'] > 0) {
-        hasSliders = true;
-        let curVal = window.skillSliderValues['Pile the Bodies'] !== undefined ? window.skillSliderValues['Pile the Bodies'] : 300;
-        slidersHtml += `
-        <div style="margin-bottom: 10px;">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                <label style="color: #ccc; font-size: 0.85em;">Pile the Bodies (Army of the Dead)</label>
-                <span id="slider-val-pile" style="color: #c9a55c; font-size: 0.85em; font-weight: bold;">${curVal}%</span>
-            </div>
-            <input type="range" min="0" max="300" step="10" value="${curVal}" style="width: 100%; accent-color: #c9a55c;" 
-                   oninput="document.getElementById('slider-val-pile').innerText = this.value + '%'; window.skillSliderValues['Pile the Bodies'] = parseInt(this.value); window.calculate();">
-        </div>`;
-    }
-    slidersHtml += `</div>`;
-    
-    if (hasSliders) {
-        container.innerHTML += slidersHtml;
-    }
 
     let foundSkills = 0;
     
@@ -7548,6 +7526,24 @@ function renderCalcSkills() {
                   </div>
                 `;
                 
+                // Append skill-specific sliders
+                if (baseSkill.name === 'Army of the Dead' && window.selectedSkills['Pile the Bodies'] > 0) {
+                    let curVal = window.skillSliderValues['Pile the Bodies'] !== undefined ? window.skillSliderValues['Pile the Bodies'] : 300;
+                    let sliderDiv = document.createElement('div');
+                    sliderDiv.style.marginTop = '15px';
+                    sliderDiv.style.borderTop = '1px solid #334';
+                    sliderDiv.style.paddingTop = '15px';
+                    sliderDiv.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <label style="color: #ccc; font-size: 0.85em;">Pile the Bodies (Modifier Scaling)</label>
+                            <span id="slider-val-pile" style="color: #c9a55c; font-size: 0.85em; font-weight: bold;">${curVal}%</span>
+                        </div>
+                        <input type="range" min="0" max="300" step="10" value="${curVal}" style="width: 100%; accent-color: #c9a55c;" 
+                               oninput="document.getElementById('slider-val-pile').innerText = this.value + '%'; window.skillSliderValues['Pile the Bodies'] = parseInt(this.value); window.calculate();">
+                    `;
+                    card.appendChild(sliderDiv);
+                }
+
                 container.appendChild(card);
             }
         });
