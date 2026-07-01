@@ -7363,13 +7363,25 @@ function renderCalcSkills() {
                                         ${(b.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
                                       </div>
                                     </div>
-                                    <div style="margin-left: 20px; font-size: 0.9em; color: #f9d85c; margin-bottom: 6px; display: flex; align-items: center; gap: 5px;">
-                                      <span style="color: #555;">└</span> Critical Hit: <span style="font-weight: bold;">${b.critStrMin} - ${b.critStrMax}</span>
-                                    </div>
+                                    <details style="margin-left: 20px; font-size: 0.9em; margin-bottom: 6px;">
+                                      <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #f9d85c;">
+                                        <span style="color: #555;">└</span> Critical Hit: <span style="font-weight: bold;">${b.critStrMin} - ${b.critStrMax}</span>
+                                      </summary>
+                                      <div style="margin-left: 15px; margin-top: 5px; border-left: 1px solid #444; padding-left: 10px;">
+                                        <div style="font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; margin-bottom: 2px;">
+                                          <span style="color: #555;">├</span> Base Critical Multiplier: x1.5
+                                        </div>
+                                        ${(b.critMultiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
+                                        <div style="font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; margin-top: 2px;">
+                                          <span style="color: #555;">├</span> Additive Critical Bonus: +${Number(((b.critAdditiveMult - b.additiveMult) * 100).toFixed(1))}%
+                                        </div>
+                                      </div>
+                                    </details>
                                   </details>`;
                               }
                             if (modSkill.secondaryScalars) {
                                 for (const [key, val] of Object.entries(modSkill.secondaryScalars)) {
+                                    if (val === null || val === undefined) continue;
                                     let label = key.replace(/_/g, ' ').replace(/tooltip /i, '').replace(/dot/i, 'DoT').replace(/\b\w/g, c => c.toUpperCase());
                                     let scalarVal = typeof val === 'object' ? val.scalar : val;
                                     let secSkill = JSON.parse(JSON.stringify(modSkill));
@@ -7411,9 +7423,20 @@ function renderCalcSkills() {
                                         </div>
                                       </div>
                                       ${canCrit ? `
-                                      <div style="margin-left: 20px; font-size: 0.9em; color: #f9d85c; margin-bottom: 6px; display: flex; align-items: center; gap: 5px;">
-                                        <span style="color: #555;">└</span> Critical Hit: <span style="font-weight: bold;">${critMinStr} - ${critMaxStr}</span>
-                                      </div>` : ''}
+                                      <details style="margin-left: 20px; font-size: 0.9em; margin-bottom: 6px;">
+                                        <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #f9d85c;">
+                                          <span style="color: #555;">└</span> Critical Hit: <span style="font-weight: bold;">${critMinStr} - ${critMaxStr}</span>
+                                        </summary>
+                                        <div style="margin-left: 15px; margin-top: 5px; border-left: 1px solid #444; padding-left: 10px;">
+                                          <div style="font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; margin-bottom: 2px;">
+                                            <span style="color: #555;">├</span> Base Critical Multiplier: x1.5
+                                          </div>
+                                          ${(b2.critMultiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
+                                          <div style="font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; margin-top: 2px;">
+                                            <span style="color: #555;">├</span> Additive Critical Bonus: +${Number(((b2.critAdditiveMult - b2.additiveMult) * 100).toFixed(1))}%
+                                          </div>
+                                        </div>
+                                      </details>` : ''}
                                     </details>`;
                                 }
                             }
@@ -7557,6 +7580,7 @@ function getSkillDamageBreakdown(skillObj, displayRank) {
         critMultiMult,
         critAdditiveMult,
         additiveComponents: addData.components,
-        multiplicativeComponents: multiData.components
+        multiplicativeComponents: multiData.components,
+        critMultiplicativeComponents
     };
 }
