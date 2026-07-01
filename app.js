@@ -7140,8 +7140,12 @@ function calculateSkillAdditiveBucket(skill) {
     if (tags.includes('keyword_basic')) addStat('Basic Skill Damage');
     if (tags.includes('keyword_macabre')) addStat('Macabre Skill Damage');
     if (tags.includes('keyword_corruption')) addStat('Corruption Skill Damage');
-    if (tags.includes('keyword_summoning')) addStat('Summoning Skill Damage');
-
+    if (tags.some(t => t.includes('summon'))) {
+        addStat('Summoning Skill Damage');
+        addStat('Summoning Damage');
+        addStat('Summon Damage');
+        addStat('Minion Damage');
+    }
     // DoT Additives
     if (tags.includes('search_dot')) {
         addStat('Damage over Time');
