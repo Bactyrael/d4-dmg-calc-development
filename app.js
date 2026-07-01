@@ -4577,6 +4577,10 @@ function parseD4String(str, skillObj, currentRank) {
     if (skillObj.name === "Plunging Darkness") {
         str = str.replace(/\[\{dot:tooltip_dot\}[\s\.,\d]*?\]|\{dot:tooltip_dot\}/g, (3.0 * rankMult * 100).toFixed(1) + '%');
     }
+    if (skillObj.name === "Bone Storm") {
+        str = str.replace(/\[\{payload:tooltip_damage\}[\s\.,\d]*?\]|\{payload:tooltip_damage\}/g, (4.0 * rankMult * 100).toFixed(1) + '%');
+        str = str.replace(/\[\{payload:tooltip_damage_shadow\}[\s\.,\d]*?\]|\{payload:tooltip_damage_shadow\}/g, (4.0 * rankMult * 100).toFixed(1) + '%');
+    }
 
     let scalar = skillObj.baseDamageScalar || getBaseDamageScalarFor(skillObj.name);
     if (skillObj.name === "Unfinished Business") {

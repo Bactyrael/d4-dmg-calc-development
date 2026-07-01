@@ -2604,7 +2604,7 @@ const skillsDatabase = {
         "Skill_Bone",
         "Skill_Ultimate"
       ],
-      "baseDamageScalar": 1.8,
+      "baseDamageScalar": 0.2,
       "description": "{c_label}Cooldown:{/c} {c_resource}[{cooldown time}|2?|]{/c} seconds\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}40%{/c}\\n{/if}{if:GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0}{c_label}Essence Cost:{/c} {c_resource}[{resource cost}|2?|]{/c}\\nA swirling storm of bones appears at a target location and around your Golem, dealing {c_number}{if:AffixIsEquipped(616076)}[{payload:tooltip_damage_shadow}|2?|]{else}[{payload:tooltip_damage}|2?|]{/if}{/c} damage to surrounding enemies over {c_number}[{buffduration:bonestorm}|2?|]{/c} seconds.{/if}{if:(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?0:1}A swirling storm of bones appears around you and your Golem, dealing {c_number}{if:AffixIsEquipped(616076)}[{payload:tooltip_damage_shadow}|2?|]{else}[{payload:tooltip_damage}|2?|]{/if}{/c} damage to surrounding enemies over {c_number}[{buffduration:bonestorm}|2?|]{/c} seconds.{/if}",
       "maxRank": 15,
       "damageType": "Physical",
@@ -2629,7 +2629,12 @@ const skillsDatabase = {
           ],
           "description": "{c_important}Bone Storm{/c} becomes a {c_important}Darkness{/c} Skill that deals Shadow damage.\\n\\nEnemies damaged by it suffer an additional {c_number}[{payload:tooltip_dot_damage}|2?|]{/c} Corrupting damage over {c_number}2{/c} seconds.",
           "maxRank": 1,
-          "baseDamageScalar": 0.4
+          "secondaryScalars": {
+            "tooltip_dot_damage": {
+              "scalar": 0.4,
+              "addTags": ["Search_DoT"]
+            }
+          }
         },
         {
           "name": "Hungry Cyclone",
