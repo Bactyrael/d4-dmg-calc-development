@@ -7033,13 +7033,14 @@ function calculateSkillAdditiveBucket(skill) {
     const dType = (skill.damageType || '').toLowerCase();
     
     let bucket = 0;
+    let components = [];
     
     // Helper to safely add stat
     const addStat = (statName) => {
         if (stats[statName] && stats[statName].final) {
-            // Stats are typically stored as whole numbers (e.g., 50 for 50%), so divide by 100 for multiplier
-            // Wait, compiledStats might already be handled. Let's assume stats are e.g., 50 = 50%.
-            bucket += stats[statName].final / 100;
+            let val = stats[statName].final / 100;
+            bucket += val;
+            components.push({ name: statName, value: val });
         }
     };
 
@@ -7102,7 +7103,7 @@ function calculateSkillAdditiveBucket(skill) {
     // Fortify is a player state, assume 100% if they have fortify generation, but we'll just check if they have Max Life fortify
     // We'll leave conditional player states simple for now.
 
-    return bucket;
+    return { total: bucket, components: components };
 }
 
 function calculateSkillMultiplicativeBucket(skill) {
