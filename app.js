@@ -2450,7 +2450,6 @@ function renderEquipment(className, savedEquipment = {}) {
         if (intVal > 0) addStat(stats, 'Resistance to All Elements', intVal * 0.4, 'From Intelligence');
         if (willVal > 0) {
             addStat(stats, 'Healing Received', willVal * 0.035, 'From Willpower');
-            addStat(stats, 'Overpower Damage', willVal * 0.25, 'From Willpower');
         }
         if (dexVal > 0) addStat(stats, 'Dodge Chance', dexVal * 0.006, 'From Dexterity');
         
@@ -2541,7 +2540,6 @@ function renderEquipment(className, savedEquipment = {}) {
       if (statName === 'Intelligence') effects.push(`Increases Resistance to All Elements by +${(v * 0.4).toFixed(1)}`);
       if (statName === 'Willpower') {
           effects.push(`Increases Healing Received by +${(v * 0.035).toFixed(2)}%`);
-          effects.push(`Increases Overpower Damage by +${(v * 0.25).toFixed(1)}%`);
       }
       if (statName === 'Dexterity') effects.push(`Increases Dodge Chance by +${(v * 0.006).toFixed(3)}%`);
 
