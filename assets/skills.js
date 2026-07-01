@@ -2727,9 +2727,6 @@ const skillsDatabase = {
       "secondaryScalars": {
         "tooltip_damage": {
           "scalar": 4
-        },
-        "tooltip_damage_shadow": {
-          "scalar": 4
         }
       }
     },
