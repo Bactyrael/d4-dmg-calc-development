@@ -860,7 +860,10 @@ const skillsDatabase = {
       "maxRank": 15,
       "baseDamageScalar": 0.4,
       "secondaryScalars": {
-        "tooltip_dot": 2.1
+        "tooltip_dot": {
+          "scalar": 2.1,
+          "addTags": ["Search_DoT"]
+        }
       },
       "damageType": "Shadow",
       "modifiers": [
@@ -2330,7 +2333,10 @@ const skillsDatabase = {
           "description": "{c_important}Blood Wave{/c} becomes a {c_important}Darkness{/c} Skill that deals Shadow damage.\\n\\n{c_important}Blood Wave{/c} leaves behind a trail of {c_important}{u}Desecrated Ground{/c}{/u} as it travels that deals {c_number}[{dot:tooltip_dot}|2?|]{/c} Corrupting damage.",
           "maxRank": 1,
           "secondaryScalars": {
-            "tooltip_dot": 6
+            "tooltip_dot": {
+              "scalar": 6,
+              "addTags": ["Search_DoT"]
+            }
           }
         },
         {
@@ -2700,8 +2706,14 @@ const skillsDatabase = {
       "luckyHitChance": 2,
       "cooldown": 60,
       "secondaryScalars": {
-        "tooltip_damage": 4,
-        "tooltip_damage_shadow": 4
+        "tooltip_damage": {
+          "scalar": 4,
+          "addTags": ["Search_DoT"]
+        },
+        "tooltip_damage_shadow": {
+          "scalar": 4,
+          "addTags": ["Search_DoT"]
+        }
       }
     },
     {

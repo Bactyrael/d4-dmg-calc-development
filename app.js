@@ -7373,6 +7373,10 @@ function renderCalcSkills() {
                                     let scalarVal = typeof val === 'object' ? val.scalar : val;
                                     let secSkill = JSON.parse(JSON.stringify(modSkill));
                                     if (typeof val === 'object' && val.tags) secSkill.tags = [...val.tags];
+                                    if (typeof val === 'object' && val.addTags) {
+                                        secSkill.tags = secSkill.tags || [];
+                                        secSkill.tags.push(...val.addTags);
+                                    }
                                     secSkill.baseDamageScalar = scalarVal;
                                     let b2 = getSkillDamageBreakdown(secSkill, rank);
                                     let pct = (scalarVal * b2.rankMultiplier * 100).toFixed(1).replace('.0', '');
