@@ -4548,10 +4548,11 @@ function parseD4String(str, skillObj, currentRank) {
         str = str.replace(/\[\{buffduration:caster_skill_active\}[\s\.,\d]*?\]|\{buffduration:caster_skill_active\}/g, "8");
         str = str.replace(/\[\{dot:tooltip_total_damage\}[\s\.,\d]*?\]|\{dot:tooltip_total_damage\}/g, "300%");
     }
-    if (skillObj.name === "Blood Mist") {
+    if (skillObj.name === "Blood Mist" || skillObj.name === "Devouring Mist" || skillObj.name === "Blood Transfusion" || skillObj.name === "Blood Rush") {
         str = str.replace(/\[\{cooldown time\}[\s\.,\d]*?\]|\{cooldown time\}/g, "24");
         str = str.replace(/\[\{buffduration:mistform\}[\s\.,\d]*?\]|\{buffduration:mistform\}/g, "3");
-        str = str.replace(/\[\{dot:tooltip_dot\}[\s\.,\d]*?\]|\{dot:tooltip_dot\}/g, (0.35 * rankMult * 12 * 100).toFixed(1) + '%');
+        str = str.replace(/\[\{dot:tooltip_dot\}[\s\.,\d]*?\]|\{dot:tooltip_dot\}/g, (4.2 * rankMult * 100).toFixed(1) + '%');
+        str = str.replace(/\[\{dot:tooltip_dot_shadow\}[\s\.,\d]*?\]|\{dot:tooltip_dot_shadow\}/g, (0.5 * rankMult * 100).toFixed(1) + '%');
     }
     str = str.replace(/\[\{buffduration:buff_damage_reduction\}[\s\.,\d]*?\]|\{buffduration:buff_damage_reduction\}/g, "10");
     if (skillObj && skillObj.name === "Bone Prison") {
@@ -7371,7 +7372,7 @@ function renderCalcSkills() {
                               if (modSkill.baseDamageScalar) {
                                   let pct = (modSkill.baseDamageScalar * b.rankMultiplier * 100).toFixed(1).replace('.0', '');
                                   let addStr = Number(((b.additiveMult - 1) * 100).toFixed(6));
-                                  let baseLabel = (modSkill.name === 'Bone Storm') ? 'Per Tick Damage' : 'Damage';
+                                  let baseLabel = (['Bone Storm', 'Blood Mist', 'Devouring Mist', 'Blood Transfusion', 'Blood Rush'].includes(modSkill.name)) ? 'Per Tick Damage' : 'Damage';
                                   html += `<details style="margin-bottom: 4px;">
                                     <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none;">
                                       <span style="color: #555;">├</span> ${baseLabel} (${pct}%): <span style="color: #fff; font-weight: bold;">${b.minStr} - ${b.maxStr}</span>

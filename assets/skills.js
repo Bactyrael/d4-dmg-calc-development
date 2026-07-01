@@ -1733,6 +1733,11 @@ const skillsDatabase = {
       "description": "{c_label}Cooldown:{/c_label} {c_resource}[{cooldown time}|2?|]{/c_resource} seconds \\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}9%{/c}\\n{/if}Disperse into a bloody mist, becoming {c_important}{u}Immune{/u}{/c} for {c_number}[{buffduration:mistform}|2?|]{/c} seconds. You deal {c_number}[{dot:tooltip_dot}|2?|]{/c} damage to enemies and Heal for {c_number}[0.005*Table(34,sLevel)*12*100|1%|]{/c} of your Maximum Life {c_number}([Max(1,PlayerHealthMax()*(0.005*Table(34,sLevel)*12))|0|]){/c} over the duration.",
       "maxRank": 15,
       "damageType": "Physical",
+      "secondaryScalars": {
+        "tooltip_damage": {
+          "scalar": 4.2
+        }
+      },
       "modifiers": [
         {
           "name": "Devouring Mist",
@@ -1745,7 +1750,12 @@ const skillsDatabase = {
           ],
           "description": "{c_important}Blood Mist{/c} becomes a {c_important}Darkness{/c} Skill that deals Shadow damage.\\n\\n{c_important}Blood Mist{/c} now deals {c_number}[{dot:tooltip_dot_shadow}|2?|]{/c} Shadow damage over its duration and applies {c_important}{u}Vampiric Curse{/c}{/u} to enemies.",
           "maxRank": 1,
-          "baseDamageScalar": 0.5
+          "baseDamageScalar": 0.041666666666666664,
+          "secondaryScalars": {
+            "tooltip_damage_shadow": {
+              "scalar": 0.5
+            }
+          }
         },
         {
           "name": "Blood Rush",
