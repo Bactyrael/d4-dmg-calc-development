@@ -1744,7 +1744,8 @@ const skillsDatabase = {
             "Search_Shadow"
           ],
           "description": "{c_important}Blood Mist{/c} becomes a {c_important}Darkness{/c} Skill that deals Shadow damage.\\n\\n{c_important}Blood Mist{/c} now deals {c_number}[{dot:tooltip_dot_shadow}|2?|]{/c} Shadow damage over its duration and applies {c_important}{u}Vampiric Curse{/c}{/u} to enemies.",
-          "maxRank": 1
+          "maxRank": 1,
+          "baseDamageScalar": 6.0
         },
         {
           "name": "Blood Rush",
