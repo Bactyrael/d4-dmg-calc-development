@@ -7282,11 +7282,11 @@ function renderCalcSkills() {
     
     for (const cat in skillsDatabase) {
         skillsDatabase[cat].forEach(baseSkill => {
-            // Only render base skills that have points and a baseDamageScalar (which usually means they deal damage)
-            if (window.selectedSkills[baseSkill.name] > 0 && baseSkill.baseDamageScalar) {
+            const modSkill = typeof applyActiveModifiers === 'function' ? applyActiveModifiers(baseSkill) : baseSkill;
+            
+            // Render base skills that have points and deal damage (either base or via modified secondary scalars)
+            if (window.selectedSkills[baseSkill.name] > 0 && (modSkill.baseDamageScalar > 0 || (modSkill.secondaryScalars && Object.keys(modSkill.secondaryScalars).length > 0))) {
                 foundSkills++;
-                
-                const modSkill = typeof applyActiveModifiers === 'function' ? applyActiveModifiers(baseSkill) : baseSkill;
                 
                 const card = document.createElement('div');
                 card.className = 'd4-panel calc-skill-card';

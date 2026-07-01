@@ -1644,7 +1644,13 @@ const skillsDatabase = {
             "Subpower_DesecratedGround"
           ],
           "description": "{c_important}Bone Prison{/c} becomes a {c_important}Darkness{/c} Skill.\\n\\n{c_important}Bone Prison{/c} forms a Corpse every second and spawns a pool of {c_important}{u}Desecrated Ground{/c}{/u}, dealing {c_number}[{dot:tooltip_dot}|2?|]{/c} Corrupting damage.",
-          "maxRank": 1
+          "maxRank": 1,
+          "secondaryScalars": {
+            "tooltip_dot": {
+              "scalar": 0.525,
+              "addTags": ["Search_DoT"]
+            }
+          }
         },
         {
           "name": "Bramble",
