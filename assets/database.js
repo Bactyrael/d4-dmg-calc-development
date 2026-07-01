@@ -7938,7 +7938,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Tidal Aspect",
-      "desc": "Your Maximum Overpower is increased by [2 - 4] while you are Fortified.",
+      "desc": "Your Maximum Overpower is increased by [1 - 3] while you are Fortified.",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         0,
@@ -7950,7 +7950,7 @@ window.D4_DATABASE = {
         1,
         1
       ],
-      "maxValue": "4"
+      "maxValue": "3"
     },
     {
       "name": "Tides of Blood Aspect",
