@@ -2138,7 +2138,7 @@ function compileCharacterStats(equipped, autoStats) {
             if (window.selectedSkills['Pile the Bodies'] > 0) {
                 let curStack = window.skillSliderValues['Pile the Bodies'] !== undefined ? window.skillSliderValues['Pile the Bodies'] : 300;
                 if (curStack > 0) {
-                    addStat(stats, 'Skill: Army of the Dead Damage [x]', curStack, 'Pile the Bodies');
+                    addStat(stats, 'Skill: Army of the Dead (Pile the Bodies) Damage [x]', curStack, 'Pile the Bodies');
                 }
             }
         }
@@ -7279,7 +7279,9 @@ function calculateSkillMultiplicativeBucket(skill) {
             // Check if it applies to this skill
             let applies = false;
             
-            if (lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('darkness') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
+            let isSkillSpecific = lowerKey.startsWith('skill:');
+            
+            if (!isSkillSpecific && lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('darkness') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
                 // Generic damage multiplier (e.g. 20% [x] Damage)
                 applies = true;
             }
@@ -7306,14 +7308,25 @@ function calculateSkillMultiplicativeBucket(skill) {
             }
             
             // Universal Skill-Specific Multiplier Check
-            if (lowerKey === (skill.name.toLowerCase() + ' damage [x]')) {
+            if (lowerKey.startsWith('skill: ' + skill.name.toLowerCase())) {
                 applies = true;
             }
 
             if (applies) {
                 let valMult = (1 + (val / 100));
                 bucket *= valMult;
-                components.push({ name: key, value: valMult });
+                
+                let displayName = key;
+                if (lowerKey.startsWith('skill:')) {
+                    let match = key.match(/\(([^)]+)\)/);
+                    if (match && match[1]) {
+                        displayName = match[1] + ' [x]';
+                    } else {
+                        displayName = key.replace('Skill: ', '');
+                    }
+                }
+                
+                components.push({ name: displayName, value: valMult });
             }
         }
     }
