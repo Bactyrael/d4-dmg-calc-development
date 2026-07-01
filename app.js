@@ -2131,6 +2131,18 @@ function compileCharacterStats(equipped, autoStats) {
             }
         }
         
+        // Apply active Skill Modifiers (Variable Stacks / Sliders)
+        if (window.selectedSkills) {
+            window.skillSliderValues = window.skillSliderValues || {};
+            // Pile the Bodies (Up to 300%[x])
+            if (window.selectedSkills['Pile the Bodies'] > 0) {
+                let curStack = window.skillSliderValues['Pile the Bodies'] !== undefined ? window.skillSliderValues['Pile the Bodies'] : 300;
+                if (curStack > 0) {
+                    addStat(stats, 'Skill: Army of the Dead Damage [x]', curStack, 'Pile the Bodies');
+                }
+            }
+        }
+        
         let resourceName = 'Maximum Resource';
       const currClass = currentBuild.class || 'Necromancer';
       if (currClass === 'Necromancer') resourceName = 'Maximum Essence';
@@ -7292,6 +7304,11 @@ function calculateSkillMultiplicativeBucket(skill) {
             if ((lowerKey.includes('over time') || lowerKey.includes('dot')) && tags.includes('search_dot')) {
                 applies = true;
             }
+            
+            // Universal Skill-Specific Multiplier Check
+            if (lowerKey === (skill.name.toLowerCase() + ' damage [x]')) {
+                applies = true;
+            }
 
             if (applies) {
                 let valMult = (1 + (val / 100));
@@ -7317,6 +7334,31 @@ function renderCalcSkills() {
     if (typeof skillsDatabase === 'undefined' || !window.selectedSkills) {
         container.innerHTML += `<p style="color: #aaa; font-style: italic;">Allocate points in your Skill Tree into skills that deal damage to see them appear here.</p>`;
         return;
+    }
+
+    // Dynamic Skill Sliders
+    window.skillSliderValues = window.skillSliderValues || {};
+    let hasSliders = false;
+    let slidersHtml = `<div style="background: rgba(20,20,25,0.9); border: 1px solid #334; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+        <h4 style="margin: 0 0 10px 0; color: #aaa; font-size: 0.9em; text-transform: uppercase;">Variable Modifiers</h4>`;
+        
+    if (window.selectedSkills['Pile the Bodies'] > 0) {
+        hasSliders = true;
+        let curVal = window.skillSliderValues['Pile the Bodies'] !== undefined ? window.skillSliderValues['Pile the Bodies'] : 300;
+        slidersHtml += `
+        <div style="margin-bottom: 10px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <label style="color: #ccc; font-size: 0.85em;">Pile the Bodies (Army of the Dead)</label>
+                <span id="slider-val-pile" style="color: #c9a55c; font-size: 0.85em; font-weight: bold;">${curVal}%</span>
+            </div>
+            <input type="range" min="0" max="300" step="10" value="${curVal}" style="width: 100%; accent-color: #c9a55c;" 
+                   oninput="document.getElementById('slider-val-pile').innerText = this.value + '%'; window.skillSliderValues['Pile the Bodies'] = parseInt(this.value); window.calculate();">
+        </div>`;
+    }
+    slidersHtml += `</div>`;
+    
+    if (hasSliders) {
+        container.innerHTML += slidersHtml;
     }
 
     let foundSkills = 0;
@@ -7406,7 +7448,7 @@ function renderCalcSkills() {
                                         <div style="display: flex; align-items: center; gap: 5px;">
                                           <span style="color: #555;">└</span> Multiplicative Multiplier: <span style="color: #fff;">x${Number(b.multiMult.toFixed(6))}</span>
                                         </div>
-                                        ${(b.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
+                                        ${(b.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name.replace('Skill: ', '')}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
                                       </div>
                                     </div>
                                     <details style="margin-left: 20px; font-size: 0.9em; margin-bottom: 6px;">
@@ -7465,7 +7507,7 @@ function renderCalcSkills() {
                                           <div style="display: flex; align-items: center; gap: 5px;">
                                             <span style="color: #555;">└</span> Multiplicative Multiplier: <span style="color: #fff;">x${Number(b2.multiMult.toFixed(6))}</span>
                                           </div>
-                                          ${(b2.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
+                                          ${(b2.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name.replace('Skill: ', '')}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
                                         </div>
                                       </div>
                                       ${canCrit ? `
