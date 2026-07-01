@@ -870,8 +870,14 @@ const skillsDatabase = {
         {
           "name": "Volatile Blood",
           "description": "{c_important}Blight{/c} becomes a {c_important}Blood{/c} skill that deals Physical damage. \\n\\n{c_important}Blight's{/c} defiled area instantly bursts, dealing {c_number}[{payload:modc_damage}|2?|]{/c} damage.",
-          "baseDamageScalar": 3.15,
           "maxRank": 1,
+          "secondaryScalars": {
+            "tooltip_dot": null,
+            "modc_damage": {
+                "scalar": 3.15,
+                "addTags": ["Search_Damage", "Search_Physical"]
+            }
+          },
           "tags": [
             "Search_Damage",
             "Skill_Blood",
