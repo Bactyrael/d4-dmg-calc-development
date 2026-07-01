@@ -2726,12 +2726,10 @@ const skillsDatabase = {
       "cooldown": 60,
       "secondaryScalars": {
         "tooltip_damage": {
-          "scalar": 4,
-          "addTags": ["Search_DoT"]
+          "scalar": 4
         },
         "tooltip_damage_shadow": {
-          "scalar": 4,
-          "addTags": ["Search_DoT"]
+          "scalar": 4
         }
       }
     },

@@ -7362,9 +7362,10 @@ function renderCalcSkills() {
                               if (modSkill.baseDamageScalar) {
                                   let pct = (modSkill.baseDamageScalar * b.rankMultiplier * 100).toFixed(1).replace('.0', '');
                                   let addStr = Number(((b.additiveMult - 1) * 100).toFixed(6));
+                                  let baseLabel = (modSkill.name === 'Bone Storm') ? 'Per Tick Damage' : 'Damage';
                                   html += `<details style="margin-bottom: 4px;">
                                     <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none;">
-                                      <span style="color: #555;">├</span> Damage (${pct}%): <span style="color: #fff; font-weight: bold;">${b.minStr} - ${b.maxStr}</span>
+                                      <span style="color: #555;">├</span> ${baseLabel} (${pct}%): <span style="color: #fff; font-weight: bold;">${b.minStr} - ${b.maxStr}</span>
                                     </summary>
                                     <div style="margin-left: 20px; font-size: 0.9em; color: #aaa; margin-top: 6px; border-left: 1px solid #444; padding-left: 10px; margin-bottom: 6px;">
                                       <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
