@@ -7126,11 +7126,10 @@ function calculateSkillAdditiveBucket(skill) {
     }
 
     // Type Additives
-    if (dType === 'shadow' || tags.includes('skill_shadow') || tags.includes('search_shadow')) addStat('Shadow Damage');
+    if (dType === 'shadow' || tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness')) { addStat('Shadow Damage'); addStat('Darkness Damage'); }
     if (dType === 'physical' || tags.includes('skill_physical') || tags.includes('search_physical')) addStat('Physical Damage');
     if (dType === 'bone' || tags.includes('skill_bone') || tags.includes('search_bone')) addStat('Bone Damage');
     if (tags.includes('skill_blood')) addStat('Blood Damage');
-    if (tags.includes('skill_darkness')) addStat('Darkness Damage');
     if (dType === 'cold' || tags.includes('skill_cold') || tags.includes('search_cold')) addStat('Cold Damage');
     if (dType === 'poison' || tags.includes('skill_poison') || tags.includes('search_poison')) addStat('Poison Damage');
     if (dType === 'lightning' || tags.includes('skill_lightning') || tags.includes('search_lightning')) addStat('Lightning Damage');
@@ -7223,13 +7222,13 @@ function calculateSkillMultiplicativeBucket(skill) {
             // Check if it applies to this skill
             let applies = false;
             
-            if (lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
+            if (lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('darkness') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
                 // Generic damage multiplier (e.g. 20% [x] Damage)
                 applies = true;
             }
             
             if (lowerKey.includes('vulnerable') && conds.vulnerable) applies = true;
-            if (lowerKey.includes('shadow') && (tags.includes('skill_shadow') || tags.includes('search_shadow') || dType === 'shadow')) applies = true;
+            if ((lowerKey.includes('shadow') || lowerKey.includes('darkness')) && (tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || dType === 'shadow')) applies = true;
             if (lowerKey.includes('bone') && (tags.includes('skill_bone') || tags.includes('search_bone') || dType === 'bone')) applies = true;
             if (lowerKey.includes('blood') && tags.includes('skill_blood')) applies = true;
             if (lowerKey.includes('core') && tags.includes('keyword_core')) applies = true;
@@ -7240,7 +7239,7 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (lowerKey.includes('physical') && (tags.includes('skill_physical') || tags.includes('search_physical') || dType === 'physical')) applies = true;
             
             // Catch-all for purely generic aspect multipliers
-            if (!lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('shadow') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
+            if (!lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('shadow') && !lowerKey.includes('darkness') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
                 applies = true;
             }
             
