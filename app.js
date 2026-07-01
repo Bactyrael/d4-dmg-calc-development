@@ -7137,12 +7137,14 @@ function calculateSkillMultiplicativeBucket(skill) {
             }
 
             if (applies) {
-                bucket *= (1 + (val / 100));
+                let valMult = (1 + (val / 100));
+                bucket *= valMult;
+                components.push({ name: key, value: valMult });
             }
         }
     }
     
-    return bucket;
+    return { total: bucket, components: components };
 }
 
 function renderCalcSkills() {
