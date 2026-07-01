@@ -1578,6 +1578,11 @@ window.renderGlyphTooltip = function(glyphId, level, slotIndex) {
                 else val = 1.8;
             }
             
+            // Scourge S14 override
+            if (affixKey === 'ShadowDoTDamage_Intelligence_Main') {
+                val = 0.7 + (0.049 * (level - 1));
+            }
+            
             // Manual overrides for datamined JSON discrepancies
             const hotfixMultipliers = {
                 'Control': 2/3, // Nerfed in-game, JSON still has 1.5/0.1125
@@ -1585,8 +1590,7 @@ window.renderGlyphTooltip = function(glyphId, level, slotIndex) {
                 'Desecration': 0.99, // 9.9% base, caps at 65.2%
                 'Exhumation': 2/3, // Nerfed in-game, JSON still has 2.5/0.1875
                 'Mage': 2/3, // Nerfed in-game, JSON still has 2.0/0.15
-                'Scourge': 0.7 // Nerfed in-game, JSON still has 1.0/0.075
-            };
+                };
             
             if (hotfixMultipliers[g.name] && affixData.operation === 2) {
                 val = val * hotfixMultipliers[g.name];
