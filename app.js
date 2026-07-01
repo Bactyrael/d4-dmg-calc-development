@@ -7146,6 +7146,7 @@ function calculateSkillAdditiveBucket(skill) {
     // DoT Additives
     if (tags.includes('search_dot')) {
         addStat('Damage over Time');
+        addStat('Damage Over Time');
         if (dType === 'shadow' || tags.includes('skill_shadow')) addStat('Shadow Damage over Time');
         if (dType === 'poison' || tags.includes('skill_poison')) addStat('Poison Damage over Time');
         if (dType === 'fire' || tags.includes('skill_fire')) { addStat('Fire Damage over Time'); addStat('Burning Damage'); }
@@ -7221,7 +7222,7 @@ function calculateSkillMultiplicativeBucket(skill) {
             // Check if it applies to this skill
             let applies = false;
             
-            if (lowerKey.includes('damage') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
+            if (lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
                 // Generic damage multiplier (e.g. 20% [x] Damage)
                 applies = true;
             }
@@ -7238,7 +7239,7 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (lowerKey.includes('physical') && (tags.includes('skill_physical') || tags.includes('search_physical') || dType === 'physical')) applies = true;
             
             // Catch-all for purely generic aspect multipliers
-            if (!lowerKey.includes('damage') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('shadow') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
+            if (!lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('shadow') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
                 applies = true;
             }
             
@@ -7517,6 +7518,17 @@ function getSkillDamageBreakdown(skillObj, displayRank) {
         if (bmb && bmb.final > 0) {
             // Note: This applies strictly to enemies affected by curses, but as a generic multiplier we can assume it for the calculator
             critMultiMult *= (1 + (bmb.final / 100));
+        }
+
+        // Dynamically grab any generic Critical Strike Damage [x] multipliers
+        for (let key in window.D4_COMPILED_STATS) {
+            if (!window.D4_COMPILED_STATS.hasOwnProperty(key)) continue;
+            let stat = window.D4_COMPILED_STATS[key];
+            if (!stat || stat.final === 0) continue;
+            let lowerKey = key.toLowerCase();
+            if ((lowerKey.includes('[x]') || stat.isMultiplicative) && (lowerKey.includes('critical') || lowerKey.includes('crit '))) {
+                critMultiMult *= (1 + (stat.final / 100));
+            }
         }
     }
 
