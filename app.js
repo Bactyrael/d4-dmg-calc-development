@@ -2215,7 +2215,7 @@ function renderEquipment(className, savedEquipment = {}) {
                   let isCapstone = (item.capstoneBonus?.type === 'affix' && item.capstoneBonus?.idx === i);
                   const twoHandedMult = checkIs2H(item, slotName) ? 2 : 1;
                   const qMult = (baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0)) * twoHandedMult;
-                  addStat(stats, affixName, v * qMult, slotName);
+                  addStat(stats, cleanStatName(affixName), v * qMult, slotName);
               });
           }
           
@@ -2249,7 +2249,7 @@ function renderEquipment(className, savedEquipment = {}) {
                   let isCapstone = (item.capstoneBonus?.type === 'temper' && item.capstoneBonus?.idx === i);
                   const twoHandedMult = checkIs2H(item, slotName) ? 2 : 1;
                   const qMult = (baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0)) * twoHandedMult;
-                  addStat(stats, temperName, v * qMult, slotName);
+                  addStat(stats, cleanStatName(temperName), v * qMult, slotName);
               });
           }
           
