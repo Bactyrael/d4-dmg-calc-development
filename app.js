@@ -2099,7 +2099,7 @@ function renderEquipment(className, savedEquipment = {}) {
                 addStat(stats, 'Attack Speed', activeBuffs.ferocity * 5, 'Ferocity Stacks');
             }
             if (activeBuffs.overpower > 0) {
-                addStat(stats, 'Overpower Damage', activeBuffs.overpower * 15, 'Overpower Stacks');
+                addStat(stats, 'Damage Per Overpower Stack', activeBuffs.overpower * 15, 'Overpower Stacks');
             }
             if (activeBuffs.resolve > 0) {
                 addStat(stats, '% Armor', 25, 'Resolve Buff');
