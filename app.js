@@ -4956,8 +4956,8 @@ function applyActiveModifiers(baseSkillObj) {
                     modified.resourceCost = 50; // Added
                 }
                 
-                // Specific logic for Shadow And Bone: remove Bone tag
-                if (mod.name === "Shadow And Bone") {
+                // Specific logic for Shadow And Bone & Plunging Darkness: remove Bone tag
+                if (mod.name === "Shadow And Bone" || mod.name === "Plunging Darkness") {
                     modified.tags = modified.tags.filter(t => !t.toLowerCase().includes('bone'));
                 }
 
