@@ -4949,9 +4949,7 @@ function applyActiveModifiers(baseSkillObj) {
                 
                 // Override base damage scalar if provided (e.g., Blood Wave 500% -> 300%)
                 if (mod.baseDamageScalar !== undefined) {
-                    if (mod.name === "Hematolagnia") {
-                        modified.baseDamageScalar = mod.baseDamageScalar;
-                    }
+                    modified.baseDamageScalar = mod.baseDamageScalar;
                 }
                 
                 // Merge secondaryScalars if provided
