@@ -4964,6 +4964,9 @@ function applyActiveModifiers(baseSkillObj) {
                 // Specific logic for Devouring Mist: remove Blood tag
                 if (mod.name === "Devouring Mist") {
                     modified.tags = modified.tags.filter(t => !t.toLowerCase().includes('blood'));
+                    if (modified.secondaryScalars && modified.secondaryScalars.tooltip_damage) {
+                        delete modified.secondaryScalars.tooltip_damage;
+                    }
                 }
                 
                 // Override base damage scalar if provided (e.g., Blood Wave 500% -> 300%)
