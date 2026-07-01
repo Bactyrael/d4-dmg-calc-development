@@ -483,6 +483,31 @@ window.getCompiledParagonStats = function() {
                                   let gLvl = boardState.glyph.level || 1;
                                   let scalar = base + (perLvl * (gLvl - 1));
                                   
+                                  const hotfixMultipliers = {
+                                      'Control': 2/3,
+                                      'Darkness': 0.66,
+                                      'Exhumation': 2/3,
+                                      'Mage': 2/3,
+                                      'Desecration': 0.99
+                                  };
+                                  if (hotfixMultipliers[gData.name] && affixInfo.operation === 2) {
+                                      scalar = scalar * hotfixMultipliers[gData.name];
+                                  }
+                                  
+                                  if (affixKey === 'OverpowerDamage_Willpower_Side') {
+                                      if (gLvl < 12) scalar = 1.0;
+                                      else if (gLvl < 30) scalar = 1.1;
+                                      else if (gLvl < 48) scalar = 1.2;
+                                      else if (gLvl < 66) scalar = 1.3;
+                                      else if (gLvl < 84) scalar = 1.4;
+                                      else if (gLvl < 102) scalar = 1.5;
+                                      else if (gLvl < 120) scalar = 1.6;
+                                      else if (gLvl < 138) scalar = 1.7;
+                                      else scalar = 1.8;
+                                  } else if (affixKey === 'ShadowDoTDamage_Intelligence_Main') {
+                                      scalar = 0.7 + (0.049 * (gLvl - 1));
+                                  }
+                                  
                                   // Divide by 5 for per-point scaling
                                   let perPoint = scalar / 5;
                                   let rawValue = perPoint * purchased;
