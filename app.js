@@ -7108,7 +7108,6 @@ function calculateSkillAdditiveBucket(skill) {
 
     // Generic Additives
     addStat('Damage');
-    addStat('Skill Damage'); // Additive specific to skills
         if (stats['Damage Per Overpower Stack'] && stats['Damage Per Overpower Stack'].final) {
         let opStacks = 0;
         if (typeof getActiveBuffs === 'function') {
@@ -7449,11 +7448,6 @@ function getSkillDamageBreakdown(skillObj, displayRank) {
 
     let addData = typeof calculateSkillAdditiveBucket === 'function' ? calculateSkillAdditiveBucket(skillObj) : { total: 0, components: [] };
     let additiveMult = 1 + addData.total;
-    
-    // In our compile logic, main stat was incorrectly added to the additive 'Skill Damage' stat.
-    // We remove it here so it is purely multiplicative as per D4 math.
-    additiveMult -= (mainStatPct / 100);
-    if (additiveMult < 1) additiveMult = 1; // safety
 
     let multiData = typeof calculateSkillMultiplicativeBucket === 'function' ? calculateSkillMultiplicativeBucket(skillObj) : { total: 1, components: [] };
     let multiMult = multiData.total;
