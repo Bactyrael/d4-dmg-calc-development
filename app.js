@@ -7335,7 +7335,7 @@ function renderCalcSkills() {
                               let finalScalar = b.finalScalar;
 
                               if (modSkill.baseDamageScalar) {
-                                  let pct = (modSkill.baseDamageScalar * 100).toFixed(1).replace('.0', '');
+                                  let pct = (modSkill.baseDamageScalar * b.rankMultiplier * 100).toFixed(1).replace('.0', '');
                                   let addStr = Number(((b.additiveMult - 1) * 100).toFixed(6));
                                   html += `<details style="margin-bottom: 4px;">
                                     <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none;">
@@ -7371,7 +7371,7 @@ function renderCalcSkills() {
                                     if (typeof val === 'object' && val.tags) secSkill.tags = [...val.tags];
                                     secSkill.baseDamageScalar = scalarVal;
                                     let b2 = getSkillDamageBreakdown(secSkill, rank);
-                                    let pct = (scalarVal * b2.finalScalar * 100).toFixed(1).replace('.0', '');
+                                    let pct = (scalarVal * b2.rankMultiplier * 100).toFixed(1).replace('.0', '');
                                     let minStr = Math.floor(wpMin * scalarVal * b2.finalScalar).toLocaleString();
                                     let maxStr = Math.floor(wpMax * scalarVal * b2.finalScalar).toLocaleString();
                                     
