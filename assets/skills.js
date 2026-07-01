@@ -365,11 +365,15 @@ const skillsDatabase = {
           "secondaryScalars": {
             "shadow_explosion": {
               "scalar": 0.08,
-              "tags": ["Skill_Shadow", "Search_Shadow", "Search_Damage"]
+              "tags": ["Skill_Shadow", "Damage_Override_Shadow", "Search_Shadow", "Search_Damage"]
             }
           },
           "description": "{c_important}Bone Splinters{/c} becomes a {c_important}Darkness{/c} Skill that deals {c_number}[{payload:shadow_damage}|2?|]{/c} Shadow damage and seeks enemies. \\n\\nWhen a splinter hits an enemy it causes a burst of shadow, dealing an additional {c_number}[{payload:shadow_explosion}|2?|]{/c} damage.",
           "tags": [
+            "Skill_Shadow",
+            "Damage_Override_Shadow",
+            "Search_Shadow",
+            "Remove_Skill_Bone",
             "Search_Damage"
           ]
         },
@@ -869,7 +873,8 @@ const skillsDatabase = {
             "Search_Damage",
             "Skill_Blood",
             "Damage_Override_Physical",
-            "Search_Physical"
+            "Search_Physical",
+            "Remove_Skill_Shadow"
           ]
         },
         {

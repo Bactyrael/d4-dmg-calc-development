@@ -4988,6 +4988,12 @@ function applyActiveModifiers(baseSkillObj) {
             if (!modified.tags.some(t => t.toLowerCase() === 'skill_' + override.toLowerCase())) modified.tags.push('Skill_' + override);
             if (!modified.tags.some(t => t.toLowerCase() === 'search_' + override.toLowerCase())) modified.tags.push('Search_' + override);
         }
+        
+        const removeTags = lowerTags.filter(t => t.startsWith('remove_'));
+        removeTags.forEach(rt => {
+            const targetTag = rt.replace('remove_', '');
+            modified.tags = modified.tags.filter(t => t.toLowerCase() !== targetTag && t.toLowerCase() !== targetTag.replace('skill_', 'search_'));
+        });
     }
 
     return modified;
