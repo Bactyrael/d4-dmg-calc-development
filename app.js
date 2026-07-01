@@ -7027,7 +7027,6 @@ function getActiveConditions() {
         healthy: document.getElementById('cond-healthy')?.checked || false,
         injured: document.getElementById('cond-injured')?.checked || false,
         cc: document.getElementById('cond-cc')?.checked || false,
-        overpower: document.getElementById('cond-overpower')?.checked || false,
         monsterType: document.querySelector('input[name="monster_type"]:checked')?.value || 'elite'
     };
 }
@@ -7112,7 +7111,11 @@ function calculateSkillAdditiveBucket(skill) {
         addStat('Damage to Elites');
         addStat('Elite Damage');
     }
-    if (conds.overpower) {
+    let opStacks = 0;
+    if (typeof getActiveBuffs === 'function') {
+        opStacks = getActiveBuffs().overpower || 0;
+    }
+    if (opStacks > 0) {
         addStat('Overpower Damage');
     }
     
