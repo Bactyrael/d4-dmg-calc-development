@@ -2721,7 +2721,6 @@ const skillsDatabase = {
           "unk_b8f2b": -1
         }
       ],
-      "baseDamageScalar": 0.4,
       "luckyHitChance": 2,
       "cooldown": 60,
       "secondaryScalars": {
