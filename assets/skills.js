@@ -1647,7 +1647,7 @@ const skillsDatabase = {
           "maxRank": 1,
           "secondaryScalars": {
             "tooltip_dot": {
-              "scalar": 0.525,
+              "scalar": 3.0,
               "addTags": ["Search_DoT"]
             }
           }
