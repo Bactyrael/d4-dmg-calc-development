@@ -4993,6 +4993,13 @@ function applyActiveModifiers(baseSkillObj) {
                     }
                 }
                 
+                // Specific logic for Miasma: Convert to DoT
+                if (mod.name === "Miasma") {
+                    modified.secondaryScalars = modified.secondaryScalars || {};
+                    modified.secondaryScalars['miasma_dot_tooltip'] = modified.baseDamageScalar;
+                    modified.baseDamageScalar = null;
+                }
+                
                 // Override base damage scalar if provided (e.g., Blood Wave 500% -> 300%)
                 if (mod.baseDamageScalar !== undefined) {
                     modified.baseDamageScalar = mod.baseDamageScalar;
@@ -7312,7 +7319,7 @@ function calculateSkillMultiplicativeBucket(skill) {
             }
             
             // Explicit Damage over Time check
-            if ((lowerKey.includes('over time') || lowerKey.includes('dot')) && tags.includes('search_dot')) {
+            if ((lowerKey.includes('over time') || lowerKey.includes('dot')) && (tags.includes('search_dot') || tags.includes('search_shadowdot'))) {
                 applies = true;
             }
             
