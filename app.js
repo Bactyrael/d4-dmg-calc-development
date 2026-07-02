@@ -2423,6 +2423,10 @@ function compileCharacterStats(equipped, autoStats) {
                 } else if (currentBuild.bookOfTheDead.golems.spec === 'Blood Golem') {
                     addStat(stats, '% Maximum Life', 20 * sacMultiplier, 'Book of the Dead (Blood Golem Sacrifice)');
                 }
+            } else if (currentBuild.bookOfTheDead.golems?.node === '1') {
+                if (currentBuild.bookOfTheDead.golems.spec === 'Blood Golem') {
+                    addStat(stats, 'Skill: Golem (Blood Golem Upgrade 1) Damage [x]', 50, 'Book of the Dead (Blood Golem Upgrade 1)');
+                }
             }
         }
       
