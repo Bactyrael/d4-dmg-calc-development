@@ -5056,13 +5056,9 @@ function applyActiveModifiers(baseSkillObj) {
         let node = currentBuild.bookOfTheDead.golems?.node;
         
         if (spec === "Blood Golem" && node !== null) {
-            let activeScalar = 1.40;
-            if (typeof getActiveConditions === 'function' && getActiveConditions().golemSingleTarget) {
-                activeScalar *= 4.0;
-            }
             modified.secondaryScalars = modified.secondaryScalars || {};
             modified.secondaryScalars.active = {
-                scalar: activeScalar,
+                scalar: 1.40,
                 nameOverride: "Blood Golem Active"
             };
         }
@@ -7649,6 +7645,11 @@ function getSkillDamageBreakdown(skillObj, displayRank) {
 
     let multiData = typeof calculateSkillMultiplicativeBucket === 'function' ? calculateSkillMultiplicativeBucket(skillObj) : { total: 1, components: [] };
     let multiMult = multiData.total;
+    
+    if (skillObj.name === "Blood Golem Active" && typeof getActiveConditions === 'function' && getActiveConditions().golemSingleTarget) {
+        multiMult *= 4.0;
+        multiData.components.push({ name: 'Single Target (Blood Golem) [x]', value: 4.0 });
+    }
     
     let finalScalar = rankMultiplier * mainStatMult * additiveMult * multiMult;
 
