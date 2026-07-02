@@ -4998,7 +4998,7 @@ function applyActiveModifiers(baseSkillObj) {
     if (!baseSkillObj) return baseSkillObj;
     
     // Create a shallow clone to avoid mutating the master database
-    let modified = { ...baseSkillObj };
+    let modified = { ...baseSkillObj, baseName: baseSkillObj.name };
     if (baseSkillObj.tags) {
         modified.tags = [...baseSkillObj.tags];
     } else {
@@ -7230,7 +7230,7 @@ function getActiveBuffs() {
 }
 
 function calculateSkillAdditiveBucket(skill, isHit) {
-    if (isHit === undefined) isHit = !['Soulrift', 'Decompose', 'Blighted Corpse Explosion'].includes(skill.name);
+    if (isHit === undefined) isHit = !['Soulrift', 'Decompose', 'Blighted Corpse Explosion'].includes(skill.baseName || skill.name);
     if (!window.D4_COMPILED_STATS) return 0;
     const stats = window.D4_COMPILED_STATS;
     const conds = getActiveConditions();
@@ -7750,7 +7750,7 @@ function renderCalcSkills() {
 
 
 function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
-    if (isHit === undefined) isHit = !['Soulrift', 'Decompose', 'Blighted Corpse Explosion'].includes(skillObj.name);
+    if (isHit === undefined) isHit = !['Soulrift', 'Decompose', 'Blighted Corpse Explosion'].includes(skillObj.baseName || skillObj.name);
     let rank = displayRank || 1;
     let rankMultiplier = 1.0;
     if (rank > 1) {
