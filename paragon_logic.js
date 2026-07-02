@@ -309,7 +309,8 @@ const PARAM_TAG_MAP = {
     '-1745774146': 'Summon',
     '440313': 'Skeleton Mage',
     '439912': 'Skeleton Warrior',
-    '446956': 'Golem'
+    '446956': 'Golem',
+    '94190265': 'Desecration'
 };
 
 window.cleanAttributeDescription = function(desc, rawValue, attr) {
