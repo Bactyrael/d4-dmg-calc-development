@@ -2140,6 +2140,28 @@ function compileCharacterStats(equipped, autoStats) {
                 if (legPowers.includes('Paragon_Necro_Legendary_008')) {
                     addStat(stats, 'Flesh-eater Damage [x]', 60, 'Flesh-eater (Legendary Node)');
                 }
+                if (legPowers.includes('Paragon_Necro_Legendary_005')) {
+                    const sacrificialKey = Object.keys(stats).find(k => k.toLowerCase() === 'sacrificial aspect');
+                    const sacEffectiveness = sacrificialKey ? stats[sacrificialKey].final : 0;
+                    const sacMultiplier = 1 + (sacEffectiveness / 100);
+                    
+                    const sacrificeBase = 0.60 * sacMultiplier;
+                    const M = 1 + sacrificeBase; 
+                    
+                    const wNode = window.currentBuild?.bookOfTheDead?.warriors?.node;
+                    const mNode = window.currentBuild?.bookOfTheDead?.mages?.node;
+                    
+                    const isWSacrificed = (wNode === 'sacrifice');
+                    const isMSacrificed = (mNode === 'sacrifice');
+                    
+                    let finalVal = 100;
+                    if (isWSacrificed && isMSacrificed) {
+                        finalVal = Math.pow(M, 2) * 100;
+                    } else if (isWSacrificed || isMSacrificed) {
+                        finalVal = (1 + M) * 100;
+                    }
+                    addStat(stats, 'Hulking Monstrosity Damage [x]', finalVal, 'Hulking Monstrosity (Legendary Node)');
+                }
             }
         }
         
@@ -7384,7 +7406,7 @@ function calculateSkillMultiplicativeBucket(skill) {
             
             let isSkillSpecific = lowerKey.startsWith('skill:');
             
-            if (!isSkillSpecific && lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('darkness') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical') && !lowerKey.includes('wither') && !lowerKey.includes('frailty')) {
+            if (!isSkillSpecific && lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('darkness') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical') && !lowerKey.includes('wither') && !lowerKey.includes('frailty') && !lowerKey.includes('hulking monstrosity')) {
                 // Generic damage multiplier (e.g. 20% [x] Damage)
                 applies = true;
             }
@@ -7416,6 +7438,9 @@ function calculateSkillMultiplicativeBucket(skill) {
             }
             if (lowerKey === 'blood begets blood damage [x]') applies = true;
             if (lowerKey === 'frailty damage [x]' && conds.cursed) applies = true;
+            if (lowerKey === 'hulking monstrosity damage [x]') {
+                if (skill.name.toLowerCase().includes('golem')) applies = true;
+            }
             
             // Catch-all for purely generic aspect multipliers
             if (!lowerKey.includes('damage') && !lowerKey.includes('critical') && !isDotStat && !isShadowStat && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
