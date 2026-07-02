@@ -399,7 +399,9 @@ window.getGlyphNodeMultiplier = function(slotId, dataIdx, nData, attr) {
         if (!affixData) return;
         
         let isMatch = false;
-        if (affixData.affectedRarity && affixData.affectedRarity === nData.rarity) {
+        if (affixKey === 'Nodes_BonusToNormal' && nData.rarity === 0) {
+            isMatch = true;
+        } else if (affixData.affectedRarity && affixData.affectedRarity === nData.rarity) {
             isMatch = true;
         } else if (affixData.affectedAttributes && affixData.affectedAttributes.length > 0 && attr) {
             isMatch = affixData.affectedAttributes.some(a => {
