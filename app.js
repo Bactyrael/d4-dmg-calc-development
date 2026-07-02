@@ -5055,7 +5055,7 @@ function applyActiveModifiers(baseSkillObj) {
         let spec = currentBuild.bookOfTheDead.mages?.spec;
         let node = currentBuild.bookOfTheDead.mages?.node;
         
-        if (spec === "Cold" && Number(node) === 2) {
+        if (spec === "Cold Mage" && Number(node) === 2) {
             modified.secondaryScalars = modified.secondaryScalars || {};
             modified.secondaryScalars.dot = {
                 scalar: 2.0,
@@ -5127,11 +5127,11 @@ function showSkillTooltip(skillObj, e) {
         let node = currentBuild.bookOfTheDead.mages?.node;
         if (node !== null) {
             dynamicTags = dynamicTags.filter(t => !["Search_Bone", "Search_Blood", "Search_Darkness", "Search_Physical", "Search_Shadow", "Search_Cold", "Damage_Override_Physical", "Damage_Override_Shadow", "Damage_Override_Cold", "Skill_Bone", "Skill_Blood", "Skill_Shadow", "Skill_Cold"].includes(t));
-            if (spec === "Shadow") {
+            if (spec === "Shadow Mage") {
                 dynamicTags.push("Search_Shadow", "Search_Darkness", "Damage_Override_Shadow", "Skill_Shadow");
-            } else if (spec === "Cold") {
+            } else if (spec === "Cold Mage") {
                 dynamicTags.push("Search_Cold", "Damage_Override_Cold", "Skill_Cold");
-            } else if (spec === "Bone") {
+            } else if (spec === "Bone Mage") {
                 dynamicTags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
             }
         }
