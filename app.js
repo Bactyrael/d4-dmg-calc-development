@@ -3300,17 +3300,20 @@ function compileCharacterStats(equipped, autoStats) {
               }
               if (isBone) {
                   createMultiplicativeRow('Bone Graft (Legendary Node)', '60.00', true);
+                  compiledStats['Bone Graft (Legendary Node)'] = { final: 60.00, isMultiplicative: true };
               }
           }
           
           // Flesh-eater (Necromancer)
           if (legPowers.includes('Paragon_Necro_Legendary_008')) {
               createMultiplicativeRow('Flesh-eater (Legendary Node)', '60.00', true);
+              compiledStats['Flesh-eater (Legendary Node)'] = { final: 60.00, isMultiplicative: true };
           }
           
           // Scent of Death (Necromancer)
           if (legPowers.includes('Paragon_Necro_Legendary_007')) {
               createMultiplicativeRow('Scent of Death (Legendary Node)', '45.00', true);
+              compiledStats['Scent of Death (Legendary Node)'] = { final: 45.00, isMultiplicative: true };
           }
           
            
@@ -3318,6 +3321,7 @@ function compileCharacterStats(equipped, autoStats) {
           // Bloodbath (Necromancer)
           if (legPowers.includes('Paragon_Necro_Legendary_010')) {
               createMultiplicativeRow('Bloodbath (Legendary Node)', '80.00', true);
+              compiledStats['Bloodbath (Legendary Node)'] = { final: 80.00, isMultiplicative: true };
           }
       }
 
