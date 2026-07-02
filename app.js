@@ -7247,6 +7247,7 @@ function calculateSkillAdditiveBucket(skill, isHit) {
     
     let bucket = 0;
     let components = [];
+    let addedKeys = new Set();
     
     // Helper to safely add stat
     const addStat = (statName) => {
@@ -7254,10 +7255,11 @@ function calculateSkillAdditiveBucket(skill, isHit) {
         if (!stats[statName]) {
             actualKey = Object.keys(stats).find(k => k.toLowerCase() === statName.toLowerCase());
         }
-        if (actualKey && stats[actualKey] && stats[actualKey].final) {
+        if (actualKey && stats[actualKey] && stats[actualKey].final && !addedKeys.has(actualKey.toLowerCase())) {
             let val = stats[actualKey].final / 100;
             bucket += val;
             components.push({ name: actualKey, value: val });
+            addedKeys.add(actualKey.toLowerCase());
         }
     };
 
