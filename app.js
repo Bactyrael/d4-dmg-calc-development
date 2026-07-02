@@ -7407,9 +7407,9 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (lowerKey === 'reaper sacrifice damage [x]') {
                 applies = true;
             }
-            if (lowerKey === 'cold mage sacrifice [vulnerable] damage [x]' && conds.vulnerable) applies = true;
-            if (lowerKey === 'bone mage sacrifice [overpowered] damage [x]' && conds.overpower) applies = true;
-            if (lowerKey === 'iron golem sacrifice [crit damage] damage [x]' && conds.critical) applies = true;
+            if (lowerKey === 'cold mage sacrifice damage [x]' && conds.vulnerable) applies = true;
+            if (lowerKey === 'bone mage sacrifice damage [x]' && conds.overpower) applies = true;
+            if (lowerKey === 'iron golem sacrifice damage [x]' && conds.critical) applies = true;
             
             // Catch-all for purely generic aspect multipliers
             if (!lowerKey.includes('damage') && !lowerKey.includes('critical') && !isDotStat && !isShadowStat && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
