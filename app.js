@@ -3278,6 +3278,7 @@ function compileCharacterStats(equipped, autoStats) {
                   const cultBonus = Math.floor(attackSpeed / 20) * 40;
                   if (cultBonus > 0) {
                       createMultiplicativeRow('Cult Leader (Legendary Node)', cultBonus.toFixed(2), true);
+                      compiledStats['Cult Leader (Legendary Node)'] = { final: cultBonus, isMultiplicative: true };
                   }
               }
           }
@@ -7428,6 +7429,9 @@ function calculateSkillMultiplicativeBucket(skill) {
             }
             if (lowerKey === 'blood begets blood damage [x]') applies = true;
             if (lowerKey === 'frailty damage [x]' && conds.cursed) applies = true;
+            if (lowerKey.includes('cult leader')) {
+                if (tags.some(t => t.includes('summon')) || skill.name.toLowerCase().includes('golem') || skill.name.toLowerCase().includes('mage') || skill.name.toLowerCase().includes('warrior')) applies = true;
+            }
             if (lowerKey === 'hulking monstrosity damage [x]') {
                 if (skill.name.toLowerCase().includes('golem')) applies = true;
             }
