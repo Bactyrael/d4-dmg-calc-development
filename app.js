@@ -2140,7 +2140,6 @@ function compileCharacterStats(equipped, autoStats) {
                 if (legPowers.includes('Paragon_Necro_Legendary_008')) {
                     addStat(stats, 'Flesh-eater Damage [x]', 60, 'Flesh-eater (Legendary Node)');
                 }
-                }
             }
         }
         
@@ -3271,8 +3270,6 @@ function compileCharacterStats(equipped, autoStats) {
           // Scent of Death (Necromancer)
           if (legPowers.includes('Paragon_Necro_Legendary_007')) {
               createMultiplicativeRow('Scent of Death (Legendary Node)', '45.00', true);
-          }
-          
           }
           
           // Book of the Dead Multiplicative Sacrifices
