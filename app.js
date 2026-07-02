@@ -5121,6 +5121,14 @@ function showSkillTooltip(skillObj, e) {
             } else if (spec === "Bone") {
                 dynamicTags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
             }
+            
+            if (spec === "Cold" && Number(node) === 2) {
+                modified.secondaryScalars = modified.secondaryScalars || {};
+                modified.secondaryScalars.dot = {
+                    scalar: 2.0,
+                    tags: ["Search_Summoning", "Skill_Primary_Minion", "Keyword_Core", "Search_Cold", "Skill_Cold", "Search_DoT", "Damage_Override_Cold"]
+                };
+            }
         }
     }
     
