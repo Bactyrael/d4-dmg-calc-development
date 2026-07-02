@@ -2751,7 +2751,7 @@ const skillsDatabase = {
         "Search_Shadow",
         "Search_ShadowDOT"
       ],
-      "baseDamageScalar": 0.1,
+      "baseDamageScalar": 3.0,
       "description": "{c_label}Cooldown:{/c_label} {c_resource}[{cooldown time}|2?|]{/c_resource} seconds\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}{if:GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0}{c_label}Essence Cost:{/c} {c_resource}[{resource cost}|2?|]{/c}\\nConsume surrounding enemies, dealing {c_number}[{dot:tooltip_total_damage}|2?|]{/c} Corrupting damage over {c_number}[{buffduration:caster_skill_active}|2?|]{/c} seconds.\\n\\nEvery {c_number}0.25{/c} seconds of this duration, you absorb the souls of up to {c_number}3{/c} enemies, dealing {c_number}[{payload:soul_damage_core}|2?|]{/c} damage to them. You absorb {c_number}3{/c} souls at a time from Bosses.\\n\\n {c_important}Soulrifts{/c} stacks up to {c_number}10{/c} times.{else}Consume surrounding enemies, dealing {c_number}[{dot:tooltip_total_damage}|2?|]{/c} Corrupting damage over {c_number}[{buffduration:caster_skill_active}|2?|]{/c} seconds.\\n\\nEvery {c_number}0.25{/c} seconds you absorb the souls of {c_number}3{/c} enemies, gaining {c_number}[(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?0:2|2?|]{/c} Essence per enemy. You absorb {c_number}3{/c} souls at a time from Bosses.{/if}",
       "maxRank": 15,
       "modifiers": [
@@ -2772,7 +2772,7 @@ const skillsDatabase = {
           ],
           "description": "{c_important}Soulrift{/c} is cast at the target location. Absorbing an enemy's soul deals {c_number}[{payload:soul_absorb_damage}|2?|]{/c} damage and Pulls them in.",
           "maxRank": 1,
-          "baseDamageScalar": 0.25
+          "secondaryScalars": { "soul_absorb_damage": { "scalar": 0.25, "tags": ["Skill_Shadow", "Search_Damage", "Search_Shadow"] } }
         },
         {
           "name": "Frozen Wasteland",
@@ -2783,9 +2783,9 @@ const skillsDatabase = {
             "Keyword_Freeze",
             "Search_Cold"
           ],
-          "description": "{c_important}Soulrift{/c} deals Frostbite damage and {c_important}{u}Chills{/c}{/u} for {c_number}30%{/c} every second. \\n\\nIf {c_important}Soulrift{/c} absorbs the soul of a {c_important}{u}Frozen{/c}{/u} enemy, they shatter and explode for {c_number}[{payload:frozen_damage}|2?|]{/c} damage.",
+          "description": "{c_important}Soulrift{/c} deals Frostbite damage and {c_important}{u}Chills{/c}{/u} for {c_number}30%{/c} every second. \n\nIf {c_important}Soulrift{/c} absorbs the soul of a {c_important}{u}Frozen{/c}{/u} enemy, they shatter and explode for {c_number}[{payload:frozen_damage}|2?|]{/c} damage.",
           "maxRank": 1,
-          "baseDamageScalar": 0.75
+          "secondaryScalars": { "frozen_damage": { "scalar": 0.75, "tags": ["Damage_Override_Cold", "Search_Damage", "Search_Cold"] } }
         },
         {
           "name": "Damage Bonus",
