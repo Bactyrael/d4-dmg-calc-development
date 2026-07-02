@@ -7621,7 +7621,7 @@ function renderCalcSkills() {
                                         ${(b.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name.replace('Skill: ', '')}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
                                       </div>
                                     </div>
-                                    <details style="margin-left: 20px; font-size: 0.9em; margin-bottom: 6px;">
+                                    ${!b.isHit ? '' : `<details style="margin-left: 20px; font-size: 0.9em; margin-bottom: 6px;">
                                       <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #f9d85c;">
                                         <span style="color: #555;">└</span> Critical Hit: <span style="font-weight: bold;">${b.critStrMin} - ${b.critStrMax}</span>
                                       </summary>
@@ -7629,12 +7629,12 @@ function renderCalcSkills() {
                                         <div style="font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; margin-bottom: 2px;">
                                           <span style="color: #555;">├</span> Base Critical Multiplier: x1.5
                                         </div>
-                                        ${(b.critMultiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
+                                        ${(b.critMultiplicativeComponents || []).map(comp => \`<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: x${Number(comp.value.toFixed(6))}</div>\`).join('')}
                                         <div style="font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; margin-top: 2px;">
                                           <span style="color: #555;">├</span> Additive Critical Bonus: +${Number(((b.critAdditiveMult - b.additiveMult) * 100).toFixed(1))}%
                                         </div>
                                       </div>
-                                    </details>
+                                    </details>`}
                                   </details>`;
                               }
                             if (modSkill.secondaryScalars) {
