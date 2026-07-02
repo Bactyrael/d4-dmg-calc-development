@@ -4123,28 +4123,57 @@ function compileCharacterStats(equipped, autoStats) {
       }
           
       // Calculation Sub-tabs logic
+      // Load saved conditions first
+      try {
+          const savedConds = JSON.parse(localStorage.getItem('d4_calc_conditions') || '{}');
+          document.querySelectorAll('.calc-condition, .calc-buff, .calc-monster-type').forEach(el => {
+              if (savedConds[el.id] !== undefined) {
+                  if (el.type === 'checkbox' || el.type === 'radio') {
+                      el.checked = savedConds[el.id];
+                  } else if (el.type === 'number') {
+                      el.value = savedConds[el.id];
+                  }
+              }
+          });
+      } catch(e) {}
+
       document.querySelectorAll('.calc-condition').forEach(chk => {
-    chk.addEventListener('change', () => {
-      if (typeof renderCalcSkills === 'function') renderCalcSkills();
-    });
-    
-    document.querySelectorAll('.calc-buff, .calc-monster-type').forEach(el => {
-      if (el.type === 'number') {
-        el.addEventListener('input', function() {
-          let val = parseInt(this.value);
-          let max = parseInt(this.getAttribute('max'));
-          let min = parseInt(this.getAttribute('min'));
-          if (isNaN(val)) return;
-          if (!isNaN(max) && val > max) this.value = max;
-          if (!isNaN(min) && val < min) this.value = min;
-        });
-      }
-      el.addEventListener('change', () => {
-        saveBuild();
-        if (typeof renderCalcSkills === 'function') renderCalcSkills();
+          chk.addEventListener('change', () => {
+              saveConditions();
+              if (typeof renderCalcSkills === 'function') renderCalcSkills();
+          });
       });
-    });
-  });
+      
+      document.querySelectorAll('.calc-buff, .calc-monster-type').forEach(el => {
+          if (el.type === 'number') {
+              el.addEventListener('input', function() {
+                  let val = parseInt(this.value);
+                  let max = parseInt(this.getAttribute('max'));
+                  let min = parseInt(this.getAttribute('min'));
+                  if (isNaN(val)) return;
+                  if (!isNaN(max) && val > max) this.value = max;
+                  if (!isNaN(min) && val < min) this.value = min;
+              });
+          }
+          el.addEventListener('change', () => {
+              saveConditions();
+              saveBuild();
+              if (typeof renderCalcSkills === 'function') renderCalcSkills();
+          });
+      });
+      
+      function saveConditions() {
+          const state = {};
+          document.querySelectorAll('.calc-condition, .calc-buff, .calc-monster-type').forEach(el => {
+              if (!el.id) return;
+              if (el.type === 'checkbox' || el.type === 'radio') {
+                  state[el.id] = el.checked;
+              } else if (el.type === 'number') {
+                  state[el.id] = el.value;
+              }
+          });
+          localStorage.setItem('d4_calc_conditions', JSON.stringify(state));
+      }
 
   document.querySelectorAll('.calc-nav-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
