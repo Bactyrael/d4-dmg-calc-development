@@ -7228,10 +7228,14 @@ function calculateSkillAdditiveBucket(skill) {
     
     // Helper to safely add stat
     const addStat = (statName) => {
-        if (stats[statName] && stats[statName].final) {
-            let val = stats[statName].final / 100;
+        let actualKey = statName;
+        if (!stats[statName]) {
+            actualKey = Object.keys(stats).find(k => k.toLowerCase() === statName.toLowerCase());
+        }
+        if (actualKey && stats[actualKey] && stats[actualKey].final) {
+            let val = stats[actualKey].final / 100;
             bucket += val;
-            components.push({ name: statName, value: val });
+            components.push({ name: actualKey, value: val });
         }
     };
 
