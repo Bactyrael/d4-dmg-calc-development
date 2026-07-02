@@ -7300,6 +7300,9 @@ function calculateSkillAdditiveBucket(skill) {
         addStat('Summoning Damage');
         addStat('Summon Damage');
         addStat('Minion Damage');
+        if (skill.name && skill.name.toLowerCase().includes('golem')) addStat('Golem Damage');
+        if (skill.name && skill.name.toLowerCase().includes('mage')) addStat('Skeletal Mage Damage');
+        if (skill.name && skill.name.toLowerCase().includes('warrior')) addStat('Skeletal Warrior Damage');
     }
     // DoT Additives
     if (tags.includes('search_dot') || tags.includes('search_shadowdot')) {
