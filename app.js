@@ -7466,6 +7466,7 @@ function calculateSkillMultiplicativeBucket(skill) {
             }
             if (lowerKey === 'cold mage sacrifice damage [x]' && conds.vulnerable) applies = true;
             if (lowerKey === 'bone mage sacrifice damage [x]' && buffs.overpower > 0) applies = true;
+            if (lowerKey === 'bloodbath (legendary node)' && buffs.overpower > 0) applies = true;
             if (lowerKey === 'iron golem sacrifice damage [x]' && conds.critical) applies = true;
             
             // Catch-all for purely generic aspect multipliers
