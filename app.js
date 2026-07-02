@@ -5309,7 +5309,7 @@ function showSkillTooltip(skillObj, e) {
               </div>
             </details>
             <div style="font-size: 0.95rem; color: #c9a55c; margin-bottom: 5px; margin-top: 5px; display: flex; justify-content: space-between; font-weight: bold; border-top: 1px solid #333; padding-top: 5px;">
-              <span>Final Damage:</span> <span>${b.minStr} - ${b.maxStr}</span>
+              <span>${!b.isHit ? 'DoT Damage' : 'Final Damage'}:</span> <span>${b.minStr} - ${b.maxStr}</span>
             </div>
             ${!b.isHit ? '' : `<div style="font-size: 0.95rem; color: #f9d85c; margin-bottom: 5px; display: flex; justify-content: space-between; font-weight: bold;">\n              <span>Critical Hit:</span> <span>${b.critStrMin} - ${b.critStrMax}</span>\n            </div>`}
         `;
@@ -7599,7 +7599,7 @@ function renderCalcSkills() {
                               if (modSkill.baseDamageScalar) {
                                   let pct = (modSkill.baseDamageScalar * b.rankMultiplier * 100).toFixed(1).replace('.0', '');
                                   let addStr = Number(((b.additiveMult - 1) * 100).toFixed(6));
-                                  let baseLabel = (['Bone Storm', 'Blood Mist', 'Devouring Mist', 'Blood Transfusion', 'Blood Rush'].includes(modSkill.name)) ? 'Per Tick Damage' : 'Damage';
+                                  let baseLabel = (['Bone Storm', 'Blood Mist', 'Devouring Mist', 'Blood Transfusion', 'Blood Rush'].includes(modSkill.name)) ? 'Per Tick Damage' : (!b.isHit ? 'DoT Damage' : 'Damage');
                                   html += `<details style="margin-bottom: 4px;">
                                     <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none;">
                                       <span style="color: #555;">├</span> ${baseLabel} (${pct}%): <span style="color: #fff; font-weight: bold;">${b.minStr} - ${b.maxStr}</span>
