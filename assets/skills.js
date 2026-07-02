@@ -2029,7 +2029,14 @@ const skillsDatabase = {
             "Subpower_DesecratedGround"
           ],
           "description": "{c_important}Bone Spirit{/c} becomes a {c_important}Darkness{/c} Skill that deals Shadow damage.\\n\\n{c_important}Bone Spirit{/c} leaves behind a pool of {c_important}{u}Desecrated Ground{/c}{/u} when it explodes, dealing {c_number}[{dot:tooltip_dot}|2?|]{/c} Corrupting damage.",
-          "maxRank": 1
+          "maxRank": 1,
+          "secondaryScalars": {
+            "tooltip_dot": {
+              "scalar": 2.5,
+              "isHit": false,
+              "nameOverride": "Unfinished Business"
+            }
+          }
         },
         {
           "name": "Astral Projection",
