@@ -5309,9 +5309,7 @@ function showSkillTooltip(skillObj, e) {
             <div style="font-size: 0.95rem; color: #c9a55c; margin-bottom: 5px; margin-top: 5px; display: flex; justify-content: space-between; font-weight: bold; border-top: 1px solid #333; padding-top: 5px;">
               <span>Final Damage:</span> <span>${b.minStr} - ${b.maxStr}</span>
             </div>
-            <div style="font-size: 0.95rem; color: #f9d85c; margin-bottom: 5px; display: flex; justify-content: space-between; font-weight: bold;">
-              <span>Critical Hit:</span> <span>${b.critStrMin} - ${b.critStrMax}</span>
-            </div>
+            ${!b.isHit ? '' : `<div style="font-size: 0.95rem; color: #f9d85c; margin-bottom: 5px; display: flex; justify-content: space-between; font-weight: bold;">\n              <span>Critical Hit:</span> <span>${b.critStrMin} - ${b.critStrMax}</span>\n            </div>`}
         `;
     }
 
@@ -7231,7 +7229,8 @@ function getActiveBuffs() {
     };
 }
 
-function calculateSkillAdditiveBucket(skill) {
+function calculateSkillAdditiveBucket(skill, isHit) {
+    if (isHit === undefined) isHit = !['Soulrift', 'Decompose', 'Blighted Corpse Explosion'].includes(skill.name);
     if (!window.D4_COMPILED_STATS) return 0;
     const stats = window.D4_COMPILED_STATS;
     const conds = getActiveConditions();
@@ -7264,7 +7263,7 @@ function calculateSkillAdditiveBucket(skill) {
 
     // Generic Additives
     addStat('Damage');
-        if (stats['Damage Per Overpower Stack'] && stats['Damage Per Overpower Stack'].final) {
+        if (isHit && stats['Damage Per Overpower Stack'] && stats['Damage Per Overpower Stack'].final) {
         let opStacks = 0;
         if (typeof getActiveBuffs === 'function') {
             let activeBuffs = getActiveBuffs();
@@ -7317,7 +7316,7 @@ function calculateSkillAdditiveBucket(skill) {
         if (skill.name && skill.name.toLowerCase().includes('warrior')) { addStat('Skeletal Warrior Damage'); addStat('Skeleton Warrior Damage'); }
     }
     // DoT Additives
-    if (tags.includes('search_dot') || tags.includes('search_shadowdot')) {
+    if (!isHit) {
         addStat('Damage over Time');
         addStat('Damage Over Time');
         if (dType === 'shadow' || tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || tags.includes('search_darkness')) { addStat('Shadow Damage over Time'); addStat('Shadow Damage Over Time'); }
@@ -7648,7 +7647,8 @@ function renderCalcSkills() {
                                         secSkill.name = val.nameOverride;
                                     }
                                     secSkill.baseDamageScalar = scalarVal;
-                                    let b2 = getSkillDamageBreakdown(secSkill, rank);
+                                    let isHit = !key.toLowerCase().includes('dot');
+                                    let b2 = getSkillDamageBreakdown(secSkill, rank, isHit);
                                     let pct = (scalarVal * b2.rankMultiplier * 100).toFixed(1).replace('.0', '');
                                     let minStr = Math.floor(wpMin * scalarVal * b2.finalScalar).toLocaleString();
                                     let maxStr = Math.floor(wpMax * scalarVal * b2.finalScalar).toLocaleString();
@@ -7746,7 +7746,8 @@ function renderCalcSkills() {
 }
 
 
-function getSkillDamageBreakdown(skillObj, displayRank) {
+function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
+    if (isHit === undefined) isHit = !['Soulrift', 'Decompose', 'Blighted Corpse Explosion'].includes(skillObj.name);
     let rank = displayRank || 1;
     let rankMultiplier = 1.0;
     if (rank > 1) {
@@ -7776,7 +7777,7 @@ function getSkillDamageBreakdown(skillObj, displayRank) {
     let mainStatPct = statVal * factor;
     let mainStatMult = 1 + (mainStatPct / 100);
 
-    let addData = typeof calculateSkillAdditiveBucket === 'function' ? calculateSkillAdditiveBucket(skillObj) : { total: 0, components: [] };
+    let addData = typeof calculateSkillAdditiveBucket === 'function' ? calculateSkillAdditiveBucket(skillObj, isHit) : { total: 0, components: [] };
     let additiveMult = 1 + addData.total;
 
     let multiData = typeof calculateSkillMultiplicativeBucket === 'function' ? calculateSkillMultiplicativeBucket(skillObj) : { total: 1, components: [] };
@@ -7864,6 +7865,7 @@ function getSkillDamageBreakdown(skillObj, displayRank) {
         maxStr: maxDmg.toLocaleString(),
         rankMultiplier,
         critStrMin,
+        isHit: isHit,
         critStrMax,
         critMultiMult,
         critAdditiveMult,
