@@ -2428,12 +2428,6 @@ function compileCharacterStats(equipped, autoStats) {
                     addStat(stats, 'Skill: Golem (Blood Golem Upgrade 1) Damage [x]', 50, 'Book of the Dead (Blood Golem Upgrade 1)');
                 }
             }
-            
-            if (currentBuild.bookOfTheDead.golems?.spec === 'Blood Golem' && currentBuild.bookOfTheDead.golems?.node !== null) {
-                if (getActiveConditions().golemSingleTarget) {
-                    addStat(stats, 'Skill: Blood Golem Active Damage [x]', 300, 'Blood Golem Active (Single Target)');
-                }
-            }
         }
       
       // Post-Compilation Step: Additive Percent Modifiers
@@ -5062,9 +5056,13 @@ function applyActiveModifiers(baseSkillObj) {
         let node = currentBuild.bookOfTheDead.golems?.node;
         
         if (spec === "Blood Golem" && node !== null) {
+            let activeScalar = 1.40;
+            if (typeof getActiveConditions === 'function' && getActiveConditions().golemSingleTarget) {
+                activeScalar *= 4.0;
+            }
             modified.secondaryScalars = modified.secondaryScalars || {};
             modified.secondaryScalars.active = {
-                scalar: 1.40,
+                scalar: activeScalar,
                 nameOverride: "Blood Golem Active"
             };
         }
