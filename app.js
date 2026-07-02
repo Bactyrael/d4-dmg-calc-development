@@ -2140,27 +2140,6 @@ function compileCharacterStats(equipped, autoStats) {
                 if (legPowers.includes('Paragon_Necro_Legendary_008')) {
                     addStat(stats, 'Flesh-eater Damage [x]', 60, 'Flesh-eater (Legendary Node)');
                 }
-                if (legPowers.includes('Paragon_Necro_Legendary_005')) {
-                    const sacrificialKey = Object.keys(stats).find(k => k.toLowerCase() === 'sacrificial aspect');
-                    const sacEffectiveness = sacrificialKey ? stats[sacrificialKey].final : 0;
-                    const sacMultiplier = 1 + (sacEffectiveness / 100);
-                    
-                    const sacrificeBase = 0.60 * sacMultiplier;
-                    const M = 1 + sacrificeBase; 
-                    
-                    const wNode = window.currentBuild?.bookOfTheDead?.warriors?.node;
-                    const mNode = window.currentBuild?.bookOfTheDead?.mages?.node;
-                    
-                    const isWSacrificed = (wNode === 'sacrifice');
-                    const isMSacrificed = (mNode === 'sacrifice');
-                    
-                    let finalVal = 100;
-                    if (isWSacrificed && isMSacrificed) {
-                        finalVal = Math.pow(M, 2) * 100;
-                    } else if (isWSacrificed || isMSacrificed) {
-                        finalVal = (1 + M) * 100;
-                    }
-                    addStat(stats, 'Hulking Monstrosity Damage [x]', finalVal, 'Hulking Monstrosity (Legendary Node)');
                 }
             }
         }
@@ -2465,6 +2444,33 @@ function compileCharacterStats(equipped, autoStats) {
                 if (currentBuild.bookOfTheDead.golems.spec === 'Blood Golem') {
                     addStat(stats, 'Skill: Golem (Blood Golem Upgrade 1) Damage [x]', 50, 'Book of the Dead (Blood Golem Upgrade 1)');
                 }
+            }
+        }
+        
+        // Paragon Nodes that rely on Book of the Dead / Items
+        if (currentBuild?.paragon) {
+            const legPowers = typeof getActiveLegendaryPowers === 'function' ? getActiveLegendaryPowers() : [];
+            if (legPowers.includes('Paragon_Necro_Legendary_005')) {
+                const sacrificialKey = Object.keys(stats).find(k => k.toLowerCase() === 'sacrificial aspect');
+                const sacEffectiveness = sacrificialKey ? stats[sacrificialKey].final : 0;
+                const sacMultiplier = 1 + (sacEffectiveness / 100);
+                
+                const sacrificeBase = 0.60 * sacMultiplier;
+                const M = 1 + sacrificeBase; 
+                
+                const wNode = currentBuild.bookOfTheDead?.warriors?.node;
+                const mNode = currentBuild.bookOfTheDead?.mages?.node;
+                
+                const isWSacrificed = (wNode === 'sacrifice');
+                const isMSacrificed = (mNode === 'sacrifice');
+                
+                let finalVal = 100;
+                if (isWSacrificed && isMSacrificed) {
+                    finalVal = Math.pow(M, 2) * 100;
+                } else if (isWSacrificed || isMSacrificed) {
+                    finalVal = (1 + M) * 100;
+                }
+                addStat(stats, 'Hulking Monstrosity Damage [x]', finalVal, 'Hulking Monstrosity (Legendary Node)');
             }
         }
       
@@ -3267,48 +3273,6 @@ function compileCharacterStats(equipped, autoStats) {
               createMultiplicativeRow('Scent of Death (Legendary Node)', '45.00', true);
           }
           
-          // Wither (Necromancer)
-          if (legPowers.includes('Paragon_Necro_Legendary_016')) {
-              createMultiplicativeRow('Wither (Legendary Node)', '60.00', true);
-          }
-          
-          // Frailty (Necromancer)
-          if (legPowers.includes('Paragon_Necro_Legendary_018')) {
-              createMultiplicativeRow('Frailty (Legendary Node)', '60.00', true);
-          }
-          
-          // Hulking Monstrosity (Necromancer)
-          if (legPowers.includes('Paragon_Necro_Legendary_005')) {
-              // Find Sacrificial Aspect effectiveness
-              const sacrificialKey = Object.keys(compiledStats).find(k => k.toLowerCase() === 'sacrificial aspect');
-              const sacEffectiveness = sacrificialKey ? compiledStats[sacrificialKey].final : 0;
-              const sacMultiplier = 1 + (sacEffectiveness / 100);
-              
-              const sacrificeBase = 0.60 * sacMultiplier;
-              const M = 1 + sacrificeBase; // "M" multiplier for one sacrifice
-              
-              const wNode = currentBuild.bookOfTheDead?.warriors?.node;
-              const mNode = currentBuild.bookOfTheDead?.mages?.node;
-              
-              const isWSacrificed = (wNode === 'sacrifice');
-              const isMSacrificed = (mNode === 'sacrifice');
-              
-              let finalRowValue = 100; // Base 100% if no sacrifices
-              
-              if (isWSacrificed && isMSacrificed) {
-                  // Both Sacrificed: M^2
-                  finalRowValue = Math.pow(M, 2) * 100;
-              } else if (isWSacrificed || isMSacrificed) {
-                  // Only one sacrificed: (1 + M)
-                  finalRowValue = (1 + M) * 100;
-              }
-              
-              createMultiplicativeRow('Hulking Monstrosity (Legendary Node)', finalRowValue.toFixed(2), true);
-          }
-          
-          // Blood Begets Blood (Necromancer)
-          if (legPowers.includes('Paragon_Necro_Legendary_011')) {
-              createMultiplicativeRow('Blood Begets Blood (Legendary Node)', '60.00', true);
           }
           
           // Book of the Dead Multiplicative Sacrifices
