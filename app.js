@@ -2128,6 +2128,9 @@ function compileCharacterStats(equipped, autoStats) {
                 if (legPowers.includes('Paragon_Necro_Legendary_007')) {
                     addStat(stats, 'Universal Damage Reduction %', 15, 'Scent of Death (Legendary Node)');
                 }
+                if (legPowers.includes('Paragon_Necro_Legendary_016')) {
+                    addStat(stats, 'Wither Damage [x]', 60, 'Wither (Legendary Node)');
+                }
             }
         }
         
@@ -7367,6 +7370,11 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (lowerKey.includes('poison') && (tags.includes('skill_poison') || tags.includes('search_poison') || dType === 'poison')) applies = true;
             if (lowerKey.includes('lightning') && (tags.includes('skill_lightning') || tags.includes('search_lightning') || dType === 'lightning')) applies = true;
             if (lowerKey.includes('physical') && (tags.includes('skill_physical') || tags.includes('search_physical') || dType === 'physical')) applies = true;
+            
+            if (lowerKey === 'wither damage [x]') {
+                if (tags.includes('skill_darkness') || tags.includes('search_darkness') || tags.includes('skill_shadow') || tags.includes('search_shadow') || dType === 'shadow') applies = true;
+                if (tags.includes('skill_cold') || tags.includes('search_cold') || dType === 'cold') applies = true;
+            }
             
             // Catch-all for purely generic aspect multipliers
             if (!lowerKey.includes('damage') && !lowerKey.includes('critical') && !isDotStat && !isShadowStat && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
