@@ -5462,6 +5462,7 @@ function renderSkills() {
                   
                   updateDisplay();
                   if (typeof recalculate === 'function') recalculate();
+                  if (typeof saveBuild === 'function') saveBuild();
                   showSkillTooltip(skillObj, e);
               }
           };
@@ -5491,6 +5492,7 @@ function renderSkills() {
                   }
                   updateDisplay();
                   if (typeof recalculate === 'function') recalculate();
+                  if (typeof saveBuild === 'function') saveBuild();
                   showSkillTooltip(skillObj, e);
               }
           };
@@ -5551,6 +5553,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       if (window.selectedSkills[name] === 0) delete window.selectedSkills[name]; 
       updateDisplay(); 
       if (typeof recalculate === 'function') recalculate(); 
+      if (typeof saveBuild === 'function') saveBuild();
     } 
   }; 
   plusBtn.onclick = () => { 
@@ -5567,6 +5570,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       window.selectedSkills[name] = current + 1; 
       updateDisplay(); 
       if (typeof recalculate === 'function') recalculate(); 
+      if (typeof saveBuild === 'function') saveBuild();
     } 
   }; 
   updateDisplay(); 
