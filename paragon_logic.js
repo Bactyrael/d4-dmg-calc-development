@@ -283,8 +283,12 @@ window.getActiveLegendaryPowers = function() {
         
         let nodeName = bData.nodes[dataIdx];
         let nodeInfo = window.D4_PARAGON_DATA.paragonNodes[nodeName];
-        if (nodeInfo && nodeInfo.power) {
-            powers.push(nodeInfo.power);
+        if (nodeInfo) {
+            if (nodeInfo.power) {
+                powers.push(nodeInfo.power);
+            } else if (nodeName.includes('Legendary')) {
+                powers.push(nodeName);
+            }
         }
     });
 
