@@ -7332,6 +7332,7 @@ function calculateSkillAdditiveBucket(skill) {
 function calculateSkillMultiplicativeBucket(skill) {
     if (!window.D4_COMPILED_STATS) return 1;
     const stats = window.D4_COMPILED_STATS;
+    const buffs = getActiveBuffs();
     const conds = getActiveConditions();
     const tags = (skill.tags || []).map(t => t.toLowerCase());
     
@@ -7408,7 +7409,7 @@ function calculateSkillMultiplicativeBucket(skill) {
                 applies = true;
             }
             if (lowerKey === 'cold mage sacrifice damage [x]' && conds.vulnerable) applies = true;
-            if (lowerKey === 'bone mage sacrifice damage [x]' && conds.overpower) applies = true;
+            if (lowerKey === 'bone mage sacrifice damage [x]' && buffs.overpower > 0) applies = true;
             if (lowerKey === 'iron golem sacrifice damage [x]' && conds.critical) applies = true;
             
             // Catch-all for purely generic aspect multipliers
