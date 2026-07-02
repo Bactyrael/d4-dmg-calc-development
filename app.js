@@ -7326,6 +7326,10 @@ function calculateSkillAdditiveBucket(skill, isHit) {
         addStat('Corruption Skill Damage');
         addStat('Corruption Damage');
     }
+    if (tags.includes('keyword_corpse') || tags.some(t => t.toLowerCase().includes('corpse')) || ['Corpse Explosion', 'Corpse Tendrils', 'Raise Skeleton'].includes(skill.name)) {
+        addStat('Corpse Skill Damage');
+        addStat('Corpse Damage');
+    }
     if (tags.some(t => t.includes('summon'))) {
         addStat('Summoning Skill Damage');
         addStat('Summoning Damage');
