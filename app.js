@@ -5109,7 +5109,7 @@ function showSkillTooltip(skillObj, e) {
             dynamicTags = dynamicTags.filter(t => !["Search_Bone", "Search_Blood", "Search_Darkness", "Search_Physical", "Search_Shadow", "Damage_Override_Physical", "Damage_Override_Shadow", "Skill_Bone", "Skill_Blood", "Skill_Shadow"].includes(t));
             if (spec === "Bone Golem") {
                 dynamicTags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
-                if (node === 1) {
+                if (Number(node) === 1) {
                     modified.secondaryScalars = modified.secondaryScalars || {};
                     modified.secondaryScalars.bone_spikes = 2.5;
                 }
