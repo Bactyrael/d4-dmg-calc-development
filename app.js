@@ -4996,7 +4996,7 @@ function applyActiveModifiers(baseSkillObj) {
                 // Specific logic for Miasma: Convert to DoT
                 if (mod.name === "Miasma") {
                     modified.secondaryScalars = modified.secondaryScalars || {};
-                    modified.secondaryScalars['miasma_dot_tooltip'] = modified.baseDamageScalar;
+                    modified.secondaryScalars['miasma_dot_tooltip'] = 2.1;
                     modified.baseDamageScalar = null;
                 }
                 
