@@ -356,7 +356,7 @@ window.cleanAttributeDescription = function(desc, rawValue, attr) {
     return { name: statName, value: scaledValue, isPercent };
 };
 
-window.getGlyphNodeMultiplier = function(slotId, dataIdx, nData) {
+window.getGlyphNodeMultiplier = function(slotId, dataIdx, nData, attr) {
     if (!window.D4_PARAGON_DATA || !currentBuild.paragon[slotId]) return 1;
     let pData = currentBuild.paragon[slotId];
     if (!pData.glyph || !pData.glyph.id) return 1;
@@ -397,7 +397,19 @@ window.getGlyphNodeMultiplier = function(slotId, dataIdx, nData) {
         let affixData = window.D4_PARAGON_DATA.paragonGlyphAffixes[affixKey];
         if (!affixData) return;
         
+        let isMatch = false;
         if (affixData.affectedRarity && affixData.affectedRarity === nData.rarity) {
+            isMatch = true;
+        } else if (affixData.affectedAttributes && affixData.affectedAttributes.length > 0 && attr) {
+            isMatch = affixData.affectedAttributes.some(a => {
+                if (a.param !== undefined && a.param !== -1) {
+                    return a.id === attr.id && a.param === attr.param;
+                }
+                return a.id === attr.id;
+            });
+        }
+        
+        if (isMatch) {
             let val = (affixData.base || 0) + ((affixData.perLevel || 0) * (lvl - 1));
             if (affixData.operation === 1) val = val / 10;
             else if (affixData.operation === 4) val = val * 100;
@@ -438,7 +450,7 @@ window.getCompiledParagonStats = function() {
       let rawValue = parseFloat(rawFormula);
       if (isNaN(rawValue)) return; // fallback for complex formulas
       
-      let mult = window.getGlyphNodeMultiplier(slotId, dataIdx, nodeInfo);
+      let mult = window.getGlyphNodeMultiplier(slotId, dataIdx, nodeInfo, attr);
       rawValue = rawValue * mult;
       
       let attrMeta = window.D4_PARAGON_FORMULAS.attributes[attr.id];
@@ -614,7 +626,7 @@ window.getCompiledParagonThresholdStats = function(compiledStats, addStatFn) {
         let rawValue = parseFloat(rawFormula);
         if (isNaN(rawValue)) return;
         
-        let mult = window.getGlyphNodeMultiplier(slotId, dataIdx, nodeInfo);
+        let mult = window.getGlyphNodeMultiplier(slotId, dataIdx, nodeInfo, attr);
         rawValue = rawValue * mult;
         
         let attrMeta = window.D4_PARAGON_FORMULAS.attributes[attr.id];
@@ -1778,7 +1790,7 @@ window.showNodeDetails = function(nodeName, slotIndex = 0, dataIdx = -1) {
         if (!descString) return "";
         
         let mult = 1;
-        if (dataIdx !== -1) mult = window.getGlyphNodeMultiplier(slotIndex, dataIdx, nData);
+        if (dataIdx !== -1) mult = window.getGlyphNodeMultiplier(slotIndex, dataIdx, nData, attr);
         rawValue = rawValue * mult;
         
         let parsed = window.cleanAttributeDescription(descString, rawValue, attr);
