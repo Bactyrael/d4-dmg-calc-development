@@ -7166,6 +7166,7 @@ function getActiveConditions() {
         healthy: document.getElementById('cond-healthy')?.checked || false,
         injured: document.getElementById('cond-injured')?.checked || false,
         cc: document.getElementById('cond-cc')?.checked || false,
+        shadowDot: document.getElementById('cond-shadow-dot')?.checked || false,
         golemSingleTarget: document.getElementById('cond-golem-single')?.checked || false,
         monsterType: document.querySelector('input[name="monster_type"]:checked')?.value || 'elite'
     };
@@ -7290,6 +7291,10 @@ function calculateSkillAdditiveBucket(skill) {
     if (opStacks > 0) {
         addStat('Overpower Damage');
     }
+    if (conds.shadowDot) {
+        addStat('Damage to Enemies Affected by Shadow Damage Over Time');
+        addStat('Damage to Shadow Damage Over Time-Affected Enemies');
+    }
     
     // Fortify is a player state, assume 100% if they have fortify generation, but we'll just check if they have Max Life fortify
     // We'll leave conditional player states simple for now.
@@ -7343,6 +7348,7 @@ function calculateSkillMultiplicativeBucket(skill) {
             }
             
             if (lowerKey.includes('vulnerable') && conds.vulnerable) applies = true;
+            if (lowerKey.includes('shadow damage over time') && conds.shadowDot) applies = true;
             if ((lowerKey.includes('shadow') || lowerKey.includes('darkness')) && (tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || dType === 'shadow')) applies = true;
             if (lowerKey.includes('bone') && (tags.includes('skill_bone') || tags.includes('search_bone') || dType === 'bone')) applies = true;
             if (lowerKey.includes('blood') && tags.includes('skill_blood')) applies = true;
