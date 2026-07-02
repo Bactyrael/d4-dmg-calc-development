@@ -7257,10 +7257,10 @@ function calculateSkillAdditiveBucket(skill) {
         addStat('Minion Damage');
     }
     // DoT Additives
-    if (tags.includes('search_dot')) {
+    if (tags.includes('search_dot') || tags.includes('search_shadowdot')) {
         addStat('Damage over Time');
         addStat('Damage Over Time');
-        if (dType === 'shadow' || tags.includes('skill_shadow')) addStat('Shadow Damage over Time');
+        if (dType === 'shadow' || tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || tags.includes('search_darkness')) addStat('Shadow Damage over Time');
         if (dType === 'poison' || tags.includes('skill_poison')) addStat('Poison Damage over Time');
         if (dType === 'fire' || tags.includes('skill_fire')) { addStat('Fire Damage over Time'); addStat('Burning Damage'); }
         if (dType === 'cold' || tags.includes('skill_cold')) addStat('Cold Damage over Time');
@@ -7348,8 +7348,17 @@ function calculateSkillMultiplicativeBucket(skill) {
             }
             
             if (lowerKey.includes('vulnerable') && conds.vulnerable) applies = true;
-            if (lowerKey.includes('shadow damage over time') && conds.shadowDot) applies = true;
-            if ((lowerKey.includes('shadow') || lowerKey.includes('darkness')) && (tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || dType === 'shadow')) applies = true;
+            
+            if (lowerKey.includes('damage to') && (lowerKey.includes('shadow damage over time') || lowerKey.includes('affected by shadow'))) {
+                if (conds.shadowDot) applies = true;
+            }
+            
+            let isDotStat = lowerKey.includes('over time') || lowerKey.includes('dot');
+            let isShadowStat = lowerKey.includes('shadow') || lowerKey.includes('darkness');
+            
+            if (isShadowStat && !isDotStat && !lowerKey.includes('damage to')) {
+                if (tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || dType === 'shadow') applies = true;
+            }
             if (lowerKey.includes('bone') && (tags.includes('skill_bone') || tags.includes('search_bone') || dType === 'bone')) applies = true;
             if (lowerKey.includes('blood') && tags.includes('skill_blood')) applies = true;
             if (lowerKey.includes('core') && tags.includes('keyword_core')) applies = true;
@@ -7360,13 +7369,20 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (lowerKey.includes('physical') && (tags.includes('skill_physical') || tags.includes('search_physical') || dType === 'physical')) applies = true;
             
             // Catch-all for purely generic aspect multipliers
-            if (!lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('shadow') && !lowerKey.includes('darkness') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
+            if (!lowerKey.includes('damage') && !lowerKey.includes('critical') && !isDotStat && !isShadowStat && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
                 applies = true;
             }
             
             // Explicit Damage over Time check
-            if ((lowerKey.includes('over time') || lowerKey.includes('dot')) && (tags.includes('search_dot') || tags.includes('search_shadowdot'))) {
-                applies = true;
+            if (isDotStat && !lowerKey.includes('damage to')) {
+                if (tags.includes('search_dot') || tags.includes('search_shadowdot')) {
+                    applies = true;
+                    if (isShadowStat) {
+                        if (!(dType === 'shadow' || tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || tags.includes('search_darkness'))) {
+                            applies = false;
+                        }
+                    }
+                }
             }
             
             // Universal Skill-Specific Multiplier Check
