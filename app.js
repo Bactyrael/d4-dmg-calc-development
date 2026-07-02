@@ -4649,7 +4649,9 @@ function parseD4String(str, skillObj, currentRank) {
     if (skillObj.name === "Plunging Darkness") {
         str = str.replace(/\[\{dot:tooltip_dot\}[\s\.,\d]*?\]|\{dot:tooltip_dot\}/g, (3.0 * rankMult * 100).toFixed(1) + '%');
     }
-    if (skillObj.name === "Path of Darkness" || str.includes("Corrupting damage")) {
+    if (skillObj.name === "Unfinished Business") {
+        str = str.replace(/\[\{dot:tooltip_dot\}[\s\.,\d]*?\]|\{dot:tooltip_dot\}/g, (2.5 * rankMult * 100).toFixed(1) + "%");
+    } else if (skillObj.name === "Path of Darkness" || str.includes("Corrupting damage")) {
         str = str.replace(/\[\{dot:tooltip_dot\}[\s\.,\d]*?\]|\{dot:tooltip_dot\}/g, (6.0 * rankMult * 100).toFixed(1) + "%");
     }
     if (skillObj.name === "Bone Storm") {
