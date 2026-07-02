@@ -5120,7 +5120,7 @@ function applyActiveModifiers(baseSkillObj) {
             };
         }
         
-        if (spec === "Shadow Mage" && Number(node) === 0) {
+        if (spec === "Shadow Mage" && Number(node) === 1) {
             modified.secondaryScalars = modified.secondaryScalars || {};
             modified.secondaryScalars.shadow_dot = {
                 scalar: 1.0,
