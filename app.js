@@ -4999,6 +4999,7 @@ function applyActiveModifiers(baseSkillObj) {
     
     // Create a shallow clone to avoid mutating the master database
     let modified = { ...baseSkillObj, baseName: baseSkillObj.name };
+    if (baseSkillObj.isHit !== undefined) modified.isHit = baseSkillObj.isHit;
     if (baseSkillObj.tags) {
         modified.tags = [...baseSkillObj.tags];
     } else {
@@ -5061,6 +5062,7 @@ function applyActiveModifiers(baseSkillObj) {
                 if (mod.baseDamageScalar !== undefined) {
                     modified.baseDamageScalar = mod.baseDamageScalar;
                 }
+                if (mod.isHit !== undefined) modified.isHit = mod.isHit;
                 
                 // Merge secondaryScalars if provided
                 if (mod.secondaryScalars) {
@@ -7230,7 +7232,7 @@ function getActiveBuffs() {
 }
 
 function calculateSkillAdditiveBucket(skill, isHit) {
-    if (isHit === undefined) isHit = !['Soulrift', 'Decompose', 'Blighted Corpse Explosion'].includes(skill.baseName || skill.name);
+    if (isHit === undefined) isHit = skill.isHit !== undefined ? skill.isHit : !['Decompose', 'Blighted Corpse Explosion'].includes(skill.baseName || skill.name);
     if (!window.D4_COMPILED_STATS) return 0;
     const stats = window.D4_COMPILED_STATS;
     const conds = getActiveConditions();
@@ -7650,7 +7652,7 @@ function renderCalcSkills() {
                                         secSkill.name = val.nameOverride;
                                     }
                                     secSkill.baseDamageScalar = scalarVal;
-                                    let isHit = !key.toLowerCase().includes('dot');
+                                    let isHit = (typeof val === 'object' && val.isHit !== undefined) ? val.isHit : !key.toLowerCase().includes('dot');
                                     let b2 = getSkillDamageBreakdown(secSkill, rank, isHit);
                                     let pct = (scalarVal * b2.rankMultiplier * 100).toFixed(1).replace('.0', '');
                                     let minStr = Math.floor(wpMin * scalarVal * b2.finalScalar).toLocaleString();
@@ -7750,7 +7752,7 @@ function renderCalcSkills() {
 
 
 function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
-    if (isHit === undefined) isHit = !['Soulrift', 'Decompose', 'Blighted Corpse Explosion'].includes(skillObj.baseName || skillObj.name);
+    if (isHit === undefined) isHit = skillObj.isHit !== undefined ? skillObj.isHit : !['Decompose', 'Blighted Corpse Explosion'].includes(skillObj.baseName || skillObj.name);
     let rank = displayRank || 1;
     let rankMultiplier = 1.0;
     if (rank > 1) {

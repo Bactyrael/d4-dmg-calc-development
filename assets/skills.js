@@ -2743,7 +2743,8 @@ const skillsDatabase = {
     },
     {
       "name": "Soulrift",
-      "tags": [
+          "isHit": false,
+          "tags": [
         "Skill_Shadow",
         "Search_ResourceEssence",
         "Search_Damage",
