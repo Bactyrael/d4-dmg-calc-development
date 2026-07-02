@@ -7300,6 +7300,9 @@ function calculateSkillAdditiveBucket(skill) {
         addStat('Macabre Skill Damage');
         addStat('Macabre Damage');
     }
+    if (tags.includes('subpower_desecratedground') || tags.includes('search_desecratedground')) {
+        addStat('Desecration Damage');
+    }
     if (tags.includes('keyword_corruption')) {
         addStat('Corruption Skill Damage');
         addStat('Corruption Damage');
