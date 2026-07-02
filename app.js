@@ -2134,6 +2134,9 @@ function compileCharacterStats(equipped, autoStats) {
                 if (legPowers.includes('Paragon_Necro_Legendary_011')) {
                     addStat(stats, 'Blood Begets Blood Damage [x]', 60, 'Blood Begets Blood (Legendary Node)');
                 }
+                if (legPowers.includes('Paragon_Necro_Legendary_018')) {
+                    addStat(stats, 'Frailty Damage [x]', 60, 'Frailty (Legendary Node)');
+                }
             }
         }
         
@@ -7172,6 +7175,7 @@ function getActiveConditions() {
         healthy: document.getElementById('cond-healthy')?.checked || false,
         injured: document.getElementById('cond-injured')?.checked || false,
         cc: document.getElementById('cond-cc')?.checked || false,
+        cursed: document.getElementById('cond-cursed')?.checked || false,
         shadowDot: document.getElementById('cond-shadow-dot')?.checked || false,
         golemSingleTarget: document.getElementById('cond-golem-single')?.checked || false,
         monsterType: document.querySelector('input[name="monster_type"]:checked')?.value || 'elite'
@@ -7379,6 +7383,7 @@ function calculateSkillMultiplicativeBucket(skill) {
                 if (tags.includes('skill_cold') || tags.includes('search_cold') || dType === 'cold') applies = true;
             }
             if (lowerKey === 'blood begets blood damage [x]') applies = true;
+            if (lowerKey === 'frailty damage [x]' && conds.cursed) applies = true;
             
             // Catch-all for purely generic aspect multipliers
             if (!lowerKey.includes('damage') && !lowerKey.includes('critical') && !isDotStat && !isShadowStat && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
