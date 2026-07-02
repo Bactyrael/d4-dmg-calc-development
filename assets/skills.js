@@ -1915,7 +1915,7 @@ const skillsDatabase = {
           "description": "Commanding your {c_important}Golem{/c} causes it to erupt, dealing {c_number}[{payload:explosion_damage}|2?|]{/c} damage to surrounding enemies.\\n\\nYour {c_important}Golem{/c} passively consumes nearby Corpses every second to reduce its Cooldown by {c_number}2{/c} seconds per Corpse consumed.",
           "maxRank": 1,
           "secondaryScalars": {
-            "explosion_damage": 3
+            "fel_gluttony": 3
           }
         },
         {
