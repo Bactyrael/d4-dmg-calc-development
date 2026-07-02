@@ -2428,6 +2428,12 @@ function compileCharacterStats(equipped, autoStats) {
                     addStat(stats, 'Skill: Golem (Blood Golem Upgrade 1) Damage [x]', 50, 'Book of the Dead (Blood Golem Upgrade 1)');
                 }
             }
+            
+            if (currentBuild.bookOfTheDead.golems?.spec === 'Blood Golem' && currentBuild.bookOfTheDead.golems?.node !== null) {
+                if (getActiveConditions().golemSingleTarget) {
+                    addStat(stats, 'Skill: Blood Golem Active Damage [x]', 300, 'Blood Golem Active (Single Target)');
+                }
+            }
         }
       
       // Post-Compilation Step: Additive Percent Modifiers
@@ -5054,6 +5060,15 @@ function applyActiveModifiers(baseSkillObj) {
     if (modified.name === "Golem" && currentBuild && currentBuild.bookOfTheDead) {
         let spec = currentBuild.bookOfTheDead.golems?.spec;
         let node = currentBuild.bookOfTheDead.golems?.node;
+        
+        if (spec === "Blood Golem" && node !== null) {
+            modified.secondaryScalars = modified.secondaryScalars || {};
+            modified.secondaryScalars.active = {
+                scalar: 1.40,
+                nameOverride: "Blood Golem Active"
+            };
+        }
+        
         if (node !== null && spec === "Bone Golem" && Number(node) === 2) {
             modified.secondaryScalars = modified.secondaryScalars || {};
             modified.secondaryScalars.bone_spikes = 2.5;
@@ -7140,6 +7155,7 @@ function getActiveConditions() {
         healthy: document.getElementById('cond-healthy')?.checked || false,
         injured: document.getElementById('cond-injured')?.checked || false,
         cc: document.getElementById('cond-cc')?.checked || false,
+        golemSingleTarget: document.getElementById('cond-golem-single')?.checked || false,
         monsterType: document.querySelector('input[name="monster_type"]:checked')?.value || 'elite'
     };
 }
@@ -7497,6 +7513,9 @@ function renderCalcSkills() {
                                     if (typeof val === 'object' && val.addTags) {
                                         secSkill.tags = secSkill.tags || [];
                                         secSkill.tags.push(...val.addTags);
+                                    }
+                                    if (typeof val === 'object' && val.nameOverride) {
+                                        secSkill.name = val.nameOverride;
                                     }
                                     secSkill.baseDamageScalar = scalarVal;
                                     let b2 = getSkillDamageBreakdown(secSkill, rank);
