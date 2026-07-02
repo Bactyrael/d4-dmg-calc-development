@@ -2406,6 +2406,10 @@ function compileCharacterStats(equipped, autoStats) {
                 } else if (currentBuild.bookOfTheDead.warriors.spec === 'Defender') {
                     addStat(stats, '% Resistance to All Elements', 40 * sacMultiplier, 'Book of the Dead (Defender Sacrifice)');
                 }
+            } else if (currentBuild.bookOfTheDead.warriors?.node === '2') {
+                if (currentBuild.bookOfTheDead.warriors.spec === 'Reaper') {
+                    addStat(stats, 'Skill: Skeleton Warrior (Reaper Upgrade 2) Damage [x]', 50, 'Book of the Dead (Reaper Upgrade 2)');
+                }
             }
             
             // Mages
