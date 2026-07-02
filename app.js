@@ -2113,6 +2113,20 @@ function compileCharacterStats(equipped, autoStats) {
             const pStats = window.getCompiledParagonStats();
             for (let [k, v] of Object.entries(pStats)) {
                 let statName = k;
+                const statRenameMap = {
+                    "Shadow damage": "Shadow Damage",
+                    "Bone damage": "Bone Damage",
+                    "Blood damage": "Blood Damage",
+                    "Physical damage": "Physical Damage",
+                    "Cold damage": "Cold Damage",
+                    "Poison damage": "Poison Damage",
+                    "Lightning damage": "Lightning Damage",
+                    "Fire damage": "Fire Damage",
+                    "Non-Physical damage": "Non-Physical Damage",
+                    "Physical damage over time": "Physical Damage Over Time",
+                    "Shadow damage over time": "Shadow Damage Over Time"
+                };
+                if (statRenameMap[statName]) statName = statRenameMap[statName];
                 if (v.isPercent && ['Strength', 'Intelligence', 'Willpower', 'Dexterity', 'Maximum Life', 'Armor', 'Total Armor', 'Resistance to All Elements'].includes(statName)) {
                     statName = '% ' + statName;
                 }
