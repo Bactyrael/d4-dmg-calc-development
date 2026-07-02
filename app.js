@@ -2131,6 +2131,9 @@ function compileCharacterStats(equipped, autoStats) {
                 if (legPowers.includes('Paragon_Necro_Legendary_016')) {
                     addStat(stats, 'Wither Damage [x]', 60, 'Wither (Legendary Node)');
                 }
+                if (legPowers.includes('Paragon_Necro_Legendary_011')) {
+                    addStat(stats, 'All Damage [x]', 60, 'Blood Begets Blood (Legendary Node)');
+                }
             }
         }
         
