@@ -1967,10 +1967,12 @@ window.populateBoardModalGrid = function() {
                                     let sMap = { 'Search_Strength': 'Str', 'Search_Intelligence': 'Int', 'Search_Willpower': 'Will', 'Search_Dexterity': 'Dex' };
                                     for(let attr of (nData.attributes || [])) {
                                         if (attr.formula && attr.formula.includes('CoreStat')) {
-                                            let s = Object.keys(sMap).find(t => nData.tags.includes(t));
+                                            let lowerTags = nData.tags.map(t => t.toLowerCase());
+                                            let s = Object.keys(sMap).find(t => lowerTags.includes(t.toLowerCase()));
                                             if (s) {
                                                 let val = 10;
                                                 if (attr.formula.includes('Magic')) val = 7;
+                                                else if (attr.formula.includes('Normal')) val = 5;
                                                 stats[sMap[s]] += val;
                                             }
                                         }
