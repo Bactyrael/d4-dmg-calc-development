@@ -241,6 +241,19 @@
                    <h2 style="color: #fff; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
                      <span class="icon" style="color: #c9a55c;">🎯</span> Combat Conditions
                    </h2>
+                   <h3 style="color: #ddd; margin-top: 0; margin-bottom: 10px; font-size: 1.05rem;">Target Type</h3>
+                   <div style="display: flex; gap: 20px; margin-bottom: 20px;" id="monster-type-group">
+                     <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #ddd;">
+                       <input type="radio" name="monster_type" value="normal" class="calc-monster-type"> Normal
+                     </label>
+                     <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #ddd;">
+                       <input type="radio" name="monster_type" value="elite" class="calc-monster-type" checked> Elite
+                     </label>
+                     <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #ddd;">
+                       <input type="radio" name="monster_type" value="boss" class="calc-monster-type"> Boss
+                     </label>
+                   </div>
+                   
                    <p style="color: #aaa; font-style: italic; margin-bottom: 20px;">Toggle these conditions to activate conditional additive and multiplicative damage bonuses.</p>
                    
                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;" id="conditions-grid">
@@ -304,18 +317,7 @@
                  </h2>
                  <p style="color: #aaa; font-style: italic; margin-bottom: 20px;">Configure the target monster attributes to properly calculate conditional damage and damage reduction.</p>
                    
-                   <h3 style="color: #ddd; margin-top: 0; margin-bottom: 10px; font-size: 1.05rem;">Target Type</h3>
-                   <div style="display: flex; gap: 20px; margin-bottom: 20px;" id="monster-type-group">
-                     <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #ddd;">
-                       <input type="radio" name="monster_type" value="normal" class="calc-monster-type"> Normal
-                     </label>
-                     <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #ddd;">
-                       <input type="radio" name="monster_type" value="elite" class="calc-monster-type" checked> Elite
-                     </label>
-                     <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #ddd;">
-                       <input type="radio" name="monster_type" value="boss" class="calc-monster-type"> Boss
-                     </label>
-                   </div>
+
               </div>
             </div>
             
