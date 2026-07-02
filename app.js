@@ -3298,9 +3298,9 @@ function compileCharacterStats(equipped, autoStats) {
                       }
                   }
               }
+              compiledStats['Bone Graft (Legendary Node)'] = { final: 60.00, isMultiplicative: true };
               if (isBone) {
                   createMultiplicativeRow('Bone Graft (Legendary Node)', '60.00', true);
-                  compiledStats['Bone Graft (Legendary Node)'] = { final: 60.00, isMultiplicative: true };
               }
           }
           
