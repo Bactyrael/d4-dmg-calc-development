@@ -5047,6 +5047,15 @@ function applyActiveModifiers(baseSkillObj) {
         });
     }
 
+    if (modified.name === "Golem" && currentBuild && currentBuild.bookOfTheDead) {
+        let spec = currentBuild.bookOfTheDead.golems?.spec;
+        let node = currentBuild.bookOfTheDead.golems?.node;
+        if (node !== null && spec === "Bone Golem" && Number(node) === 2) {
+            modified.secondaryScalars = modified.secondaryScalars || {};
+            modified.secondaryScalars.bone_spikes = 2.5;
+        }
+    }
+
     return modified;
 }
 
@@ -5109,10 +5118,6 @@ function showSkillTooltip(skillObj, e) {
             dynamicTags = dynamicTags.filter(t => !["Search_Bone", "Search_Blood", "Search_Darkness", "Search_Physical", "Search_Shadow", "Damage_Override_Physical", "Damage_Override_Shadow", "Skill_Bone", "Skill_Blood", "Skill_Shadow"].includes(t));
             if (spec === "Bone Golem") {
                 dynamicTags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
-                if (Number(node) === 2) {
-                    modified.secondaryScalars = modified.secondaryScalars || {};
-                    modified.secondaryScalars.bone_spikes = 2.5;
-                }
             } else if (spec === "Blood Golem") {
                 dynamicTags.push("Search_Physical", "Search_Blood", "Damage_Override_Physical", "Skill_Blood");
             } else if (spec === "Iron Golem") {
