@@ -2141,6 +2141,11 @@ function compileCharacterStats(equipped, autoStats) {
                     addStat(stats, 'Skill: Army of the Dead (Pile the Bodies) Damage [x]', curStack, 'Pile the Bodies');
                 }
             }
+            
+            // Bloody Mess (50%[x] to Corpse Explosion)
+            if (window.selectedSkills['Bloody Mess'] > 0) {
+                addStat(stats, 'Skill: Corpse Explosion (Bloody Mess) Damage [x]', 50, 'Bloody Mess');
+            }
         }
         
         let resourceName = 'Maximum Resource';
