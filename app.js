@@ -3265,8 +3265,13 @@ function compileCharacterStats(equipped, autoStats) {
           
           // Cult Leader (Necromancer)
           if (legPowers.includes('Paragon_Necro_Legendary_001')) {
-              const asKey = Object.keys(compiledStats).find(k => k.toLowerCase().includes('attack speed'));
-              const attackSpeed = asKey ? compiledStats[asKey].final : 0;
+              let attackSpeed = 0;
+              Object.keys(compiledStats).forEach(k => {
+                  const lowerKey = k.toLowerCase();
+                  if (lowerKey.includes('attack speed') || lowerKey.includes('cast speed')) {
+                      attackSpeed += (compiledStats[k].final || 0);
+                  }
+              });
               
               if (attackSpeed >= 20) {
                   // Cult Leader: 40%x damage per 20% attack speed breakpoint
