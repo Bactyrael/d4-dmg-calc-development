@@ -7437,7 +7437,8 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (lowerKey === 'blood begets blood damage [x]') applies = true;
             if (lowerKey === 'frailty damage [x]' && conds.cursed) applies = true;
             if (lowerKey.includes('cult leader')) {
-                if ((tags.some(t => t.includes('summon')) || skill.name.toLowerCase().includes('golem') || skill.name.toLowerCase().includes('mage') || skill.name.toLowerCase().includes('warrior')) && !skill.name.toLowerCase().includes('army of the dead')) applies = true;
+                let sName = skill.name.toLowerCase();
+                if (sName.includes('golem') || sName.includes('mage') || sName.includes('warrior')) applies = true;
             }
             if (lowerKey === 'hulking monstrosity damage [x]') {
                 if (skill.name.toLowerCase().includes('golem')) applies = true;
