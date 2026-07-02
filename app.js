@@ -7451,12 +7451,29 @@ function renderCalcSkills() {
                 let iconUrl = `assets/Skills/${clsName}/${finalIconName}.png`;
                 let iconHtml = `<img src="${iconUrl}" style="width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px;" onerror="this.outerHTML='<div style=\'width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #222; color: #888;\'>?</div>'">`;
                 
+                let titleText = displayImgName;
+                if (['Skeleton Warrior', 'Skeleton Mage', 'Golem'].includes(baseSkill.name) && currentBuild && currentBuild.bookOfTheDead) {
+                    let botdType = '';
+                    if (baseSkill.name === 'Skeleton Warrior') botdType = 'warriors';
+                    if (baseSkill.name === 'Skeleton Mage') botdType = 'mages';
+                    if (baseSkill.name === 'Golem') botdType = 'golems';
+                    
+                    let spec = currentBuild.bookOfTheDead[botdType]?.spec;
+                    let node = currentBuild.bookOfTheDead[botdType]?.node;
+                    
+                    if (spec && node !== null) {
+                        let shortSpec = spec.replace(' Mage', '').replace(' Golem', '');
+                        let nodeStr = node === 'sacrifice' ? 'Sacrifice' : 'Upgrade ' + node;
+                        titleText += ` <span style="color: #c9a55c; font-size: 0.85em; font-weight: normal;">(${shortSpec} / ${nodeStr})</span>`;
+                    }
+                }
+                
                 card.innerHTML = `
                   <div style="display: flex; align-items: flex-start; gap: 15px;">
                     ${iconHtml}
                     <div style="flex: 1;">
                       <h3 style="margin: 0; color: #fff; font-size: 1.2rem; display: flex; justify-content: space-between;">
-                        ${displayImgName}
+                        <span>${titleText}</span>
                         <span style="font-size: 0.9rem; color: #888;">Rank ${window.selectedSkills[baseSkill.name]}</span>
                       </h3>
                       <div style="color: #aaa; font-size: 0.9rem; margin-top: 10px; font-family: monospace;">
