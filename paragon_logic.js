@@ -521,7 +521,7 @@ window.getCompiledParagonStats = function() {
                                       let internalName = attrMeta.name;
                                       let descString = window.D4_PARAGON_FORMULAS?.attributeDescriptions?.[internalName];
                                       if (descString) {
-                                          let parsed = window.cleanAttributeDescription(descString, rawValue / 100, {id: toAttrId});
+                                          let parsed = window.cleanAttributeDescription(descString, rawValue / 100, affixInfo.convertedAttributes[0].to);
                                           if (parsed && parsed.name) {
                                               if (!stats[parsed.name]) {
                                                   stats[parsed.name] = { value: 0, isPercent: parsed.isPercent };
