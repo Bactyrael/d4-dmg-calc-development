@@ -2132,7 +2132,7 @@ function compileCharacterStats(equipped, autoStats) {
                     addStat(stats, 'Wither Damage [x]', 60, 'Wither (Legendary Node)');
                 }
                 if (legPowers.includes('Paragon_Necro_Legendary_011')) {
-                    addStat(stats, 'All Damage [x]', 60, 'Blood Begets Blood (Legendary Node)');
+                    addStat(stats, 'Blood Begets Blood Damage [x]', 60, 'Blood Begets Blood (Legendary Node)');
                 }
             }
         }
@@ -7378,6 +7378,7 @@ function calculateSkillMultiplicativeBucket(skill) {
                 if (tags.includes('skill_darkness') || tags.includes('search_darkness') || tags.includes('skill_shadow') || tags.includes('search_shadow') || dType === 'shadow') applies = true;
                 if (tags.includes('skill_cold') || tags.includes('search_cold') || dType === 'cold') applies = true;
             }
+            if (lowerKey === 'blood begets blood damage [x]') applies = true;
             
             // Catch-all for purely generic aspect multipliers
             if (!lowerKey.includes('damage') && !lowerKey.includes('critical') && !isDotStat && !isShadowStat && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
