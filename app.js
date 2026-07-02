@@ -5050,6 +5050,19 @@ function applyActiveModifiers(baseSkillObj) {
             modified.tags = modified.tags.filter(t => t.toLowerCase() !== targetTag && t.toLowerCase() !== targetTag.replace('skill_', 'search_'));
         });
     }
+    
+    if (modified.name === "Skeleton Mage" && currentBuild && currentBuild.bookOfTheDead) {
+        let spec = currentBuild.bookOfTheDead.mages?.spec;
+        let node = currentBuild.bookOfTheDead.mages?.node;
+        
+        if (spec === "Cold" && Number(node) === 2) {
+            modified.secondaryScalars = modified.secondaryScalars || {};
+            modified.secondaryScalars.dot = {
+                scalar: 2.0,
+                tags: ["Search_Summoning", "Skill_Primary_Minion", "Keyword_Core", "Search_Cold", "Skill_Cold", "Search_DoT", "Damage_Override_Cold"]
+            };
+        }
+    }
 
     if (modified.name === "Golem" && currentBuild && currentBuild.bookOfTheDead) {
         let spec = currentBuild.bookOfTheDead.golems?.spec;
@@ -5120,14 +5133,6 @@ function showSkillTooltip(skillObj, e) {
                 dynamicTags.push("Search_Cold", "Damage_Override_Cold", "Skill_Cold");
             } else if (spec === "Bone") {
                 dynamicTags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
-            }
-            
-            if (spec === "Cold" && Number(node) === 2) {
-                modified.secondaryScalars = modified.secondaryScalars || {};
-                modified.secondaryScalars.dot = {
-                    scalar: 2.0,
-                    tags: ["Search_Summoning", "Skill_Primary_Minion", "Keyword_Core", "Search_Cold", "Skill_Cold", "Search_DoT", "Damage_Override_Cold"]
-                };
             }
         }
     }
