@@ -365,7 +365,12 @@ const skillsDatabase = {
           "secondaryScalars": {
             "shadow_explosion": {
               "scalar": 0.08,
-              "tags": ["Skill_Shadow", "Damage_Override_Shadow", "Search_Shadow", "Search_Damage"]
+              "tags": [
+                "Skill_Shadow",
+                "Damage_Override_Shadow",
+                "Search_Shadow",
+                "Search_Damage"
+              ]
             }
           },
           "description": "{c_important}Bone Splinters{/c} becomes a {c_important}Darkness{/c} Skill that deals {c_number}[{payload:shadow_damage}|2?|]{/c} Shadow damage and seeks enemies. \\n\\nWhen a splinter hits an enemy it causes a burst of shadow, dealing an additional {c_number}[{payload:shadow_explosion}|2?|]{/c} damage.",
@@ -862,7 +867,9 @@ const skillsDatabase = {
       "secondaryScalars": {
         "tooltip_dot": {
           "scalar": 2.1,
-          "addTags": ["Search_DoT"]
+          "addTags": [
+            "Search_DoT"
+          ]
         }
       },
       "damageType": "Shadow",
@@ -874,8 +881,11 @@ const skillsDatabase = {
           "secondaryScalars": {
             "tooltip_dot": null,
             "modc_damage": {
-                "scalar": 3.15,
-                "addTags": ["Search_Damage", "Search_Physical"]
+              "scalar": 3.15,
+              "addTags": [
+                "Search_Damage",
+                "Search_Physical"
+              ]
             }
           },
           "tags": [
@@ -1513,7 +1523,7 @@ const skillsDatabase = {
       "tags": [
         "Skill_Corruption"
       ],
-      "luckyHitChance": 0.3,
+      "luckyHitChance": null,
       "baseDamageScalar": 0.2,
       "description": "{c_label}Cooldown:{/c} {c_resource}[{cooldown time}|2?|]{/c} seconds\\n{if:Mod(2686060762)}{c_label}Generate Essence:{/c_label} {c_resource}35{/c_resource}\\n{/if}{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Burst veins out of a Corpse, Slowing enemies by {c_number}50%{/c} for {c_number}1.5{/c} seconds before Pulling them in and dealing {c_number}[{payload:damage_pull}|2?|]{/c} damage.",
       "maxRank": 15,
@@ -1607,8 +1617,7 @@ const skillsDatabase = {
           },
           "unk_b8f2b": -1
         }
-      ],
-      "luckyHitChance": null
+      ]
     }
   ],
   "Macabre": [
@@ -1647,8 +1656,10 @@ const skillsDatabase = {
           "maxRank": 1,
           "secondaryScalars": {
             "tooltip_dot": {
-              "scalar": 3.0,
-              "addTags": ["Search_DoT"]
+              "scalar": 3,
+              "addTags": [
+                "Search_DoT"
+              ]
             }
           }
         },
@@ -1753,7 +1764,7 @@ const skillsDatabase = {
           "baseDamageScalar": 0.5,
           "secondaryScalars": {
             "tooltip_damage_shadow": {
-              "scalar": 6.0
+              "scalar": 6
             }
           }
         },
@@ -2025,8 +2036,8 @@ const skillsDatabase = {
             "Skill_Shadow",
             "Damage_Override_Shadow",
             "Search_Shadow",
-            "Search_ShadowDOT",
-            "Subpower_DesecratedGround"
+            "Skill_Darkness",
+            "Search_Darkness"
           ],
           "description": "{c_important}Bone Spirit{/c} becomes a {c_important}Darkness{/c} Skill that deals Shadow damage.\\n\\n{c_important}Bone Spirit{/c} leaves behind a pool of {c_important}{u}Desecrated Ground{/c}{/u} when it explodes, dealing {c_number}[{dot:tooltip_dot}|2?|]{/c} Corrupting damage.",
           "maxRank": 1,
@@ -2034,7 +2045,11 @@ const skillsDatabase = {
             "tooltip_dot": {
               "scalar": 2.5,
               "isHit": false,
-              "nameOverride": "Unfinished Business"
+              "nameOverride": "Unfinished Business",
+              "addTags": [
+                "Subpower_DesecratedGround",
+                "Search_ShadowDOT"
+              ]
             }
           }
         },
@@ -2368,7 +2383,9 @@ const skillsDatabase = {
           "secondaryScalars": {
             "tooltip_dot": {
               "scalar": 6,
-              "addTags": ["Search_DoT"]
+              "addTags": [
+                "Search_DoT"
+              ]
             }
           }
         },
@@ -2651,7 +2668,9 @@ const skillsDatabase = {
           "secondaryScalars": {
             "tooltip_dot_damage": {
               "scalar": 0.4,
-              "addTags": ["Search_DoT"]
+              "addTags": [
+                "Search_DoT"
+              ]
             }
           }
         },
@@ -2750,8 +2769,8 @@ const skillsDatabase = {
     },
     {
       "name": "Soulrift",
-          "isHit": false,
-          "tags": [
+      "isHit": false,
+      "tags": [
         "Skill_Shadow",
         "Search_ResourceEssence",
         "Search_Damage",
@@ -2759,7 +2778,7 @@ const skillsDatabase = {
         "Search_Shadow",
         "Search_ShadowDOT"
       ],
-      "baseDamageScalar": 3.0,
+      "baseDamageScalar": 3,
       "description": "{c_label}Cooldown:{/c_label} {c_resource}[{cooldown time}|2?|]{/c_resource} seconds\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}{if:GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0}{c_label}Essence Cost:{/c} {c_resource}[{resource cost}|2?|]{/c}\\nConsume surrounding enemies, dealing {c_number}[{dot:tooltip_total_damage}|2?|]{/c} Corrupting damage over {c_number}[{buffduration:caster_skill_active}|2?|]{/c} seconds.\\n\\nEvery {c_number}0.25{/c} seconds of this duration, you absorb the souls of up to {c_number}3{/c} enemies, dealing {c_number}[{payload:soul_damage_core}|2?|]{/c} damage to them. You absorb {c_number}3{/c} souls at a time from Bosses.\\n\\n {c_important}Soulrifts{/c} stacks up to {c_number}10{/c} times.{else}Consume surrounding enemies, dealing {c_number}[{dot:tooltip_total_damage}|2?|]{/c} Corrupting damage over {c_number}[{buffduration:caster_skill_active}|2?|]{/c} seconds.\\n\\nEvery {c_number}0.25{/c} seconds you absorb the souls of {c_number}3{/c} enemies, gaining {c_number}[(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?0:2|2?|]{/c} Essence per enemy. You absorb {c_number}3{/c} souls at a time from Bosses.{/if}",
       "maxRank": 15,
       "modifiers": [
@@ -2780,7 +2799,16 @@ const skillsDatabase = {
           ],
           "description": "{c_important}Soulrift{/c} is cast at the target location. Absorbing an enemy's soul deals {c_number}[{payload:soul_absorb_damage}|2?|]{/c} damage and Pulls them in.",
           "maxRank": 1,
-          "secondaryScalars": { "soul_absorb_damage": { "scalar": 0.25, "tags": ["Skill_Shadow", "Search_Damage", "Search_Shadow"] } }
+          "secondaryScalars": {
+            "soul_absorb_damage": {
+              "scalar": 0.25,
+              "tags": [
+                "Skill_Shadow",
+                "Search_Damage",
+                "Search_Shadow"
+              ]
+            }
+          }
         },
         {
           "name": "Frozen Wasteland",
@@ -2793,7 +2821,16 @@ const skillsDatabase = {
           ],
           "description": "{c_important}Soulrift{/c} deals Frostbite damage and {c_important}{u}Chills{/c}{/u} for {c_number}30%{/c} every second. \n\nIf {c_important}Soulrift{/c} absorbs the soul of a {c_important}{u}Frozen{/c}{/u} enemy, they shatter and explode for {c_number}[{payload:frozen_damage}|2?|]{/c} damage.",
           "maxRank": 1,
-          "secondaryScalars": { "frozen_damage": { "scalar": 0.75, "tags": ["Damage_Override_Cold", "Search_Damage", "Search_Cold"] } }
+          "secondaryScalars": {
+            "frozen_damage": {
+              "scalar": 0.75,
+              "tags": [
+                "Damage_Override_Cold",
+                "Search_Damage",
+                "Search_Cold"
+              ]
+            }
+          }
         },
         {
           "name": "Damage Bonus",
