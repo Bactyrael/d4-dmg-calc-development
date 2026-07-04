@@ -7989,22 +7989,22 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
     
     if (skillObj.name === "Decompose" && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0) {
         multiMult *= 1.5;
-        multiData.components.push({ name: 'Damage Bonus Upgrade [x]', value: 1.5 });
+        multiData.components.push({ name: 'Damage Bonus (Upgrade) [x]', value: 1.5 });
     }
     
     if (skillObj.name === "Blood Surge" && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().healthy) {
         multiMult *= 1.25;
-        multiData.components.push({ name: 'Damage Bonus Upgrade (Healthy) [x]', value: 1.25 });
+        multiData.components.push({ name: 'Damage Bonus (Upgrade) (Healthy) [x]', value: 1.25 });
     }
     
     if (skillObj.name === "You And What Army?") {
         multiMult *= 1.5;
-        multiData.components.push({ name: 'You and What Army? (Modifier) [x]', value: 1.5 });
+        multiData.components.push({ name: 'You And What Army? (Upgrade) [x]', value: 1.5 });
     }
     
     if (skillObj.name === "Skeleton Mage" && window.selectedSkills && window.selectedSkills["Crowd Control Damage Bonus"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().cc) {
         multiMult *= 1.30;
-        multiData.components.push({ name: 'Crowd Control Damage Bonus [x]', value: 1.30 });
+        multiData.components.push({ name: 'Crowd Control Damage Bonus (Upgrade) [x]', value: 1.30 });
     }
     
     let finalScalar = rankMultiplier * mainStatMult * additiveMult * multiMult;
