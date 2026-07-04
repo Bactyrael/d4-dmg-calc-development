@@ -2072,6 +2072,42 @@ function renderEquipment(className, savedEquipment = {}) {
     return name.replace(/^\+?\[[\d\.,]+\s*-\s*[\d\.,]+\]%?\s*/, '');
 }
 
+function getTotalActiveMinions(currentBuild) {
+    if (!currentBuild || !currentBuild.bookOfTheDead) return 0;
+    
+    let total = 0;
+    
+    // Warriors (Base 4)
+    if (currentBuild.bookOfTheDead.warriors?.node !== 'sacrifice') {
+        let wCount = 4;
+        if (currentBuild.bookOfTheDead.warriors?.spec === "Skirmisher" && currentBuild.bookOfTheDead.warriors?.node === "1") wCount += 1;
+        if (typeof getEquipmentValues === 'function') {
+            const eq = getEquipmentValues();
+            if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("undercrown"))) wCount += 4;
+        }
+        total += wCount;
+    }
+    
+    // Mages (Base 3)
+    if (currentBuild.bookOfTheDead.mages?.node !== 'sacrifice') {
+        let mCount = 3;
+        if (window.selectedSkills && window.selectedSkills["Coven"] > 0) mCount += 2;
+        if (typeof getEquipmentValues === 'function') {
+            const eq = getEquipmentValues();
+            if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("undercrown"))) mCount += 4;
+            if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("the hand of naz"))) mCount += 1;
+        }
+        total += mCount;
+    }
+    
+    // Golems (Base 1)
+    if (currentBuild.bookOfTheDead.golems?.node !== 'sacrifice') {
+        total += 1;
+    }
+    
+    return total;
+}
+
 function compileCharacterStats(equipped, autoStats) {
         const stats = {};
         
@@ -2210,6 +2246,16 @@ function compileCharacterStats(equipped, autoStats) {
                 addStat(stats, 'Skill (Secondary): Blight (Area Damage Bonus) Damage [x]', 40, 'Area Damage Bonus');
             }
             
+            // Sever - Damage Bonus
+            if (window.selectedSkills['Damage Bonus'] > 0) {
+                let isSeverSelected = window.selectedSkills['Sever'] > 0 || (window.selectedSkills['Reaping Lotus'] > 0) || (window.selectedSkills['Inexorable Reaper'] > 0);
+                if (isSeverSelected) {
+                    let totalMinions = getTotalActiveMinions(currentBuild);
+                    let dmgBonus = 10 + (totalMinions * 1);
+                    addStat(stats, 'Skill: Sever (Damage Bonus) Damage [x]', dmgBonus, 'Damage Bonus');
+                }
+            }
+
             // Gift of Death
             if (window.selectedSkills['Gift of Death'] > 0) {
                 let magesRank = window.selectedSkills['Skeleton Mage'] || 1;
