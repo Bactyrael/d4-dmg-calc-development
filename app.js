@@ -7163,7 +7163,25 @@ rarity = foundItem.rarity;
       
       if (dom.dashUniversalDr) dom.dashUniversalDr.textContent = (100 - (100 * (1 - (universalDrPct/100)) * glyphDRMultiplier)).toFixed(1) + '%';
 
+            const dodgeTotal = compiledStats['Dodge Chance'] ? compiledStats['Dodge Chance'].final : 0;
+      const blockTotal = compiledStats['Block Chance'] ? compiledStats['Block Chance'].final : 0;
       
+      const domDodge = document.getElementById('dash-dodge');
+      const domBlock = document.getElementById('dash-block');
+      if (domDodge) domDodge.textContent = dodgeTotal.toFixed(1) + '%';
+      if (domBlock) domBlock.textContent = blockTotal.toFixed(1) + '%';
+
+      const allRes = compiledStats['Resistance to All Elements'] ? compiledStats['Resistance to All Elements'].final : 0;
+      const allElementsList = ['Physical', 'Fire', 'Cold', 'Lightning', 'Poison', 'Shadow'];
+      allElementsList.forEach(elem => {
+          let resVal = compiledStats[`${elem} Resist`] ? compiledStats[`${elem} Resist`].final : 0;
+          if (elem !== 'Physical') {
+              resVal += allRes;
+          }
+          const resDom = document.getElementById(`dash-res-${elem.toLowerCase()}`);
+          if (resDom) resDom.textContent = Math.floor(resVal) + '%';
+      });
+
       const elements = ['Physical', 'Fire', 'Cold', 'Lightning', 'Poison', 'Shadow'];
       elements.forEach(elem => {
           const resistDrPct = compiledStats[`${elem} DR%`] ? compiledStats[`${elem} DR%`].final : 0;
@@ -8089,3 +8107,130 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         critMultiplicativeComponents
     };
 }
+
+
+window.showDefensiveBreakdown = function(statName, compiledStats) {
+    const modal = document.getElementById('defensive-modal');
+    const title = document.getElementById('defensive-modal-title');
+    const body = document.getElementById('defensive-modal-body');
+    if (!modal || !title || !body) return;
+
+    title.textContent = statName + " Breakdown";
+    let html = '';
+    const statData = compiledStats[statName];
+
+    if (statName.startsWith('EHP ')) {
+        const elem = statName.split(' ')[1];
+        const maxLife = compiledStats['Maximum Life'] ? compiledStats['Maximum Life'].final : 0;
+        const armorDrPct = compiledStats['Physical DR% (Armor)'] ? compiledStats['Physical DR% (Armor)'].final : 0;
+        const universalDrPct = compiledStats['Universal Damage Reduction %'] ? compiledStats['Universal Damage Reduction %'].final : 0;
+        const resistDrPct = compiledStats[`${elem} DR%`] ? compiledStats[`${elem} DR%`].final : 0;
+        
+        let glyphDRMultiplier = 1;
+        const ehpConds = getActiveConditions();
+        if (typeof currentBuild !== 'undefined' && currentBuild.paragon && currentBuild.glyphs) {
+            for (let i = 0; i < 5; i++) {
+                let pData = currentBuild.paragon[i];
+                if (pData && pData.glyph && pData.glyph.id) {
+                    let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
+                    if (gData) {
+                        let gName = gData.name;
+                        let addVals = typeof getAdditionalBonusValues === 'function' ? getAdditionalBonusValues() : [0,0,0,0,0];
+                        let addVal = addVals[i] || 0;
+                        if (addVal > 0) {
+                            if (gName === 'Darkness') glyphDRMultiplier *= (1 - 0.10);
+                            if (gName === 'Exhumation') glyphDRMultiplier *= (1 - 0.06);
+                            if (gName === 'Territorial' && ehpConds.close) glyphDRMultiplier *= (1 - 0.15);
+                            if (gName === 'Undaunted') glyphDRMultiplier *= (1 - 0.15);
+                        }
+                    }
+                }
+            }
+        }
+
+        const finalElemDr = 1 - ((1 - (armorDrPct/100)) * (1 - (resistDrPct/100)) * (1 - (universalDrPct/100)) * glyphDRMultiplier);
+        const ehpElem = maxLife / (1 - finalElemDr);
+
+        html += `<div style="margin-bottom: 10px; font-weight: bold; color: #fff;">Base Life: <span style="color: #4cd137; float: right;">${Math.floor(maxLife).toLocaleString()}</span></div>`;
+        html += `<hr style="border-color: #333; margin: 10px 0;">`;
+        html += `<div style="margin-bottom: 5px;">Armor DR: <span style="color: #e74c3c; float: right;">${armorDrPct.toFixed(1)}%</span></div>`;
+        html += `<div style="margin-bottom: 5px;">Universal DR: <span style="color: #e74c3c; float: right;">${universalDrPct.toFixed(1)}%</span></div>`;
+        html += `<div style="margin-bottom: 5px;">${elem} Resist DR: <span style="color: #e74c3c; float: right;">${resistDrPct.toFixed(1)}%</span></div>`;
+        if (glyphDRMultiplier !== 1) {
+            html += `<div style="margin-bottom: 5px;">Glyph DR Multiplier: <span style="color: #e74c3c; float: right;">${((1 - glyphDRMultiplier)*100).toFixed(1)}%</span></div>`;
+        }
+        html += `<hr style="border-color: #333; margin: 10px 0;">`;
+        html += `<div style="font-weight: bold; font-size: 1.1rem; color: #d18a45;">Total EHP: <span style="color: #4cd137; float: right;">${Math.floor(ehpElem).toLocaleString()}</span></div>`;
+    } 
+    else if (statName.includes('Resist') && statName !== 'Resistance to All Elements') {
+        const elem = statName.split(' ')[0];
+        const allResData = compiledStats['Resistance to All Elements'];
+        
+        html += `<table style="width: 100%; border-collapse: collapse;"><tbody>`;
+        if (allResData && elem !== 'Physical') {
+            html += `<tr style="border-bottom: 1px solid #222;"><td style="padding: 8px 0; color: #aaa;">All Resistance</td><td style="padding: 8px 0; text-align: right; color: #fff;">+${allResData.final.toFixed(1)}%</td></tr>`;
+        }
+        if (statData && statData.flatSources) {
+            statData.flatSources.forEach(src => {
+                html += `<tr style="border-bottom: 1px solid #222;"><td style="padding: 8px 0; color: #aaa;">${src.name}</td><td style="padding: 8px 0; text-align: right; color: #fff;">+${src.val}%</td></tr>`;
+            });
+        }
+        
+        let total = (allResData && elem !== 'Physical' ? allResData.final : 0) + (statData ? statData.final : 0);
+        html += `</tbody></table>`;
+        html += `<div style="margin-top: 15px; font-weight: bold; font-size: 1.1rem; color: #d18a45;">Total: <span style="float: right;">${total.toFixed(1)}%</span></div>`;
+    }
+    else if (statName === 'Dodge Chance' || statName.includes('Damage Reduction')) {
+        html += `<div style="margin-bottom: 15px; font-style: italic; color: #888;">This stat is calculated inversely multiplicatively.</div>`;
+        html += `<table style="width: 100%; border-collapse: collapse;"><tbody>`;
+        if (statData && statData.flatSources) {
+            statData.flatSources.forEach(src => {
+                html += `<tr style="border-bottom: 1px solid #222;"><td style="padding: 8px 0; color: #aaa;">${src.name}</td><td style="padding: 8px 0; text-align: right; color: #fff;">${src.val.toFixed(1)}%</td></tr>`;
+            });
+        } else {
+            html += `<tr><td style="padding: 8px 0; color: #777;">No sources detected.</td></tr>`;
+        }
+        html += `</tbody></table>`;
+        const total = statData ? statData.final : 0;
+        html += `<div style="margin-top: 15px; font-weight: bold; font-size: 1.1rem; color: #d18a45;">Final Product: <span style="float: right;">${total.toFixed(1)}%</span></div>`;
+    }
+    else {
+        html += `<table style="width: 100%; border-collapse: collapse;"><tbody>`;
+        if (statData && statData.flatSources && statData.flatSources.length > 0) {
+            html += `<tr><td colspan="2" style="padding: 8px 0; font-weight: bold; color: #eee;">Base Sources</td></tr>`;
+            statData.flatSources.forEach(src => {
+                html += `<tr style="border-bottom: 1px solid #222;"><td style="padding: 4px 0 4px 15px; color: #aaa;">${src.name}</td><td style="padding: 4px 0; text-align: right; color: #fff;">+${src.val}</td></tr>`;
+            });
+        }
+        if (statData && statData.pctSources && statData.pctSources.length > 0) {
+            html += `<tr><td colspan="2" style="padding: 12px 0 8px 0; font-weight: bold; color: #eee;">Percentage Modifiers</td></tr>`;
+            statData.pctSources.forEach(src => {
+                html += `<tr style="border-bottom: 1px solid #222;"><td style="padding: 4px 0 4px 15px; color: #aaa;">${src.name}</td><td style="padding: 4px 0; text-align: right; color: #fff;">+${src.val}%</td></tr>`;
+            });
+        }
+        if (!statData || (!statData.flatSources?.length && !statData.pctSources?.length)) {
+             html += `<tr><td style="padding: 8px 0; color: #777;">No sources detected.</td></tr>`;
+        }
+        html += `</tbody></table>`;
+        const total = statData ? statData.final : 0;
+        let suffix = statName.includes('Chance') ? '%' : '';
+        html += `<div style="margin-top: 15px; font-weight: bold; font-size: 1.1rem; color: #d18a45;">Final Total: <span style="float: right;">${Math.floor(total).toLocaleString()}${suffix}</span></div>`;
+    }
+
+    body.innerHTML = html;
+    modal.classList.remove('hidden');
+    modal.style.display = 'flex';
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const closeBtn = document.getElementById('btn-close-defensive-modal');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            const modal = document.getElementById('defensive-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.style.display = 'none';
+            }
+        });
+    }
+});
