@@ -1140,7 +1140,7 @@ var currentBuild = createDefaultBuild();
                       let glyphInfo = classData.legBonuses.find(g => g.label === gName);
                       if (glyphInfo) {
                           let min = glyphInfo.min; let max = glyphInfo.max;
-                          let rawBonus = min + ((max - min) * ((Math.min(100, pData.glyph.level) - 1) / 149));
+                          let rawBonus = min + ((max - min) * ((Math.min(150, pData.glyph.level) - 1) / 149));
                           
                           if (gName === 'Essence') {
                               rawBonus = rawBonus * 0.8;
@@ -7142,7 +7142,8 @@ rarity = foundItem.rarity;
                   let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
                   if (gData) {
                       let gName = gData.name;
-                      let addVal = currentBuild.glyphs[i] || 0;
+                      let addVals = typeof getAdditionalBonusValues === 'function' ? getAdditionalBonusValues() : [0,0,0,0,0];
+                      let addVal = addVals[i] || 0;
                       if (addVal > 0) {
                           if (gName === 'Darkness') glyphDRMultiplier *= (1 - 0.10);
                           if (gName === 'Exhumation') glyphDRMultiplier *= (1 - 0.06);
@@ -7556,8 +7557,10 @@ function calculateSkillMultiplicativeBucket(skill) {
                         let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
                         if (gData) {
                             let gName = gData.name;
-                            let addVal = currentBuild.glyphs[i] || 0;
-                            let legVal = currentBuild.glyphs[i + 5] || 0;
+                            let addVals = typeof getAdditionalBonusValues === 'function' ? getAdditionalBonusValues() : [0,0,0,0,0];
+                            let legVals = typeof getLegendaryBonusValues === 'function' ? getLegendaryBonusValues() : [0,0,0,0,0];
+                            let addVal = addVals[i] || 0;
+                            let legVal = legVals[i] || 0;
                             
                             let addApplies = false;
                             let legApplies = false;
