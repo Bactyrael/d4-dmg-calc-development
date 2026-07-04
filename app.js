@@ -8152,8 +8152,6 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
                         let addVals = typeof getAdditionalBonusValues === 'function' ? getAdditionalBonusValues() : [0,0,0,0,0];
                         let addVal = addVals[i] || 0;
                         if (addVal > 0) {
-                            if (gName === 'Darkness') glyphDRMultiplier *= (1 - 0.10);
-                            if (gName === 'Exhumation') glyphDRMultiplier *= (1 - 0.06);
                             if (gName === 'Territorial' && ehpConds.close) glyphDRMultiplier *= (1 - 0.15);
                             if (gName === 'Undaunted') glyphDRMultiplier *= (1 - 0.15);
                         }
@@ -8162,17 +8160,15 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
             }
         }
 
-        const finalElemDr = 1 - ((1 - (armorDrPct/100)) * (1 - (resistDrPct/100)) * (1 - (universalDrPct/100)) * glyphDRMultiplier);
+        const combinedUniversalDr = 100 - (100 * (1 - (universalDrPct/100)) * glyphDRMultiplier);
+        const finalElemDr = 1 - ((1 - (armorDrPct/100)) * (1 - (resistDrPct/100)) * (1 - (combinedUniversalDr/100)));
         const ehpElem = maxLife / (1 - finalElemDr);
 
         html += `<div style="margin-bottom: 10px; font-weight: bold; color: #fff;">Base Life: <span style="color: #4cd137; float: right;">${Math.floor(maxLife).toLocaleString()}</span></div>`;
         html += `<hr style="border-color: #333; margin: 10px 0;">`;
         html += `<div style="margin-bottom: 5px;">Armor DR: <span style="color: #e74c3c; float: right;">${armorDrPct.toFixed(1)}%</span></div>`;
-        html += `<div style="margin-bottom: 5px;">Universal DR: <span style="color: #e74c3c; float: right;">${universalDrPct.toFixed(1)}%</span></div>`;
+        html += `<div style="margin-bottom: 5px;">Universal DR: <span style="color: #e74c3c; float: right;">${combinedUniversalDr.toFixed(1)}%</span></div>`;
         html += `<div style="margin-bottom: 5px;">${elem} Resist DR: <span style="color: #e74c3c; float: right;">${resistDrPct.toFixed(1)}%</span></div>`;
-        if (glyphDRMultiplier !== 1) {
-            html += `<div style="margin-bottom: 5px;">Glyph DR Multiplier: <span style="color: #e74c3c; float: right;">${((1 - glyphDRMultiplier)*100).toFixed(1)}%</span></div>`;
-        }
         html += `<hr style="border-color: #333; margin: 10px 0;">`;
         html += `<div style="font-weight: bold; font-size: 1.1rem; color: #d18a45;">Total EHP: <span style="color: #4cd137; float: right;">${Math.floor(ehpElem).toLocaleString()}</span></div>`;
     } 
