@@ -2197,6 +2197,11 @@ function compileCharacterStats(equipped, autoStats) {
                 addStat(stats, 'Skill: Blight (Crowd Control Damage Bonus) Damage [x]', 30, 'Crowd Control Damage Bonus');
             }
             
+            // Area Damage Bonus (Blight)
+            if (window.selectedSkills['Area Damage Bonus'] > 0) {
+                addStat(stats, 'Skill: Blight (Area Damage Bonus) Damage [x]', 40, 'Area Damage Bonus');
+            }
+            
             // Gift of Death
             if (window.selectedSkills['Gift of Death'] > 0) {
                 let magesRank = window.selectedSkills['Skeleton Mage'] || 1;
