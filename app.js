@@ -8341,4 +8341,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', () => { setTimeout(() => { document.querySelectorAll('#calc-pane-ehp .stat-row-hoverable').forEach(card => { card.addEventListener('click', () => { const statName = card.dataset.stat; if (statName && typeof window.showDefensiveBreakdown === 'function') { window.showDefensiveBreakdown(statName, window.D4_COMPILED_STATS || {}); } }); }); }, 500); });
+document.addEventListener('DOMContentLoaded', () => { setTimeout(() => { 
+    document.querySelectorAll('#calc-pane-ehp .stat-row-hoverable').forEach(card => { 
+        card.addEventListener('click', () => { 
+            const statName = card.dataset.stat; 
+            if (statName && typeof window.showDefensiveBreakdown === 'function') { 
+                window.showDefensiveBreakdown(statName, window.D4_COMPILED_STATS || {}); 
+            } 
+        }); 
+    }); 
+    
+    const dashBarrier = document.getElementById('dash-barrier-input');
+    if (dashBarrier) {
+        dashBarrier.addEventListener('input', (e) => {
+            let val = parseFloat(e.target.value) || 0;
+            const ml = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Maximum Life']) ? window.D4_COMPILED_STATS['Maximum Life'].final : 0;
+            if (val < 0) val = 0;
+            if (val > ml) val = ml;
+            window.activeBarrierAmount = val;
+            
+            if (typeof window.renderToughnessDashboard === 'function' && window.D4_COMPILED_STATS) {
+                window.renderToughnessDashboard(window.D4_COMPILED_STATS);
+            }
+        });
+        
+        dashBarrier.addEventListener('change', (e) => {
+            let val = parseFloat(e.target.value) || 0;
+            const ml = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Maximum Life']) ? window.D4_COMPILED_STATS['Maximum Life'].final : 0;
+            if (val < 0) val = 0;
+            if (val > ml) val = ml;
+            e.target.value = val;
+            window.activeBarrierAmount = val;
+        });
+        
+        dashBarrier.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.target.select();
+        });
+    }
+}, 500); });
