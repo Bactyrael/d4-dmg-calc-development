@@ -1026,6 +1026,7 @@ const skillsDatabase = {
       "description": "{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}A specter of you charges forward, dealing {c_number}[{payload:projectile_damage}|2?|]{/c} damage, then attacks with its scythe, dealing {c_number}[{payload:damage_out}|2?|]{/c} damage.",
       "maxRank": 15,
       "baseDamageScalar": 0.2,
+      "baseLabelOverride": "Path Damage",
       "secondaryScalars": {
         "projectile_damage": {
           "scalar": 0.6,
