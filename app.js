@@ -2508,37 +2508,45 @@ function compileCharacterStats(equipped, autoStats) {
         }
         }
       
-      // Post-Compilation Step: Additive Percent Modifiers
-      const additiveScalers = [
+      const additiveScalersCore = [
           { flat: 'Strength', pct: ['% Strength'] },
           { flat: 'Intelligence', pct: ['% Intelligence'] },
           { flat: 'Willpower', pct: ['% Willpower'] },
-          { flat: 'Dexterity', pct: ['% Dexterity'] },
+          { flat: 'Dexterity', pct: ['% Dexterity'] }
+      ];
+      
+      const additiveScalersSecondary = [
           { flat: 'Maximum Life', pct: ['% Maximum Life'] },
           { flat: 'Armor', pct: ['% Armor', '% Total Armor'] },
           { flat: 'Resistance to All Elements', pct: ['% Resistance to All Elements'] }
       ];
 
-        additiveScalers.forEach(scaler => {
-            if (!stats[scaler.flat]) {
-                stats[scaler.flat] = { total: 0, final: 0, flatSources: [], pctSources: [] };
-            }
-            
-            let totalPct = 0;
-            scaler.pct.forEach(pctKey => {
-                if (stats[pctKey]) {
-                    totalPct += stats[pctKey].total;
-                    stats[pctKey].flatSources.forEach(src => {
-                        stats[scaler.flat].pctSources.push({ name: src.name, val: src.val });
-                    });
-                    delete stats[pctKey]; // Remove so it doesn't double-display
-                }
-            });
-            
-            if (totalPct !== 0) {
-                stats[scaler.flat].final = stats[scaler.flat].total * (1 + (totalPct / 100));
-            }
-        });
+      const scaleFn = (scaler) => {
+          if (!stats[scaler.flat]) {
+              stats[scaler.flat] = { total: 0, final: 0, flatSources: [], pctSources: [] };
+          }
+          
+          let totalPct = 0;
+          scaler.pct.forEach(pctKey => {
+              if (stats[pctKey]) {
+                  totalPct += stats[pctKey].total;
+                  stats[pctKey].flatSources.forEach(src => {
+                      stats[scaler.flat].pctSources.push({ name: src.name, val: src.val });
+                  });
+                  delete stats[pctKey]; // Remove so it doesn't double-display
+              }
+          });
+          
+          if (totalPct !== 0) {
+              stats[scaler.flat].final = stats[scaler.flat].total * (1 + (totalPct / 100));
+          }
+      };
+
+      additiveScalersCore.forEach(scaleFn);
+
+      if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
+
+      additiveScalersSecondary.forEach(scaleFn);
         
         // Derive stats from Core Stats
         const selectedClass = document.getElementById('class-select')?.textContent || 'Barbarian';
@@ -2609,8 +2617,6 @@ function compileCharacterStats(equipped, autoStats) {
             addStat(stats, 'Universal Damage Reduction %', stats['Aspect of Hardened Bones'].total, 'Aspect of Hardened Bones');
         }
         
-        if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
-
         // Post-Compilation Step: Inverse Multiplicative Stats (Dodge Chance, Damage Reduction, etc.)
         // This must run at the very end so that Core Stats (like Dexterity) are included in the inverse multiplicative pool!
         const inverseMultiplicativeKeys = Object.keys(stats).filter(k => k.includes('Dodge Chance') || k.includes('Damage Reduction'));
