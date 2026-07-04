@@ -1027,8 +1027,14 @@ const skillsDatabase = {
       "maxRank": 15,
       "baseDamageScalar": 0.2,
       "secondaryScalars": {
-        "projectile_damage": 0.6,
-        "damage_out": 1
+        "projectile_damage": {
+          "scalar": 0.6,
+          "labelOverride": "Specter Charge"
+        },
+        "damage_out": {
+          "scalar": 1,
+          "labelOverride": "Scythe Attack"
+        }
       },
       "damageType": "Shadow",
       "modifiers": [

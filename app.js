@@ -5163,6 +5163,7 @@ function applyActiveModifiers(baseSkillObj) {
                 // Override base damage scalar if provided (e.g., Blood Wave 500% -> 300%)
                 if (mod.baseDamageScalar !== undefined) {
                     modified.baseDamageScalar = mod.baseDamageScalar;
+                    modified.baseLabelOverride = mod.baseLabelOverride || mod.name;
                 }
                 if (mod.isHit !== undefined) modified.isHit = mod.isHit;
                 
@@ -7865,7 +7866,7 @@ function renderCalcSkills() {
                               if (modSkill.baseDamageScalar) {
                                   let pct = (modSkill.baseDamageScalar * b.rankMultiplier * 100).toFixed(1).replace('.0', '');
                                   let addStr = Number(((b.additiveMult - 1) * 100).toFixed(6));
-                                  let baseLabel = (['Bone Storm', 'Blood Mist', 'Devouring Mist', 'Blood Transfusion', 'Blood Rush'].includes(modSkill.name)) ? 'Per Tick Damage' : (!b.isHit ? 'DoT Damage' : 'Damage');
+                                  let baseLabel = modSkill.baseLabelOverride ? modSkill.baseLabelOverride : ((['Bone Storm', 'Blood Mist', 'Devouring Mist', 'Blood Transfusion', 'Blood Rush'].includes(modSkill.name)) ? 'Per Tick Damage' : (!b.isHit ? 'DoT Damage' : 'Damage'));
                                   html += `<details style="margin-bottom: 4px;">
                                     <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none;">
                                       <span style="color: #555;">├</span> ${baseLabel} (${pct}%): <span style="color: #fff; font-weight: bold;">${b.minStr} - ${b.maxStr}</span>
@@ -7906,7 +7907,7 @@ function renderCalcSkills() {
                             if (modSkill.secondaryScalars) {
                                 for (const [key, val] of Object.entries(modSkill.secondaryScalars)) {
                                     if (val === null || val === undefined) continue;
-                                    let label = key.replace(/_/g, ' ').replace(/tooltip /i, '').replace(/dot/i, 'DoT').replace(/\b\w/g, c => c.toUpperCase());
+                                    let label = (typeof val === 'object' && val.labelOverride) ? val.labelOverride : key.replace(/_/g, ' ').replace(/tooltip /i, '').replace(/dot/i, 'DoT').replace(/\b\w/g, c => c.toUpperCase());
                                     let scalarVal = typeof val === 'object' ? val.scalar : val;
                                     let secSkill = JSON.parse(JSON.stringify(modSkill));
                                     if (typeof val === 'object' && val.tags) secSkill.tags = [...val.tags];
