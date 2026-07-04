@@ -8012,6 +8012,15 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'Duration Damage Bonus (Upgrade) [x]', value: 1.25 });
     }
     
+    if ((skillObj.name === "Skeleton Mage" || skillObj.baseName === "Skeleton Mage") && window.selectedSkills && window.selectedSkills["Singularity"] > 0) {
+        let maxEssence = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Maximum Essence']) ? window.D4_COMPILED_STATS['Maximum Essence'].final : 0;
+        if (maxEssence > 0) {
+            let mult = 1 + (maxEssence * 0.03);
+            multiMult *= mult;
+            multiData.components.push({ name: 'Singularity (Modifier) [x]', value: mult });
+        }
+    }
+    
     let finalScalar = rankMultiplier * mainStatMult * additiveMult * multiMult;
 
     let minDmg = 0;
