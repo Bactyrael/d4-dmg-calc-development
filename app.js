@@ -2157,6 +2157,25 @@ function compileCharacterStats(equipped, autoStats) {
             }
         }
         
+        // Add unconditional glyph damage reduction to Universal Damage Reduction %
+        if (typeof currentBuild !== 'undefined' && currentBuild.paragon && currentBuild.glyphs) {
+            for (let i = 0; i < 5; i++) {
+                let pData = currentBuild.paragon[i];
+                if (pData && pData.glyph && pData.glyph.id) {
+                    let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
+                    if (gData) {
+                        let gName = gData.name;
+                        let addVals = typeof getAdditionalBonusValues === 'function' ? getAdditionalBonusValues() : [0,0,0,0,0];
+                        let addVal = addVals[i] || 0;
+                        if (addVal > 0) {
+                            if (gName === 'Exhumation') addStat(stats, 'Universal Damage Reduction %', 6, 'Exhumation (Glyph)');
+                            if (gName === 'Darkness') addStat(stats, 'Universal Damage Reduction %', 10, 'Darkness (Glyph)');
+                        }
+                    }
+                }
+            }
+        }
+        
         // Apply active Skill Modifiers (Variable Stacks / Sliders)
         if (window.selectedSkills) {
             window.skillSliderValues = window.skillSliderValues || {};
