@@ -8020,6 +8020,37 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                 critMultiplicativeComponents.push({ name: key, value: critVal });
             }
         }
+
+        // Essence Multiplier (Critical Strikes Only)
+        if (typeof currentBuild !== 'undefined' && currentBuild.paragon && currentBuild.glyphs) {
+            let tags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
+            if (!tags.includes('dot') && !tags.includes('search_dot') && !tags.includes('search_shadowdot')) {
+                let addVals = typeof getAdditionalBonusValues === 'function' ? getAdditionalBonusValues() : [0,0,0,0,0];
+                let legVals = typeof getLegendaryBonusValues === 'function' ? getLegendaryBonusValues() : [0,0,0,0,0];
+                
+                for (let i = 0; i < 5; i++) {
+                    let pData = currentBuild.paragon[i];
+                    if (pData && pData.glyph && pData.glyph.id) {
+                        let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
+                        if (gData && gData.name === 'Essence') {
+                            let addVal = addVals[i] || 0;
+                            let legVal = legVals[i] || 0;
+                            
+                            if (addVal > 0) {
+                                let mult = 1 + ((addVal * 0.8) / 100);
+                                critMultiMult *= mult;
+                                critMultiplicativeComponents.push({ name: 'Essence (Additional Bonus) [x]', value: mult });
+                            }
+                            if (legVal > 0) {
+                                let mult = 1 + (legVal / 100);
+                                critMultiMult *= mult;
+                                critMultiplicativeComponents.push({ name: 'Essence (Legendary Bonus) [x]', value: mult });
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     let finalCritScalar = rankMultiplier * mainStatMult * critAdditiveMult * critMultiMult;
