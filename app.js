@@ -2199,7 +2199,7 @@ function compileCharacterStats(equipped, autoStats) {
             
             // Area Damage Bonus (Blight)
             if (window.selectedSkills['Area Damage Bonus'] > 0) {
-                addStat(stats, 'Skill: Blight (Area Damage Bonus) Damage [x]', 40, 'Area Damage Bonus');
+                addStat(stats, 'Skill (Secondary): Blight (Area Damage Bonus) Damage [x]', 40, 'Area Damage Bonus');
             }
             
             // Gift of Death
@@ -7615,18 +7615,21 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (lowerKey.startsWith('skill: ' + skill.name.toLowerCase())) {
                 applies = true;
             }
+            if (lowerKey.startsWith('skill (secondary): ' + skill.name.toLowerCase()) && skill.isSecondary) {
+                applies = true;
+            }
 
             if (applies) {
                 let valMult = (1 + (val / 100));
                 bucket *= valMult;
                 
                 let displayName = key;
-                if (lowerKey.startsWith('skill:')) {
+                if (lowerKey.startsWith('skill:') || lowerKey.startsWith('skill (secondary):')) {
                     let match = key.match(/\(([^)]+)\)/);
                     if (match && match[1]) {
                         displayName = match[1] + ' [x]';
                     } else {
-                        displayName = key.replace('Skill: ', '');
+                        displayName = key.replace(/Skill \(Secondary\): |Skill: /ig, '');
                     }
                 }
                 
@@ -7914,6 +7917,7 @@ function renderCalcSkills() {
                                         secSkill.name = val.nameOverride;
                                     }
                                     secSkill.baseDamageScalar = scalarVal;
+                                    secSkill.isSecondary = true;
                                     let isHit = (typeof val === 'object' && val.isHit !== undefined) ? val.isHit : !key.toLowerCase().includes('dot');
                                     let b2 = getSkillDamageBreakdown(secSkill, rank, isHit);
                                     let pct = (scalarVal * b2.rankMultiplier * 100).toFixed(1).replace('.0', '');
