@@ -2192,6 +2192,11 @@ function compileCharacterStats(equipped, autoStats) {
                 addStat(stats, 'Skill: Corpse Explosion (Bloody Mess) Damage [x]', 50, 'Bloody Mess');
             }
             
+            // Crowd Control Damage Bonus (Blight)
+            if (window.selectedSkills['Crowd Control Damage Bonus'] > 0 && currentBuild.conditions && currentBuild.conditions.cc) {
+                addStat(stats, 'Skill: Blight (Crowd Control Damage Bonus) Damage [x]', 30, 'Crowd Control Damage Bonus');
+            }
+            
             // Gift of Death
             if (window.selectedSkills['Gift of Death'] > 0) {
                 let magesRank = window.selectedSkills['Skeleton Mage'] || 1;
