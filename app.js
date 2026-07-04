@@ -2102,6 +2102,14 @@ function compileCharacterStats(equipped, autoStats) {
             }
             if (activeBuffs.ferocity > 0) {
                 addStat(stats, 'Attack Speed', activeBuffs.ferocity * 5, 'Ferocity Stacks');
+                
+                // Sever - Ferocity
+                if (window.selectedSkills['Ferocity'] > 0) {
+                    let isSeverSelected = window.selectedSkills['Sever'] > 0 || (window.selectedSkills['Reaping Lotus'] > 0);
+                    if (isSeverSelected) {
+                        addStat(stats, 'Skill: Sever (Ferocity) Damage [x]', 7 * activeBuffs.ferocity, 'Ferocity Stacks');
+                    }
+                }
             }
             addStat(stats, 'Damage Per Overpower Stack', 15, 'Inherent Overpower Bonus');
             if (activeBuffs.resolve > 0) {
@@ -2195,16 +2203,6 @@ function compileCharacterStats(equipped, autoStats) {
             // Crowd Control Damage Bonus (Blight)
             if (window.selectedSkills['Crowd Control Damage Bonus'] > 0 && currentBuild.conditions && currentBuild.conditions.cc) {
                 addStat(stats, 'Skill: Blight (Crowd Control Damage Bonus) Damage [x]', 30, 'Crowd Control Damage Bonus');
-            }
-            
-            // Sever - Ferocity
-            if (window.selectedSkills['Ferocity'] > 0 && activeBuffs.ferocity > 0) {
-                let isSeverSelected = window.selectedSkills['Sever'] > 0 || (window.selectedSkills['Reaping Lotus'] > 0);
-                if (isSeverSelected) {
-                    addStat(stats, 'Skill: Sever (Ferocity) Damage [x]', 7 * activeBuffs.ferocity, 'Ferocity Stacks');
-                }
-            }
-
             // Area Damage Bonus (Blight)
             if (window.selectedSkills['Area Damage Bonus'] > 0) {
                 addStat(stats, 'Skill (Secondary): Blight (Area Damage Bonus) Damage [x]', 40, 'Area Damage Bonus');
