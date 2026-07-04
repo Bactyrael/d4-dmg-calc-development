@@ -2191,6 +2191,30 @@ function compileCharacterStats(equipped, autoStats) {
             if (window.selectedSkills['Bloody Mess'] > 0) {
                 addStat(stats, 'Skill: Corpse Explosion (Bloody Mess) Damage [x]', 50, 'Bloody Mess');
             }
+            
+            // Gift of Death
+            if (window.selectedSkills['Gift of Death'] > 0) {
+                let magesRank = window.selectedSkills['Skeleton Mage'] || 1;
+                let levelsGained = magesRank > 1 ? magesRank - 1 : 0;
+                let enhancedIncreases = Math.floor(magesRank / 5);
+                let rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
+                
+                let bonusMages = 0;
+                if (window.selectedSkills["Coven"] > 0) bonusMages += 2;
+                if (typeof getEquipmentValues === 'function') {
+                    const eq = getEquipmentValues();
+                    if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("undercrown"))) {
+                        bonusMages += 4;
+                    }
+                    if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("the hand of naz"))) {
+                        bonusMages += 1;
+                    }
+                }
+                let totalMages = 3 + bonusMages;
+                let regenPerMage = 0.5 * rankMult * 100;
+                
+                addStat(stats, 'Essence Regeneration %', regenPerMage * totalMages, 'Gift of Death');
+            }
         }
         
         let resourceName = 'Maximum Resource';
