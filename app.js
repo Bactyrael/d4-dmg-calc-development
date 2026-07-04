@@ -356,13 +356,13 @@ var currentBuild = createDefaultBuild();
     { label: 'Blood-drinker: 0%', value: 0 },
     { label: 'Control: 20%', value: 20 },
     { label: 'Corporeal: 10%', value: 10 },
-    { label: 'Darkness: 0%', value: 0 },
+    { label: 'Darkness: 10%', value: 10 },
     { label: 'Deadraiser: 15%', value: 15 },
     { label: 'Desecration: 20%', value: 20 },
     { label: 'Dominate: 12%', value: 12 },
     { label: 'Eliminator: 10%', value: 10 },
     { label: 'Essence: 17.6%', value: 17.6 },
-    { label: 'Exhumation: 0%', value: 0 },
+    { label: 'Exhumation: 6%', value: 6 },
     { label: 'Exploit: 10%', value: 10 },
     { label: 'Golem: 25%', value: 25 },
     { label: 'Gravekeeper: 18%', value: 18 },
@@ -371,8 +371,8 @@ var currentBuild = createDefaultBuild();
     { label: 'Revenge: 10%', value: 10 },
     { label: 'Sacrificial: 10%', value: 10 },
     { label: 'Scourge: 10%', value: 10 },
-    { label: 'Territorial: 0%', value: 0 },
-    { label: 'Undaunted: 0%', value: 0 },
+    { label: 'Territorial: 15%', value: 15 },
+    { label: 'Undaunted: 15%', value: 15 },
     { label: 'Warrior: 20%', value: 20 }
   ];
 
