@@ -5326,38 +5326,7 @@ function showSkillTooltip(skillObj, e) {
     else if (finalDamageType === "Poison") dmgTypeIcon = '🟢';
     else if (finalDamageType === "Physical") dmgTypeIcon = '⚔️';
 
-        let breakdownHtml = '';
-    if (skillObj.baseDamageScalar) {
-        let b = getSkillDamageBreakdown(skillObj, displayRank);
-        let addStr = Number(((b.additiveMult - 1) * 100).toFixed(6));
-        
-        breakdownHtml = `
-            <div class="d4-tooltip-upgrades-header" style="margin-top: 15px;">DAMAGE BREAKDOWN</div>
-            <div style="font-size: 0.9rem; color: #ccc; margin-bottom: 3px; display: flex; justify-content: space-between;">
-              <span>${b.mainStatName} Multiplier:</span> <span style="color: #fff;">x${Number(b.mainStatMult.toFixed(6))}</span>
-            </div>
-            <div style="font-size: 0.9rem; color: #ccc; margin-bottom: 3px; display: flex; justify-content: space-between;">
-              <span>Additive Stats:</span> <span style="color: #fff;">+${addStr}%</span>
-            </div>
-            <div style="font-size: 0.9rem; color: #ccc; margin-bottom: 3px; display: flex; justify-content: space-between;">
-              <span>Multiplicative Stats:</span> <span style="color: #fff;">x${Number(b.multiMult.toFixed(6))}</span>
-            </div>
-            <details style="margin-bottom: 5px;">
-              <summary style="font-size: 0.85rem; color: #88a; cursor: pointer; user-select: none;">Show Multipliers</summary>
-              <div style="padding-left: 10px; margin-top: 3px;">
-                 ${(b.multiplicativeComponents || []).map(comp => 
-                   `<div style="font-size: 0.8rem; color: #aaa; display: flex; justify-content: space-between;">
-                     <span>${comp.name}</span> <span>x${Number(comp.value.toFixed(4))}</span>
-                    </div>`
-                 ).join('')}
-              </div>
-            </details>
-            <div style="font-size: 0.95rem; color: #c9a55c; margin-bottom: 5px; margin-top: 5px; display: flex; justify-content: space-between; font-weight: bold; border-top: 1px solid #333; padding-top: 5px;">
-              <span>${!b.isHit ? 'DoT Damage' : 'Final Damage'}:</span> <span>${b.minStr} - ${b.maxStr}</span>
-            </div>
-            ${!b.isHit ? '' : `<div style="font-size: 0.95rem; color: #f9d85c; margin-bottom: 5px; display: flex; justify-content: space-between; font-weight: bold;">\n              <span>Critical Hit:</span> <span>${b.critStrMin} - ${b.critStrMax}</span>\n            </div>`}
-        `;
-    }
+    let breakdownHtml = '';
 
     let footerHtml = `
         <div class="d4-tooltip-footer">
