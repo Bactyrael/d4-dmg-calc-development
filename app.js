@@ -7545,7 +7545,7 @@ function calculateSkillMultiplicativeBucket(skill) {
             // Check if it applies to this skill
             let applies = false;
             
-            let isSkillSpecific = lowerKey.startsWith('skill:');
+            let isSkillSpecific = lowerKey.startsWith('skill:') || lowerKey.startsWith('skill (secondary):');
             
             if (!isSkillSpecific && lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('darkness') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical') && !lowerKey.includes('wither') && !lowerKey.includes('frailty') && !lowerKey.includes('hulking monstrosity')) {
                 // Generic damage multiplier (e.g. 20% [x] Damage)
@@ -7624,12 +7624,13 @@ function calculateSkillMultiplicativeBucket(skill) {
                 bucket *= valMult;
                 
                 let displayName = key;
-                if (lowerKey.startsWith('skill:') || lowerKey.startsWith('skill (secondary):')) {
-                    let match = key.match(/\(([^)]+)\)/);
+                if (isSkillSpecific) {
+                    let cleanKey = key.replace(/Skill \(Secondary\): |Skill: /ig, '');
+                    let match = cleanKey.match(/\(([^)]+)\)/);
                     if (match && match[1]) {
-                        displayName = match[1] + ' [x]';
+                        displayName = match[1] + ' (Upgrade) [x]';
                     } else {
-                        displayName = key.replace(/Skill \(Secondary\): |Skill: /ig, '');
+                        displayName = cleanKey;
                     }
                 }
                 
