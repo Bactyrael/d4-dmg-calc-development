@@ -8002,6 +8002,11 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'You and What Army? (Modifier) [x]', value: 1.5 });
     }
     
+    if (skillObj.name === "Skeleton Mage" && window.selectedSkills && window.selectedSkills["Crowd Control Damage Bonus"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().cc) {
+        multiMult *= 1.30;
+        multiData.components.push({ name: 'Crowd Control Damage Bonus [x]', value: 1.30 });
+    }
+    
     let finalScalar = rankMultiplier * mainStatMult * additiveMult * multiMult;
 
     let minDmg = 0;
