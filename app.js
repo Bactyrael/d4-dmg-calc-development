@@ -7600,13 +7600,7 @@ function calculateSkillMultiplicativeBucket(skill) {
                                 case 'Eliminator':
                                     if (conds.monsterType === 'elite' || conds.monsterType === 'boss') { addApplies = true; legApplies = true; }
                                     break;
-                                case 'Essence':
-                                    if (!tags.includes('dot') && !tags.includes('search_dot') && !tags.includes('search_shadowdot')) {
-                                        addApplies = true;
-                                        addVal = addVal * 0.8;
-                                        legApplies = true;
-                                    }
-                                    break;
+
                                 case 'Exhumation':
                                     legApplies = true;
                                     break;
