@@ -295,9 +295,12 @@
                    <p style="color: #aaa; font-style: italic; margin-bottom: 20px;">Toggle and configure buffs to apply global modifiers to your character.</p>
                    
                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;" id="buffs-grid">
-                     <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #ddd;">
-                       <input type="checkbox" id="buff-weakened" class="d4-checkbox calc-buff"> Weakened (Enemy DR)
-                     </label>
+                      <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #ddd;">
+                        <input type="checkbox" id="buff-fortified" class="d4-checkbox calc-buff"> Player is Fortified
+                      </label>
+                      <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #ddd;">
+                        <input type="checkbox" id="buff-weakened" class="d4-checkbox calc-buff"> Weakened (Enemy DR)
+                      </label>
                      <label style="display: flex; flex-direction: column; gap: 5px; color: #ddd;">
                        <span>Ferocity Stacks (0-8)</span>
                        <input type="number" id="buff-ferocity" class="calc-buff" min="0" max="8" value="0" style="background: rgba(0,0,0,0.5); border: 1px solid #445; color: #fff; padding: 5px; border-radius: 4px; width: 60px;">

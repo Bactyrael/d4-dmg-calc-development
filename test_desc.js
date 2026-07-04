@@ -1,0 +1,10 @@
+const fs = require('fs');
+const data = JSON.parse(fs.readFileSync('maxroll_data.json', 'utf8'));
+const formulas = data.paragonFormulas;
+let attrMeta = formulas.attributes[254];
+let desc = formulas.attributeDescriptions[attrMeta.name];
+console.log('Base desc:', desc);
+let statName = desc.replace(/\[.*?\]/g, '').replace(/^[+-\s]+/, '').trim();
+statName = statName.replace(/\{value1\}/g, '');
+statName = statName.replace(/\{c_[^}]+\}/g, '').replace(/\{\/c\}/g, '').replace(/\s+/g, ' ').trim();
+console.log('Clean name:', statName);

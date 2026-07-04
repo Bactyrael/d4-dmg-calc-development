@@ -259,8 +259,8 @@ window.getActiveLegendaryPowers = function() {
           if (socketDataIdx !== -1) {
               let lvl = pData.glyph.level || 1;
               let radius = 3;
-              if (lvl >= 25 && lvl <= 49) radius = 4;
-              else if (lvl >= 50) radius = 5;
+              if (lvl >= 15 && lvl <= 45) radius = 4;
+                else if (lvl >= 46) radius = 5;
               
               let socketX = socketDataIdx % 21;
               let socketY = Math.floor(socketDataIdx / 21);
@@ -376,8 +376,8 @@ window.getGlyphNodeMultiplier = function(slotId, dataIdx, nData, attr) {
     
     let lvl = pData.glyph.level || 1;
     let radius = 3;
-    if (lvl >= 25 && lvl <= 49) radius = 4;
-    else if (lvl >= 50) radius = 5;
+    if (lvl >= 15 && lvl <= 45) radius = 4;
+                else if (lvl >= 46) radius = 5;
     
     let sX = socketDataIdx % 21;
     let sY = Math.floor(socketDataIdx / 21);
@@ -505,8 +505,7 @@ window.getCompiledParagonStats = function() {
                                   const hotfixMultipliers = {
                                       'Control': 2/3,
                                       'Darkness': 0.66,
-                                      'Exhumation': 2/3,
-                                      'Mage': 2/3,
+                                      'Exhumation': 0.66,
                                       'Desecration': 0.99
                                   };
                                   if (hotfixMultipliers[gData.name] && affixInfo.operation === 2) {
@@ -525,6 +524,10 @@ window.getCompiledParagonStats = function() {
                                       else scalar = 1.8;
                                   } else if (affixKey === 'ShadowDoTDamage_Intelligence_Main') {
                                       scalar = 0.7 + (0.049 * (gLvl - 1));
+                                  } else if (affixKey === 'EssenceCritDamage_Dexterity_Side' || affixKey === 'GolemDamage_Willpower_Side' || affixKey === 'SkeletonWarriorDamage_Dexterity_Side') {
+                                      scalar = Number((2.0 + ( (22.1 / 149) * (gLvl - 1) )).toFixed(6));
+                                  } else if (affixKey === 'SkeletonMageDamage_Intelligence_Main') {
+                                      scalar = Number(((4/3) + ( ((16.1 - (4/3)) / 149) * (gLvl - 1) )).toFixed(6));
                                   }
                                   
                                   // Divide by 5 for per-point scaling
@@ -538,6 +541,9 @@ window.getCompiledParagonStats = function() {
                                       if (descString) {
                                           let parsed = window.cleanAttributeDescription(descString, rawValue / 100, affixInfo.convertedAttributes[0].to);
                                           if (parsed && parsed.name) {
+                                              if (gData.name === 'Scourge' && parsed.name.toLowerCase() === 'shadow damage over time') {
+                                                  parsed.name = 'Corrupting and Frostbite Damage';
+                                              }
                                               if (!stats[parsed.name]) {
                                                   stats[parsed.name] = { value: 0, isPercent: parsed.isPercent };
                                               }
@@ -1137,8 +1143,8 @@ window.renderParagonGrid = function() {
               if (socketDataIdx !== -1) {
                   let lvl = pData.glyph.level || 1;
                   let radius = 3;
-                  if (lvl >= 25 && lvl <= 49) radius = 4;
-                  else if (lvl >= 50) radius = 5;
+                  if (lvl >= 15 && lvl <= 45) radius = 4;
+                else if (lvl >= 46) radius = 5;
                   let socketX = socketDataIdx % 21;
                   let socketY = Math.floor(socketDataIdx / 21);
                   glyphsActive.push({ slotId: s, radius: radius, x: socketX, y: socketY });
@@ -1540,8 +1546,8 @@ window.renderGlyphTooltip = function(glyphId, level, slotIndex) {
         </div>`;
         
     let radius = 3;
-    if (level >= 25 && level <= 49) radius = 4;
-    else if (level >= 50) radius = 5;
+    if (level >= 15 && level <= 45) radius = 4;
+                else if (level >= 46) radius = 5;
     
     html += `<div style="color: #c9a55c; font-size: 0.95rem; margin-bottom: 4px;">Radius Size: <span style="color: #fff;">${radius}</span></div>`;
     if (radius === 5) {
@@ -1625,6 +1631,10 @@ window.renderGlyphTooltip = function(glyphId, level, slotIndex) {
             // Scourge S14 override
             if (affixKey === 'ShadowDoTDamage_Intelligence_Main') {
                 val = 0.7 + (0.049 * (level - 1));
+            } else if (affixKey === 'EssenceCritDamage_Dexterity_Side' || affixKey === 'GolemDamage_Willpower_Side' || affixKey === 'SkeletonWarriorDamage_Dexterity_Side') {
+                val = Number((2.0 + ( (22.1 / 149) * (level - 1) )).toFixed(6));
+            } else if (affixKey === 'SkeletonMageDamage_Intelligence_Main') {
+                val = Number(((4/3) + ( ((16.1 - (4/3)) / 149) * (level - 1) )).toFixed(6));
             }
             
             // Manual overrides for datamined JSON discrepancies
@@ -1632,8 +1642,7 @@ window.renderGlyphTooltip = function(glyphId, level, slotIndex) {
                 'Control': 2/3, // Nerfed in-game, JSON still has 1.5/0.1125
                 'Darkness': 0.66, // Nerfed in-game, JSON still has 1.0/0.075
                 'Desecration': 0.99, // 9.9% base, caps at 65.2%
-                'Exhumation': 2/3, // Nerfed in-game, JSON still has 2.5/0.1875
-                'Mage': 2/3, // Nerfed in-game, JSON still has 2.0/0.15
+                'Exhumation': 0.66, // Nerfed in-game, JSON still has 2.5/0.1875
                 };
             
             if (hotfixMultipliers[g.name] && affixData.operation === 2) {
@@ -1698,6 +1707,16 @@ window.renderGlyphTooltip = function(glyphId, level, slotIndex) {
                 baseBonuses.push(formatDesc(affixData.desc, val));
             }
         });
+    if (g && g.name === 'Scourge') {
+        for (let i = 0; i < baseBonuses.length; i++) {
+            if (baseBonuses[i].includes('Corrupting damage')) {
+                baseBonuses[i] = baseBonuses[i].replace('Corrupting damage', 'Corrupting and Frostbite damage');
+            }
+        }
+        if (addBonus) {
+            addBonus = "You deal <span style=\"color: #fff; font-weight: bold;\">10%[x]</span> increased damage to Corrupted and Frostbitten enemies.";
+        }
+    }
     }
     
     if (baseBonuses.length > 0) {
@@ -2121,8 +2140,8 @@ window.openGlyphModal = function(slotIdx, nodeIdx) {
 
 function updateGlyphRadiusDisplay(level) {
     let radius = 3;
-    if (level >= 25 && level <= 49) radius = 4;
-    else if (level >= 50) radius = 5;
+    if (level >= 15 && level <= 45) radius = 4;
+                else if (level >= 46) radius = 5;
     document.getElementById('paragon-glyph-radius-display').textContent = 'Radius: ' + radius;
 }
 

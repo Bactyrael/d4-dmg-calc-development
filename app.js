@@ -1027,8 +1027,8 @@ var currentBuild = createDefaultBuild();
       
       const lvl = glyphData.level || 1;
       let radius = 3;
-      if (lvl >= 25 && lvl <= 49) radius = 4;
-      else if (lvl >= 50) radius = 5;
+      if (lvl >= 15 && lvl <= 45) radius = 4;
+      else if (lvl >= 46) radius = 5;
       
       pData.nodes.forEach(nIdx => {
           const nX = nIdx % 21;
@@ -7237,13 +7237,13 @@ function getActiveConditions() {
         monsterType: document.querySelector('input[name="monster_type"]:checked')?.value || 'elite'
     };
 }
-
 function getActiveBuffs() {
     return {
         weakened: document.getElementById('buff-weakened')?.checked || false,
         ferocity: parseInt(document.getElementById('buff-ferocity')?.value) || 0,
         overpower: parseInt(document.getElementById('buff-overpower')?.value) || 0,
-        resolve: parseInt(document.getElementById('buff-resolve')?.value) || 0
+        resolve: parseInt(document.getElementById('buff-resolve')?.value) || 0,
+        fortified: document.getElementById('buff-fortified')?.checked || false
     };
 }
 
@@ -7343,10 +7343,10 @@ function calculateSkillAdditiveBucket(skill, isHit) {
     if (!isHit) {
         addStat('Damage over Time');
         addStat('Damage Over Time');
-        if (dType === 'shadow' || tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || tags.includes('search_darkness')) { addStat('Shadow Damage over Time'); addStat('Shadow Damage Over Time'); }
+        if (dType === 'shadow' || tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || tags.includes('search_darkness')) { addStat('Shadow Damage over Time'); addStat('Shadow Damage Over Time'); addStat('Corrupting and Frostbite Damage'); addStat('Corrupting Damage'); }
         if (dType === 'poison' || tags.includes('skill_poison')) { addStat('Poison Damage over Time'); addStat('Poison Damage Over Time'); }
         if (dType === 'fire' || tags.includes('skill_fire')) { addStat('Fire Damage over Time'); addStat('Fire Damage Over Time'); addStat('Burning Damage'); }
-        if (dType === 'cold' || tags.includes('skill_cold')) { addStat('Cold Damage over Time'); addStat('Cold Damage Over Time'); }
+        if (dType === 'cold' || tags.includes('skill_cold')) { addStat('Cold Damage over Time'); addStat('Cold Damage Over Time'); addStat('Corrupting and Frostbite Damage'); addStat('Frostbite Damage'); }
         if (dType === 'physical' || tags.includes('skill_physical')) { addStat('Physical Damage over Time'); addStat('Physical Damage Over Time'); addStat('Bleeding Damage'); }
     }
 
@@ -7368,11 +7368,18 @@ function calculateSkillAdditiveBucket(skill, isHit) {
         addStat('Elite Damage');
     }
     let opStacks = 0;
+    let isFortified = false;
     if (typeof getActiveBuffs === 'function') {
-        opStacks = getActiveBuffs().overpower || 0;
+        let buffs = getActiveBuffs();
+        opStacks = buffs.overpower || 0;
+        isFortified = buffs.fortified || false;
     }
     if (opStacks > 0) {
         addStat('Overpower Damage');
+    }
+    if (isFortified) {
+        addStat('Damage while Fortified');
+        addStat('Damage While Fortified');
     }
     if (conds.shadowDot) {
         addStat('Damage to Enemies Affected by Shadow Damage Over Time');
