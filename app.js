@@ -8037,7 +8037,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                             let legVal = legVals[i] || 0;
                             
                             if (addVal > 0) {
-                                let mult = 1 + ((addVal * 0.8) / 100);
+                                let mult = 1 + (addVal / 100);
                                 critMultiMult *= mult;
                                 critMultiplicativeComponents.push({ name: 'Essence (Additional Bonus) [x]', value: mult });
                             }
