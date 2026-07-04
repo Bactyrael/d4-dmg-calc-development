@@ -624,7 +624,13 @@ const skillsDatabase = {
           ],
           "description": "{c_important}Blood Surge{/c} expels smaller blood novas on your {c_important}Minions{/c}, dealing {c_number}[{payload:legendary_minion_nova}|2?|]{/c} damage.\\n\\n{c_important}Blood Surge's{/c} minion nova damage is increased by {c_number}5%{c_lightgray}\\[x\\]{/c}{/c} for each enemy drawn from, up to {c_number}50%{c_lightgray}\\[x\\]{/c}{/c}.",
           "maxRank": 1,
-          "baseDamageScalar": 0.2
+          "secondaryScalars": {
+            "legendary_minion_nova": {
+              "scalar": 0.2,
+              "nameOverride": "You And What Army?",
+              "isHit": true
+            }
+          }
         },
         {
           "name": "Bloodbath",
