@@ -8028,6 +8028,11 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'Damage Bonus Upgrade (Healthy) [x]', value: 1.25 });
     }
     
+    if (skillObj.name === "You And What Army?") {
+        multiMult *= 1.5;
+        multiData.components.push({ name: 'You and What Army? (Modifier) [x]', value: 1.5 });
+    }
+    
     let finalScalar = rankMultiplier * mainStatMult * additiveMult * multiMult;
 
     let minDmg = 0;
