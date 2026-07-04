@@ -8002,7 +8002,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'You And What Army? (Upgrade) [x]', value: 1.5 });
     }
     
-    if (skillObj.name === "Skeleton Mage" && window.selectedSkills && window.selectedSkills["Crowd Control Damage Bonus"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().cc) {
+    if ((skillObj.name === "Skeleton Mage" || skillObj.baseName === "Skeleton Mage") && window.selectedSkills && window.selectedSkills["Crowd Control Damage Bonus"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().cc) {
         multiMult *= 1.30;
         multiData.components.push({ name: 'Crowd Control Damage Bonus (Upgrade) [x]', value: 1.30 });
     }
