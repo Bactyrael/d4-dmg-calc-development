@@ -7131,13 +7131,37 @@ rarity = foundItem.rarity;
       if (dom.dashArmor) dom.dashArmor.textContent = Math.floor(armorTotal).toLocaleString();
       if (dom.dashArmorDr) dom.dashArmorDr.textContent = armorDrPct.toFixed(1) + '%';
       if (dom.dashAllResist) dom.dashAllResist.textContent = Math.floor(allResistTotal).toLocaleString();
-      if (dom.dashUniversalDr) dom.dashUniversalDr.textContent = universalDrPct.toFixed(1) + '%';
+            let glyphDRMultiplier = 1;
+      const ehpBuffs = getActiveBuffs();
+      const ehpConds = getActiveConditions();
+      
+      if (typeof currentBuild !== 'undefined' && currentBuild.paragon && currentBuild.glyphs) {
+          for (let i = 0; i < 5; i++) {
+              let pData = currentBuild.paragon[i];
+              if (pData && pData.glyph && pData.glyph.id) {
+                  let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
+                  if (gData) {
+                      let gName = gData.name;
+                      let addVal = currentBuild.glyphs[i] || 0;
+                      if (addVal > 0) {
+                          if (gName === 'Darkness') glyphDRMultiplier *= (1 - 0.10);
+                          if (gName === 'Exhumation') glyphDRMultiplier *= (1 - 0.06);
+                          if (gName === 'Territorial' && ehpConds.close) glyphDRMultiplier *= (1 - 0.15);
+                          if (gName === 'Undaunted') glyphDRMultiplier *= (1 - 0.15);
+                      }
+                  }
+              }
+          }
+      }
+      
+      if (dom.dashUniversalDr) dom.dashUniversalDr.textContent = (100 - (100 * (1 - (universalDrPct/100)) * glyphDRMultiplier)).toFixed(1) + '%';
+
       
       const elements = ['Physical', 'Fire', 'Cold', 'Lightning', 'Poison', 'Shadow'];
       elements.forEach(elem => {
           const resistDrPct = compiledStats[`${elem} DR%`] ? compiledStats[`${elem} DR%`].final : 0;
           // Armor DR applies to all elemental damage as well as physical
-          const finalElemDr = 1 - ((1 - (armorDrPct/100)) * (1 - (resistDrPct/100)) * (1 - (universalDrPct/100)));
+          const finalElemDr = 1 - ((1 - (armorDrPct/100)) * (1 - (resistDrPct/100)) * (1 - (universalDrPct/100)) * glyphDRMultiplier);
           const ehpElem = maxLife / (1 - finalElemDr);
           
           const ehpEl = document.getElementById(`ehp-${elem.toLowerCase()}`);
@@ -7388,6 +7412,130 @@ function calculateSkillAdditiveBucket(skill, isHit) {
     
     // Fortify is a player state, assume 100% if they have fortify generation, but we'll just check if they have Max Life fortify
     // We'll leave conditional player states simple for now.
+
+    
+            // ----------------------------------------------------
+            // Inject Glyph Multiplicative Bonuses
+            // ----------------------------------------------------
+            if (typeof currentBuild !== 'undefined' && currentBuild.paragon && currentBuild.glyphs) {
+                for (let i = 0; i < 5; i++) {
+                    let pData = currentBuild.paragon[i];
+                    if (pData && pData.glyph && pData.glyph.id) {
+                        let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
+                        if (gData) {
+                            let gName = gData.name;
+                            let addVal = currentBuild.glyphs[i] || 0;
+                            let legVal = currentBuild.glyphs[i + 5] || 0;
+                            
+                            let addApplies = false;
+                            let legApplies = false;
+                            
+                            switch(gName) {
+                                case 'Abyssal':
+                                    if (dType !== 'physical') { addApplies = true; legApplies = true; }
+                                    break;
+                                case 'Amplify':
+                                    if (conds.cursed) addApplies = true;
+                                    legApplies = true;
+                                    break;
+                                case 'Blood-drinker':
+                                    legApplies = true;
+                                    break;
+                                case 'Control':
+                                    if (conds.cc) { addApplies = true; legApplies = true; }
+                                    break;
+                                case 'Corporeal':
+                                    if (dType === 'physical') { addApplies = true; legApplies = true; }
+                                    break;
+                                case 'Darkness':
+                                    if (dType === 'shadow') legApplies = true;
+                                    break;
+                                case 'Deadraiser':
+                                    if (tags.some(t => t.includes('summon'))) addApplies = true;
+                                    legApplies = true;
+                                    break;
+                                case 'Desecration':
+                                    if (dType === 'shadow') addApplies = true;
+                                    if (tags.includes('desecrated ground')) legApplies = true;
+                                    break;
+                                case 'Dominate':
+                                    if (buffs.overpower > 0) addApplies = true;
+                                    legApplies = true;
+                                    break;
+                                case 'Eliminator':
+                                    if (conds.monsterType === 'elite' || conds.monsterType === 'boss') { addApplies = true; legApplies = true; }
+                                    break;
+                                case 'Essence':
+                                    if (!tags.includes('dot') && !tags.includes('search_dot') && !tags.includes('search_shadowdot')) {
+                                        addApplies = true;
+                                        addVal = addVal * 0.8;
+                                        legApplies = true;
+                                    }
+                                    break;
+                                case 'Exhumation':
+                                    legApplies = true;
+                                    break;
+                                case 'Exploit':
+                                    if (conds.vulnerable) { addApplies = true; legApplies = true; }
+                                    break;
+                                case 'Golem':
+                                    if (skill.name.toLowerCase().includes('golem')) addApplies = true;
+                                    legApplies = true;
+                                    break;
+                                case 'Gravekeeper':
+                                    addVal = 18;
+                                    addApplies = true;
+                                    legApplies = true;
+                                    break;
+                                case 'Imbiber':
+                                    addVal = 20;
+                                    addApplies = true;
+                                    legApplies = true;
+                                    break;
+                                case 'Mage':
+                                    if (tags.some(t => t.includes('summon'))) addApplies = true;
+                                    legApplies = true;
+                                    break;
+                                case 'Revenge':
+                                    addVal = 10;
+                                    addApplies = true;
+                                    legApplies = true;
+                                    break;
+                                case 'Sacrificial':
+                                    addApplies = true;
+                                    legApplies = true;
+                                    break;
+                                case 'Scourge':
+                                    if (conds.shadowDot && (dType === 'shadow' || dType === 'cold') && (tags.includes('dot') || tags.includes('search_dot') || tags.includes('search_shadowdot'))) addApplies = true;
+                                    legApplies = true;
+                                    break;
+                                case 'Territorial':
+                                    legApplies = true;
+                                    break;
+                                case 'Undaunted':
+                                    legApplies = true;
+                                    break;
+                                case 'Warrior':
+                                    if (tags.some(t => t.includes('summon'))) addApplies = true;
+                                    legApplies = true;
+                                    break;
+                            }
+                            
+                            if (addApplies && addVal > 0) {
+                                let mult = (1 + (addVal / 100));
+                                bucket *= mult;
+                                components.push({ name: gName + ' (Additional Bonus) [x]', value: mult });
+                            }
+                            
+                            if (legApplies && legVal > 0) {
+                                let mult = (1 + (legVal / 100));
+                                bucket *= mult;
+                                components.push({ name: gName + ' (Legendary Bonus) [x]', value: mult });
+                            }
+                        }
+                    }
+                }
+            }
 
     return { total: bucket, components: components };
 }
