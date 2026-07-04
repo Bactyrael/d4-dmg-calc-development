@@ -2689,12 +2689,12 @@ function compileCharacterStats(equipped, autoStats) {
             let finalRegen = totalFlat * (1 + (totalPct / 100));
             
             let newSources = [
-                { source: 'Base', val: baseRegen },
+                { name: 'Base', val: baseRegen },
                 ...(existingFlat.flatSources || [])
             ];
             
             if (totalPct > 0) {
-                newSources.push({ source: 'Total Multipliers (Resource/Essence Gen %)', val: totalPct });
+                newSources.push({ name: 'Total Multipliers (Resource/Essence Gen %)', val: totalPct });
             }
             
             stats['Essence Regeneration'] = {
