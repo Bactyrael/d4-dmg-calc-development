@@ -8175,15 +8175,23 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
 
         const combinedUniversalDr = 100 - (100 * (1 - (universalDrPct/100)) * glyphDRMultiplier * (1 - avgBlockMitigation));
         const finalElemDr = 1 - ((1 - (armorDrPct/100)) * (1 - (resistDrPct/100)) * (1 - (combinedUniversalDr/100)));
-        const ehpElem = maxLife / (1 - finalElemDr);
+        let activeBarrier = window.activeBarrierAmount || 0;
+        const ehpElem = (maxLife + activeBarrier) / (1 - finalElemDr);
 
         html += `<div style="margin-bottom: 10px; font-weight: bold; color: #fff;">Base Life: <span style="color: #4cd137; float: right;">${Math.floor(maxLife).toLocaleString()}</span></div>`;
+        html += `<div style="margin-bottom: 10px; font-weight: bold; color: #fff; display: flex; justify-content: space-between; align-items: center;">
+                    <span>Barrier:</span>
+                    <input type="number" id="modal-barrier-input" min="0" max="${maxLife}" value="${activeBarrier}" style="width: 100px; text-align: right; background: #222; border: 1px solid #444; color: #3498db; padding: 4px 6px; border-radius: 4px;">
+                 </div>`;
         html += `<hr style="border-color: #333; margin: 10px 0;">`;
         html += `<div style="margin-bottom: 5px;">Armor DR: <span style="color: #e74c3c; float: right;">${armorDrPct.toFixed(1)}%</span></div>`;
         html += `<div style="margin-bottom: 5px;">Universal DR: <span style="color: #e74c3c; float: right;">${combinedUniversalDr.toFixed(1)}%</span></div>`;
         html += `<div style="margin-bottom: 5px;">${elem} Resist DR: <span style="color: #e74c3c; float: right;">${resistDrPct.toFixed(1)}%</span></div>`;
         html += `<hr style="border-color: #333; margin: 10px 0;">`;
-        html += `<div style="font-weight: bold; font-size: 1.1rem; color: #d18a45;">Total EHP: <span style="color: #4cd137; float: right;">${Math.floor(ehpElem).toLocaleString()}</span></div>`;
+        html += `<div style="font-weight: bold; font-size: 1.1rem; color: #d18a45;">Total EHP: <span id="modal-ehp-total" style="color: #4cd137; float: right;">${Math.floor(ehpElem).toLocaleString()}</span></div>`;
+        
+        html += `<input type="hidden" id="modal-final-dr" value="${finalElemDr}">`;
+        html += `<input type="hidden" id="modal-max-life" value="${maxLife}">`;
     } 
     else if (statName.includes('Resist') && statName !== 'Resistance to All Elements') {
         const elem = statName.split(' ')[0];
@@ -8282,6 +8290,40 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
     }
 
     body.innerHTML = html;
+    
+    if (statName.startsWith('EHP ')) {
+        const barrierInput = document.getElementById('modal-barrier-input');
+        if (barrierInput) {
+            barrierInput.addEventListener('input', (e) => {
+                let val = parseFloat(e.target.value) || 0;
+                const ml = parseFloat(document.getElementById('modal-max-life').value) || 0;
+                if (val < 0) val = 0;
+                if (val > ml) val = ml;
+                window.activeBarrierAmount = val;
+                
+                const fDr = parseFloat(document.getElementById('modal-final-dr').value) || 0;
+                const newEhp = (ml + val) / (1 - fDr);
+                const totalSpan = document.getElementById('modal-ehp-total');
+                if (totalSpan) totalSpan.textContent = Math.floor(newEhp).toLocaleString();
+                
+                if (typeof window.renderToughnessDashboard === 'function' && window.D4_COMPILED_STATS) {
+                    window.renderToughnessDashboard(window.D4_COMPILED_STATS);
+                }
+            });
+            
+            barrierInput.addEventListener('change', (e) => {
+                let val = parseFloat(e.target.value) || 0;
+                const ml = parseFloat(document.getElementById('modal-max-life').value) || 0;
+                if (val < 0) val = 0;
+                if (val > ml) val = ml;
+                e.target.value = val;
+                window.activeBarrierAmount = val;
+            });
+            
+            barrierInput.addEventListener('click', (e) => e.target.select());
+        }
+    }
+
     modal.classList.remove('hidden');
     modal.style.display = 'flex';
 };
