@@ -2104,7 +2104,9 @@ function getTotalActiveMinions(currentBuild) {
     
     // Golems (Base 1)
     if (currentBuild.bookOfTheDead.golems?.node !== 'sacrifice') {
-        total += 1;
+        let gCount = 1;
+        if (window.selectedSkills && window.selectedSkills["Gravebloom"] > 0) gCount = 3;
+        total += gCount;
     }
     
     return total;
