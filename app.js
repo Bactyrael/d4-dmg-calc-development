@@ -8023,6 +8023,11 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'Damage Bonus Upgrade [x]', value: 1.5 });
     }
     
+    if (skillObj.name === "Blood Surge" && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().healthy) {
+        multiMult *= 1.25;
+        multiData.components.push({ name: 'Damage Bonus Upgrade (Healthy) [x]', value: 1.25 });
+    }
+    
     let finalScalar = rankMultiplier * mainStatMult * additiveMult * multiMult;
 
     let minDmg = 0;
