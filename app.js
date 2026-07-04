@@ -7210,7 +7210,8 @@ rarity = foundItem.rarity;
           // Armor DR applies to all elemental damage as well as physical
           const combinedUniversalDr = 100 - (100 * (1 - (universalDrPct/100)) * glyphDRMultiplier * (1 - avgBlockMitigation));
           const finalElemDr = 1 - ((1 - (armorDrPct/100)) * (1 - (resistDrPct/100)) * (1 - (combinedUniversalDr/100)));
-          const ehpElem = maxLife / (1 - finalElemDr);
+          const activeBarrier = window.activeBarrierAmount || 0;
+          const ehpElem = (maxLife + activeBarrier) / (1 - finalElemDr);
           
           const ehpEl = document.getElementById(`ehp-${elem.toLowerCase()}`);
           const drEl = document.getElementById(`dr-${elem.toLowerCase()}-final`);
@@ -7225,7 +7226,8 @@ rarity = foundItem.rarity;
               const existingTooltip = card.querySelector('.stat-tooltip');
               if (existingTooltip) existingTooltip.remove();
               
-              const ehpStep1 = maxLife / (1 - (armorDrPct/100));
+              const effectiveLife = maxLife + activeBarrier;
+              const ehpStep1 = effectiveLife / (1 - (armorDrPct/100));
               const ehpStep2 = ehpStep1 / (1 - (combinedUniversalDr/100));
               const ehpStep3 = ehpStep2 / (1 - (resistDrPct/100));
               
@@ -7237,6 +7239,9 @@ rarity = foundItem.rarity;
                       <div class="stat-tooltip-source">
                           <span style="color: #ccc;">Max Life:</span> <span style="color: #4cd137; float: right;">${Math.floor(maxLife).toLocaleString()}</span>
                       </div>
+                      ${activeBarrier > 0 ? `<div class="stat-tooltip-source">
+                          <span style="color: #ccc;">Barrier:</span> <span style="color: #3498db; float: right;">+${Math.floor(activeBarrier).toLocaleString()}</span>
+                      </div>` : ''}
                       <hr class="stat-tooltip-divider">
                       <div class="stat-tooltip-source">
                           <span style="color: #ccc;">Armor DR (<span style="color: #e74c3c;">${armorDrPct.toFixed(1)}%</span>):</span> 
