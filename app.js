@@ -8197,15 +8197,47 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
     else if (statName === 'Dodge Chance' || statName.includes('Damage Reduction')) {
         html += `<div style="margin-bottom: 15px; font-style: italic; color: #888;">This stat is calculated inversely multiplicatively.</div>`;
         html += `<table style="width: 100%; border-collapse: collapse;"><tbody>`;
+        
+        let allSources = [];
         if (statData && statData.flatSources) {
-            statData.flatSources.forEach(src => {
+            allSources = [...statData.flatSources];
+        }
+
+        // Dynamically add conditional glyphs if stat is Universal Damage Reduction %
+        if (statName === 'Universal Damage Reduction %') {
+            const ehpConds = getActiveConditions();
+            if (typeof currentBuild !== 'undefined' && currentBuild.paragon && currentBuild.glyphs) {
+                for (let i = 0; i < 5; i++) {
+                    let pData = currentBuild.paragon[i];
+                    if (pData && pData.glyph && pData.glyph.id) {
+                        let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
+                        if (gData) {
+                            let gName = gData.name;
+                            let addVals = typeof getAdditionalBonusValues === 'function' ? getAdditionalBonusValues() : [0,0,0,0,0];
+                            let addVal = addVals[i] || 0;
+                            if (addVal > 0) {
+                                if (gName === 'Territorial' && ehpConds.close) allSources.push({name: 'Territorial (Glyph)', val: 15});
+                                if (gName === 'Undaunted') allSources.push({name: 'Undaunted (Glyph)', val: 15});
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        let total = 0;
+        if (allSources.length > 0) {
+            let remainder = 1;
+            allSources.forEach(src => {
                 html += `<tr style="border-bottom: 1px solid #222;"><td style="padding: 8px 0; color: #aaa;">${src.name}</td><td style="padding: 8px 0; text-align: right; color: #fff;">${src.val.toFixed(1)}%</td></tr>`;
+                remainder *= (1 - (src.val / 100));
             });
+            total = (1 - remainder) * 100;
         } else {
             html += `<tr><td style="padding: 8px 0; color: #777;">No sources detected.</td></tr>`;
         }
         html += `</tbody></table>`;
-        const total = statData ? statData.final : 0;
+        
         html += `<div style="margin-top: 15px; font-weight: bold; font-size: 1.1rem; color: #d18a45;">Final Product: <span style="float: right;">${total.toFixed(1)}%</span></div>`;
     }
     else {
