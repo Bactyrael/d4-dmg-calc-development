@@ -329,11 +329,18 @@
                    <h4 style="color: var(--accent-blue); border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 15px;">Core Defensive Stats</h4>
                    <div class="results-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 25px;">
                       <div class="result-card stat-row-hoverable" data-stat="Maximum Life">
-                        <div class="result-title">Maximum Life</div>
-                        <div class="result-value" id="dash-max-life" style="color: #e74c3c;">0</div>
-                        <div class="result-detail" style="margin-top: 5px; display: flex; justify-content: space-between; align-items: center;">
-                          <span>Barrier:</span>
-                          <input type="number" id="dash-barrier-input" min="0" value="0" style="width: 70px; text-align: right; background: #222; border: 1px solid #444; color: #3498db; padding: 2px 5px; border-radius: 3px;" onclick="event.stopPropagation()">
+                        <div style="display: flex; justify-content: space-around; align-items: center;">
+                          <div style="text-align: center; width: 45%;">
+                            <div class="result-title">Maximum Life</div>
+                            <div class="result-value" id="dash-max-life" style="color: #e74c3c;">0</div>
+                          </div>
+                          <div style="width: 1px; height: 50px; background-color: #333;"></div>
+                          <div style="text-align: center; width: 45%;">
+                            <div class="result-title" style="color: #3498db;">Barrier</div>
+                            <div style="margin-top: 10px;">
+                              <input type="number" id="dash-barrier-input" class="calc-buff" min="0" value="0" style="width: 85%; text-align: center; background: rgba(0,0,0,0.3); border: 1px solid #333; color: #3498db; padding: 2px; border-radius: 4px; font-size: 18px; font-weight: bold;" onclick="event.stopPropagation()">
+                            </div>
+                          </div>
                         </div>
                       </div>
                      <div class="result-card stat-row-hoverable" data-stat="Armor">
