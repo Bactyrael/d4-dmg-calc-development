@@ -8018,6 +8018,11 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'Single Target (Blood Golem) [x]', value: 4.0 });
     }
     
+    if (skillObj.name === "Decompose" && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0) {
+        multiMult *= 1.5;
+        multiData.components.push({ name: 'Damage Bonus Upgrade [x]', value: 1.5 });
+    }
+    
     let finalScalar = rankMultiplier * mainStatMult * additiveMult * multiMult;
 
     let minDmg = 0;
