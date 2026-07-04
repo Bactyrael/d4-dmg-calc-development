@@ -7591,7 +7591,7 @@ function calculateSkillMultiplicativeBucket(skill) {
                                     break;
                                 case 'Desecration':
                                     if (dType === 'shadow') addApplies = true;
-                                    if (tags.includes('desecrated ground')) legApplies = true;
+                                    if (tags.includes('subpower_desecratedground') || tags.includes('search_desecratedground')) legApplies = true;
                                     break;
                                 case 'Dominate':
                                     if (buffs.overpower > 0) addApplies = true;
