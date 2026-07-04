@@ -2638,7 +2638,10 @@ function compileCharacterStats(equipped, autoStats) {
         
         // Post-Compilation Step: Inverse Multiplicative Stats (Dodge Chance, Damage Reduction, etc.)
         // This must run at the very end so that Core Stats (like Dexterity) are included in the inverse multiplicative pool!
-        const inverseMultiplicativeKeys = Object.keys(stats).filter(k => k.includes('Dodge Chance') || k.includes('Damage Reduction'));
+        if (stats['Block Chance'] && stats['Block Chance'].total > 0) {
+            addStat(stats, 'Block Damage Reduction', 15, 'Base Shield');
+        }
+        const inverseMultiplicativeKeys = Object.keys(stats).filter(k => k.includes('Dodge Chance') || k.includes('Damage Reduction') || k.includes('Block Damage Reduction'));
         inverseMultiplicativeKeys.forEach(k => {
             if (stats[k].flatSources && stats[k].flatSources.length > 1) {
                 let inverseProduct = 1.0;
@@ -7178,29 +7181,34 @@ rarity = foundItem.rarity;
           }
       }
       
-      if (dom.dashUniversalDr) dom.dashUniversalDr.textContent = (100 - (100 * (1 - (universalDrPct/100)) * glyphDRMultiplier)).toFixed(1) + '%';
-
-            const dodgeTotal = compiledStats['Dodge Chance'] ? compiledStats['Dodge Chance'].final : 0;
+            const dodgeTotal = compiledStats['Dodge Chance'] ? compiledStats['Dodge Chance'].final : 0;
       const blockTotal = compiledStats['Block Chance'] ? compiledStats['Block Chance'].final : 0;
-      
+      const blockDrPct = compiledStats['Block Damage Reduction'] ? compiledStats['Block Damage Reduction'].final : 0;
+      const avgBlockMitigation = (blockTotal / 100) * (blockDrPct / 100);
+
+      const combinedUniversalDr = 100 - (100 * (1 - (universalDrPct/100)) * glyphDRMultiplier * (1 - avgBlockMitigation));
+      if (dom.dashUniversalDr) dom.dashUniversalDr.textContent = combinedUniversalDr.toFixed(1) + '%';
+
       const domDodge = document.getElementById('dash-dodge');
       const domBlock = document.getElementById('dash-block');
+      const domBlockDr = document.getElementById('dash-block-dr');
       if (domDodge) domDodge.textContent = dodgeTotal.toFixed(1) + '%';
       if (domBlock) domBlock.textContent = blockTotal.toFixed(1) + '%';
+      if (domBlockDr) domBlockDr.textContent = blockDrPct.toFixed(1) + '%';
 
       const allRes = compiledStats['Resistance to All Elements'] ? compiledStats['Resistance to All Elements'].final : 0;
       const allElementsList = ['Physical', 'Fire', 'Cold', 'Lightning', 'Poison', 'Shadow'];
       allElementsList.forEach(elem => {
           let resVal = compiledStats[`${elem} Resistance`] ? compiledStats[`${elem} Resistance`].final : 0;
           const resDom = document.getElementById(`dash-res-${elem.toLowerCase()}`);
-          if (resDom) resDom.textContent = Math.floor(resVal) + '%';
+          if (resDom) resDom.textContent = Math.floor(resVal);
       });
 
       const elements = ['Physical', 'Fire', 'Cold', 'Lightning', 'Poison', 'Shadow'];
       elements.forEach(elem => {
           const resistDrPct = compiledStats[`${elem} DR%`] ? compiledStats[`${elem} DR%`].final : 0;
           // Armor DR applies to all elemental damage as well as physical
-          const combinedUniversalDr = 100 - (100 * (1 - (universalDrPct/100)) * glyphDRMultiplier);
+          const combinedUniversalDr = 100 - (100 * (1 - (universalDrPct/100)) * glyphDRMultiplier * (1 - avgBlockMitigation));
           const finalElemDr = 1 - ((1 - (armorDrPct/100)) * (1 - (resistDrPct/100)) * (1 - (combinedUniversalDr/100)));
           const ehpElem = maxLife / (1 - finalElemDr);
           
@@ -8161,7 +8169,11 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
             }
         }
 
-        const combinedUniversalDr = 100 - (100 * (1 - (universalDrPct/100)) * glyphDRMultiplier);
+        const blockTotal = compiledStats['Block Chance'] ? compiledStats['Block Chance'].final : 0;
+        const blockDrPct = compiledStats['Block Damage Reduction'] ? compiledStats['Block Damage Reduction'].final : 0;
+        const avgBlockMitigation = (blockTotal / 100) * (blockDrPct / 100);
+
+        const combinedUniversalDr = 100 - (100 * (1 - (universalDrPct/100)) * glyphDRMultiplier * (1 - avgBlockMitigation));
         const finalElemDr = 1 - ((1 - (armorDrPct/100)) * (1 - (resistDrPct/100)) * (1 - (combinedUniversalDr/100)));
         const ehpElem = maxLife / (1 - finalElemDr);
 
@@ -8219,6 +8231,15 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
                         }
                     }
                 }
+            }
+        }
+
+        if (statName === 'Universal Damage Reduction %') {
+            const blockTotal = compiledStats['Block Chance'] ? compiledStats['Block Chance'].final : 0;
+            const blockDrPct = compiledStats['Block Damage Reduction'] ? compiledStats['Block Damage Reduction'].final : 0;
+            const avgBlockMitigation = (blockTotal / 100) * (blockDrPct / 100);
+            if (avgBlockMitigation > 0) {
+                allSources.push({name: 'Block Mitigation', val: avgBlockMitigation * 100});
             }
         }
 

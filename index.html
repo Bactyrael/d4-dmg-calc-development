@@ -327,7 +327,7 @@
                    <p style="color: #aaa; font-style: italic; margin-bottom: 15px;">Click any card to view a detailed breakdown of its sources.</p>
 
                    <h4 style="color: var(--accent-blue); border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 15px;">Core Defensive Stats</h4>
-                   <div class="results-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 25px;">
+                   <div class="results-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 25px;">
                      <div class="result-card stat-row-hoverable" data-stat="Maximum Life">
                        <div class="result-title">Maximum Life</div>
                        <div class="result-value" id="dash-max-life" style="color: #e74c3c;">0</div>
@@ -345,37 +345,41 @@
                        <div class="result-title">Dodge Chance</div>
                        <div class="result-value" id="dash-dodge" style="color: #2ecc71;">0%</div>
                      </div>
-                     <div class="result-card stat-row-hoverable" data-stat="Block Chance">
-                       <div class="result-title">Block Chance</div>
-                       <div class="result-value" id="dash-block" style="color: #f1c40f;">0%</div>
-                     </div>
+                      <div class="result-card stat-row-hoverable" data-stat="Block Chance">
+                        <div class="result-title">Block Chance</div>
+                        <div class="result-value" id="dash-block" style="color: #f1c40f;">0%</div>
+                      </div>
+                      <div class="result-card stat-row-hoverable" data-stat="Block Damage Reduction">
+                        <div class="result-title">Block DR</div>
+                        <div class="result-value" id="dash-block-dr" style="color: #e67e22;">0%</div>
+                      </div>
                    </div>
 
                    <h4 style="color: var(--accent-blue); border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 15px;">Resistances</h4>
                    <div class="results-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 25px;">
                      <div class="result-card stat-row-hoverable" data-stat="Physical Resist">
                        <div class="result-title" style="color: #bdc3c7;">Physical Resist</div>
-                       <div class="result-value" id="dash-res-physical" style="color: #bdc3c7; font-size: 20px;">0%</div>
+                       <div class="result-value" id="dash-res-physical" style="color: #bdc3c7; font-size: 20px;">0</div>
                      </div>
                      <div class="result-card stat-row-hoverable" data-stat="Fire Resist">
                        <div class="result-title" style="color: #e67e22;">Fire Resist</div>
-                       <div class="result-value" id="dash-res-fire" style="color: #e67e22; font-size: 20px;">0%</div>
+                       <div class="result-value" id="dash-res-fire" style="color: #e67e22; font-size: 20px;">0</div>
                      </div>
                      <div class="result-card stat-row-hoverable" data-stat="Cold Resist">
                        <div class="result-title" style="color: #3498db;">Cold Resist</div>
-                       <div class="result-value" id="dash-res-cold" style="color: #3498db; font-size: 20px;">0%</div>
+                       <div class="result-value" id="dash-res-cold" style="color: #3498db; font-size: 20px;">0</div>
                      </div>
                      <div class="result-card stat-row-hoverable" data-stat="Lightning Resist">
                        <div class="result-title" style="color: #f1c40f;">Lightning Resist</div>
-                       <div class="result-value" id="dash-res-lightning" style="color: #f1c40f; font-size: 20px;">0%</div>
+                       <div class="result-value" id="dash-res-lightning" style="color: #f1c40f; font-size: 20px;">0</div>
                      </div>
                      <div class="result-card stat-row-hoverable" data-stat="Poison Resist">
                        <div class="result-title" style="color: #2ecc71;">Poison Resist</div>
-                       <div class="result-value" id="dash-res-poison" style="color: #2ecc71; font-size: 20px;">0%</div>
+                       <div class="result-value" id="dash-res-poison" style="color: #2ecc71; font-size: 20px;">0</div>
                      </div>
                      <div class="result-card stat-row-hoverable" data-stat="Shadow Resist">
                        <div class="result-title" style="color: #9b59b6;">Shadow Resist</div>
-                       <div class="result-value" id="dash-res-shadow" style="color: #9b59b6; font-size: 20px;">0%</div>
+                       <div class="result-value" id="dash-res-shadow" style="color: #9b59b6; font-size: 20px;">0</div>
                      </div>
                    </div>
 

@@ -1,0 +1,104 @@
+<div id="calc-pane-ehp" class="calc-pane-content" style="display: none;">
+                <div class="d4-panel" style="background: rgba(20,20,25,0.9); border: 1px solid #334; border-radius: 8px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+                   <h2 style="color: #fff; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                     <span class="icon" style="color: #c9a55c;">🛡️</span> Defenses & Toughness
+                   </h2>
+                   
+                   <p style="color: #aaa; font-style: italic; margin-bottom: 15px;">Click any card to view a detailed breakdown of its sources.</p>
+
+                   <h4 style="color: var(--accent-blue); border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 15px;">Core Defensive Stats</h4>
+                   <div class="results-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 25px;">
+                     <div class="result-card stat-row-hoverable" data-stat="Maximum Life">
+                       <div class="result-title">Maximum Life</div>
+                       <div class="result-value" id="dash-max-life" style="color: #e74c3c;">0</div>
+                     </div>
+                     <div class="result-card stat-row-hoverable" data-stat="Armor">
+                       <div class="result-title">Armor</div>
+                       <div class="result-value" id="dash-armor" style="color: #3498db;">0</div>
+                       <div class="result-detail" style="margin-top: 5px;"><span>Armor DR:</span> <span id="dash-armor-dr">0%</span></div>
+                     </div>
+                     <div class="result-card stat-row-hoverable" data-stat="Universal Damage Reduction %">
+                       <div class="result-title">Damage Reduction</div>
+                       <div class="result-value" id="dash-universal-dr" style="color: #e74c3c;">0%</div>
+                     </div>
+                     <div class="result-card stat-row-hoverable" data-stat="Dodge Chance">
+                       <div class="result-title">Dodge Chance</div>
+                       <div class="result-value" id="dash-dodge" style="color: #2ecc71;">0%</div>
+                     </div>
+                     <div class="result-card stat-row-hoverable" data-stat="Block Chance">
+                       <div class="result-title">Block Chance</div>
+                       <div class="result-value" id="dash-block" style="color: #f1c40f;">0%</div>
+                     </div>
+                   </div>
+
+                   <h4 style="color: var(--accent-blue); border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 15px;">Resistances</h4>
+                   <div class="results-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 25px;">
+                     <div class="result-card stat-row-hoverable" data-stat="Physical Resist">
+                       <div class="result-title" style="color: #bdc3c7;">Physical Resist</div>
+                       <div class="result-value" id="dash-res-physical" style="color: #bdc3c7; font-size: 20px;">0%</div>
+                     </div>
+                     <div class="result-card stat-row-hoverable" data-stat="Fire Resist">
+                       <div class="result-title" style="color: #e67e22;">Fire Resist</div>
+                       <div class="result-value" id="dash-res-fire" style="color: #e67e22; font-size: 20px;">0%</div>
+                     </div>
+                     <div class="result-card stat-row-hoverable" data-stat="Cold Resist">
+                       <div class="result-title" style="color: #3498db;">Cold Resist</div>
+                       <div class="result-value" id="dash-res-cold" style="color: #3498db; font-size: 20px;">0%</div>
+                     </div>
+                     <div class="result-card stat-row-hoverable" data-stat="Lightning Resist">
+                       <div class="result-title" style="color: #f1c40f;">Lightning Resist</div>
+                       <div class="result-value" id="dash-res-lightning" style="color: #f1c40f; font-size: 20px;">0%</div>
+                     </div>
+                     <div class="result-card stat-row-hoverable" data-stat="Poison Resist">
+                       <div class="result-title" style="color: #2ecc71;">Poison Resist</div>
+                       <div class="result-value" id="dash-res-poison" style="color: #2ecc71; font-size: 20px;">0%</div>
+                     </div>
+                     <div class="result-card stat-row-hoverable" data-stat="Shadow Resist">
+                       <div class="result-title" style="color: #9b59b6;">Shadow Resist</div>
+                       <div class="result-value" id="dash-res-shadow" style="color: #9b59b6; font-size: 20px;">0%</div>
+                     </div>
+                   </div>
+
+                   <h4 style="color: var(--accent-blue); border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 15px;">Effective Health Pool (EHP)</h4>
+                   <div class="results-grid" style="grid-template-columns: repeat(3, 1fr);">
+                     <div class="result-card stat-row-hoverable" data-stat="EHP Physical">
+                       <div class="result-title" style="color: #bdc3c7; font-size: 14px;">Physical EHP</div>
+                       <div class="result-value" id="ehp-physical" style="font-size: 24px;">0</div>
+                       <div class="result-detail" style="margin-top: 10px; font-size: 12px;"><span>Final DR:</span> <span id="dr-physical-final">0%</span></div>
+                     </div>
+                     <div class="result-card stat-row-hoverable" data-stat="EHP Fire">
+                       <div class="result-title" style="color: #e67e22; font-size: 14px;">Fire EHP</div>
+                       <div class="result-value" id="ehp-fire" style="font-size: 24px;">0</div>
+                       <div class="result-detail" style="margin-top: 10px; font-size: 12px;"><span>Final DR:</span> <span id="dr-fire-final">0%</span></div>
+                     </div>
+                     <div class="result-card stat-row-hoverable" data-stat="EHP Cold">
+                       <div class="result-title" style="color: #3498db; font-size: 14px;">Cold EHP</div>
+                       <div class="result-value" id="ehp-cold" style="font-size: 24px;">0</div>
+                       <div class="result-detail" style="margin-top: 10px; font-size: 12px;"><span>Final DR:</span> <span id="dr-cold-final">0%</span></div>
+                     </div>
+                     <div class="result-card stat-row-hoverable" data-stat="EHP Lightning">
+                       <div class="result-title" style="color: #f1c40f; font-size: 14px;">Lightning EHP</div>
+                       <div class="result-value" id="ehp-lightning" style="font-size: 24px;">0</div>
+                       <div class="result-detail" style="margin-top: 10px; font-size: 12px;"><span>Final DR:</span> <span id="dr-lightning-final">0%</span></div>
+                     </div>
+                     <div class="result-card stat-row-hoverable" data-stat="EHP Poison">
+                       <div class="result-title" style="color: #2ecc71; font-size: 14px;">Poison EHP</div>
+                       <div class="result-value" id="ehp-poison" style="font-size: 24px;">0</div>
+                       <div class="result-detail" style="margin-top: 10px; font-size: 12px;"><span>Final DR:</span> <span id="dr-poison-final">0%</span></div>
+                     </div>
+                     <div class="result-card stat-row-hoverable" data-stat="EHP Shadow">
+                       <div class="result-title" style="color: #9b59b6; font-size: 14px;">Shadow EHP</div>
+                       <div class="result-value" id="ehp-shadow" style="font-size: 24px;">0</div>
+                       <div class="result-detail" style="margin-top: 10px; font-size: 12px;"><span>Final DR:</span> <span id="dr-shadow-final">0%</span></div>
+                     </div>
+                   </div>
+                </div>
+</div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
