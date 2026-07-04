@@ -7151,8 +7151,6 @@ rarity = foundItem.rarity;
                       let addVals = typeof getAdditionalBonusValues === 'function' ? getAdditionalBonusValues() : [0,0,0,0,0];
                       let addVal = addVals[i] || 0;
                       if (addVal > 0) {
-                          if (gName === 'Darkness') glyphDRMultiplier *= (1 - 0.10);
-                          if (gName === 'Exhumation') glyphDRMultiplier *= (1 - 0.06);
                           if (gName === 'Territorial' && ehpConds.close) glyphDRMultiplier *= (1 - 0.15);
                           if (gName === 'Undaunted') glyphDRMultiplier *= (1 - 0.15);
                       }
