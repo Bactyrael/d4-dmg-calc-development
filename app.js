@@ -2675,6 +2675,33 @@ function compileCharacterStats(equipped, autoStats) {
                 stats[k].final = (1 - inverseProduct) * 100;
             }
         });
+        if ((currentBuild.class || 'Necromancer') === 'Necromancer') {
+            let baseRegen = 3;
+            let existingFlat = stats['Essence Regeneration'] || { final: 0, flatSources: [] };
+            let totalFlat = baseRegen + existingFlat.final;
+            
+            let resGenPct = stats['Resource Generation %'] ? stats['Resource Generation %'].final : 0;
+            let essGenPct = stats['Essence Generation %'] ? stats['Essence Generation %'].final : 0;
+            let essRegenPct = stats['Essence Regeneration %'] ? stats['Essence Regeneration %'].final : 0;
+            
+            let totalPct = resGenPct + essGenPct + essRegenPct;
+            
+            let finalRegen = totalFlat * (1 + (totalPct / 100));
+            
+            let newSources = [
+                { source: 'Base', val: baseRegen },
+                ...(existingFlat.flatSources || [])
+            ];
+            
+            if (totalPct > 0) {
+                newSources.push({ source: 'Total Multipliers (Resource/Essence Gen %)', val: totalPct + '%' });
+            }
+            
+            stats['Essence Regeneration'] = {
+                final: finalRegen,
+                flatSources: newSources
+            };
+        }
 
         return stats;
     }
