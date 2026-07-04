@@ -2694,7 +2694,7 @@ function compileCharacterStats(equipped, autoStats) {
             ];
             
             if (totalPct > 0) {
-                newSources.push({ source: 'Total Multipliers (Resource/Essence Gen %)', val: totalPct + '%' });
+                newSources.push({ source: 'Total Multipliers (Resource/Essence Gen %)', val: totalPct });
             }
             
             stats['Essence Regeneration'] = {
