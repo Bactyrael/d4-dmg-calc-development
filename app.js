@@ -4750,8 +4750,15 @@ function parseD4String(str, skillObj, currentRank) {
     if (scalar || skillObj.secondaryScalars) {
         if (skillObj.secondaryScalars) {
             for (let payloadKey in skillObj.secondaryScalars) {
-                let secScalar = skillObj.secondaryScalars[payloadKey];
-                let secPercentage = (secScalar * rankMult * 100).toFixed(1) + '%';
+                let secVal = skillObj.secondaryScalars[payloadKey];
+                let actualScalar = null;
+                if (typeof secVal === 'number') {
+                    actualScalar = secVal;
+                } else if (secVal && typeof secVal === 'object' && secVal.scalar !== undefined) {
+                    actualScalar = secVal.scalar;
+                }
+                
+                let secPercentage = actualScalar !== null ? (actualScalar * rankMult * 100).toFixed(1) + '%' : '?%';
                 let regex = new RegExp(`\\[\\{payload:${payloadKey}\\}[\\s\\S]*?\\]|\\{payload:${payloadKey}\\}`, 'g');
                 str = str.replace(regex, secPercentage);
                 let regexDot = new RegExp(`\\[\\{dot:${payloadKey}\\}[\\s\\S]*?\\]|\\{dot:${payloadKey}\\}`, 'g');
