@@ -7200,7 +7200,8 @@ rarity = foundItem.rarity;
       elements.forEach(elem => {
           const resistDrPct = compiledStats[`${elem} DR%`] ? compiledStats[`${elem} DR%`].final : 0;
           // Armor DR applies to all elemental damage as well as physical
-          const finalElemDr = 1 - ((1 - (armorDrPct/100)) * (1 - (resistDrPct/100)) * (1 - (universalDrPct/100)) * glyphDRMultiplier);
+          const combinedUniversalDr = 100 - (100 * (1 - (universalDrPct/100)) * glyphDRMultiplier);
+          const finalElemDr = 1 - ((1 - (armorDrPct/100)) * (1 - (resistDrPct/100)) * (1 - (combinedUniversalDr/100)));
           const ehpElem = maxLife / (1 - finalElemDr);
           
           const ehpEl = document.getElementById(`ehp-${elem.toLowerCase()}`);
@@ -7217,7 +7218,7 @@ rarity = foundItem.rarity;
               if (existingTooltip) existingTooltip.remove();
               
               const ehpStep1 = maxLife / (1 - (armorDrPct/100));
-              const ehpStep2 = ehpStep1 / (1 - (universalDrPct/100));
+              const ehpStep2 = ehpStep1 / (1 - (combinedUniversalDr/100));
               const ehpStep3 = ehpStep2 / (1 - (resistDrPct/100));
               
               const tooltipHtml = `
@@ -7234,7 +7235,7 @@ rarity = foundItem.rarity;
                           <span style="color: #888; float: right;">${Math.floor(ehpStep1).toLocaleString()}</span>
                       </div>
                       <div class="stat-tooltip-source">
-                          <span style="color: #ccc;">Universal DR (<span style="color: #e74c3c;">${universalDrPct.toFixed(1)}%</span>):</span> 
+                          <span style="color: #ccc;">Universal DR (<span style="color: #e74c3c;">${combinedUniversalDr.toFixed(1)}%</span>):</span> 
                           <span style="color: #888; float: right;">${Math.floor(ehpStep2).toLocaleString()}</span>
                       </div>
                       <div class="stat-tooltip-source">
