@@ -8234,3 +8234,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => { setTimeout(() => { document.querySelectorAll('#calc-pane-ehp .stat-row-hoverable').forEach(card => { card.addEventListener('click', () => { const statName = card.dataset.stat; if (statName && typeof window.showDefensiveBreakdown === 'function') { window.showDefensiveBreakdown(statName, window.D4_COMPILED_STATS || {}); } }); }); }, 500); });
