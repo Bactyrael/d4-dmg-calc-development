@@ -7174,10 +7174,7 @@ rarity = foundItem.rarity;
       const allRes = compiledStats['Resistance to All Elements'] ? compiledStats['Resistance to All Elements'].final : 0;
       const allElementsList = ['Physical', 'Fire', 'Cold', 'Lightning', 'Poison', 'Shadow'];
       allElementsList.forEach(elem => {
-          let resVal = compiledStats[`${elem} Resist`] ? compiledStats[`${elem} Resist`].final : 0;
-          if (elem !== 'Physical') {
-              resVal += allRes;
-          }
+          let resVal = compiledStats[`${elem} Resistance`] ? compiledStats[`${elem} Resistance`].final : 0;
           const resDom = document.getElementById(`dash-res-${elem.toLowerCase()}`);
           if (resDom) resDom.textContent = Math.floor(resVal) + '%';
       });
