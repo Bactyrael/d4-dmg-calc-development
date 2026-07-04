@@ -2080,10 +2080,12 @@ function getTotalActiveMinions(currentBuild) {
     // Warriors (Base 4)
     if (currentBuild.bookOfTheDead.warriors?.node !== 'sacrifice') {
         let wCount = 4;
-        if (currentBuild.bookOfTheDead.warriors?.spec === "Skirmisher" && currentBuild.bookOfTheDead.warriors?.node === "1") wCount += 1;
+        if (currentBuild.bookOfTheDead.warriors?.spec === "Skirmisher" && currentBuild.bookOfTheDead.warriors?.node === "1") wCount += 2; // Formula uses ?2:0
+        if (window.selectedSkills && window.selectedSkills["Master of Puppets"]) wCount += 3; // From Mod(582507894)
         if (typeof getEquipmentValues === 'function') {
             const eq = getEquipmentValues();
             if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("undercrown"))) wCount += 4;
+            if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("deathgrip"))) wCount += 1;
         }
         total += wCount;
     }
