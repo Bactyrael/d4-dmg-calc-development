@@ -2680,8 +2680,8 @@ function compileCharacterStats(equipped, autoStats) {
             let existingFlat = stats['Essence Regeneration'] || { final: 0, flatSources: [] };
             let totalFlat = baseRegen + existingFlat.final;
             
-            let resGenPct = stats['Resource Generation %'] ? stats['Resource Generation %'].final : 0;
-            let essGenPct = stats['Essence Generation %'] ? stats['Essence Generation %'].final : 0;
+            let resGenPct = (stats['Resource Generation %'] ? stats['Resource Generation %'].final : 0) + (stats['Resource Generation'] ? stats['Resource Generation'].final : 0);
+            let essGenPct = (stats['Essence Generation %'] ? stats['Essence Generation %'].final : 0) + (stats['Essence Generation'] ? stats['Essence Generation'].final : 0);
             let essRegenPct = stats['Essence Regeneration %'] ? stats['Essence Regeneration %'].final : 0;
             
             let totalPct = resGenPct + essGenPct + essRegenPct;
