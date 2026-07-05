@@ -8151,11 +8151,10 @@ function renderCalcSkills() {
                                       }
                                       let inheritMult = 1.0 + (inheritThornsBonus / 100);
                                       let playerThorns = Math.floor(basePlayerThorns * inheritMult);
-                                      let totalThorns = playerThorns;
                                       
                                       let playerArmor = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Armor']) ? window.D4_COMPILED_STATS['Armor'].final : 0;
                                       let armorThorns = Math.floor(playerArmor * 0.50);
-                                      let activeThornsTotal = totalThorns + armorThorns;
+                                      let totalThorns = playerThorns + armorThorns;
                                       
                                       let thornsSkillObj = {
                                           name: 'Bone Golem Thorns',
@@ -8167,14 +8166,16 @@ function renderCalcSkills() {
                                       let bThorns = getSkillDamageBreakdown(thornsSkillObj, rank, true);
                                       
                                       let thornsDamage = Math.floor(totalThorns * bThorns.mainStatMult * bThorns.additiveMult * bThorns.multiMult);
-                                      let activeThornsDamage = Math.floor(activeThornsTotal * bThorns.mainStatMult * bThorns.additiveMult * bThorns.multiMult);
                                       let addStrThorns = Number(((bThorns.additiveMult - 1) * 100).toFixed(6));
                                       
                                       html += `<details style="margin-bottom: 4px; margin-top: 6px;">
-                                        <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #f39c12;">
-                                          <span style="color: #555;">└</span> Bone Golem Thorns: <span style="font-weight: bold;">${thornsDamage.toLocaleString()}</span>
+                                        <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #a983b8;">
+                                          <span style="color: #555;">└</span> Bone Golem Thorns <span style="font-size: 0.85em;">(Total ${totalThorns.toLocaleString()})</span>: <span style="font-weight: bold; color: #fff;">${thornsDamage.toLocaleString()}</span> Damage
                                         </summary>
                                         <div style="margin-left: 15px; margin-top: 5px; border-left: 1px solid #444; padding-left: 10px;">
+                                          <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
+                                            <span style="color: #555;">└</span> Armor Thorns (50%): <span style="color: #fff;">${armorThorns.toLocaleString()}</span>
+                                          </div>
                                           <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
                                             <span style="color: #555;">└</span> Player Thorns: <span style="color: #fff;">${playerThorns.toLocaleString()}</span> ${inheritMult > 1 ? `<span style="color:#aaa; font-size:0.85em;">(Base: ${basePlayerThorns.toLocaleString()} x ${inheritMult.toFixed(2)})</span>` : ''}
                                           </div>
@@ -8191,10 +8192,6 @@ function renderCalcSkills() {
                                               <span style="color: #555;">└</span> Multiplicative Multiplier: <span style="color: #fff;">x${Number(bThorns.multiMult.toFixed(6))}</span>
                                             </div>
                                             ${(bThorns.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">└</span> ${comp.name.replace('Skill: ', '')}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
-                                          </div>
-                                          
-                                          <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px; color: #3498db;">
-                                            <span style="color: #555;">└</span> Active (50% Armor): <span style="color: #fff; font-weight: bold;">${activeThornsDamage.toLocaleString()}</span>
                                           </div>
                                         </div>
                                       </details>`;
