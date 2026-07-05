@@ -1,5 +1,11 @@
 
 window.NECRO_ICONS = new Set(["area-damage-bonus-blight","army-of-the-dead","astral-projection","barrier-bone-storm","barrier-decompose","barrier-soulrift","bitter-harvest","blight","blood-boil","blood-lance","blood-maiden","blood-mist","blood-orb-blood-wave","blood-orb-corpse-explosion","blood-orb-hemorrhage","blood-runs-cold","blood-rush","blood-seeker","blood-spear","blood-surge","blood-transfusion","blood-wave","bloodbath","bloody-mess","bloody-splinter","bone-prison","bone-spear","bone-spikes","bone-spirit","bone-splinters","bone-storm","bouncing-spines","bramble","cast-speed-hemorrhage","charges-bone-spirit","chilled-to-the-bone","cold-pursuit","cooldown-reduction-army-of-the-dead","cooldown-reduction-bone-prison","cooldown-reduction-decrepify","core-skill-bone-spirit","corpse-efficiency-corpse-explosion","corpse-explosion","corpse-generation-army-of-the-dead","corpse-generation-reap","corpse-tendrils","cost-reduction-blood-lance","cost-reduction-bone-spear","cost-reduction-sever","coven","critical-strike-blood-mist","critical-strike-chance-corpse-tendrils","critical-strike-chance-decrepify","critical-strike-chance-reap","critical-strike-chance-skeleton-mage","crowd-control-and-corpse-generation-sever","crowd-control-damage-bonus-blight","crowd-control-damage-bonus-skeleton-mage","crowd-control-decompose","cull-the-weak","damage-bonus-army-of-the-dead","damage-bonus-blood-surge","damage-bonus-blood-wave","damage-bonus-bone-spirit","damage-bonus-decompose","damage-bonus-golem","damage-bonus-sever","damage-bonus-skeleton-warrior","damage-bonus-soulrift","damage-reduction-blood-wave","damage-reduction-bone-storm","dead-cold","decompose","decrepify","devouring-mist","distilled-anima","dizzying-curse","dry-rot","duration-damage-bonus-skeleton-mage","duration-increase-bone-storm","essence-generation-bone-prison","essence-generation-bone-splinters","essence-generation-corpse-explosion","essence-generation-corpse-tendrils","essence-generation-iron-maiden","essence-generation-reap","execute-and-fortify-iron-maiden","fel-gluttony","ferocity-and-overpower-iron-maiden","ferocity-reap","ferocity-resolve-or-overpower-skeleton-mage","ferocity-sever","ferocity-soulrift","festering-wound","first-hit-damage-bonus-bone-spear","fortify-blood-lance","fortify-blood-surge","frozen-wasteland","gargantua","get-over-here","gift-of-death","golem","gore-quills","gravebloom","harvest","healing-skeleton-warrior","hematolagnia","hemorrhage","hungry-cyclone","inexorable-reaper","iron-maiden","jaws-of-death","life-imprisonment","life-tap","litany-of-death","lucky-hit-chance-blight","lucky-hit-chance-corpse-tendrils","lucky-hit-chance-decompose","master-of-puppets","maximum-essence-bone-spirit","miasma","movement-speed-blood-mist","movement-speed-decrepify","multiple-corpses-corpse-explosion","overpower-blood-lance","overpower-blood-mist","overpower-blood-surge","overpower-blood-wave","overpower-hemorrhage","passive-bonus-army-of-the-dead","path-of-darkness","pierce-damage-bonus-bone-spear","piercing-darkness","pile-the-bodies","pins-and-needles","plunging-darkness","poltergeists","projectiles-bone-splinters","putrid-burst","reap","reaping-lotus","resolve-bone-prison","resolve-bone-spear","resolve-bone-splinters","resolve-decrepify","resolve-overpower-or-ferocity-golem","resolve-skeleton-warrior","ricochet-blood-lance","rip-and-tear","roll-the-bones","schadenfreude","service-and-sacrifice","sever","shadow-and-bone","shadow-seekers","shadow-splitter","shrapnel","singularity","size-bonus-blight","skeleton-mage","skeleton-warrior","soul-rip","soul-vortex","soulrift","tides-of-blood","torture-artist","unfinished-business","unholy-frenzy","unstoppable-golem","unyielding-commander","volatile-blood","vulnerable-and-crowd-control-soulrift","vulnerable-and-slow-blood-mist","vulnerable-bone-prison","vulnerable-bone-splinters","vulnerable-bone-storm","vulnerable-corpse-tendrils","vulnerable-iron-maiden","vulnerable-skeleton-warrior","weaken-blood-surge","weaken-golem","weaken-hemorrhage","whirlpool","you-and-what-army"]);
+
+window.UNIQUE_ITEM_CONSTRAINTS = {
+    "Razorplate": {
+        lockedModifiers: ["Thorns", "Thorns", "Thorns", "Thorns"]
+    }
+};
 function renderActiveRunes() {
     const slots = document.querySelectorAll('.rune-slot.slot-square');
     if (!slots.length) return;
@@ -6060,7 +6066,22 @@ rarity = foundItem.rarity;
         datalistId = 'affixes-list'; // transfigures share the same affix
       }
       
-      const currentName = arr && arr[idx] ? arr[idx] : '';
+      let constraintName = null;
+      if (type === 'affix' && window.UNIQUE_ITEM_CONSTRAINTS && window.UNIQUE_ITEM_CONSTRAINTS[itemObj.name]) {
+          const constraints = window.UNIQUE_ITEM_CONSTRAINTS[itemObj.name];
+          if (constraints.lockedModifiers && constraints.lockedModifiers[idx]) {
+              constraintName = constraints.lockedModifiers[idx];
+          }
+      }
+
+      const isLocked = constraintName !== null;
+      const currentName = constraintName || (arr && arr[idx] ? arr[idx] : '');
+      
+      // Auto-save the locked affix if it wasn't there
+      if (isLocked && arr && arr[idx] !== currentName) {
+          arr[idx] = currentName;
+      }
+      
       const vals = valuesArr[idx] || [];
       
       let obj;
@@ -6163,12 +6184,12 @@ rarity = foundItem.rarity;
       return `
         <div class="affix-filled-row" style="display: flex; align-items: center; justify-content: space-between;">
           <div style="font-size: 0.9rem; line-height: 1.5; color: #ccc; flex: 1;">
-            <span style="color: #ff5555; margin-right: 4px; cursor: pointer;" class="btn-remove-affix" data-type="${type}" data-idx="${idx}" title="Remove">✖</span> ${descHtml}
+            ${isLocked ? `<span style="color: #666; margin-right: 4px; cursor: not-allowed;" title="Locked Affix">🔒</span>` : `<span style="color: #ff5555; margin-right: 4px; cursor: pointer;" class="btn-remove-affix" data-type="${type}" data-idx="${idx}" title="Remove">✖</span>`} ${descHtml}
           </div>
           <div style="display: flex; align-items: center;">
             ${gaIcon}
             ${capstoneIcon}
-            <button class="edit-btn btn-change-affix" data-type="${type}" data-idx="${idx}" style="padding: 2px 8px; font-size: 0.75rem;">Change</button>
+            ${isLocked ? '' : `<button class="edit-btn btn-change-affix" data-type="${type}" data-idx="${idx}" style="padding: 2px 8px; font-size: 0.75rem;">Change</button>`}
           </div>
         </div>
       `;
