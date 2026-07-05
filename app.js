@@ -7981,7 +7981,8 @@ function renderCalcSkills() {
                                       let playerThorns = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Thorns']) ? window.D4_COMPILED_STATS['Thorns'].final : 0;
                                       let totalThorns = nodeThorns + playerThorns;
                                       
-                                      let thornsDamage = Math.floor(totalThorns * 0.50 * b.mainStatMult * b.additiveMult * b.multiMult);
+                                      let thornsDamage = Math.floor(totalThorns * b.mainStatMult * b.additiveMult * b.multiMult);
+                                      let splinterDamage = Math.floor(thornsDamage * 0.50);
                                       
                                       html += `<details style="margin-bottom: 4px;">
                                         <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #a170c4;">
@@ -7994,8 +7995,8 @@ function renderCalcSkills() {
                                           <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
                                             <span style="color: #555;">└</span> Player Thorns: <span style="color: #fff;">${playerThorns.toLocaleString()}</span>
                                           </div>
-                                          <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
-                                            <span style="color: #555;">└</span> Base Thorns Damage (50%): <span style="color: #fff;">${Math.floor(totalThorns * 0.50).toLocaleString()}</span>
+                                          <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px; color: #f39c12;">
+                                            <span style="color: #555;">└</span> Splinter Damage (50%): <span style="color: #fff; font-weight: bold;">${splinterDamage.toLocaleString()}</span>
                                           </div>
                                         </div>
                                       </details>`;
