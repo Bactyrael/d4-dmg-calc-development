@@ -8642,7 +8642,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'Damage Bonus (Upgrade vs Vulnerable) [x]', value: 1.30 });
     }
     
-    if ((skillObj.name === "Blood Wave" || skillObj.baseName === "Blood Wave") && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().fortified) {
+    if ((skillObj.name === "Blood Wave" || skillObj.baseName === "Blood Wave") && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0 && typeof getActiveBuffs === 'function' && getActiveBuffs().fortified) {
         multiMult *= 1.30;
         multiData.components.push({ name: 'Damage Bonus (Upgrade while Fortified) [x]', value: 1.30 });
     }
