@@ -2161,7 +2161,7 @@ function compileCharacterStats(equipped, autoStats) {
                 addStat(stats, 'Attack Speed', activeBuffs.ferocity * 5, 'Ferocity Stacks');
                 
                 // Sever - Ferocity
-                if (window.selectedSkills['Ferocity'] > 0) {
+                if (window.selectedSkills['Ferocity (Sever)'] > 0) {
                     let isSeverSelected = window.selectedSkills['Sever'] > 0 || (window.selectedSkills['Reaping Lotus'] > 0);
                     if (isSeverSelected) {
                         addStat(stats, 'Skill: Sever (Ferocity) Damage [x]', 7 * activeBuffs.ferocity, 'Ferocity Stacks');
@@ -2271,7 +2271,7 @@ function compileCharacterStats(equipped, autoStats) {
             }
             
             // Sever - Damage Bonus
-            if (window.selectedSkills['Damage Bonus'] > 0) {
+            if (window.selectedSkills['Damage Bonus (Sever)'] > 0) {
                 let isSeverSelected = window.selectedSkills['Sever'] > 0 || (window.selectedSkills['Reaping Lotus'] > 0) || (window.selectedSkills['Inexorable Reaper'] > 0);
                 if (isSeverSelected) {
                     let totalMinions = getTotalActiveMinions(currentBuild);
@@ -5512,7 +5512,7 @@ function showSkillTooltip(skillObj, e) {
     `;
     
     tooltipEl.innerHTML = `
-        <div class="d4-tooltip-header">${skillObj.name}</div>
+        <div class="d4-tooltip-header">${skillObj.name.replace(/\s*\([^)]*\)\s*/g, '')}</div>
         ${tagsHtml}
         ${statsHtml}
         <div class="d4-tooltip-desc">${descHtml}</div>
