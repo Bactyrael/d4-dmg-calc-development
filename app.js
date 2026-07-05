@@ -7904,7 +7904,7 @@ function renderCalcSkills() {
     
     container.innerHTML = `
       <h2 style="color: #fff; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-         <span class="icon" style="color: #c9a55c;">⚔️</span> Skills Engine
+         <span class="icon" style="color: #c9a55c;">⚔️</span> Damage Engine
       </h2>
     `;
 
