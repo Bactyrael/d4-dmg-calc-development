@@ -7984,6 +7984,8 @@ function renderCalcSkills() {
                                       let thornsDamage = Math.floor(totalThorns * b.mainStatMult * b.additiveMult * b.multiMult);
                                       let splinterDamage = Math.floor(thornsDamage * 0.50);
                                       
+                                      let addStrThorns = Number(((b.additiveMult - 1) * 100).toFixed(6));
+                                      
                                       html += `<details style="margin-bottom: 4px;">
                                         <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #a170c4;">
                                           <span style="color: #555;">├</span> Defender Thorns (Total ${totalThorns.toLocaleString()}): <span style="color: #fff; font-weight: bold;">${thornsDamage.toLocaleString()} Damage</span>
@@ -7994,6 +7996,12 @@ function renderCalcSkills() {
                                           </div>
                                           <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
                                             <span style="color: #555;">└</span> Player Thorns: <span style="color: #fff;">${playerThorns.toLocaleString()}</span>
+                                          </div>
+                                          <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
+                                            <span style="color: #555;">└</span> Additive Multiplier: <span style="color: #fff;">1 + (${addStrThorns}%)</span>
+                                          </div>
+                                          <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
+                                            <span style="color: #555;">└</span> Multiplicative Multiplier: <span style="color: #fff;">x${Number(b.multiMult.toFixed(6))}</span>
                                           </div>
                                           <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px; color: #f39c12;">
                                             <span style="color: #555;">└</span> Splinter Damage (50%): <span style="color: #fff; font-weight: bold;">${splinterDamage.toLocaleString()}</span>
