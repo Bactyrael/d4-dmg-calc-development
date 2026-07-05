@@ -1016,6 +1016,17 @@ var currentBuild = createDefaultBuild();
   }
 
   
+  window.isGlyphSocketed = function isGlyphSocketed(pData) {
+      if (!pData || !pData.glyph || !pData.glyph.id) return false;
+      if (!pData.boardId) return true; // Legacy UI assumption
+      if (!pData.nodes || pData.nodes.length === 0) return false;
+      const bData = window.D4_PARAGON_DATA?.paragonBoards?.[pData.boardId.replace(/\\/g, '')];
+      if (!bData || !bData.nodes) return false;
+      const socketDataIdx = bData.nodes.findIndex(n => n && n.toLowerCase().includes('socket'));
+      if (socketDataIdx === -1) return false;
+      return pData.nodes.includes(socketDataIdx);
+  }
+
   window.getGlyphStatsInRadius = function getGlyphStatsInRadius(slotIndex, glyphData) {
       const stats = { Strength: 0, Dexterity: 0, Intelligence: 0, Willpower: 0 };
       if (!currentBuild || !currentBuild.paragon || !currentBuild.paragon[slotIndex]) return stats;
@@ -1083,7 +1094,7 @@ var currentBuild = createDefaultBuild();
       if (currentBuild && currentBuild.paragon) {
           for (let i = 0; i < 5; i++) {
               let pData = currentBuild.paragon[i];
-              if (pData && pData.glyph && pData.glyph.id) {
+              if (window.isGlyphSocketed(pData)) {
                   let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
                   if (gData && classData && classData.addBonuses) {
                       let gName = gData.name;
@@ -1139,7 +1150,7 @@ var currentBuild = createDefaultBuild();
       if (currentBuild && currentBuild.paragon) {
           for (let i = 0; i < 5; i++) {
               let pData = currentBuild.paragon[i];
-              if (pData && pData.glyph && pData.glyph.id && pData.glyph.level >= 46) {
+              if (window.isGlyphSocketed(pData) && pData.glyph.level >= 46) {
                   let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
                   if (gData && classData && classData.legBonuses) {
                       let gName = gData.name;
@@ -2215,7 +2226,7 @@ function compileCharacterStats(equipped, autoStats) {
         if (typeof currentBuild !== 'undefined' && currentBuild.paragon && currentBuild.glyphs) {
             for (let i = 0; i < 5; i++) {
                 let pData = currentBuild.paragon[i];
-                if (pData && pData.glyph && pData.glyph.id) {
+                if (window.isGlyphSocketed(pData)) {
                     let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
                     if (gData) {
                         let gName = gData.name;
@@ -2497,7 +2508,7 @@ function compileCharacterStats(equipped, autoStats) {
                         v = parseFloat(item.aspectValues[0]) || 0;
                     }
                     if (v === 0) {
-                        let m = uniqueObj.desc.match(/([\d\.]+)(%?)\[x\]/);
+                        let m = uniqueObj.desc.match(/([\d\.]+)(?:\]?)(%?)\[x\]/);
                         if (m) v = parseFloat(m[1]) || 0;
                     }
                     addStat(stats, item.name, v, slotName);
@@ -2775,6 +2786,17 @@ function compileCharacterStats(equipped, autoStats) {
                 final: finalRegen,
                 flatSources: newSources
             };
+        }
+        if (window.selectedSkills && window.selectedSkills['Bone Prison'] > 0 && window.selectedSkills['Bramble'] > 0) {
+            let L = parseInt(document.getElementById('level-input')?.value) || 70;
+            let sLevel = window.selectedSkills['Bone Prison'];
+            let t34 = [1, 1, 1.1, 1.2, 1.3, 1.45, 1.55, 1.65, 1.75, 1.85, 2, 2.1, 2.2, 2.3, 2.4, 2.55, 2.65, 2.75, 2.85, 2.95, 3.1][sLevel] || 1;
+            let thornsPerEnemy = (0.0007377 * Math.pow(L - 1, 3.6292) + 2 + (1 + Math.round(L * 0.1)) * sLevel) * t34 / 10;
+            let numEnemies = window.skillSliderValues && window.skillSliderValues['Bramble Enemies'] !== undefined ? window.skillSliderValues['Bramble Enemies'] : 1;
+            if (numEnemies > 0) {
+                let brambleThorns = thornsPerEnemy * numEnemies;
+                addStat(stats, 'Thorns', brambleThorns, 'Bramble');
+            }
         }
 
         return stats;
@@ -6744,13 +6766,13 @@ rarity = foundItem.rarity;
     if (box) {
       const valDiv = box.querySelector('.paperdoll-slot-value');
       if (itemName) {
-        const itemObj = { name: itemName, power: 900, quality: 0 };
-        box.dataset.value = JSON.stringify(itemObj);
-        
         let rarity = 'rare';
         const dbItems = getDbItems(currentModalSlot);
         const foundItem = dbItems.find(i => i.name === itemName);
         if (foundItem) rarity = foundItem.rarity;
+        
+        const itemObj = { name: itemName, power: 900, quality: 0, rarity: rarity };
+        box.dataset.value = JSON.stringify(itemObj);
         
         if (valDiv) {
           valDiv.textContent = itemName;
@@ -7290,7 +7312,7 @@ rarity = foundItem.rarity;
       if (typeof currentBuild !== 'undefined' && currentBuild.paragon && currentBuild.glyphs) {
           for (let i = 0; i < 5; i++) {
               let pData = currentBuild.paragon[i];
-              if (pData && pData.glyph && pData.glyph.id) {
+              if (window.isGlyphSocketed(pData)) {
                   let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
                   if (gData) {
                       let gName = gData.name;
@@ -7668,7 +7690,7 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (lowerKey === 'frailty damage [x]' && conds.cursed) applies = true;
             if (lowerKey.includes('cult leader')) {
                 let sName = skill.name.toLowerCase();
-                if (sName.includes('golem') || sName.includes('mage') || sName.includes('warrior') || tags.includes('minion')) applies = true;
+                if (sName.includes('golem') || sName.includes(' mage') || sName.includes('warrior') || tags.some(t => t.includes('minion'))) applies = true;
             }
             if (lowerKey === 'hulking monstrosity damage [x]') {
                 if (skill.name.toLowerCase().includes('golem')) applies = true;
@@ -7681,8 +7703,24 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (lowerKey === 'bloodbath (legendary node)' && buffs.overpower > 0) applies = true;
             if (lowerKey === 'iron golem sacrifice damage [x]' && conds.critical) applies = true;
             
+            if (lowerKey.includes('deadraiser') || lowerKey.includes('commander')) {
+                let sName = skill.name.toLowerCase();
+                if (sName.includes('golem') || sName.includes(' mage') || sName.includes('warrior') || tags.some(t => t.includes('minion'))) applies = true;
+            }
+            if (lowerKey.includes('golem (legendary bonus)') || lowerKey.includes('golem (additional bonus)')) {
+                if (skill.name.toLowerCase().includes('golem')) applies = true;
+            }
+            if (lowerKey.includes('amplify')) {
+                if (conds.cursed) applies = true;
+            }
+            if (lowerKey.includes('control (legendary bonus)')) {
+                if (conds.cc) applies = true;
+            }
+            if (lowerKey.includes('scent of death') && conds.corpsesNearby) applies = true;
+            if (lowerKey.includes('territorial') && conds.close) applies = true;
+            
             // Catch-all for purely generic aspect multipliers
-            if (!lowerKey.includes('cult leader') && !lowerKey.includes('damage') && !lowerKey.includes('critical') && !isDotStat && !isShadowStat && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
+            if (!lowerKey.includes('cult leader') && !lowerKey.includes('deadraiser') && !lowerKey.includes('commander') && !lowerKey.includes('golem') && !lowerKey.includes('amplify') && !lowerKey.includes('control') && !lowerKey.includes('scent of death') && !lowerKey.includes('territorial') && !lowerKey.includes('damage') && !lowerKey.includes('critical') && !isDotStat && !isShadowStat && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
                 applies = true;
             }
             
@@ -7733,7 +7771,7 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (typeof currentBuild !== 'undefined' && currentBuild.paragon && currentBuild.glyphs) {
                 for (let i = 0; i < 5; i++) {
                     let pData = currentBuild.paragon[i];
-                    if (pData && pData.glyph && pData.glyph.id) {
+                    if (window.isGlyphSocketed(pData)) {
                         let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
                         if (gData) {
                             let gName = gData.name;
@@ -7885,7 +7923,10 @@ function renderCalcSkills() {
             const modSkill = typeof applyActiveModifiers === 'function' ? applyActiveModifiers(baseSkill) : baseSkill;
             
             // Render base skills that have points and deal damage (either base or via modified secondary scalars)
-            if (window.selectedSkills[baseSkill.name] > 0 && (modSkill.baseDamageScalar > 0 || (modSkill.secondaryScalars && Object.keys(modSkill.secondaryScalars).length > 0))) {
+            let hasDamage = modSkill.baseDamageScalar > 0 || (modSkill.secondaryScalars && Object.keys(modSkill.secondaryScalars).length > 0);
+            if (baseSkill.name === 'Bone Prison' && window.selectedSkills['Bramble'] > 0) hasDamage = true;
+            
+            if (window.selectedSkills[baseSkill.name] > 0 && hasDamage) {
                 foundSkills++;
                 
                 const card = document.createElement('div');
@@ -8136,6 +8177,62 @@ function renderCalcSkills() {
                                     </details>`;
                                 }
                             }
+
+                            if (modSkill.name === 'Bone Prison' && window.selectedSkills['Bramble'] > 0) {
+                                let thornsPlayer = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Thorns']) ? window.D4_COMPILED_STATS['Thorns'].final : 0;
+                                let brambleObj = {
+                                    name: 'Bramble Segment Damage',
+                                    baseName: 'Bramble Segment Damage',
+                                    tags: ['Physical', 'Macabre', 'Bone', 'Damage'],
+                                    baseDamageScalar: 0,
+                                    isSecondary: true
+                                };
+                                let bBramble = getSkillDamageBreakdown(brambleObj, rank, true);
+                                // Override base damage logic to use Thorns instead of weapon damage
+                                let brambleDmg = Math.floor(thornsPlayer * 1.0 * bBramble.mainStatMult * bBramble.additiveMult * bBramble.multiMult);
+                                let addStrBramble = Number(((bBramble.additiveMult - 1) * 100).toFixed(6));
+                                let brambleCritStr = Math.floor(thornsPlayer * 1.0 * bBramble.mainStatMult * bBramble.additiveMult * bBramble.multiMult * (bBramble.critAdditiveMult / bBramble.additiveMult) * (bBramble.critMultiMult / bBramble.multiMult)).toLocaleString();
+                                
+                                html += `<details style="margin-bottom: 4px; margin-top: 6px;">
+                                    <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #a5c95c;">
+                                      <span style="color: #555;">├</span> Bramble Segment Damage (100% Thorns): <span style="color: #fff; font-weight: bold;">${brambleDmg.toLocaleString()}</span>
+                                    </summary>
+                                    <div style="margin-left: 20px; font-size: 0.9em; color: #aaa; margin-top: 6px; border-left: 1px solid #444; padding-left: 10px; margin-bottom: 6px;">
+                                      <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
+                                        <span style="color: #555;">└</span> Base Thorns: <span style="color: #fff;">${thornsPlayer.toLocaleString()}</span>
+                                      </div>
+                                      <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
+                                        <span style="color: #555;">└</span> ${bBramble.mainStatName} Multiplier: <span style="color: #fff;">x${Number(bBramble.mainStatMult.toFixed(6))}</span>
+                                      </div>
+                                      <div style="margin-bottom: 3px;">
+                                        <div style="display: flex; align-items: center; gap: 5px;">
+                                          <span style="color: #555;">└</span> Additive Multiplier: <span style="color: #fff;">1 + (${addStrBramble}%)</span>
+                                        </div>
+                                        ${(bBramble.additiveComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: +${(comp.value * 100).toFixed(1).replace('.0', '')}%</div>`).join('')}
+                                      </div>
+                                      <div>
+                                        <div style="display: flex; align-items: center; gap: 5px;">
+                                          <span style="color: #555;">└</span> Multiplicative Multiplier: <span style="color: #fff;">x${Number(bBramble.multiMult.toFixed(6))}</span>
+                                        </div>
+                                        ${(bBramble.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name.replace('Skill: ', '')}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
+                                      </div>
+                                    </div>
+                                    <details style="margin-left: 20px; font-size: 0.9em; margin-bottom: 6px;">
+                                      <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #f9d85c;">
+                                        <span style="color: #555;">└</span> Critical Hit: <span style="font-weight: bold;">${brambleCritStr}</span>
+                                      </summary>
+                                      <div style="margin-left: 15px; margin-top: 5px; border-left: 1px solid #444; padding-left: 10px;">
+                                        <div style="font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; margin-bottom: 2px;">
+                                          <span style="color: #555;">├</span> Base Critical Multiplier: x1.5
+                                        </div>
+                                        ${(bBramble.critMultiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
+                                        <div style="font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; margin-top: 2px;">
+                                          <span style="color: #555;">├</span> Additive Critical Bonus: +${Number(((bBramble.critAdditiveMult - bBramble.additiveMult) * 100).toFixed(1))}%
+                                        </div>
+                                      </div>
+                                    </details>
+                                  </details>`;
+                            }
                             return html;
                         })()}
                         <div style="margin-left: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
@@ -8157,6 +8254,23 @@ function renderCalcSkills() {
                 `;
                 
                 // Append skill-specific sliders
+                if (baseSkill.name === 'Bone Prison' && window.selectedSkills['Bramble'] > 0) {
+                    let curVal = window.skillSliderValues['Bramble Enemies'] !== undefined ? window.skillSliderValues['Bramble Enemies'] : 1;
+                    let sliderDiv = document.createElement('div');
+                    sliderDiv.style.marginTop = '15px';
+                    sliderDiv.style.borderTop = '1px solid #334';
+                    sliderDiv.style.paddingTop = '15px';
+                    sliderDiv.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <label style="color: #ccc; font-size: 0.85em;">Bramble: Enemies Trapped</label>
+                            <span id="slider-val-bramble" style="color: #c9a55c; font-size: 0.85em; font-weight: bold;">${curVal}</span>
+                        </div>
+                        <input type="range" min="0" max="20" step="1" value="${curVal}" style="width: 100%; accent-color: #c9a55c;" 
+                               oninput="document.getElementById('slider-val-bramble').innerText = this.value; window.skillSliderValues['Bramble Enemies'] = parseInt(this.value); window.calculate();">
+                    `;
+                    card.appendChild(sliderDiv);
+                }
+
                 if (baseSkill.name === 'Army of the Dead' && window.selectedSkills['Pile the Bodies'] > 0) {
                     let curVal = window.skillSliderValues['Pile the Bodies'] !== undefined ? window.skillSliderValues['Pile the Bodies'] : 300;
                     let sliderDiv = document.createElement('div');
@@ -8392,7 +8506,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                 
                 for (let i = 0; i < 5; i++) {
                     let pData = currentBuild.paragon[i];
-                    if (pData && pData.glyph && pData.glyph.id) {
+                    if (window.isGlyphSocketed(pData)) {
                         let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
                         if (gData && gData.name === 'Essence') {
                             let addVal = addVals[i] || 0;
@@ -8469,7 +8583,7 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
         if (typeof currentBuild !== 'undefined' && currentBuild.paragon && currentBuild.glyphs) {
             for (let i = 0; i < 5; i++) {
                 let pData = currentBuild.paragon[i];
-                if (pData && pData.glyph && pData.glyph.id) {
+                if (window.isGlyphSocketed(pData)) {
                     let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
                     if (gData) {
                         let gName = gData.name;
@@ -8541,7 +8655,7 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
             if (typeof currentBuild !== 'undefined' && currentBuild.paragon && currentBuild.glyphs) {
                 for (let i = 0; i < 5; i++) {
                     let pData = currentBuild.paragon[i];
-                    if (pData && pData.glyph && pData.glyph.id) {
+                    if (window.isGlyphSocketed(pData)) {
                         let gData = window.D4_PARAGON_DATA?.paragonGlyphs?.[pData.glyph.id];
                         if (gData) {
                             let gName = gData.name;
