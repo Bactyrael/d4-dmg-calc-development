@@ -8037,9 +8037,12 @@ function renderCalcSkills() {
                                     </div>
                                     ${!b.isHit ? '' : `<details style="margin-left: 20px; font-size: 0.9em; margin-bottom: 6px;">
                                       <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #f9d85c;">
-                                        <span style="color: #555;">└</span> Critical Hit: <span style="font-weight: bold;">${b.critStrMin} - ${b.critStrMax}</span>
+                                        <span style="color: #555;">└</span> Critical Hit (${Number(b.critChance.toFixed(1))}%): <span style="font-weight: bold;">${b.critStrMin} - ${b.critStrMax}</span>
                                       </summary>
                                       <div style="margin-left: 15px; margin-top: 5px; border-left: 1px solid #444; padding-left: 10px;">
+                                        <div style="font-size: 0.85em; color: #888; margin-bottom: 4px;">
+                                          ${(b.critChanceComponents || []).map(comp => `<div style="display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: ${comp.value > 0 ? '+' : ''}${Number(comp.value.toFixed(1))}%</div>`).join('')}
+                                        </div>
                                         <div style="font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; margin-bottom: 2px;">
                                           <span style="color: #555;">├</span> Base Critical Multiplier: x1.5
                                         </div>
@@ -8171,9 +8174,12 @@ function renderCalcSkills() {
                                       ${canCrit ? `
                                       <details style="margin-left: 20px; font-size: 0.9em; margin-bottom: 6px;">
                                         <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #f9d85c;">
-                                          <span style="color: #555;">└</span> Critical Hit: <span style="font-weight: bold;">${critMinStr} - ${critMaxStr}</span>
+                                          <span style="color: #555;">└</span> Critical Hit (${Number(b2.critChance.toFixed(1))}%): <span style="font-weight: bold;">${critMinStr} - ${critMaxStr}</span>
                                         </summary>
                                         <div style="margin-left: 15px; margin-top: 5px; border-left: 1px solid #444; padding-left: 10px;">
+                                          <div style="font-size: 0.85em; color: #888; margin-bottom: 4px;">
+                                            ${(b2.critChanceComponents || []).map(comp => `<div style="display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: ${comp.value > 0 ? '+' : ''}${Number(comp.value.toFixed(1))}%</div>`).join('')}
+                                          </div>
                                           <div style="font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; margin-bottom: 2px;">
                                             <span style="color: #555;">├</span> Base Critical Multiplier: x1.5
                                           </div>
@@ -8337,6 +8343,26 @@ function renderCalcSkills() {
     }
 }
 
+
+function calculateSkillCritChance(skillObj) {
+    let components = [];
+    let baseCrit = window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Critical Strike Chance'] ? window.D4_COMPILED_STATS['Critical Strike Chance'].final : 5.0;
+    let totalCrit = baseCrit;
+    
+    components.push({ name: 'Global Critical Strike Chance', value: baseCrit });
+    
+    if (window.selectedSkills) {
+        if ((skillObj.name === 'Reap' || skillObj.baseName === 'Reap') && window.selectedSkills['Critical Strike Chance'] > 0) {
+            totalCrit += 10.0;
+            components.push({ name: 'Skill Upgrade', value: 10.0 });
+        }
+    }
+    
+    return {
+        total: Math.min(totalCrit, 100),
+        components: components
+    };
+}
 
 function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
     if (isHit === undefined) isHit = skillObj.isHit !== undefined ? skillObj.isHit : !['Decompose', 'Blighted Corpse Explosion'].includes(skillObj.baseName || skillObj.name);
@@ -8555,6 +8581,8 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         critStrMax = critMax.toLocaleString();
     }
 
+    let critChanceData = calculateSkillCritChance(skillObj);
+
     return {
         mainStatName,
         mainStatMult,
@@ -8570,6 +8598,8 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         critStrMin,
         isHit: isHit,
         critStrMax,
+        critChance: critChanceData.total,
+        critChanceComponents: critChanceData.components,
         critMultiMult,
         critAdditiveMult,
         additiveComponents: addData.components,
