@@ -7972,7 +7972,7 @@ function renderCalcSkills() {
                               
                               if (baseSkill.name === 'Skeleton Warrior' && typeof currentBuild !== 'undefined' && currentBuild && currentBuild.bookOfTheDead && currentBuild.bookOfTheDead.warriors) {
                                   if (currentBuild.bookOfTheDead.warriors.spec === 'Defender' && currentBuild.bookOfTheDead.warriors.node === '1') {
-                                      let level = parseInt(document.getElementById('char-level')?.value) || 100;
+                                      let level = document.getElementById('character-level') ? parseInt(document.getElementById('character-level').value) || 50 : 50;
                                       let warriorRank = window.selectedSkills['Skeleton Warrior'] || 1;
                                       let powVal = Math.pow(level - 1, 3.6292);
                                       let rankMultNode = 1.0 + ((warriorRank - 1) * 0.10); 
