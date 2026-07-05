@@ -7903,6 +7903,14 @@ function calculateSkillMultiplicativeBucket(skill) {
         }
     }
 
+    if (skill.baseName === 'Golem' || skill.name === 'Golem' || tags.includes('golem') || (skill.name && skill.name.includes('Golem'))) {
+        let isSacrificed = typeof currentBuild !== 'undefined' && currentBuild && currentBuild.bookOfTheDead && currentBuild.bookOfTheDead.golems && currentBuild.bookOfTheDead.golems.node === 'sacrifice';
+        if (isSacrificed) {
+            bucket *= 0.5;
+            components.push({ name: 'Golem Sacrificed Penalty [x]', value: 0.5 });
+        }
+    }
+
     return { total: bucket, components: components };
 }
 
