@@ -4827,8 +4827,10 @@ function parseD4String(str, skillObj, currentRank) {
             return Math.floor(maxLife * 0.3 * currentRank).toString();
         });
     }
-    if (skillObj.name === "Bone Spirit") {
+    if (skillObj.name === "Bone Spirit" || skillObj.baseName === "Bone Spirit") {
         str = str.replace(/\[\{recharge time\}[\s\.,\d]*?\]|\{recharge time\}/g, "12");
+        let hasCharges = typeof currentBuild !== 'undefined' && currentBuild && currentBuild.skills && currentBuild.skills['Bone Spirit'] && currentBuild.skills['Bone Spirit'].modifiers && currentBuild.skills['Bone Spirit'].modifiers.includes('Charges');
+        str = str.replace(/Mod\(\d+\)\?1:0/g, hasCharges ? '1' : '0');
     }
     if (skillObj.name === "Devouring Mist") {
         str = str.replace(/\[\{dot:tooltip_dot_shadow\}[\s\.,\d]*?\]|\{dot:tooltip_dot_shadow\}/g, (0.5 * rankMult * 12 * 100).toFixed(1) + '%');
