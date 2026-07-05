@@ -8618,6 +8618,15 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
+    if ((skillObj.name === "Bone Spirit" || skillObj.baseName === "Bone Spirit") && window.selectedSkills && window.selectedSkills["Core Skill"] > 0) {
+        let maxEssence = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Maximum Essence']) ? window.D4_COMPILED_STATS['Maximum Essence'].final : 0;
+        if (maxEssence > 30) {
+            const mult = 1 + ((maxEssence - 30) * 0.03);
+            multiMult *= mult;
+            multiData.components.push({ name: `Core Skill (Upgrade - ${maxEssence} Max Essence) [x]`, value: mult });
+        }
+    }
+    
     if ((skillObj.name === "Golem" || skillObj.baseName === "Golem") && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().vulnerable) {
         multiMult *= 1.30;
         multiData.components.push({ name: 'Damage Bonus (Upgrade vs Vulnerable) [x]', value: 1.30 });
