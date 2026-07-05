@@ -7846,6 +7846,17 @@ function calculateSkillMultiplicativeBucket(skill) {
                 }
             }
 
+    // Razorplate Unique Aspect Logic
+    if (tags.includes('thorns') && stats['Razorplate']) {
+        let razorValue = stats['Razorplate'].final;
+        if (razorValue > 0) {
+            let avgPct = razorValue * 0.10;
+            let mult = 1 + (avgPct / 100);
+            bucket *= mult;
+            components.push({ name: 'Razorplate (Average) [x]', value: mult });
+        }
+    }
+
     return { total: bucket, components: components };
 }
 
