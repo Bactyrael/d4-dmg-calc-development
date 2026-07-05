@@ -8052,6 +8052,19 @@ function renderCalcSkills() {
                                         </div>
                                       </div>
                                     </details>`}
+                                    ${!b.lhcTotal ? '' : `<details style="margin-left: 20px; font-size: 0.9em; margin-bottom: 6px;">
+                                      <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #9fdfa7;">
+                                        <span style="color: #555;">└</span> Lucky Hit (Tooltip): <span style="font-weight: bold;">${Number(b.lhcTotal.toFixed(1))}%</span>
+                                      </summary>
+                                      <div style="margin-left: 15px; margin-top: 5px; border-left: 1px solid #444; padding-left: 10px;">
+                                        <div style="font-size: 0.85em; color: #888; margin-bottom: 4px;">
+                                          ${(b.lhcComponents || []).map((comp, idx) => `<div style="display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: ${idx === 0 ? '' : '+'}${Number(comp.value.toFixed(1))}%</div>`).join('')}
+                                        </div>
+                                        <div style="font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; margin-bottom: 2px;">
+                                          <span style="color: #555;">├</span> Formula: ${Number(b.lhcComponents[0].value.toFixed(1))}% * (100% + ${Number(b.lhcBonus.toFixed(1))}%)
+                                        </div>
+                                      </div>
+                                    </details>`}
                                   </details>`;
                               }
                               
@@ -8189,6 +8202,19 @@ function renderCalcSkills() {
                                           </div>
                                         </div>
                                       </details>` : ''}
+                                      ${!b2.lhcTotal ? '' : `<details style="margin-left: 20px; font-size: 0.9em; margin-bottom: 6px;">
+                                        <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #9fdfa7;">
+                                          <span style="color: #555;">└</span> Lucky Hit (Tooltip): <span style="font-weight: bold;">${Number(b2.lhcTotal.toFixed(1))}%</span>
+                                        </summary>
+                                        <div style="margin-left: 15px; margin-top: 5px; border-left: 1px solid #444; padding-left: 10px;">
+                                          <div style="font-size: 0.85em; color: #888; margin-bottom: 4px;">
+                                            ${(b2.lhcComponents || []).map((comp, idx) => `<div style="display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: ${idx === 0 ? '' : '+'}${Number(comp.value.toFixed(1))}%</div>`).join('')}
+                                          </div>
+                                          <div style="font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; margin-bottom: 2px;">
+                                            <span style="color: #555;">├</span> Formula: ${Number(b2.lhcComponents[0].value.toFixed(1))}% * (100% + ${Number(b2.lhcBonus.toFixed(1))}%)
+                                          </div>
+                                        </div>
+                                      </details>`}
                                     </details>`;
                                 }
                             }
@@ -8361,6 +8387,49 @@ function calculateSkillCritChance(skillObj) {
     return {
         total: Math.min(totalCrit, 100),
         components: components
+    };
+}
+
+function calculateLuckyHitChance(skillObj) {
+    let components = [];
+    let baseLHC = skillObj.luckyHitChance || 0;
+    
+    if (baseLHC === 0) return { total: 0, components: [], bonusSum: 0 };
+    
+    components.push({ name: 'Base Lucky Hit Chance', value: baseLHC });
+    
+    let bonusLHC = 0;
+    
+    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Lucky Hit Chance']) {
+        bonusLHC += window.D4_COMPILED_STATS['Lucky Hit Chance'].final;
+        if (window.D4_COMPILED_STATS['Lucky Hit Chance'].final > 0) {
+            components.push({ name: 'Global Bonus [+]', value: window.D4_COMPILED_STATS['Lucky Hit Chance'].final });
+        }
+    }
+    
+    if (window.selectedSkills && window.selectedSkills['Lucky Hit Chance'] > 0) {
+        let upgradeBonus = 0;
+        let baseName = skillObj.baseName || skillObj.name;
+        if (baseName === 'Decompose') {
+            upgradeBonus = 30;
+        } else if (baseName === 'Blight') {
+            upgradeBonus = 20;
+        } else if (baseName === 'Corpse Tendrils') {
+            upgradeBonus = 40;
+        }
+        
+        if (upgradeBonus > 0) {
+            bonusLHC += upgradeBonus;
+            components.push({ name: 'Skill Upgrade [+]', value: upgradeBonus });
+        }
+    }
+    
+    let totalLHC = baseLHC * (1 + (bonusLHC / 100));
+    
+    return {
+        total: totalLHC,
+        components: components,
+        bonusSum: bonusLHC
     };
 }
 
@@ -8582,6 +8651,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
     }
 
     let critChanceData = calculateSkillCritChance(skillObj);
+    let lhcData = calculateLuckyHitChance(skillObj);
 
     return {
         mainStatName,
@@ -8600,6 +8670,9 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         critStrMax,
         critChance: critChanceData.total,
         critChanceComponents: critChanceData.components,
+        lhcTotal: lhcData.total,
+        lhcComponents: lhcData.components,
+        lhcBonus: lhcData.bonusSum,
         critMultiMult,
         critAdditiveMult,
         additiveComponents: addData.components,
