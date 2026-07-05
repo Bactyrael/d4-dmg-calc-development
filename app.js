@@ -7978,7 +7978,17 @@ function renderCalcSkills() {
                                       let rankMultNode = 1.0 + ((warriorRank - 1) * 0.10); 
                                       let thornsBase = (0.0007377 * powVal) + 2 + ((1 + Math.round(level * 0.1)) * warriorRank);
                                       let nodeThorns = Math.floor(Math.max(thornsBase * rankMultNode, 1));
-                                      let playerThorns = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Thorns']) ? window.D4_COMPILED_STATS['Thorns'].final : 0;
+                                      let basePlayerThorns = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Thorns']) ? window.D4_COMPILED_STATS['Thorns'].final : 0;
+                                      let inheritThornsBonus = 0;
+                                      if (window.D4_COMPILED_STATS) {
+                                          for (let k in window.D4_COMPILED_STATS) {
+                                              if (k.toLowerCase().includes('inherit') && k.toLowerCase().includes('thorns')) {
+                                                  inheritThornsBonus += (window.D4_COMPILED_STATS[k].final || 0);
+                                              }
+                                          }
+                                      }
+                                      let inheritMult = 1.0 + (inheritThornsBonus / 100);
+                                      let playerThorns = Math.floor(basePlayerThorns * inheritMult);
                                       let totalThorns = nodeThorns + playerThorns;
                                       
                                       let thornsSkillObj = {
@@ -8004,7 +8014,7 @@ function renderCalcSkills() {
                                             <span style="color: #555;">└</span> Node Thorns: <span style="color: #fff;">${nodeThorns.toLocaleString()}</span>
                                           </div>
                                           <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
-                                            <span style="color: #555;">└</span> Player Thorns: <span style="color: #fff;">${playerThorns.toLocaleString()}</span>
+                                            <span style="color: #555;">└</span> Player Thorns: <span style="color: #fff;">${playerThorns.toLocaleString()}</span> ${inheritMult > 1 ? `<span style="color:#aaa; font-size:0.85em;">(Base: ${basePlayerThorns.toLocaleString()} x ${inheritMult.toFixed(2)})</span>` : ''}
                                           </div>
                                           
                                           <div style="margin-bottom: 3px;">
