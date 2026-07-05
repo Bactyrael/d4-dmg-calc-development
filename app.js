@@ -2261,8 +2261,8 @@ function compileCharacterStats(equipped, autoStats) {
             }
             
             // Crowd Control Damage Bonus (Blight)
-            if (window.selectedSkills['Crowd Control Damage Bonus'] > 0 && currentBuild.conditions && currentBuild.conditions.cc) {
-                addStat(stats, 'Skill: Blight (Crowd Control Damage Bonus) Damage [x]', 30, 'Crowd Control Damage Bonus');
+            if (window.selectedSkills['Crowd Control Damage Bonus (Blight)'] > 0 && currentBuild.conditions && currentBuild.conditions.cc) {
+                addStat(stats, 'Skill: Blight (Crowd Control Damage Bonus) Damage [x]', 30, 'Crowd Control Damage Bonus (Blight)');
             }
 
             // Area Damage Bonus (Blight)
