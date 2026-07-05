@@ -8276,9 +8276,7 @@ function renderCalcSkills() {
                             }
                             return html;
                         })()}
-                        <div style="margin-left: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
-                          <span style="color: #555;">└</span> Lucky Hit Chance: <span style="color: #fff;">${modSkill.luckyHitChance || 0}%</span>
-                        </div>
+
                         
                         <div style="margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
                           <span style="color: #555;">├</span> Attack Rate: <span style="color: #fff;">TBD frames</span>
