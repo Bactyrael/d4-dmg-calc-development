@@ -46,7 +46,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Ferocity",
+          "name": "Ferocity (Reap)",
           "description": "{c_important}Reap{/c} grants {c_number}1{/c} stack of {c_important}{u}Ferocity{/c}{/u}.",
           "maxRank": 1,
           "tags": [
@@ -54,7 +54,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Corpse Generation",
+          "name": "Corpse Generation (Reap)",
           "maxRank": 1,
           "description": "{c_important}Reap{/c} forms a Corpse under the first enemy hit.",
           "tags": [
@@ -62,7 +62,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Essence Generation",
+          "name": "Essence Generation (Reap)",
           "tags": [
             "Search_ResourceEssence"
           ],
@@ -70,7 +70,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Critical Strike Chance",
+          "name": "Critical Strike Chance (Reap)",
           "description": "{c_important}Reap{/c} gains an additional {c_number}10%{c_lightgray}\\[+\\]{/c}{/c} Critical Strike Chance.",
           "maxRank": 1,
           "tags": [
@@ -162,7 +162,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Lucky Hit Chance",
+          "name": "Lucky Hit Chance (Decompose)",
           "tags": [
             "Search_LuckyHit"
           ],
@@ -170,7 +170,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Damage Bonus",
+          "name": "Damage Bonus (Decompose)",
           "tags": [
             "Search_Damage"
           ],
@@ -178,7 +178,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Barrier",
+          "name": "Barrier (Decompose)",
           "tags": [
             "Keyword_Barrier"
           ],
@@ -267,13 +267,13 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Blood Orb",
+          "name": "Blood Orb (Hemorrhage)",
           "maxRank": 1,
           "description": "{c_important}Hemorrhage{/c} has an additional {c_number}30%{/c} chance to form a {c_important}{u}Blood Orb{/u}{/c}.",
           "tags": []
         },
         {
-          "name": "Weaken",
+          "name": "Weaken (Hemorrhage)",
           "tags": [
             "Keyword_Weaken"
           ],
@@ -281,7 +281,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Overpower",
+          "name": "Overpower (Hemorrhage)",
           "description": "{c_important}Hemorrhage{/c} grants {c_number}1{/c} stack of {c_important}{u}Overpower{/c}{/u}.",
           "maxRank": 1,
           "tags": []
@@ -391,7 +391,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Essence Generation",
+          "name": "Essence Generation (Bone Splinters)",
           "maxRank": 1,
           "description": "{c_important}Bone Splinters{/c} generates {c_number}5{/c} additional Essence.",
           "tags": [
@@ -399,7 +399,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Vulnerable",
+          "name": "Vulnerable (Bone Splinters)",
           "tags": [
             "Keyword_Vulnerable"
           ],
@@ -407,7 +407,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Resolve",
+          "name": "Resolve (Bone Splinters)",
           "description": "{c_important}Bone Splinters{/c} grants {c_number}1{/c} stack of {c_important}{u}Resolve{/c}{/u}.",
           "maxRank": 1,
           "tags": [
@@ -503,7 +503,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Overpower",
+          "name": "Overpower (Blood Lance)",
           "maxRank": 1,
           "description": "{c_important}Blood Lance{/c} consumes {c_number}2{/c} stacks of {c_important}{u}Overpower{/c}{/u} to throw an additional lance, dealing {c_number}50%{/c} of normal damage.",
           "tags": [
@@ -512,7 +512,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Cost Reduction",
+          "name": "Cost Reduction (Blood Lance)",
           "maxRank": 1,
           "description": "{c_important}Blood Lance's{/c} Essence cost is reduced by {c_number}3{/c}.",
           "tags": [
@@ -528,7 +528,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Fortify",
+          "name": "Fortify (Blood Lance)",
           "maxRank": 1,
           "description": "{c_important}Blood Lance{/c} {c_important}{u}Fortifies{/c}{/u} you for {c_number}4%{/c} of your Maximum Life {c_number}([Max(1,{fortified:mod_fortify})|0|]){/c} if it hits an enemy already lanced.",
           "tags": [
@@ -642,7 +642,7 @@ const skillsDatabase = {
           "baseDamageScalar": 1
         },
         {
-          "name": "Overpower",
+          "name": "Overpower (Blood Surge)",
           "maxRank": 1,
           "description": "{c_important}Blood Surge{/c} consumes {c_number}2{/c} stacks of {c_important}{u}Overpower{/c}{/u} to gain {c_number}25%{/c} {if:Mod(582507896)}more projectiles{else}increased Size{/if} and {c_number}50%{c_lightgray}\\[x\\]{/c}{/c} increased damage.",
           "tags": [
@@ -651,7 +651,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Weaken",
+          "name": "Weaken (Blood Surge)",
           "maxRank": 1,
           "description": "{c_important}Blood Surge{/c} {c_important}{u}Weakens{/c}{/u} enemies for {c_number}4{/c} seconds.",
           "tags": [
@@ -659,7 +659,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Damage Bonus",
+          "name": "Damage Bonus (Blood Surge)",
           "maxRank": 1,
           "description": "{c_important}Blood Surge{/c} deals {c_number}25%{c_lightgray}\\[x\\]{/c}{/c} increased damage while you are {c_important}{u}Healthy{/c}{/u}.",
           "tags": [
@@ -668,7 +668,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Fortify",
+          "name": "Fortify (Blood Surge)",
           "description": "{c_important}Blood Surge{/c} {c_important}{u}Fortifies{/c}{/u} you for {c_number}2%{/c} of your Maximum Life {c_number}([PlayerHealthMax()*0.02||]){/c} for each enemy drawn from, up to {c_number}10%{/c}.",
           "maxRank": 1,
           "tags": [
@@ -807,7 +807,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Crowd Control Damage Bonus",
+          "name": "Crowd Control Damage Bonus (Skeleton Mage)",
           "maxRank": 1,
           "description": "{c_important}Skeleton Mages{/c} deal {c_number}30%{c_lightgray}\\[x\\]{/c}{/c} increased damage to Crowd Controlled enemies.",
           "tags": [
@@ -824,7 +824,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Critical Strike Chance",
+          "name": "Critical Strike Chance (Skeleton Mage)",
           "maxRank": 1,
           "description": "You gain an additional {c_number}5%{c_lightgray}\\[+\\]{/c}{/c} Critical Strike Chance against enemies damaged by {c_important}Skeleton Mages{/c}.",
           "tags": [
@@ -922,7 +922,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Lucky Hit Chance",
+          "name": "Lucky Hit Chance (Blight)",
           "maxRank": 1,
           "description": "{c_important}Blight{/c} has an additional {c_number}20%{c_lightgray}\\[+\\]{/c}{/c} Lucky Hit Chance.",
           "tags": [
@@ -930,7 +930,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Crowd Control Damage Bonus",
+          "name": "Crowd Control Damage Bonus (Blight)",
           "maxRank": 1,
           "description": "{c_important}Blight{/c} deals {c_number}30%{c_lightgray}\\[x\\]{/c}{/c} increased damage to Crowd Controlled enemies.",
           "tags": [
@@ -1068,7 +1068,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Ferocity",
+          "name": "Ferocity (Sever)",
           "maxRank": 1,
           "description": "{c_important}Sever{/c} deals {c_number}7%{c_lightgray}\\[x\\]{/c}{/c} increased damage per stack of {c_important}{u}Ferocity{/c}{/u}.",
           "tags": [
@@ -1086,7 +1086,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Damage Bonus",
+          "name": "Damage Bonus (Sever)",
           "maxRank": 1,
           "description": "{c_important}Sever{/c} deals {c_number}10%{c_lightgray}\\[x\\]{/c}{/c} increased damage, and an additional {c_number}1%{c_lightgray}\\[x\\]{/c}{/c} increased damage for each {c_important}Minion{/c} you have.",
           "tags": [
@@ -1095,7 +1095,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Cost Reduction",
+          "name": "Cost Reduction (Sever)",
           "maxRank": 1,
           "description": "{c_important}Sever's{/c} Essence cost is reduced by {c_number}4{/c}.",
           "tags": [
@@ -1193,7 +1193,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Resolve",
+          "name": "Resolve (Bone Spear)",
           "maxRank": 1,
           "description": "{c_important}Bone Spear{/c} deals {c_number}5%{c_lightgray}\\[x\\]{/c}{/c} increased Critical Strike Damage per stack of {c_important}{u}Resolve{/c}{/u}, up to {c_number}40%{c_lightgray}\\[x\\]{/c}{/c}.",
           "tags": [
@@ -1218,7 +1218,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Cost Reduction",
+          "name": "Cost Reduction (Bone Spear)",
           "description": "{c_important}Bone Spear's{/c} Essence cost is reduced by {c_number}5{/c}.",
           "maxRank": 1,
           "tags": [
@@ -1344,7 +1344,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Essence Generation",
+          "name": "Essence Generation (Corpse Explosion)",
           "maxRank": 1,
           "description": "Casting {c_important}Corpse Explosion{/c} generates {c_number}15{/c} Essence.",
           "tags": [
@@ -1352,7 +1352,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Blood Orb",
+          "name": "Blood Orb (Corpse Explosion)",
           "maxRank": 1,
           "description": "{c_important}Corpse Explosion{/c} has a {c_number}20%{/c} chance to form a {c_important}{u}Blood Orb{/c}{/u}.",
           "tags": [
@@ -1433,7 +1433,7 @@ const skillsDatabase = {
           "tags": []
         },
         {
-          "name": "Resolve",
+          "name": "Resolve (Skeleton Warrior)",
           "maxRank": 1,
           "description": "Commanding your {c_important}Skeleton Warriors{/c} grants {c_number}3{/c} stacks of {c_important}{u}Resolve{/c}{/u}.",
           "tags": [
@@ -1441,7 +1441,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Vulnerable",
+          "name": "Vulnerable (Skeleton Warrior)",
           "maxRank": 1,
           "description": "{c_important}Skeleton Warriors{/c} have a {c_number}30%{/c} chance to make enemies {c_important}{u}Vulnerable{/c}{/u} for {c_number}4{/c} seconds.",
           "tags": [
@@ -1449,7 +1449,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Damage Bonus",
+          "name": "Damage Bonus (Skeleton Warrior)",
           "maxRank": 1,
           "description": "Commanding your {c_important}Skeleton Warriors{/c} causes them to deal {c_number}25%{c_lightgray}\\[x\\]{/c}{/c} increased damage for {c_number}10{/c} seconds.",
           "tags": [
@@ -1569,7 +1569,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Lucky Hit Chance",
+          "name": "Lucky Hit Chance (Corpse Tendrils)",
           "maxRank": 1,
           "description": "{c_important}Corpse Tendrils{/c} gains an additional {c_number}40%{c_lightgray}\\[+\\]{/c}{/c} Lucky Hit Chance.",
           "tags": [
@@ -1577,7 +1577,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Vulnerable",
+          "name": "Vulnerable (Corpse Tendrils)",
           "maxRank": 1,
           "description": "{c_important}Corpse Tendrils{/c} makes enemies {c_important}{u}Vulnerable{/c}{/u} for {c_number}4{/c} seconds.",
           "tags": [
@@ -1585,7 +1585,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Critical Strike Chance",
+          "name": "Critical Strike Chance (Corpse Tendrils)",
           "maxRank": 1,
           "description": "You gain an additional {c_number}5%{c_lightgray}\\[+\\]{/c}{/c} increased Critical Strike Chance for {c_number}6{/c} seconds against enemies damaged by {c_important}Corpse Tendrils{/c}.",
           "tags": [
@@ -1593,7 +1593,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Essence Generation",
+          "name": "Essence Generation (Corpse Tendrils)",
           "maxRank": 1,
           "description": "Casting {c_important}Corpse Tendrils{/c} generates {c_number}35{/c} Essence.",
           "tags": [
@@ -1686,7 +1686,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Resolve",
+          "name": "Resolve (Bone Prison)",
           "maxRank": 1,
           "description": "{c_important}Bone Prison{/c} grants {c_number}1{/c} stack of {c_important}{u}Resolve{/c}{/u} for each enemy trapped.",
           "tags": [
@@ -1694,7 +1694,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Vulnerable",
+          "name": "Vulnerable (Bone Prison)",
           "maxRank": 1,
           "description": "{c_important}Bone Prison{/c} makes enemies {c_important}{u}Vulnerable{/c}{/u} for {c_number}8{/c} seconds.",
           "tags": [
@@ -1702,7 +1702,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Cooldown Reduction",
+          "name": "Cooldown Reduction (Bone Prison)",
           "description": "{c_important}Bone Prison{/c} reduces your active Cooldowns by {c_number}0.5{/c} seconds for each enemy trapped, up to {c_number}5{/c} seconds.",
           "maxRank": 1,
           "tags": [
@@ -1710,7 +1710,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Essence Generation",
+          "name": "Essence Generation (Bone Prison)",
           "maxRank": 1,
           "description": "Casting {c_important}Bone Prison{/c} generates {c_number}50{/c} Essence. Trapping a Boss generates an additional {c_number}25{/c} Essence.",
           "tags": [
@@ -1801,7 +1801,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Overpower",
+          "name": "Overpower (Blood Mist)",
           "maxRank": 1,
           "description": "{if:1-Mod(582507895)}{c_important}Blood Mist{/c} grants {c_number}1{/c} stack of {c_important}{u}Overpower{/c}{/u} every second.{else}{c_important}Blood Mist{/c} grants {c_number}1{/c} stack of {c_important}{u}Overpower{/c}{/u} after you teleport.{/if}",
           "tags": [
@@ -1826,7 +1826,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Movement Speed",
+          "name": "Movement Speed (Blood Mist)",
           "description": "{c_important}Blood Mist{/c} increases your Movement Speed by {c_number}30%{c_lightgray}\\[x\\]{/c}{/c} for {c_number}3{/c} seconds.",
           "maxRank": 1,
           "tags": [
@@ -1952,7 +1952,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Weaken",
+          "name": "Weaken (Golem)",
           "maxRank": 1,
           "description": "{c_important}Golem{/c} {c_important}{u}Weakens{/c}{/u} enemies for {c_number}4{/c} seconds whenever it attacks.",
           "tags": [
@@ -1970,7 +1970,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Damage Bonus",
+          "name": "Damage Bonus (Golem)",
           "maxRank": 1,
           "description": "{c_important}Golem{/c} deals {c_number}30%{c_lightgray}\\[x\\]{/c}{/c} increased damage to {c_important}{u}Vulnerable{/c}{/u} enemies.",
           "tags": [
@@ -2093,7 +2093,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Damage Bonus",
+          "name": "Damage Bonus (Bone Spirit)",
           "maxRank": 1,
           "description": "Every second, your next {c_important}Bone Spirit{/c} deals {c_number}10%{c_lightgray}\\[x\\]{/c}{/c} increased damage, up to {c_number}30%{c_lightgray}\\[x\\]{/c}{/c}.",
           "tags": [
@@ -2192,7 +2192,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Vulnerable",
+          "name": "Vulnerable (Iron Maiden)",
           "maxRank": 1,
           "description": "Enemies afflicted with {c_important}Iron Maiden{/c} are {c_important}{u}Vulnerable{/c}{/u}.",
           "tags": [
@@ -2209,7 +2209,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Essence Generation",
+          "name": "Essence Generation (Iron Maiden)",
           "maxRank": 1,
           "description": "{c_important}Iron Maiden{/c} no longer has an Essence cost and instead generates {c_number}5{/c} Essence for each enemy you curse that was not already afflicted with {c_important}Iron Maiden{/c}.",
           "tags": []
@@ -2313,7 +2313,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Critical Strike Chance",
+          "name": "Critical Strike Chance (Decrepify)",
           "maxRank": 1,
           "description": "You have an additional {c_number}5%{c_lightgray}\\[+\\]{/c}{/c} Critical Strike Chance against enemies afflicted with {c_important}Decrepify{/c}.",
           "tags": [
@@ -2321,7 +2321,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Cooldown Reduction",
+          "name": "Cooldown Reduction (Decrepify)",
           "maxRank": 1,
           "description": "{c_label}Lucky Hit:{/c} Enemies hit while afflicted with {c_important}Decrepify{/c} have up to a {c_number}15%{/c} chance to reduce a random active Cooldown by {c_number}1{/c} second.",
           "tags": [
@@ -2330,7 +2330,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Resolve",
+          "name": "Resolve (Decrepify)",
           "maxRank": 1,
           "description": "{c_label}Lucky Hit:{/c} Enemies hit while afflicted with {c_important}Decrepify{/c} have up to a {c_number}25%{/c} chance to grant {c_number}1{/c} stack of {c_important}{u}Resolve{/c}{/u}.",
           "tags": [
@@ -2339,7 +2339,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Movement Speed",
+          "name": "Movement Speed (Decrepify)",
           "maxRank": 1,
           "description": "Each enemy afflicted with {c_important}Decrepify{/c} increases your Movement Speed by {c_number}2%{c_lightgray}\\[x\\]{/c}{/c}.",
           "tags": [
@@ -2412,7 +2412,7 @@ const skillsDatabase = {
           "baseDamageScalar": 5
         },
         {
-          "name": "Overpower",
+          "name": "Overpower (Blood Wave)",
           "maxRank": 1,
           "description": "Casting {c_important}Blood Wave{/c} overfills your {c_important}{u}Overpower{/c}{/u} by {c_number}2{/c}.",
           "tags": [
@@ -2420,7 +2420,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Blood Orb",
+          "name": "Blood Orb (Blood Wave)",
           "maxRank": 1,
           "description": "{c_important}Blood Wave{/c} forms up to {c_number}2{/c} {c_important}{u}Blood Orbs{/u}{/c} as it travels.",
           "tags": [
@@ -2428,7 +2428,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Damage Reduction",
+          "name": "Damage Reduction (Blood Wave)",
           "maxRank": 1,
           "description": "Casting {c_important}Blood Wave{/c} grants {c_number}10%{/c} Damage Reduction for {c_number}[{buffduration:buff_damage_reduction}|2?|]{/c} seconds.",
           "tags": [
@@ -2436,7 +2436,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Damage Bonus",
+          "name": "Damage Bonus (Blood Wave)",
           "maxRank": 1,
           "description": "{c_important}Blood Wave{/c} deals {c_number}30%{c_lightgray}\\[x\\]{/c}{/c} increased damage while you are {c_important}{u}Fortified{/c}{/u}.",
           "tags": [
@@ -2591,7 +2591,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Corpse Generation",
+          "name": "Corpse Generation (Army of the Dead)",
           "maxRank": 1,
           "description": "{c_important}Army of the Dead{/c} has a {c_number}50%{/c} chance to form a Corpse.",
           "tags": [
@@ -2607,7 +2607,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Damage Bonus",
+          "name": "Damage Bonus (Army of the Dead)",
           "maxRank": 1,
           "description": "{c_important}Army of the Dead{/c} deals {c_number}2%{c_lightgray}\\[x\\]{/c}{/c} increased damage for each {c_important}Minion{/c} you have.",
           "tags": [
@@ -2615,7 +2615,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Cooldown Reduction",
+          "name": "Cooldown Reduction (Army of the Dead)",
           "maxRank": 1,
           "description": "{c_important}Army of the Dead's{/c} Cooldown is reduced by {c_number}20{/c} seconds.",
           "tags": [
@@ -2694,7 +2694,7 @@ const skillsDatabase = {
           "tags": []
         },
         {
-          "name": "Damage Reduction",
+          "name": "Damage Reduction (Bone Storm)",
           "description": "{c_important}Bone Storm{/c} increases your Damage Reduction by {c_number}[(0.1+Necro_BoneStorm_DamageReduction)*100|%|]{/c}.",
           "maxRank": 1,
           "tags": [
@@ -2710,7 +2710,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Vulnerable",
+          "name": "Vulnerable (Bone Storm)",
           "maxRank": 1,
           "description": "{c_important}Bone Storm{/c} makes enemies {c_important}{u}Vulnerable{/c}{/u} for {c_number}4{/c} seconds.",
           "tags": [
@@ -2719,7 +2719,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Barrier",
+          "name": "Barrier (Bone Storm)",
           "maxRank": 1,
           "description": "Casting {c_important}Bone Storm{/c} grants a {c_important}{u}Barrier{/c}{/u} for {c_number}50%{/c} of your Maximum Life {c_number}([Max(1,PlayerHealthMax()*0.5)|0|]){/c} for {c_number}[{buffduration:barrier}|2?|]{/c} seconds.",
           "tags": [
@@ -2846,7 +2846,7 @@ const skillsDatabase = {
           }
         },
         {
-          "name": "Damage Bonus",
+          "name": "Damage Bonus (Soulrift)",
           "maxRank": 1,
           "description": "Every soul absorbed by {c_important}Soulrift{/c} increases its damage by {c_number}0.3%{c_lightgray}\\[x\\]{/c}{/c}, up to {c_number}45%{c_lightgray}\\[x\\]{/c}{/c}. ",
           "tags": [
@@ -2854,7 +2854,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Barrier",
+          "name": "Barrier (Soulrift)",
           "maxRank": 1,
           "description": "Every soul absorbed by {c_important}Soulrift{/c} grants a {c_important}{u}Barrier{/c}{/u} for {c_number}0.5%{/c} of your Maximum Life {c_number}([Max(1,PlayerHealthMax()*0.005)|0|]){/c}. \\n\\nThis {c_important}{u}Barrier{/c}{/u} persists for {c_number}5{/c} seconds after {c_important}Soulrift{/c} ends.",
           "tags": [
@@ -2871,7 +2871,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Ferocity",
+          "name": "Ferocity (Soulrift)",
           "maxRank": 1,
           "description": "Every {c_number}30{/c} souls absorbed by {c_important}Soulrift{/c} grants {c_number}1{/c} stack of {c_important}{u}Ferocity{/c}{/u}.",
           "tags": [

@@ -2172,7 +2172,7 @@ function compileCharacterStats(equipped, autoStats) {
             if (activeBuffs.resolve > 0) {
                 addStat(stats, '% Armor', 25, 'Resolve Buff');
             }
-            if (window.selectedSkills && window.selectedSkills['Blood Wave'] > 0 && window.selectedSkills['Damage Reduction'] > 0) {
+            if (window.selectedSkills && window.selectedSkills['Blood Wave'] > 0 && window.selectedSkills['Damage Reduction (Blood Wave)'] > 0) {
                 addStat(stats, 'Universal Damage Reduction %', 10, 'Blood Wave (Upgrade)');
             }
         }
@@ -5813,11 +5813,12 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   nameSpan.style.gap = '8px';
   
   let prefix = indentLevel > 0 ? '<span style="color:#666; margin-right: 4px;">└</span>' : '';
-  let imgName = name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+  let displayName = name.replace(/\s*\(.*?\)\s*/g, '');
+  let imgName = displayName.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
   let clsName = currentBuild.class || 'Necromancer';
   let imgSrc = `assets/Skills/${clsName}/${imgName}.png`;
   
-  nameSpan.innerHTML = prefix + `<img src="${imgSrc}" style="width:24px; height:24px; border:1px solid #333;" onerror="this.outerHTML='<div style=\'width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #222; color: #888;\'>?</div>'" />` + `<span>${name}</span>`; 
+  nameSpan.innerHTML = prefix + `<img src="${imgSrc}" style="width:24px; height:24px; border:1px solid #333;" onerror="this.outerHTML='<div style=\'width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #222; color: #888;\'>?</div>'" />` + `<span>${displayName}</span>`; 
   const controls = document.createElement('div'); 
   controls.className = 'skill-controls'; 
   const minusBtn = document.createElement('button'); 
@@ -8431,7 +8432,7 @@ function renderCalcSkills() {
                     card.appendChild(checkDiv);
                 }
 
-                if ((baseSkill.name === 'Bone Spirit' || baseSkill.baseName === 'Bone Spirit') && window.selectedSkills['Damage Bonus'] > 0) {
+                if ((baseSkill.name === 'Bone Spirit' || baseSkill.baseName === 'Bone Spirit') && window.selectedSkills['Damage Bonus (Bone Spirit)'] > 0) {
                     let curVal = window.skillSliderValues['Bone Spirit Damage Bonus'] !== undefined ? window.skillSliderValues['Bone Spirit Damage Bonus'] : 0;
                     let sliderDiv = document.createElement('div');
                     sliderDiv.style.marginTop = '15px';
@@ -8467,12 +8468,12 @@ function calculateSkillCritChance(skillObj) {
     components.push({ name: 'Global Critical Strike Chance', value: baseCrit });
     
     if (window.selectedSkills) {
-        if ((skillObj.name === 'Reap' || skillObj.baseName === 'Reap') && window.selectedSkills['Critical Strike Chance'] > 0) {
+        if ((skillObj.name === 'Reap' || skillObj.baseName === 'Reap') && window.selectedSkills['Critical Strike Chance (Reap)'] > 0) {
             totalCrit += 10.0;
             components.push({ name: 'Skill Upgrade', value: 10.0 });
         }
         
-        if (window.selectedSkills['Decrepify'] > 0 && window.selectedSkills['Critical Strike Chance'] > 0) {
+        if (window.selectedSkills['Decrepify'] > 0 && window.selectedSkills['Critical Strike Chance (Decrepify)'] > 0) {
             if (typeof getActiveConditions === 'function' && getActiveConditions().cursed) {
                 totalCrit += 5.0;
                 components.push({ name: 'Decrepify (Upgrade vs Cursed) [+]', value: 5.0 });
@@ -8521,9 +8522,9 @@ function calculateLuckyHitChance(skillObj) {
         }
     }
     
-    if (window.selectedSkills && window.selectedSkills['Lucky Hit Chance'] > 0) {
+    let baseName = skillObj.baseName || skillObj.name;
+    if (window.selectedSkills && window.selectedSkills[`Lucky Hit Chance (${baseName})`] > 0) {
         let upgradeBonus = 0;
-        let baseName = skillObj.baseName || skillObj.name;
         if (baseName === 'Decompose') {
             upgradeBonus = 30;
         } else if (baseName === 'Blight') {
@@ -8589,12 +8590,12 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'Single Target (Blood Golem) [x]', value: 4.0 });
     }
     
-    if (skillObj.name === "Decompose" && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0) {
+    if (skillObj.name === "Decompose" && window.selectedSkills && window.selectedSkills["Damage Bonus (Decompose)"] > 0) {
         multiMult *= 1.5;
         multiData.components.push({ name: 'Damage Bonus (Upgrade) [x]', value: 1.5 });
     }
     
-    if (skillObj.name === "Blood Surge" && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().healthy) {
+    if (skillObj.name === "Blood Surge" && window.selectedSkills && window.selectedSkills["Damage Bonus (Blood Surge)"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().healthy) {
         multiMult *= 1.25;
         multiData.components.push({ name: 'Damage Bonus (Upgrade) (Healthy) [x]', value: 1.25 });
     }
@@ -8604,7 +8605,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'You And What Army? (Upgrade) [x]', value: 1.5 });
     }
     
-    if ((skillObj.name === "Skeleton Mage" || skillObj.baseName === "Skeleton Mage") && window.selectedSkills && window.selectedSkills["Crowd Control Damage Bonus"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().cc) {
+    if ((skillObj.name === "Skeleton Mage" || skillObj.baseName === "Skeleton Mage") && window.selectedSkills && window.selectedSkills["Crowd Control Damage Bonus (Skeleton Mage)"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().cc) {
         multiMult *= 1.30;
         multiData.components.push({ name: 'Crowd Control Damage Bonus (Upgrade) [x]', value: 1.30 });
     }
@@ -8614,12 +8615,12 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'Duration Damage Bonus (Upgrade) [x]', value: 1.25 });
     }
     
-    if ((skillObj.name === "Skeleton Warrior" || skillObj.baseName === "Skeleton Warrior") && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0) {
+    if ((skillObj.name === "Skeleton Warrior" || skillObj.baseName === "Skeleton Warrior") && window.selectedSkills && window.selectedSkills["Damage Bonus (Skeleton Warrior)"] > 0) {
         multiMult *= 1.25;
         multiData.components.push({ name: 'Damage Bonus (Upgrade) [x]', value: 1.25 });
     }
     
-    if ((skillObj.name === "Bone Spirit" || skillObj.baseName === "Bone Spirit") && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0) {
+    if ((skillObj.name === "Bone Spirit" || skillObj.baseName === "Bone Spirit") && window.selectedSkills && window.selectedSkills["Damage Bonus (Bone Spirit)"] > 0) {
         let curVal = window.skillSliderValues && window.skillSliderValues['Bone Spirit Damage Bonus'] !== undefined ? window.skillSliderValues['Bone Spirit Damage Bonus'] : 0;
         if (curVal > 0) {
             const mult = 1 + (0.10 * curVal);
@@ -8637,17 +8638,17 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
-    if ((skillObj.name === "Golem" || skillObj.baseName === "Golem") && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().vulnerable) {
+    if ((skillObj.name === "Golem" || skillObj.baseName === "Golem") && window.selectedSkills && window.selectedSkills["Damage Bonus (Golem)"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().vulnerable) {
         multiMult *= 1.30;
         multiData.components.push({ name: 'Damage Bonus (Upgrade vs Vulnerable) [x]', value: 1.30 });
     }
     
-    if ((skillObj.name === "Blood Wave" || skillObj.baseName === "Blood Wave") && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0 && typeof getActiveBuffs === 'function' && getActiveBuffs().fortified) {
+    if ((skillObj.name === "Blood Wave" || skillObj.baseName === "Blood Wave") && window.selectedSkills && window.selectedSkills["Damage Bonus (Blood Wave)"] > 0 && typeof getActiveBuffs === 'function' && getActiveBuffs().fortified) {
         multiMult *= 1.30;
         multiData.components.push({ name: 'Damage Bonus (Upgrade while Fortified) [x]', value: 1.30 });
     }
     
-    if ((skillObj.name === "Bone Spear" || skillObj.baseName === "Bone Spear") && window.selectedSkills && window.selectedSkills["Resolve"] > 0) {
+    if ((skillObj.name === "Bone Spear" || skillObj.baseName === "Bone Spear") && window.selectedSkills && window.selectedSkills["Resolve (Bone Spear)"] > 0) {
         if (typeof getActiveBuffs === 'function') {
             const buffs = getActiveBuffs();
             const stacks = Math.min(8, buffs.resolve || 0);
