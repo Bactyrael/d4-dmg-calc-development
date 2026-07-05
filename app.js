@@ -5236,6 +5236,13 @@ function applyActiveModifiers(baseSkillObj) {
                 // Override cooldown and resource cost if provided
                 if (mod.cooldown !== undefined) modified.cooldown = mod.cooldown;
                 if (mod.resourceCost !== undefined) modified.resourceCost = mod.resourceCost;
+                
+                // Specific logic for Cost Reduction (Bone Spear)
+                if (mod.name === "Cost Reduction" && (modified.name === "Bone Spear" || modified.baseName === "Bone Spear")) {
+                    if (modified.resourceCost) {
+                        modified.resourceCost = Math.max(0, modified.resourceCost - 5);
+                    }
+                }
             }
         });
     }
