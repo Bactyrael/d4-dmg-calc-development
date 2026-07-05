@@ -7984,7 +7984,7 @@ function renderCalcSkills() {
                                       let thornsSkillObj = {
                                           name: 'Defender Thorns',
                                           baseName: 'Defender Thorns',
-                                          tags: ['Minion', 'Thorns', 'Physical', 'Damage'],
+                                          tags: ['Minion', 'Summoning', 'Thorns', 'Physical', 'Damage'],
                                           damageType: 'Physical',
                                           isHit: true
                                       };
