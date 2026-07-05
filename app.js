@@ -8144,6 +8144,18 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'Duration Damage Bonus (Upgrade) [x]', value: 1.25 });
     }
     
+    if ((skillObj.name === "Bone Spear" || skillObj.baseName === "Bone Spear") && window.selectedSkills && window.selectedSkills["Resolve"] > 0) {
+        if (typeof getActiveBuffs === 'function') {
+            const buffs = getActiveBuffs();
+            const stacks = Math.min(8, buffs.resolve || 0);
+            if (stacks > 0) {
+                const mult = 1 + (0.05 * stacks);
+                multiMult *= mult;
+                multiData.components.push({ name: `Resolve (Upgrade) [x] (${stacks} Stacks)`, value: mult });
+            }
+        }
+    }
+    
     if ((skillObj.name === "Skeleton Mage" || skillObj.baseName === "Skeleton Mage") && window.selectedSkills && window.selectedSkills["Singularity"] > 0) {
         let maxEssence = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Maximum Essence']) ? window.D4_COMPILED_STATS['Maximum Essence'].final : 0;
         if (maxEssence > 0) {
