@@ -7647,7 +7647,7 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (lowerKey === 'frailty damage [x]' && conds.cursed) applies = true;
             if (lowerKey.includes('cult leader')) {
                 let sName = skill.name.toLowerCase();
-                if (sName.includes('golem') || sName.includes('mage') || sName.includes('warrior')) applies = true;
+                if (sName.includes('golem') || sName.includes('mage') || sName.includes('warrior') || tags.includes('minion')) applies = true;
             }
             if (lowerKey === 'hulking monstrosity damage [x]') {
                 if (skill.name.toLowerCase().includes('golem')) applies = true;
