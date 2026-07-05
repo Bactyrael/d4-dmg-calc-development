@@ -8600,6 +8600,16 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'Damage Bonus (Upgrade) (Healthy) [x]', value: 1.25 });
     }
     
+    if ((skillObj.name === "Blood Surge" || skillObj.baseName === "Blood Surge") && window.selectedSkills && window.selectedSkills["Overpower (Blood Surge)"] > 0) {
+        if (typeof getActiveBuffs === 'function') {
+            const buffs = getActiveBuffs();
+            if (buffs.overpower >= 2) {
+                multiMult *= 1.50;
+                multiData.components.push({ name: 'Overpower (Upgrade) [x]', value: 1.50 });
+            }
+        }
+    }
+    
     if (skillObj.name === "You And What Army?") {
         multiMult *= 1.5;
         multiData.components.push({ name: 'You And What Army? (Upgrade) [x]', value: 1.5 });
