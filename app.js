@@ -8468,6 +8468,13 @@ function calculateSkillCritChance(skillObj) {
             totalCrit += 10.0;
             components.push({ name: 'Skill Upgrade', value: 10.0 });
         }
+        
+        if (window.selectedSkills['Decrepify'] > 0 && window.selectedSkills['Critical Strike Chance'] > 0) {
+            if (typeof getActiveConditions === 'function' && getActiveConditions().cursed) {
+                totalCrit += 5.0;
+                components.push({ name: 'Decrepify (Upgrade vs Cursed) [+]', value: 5.0 });
+            }
+        }
     }
     
     return {
