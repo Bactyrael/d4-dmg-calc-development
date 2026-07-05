@@ -2172,6 +2172,9 @@ function compileCharacterStats(equipped, autoStats) {
             if (activeBuffs.resolve > 0) {
                 addStat(stats, '% Armor', 25, 'Resolve Buff');
             }
+            if (window.selectedSkills && window.selectedSkills['Blood Wave'] > 0 && window.selectedSkills['Damage Reduction'] > 0) {
+                addStat(stats, 'Universal Damage Reduction %', 10, 'Blood Wave (Upgrade)');
+            }
         }
         
         if (typeof window.getCompiledParagonStats === 'function') {
