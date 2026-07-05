@@ -8625,7 +8625,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'Duration Damage Bonus (Upgrade) [x]', value: 1.25 });
     }
     
-    if ((skillObj.name === "Skeleton Warrior" || skillObj.baseName === "Skeleton Warrior") && window.selectedSkills && window.selectedSkills["Damage Bonus (Skeleton Warrior)"] > 0) {
+    if ((skillObj.name === "Skeleton Warrior" || skillObj.baseName === "Skeleton Warrior" || skillObj.name === "Defender Thorns") && window.selectedSkills && window.selectedSkills["Damage Bonus (Skeleton Warrior)"] > 0) {
         multiMult *= 1.25;
         multiData.components.push({ name: 'Damage Bonus (Upgrade) [x]', value: 1.25 });
     }
@@ -8648,7 +8648,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
-    if ((skillObj.name === "Golem" || skillObj.baseName === "Golem") && window.selectedSkills && window.selectedSkills["Damage Bonus (Golem)"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().vulnerable) {
+    if ((skillObj.name === "Golem" || skillObj.baseName === "Golem" || skillObj.name === "Bone Golem Thorns") && window.selectedSkills && window.selectedSkills["Damage Bonus (Golem)"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().vulnerable) {
         multiMult *= 1.30;
         multiData.components.push({ name: 'Damage Bonus (Upgrade vs Vulnerable) [x]', value: 1.30 });
     }
