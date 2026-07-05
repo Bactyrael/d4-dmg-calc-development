@@ -7981,10 +7981,19 @@ function renderCalcSkills() {
                                       let playerThorns = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Thorns']) ? window.D4_COMPILED_STATS['Thorns'].final : 0;
                                       let totalThorns = nodeThorns + playerThorns;
                                       
-                                      let thornsDamage = Math.floor(totalThorns * b.mainStatMult * b.additiveMult * b.multiMult);
+                                      let thornsSkillObj = {
+                                          name: 'Defender Thorns',
+                                          baseName: 'Defender Thorns',
+                                          tags: ['Minion', 'Thorns', 'Physical', 'Damage'],
+                                          damageType: 'Physical',
+                                          isHit: true
+                                      };
+                                      let bThorns = getSkillDamageBreakdown(thornsSkillObj, warriorRank, true);
+                                      
+                                      let thornsDamage = Math.floor(totalThorns * bThorns.mainStatMult * bThorns.additiveMult * bThorns.multiMult);
                                       let splinterDamage = Math.floor(thornsDamage * 0.50);
                                       
-                                      let addStrThorns = Number(((b.additiveMult - 1) * 100).toFixed(6));
+                                      let addStrThorns = Number(((bThorns.additiveMult - 1) * 100).toFixed(6));
                                       
                                       html += `<details style="margin-bottom: 4px;">
                                         <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #a170c4;">
@@ -7997,12 +8006,21 @@ function renderCalcSkills() {
                                           <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
                                             <span style="color: #555;">└</span> Player Thorns: <span style="color: #fff;">${playerThorns.toLocaleString()}</span>
                                           </div>
-                                          <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
-                                            <span style="color: #555;">└</span> Additive Multiplier: <span style="color: #fff;">1 + (${addStrThorns}%)</span>
+                                          
+                                          <div style="margin-bottom: 3px;">
+                                            <div style="display: flex; align-items: center; gap: 5px;">
+                                              <span style="color: #555;">└</span> Additive Multiplier: <span style="color: #fff;">1 + (${addStrThorns}%)</span>
+                                            </div>
+                                            ${(bThorns.additiveComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">└</span> ${comp.name}: +${(comp.value * 100).toFixed(1).replace('.0', '')}%</div>`).join('')}
                                           </div>
-                                          <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
-                                            <span style="color: #555;">└</span> Multiplicative Multiplier: <span style="color: #fff;">x${Number(b.multiMult.toFixed(6))}</span>
+                                          
+                                          <div style="margin-bottom: 3px;">
+                                            <div style="display: flex; align-items: center; gap: 5px;">
+                                              <span style="color: #555;">└</span> Multiplicative Multiplier: <span style="color: #fff;">x${Number(bThorns.multiMult.toFixed(6))}</span>
+                                            </div>
+                                            ${(bThorns.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">└</span> ${comp.name.replace('Skill: ', '')}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
                                           </div>
+                                          
                                           <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px; color: #f39c12;">
                                             <span style="color: #555;">└</span> Splinter Damage (50%): <span style="color: #fff; font-weight: bold;">${splinterDamage.toLocaleString()}</span>
                                           </div>
