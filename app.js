@@ -2798,6 +2798,14 @@ function compileCharacterStats(equipped, autoStats) {
                 addStat(stats, 'Thorns', brambleThorns, 'Bramble');
             }
         }
+        
+        if (window.selectedSkills && window.selectedSkills['Schadenfreude'] > 0 && currentBuild.conditions && currentBuild.conditions.cursed) {
+            let L = parseInt(document.getElementById('level-input')?.value) || 70;
+            let sLevel = window.selectedSkills['Iron Maiden'] || 1;
+            let t34 = [1, 1, 1.1, 1.2, 1.3, 1.45, 1.55, 1.65, 1.75, 1.85, 2, 2.1, 2.2, 2.3, 2.4, 2.55, 2.65, 2.75, 2.85, 2.95, 3.1][sLevel] || 1;
+            let schadenfreudeThorns = Math.floor(Math.max((0.0007377 * Math.pow(L - 1, 3.6292) + 2 + (1 + Math.round(L * 0.1)) * sLevel) * t34, 1));
+            addStat(stats, 'Thorns', schadenfreudeThorns, 'Schadenfreude');
+        }
 
         return stats;
     }
@@ -8005,9 +8013,10 @@ function renderCalcSkills() {
                                   let pct = (modSkill.baseDamageScalar * b.rankMultiplier * 100).toFixed(1).replace('.0', '');
                                   let addStr = Number(((b.additiveMult - 1) * 100).toFixed(6));
                                   let baseLabel = modSkill.baseLabelOverride ? modSkill.baseLabelOverride : ((['Bone Storm', 'Blood Mist', 'Devouring Mist', 'Blood Transfusion', 'Blood Rush'].includes(modSkill.name)) ? 'Per Tick Damage' : (!b.isHit ? 'DoT Damage' : 'Damage'));
+                                  let pctDisplay = b.addedThorns ? `${pct}% + ${b.addedThorns.toLocaleString()} Thorns` : `${pct}%`;
                                   html += `<details style="margin-bottom: 4px;">
                                     <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none;">
-                                      <span style="color: #555;">├</span> ${baseLabel} (${pct}%): <span style="color: #fff; font-weight: bold;">${b.minStr} - ${b.maxStr}</span>
+                                      <span style="color: #555;">├</span> ${baseLabel} (${pctDisplay}): <span style="color: #fff; font-weight: bold;">${b.minStr} - ${b.maxStr}</span>
                                     </summary>
                                     <div style="margin-left: 20px; font-size: 0.9em; color: #aaa; margin-top: 6px; border-left: 1px solid #444; padding-left: 10px; margin-bottom: 6px;">
                                       <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px;">
@@ -8446,9 +8455,20 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
 
     let minDmg = 0;
     let maxDmg = 0;
-    if (skillObj.baseDamageScalar) {
-        minDmg = Math.floor(wpMin * skillObj.baseDamageScalar * finalScalar);
-        maxDmg = Math.floor(wpMax * skillObj.baseDamageScalar * finalScalar);
+    let baseMin = wpMin * (skillObj.baseDamageScalar || 0);
+    let baseMax = wpMax * (skillObj.baseDamageScalar || 0);
+    
+    let addedThorns = 0;
+    if ((skillObj.name === "Iron Maiden" || skillObj.baseName === "Iron Maiden") && window.selectedSkills && window.selectedSkills["Schadenfreude"] > 0) {
+        let playerThorns = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Thorns']) ? window.D4_COMPILED_STATS['Thorns'].final : 0;
+        baseMin += playerThorns;
+        baseMax += playerThorns;
+        addedThorns = playerThorns;
+    }
+
+    if (baseMin > 0 || baseMax > 0) {
+        minDmg = Math.floor(baseMin * finalScalar);
+        maxDmg = Math.floor(baseMax * finalScalar);
     }
 
     let canCrit = true; // For base breakdown, we assume true unless explicitly overridden outside or if it's a DoT
@@ -8548,6 +8568,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         wpMax,
         minStr: minDmg.toLocaleString(),
         maxStr: maxDmg.toLocaleString(),
+        addedThorns,
         rankMultiplier,
         critStrMin,
         isHit: isHit,
