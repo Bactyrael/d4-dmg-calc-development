@@ -8252,10 +8252,7 @@ function renderCalcSkills() {
                           <span style="color: #555;">├</span> Attack Rate: <span style="color: #fff;">TBD frames</span>
                         </div>
                         <div style="margin-left: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
-                          <span style="color: #555;">├</span> Attack: <span style="color: #fff;">0</span>
-                        </div>
-                        <div style="margin-left: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
-                          <span style="color: #555;">└</span> Time to kill: <span style="color: #fff;">TBD</span>
+                          <span style="color: #555;">└</span> Attack: <span style="color: #fff;">0</span>
                         </div>
                       </div>
                     </div>
