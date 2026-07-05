@@ -8066,6 +8066,23 @@ function renderCalcSkills() {
                     card.appendChild(sliderDiv);
                 }
 
+                if ((baseSkill.name === 'Bone Spear' || baseSkill.baseName === 'Bone Spear') && window.selectedSkills['Pierce Damage Bonus'] > 0) {
+                    let curVal = window.skillSliderValues['Pierce Damage Bonus'] !== undefined ? window.skillSliderValues['Pierce Damage Bonus'] : 0;
+                    let sliderDiv = document.createElement('div');
+                    sliderDiv.style.marginTop = '15px';
+                    sliderDiv.style.borderTop = '1px solid #334';
+                    sliderDiv.style.paddingTop = '15px';
+                    sliderDiv.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <label style="color: #ccc; font-size: 0.85em;">Pierce Damage Bonus (Enemies Pierced)</label>
+                            <span id="slider-val-pierce" style="color: #c9a55c; font-size: 0.85em; font-weight: bold;">${curVal}</span>
+                        </div>
+                        <input type="range" min="0" max="5" step="1" value="${curVal}" style="width: 100%; accent-color: #c9a55c;" 
+                               oninput="document.getElementById('slider-val-pierce').innerText = this.value; window.skillSliderValues['Pierce Damage Bonus'] = parseInt(this.value); window.calculate();">
+                    `;
+                    card.appendChild(sliderDiv);
+                }
+
                 container.appendChild(card);
             }
         });
@@ -8153,6 +8170,15 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                 multiMult *= mult;
                 multiData.components.push({ name: `Resolve (Upgrade) [x] (${stacks} Stacks)`, value: mult });
             }
+        }
+    }
+    
+    if ((skillObj.name === "Bone Spear" || skillObj.baseName === "Bone Spear") && window.selectedSkills && window.selectedSkills["Pierce Damage Bonus"] > 0) {
+        let curVal = window.skillSliderValues && window.skillSliderValues['Pierce Damage Bonus'] !== undefined ? window.skillSliderValues['Pierce Damage Bonus'] : 0;
+        if (curVal > 0) {
+            const mult = 1 + (0.10 * curVal);
+            multiMult *= mult;
+            multiData.components.push({ name: `Pierce Damage Bonus [x] (${curVal} Pierced)`, value: mult });
         }
     }
     
