@@ -8394,6 +8394,24 @@ function calculateLuckyHitChance(skillObj) {
     let components = [];
     let baseLHC = skillObj.luckyHitChance || 0;
     
+    // Some skills have luckyHitChance as null but specify it in their description (e.g. Decompose, Blight, Corpse Tendrils)
+    if (baseLHC === 0 && skillObj.description) {
+        let match = skillObj.description.match(/Lucky Hit Chance.*?Mod\(\d+\)\?\d+:(\d+)/);
+        if (match) {
+            baseLHC = parseInt(match[1]);
+        } else {
+            let match2 = skillObj.description.match(/Lucky Hit Chance.*?{c_resource}(\d+)%/);
+            if (match2) {
+                baseLHC = parseInt(match2[1]);
+            } else {
+                let match3 = skillObj.description.match(/Lucky Hit Chance.*?(\d+)%/);
+                if (match3) {
+                    baseLHC = parseInt(match3[1]);
+                }
+            }
+        }
+    }
+    
     if (baseLHC === 0) return { total: 0, components: [], bonusSum: 0 };
     
     components.push({ name: 'Base Lucky Hit Chance', value: baseLHC });
