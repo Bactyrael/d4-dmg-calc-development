@@ -8521,6 +8521,11 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'Damage Bonus (Upgrade) [x]', value: 1.25 });
     }
     
+    if ((skillObj.name === "Golem" || skillObj.baseName === "Golem") && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().vulnerable) {
+        multiMult *= 1.30;
+        multiData.components.push({ name: 'Damage Bonus (Upgrade vs Vulnerable) [x]', value: 1.30 });
+    }
+    
     if ((skillObj.name === "Bone Spear" || skillObj.baseName === "Bone Spear") && window.selectedSkills && window.selectedSkills["Resolve"] > 0) {
         if (typeof getActiveBuffs === 'function') {
             const buffs = getActiveBuffs();
