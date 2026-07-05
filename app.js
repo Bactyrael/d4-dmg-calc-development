@@ -8428,6 +8428,23 @@ function renderCalcSkills() {
                     card.appendChild(checkDiv);
                 }
 
+                if ((baseSkill.name === 'Bone Spirit' || baseSkill.baseName === 'Bone Spirit') && window.selectedSkills['Damage Bonus'] > 0) {
+                    let curVal = window.skillSliderValues['Bone Spirit Damage Bonus'] !== undefined ? window.skillSliderValues['Bone Spirit Damage Bonus'] : 0;
+                    let sliderDiv = document.createElement('div');
+                    sliderDiv.style.marginTop = '15px';
+                    sliderDiv.style.borderTop = '1px solid #334';
+                    sliderDiv.style.paddingTop = '15px';
+                    sliderDiv.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <label style="color: #ccc; font-size: 0.85em;">Damage Bonus (Seconds Waited)</label>
+                            <span id="slider-val-bs-dmg" style="color: #c9a55c; font-size: 0.85em; font-weight: bold;">${curVal}</span>
+                        </div>
+                        <input type="range" min="0" max="3" step="1" value="${curVal}" style="width: 100%; accent-color: #c9a55c;" 
+                               oninput="document.getElementById('slider-val-bs-dmg').innerText = this.value; window.skillSliderValues['Bone Spirit Damage Bonus'] = parseInt(this.value); window.calculate();">
+                    `;
+                    card.appendChild(sliderDiv);
+                }
+
                 container.appendChild(card);
             }
         });
@@ -8590,6 +8607,15 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
     if ((skillObj.name === "Skeleton Warrior" || skillObj.baseName === "Skeleton Warrior") && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0) {
         multiMult *= 1.25;
         multiData.components.push({ name: 'Damage Bonus (Upgrade) [x]', value: 1.25 });
+    }
+    
+    if ((skillObj.name === "Bone Spirit" || skillObj.baseName === "Bone Spirit") && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0) {
+        let curVal = window.skillSliderValues && window.skillSliderValues['Bone Spirit Damage Bonus'] !== undefined ? window.skillSliderValues['Bone Spirit Damage Bonus'] : 0;
+        if (curVal > 0) {
+            const mult = 1 + (0.10 * curVal);
+            multiMult *= mult;
+            multiData.components.push({ name: `Damage Bonus (Upgrade) [x] (${curVal}s)`, value: mult });
+        }
     }
     
     if ((skillObj.name === "Golem" || skillObj.baseName === "Golem") && window.selectedSkills && window.selectedSkills["Damage Bonus"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().vulnerable) {
