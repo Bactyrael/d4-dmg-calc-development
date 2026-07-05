@@ -8083,6 +8083,22 @@ function renderCalcSkills() {
                     card.appendChild(sliderDiv);
                 }
 
+                if ((baseSkill.name === 'Bone Spear' || baseSkill.baseName === 'Bone Spear') && window.selectedSkills['First Hit Damage Bonus'] > 0) {
+                    let isChecked = window.skillSliderValues['First Hit Damage Bonus'] === 1;
+                    let checkDiv = document.createElement('div');
+                    checkDiv.style.marginTop = '15px';
+                    checkDiv.style.borderTop = '1px solid #334';
+                    checkDiv.style.paddingTop = '15px';
+                    checkDiv.innerHTML = `
+                        <label style="color: #ccc; font-size: 0.85em; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="checkbox" ${isChecked ? 'checked' : ''} style="accent-color: #c9a55c;"
+                                   onchange="window.skillSliderValues['First Hit Damage Bonus'] = this.checked ? 1 : 0; window.calculate();">
+                            First Hit Damage Bonus
+                        </label>
+                    `;
+                    card.appendChild(checkDiv);
+                }
+
                 container.appendChild(card);
             }
         });
@@ -8179,6 +8195,14 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
             const mult = 1 + (0.10 * curVal);
             multiMult *= mult;
             multiData.components.push({ name: `Pierce Damage Bonus [x] (${curVal} Pierced)`, value: mult });
+        }
+    }
+    
+    if ((skillObj.name === "Bone Spear" || skillObj.baseName === "Bone Spear") && window.selectedSkills && window.selectedSkills["First Hit Damage Bonus"] > 0) {
+        let isFirstHit = window.skillSliderValues && window.skillSliderValues['First Hit Damage Bonus'] === 1;
+        if (isFirstHit) {
+            multiMult *= 1.40;
+            multiData.components.push({ name: `First Hit Damage Bonus [x]`, value: 1.40 });
         }
     }
     
