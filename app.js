@@ -2574,6 +2574,12 @@ function compileCharacterStats(equipped, autoStats) {
                   if (gemName === 'Ohm') {
                       addStat(stats, 'Ohm Damage [x]', 7.5, 'Ohm (Rune)');
                   }
+                  if (gemName === 'Vex') {
+                      addStat(stats, 'to All Skills', 4, 'Vex (Rune)');
+                  }
+                  if (gemName === 'Yom') {
+                      addStat(stats, 'Critical Strike Damage', 15, 'Yom (Rune)');
+                  }
                   
                   const gemObj = window.D4_DATABASE?.gems?.find(g => g.name === gemName);
                   if (!gemObj) return;
@@ -3835,6 +3841,7 @@ function compileCharacterStats(equipped, autoStats) {
     
     renderActiveRunes();
     if (typeof renderCalcSkills === 'function') renderCalcSkills();
+    if (window.skillUIUpdaters) window.skillUIUpdaters.forEach(fn => fn());
   } catch (e) {
     console.error("calculate() Error:", e);
      const container = document.getElementById('character-sheet-content');
@@ -5285,17 +5292,55 @@ function formatTag(t) {
 function getBaseSkillRankFor(skillName) {
     let db = typeof skillsDatabase !== 'undefined' ? skillsDatabase : (window.skillsDatabase || null);
     if (!db) return window.selectedSkills[skillName] || 0;
+    
+    let isBaseSkill = false;
+    let skillTags = [];
+    
+    // Find skill in DB to check if it's a base skill or modifier
     for (let cat in db) {
         for (let s of db[cat]) {
-            if (s.name === skillName) return window.selectedSkills[skillName] || 0;
+            if (s.name === skillName) {
+                isBaseSkill = true;
+                skillTags = s.tags || [];
+                break;
+            }
             if (s.modifiers) {
                 for (let m of s.modifiers) {
-                    if (m.name === skillName) return window.selectedSkills[s.name] || 0;
+                    if (m.name === skillName) {
+                        // It's a modifier/upgrade, return raw invested points immediately
+                        return window.selectedSkills[skillName] || 0;
+                    }
                 }
             }
         }
+        if (isBaseSkill) break;
     }
-    return window.selectedSkills[skillName] || 0;
+    
+    let baseInvested = window.selectedSkills[skillName] || 0;
+    if (!isBaseSkill) return baseInvested;
+    
+    // Process +Skills for Base Skills
+    let gearBonus = 0;
+    if (window.D4_COMPILED_STATS) {
+        let stats = window.D4_COMPILED_STATS;
+        
+        // 1. Broad All Skills
+        if (stats['to All Skills']) gearBonus += stats['to All Skills'].final;
+        if (stats['to Skills']) gearBonus += stats['to Skills'].final;
+        
+        // 2. Exact Base Skill Name
+        if (stats[`to ${skillName}`]) gearBonus += stats[`to ${skillName}`].final;
+        
+        // 3. Tag Matches (e.g. "to Core Skills", "to Macabre Skills")
+        skillTags.forEach(t => {
+            if (t.startsWith('Skill_')) {
+                let tagStr = t.replace('Skill_', '');
+                if (stats[`to ${tagStr} Skills`]) gearBonus += stats[`to ${tagStr} Skills`].final;
+            }
+        });
+    }
+    
+    return baseInvested + gearBonus;
 }
 
 function applyActiveModifiers(baseSkillObj) {
@@ -5845,15 +5890,24 @@ function renderSkills() {
           
           const rankDisplay = document.createElement('div');
           rankDisplay.className = 'paperdoll-rank';
-          rankDisplay.textContent = (window.selectedSkills[name] || 0) + '/' + maxRank;
           slot.appendChild(rankDisplay);
           
           const updateDisplay = () => {
-              rankDisplay.textContent = (window.selectedSkills[name] || 0) + '/' + maxRank;
-              if (window.selectedSkills[name] > 0) slot.classList.add('active');
+              let invested = window.selectedSkills[name] || 0;
+              let total = getBaseSkillRankFor(name);
+              rankDisplay.textContent = total + '/' + maxRank;
+              if (total > invested) {
+                  rankDisplay.style.color = '#3498db'; // Highlight blue for gear bonuses
+              } else {
+                  rankDisplay.style.color = '';
+              }
+              if (invested > 0) slot.classList.add('active');
               else slot.classList.remove('active');
               updateSkillPointsUI();
           };
+          if (!window.skillUIUpdaters) window.skillUIUpdaters = [];
+          window.skillUIUpdaters.push(updateDisplay);
+          updateDisplay();
           updateDisplay();
           
           slot.onclick = (e) => {
@@ -5991,16 +6045,25 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   minusBtn.className = 'skill-btn'; 
   const rankDisplay = document.createElement('span'); 
   rankDisplay.className = 'skill-rank'; 
-  const currentRank = window.selectedSkills[name] || 0; 
-  rankDisplay.textContent = currentRank + ' / ' + maxRank; 
   const plusBtn = document.createElement('button'); 
   plusBtn.textContent = '+'; 
   plusBtn.className = 'skill-btn'; 
   const updateDisplay = () => { 
-    rankDisplay.textContent = (window.selectedSkills[name] || 0) + ' / ' + maxRank; 
-    if (window.selectedSkills[name] > 0) row.classList.add('active'); 
+    let invested = window.selectedSkills[name] || 0;
+    let total = getBaseSkillRankFor(name);
+    rankDisplay.textContent = total + ' / ' + maxRank;
+    if (total > invested) {
+        rankDisplay.style.color = '#3498db'; // Highlight blue for gear bonuses
+    } else {
+        rankDisplay.style.color = '';
+    }
+    if (invested > 0) row.classList.add('active'); 
     else row.classList.remove('active'); 
   }; 
+  if (!window.skillUIUpdaters) window.skillUIUpdaters = [];
+  window.skillUIUpdaters.push(updateDisplay); 
+  updateDisplay(); // Trigger initial render
+
   minusBtn.onclick = () => { 
     if (window.selectedSkills[name] > 0) { 
       window.selectedSkills[name]--; 
@@ -8127,7 +8190,7 @@ function renderCalcSkills() {
             let hasDamage = modSkill.baseDamageScalar > 0 || (modSkill.secondaryScalars && Object.keys(modSkill.secondaryScalars).length > 0);
             if (baseSkill.name === 'Bone Prison' && window.selectedSkills['Bramble'] > 0) hasDamage = true;
             
-            if (window.selectedSkills[baseSkill.name] > 0 && hasDamage) {
+            if (getBaseSkillRankFor(baseSkill.name) > 0 && hasDamage) {
                 foundSkills++;
                 
                 const card = document.createElement('div');
@@ -8201,12 +8264,12 @@ function renderCalcSkills() {
                             }
                             return `<span style="flex: 1;"></span>`;
                         })()}
-                        <span style="flex: 1; text-align: right; font-size: 0.9rem; color: #888;">Rank ${window.selectedSkills[baseSkill.name]}</span>
+                        <span style="flex: 1; text-align: right; font-size: 0.9rem; color: #888;">Rank ${getBaseSkillRankFor(baseSkill.name)}</span>
                       </h3>
                       <div style="color: #aaa; font-size: 0.9rem; margin-top: 10px; font-family: monospace;">
                         ${(function() {
                             let html = '';
-                            let rank = window.selectedSkills[baseSkill.name] || 1;
+                            let rank = getBaseSkillRankFor(baseSkill.name) || 1;
                             let wpMin = window.weaponMinDmg || 0;
                             let wpMax = window.weaponMaxDmg || 0;
 
