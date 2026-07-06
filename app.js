@@ -2284,6 +2284,62 @@ function compileCharacterStats(equipped, autoStats) {
                 addStat(stats, `Skill: Reap (Cast Speed)`, 30, 'Chilled To The Bone');
             }
             
+            // Gargantua Cast Speed (Applies to Skeleton Warrior and Mage)
+            if (window.selectedSkills['Gargantua'] > 0) {
+                let golemRank = window.selectedSkills['Golem'] || 1;
+                
+                let rankMult = 1.0;
+                if (golemRank > 1) {
+                    let levelsGained = golemRank - 1;
+                    let enhancedIncreases = Math.floor(golemRank / 5);
+                    rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
+                }
+                
+                let castSpeedBonus = parseFloat((20 * rankMult).toFixed(1));
+                
+                addStat(stats, 'Skill: Skeleton Warrior (Cast Speed)', castSpeedBonus, 'Gargantua');
+                addStat(stats, 'Skill: Skeleton Mage (Cast Speed)', castSpeedBonus, 'Gargantua');
+            }
+            
+            // Life Imprisonment (Bone Prison Variant) Global Cast Speed
+            if (window.selectedSkills['Life Imprisonment'] > 0) {
+                let prisonRank = window.selectedSkills['Bone Prison'] || 1;
+                
+                let rankMult = 1.0;
+                if (prisonRank > 1) {
+                    let levelsGained = prisonRank - 1;
+                    let enhancedIncreases = Math.floor(prisonRank / 5);
+                    rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
+                }
+                
+                let castSpeedBonus = parseFloat((20 * rankMult).toFixed(1));
+                
+                addStat(stats, 'Cast Speed', castSpeedBonus, 'Life Imprisonment');
+                addStat(stats, 'Essence Generation %', castSpeedBonus, 'Life Imprisonment');
+            }
+            
+            // Roll The Bones (Bone Storm Variant) Global Critical Strike Chance and Cast Speed
+            if (window.selectedSkills['Roll The Bones'] > 0 || window.selectedSkills['Roll the Bones'] > 0) {
+                let stormRank = window.selectedSkills['Bone Storm'] || 1;
+                
+                let rankMult = 1.0;
+                if (stormRank > 1) {
+                    let levelsGained = stormRank - 1;
+                    let enhancedIncreases = Math.floor(stormRank / 5);
+                    rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
+                }
+                
+                let bonus = parseFloat((15 * rankMult).toFixed(1));
+                
+                addStat(stats, 'Critical Strike Chance', bonus, 'Roll The Bones (Skill)');
+                addStat(stats, 'Cast Speed', bonus, 'Roll The Bones (Skill)');
+            }
+            
+            // Bone Storm Damage Reduction
+            if (window.selectedSkills['Damage Reduction (Bone Storm)'] > 0) {
+                addStat(stats, 'Universal Damage Reduction %', 10, 'Bone Storm (Upgrade)');
+            }
+            
             // Crowd Control Damage Bonus (Blight)
             if (window.selectedSkills['Crowd Control Damage Bonus (Blight)'] > 0 && currentBuild.conditions && currentBuild.conditions.cc) {
                 addStat(stats, 'Skill: Blight (Crowd Control Damage Bonus) Damage [x]', 30, 'Crowd Control Damage Bonus (Blight)');
@@ -2292,6 +2348,17 @@ function compileCharacterStats(equipped, autoStats) {
             // Area Damage Bonus (Blight)
             if (window.selectedSkills['Area Damage Bonus'] > 0) {
                 addStat(stats, 'Skill (Secondary): Blight (Area Damage Bonus) Damage [x]', 40, 'Area Damage Bonus');
+            }
+            // Army of the Dead - Damage Bonus
+            if (window.selectedSkills['Damage Bonus (Army of the Dead)'] > 0) {
+                let totalMinions = getTotalActiveMinions(currentBuild);
+                let dmgBonus = totalMinions * 2;
+                addStat(stats, 'Skill: Army of the Dead (Damage Bonus) Damage [x]', dmgBonus, 'Damage Bonus');
+            }
+            
+            // Soulrift - Damage Bonus
+            if (window.selectedSkills['Damage Bonus (Soulrift)'] > 0) {
+                addStat(stats, 'Skill: Soulrift (Damage Bonus) Damage [x]', 45, 'Damage Bonus');
             }
             
             // Sever - Damage Bonus
@@ -8571,10 +8638,16 @@ function renderCalcSkills() {
 
 function calculateSkillCritChance(skillObj) {
     let components = [];
-    let baseCrit = window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Critical Strike Chance'] ? window.D4_COMPILED_STATS['Critical Strike Chance'].final : 5.0;
-    let totalCrit = baseCrit;
+    let critStat = window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Critical Strike Chance'] ? window.D4_COMPILED_STATS['Critical Strike Chance'] : null;
+    let totalCrit = critStat ? critStat.final : 5.0;
     
-    components.push({ name: 'Global Critical Strike Chance', value: baseCrit });
+    if (critStat && critStat.flatSources && critStat.flatSources.length > 0) {
+        critStat.flatSources.forEach(s => {
+            components.push({ name: s.name, value: s.val });
+        });
+    } else {
+        components.push({ name: 'Global Critical Strike Chance', value: totalCrit });
+    }
     
     if (window.selectedSkills) {
         if ((skillObj.name === 'Reap' || skillObj.baseName === 'Reap') && window.selectedSkills['Critical Strike Chance (Reap)'] > 0) {
