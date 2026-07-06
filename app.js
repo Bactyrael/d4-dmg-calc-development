@@ -3554,26 +3554,7 @@ function compileCharacterStats(equipped, autoStats) {
       if (typeof window.getActiveLegendaryPowers === 'function') {
           const legPowers = window.getActiveLegendaryPowers();
           
-          // Cult Leader (Necromancer)
-          if (legPowers.includes('Paragon_Necro_Legendary_001')) {
-              let attackSpeed = 0;
-              Object.keys(compiledStats).forEach(k => {
-                  const lowerKey = k.toLowerCase();
-                  if (lowerKey.includes('attack speed') || lowerKey.includes('cast speed')) {
-                      attackSpeed += (compiledStats[k].final || 0);
-                  }
-              });
-              
-              if (attackSpeed >= 20) {
-                  // Cult Leader: 40%x damage per 20% attack speed breakpoint
-                  const cultBonus = Math.floor(attackSpeed / 20) * 40;
-                  if (cultBonus > 0) {
-                      createMultiplicativeRow('Cult Leader (Legendary Node)', cultBonus.toFixed(2), true);
-                      compiledStats['Cult Leader (Legendary Node)'] = { final: cultBonus, isMultiplicative: true };
-                  }
-              }
-          }
-          
+          // Cult Leader (Necromancer) removed - dynamically scaled per minion
           // Bone Graft (Necromancer)
           if (legPowers.includes('Paragon_Necro_Legendary_017')) {
               let isBone = false;
@@ -8494,89 +8475,12 @@ function renderCalcSkills() {
 
                         
                         ${(() => {
-                            let compiledStats = window.D4_COMPILED_STATS || {};
-                            let asTotal = compiledStats['Attack Speed'] ? compiledStats['Attack Speed'].final : 0;
-                            let csTotal = compiledStats['Cast Speed'] ? compiledStats['Cast Speed'].final : 0;
+                            let speedInfo = calculateSkillTotalSpeed(baseSkill, displayImgName);
+                            let asTotal = Math.min(speedInfo.asTotal, 100);
+                            let csTotal = Math.min(speedInfo.csTotal, 100);
+                            let asSources = speedInfo.asSources;
+                            let csSources = speedInfo.csSources;
                             
-                            let asSources = [];
-                            if (compiledStats['Attack Speed'] && compiledStats['Attack Speed'].flatSources) {
-                                asSources = asSources.concat(compiledStats['Attack Speed'].flatSources);
-                            }
-                            
-                            // Check for Attack Speed under both display name and base skill name
-                            let skillAsKey = `Skill: ${displayImgName} (Attack Speed)`;
-                            let baseAsKey = `Skill: ${baseSkill.name} (Attack Speed)`;
-                            let asNode = compiledStats[skillAsKey] || compiledStats[baseAsKey];
-                            
-                            if (asNode) {
-                                asTotal += asNode.final;
-                                if (asNode.flatSources) {
-                                    asSources = asSources.concat(asNode.flatSources);
-                                }
-                            }
-                            
-                            const isSummon = baseSkill.tags && baseSkill.tags.includes('Skill_Primary_Summoning');
-                            if (isSummon) {
-                                let summonAsNode = compiledStats['Summon Attack Speed'] || compiledStats['Minion Attack Speed'];
-                                if (summonAsNode) {
-                                    asTotal += summonAsNode.final;
-                                    if (summonAsNode.flatSources) {
-                                        let updatedSources = summonAsNode.flatSources.map(src => {
-                                            if (src.name === 'Paragon Board' || src.name === 'Paragon Board (Normal Nodes)') {
-                                                return { ...src, name: 'Paragon Board (Summon Attack Speed)' };
-                                            }
-                                            return src;
-                                        });
-                                        asSources = asSources.concat(updatedSources);
-                                    }
-                                }
-                            }
-                            
-                            if (baseSkill.name === 'Golem') {
-                                let golemAsKey = Object.keys(compiledStats).find(k => k.toLowerCase().includes('golem') && k.toLowerCase().includes('attack speed'));
-                                let golemAsNode = golemAsKey ? compiledStats[golemAsKey] : null;
-                                if (golemAsNode) {
-                                    asTotal += golemAsNode.final;
-                                    if (golemAsNode.flatSources) {
-                                        let updatedSources = golemAsNode.flatSources.map(src => {
-                                            if (src.name === 'Paragon Board' || src.name === 'Paragon Board (Normal Nodes)') {
-                                                return { ...src, name: 'Paragon Board (Golem Attack Speed)' };
-                                            }
-                                            return src;
-                                        });
-                                        asSources = asSources.concat(updatedSources);
-                                    }
-                                }
-                            }
-                            
-                            let csSources = [];
-                            if (compiledStats['Cast Speed'] && compiledStats['Cast Speed'].flatSources) {
-                                csSources = csSources.concat(compiledStats['Cast Speed'].flatSources);
-                            }
-                            
-                            let skillCsKey = `Skill: ${displayImgName} (Cast Speed)`;
-                            let baseCsKey = `Skill: ${baseSkill.name} (Cast Speed)`;
-                            let availableCsKeys = Object.keys(compiledStats).filter(k => k.includes('Cast Speed'));
-                            let csNode = compiledStats[skillCsKey] || compiledStats[baseCsKey];
-                            
-                            // Ensure we only check Hemorrhage keys if the skill being rendered IS Hemorrhage
-                            if (!csNode && (baseSkill.name === 'Hemorrhage')) {
-                                csNode = compiledStats['Skill: Blood Boil (Cast Speed)'] || compiledStats['Skill: Hemorrhage (Cast Speed)'];
-                                if (!csNode) {
-                                    let hemCsKey = availableCsKeys.find(k => k.includes('Skill: Hemorrhage') || k.includes('Skill: Blood Boil') || k.includes('Skill: Blood Runs Cold') || k.includes('Skill: Soul Rip'));
-                                    if (hemCsKey) csNode = compiledStats[hemCsKey];
-                                }
-                            }
-                            
-                            if (csNode) {
-                                csTotal += csNode.final;
-                                if (csNode.flatSources) {
-                                    csSources = csSources.concat(csNode.flatSources);
-                                }
-                            }
-                            
-                            asTotal = Math.min(asTotal, 100);
-                            csTotal = Math.min(csTotal, 100);
                             
                             let asDetails = asSources.length > 0 ? `
                             <details style="margin-left: 15px; margin-bottom: 4px;">
@@ -8835,6 +8739,89 @@ function calculateLuckyHitChance(skillObj) {
     };
 }
 
+function calculateSkillTotalSpeed(baseSkill, displayImgName) {
+    let compiledStats = window.D4_COMPILED_STATS || {};
+    let asTotal = compiledStats['Attack Speed'] ? compiledStats['Attack Speed'].final : 0;
+    let csTotal = compiledStats['Cast Speed'] ? compiledStats['Cast Speed'].final : 0;
+    
+    let asSources = [];
+    if (compiledStats['Attack Speed'] && compiledStats['Attack Speed'].flatSources) {
+        asSources = asSources.concat(compiledStats['Attack Speed'].flatSources);
+    }
+    
+    let skillAsKey = `Skill: ${displayImgName} (Attack Speed)`;
+    let baseAsKey = `Skill: ${baseSkill.name} (Attack Speed)`;
+    let asNode = compiledStats[skillAsKey] || compiledStats[baseAsKey];
+    
+    if (asNode) {
+        asTotal += asNode.final;
+        if (asNode.flatSources) {
+            asSources = asSources.concat(asNode.flatSources);
+        }
+    }
+    
+    const isSummon = baseSkill.tags && (baseSkill.tags.includes('Skill_Primary_Summoning') || baseSkill.tags.includes('Summoning') || baseSkill.tags.includes('Minion'));
+    if (isSummon) {
+        let summonAsNode = compiledStats['Summon Attack Speed'] || compiledStats['Minion Attack Speed'];
+        if (summonAsNode) {
+            asTotal += summonAsNode.final;
+            if (summonAsNode.flatSources) {
+                let updatedSources = summonAsNode.flatSources.map(src => {
+                    if (src.name === 'Paragon Board' || src.name === 'Paragon Board (Normal Nodes)') {
+                        return { ...src, name: 'Paragon Board (Summon Attack Speed)' };
+                    }
+                    return src;
+                });
+                asSources = asSources.concat(updatedSources);
+            }
+        }
+    }
+    
+    if (baseSkill.name === 'Golem' || (baseSkill.name && baseSkill.name.includes('Golem'))) {
+        let golemAsKey = Object.keys(compiledStats).find(k => k.toLowerCase().includes('golem') && k.toLowerCase().includes('attack speed'));
+        let golemAsNode = golemAsKey ? compiledStats[golemAsKey] : null;
+        if (golemAsNode) {
+            asTotal += golemAsNode.final;
+            if (golemAsNode.flatSources) {
+                let updatedSources = golemAsNode.flatSources.map(src => {
+                    if (src.name === 'Paragon Board' || src.name === 'Paragon Board (Normal Nodes)') {
+                        return { ...src, name: 'Paragon Board (Golem Attack Speed)' };
+                    }
+                    return src;
+                });
+                asSources = asSources.concat(updatedSources);
+            }
+        }
+    }
+    
+    let csSources = [];
+    if (compiledStats['Cast Speed'] && compiledStats['Cast Speed'].flatSources) {
+        csSources = csSources.concat(compiledStats['Cast Speed'].flatSources);
+    }
+    
+    let skillCsKey = `Skill: ${displayImgName} (Cast Speed)`;
+    let baseCsKey = `Skill: ${baseSkill.name} (Cast Speed)`;
+    let availableCsKeys = Object.keys(compiledStats).filter(k => k.includes('Cast Speed'));
+    let csNode = compiledStats[skillCsKey] || compiledStats[baseCsKey];
+    
+    if (!csNode && (baseSkill.name === 'Hemorrhage')) {
+        csNode = compiledStats['Skill: Blood Boil (Cast Speed)'] || compiledStats['Skill: Hemorrhage (Cast Speed)'];
+        if (!csNode) {
+            let hemCsKey = availableCsKeys.find(k => k.includes('Skill: Hemorrhage') || k.includes('Skill: Blood Boil') || k.includes('Skill: Blood Runs Cold') || k.includes('Skill: Soul Rip'));
+            if (hemCsKey) csNode = compiledStats[hemCsKey];
+        }
+    }
+    
+    if (csNode) {
+        csTotal += csNode.final;
+        if (csNode.flatSources) {
+            csSources = csSources.concat(csNode.flatSources);
+        }
+    }
+    
+    return { asTotal, csTotal, asSources, csSources };
+}
+
 function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
     if (isHit === undefined) isHit = skillObj.isHit !== undefined ? skillObj.isHit : !['Decompose', 'Blighted Corpse Explosion'].includes(skillObj.baseName || skillObj.name);
     let rank = displayRank || 1;
@@ -8871,6 +8858,21 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
 
     let multiData = typeof calculateSkillMultiplicativeBucket === 'function' ? calculateSkillMultiplicativeBucket(skillObj) : { total: 1, components: [] };
     let multiMult = multiData.total;
+    
+    const isSummon = skillObj.tags && (skillObj.tags.includes('Skill_Primary_Summoning') || skillObj.tags.includes('Summoning') || skillObj.tags.includes('Minion'));
+    if (isSummon && typeof window.getActiveLegendaryPowers === 'function') {
+        const legPowers = window.getActiveLegendaryPowers();
+        if (legPowers.includes('Paragon_Necro_Legendary_001')) {
+            let speedInfo = calculateSkillTotalSpeed(skillObj, skillObj.name);
+            let combinedSpeed = Math.min(speedInfo.asTotal + speedInfo.csTotal, 100);
+            let cultBonus = Math.floor(combinedSpeed / 20) * 40;
+            if (cultBonus > 0) {
+                let cultMult = 1 + (cultBonus / 100);
+                multiMult *= cultMult;
+                multiData.components.push({ name: 'Cult Leader (Legendary Node) [x]', value: cultMult });
+            }
+        }
+    }
     
     if (skillObj.name === "Blood Golem Active" && typeof getActiveConditions === 'function' && getActiveConditions().golemSingleTarget) {
         multiMult *= 4.0;
