@@ -28,12 +28,12 @@ function renderSkills() {
       skillGroup.className = 'skill-group';
       
       // Base Skill
-      const baseRow = createSkillRow(skill.name, skill.maxRank, 0);
+      const baseRow = createSkillRow(skill.name, skill.maxRank, 0, null, [], category);
       skillGroup.appendChild(baseRow);
       
       // Enhancement
       if (skill.enhancement) {
-        const enhRow = createSkillRow(skill.enhancement.name, skill.enhancement.maxRank, 1, skill.name);
+        const enhRow = createSkillRow(skill.enhancement.name, skill.enhancement.maxRank, 1, skill.name, [], category);
         skillGroup.appendChild(enhRow);
         
         // Branches
@@ -42,7 +42,7 @@ function renderSkills() {
           branchContainer.className = 'skill-branches';
           
           skill.enhancement.branches.forEach(branch => {
-            const bRow = createSkillRow(branch.name, branch.maxRank, 2, skill.enhancement.name, skill.enhancement.branches.map(b => b.name));
+            const bRow = createSkillRow(branch.name, branch.maxRank, 2, skill.enhancement.name, skill.enhancement.branches.map(b => b.name), category);
             branchContainer.appendChild(bRow);
           });
           
@@ -58,7 +58,7 @@ function renderSkills() {
   }
 }
 
-function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusiveSiblings = []) {
+function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusiveSiblings = [], category = null) {
   const row = document.createElement('div');
   row.className = 'skill-row indent-' + indentLevel;
   
@@ -116,6 +116,19 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     }
     
     if (current < maxRank) {
+      // Enforce Ultimate Base Skill limit
+      if (category === 'Ultimate' && indentLevel === 0) {
+          let hasOtherUltimate = false;
+          if (typeof skillsDatabase !== 'undefined' && skillsDatabase['Ultimate']) {
+              skillsDatabase['Ultimate'].forEach(ultSkill => {
+                  if (ultSkill.name !== name && window.selectedSkills[ultSkill.name] > 0) {
+                      hasOtherUltimate = true;
+                  }
+              });
+          }
+          if (hasOtherUltimate) return; // Blocked by another ultimate skill
+      }
+      
       // Enforce mutual exclusivity
       if (exclusiveSiblings.length > 0) {
         let hasSibling = false;

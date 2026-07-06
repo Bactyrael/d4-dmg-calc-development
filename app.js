@@ -5817,6 +5817,19 @@ function renderSkills() {
                       return; // Max points reached
                   }
                   
+                  // Enforce Ultimate Base Skill mutual exclusivity
+                  if (isBase && category === 'Ultimate') {
+                      let hasOtherUltimate = false;
+                      if (typeof skillsDatabase !== 'undefined' && skillsDatabase['Ultimate']) {
+                          skillsDatabase['Ultimate'].forEach(ultSkill => {
+                              if (ultSkill.name !== name && window.selectedSkills[ultSkill.name] > 0) {
+                                  hasOtherUltimate = true;
+                              }
+                          });
+                      }
+                      if (hasOtherUltimate) return; // Blocked by another ultimate skill
+                  }
+                  
                   if (!isBase && skillsDatabase[category]) {
                       // Mutual Exclusivity logic per row
                       const baseSkillData = skillsDatabase[category].find(s => s.name === baseSkillName);
@@ -5904,7 +5917,7 @@ function renderSkills() {
     container.appendChild(catDiv); 
   } 
 }
-function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusiveSiblings = []) { 
+function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusiveSiblings = [], category = null) { 
   const row = document.createElement('div'); 
   row.className = 'skill-row indent-' + indentLevel; 
   const nameSpan = document.createElement('span'); 
@@ -5950,6 +5963,20 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     const current = window.selectedSkills[name] || 0; 
     if (parentName && (!window.selectedSkills[parentName] || window.selectedSkills[parentName] === 0)) return; 
     if (current < maxRank) { 
+      // Enforce Ultimate Base Skill limit
+      if (category === 'Ultimate' && indentLevel === 0) {
+          let hasOtherUltimate = false;
+          if (typeof skillsDatabase !== 'undefined' && skillsDatabase['Ultimate']) {
+              skillsDatabase['Ultimate'].forEach(ultSkill => {
+                  if (ultSkill.name !== name && window.selectedSkills[ultSkill.name] > 0) {
+                      hasOtherUltimate = true;
+                  }
+              });
+          }
+          if (hasOtherUltimate) return; // Blocked by another ultimate skill
+      }
+      
+      // Enforce mutual exclusivity
       if (exclusiveSiblings.length > 0) { 
         let hasSibling = false; 
         exclusiveSiblings.forEach(sib => { 
