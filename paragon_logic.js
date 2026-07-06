@@ -2089,18 +2089,30 @@ window.openGlyphModal = function(slotIdx, nodeIdx) {
     availableGlyphs.sort((a, b) => a.name.localeCompare(b.name));
     
     availableGlyphs.forEach(g => {
+        let isSlottedElsewhere = false;
+        if (typeof currentBuild !== 'undefined' && currentBuild.paragon) {
+            currentBuild.paragon.forEach((b, bIdx) => {
+                if (bIdx !== slotIdx && b.glyph && b.glyph.id === g.stringKey) {
+                    isSlottedElsewhere = true;
+                }
+            });
+        }
+        
         let card = document.createElement('div');
         card.style.background = 'rgba(20, 20, 30, 0.9)';
-        card.style.border = (currentGlyphData.id === g.id) ? '2px solid #c9a55c' : '1px solid #445';
+        card.style.border = (currentGlyphData.id === g.stringKey) ? '2px solid #c9a55c' : '1px solid #445';
         card.style.borderRadius = '4px';
         card.style.padding = '10px';
-        card.style.cursor = 'pointer';
+        card.style.cursor = isSlottedElsewhere ? 'not-allowed' : 'pointer';
+        if (isSlottedElsewhere) card.style.opacity = '0.4';
         card.style.display = 'flex';
         card.style.flexDirection = 'column';
         
         let color = g.rarity === 1 ? '#3498db' : (g.rarity === 2 ? '#f1c40f' : '#e67e22');
         let imgUrl = window.getGlyphImageUrl ? window.getGlyphImageUrl(g.name) : '';
-        let headerHtml = imgUrl ? `<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;"><img src="${imgUrl}" style="width: 24px; height: 24px; object-fit: contain;"><h4 style="margin: 0; color: ${color};">${g.name}</h4></div>` : `<h4 style="margin: 0 0 5px 0; color: ${color};">${g.name}</h4>`;
+        let headerText = g.name;
+        if (isSlottedElsewhere) headerText += ' (In Use)';
+        let headerHtml = imgUrl ? `<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;"><img src="${imgUrl}" style="width: 24px; height: 24px; object-fit: contain;"><h4 style="margin: 0; color: ${color};">${headerText}</h4></div>` : `<h4 style="margin: 0 0 5px 0; color: ${color};">${headerText}</h4>`;
         card.innerHTML = headerHtml;
         
         card.addEventListener('mouseenter', () => {
@@ -2117,6 +2129,7 @@ window.openGlyphModal = function(slotIdx, nodeIdx) {
         });
 
         card.addEventListener('click', () => {
+            if (isSlottedElsewhere) return; // Prevent selection
             currentBuild.paragon[slotIdx].glyph.id = g.stringKey;
             saveBuild();
             renderParagonGrid();
