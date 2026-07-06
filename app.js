@@ -2262,7 +2262,8 @@ function compileCharacterStats(equipped, autoStats) {
                 addStat(stats, 'Skill: Corpse Explosion (Bloody Mess) Damage [x]', 50, 'Bloody Mess');
             }
 
-            if (window.selectedSkills['Cast Speed'] > 0) {
+            let hemCsLevel = window.selectedSkills['Cast Speed'] || window.selectedSkills['cast-speed-hemorrhage'] || window.selectedSkills['Cast Speed (Hemorrhage)'] || 0;
+            if (hemCsLevel > 0) {
                 let hemName = 'Hemorrhage';
                 let variations = ['Blood Boil', 'Blood Runs Cold', 'Soul Rip'];
                 for (let i = variations.length - 1; i >= 0; i--) {
@@ -2271,7 +2272,16 @@ function compileCharacterStats(equipped, autoStats) {
                         break;
                     }
                 }
-                addStat(stats, `Skill: ${hemName} (Cast Speed) [+]`, 20, 'Cast Speed (Upgrade)');
+                addStat(stats, `Skill: ${hemName} (Cast Speed)`, 20, 'Cast Speed (Upgrade)');
+                if (hemName !== 'Hemorrhage') {
+                    addStat(stats, `Skill: Hemorrhage (Cast Speed)`, 20, 'Cast Speed (Upgrade)');
+                }
+            }
+            
+            // Reap Cast Speed (Chilled To The Bone)
+            if (window.selectedSkills['Chilled To The Bone'] > 0) {
+                addStat(stats, `Skill: Chilled To The Bone (Cast Speed)`, 30, 'Chilled To The Bone');
+                addStat(stats, `Skill: Reap (Cast Speed)`, 30, 'Chilled To The Bone');
             }
             
             // Crowd Control Damage Bonus (Blight)
@@ -8387,11 +8397,16 @@ function renderCalcSkills() {
                             if (compiledStats['Attack Speed'] && compiledStats['Attack Speed'].flatSources) {
                                 asSources = asSources.concat(compiledStats['Attack Speed'].flatSources);
                             }
-                            let skillAsKey = `Skill: ${displayImgName} (Attack Speed) [+]`;
-                            if (compiledStats[skillAsKey]) {
-                                asTotal += compiledStats[skillAsKey].final;
-                                if (compiledStats[skillAsKey].flatSources) {
-                                    asSources = asSources.concat(compiledStats[skillAsKey].flatSources);
+                            
+                            // Check for Attack Speed under both display name and base skill name
+                            let skillAsKey = `Skill: ${displayImgName} (Attack Speed)`;
+                            let baseAsKey = `Skill: ${baseSkill.name} (Attack Speed)`;
+                            let asNode = compiledStats[skillAsKey] || compiledStats[baseAsKey];
+                            
+                            if (asNode) {
+                                asTotal += asNode.final;
+                                if (asNode.flatSources) {
+                                    asSources = asSources.concat(asNode.flatSources);
                                 }
                             }
                             
@@ -8399,11 +8414,25 @@ function renderCalcSkills() {
                             if (compiledStats['Cast Speed'] && compiledStats['Cast Speed'].flatSources) {
                                 csSources = csSources.concat(compiledStats['Cast Speed'].flatSources);
                             }
-                            let skillCsKey = `Skill: ${displayImgName} (Cast Speed) [+]`;
-                            if (compiledStats[skillCsKey]) {
-                                csTotal += compiledStats[skillCsKey].final;
-                                if (compiledStats[skillCsKey].flatSources) {
-                                    csSources = csSources.concat(compiledStats[skillCsKey].flatSources);
+                            
+                            let skillCsKey = `Skill: ${displayImgName} (Cast Speed)`;
+                            let baseCsKey = `Skill: ${baseSkill.name} (Cast Speed)`;
+                            let availableCsKeys = Object.keys(compiledStats).filter(k => k.includes('Cast Speed'));
+                            let csNode = compiledStats[skillCsKey] || compiledStats[baseCsKey];
+                            
+                            // Ensure we only check Hemorrhage keys if the skill being rendered IS Hemorrhage
+                            if (!csNode && (baseSkill.name === 'Hemorrhage')) {
+                                csNode = compiledStats['Skill: Blood Boil (Cast Speed)'] || compiledStats['Skill: Hemorrhage (Cast Speed)'];
+                                if (!csNode) {
+                                    let hemCsKey = availableCsKeys.find(k => k.includes('Skill: Hemorrhage') || k.includes('Skill: Blood Boil') || k.includes('Skill: Blood Runs Cold') || k.includes('Skill: Soul Rip'));
+                                    if (hemCsKey) csNode = compiledStats[hemCsKey];
+                                }
+                            }
+                            
+                            if (csNode) {
+                                csTotal += csNode.final;
+                                if (csNode.flatSources) {
+                                    csSources = csSources.concat(csNode.flatSources);
                                 }
                             }
                             
@@ -8413,23 +8442,23 @@ function renderCalcSkills() {
                             let asDetails = asSources.length > 0 ? `
                             <details style="margin-left: 15px; margin-bottom: 4px;">
                               <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px;">
-                                <span style="color: #555;">├</span> Increased Attack Speed: <span style="color: #fff;">${asTotal}%</span>
+                                <span style="color: #555;">├</span> Attack Speed: <span style="color: #fff;">${asTotal}%</span>
                               </summary>
                               ${asSources.map(s => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${s.name}: +${Number(s.val.toFixed(1))}%</div>`).join('')}
                             </details>` : `
                             <div style="margin-left: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
-                              <span style="color: #555;">├</span> Increased Attack Speed: <span style="color: #fff;">${asTotal}%</span>
+                              <span style="color: #555;">├</span> Attack Speed: <span style="color: #fff;">${asTotal}%</span>
                             </div>`;
                             
                             let csDetails = csSources.length > 0 ? `
                             <details style="margin-left: 15px; margin-bottom: 4px;">
                               <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px;">
-                                <span style="color: #555;">└</span> Increased Cast Speed: <span style="color: #fff;">${csTotal}%</span>
+                                <span style="color: #555;">└</span> Cast Speed: <span style="color: #fff;">${csTotal}%</span>
                               </summary>
-                              ${csSources.map(s => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${s.name}: +${Number(s.val.toFixed(1))}%</div>`).join('')}
+                              ${csSources.map(s => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">└</span> ${s.name}: +${Number(s.val.toFixed(1))}%</div>`).join('')}
                             </details>` : `
                             <div style="margin-left: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
-                              <span style="color: #555;">└</span> Increased Cast Speed: <span style="color: #fff;">${csTotal}%</span>
+                              <span style="color: #555;">└</span> Cast Speed: <span style="color: #fff;">${csTotal}%</span>
                             </div>`;
                             
                             return `
