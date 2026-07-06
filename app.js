@@ -6,6 +6,14 @@ window.UNIQUE_ITEM_CONSTRAINTS = {
         lockedModifiers: ["Thorns", "Thorns", "Thorns", "Thorns"]
     }
 };
+window.VARIABLE_RUNES = {
+    'Vex': { min: 0, max: 4, default: 1 },
+    'Mot': { min: 0, max: 5, default: 1 },
+    'Gar': { min: 0, max: 5, default: 5 },
+    'Qua': { min: 0, max: 5, default: 5 }
+};
+window.activeRuneValues = window.activeRuneValues || {};
+
 function renderActiveRunes() {
     const slots = document.querySelectorAll('.rune-slot.slot-square');
     if (!slots.length) return;
@@ -56,6 +64,69 @@ function renderActiveRunes() {
             slot.style.backgroundPosition = 'center';
             slot.style.border = '1px solid #d18a45';
             slot.style.borderRadius = '4px';
+            slot.style.position = 'relative';
+            
+            if (window.VARIABLE_RUNES && window.VARIABLE_RUNES[gem]) {
+                const conf = window.VARIABLE_RUNES[gem];
+                if (window.activeRuneValues[gem] === undefined) {
+                    window.activeRuneValues[gem] = conf.default;
+                }
+                
+                const controls = document.createElement('div');
+                controls.style.position = 'absolute';
+                controls.style.bottom = '0';
+                controls.style.left = '0';
+                controls.style.right = '0';
+                controls.style.background = 'rgba(0, 0, 0, 0.8)';
+                controls.style.display = 'flex';
+                controls.style.justifyContent = 'space-between';
+                controls.style.alignItems = 'center';
+                controls.style.padding = '2px 4px';
+                controls.style.fontSize = '12px';
+                controls.style.color = '#fff';
+                controls.style.borderBottomLeftRadius = '3px';
+                controls.style.borderBottomRightRadius = '3px';
+                
+                const minus = document.createElement('div');
+                minus.innerHTML = '&#9664;';
+                minus.style.cursor = 'pointer';
+                minus.style.userSelect = 'none';
+                minus.style.color = '#ccc';
+                
+                const valDisp = document.createElement('div');
+                valDisp.innerText = window.activeRuneValues[gem];
+                valDisp.style.fontWeight = 'bold';
+                valDisp.style.color = '#c9a55c';
+                
+                const plus = document.createElement('div');
+                plus.innerHTML = '&#9654;';
+                plus.style.cursor = 'pointer';
+                plus.style.userSelect = 'none';
+                plus.style.color = '#ccc';
+                
+                minus.onclick = (e) => {
+                    e.stopPropagation();
+                    if (window.activeRuneValues[gem] > conf.min) {
+                        window.activeRuneValues[gem]--;
+                        valDisp.innerText = window.activeRuneValues[gem];
+                        if (typeof calculate === 'function') calculate();
+                    }
+                };
+                
+                plus.onclick = (e) => {
+                    e.stopPropagation();
+                    if (window.activeRuneValues[gem] < conf.max) {
+                        window.activeRuneValues[gem]++;
+                        valDisp.innerText = window.activeRuneValues[gem];
+                        if (typeof calculate === 'function') calculate();
+                    }
+                };
+                
+                controls.appendChild(minus);
+                controls.appendChild(valDisp);
+                controls.appendChild(plus);
+                slot.appendChild(controls);
+            }
         }
     }
 }
@@ -2430,6 +2501,10 @@ function compileCharacterStats(equipped, autoStats) {
           const item = equipped[slotName];
           if (!item || !item.name) return;
           
+          if (item.name === 'Harlequin Crest') {
+              addStat(stats, 'to All Skills', 6, 'Harlequin Crest');
+          }
+          
           const effQ = getEffectiveQuality(item);
           const baseQMult = 1 + (effQ * 0.01);
           
@@ -2569,16 +2644,39 @@ function compileCharacterStats(equipped, autoStats) {
                   
                   // Special logic for Runes
                   if (gemName === 'Gar') {
-                      addStat(stats, 'Critical Strike Chance', 10, 'Gar (Rune)');
+                      let runeStacks = window.activeRuneValues && window.activeRuneValues['Gar'] !== undefined ? window.activeRuneValues['Gar'] : window.VARIABLE_RUNES['Gar'].default;
+                      if (runeStacks > 0) addStat(stats, 'Critical Strike Chance', 2 * runeStacks, 'Gar (Rune)');
                   }
                   if (gemName === 'Ohm') {
                       addStat(stats, 'Ohm Damage [x]', 7.5, 'Ohm (Rune)');
                   }
+                  let runeStacks = 1;
+                  if (window.VARIABLE_RUNES && window.VARIABLE_RUNES[gemName]) {
+                      runeStacks = window.activeRuneValues && window.activeRuneValues[gemName] !== undefined ? window.activeRuneValues[gemName] : window.VARIABLE_RUNES[gemName].default;
+                      if (runeStacks === 0) return; // If variable rune is set to 0, provide 0 buff
+                  }
+                  
                   if (gemName === 'Vex') {
-                      addStat(stats, 'to All Skills', 4, 'Vex (Rune)');
+                      addStat(stats, 'to All Skills', 1 * runeStacks, 'Vex (Rune)');
+                  }
+                  if (gemName === 'Mot') {
+                      addStat(stats, '% Resistance to All Elements', 8 * runeStacks, 'Mot (Rune)');
                   }
                   if (gemName === 'Yom') {
                       addStat(stats, 'Critical Strike Damage', 15, 'Yom (Rune)');
+                  }
+                  if (gemName === 'Qua') {
+                      let runeStacks = window.activeRuneValues && window.activeRuneValues['Qua'] !== undefined ? window.activeRuneValues['Qua'] : window.VARIABLE_RUNES['Qua'].default;
+                      if (runeStacks > 0) addStat(stats, 'Movement Speed', 10 * runeStacks, 'Qua (Rune)');
+                  }
+                  if (gemName === 'Kel') {
+                      addStat(stats, 'Movement Speed', 15, 'Kel (Rune)');
+                  }
+                  if (gemName === 'Lac') {
+                      addStat(stats, 'Universal Damage Reduction %', 20, 'Lac (Rune)');
+                  }
+                  if (gemName === 'Ner') {
+                      addStat(stats, 'Movement Speed', 30, 'Ner (Rune)');
                   }
                   
                   const gemObj = window.D4_DATABASE?.gems?.find(g => g.name === gemName);
@@ -3789,6 +3887,7 @@ function compileCharacterStats(equipped, autoStats) {
     currentBuild.conditions = getActiveConditions();
     currentBuild.buffs = getActiveBuffs();
     currentBuild.skills = JSON.parse(JSON.stringify(window.selectedSkills || {}));
+    currentBuild.activeRuneValues = JSON.parse(JSON.stringify(window.activeRuneValues || {}));
     
     const nodeElsSave = getNodeEls();
     currentBuild.nodes = nodeElsSave.map((el, i) => {
@@ -4104,6 +4203,7 @@ function compileCharacterStats(equipped, autoStats) {
     try {
       // Deep clone to prevent calculate() from mutating the data mid-load
       const b = JSON.parse(JSON.stringify(build));
+      window.activeRuneValues = b.activeRuneValues || {};
       
       // Ensure paragon array exists and has 5 slots for backwards compatibility
       if (!b.paragon || !Array.isArray(b.paragon) || b.paragon.length < 5) {

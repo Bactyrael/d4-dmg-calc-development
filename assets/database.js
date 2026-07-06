@@ -25314,12 +25314,7 @@ window.D4_DATABASE = {
       "description": "Invoke the Warlock's Dark Prison Skill, tethering enemies to the area for 3 seconds.",
       "offering": 250
     },
-    {
-      "name": "Qax",
-      "type": "Invocation",
-      "description": "Casting a Skill other than a Basic or Defensive Consumes all of your Primary Resource to increase your damage up to 100% for 1 second.",
-      "offering": 400
-    },
+
     {
       "name": "Qua",
       "type": "Invocation",
