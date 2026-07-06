@@ -1403,6 +1403,7 @@ const skillsDatabase = {
         "Skill_Primary_Summoning",
         "Skill_Primary_Corpse"
       ],
+      "cooldown": 10,
       "description": "{c_label}Cooldown:{/c_label} {c_resource}[{cooldown time}|2?|]{/c_resource} seconds\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}{c_label}Passive:{/c} Raise a skeletal warrior from a nearby Corpse every {c_number}2{/c} seconds, up to a maximum of {c_number}[Floor((4+(NecroPetPassiveIsActive(931558)?2:0)+(Mod(582507894)?3:0)+Affix_Value_2(2587892)+Affix_Value_1(2587975))*(NecroPetPassiveIsActive(931560)?0.5:1)*(NecroPetPassiveIsActive(931563)?0.5:1)*(NecroPetPassiveIsActive(931566)?0.5:1))|2?|]{/c} warriors. Skeletal warriors deal {c_number}[{payload:tooltip_sword}|2?|]{/c} with each attack.\\n\\n{c_label}Active:{/c} Command your skeletal warriors to leap at an enemy and attack.",
       "maxRank": 15,
       "damageType": "Physical",
@@ -1538,6 +1539,7 @@ const skillsDatabase = {
       ],
       "luckyHitChance": null,
       "baseDamageScalar": 0.2,
+      "cooldown": 11,
       "description": "{c_label}Cooldown:{/c} {c_resource}[{cooldown time}|2?|]{/c} seconds\\n{if:Mod(2686060762)}{c_label}Generate Essence:{/c_label} {c_resource}35{/c_resource}\\n{/if}{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Burst veins out of a Corpse, Slowing enemies by {c_number}50%{/c} for {c_number}1.5{/c} seconds before Pulling them in and dealing {c_number}[{payload:damage_pull}|2?|]{/c} damage.",
       "maxRank": 15,
       "damageType": "Physical",
@@ -1641,6 +1643,7 @@ const skillsDatabase = {
         "Necro_Skill_BonePrison"
       ],
       "baseDamageScalar": 0,
+      "cooldown": 15,
       "description": "{c_label}Cooldown:{/c_label} {c_resource}[{cooldown time}|2?|]{/c_resource} seconds\\n{if:Mod(2686060762)}{c_label}Generate Essence:{/c_label} {c_resource}50{/c_resource}\\n{/if}Unearth a prison of bone with {c_number}[{pet_health:bonewall}|2?|]{/c} Life that surrounds the target area for {c_number}[{buffduration:wall_tracker}|2?|]{/c} seconds.",
       "maxRank": 15,
       "damageType": "Physical",
@@ -1754,6 +1757,7 @@ const skillsDatabase = {
         "Keyword_Immune"
       ],
       "baseDamageScalar": 0.35000000000000003,
+      "cooldown": 24,
       "description": "{c_label}Cooldown:{/c_label} {c_resource}[{cooldown time}|2?|]{/c_resource} seconds \\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}9%{/c}\\n{/if}Disperse into a bloody mist, becoming {c_important}{u}Immune{/u}{/c} for {c_number}[{buffduration:mistform}|2?|]{/c} seconds. You deal {c_number}[{dot:tooltip_dot}|2?|]{/c} damage to enemies and Heal for {c_number}[0.005*Table(34,sLevel)*12*100|1%|]{/c} of your Maximum Life {c_number}([Max(1,PlayerHealthMax()*(0.005*Table(34,sLevel)*12))|0|]){/c} over the duration.",
       "maxRank": 15,
       "damageType": "Physical",
@@ -1919,6 +1923,7 @@ const skillsDatabase = {
         "Skill_Primary_Macabre"
       ],
       "baseDamageScalar": 1.25,
+      "cooldown": 16,
       "description": "{if:NecroArmy_Spec_For_Pet_Type(2)==0}{c_label}Cooldown:{/c_label} {c_resource}[{cooldown time}|2?|]{/c_resource} seconds\\n{/if}{if:NecroArmy_Spec_For_Pet_Type(2)==1}{c_label}Cooldown:{/c_label} {c_resource}[{cooldown time}|2?|]{/c_resource} seconds\\n{/if}{if:NecroArmy_Spec_For_Pet_Type(2)==2}{c_label}Cooldown:{/c_label} {c_resource}[{cooldown time}|2?|]{/c_resource} seconds\\n{/if}{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}{c_label}Passive:{/c} Raise a Golem that attacks for {c_number}[{payload:tooltip_melee}|2?|]{/c} damage. When your Golem dies, it respawns after {c_number}10{/c} seconds.\\n\\n{if:NecroArmy_Spec_For_Pet_Type(2)==0}{c_label}Active:{/c} Command your Golem to leap to the target area. It becomes {c_important}{u}Unstoppable{/u}{/c}, Taunts Nearby enemies, and takes {c_number}30%{/c} reduced damage for the next {c_number}6{/c} seconds. It gains {c_number}50%{/c} of its Armor as Thorns for the duration.{/if}{if:NecroArmy_Spec_For_Pet_Type(2)==1}{c_label}Active:{/c} Command your Golem to leap to the target area. It becomes {c_important}{u}Unstoppable{/u}{/c} and drains the blood of enemies, dealing {c_number}[{payload:tooltip_blood_active}|2?|]{/c} damage and healing {c_number}[(1-Pow(0.95,Table(34,sLevel)))*100|%|]{/c} of its Life for each enemy drained. Healing received is tripled and damage is increased by {c_number}300%{c_lightgray}\\[x\\]{/c}{/c} if only one enemy is drained.{/if}{if:NecroArmy_Spec_For_Pet_Type(2)==2}{c_label}Active:{/c} Command your Golem to leap to the target area. It becomes {c_important}{u}Unstoppable{/u}{/c} and slams its fists into the ground, dealing {c_number}[{payload:tooltip_slam}|2?|]{/c} damage and Stunning surrounding enemies for {c_number}3{/c} seconds.{/if}",
       "maxRank": 15,
       "damageType": "Physical",
@@ -2369,6 +2374,7 @@ const skillsDatabase = {
         "Necro_Skill_BloodWave"
       ],
       "baseDamageScalar": 5,
+      "cooldown": 50,
       "description": "{if:Mod(582507896)>0?0:1}{c_label}Cooldown:{/c_label} {c_resource}[{cooldown time}|2?|]{/c_resource} seconds\\n{/if}{if:Mod(582507896)}{c_label}Essence Cost:{/c} {c_resource}[{resource cost}|2?|]{/c}\\n{/if}{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Conjure a {if:Mod(582507896)>0?0:1}tidal{else}short{/if} wave of blood that deals {c_number}{if:AffixIsEquipped(616076)}[{payload:damage_shadow}|2?|]{else}[{payload:damage}|2?|]{/if}{/c} damage{if:Mod(582507896)>0?0:1} and Knocks Back enemies{/if}.",
       "maxRank": 15,
       "damageType": "Physical",
@@ -2654,6 +2660,7 @@ const skillsDatabase = {
         "Skill_Ultimate"
       ],
       "baseDamageScalar": 0.2,
+      "cooldown": 60,
       "description": "{c_label}Cooldown:{/c} {c_resource}[{cooldown time}|2?|]{/c} seconds\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}40%{/c}\\n{/if}{if:GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0}{c_label}Essence Cost:{/c} {c_resource}[{resource cost}|2?|]{/c}\\nA swirling storm of bones appears at a target location and around your Golem, dealing {c_number}{if:AffixIsEquipped(616076)}[{payload:tooltip_damage_shadow}|2?|]{else}[{payload:tooltip_damage}|2?|]{/if}{/c} damage to surrounding enemies over {c_number}[{buffduration:bonestorm}|2?|]{/c} seconds.{/if}{if:(GetCollectiblePowerEquippedSlotIndex(2353919)>-1?1:0)?0:1}A swirling storm of bones appears around you and your Golem, dealing {c_number}{if:AffixIsEquipped(616076)}[{payload:tooltip_damage_shadow}|2?|]{else}[{payload:tooltip_damage}|2?|]{/if}{/c} damage to surrounding enemies over {c_number}[{buffduration:bonestorm}|2?|]{/c} seconds.{/if}",
       "maxRank": 15,
       "damageType": "Physical",

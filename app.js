@@ -2844,7 +2844,7 @@ function compileCharacterStats(equipped, autoStats) {
         if (stats['Block Chance'] && stats['Block Chance'].total > 0) {
             addStat(stats, 'Block Damage Reduction', 15, 'Base Shield');
         }
-        const inverseMultiplicativeKeys = Object.keys(stats).filter(k => k.includes('Dodge Chance') || k.includes('Damage Reduction') || k.includes('Block Damage Reduction'));
+        const inverseMultiplicativeKeys = Object.keys(stats).filter(k => k.includes('Dodge Chance') || k.includes('Damage Reduction') || k.includes('Block Damage Reduction') || k.includes('Cooldown Reduction'));
         inverseMultiplicativeKeys.forEach(k => {
             if (stats[k].flatSources && stats[k].flatSources.length > 1) {
                 let inverseProduct = 1.0;
@@ -2852,6 +2852,9 @@ function compileCharacterStats(equipped, autoStats) {
                     inverseProduct *= (1 - (src.val / 100));
                 });
                 stats[k].final = (1 - inverseProduct) * 100;
+            }
+            if (k.includes('Cooldown Reduction') && stats[k].final > 75) {
+                stats[k].final = 75;
             }
         });
         if ((currentBuild.class || 'Necromancer') === 'Necromancer') {
@@ -2995,6 +2998,7 @@ function compileCharacterStats(equipped, autoStats) {
               // Exact match or contains (avoid 'Damage Reduction' matching 'Damage')
               if (keywords.some(kw => statName.toLowerCase().includes(kw.toLowerCase()))) {
                   if (cat === 'Offensive' && statName.toLowerCase().includes('damage reduction')) continue;
+                  if (cat === 'Defensive' && statName.toLowerCase().includes('cooldown reduction')) continue;
 
                   grouped[cat].push({ name: statName, val: stats[statName] });
                   matched = true;
@@ -4788,20 +4792,20 @@ function parseD4String(str, skillObj, currentRank) {
     str = str.replace(/Blood_Orb_Bonus_Chance_Per_Power\(\d+\)/gi, "0");
     
     // Globally strip embedded Cooldown and Resource Cost blocks, as they are handled by statsHtml at the top
-    str = str.replace(/\{c_label\}Cooldown:\{\/c(?:_label)?\}\s*\{c_resource\}\[\{cooldown time\}[\s\.,\d]*?\][\s\S]*?\{\/c(?:_resource)?\}\s*(?:seconds)?(?:\\n|\r?\n)?/gi, "");
-    str = str.replace(/\{c_label\}Essence Cost:\s*\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\.,\d]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
-    str = str.replace(/\{c_label\}Mana Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\.,\d]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
-    str = str.replace(/\{c_label\}Fury Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\.,\d]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
-    str = str.replace(/\{c_label\}Spirit Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\.,\d]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Cooldown:\{\/c(?:_label)?\}\s*\{c_resource\}\[\{cooldown time\}[^\]]*?\][\s\S]*?\{\/c(?:_resource)?\}\s*(?:seconds)?(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Essence Cost:\s*\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[^\]]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Mana Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[^\]]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Fury Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[^\]]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Spirit Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[^\]]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
 
     let maxLife = 1526; // Default level 50 life
     if (typeof dom !== 'undefined' && dom.maxLife) {
         maxLife = parseFloat(dom.maxLife.value) || 1526;
     }
-    str = str.replace(/\{c_label\}Energy Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[\s\.,\d]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
+    str = str.replace(/\{c_label\}Energy Cost:\{\/c(?:_[a-zA-Z]+)?\}\s*\{c_resource\}\[\{resource cost\}[^\]]*?\][\s\S]*?\{\/c(?:_[a-zA-Z]+)?\}(?:\\n|\r?\n)?/gi, "");
     
     if (skillObj && skillObj.name === "Skeleton Warrior") {
-        str = str.replace(/\{c_label\}Cooldown:\{\/c_label\}\s*\{c_resource\}\[\{cooldown time\}[\s\.,\d]*?\]\{\/c_resource\}\s*seconds(?:\\n|\r?\n)?/g, "");
+        str = str.replace(/\{c_label\}Cooldown:\{\/c_label\}\s*\{c_resource\}\[\{cooldown time\}[^\]]*?\]\{\/c_resource\}\s*seconds(?:\\n|\r?\n)?/g, "");
     }
     
     if (skillObj && skillObj.name === "Golem") {
@@ -5383,6 +5387,13 @@ function applyActiveModifiers(baseSkillObj) {
                 if (mod.name === "Cost Reduction" && (modified.name === "Bone Spear" || modified.baseName === "Bone Spear")) {
                     if (modified.resourceCost) {
                         modified.resourceCost = Math.max(0, modified.resourceCost - 5);
+                    }
+                }
+                
+                // Specific logic for Hungry Cyclone (Bone Storm)
+                if (mod.name === "Hungry Cyclone" && (modified.name === "Bone Storm" || modified.baseName === "Bone Storm")) {
+                    if (modified.cooldown !== undefined) {
+                        modified.cooldown = Math.max(0, modified.cooldown - 20);
                     }
                 }
             }
