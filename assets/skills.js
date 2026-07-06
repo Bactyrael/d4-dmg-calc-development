@@ -3,7 +3,8 @@ const skillsDatabase = {
     {
       "name": "Reap",
       "tags": [
-        "Skill_Shadow"
+        "Skill_Shadow",
+        "Skill_Basic"
       ],
       "baseDamageScalar": 0.5,
       "description": "{if:AffixIsEquipped(1944498)>0}{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{/if}{c_label}Generate Essence:{/c_label} {c_resource}[Mod(2686060762)?17:15|2?|]{/c_resource}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Sweep an ethereal scythe in front of you, dealing {c_number}[{payload:damage}|2?|]{/c} damage.",
@@ -119,7 +120,8 @@ const skillsDatabase = {
       "tags": [
         "Skill_Shadow",
         "Skill_Channeled",
-        "Search_Shadow"
+        "Search_Shadow",
+        "Skill_Basic"
       ],
       "baseDamageScalar": 1.5,
       "description": "{if:AffixIsEquipped(1944498)>0}{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|] per second{/c}\\n{/if}{c_label}Generate Essence:{/c_label} {c_resource}[13*PowerFinalizedAttackSpeed|2?|]{/c_resource} per second\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[Mod(2686060764)?70:40|%|]{/c}\\n{/if}Tear the flesh from an enemy, dealing {c_number}[{dot:decomposing}|2?|]{/c} Corrupting damage per second and forming a usable Corpse with the flesh every {c_number}1{/c} second.",
@@ -219,7 +221,8 @@ const skillsDatabase = {
       "name": "Hemorrhage",
       "tags": [
         "Skill_Blood",
-        "Keyword_Blood_Orb"
+        "Keyword_Blood_Orb",
+        "Skill_Basic"
       ],
       "baseDamageScalar": 0.8,
       "description": "{if:AffixIsEquipped(1944498)>0}{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{/if}{c_label}Generate Essence:{/c_label} {c_resource}13{/c_resource}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Burst an enemy's blood, dealing {c_number}[{payload:damage}|2?|]{/c} damage. {c_important}Hemorrhage{/c} has a {c_number}[0.2*(1+Blood_Orb_Bonus_Chance_Per_Power(484661))*100|%|]{/c} chance to form a {c_important}{u}Blood Orb{/u}{/c}.",
@@ -334,7 +337,8 @@ const skillsDatabase = {
     {
       "name": "Bone Splinters",
       "tags": [
-        "Skill_Bone"
+        "Skill_Bone",
+        "Skill_Basic"
       ],
       "baseDamageScalar": 0.3,
       "description": "{if:AffixIsEquipped(1944498)>0}{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{/if}{c_label}Generate Essence:{/c} {c_resource}10{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Fire {c_number}3{/c} splinters of bone, dealing {c_number}[{payload:damage}|2?|]{/c} damage each.",
@@ -464,7 +468,8 @@ const skillsDatabase = {
     {
       "name": "Blood Lance",
       "tags": [
-        "Skill_Blood"
+        "Skill_Blood",
+        "Skill_Core"
       ],
       "baseDamageScalar": 1.3,
       "resourceCost": 15,
@@ -600,7 +605,8 @@ const skillsDatabase = {
     {
       "name": "Blood Surge",
       "tags": [
-        "Skill_Blood"
+        "Skill_Blood",
+        "Skill_Core"
       ],
       "resourceCost": 30,
       "description": "{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}Draw blood from enemies, dealing {c_number}[{payload:outer_damage}|2?|]{/c} damage, then expel a blood nova, dealing {c_number}[{payload:inner_damage}|2?|]{/c} damage.\\n\\n{c_important}Blood Surge's{/c} nova damage is increased by {c_number}5%{c_lightgray}\\[x\\]{/c}{/c} for each enemy drawn from, up to {c_number}50%{c_lightgray}\\[x\\]{/c}{/c}.",
@@ -763,7 +769,8 @@ const skillsDatabase = {
       "name": "Skeleton Mage",
       "tags": [
         "Skill_Primary_Summoning",
-        "Skill_Primary_Minion"
+        "Skill_Primary_Minion",
+        "Skill_Core"
       ],
       "baseDamageScalar": 0.8,
       "resourceCost": 30,
@@ -864,7 +871,8 @@ const skillsDatabase = {
       "name": "Blight",
       "tags": [
         "Skill_Shadow",
-        "Search_Shadow"
+        "Search_Shadow",
+        "Skill_Core"
       ],
       "resourceCost": 20,
       "description": "{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[Mod(2686060764)?60:40|%|]{/c}\\n{/if}Unleash concentrated blight that deals {c_number}[{payload:projectile_damage}|2?|]{/c} damage and leaves behind a defiled area, dealing {c_number}[{dot:tooltip_dot}|2?|]{/c} Corrupting damage over {c_number}6{/c} seconds.",
@@ -1020,7 +1028,8 @@ const skillsDatabase = {
     {
       "name": "Sever",
       "tags": [
-        "Skill_Shadow"
+        "Skill_Shadow",
+        "Skill_Core"
       ],
       "resourceCost": 20,
       "description": "{c_label}Essence Cost: {/c}{c_resource}[{resource cost}|2?|]{/c}\\n{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}[{combat effect chance}|%|]{/c}\\n{/if}A specter of you charges forward, dealing {c_number}[{payload:projectile_damage}|2?|]{/c} damage, then attacks with its scythe, dealing {c_number}[{payload:damage_out}|2?|]{/c} damage.",
@@ -1152,7 +1161,8 @@ const skillsDatabase = {
     {
       "name": "Bone Spear",
       "tags": [
-        "Skill_Bone"
+        "Skill_Bone",
+        "Skill_Core"
       ],
       "baseDamageScalar": 1.3,
       "resourceCost": 25,
@@ -1303,7 +1313,7 @@ const skillsDatabase = {
     {
       "name": "Corpse Explosion",
       "tags": [
-        "Skill_Corruption"
+        "Skill_Corpse"
       ],
       "baseDamageScalar": 1.1,
       "description": "{if:Mod(2686060764)}{c_label}Generate Essence:{/c_label} {c_resource}15{/c_resource}\\n{/if}{if:ADVANCED_TOOLTIP}{c_label}Lucky Hit Chance: {/c}{c_resource}25%{/c}\\n{/if}Detonate a Corpse, dealing {c_number}[{payload:damage}|2?|]{/c} damage to enemies.",
@@ -1535,7 +1545,7 @@ const skillsDatabase = {
     {
       "name": "Corpse Tendrils",
       "tags": [
-        "Skill_Corruption"
+        "Skill_Corpse"
       ],
       "luckyHitChance": null,
       "baseDamageScalar": 0.2,

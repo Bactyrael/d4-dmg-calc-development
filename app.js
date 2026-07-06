@@ -5320,9 +5320,14 @@ function applyActiveModifiers(baseSkillObj) {
                     modified.resourceCost = 50; // Added
                 }
                 
-                // Specific logic for Shadow And Bone & Plunging Darkness: remove Bone tag
-                if (mod.name === "Shadow And Bone" || mod.name === "Plunging Darkness") {
+                // Specific logic for Shadow And Bone, Plunging Darkness, & Bloody Splinter: remove Bone tag
+                if (mod.name === "Shadow And Bone" || mod.name === "Plunging Darkness" || mod.name === "Bloody Splinter") {
                     modified.tags = modified.tags.filter(t => !t.toLowerCase().includes('bone'));
+                }
+
+                // Specific logic for Soul Rip: remove Blood tag
+                if (mod.name === "Soul Rip") {
+                    modified.tags = modified.tags.filter(t => !t.toLowerCase().includes('blood'));
                 }
 
                 // Specific logic for Devouring Mist: remove Blood tag
@@ -5408,6 +5413,7 @@ function applyActiveModifiers(baseSkillObj) {
             });
             if (!modified.tags.some(t => t.toLowerCase() === 'skill_' + override.toLowerCase())) modified.tags.push('Skill_' + override);
             if (!modified.tags.some(t => t.toLowerCase() === 'search_' + override.toLowerCase())) modified.tags.push('Search_' + override);
+            modified.damageType = override;
         }
         
         const removeTags = lowerTags.filter(t => t.startsWith('remove_'));
@@ -8167,9 +8173,20 @@ function renderCalcSkills() {
                   <div style="display: flex; align-items: flex-start; gap: 15px;">
                     ${iconHtml}
                     <div style="flex: 1;">
-                      <h3 style="margin: 0; color: #fff; font-size: 1.2rem; display: flex; justify-content: space-between;">
-                        <span>${titleText}</span>
-                        <span style="font-size: 0.9rem; color: #888;">Rank ${window.selectedSkills[baseSkill.name]}</span>
+                      <h3 style="margin: 0; color: #fff; font-size: 1.2rem; display: flex; align-items: center;">
+                        <span style="flex: 1;">${titleText}</span>
+                        ${(() => {
+                            let cd = modSkill.cooldown;
+                            if (!cd && (modSkill.name === "Bone Spirit" || modSkill.baseName === "Bone Spirit")) {
+                                let hasCharges = typeof currentBuild !== 'undefined' && currentBuild && currentBuild.skills && currentBuild.skills['Charges'] > 0;
+                                cd = hasCharges ? 10 : 12;
+                            }
+                            if (cd) {
+                                return `<span style="flex: 1; text-align: center; font-size: 0.95rem; color: #c9a55c; font-weight: normal;">Cooldown: ${typeof getEffectiveCooldown === 'function' ? getEffectiveCooldown(modSkill, cd) : cd}s</span>`;
+                            }
+                            return `<span style="flex: 1;"></span>`;
+                        })()}
+                        <span style="flex: 1; text-align: right; font-size: 0.9rem; color: #888;">Rank ${window.selectedSkills[baseSkill.name]}</span>
                       </h3>
                       <div style="color: #aaa; font-size: 0.9rem; margin-top: 10px; font-family: monospace;">
                         ${(function() {
@@ -8513,7 +8530,7 @@ function renderCalcSkills() {
 
                         
                         ${(() => {
-                            let speedInfo = calculateSkillTotalSpeed(baseSkill, displayImgName);
+                            let speedInfo = calculateSkillTotalSpeed(modSkill, displayImgName);
                             let asTotal = Math.min(speedInfo.asTotal, 100);
                             let csTotal = Math.min(speedInfo.csTotal, 100);
                             let asSources = speedInfo.asSources;
@@ -8637,6 +8654,30 @@ function renderCalcSkills() {
                                oninput="document.getElementById('slider-val-bs-dmg').innerText = this.value; window.skillSliderValues['Bone Spirit Damage Bonus'] = parseInt(this.value); window.calculate();">
                     `;
                     card.appendChild(sliderDiv);
+                }
+                
+                let badgesHtml = '';
+                if (modSkill.damageType) {
+                    badgesHtml += `<span style="background: rgba(255, 107, 107, 0.1); color: #ff6b6b; padding: 2px 6px; border-radius: 4px; font-size: 0.75em; border: 1px solid #ff6b6b; font-weight: bold;">${modSkill.damageType} Damage</span>`;
+                }
+                if (modSkill.tags) {
+                    let filteredTags = modSkill.tags.filter(t => !t.startsWith('Search_') && !t.startsWith('Necro_Skill_') && !t.startsWith('Damage_Override_') && !t.startsWith('Keyword_') && !t.toLowerCase().startsWith('remove_'));
+                    filteredTags.forEach(t => {
+                        let formatted = typeof formatTag === 'function' ? formatTag(t) : t.replace('Skill_Primary_', '').replace('Skill_', '');
+                        if (modSkill.damageType && formatted.toLowerCase() === modSkill.damageType.toLowerCase()) return;
+                        badgesHtml += `<span style="background: #222; color: #aaa; padding: 2px 6px; border-radius: 4px; font-size: 0.75em; border: 1px solid #444;">${formatted}</span>`;
+                    });
+                }
+
+                if (badgesHtml !== '') {
+                    let badgeDiv = document.createElement('div');
+                    badgeDiv.style.marginTop = '15px';
+                    badgeDiv.style.display = 'flex';
+                    badgeDiv.style.justifyContent = 'flex-end';
+                    badgeDiv.style.flexWrap = 'wrap';
+                    badgeDiv.style.gap = '5px';
+                    badgeDiv.innerHTML = badgesHtml;
+                    card.appendChild(badgeDiv);
                 }
 
                 container.appendChild(card);
@@ -8811,6 +8852,24 @@ function calculateSkillTotalSpeed(baseSkill, displayImgName) {
                     return src;
                 });
                 asSources = asSources.concat(updatedSources);
+            }
+        }
+    }
+    
+    const isCorpse = baseSkill.tags && baseSkill.tags.some(t => t.toLowerCase().includes('corpse'));
+    if (isCorpse) {
+        for (let key in compiledStats) {
+            if (key.toLowerCase().includes('corpse') && key.toLowerCase().includes('attack speed')) {
+                asTotal += compiledStats[key].final;
+                if (compiledStats[key].flatSources) {
+                    let updatedSources = compiledStats[key].flatSources.map(src => {
+                        if (src.name === 'Paragon Board' || src.name === 'Paragon Board (Normal Nodes)') {
+                            return { ...src, name: 'Paragon Board (Corpse Attack Speed)' };
+                        }
+                        return src;
+                    });
+                    asSources = asSources.concat(updatedSources);
+                }
             }
         }
     }
