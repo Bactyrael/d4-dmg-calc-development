@@ -4916,9 +4916,11 @@ function parseD4String(str, skillObj, currentRank) {
             return Math.floor(maxLife * 0.3 * currentRank).toString();
         });
     }
-    if (skillObj.name === "Bone Spirit" || skillObj.baseName === "Bone Spirit") {
+    if (skillObj && (skillObj.name === "Bone Spirit" || skillObj.baseName === "Bone Spirit")) {
         let hasCharges = typeof currentBuild !== 'undefined' && currentBuild && currentBuild.skills && currentBuild.skills['Charges'] > 0;
-        str = str.replace(/\[\{recharge time\}[\s\.,\d\|]*?\]|\{recharge time\}/g, hasCharges ? "10" : "12");
+        let baseRecharge = hasCharges ? 10 : 12;
+        let effectiveRecharge = typeof getEffectiveCooldown === 'function' ? getEffectiveCooldown(skillObj, baseRecharge) : baseRecharge;
+        str = str.replace(/\[\{recharge time\}[\s\.,\d\|]*?\]|\{recharge time\}/g, effectiveRecharge.toString());
         str = str.replace(/Mod\(\d+\)\?1:0/g, hasCharges ? '1' : '0');
     }
     if (skillObj.name === "Devouring Mist") {
@@ -5377,6 +5379,13 @@ function applyActiveModifiers(baseSkillObj) {
                         modified.cooldown = Math.max(0, modified.cooldown - 20);
                     }
                 }
+                
+                // Specific logic for Cooldown Reduction (Army of the Dead)
+                if (mod.name === "Cooldown Reduction (Army of the Dead)" && (modified.name === "Army of the Dead" || modified.baseName === "Army of the Dead")) {
+                    if (modified.cooldown !== undefined) {
+                        modified.cooldown = Math.max(0, modified.cooldown - 20);
+                    }
+                }
             }
         });
     }
@@ -5450,6 +5459,34 @@ function applyActiveModifiers(baseSkillObj) {
     }
 
     return modified;
+}
+function getEffectiveCooldown(skillObj, baseCd) {
+    let finalCd = baseCd;
+    if (window.D4_COMPILED_STATS) {
+        let compiledStats = window.D4_COMPILED_STATS;
+        let globalCDR = compiledStats['Cooldown Reduction'] ? compiledStats['Cooldown Reduction'].final / 100 : 0;
+        
+        let skillCDRNode = compiledStats[`Skill: ${skillObj.name} (Cooldown Reduction)`] || compiledStats[`Skill: ${skillObj.baseName} (Cooldown Reduction)`];
+        let skillCDR = skillCDRNode ? skillCDRNode.final / 100 : 0;
+        
+        let inverseProduct = (1 - globalCDR) * (1 - skillCDR);
+        
+        if (skillObj.tags) {
+            Object.keys(compiledStats).forEach(k => {
+                if (k.includes('Cooldown Reduction') && k !== 'Cooldown Reduction' && !k.startsWith('Skill:')) {
+                    let prefix = k.replace(' Cooldown Reduction', '').trim();
+                    if (skillObj.tags.includes(`Skill_${prefix}`) || skillObj.tags.includes(prefix) || 
+                       (prefix.toLowerCase() === 'summoning' && skillObj.tags.includes('Skill_Primary_Summoning')) ||
+                       (prefix.toLowerCase() === 'golem active' && (skillObj.name.includes('Golem') || (skillObj.baseName && skillObj.baseName.includes('Golem'))))) {
+                        inverseProduct *= (1 - (compiledStats[k].final / 100));
+                    }
+                }
+            });
+        }
+        
+        finalCd = finalCd * inverseProduct;
+    }
+    return Number(finalCd.toFixed(2));
 }
 
 function showSkillTooltip(skillObj, e) {
@@ -5544,7 +5581,8 @@ function showSkillTooltip(skillObj, e) {
         statsHtml += `<div><span class="d4-color-label">Essence Cost:</span> <span class="d4-color-number">${skillObj.resourceCost}</span></div>`;
     }
     if (skillObj.cooldown) {
-        statsHtml += `<div><span class="d4-color-label">Cooldown:</span> <span class="d4-color-number">${skillObj.cooldown}</span> seconds</div>`;
+        let displayCd = getEffectiveCooldown(skillObj, skillObj.cooldown);
+        statsHtml += `<div><span class="d4-color-label">Cooldown:</span> <span class="d4-color-number">${displayCd}</span> seconds</div>`;
     }
     if (statsHtml) {
         statsHtml = `<div class="d4-tooltip-stats">${statsHtml}</div>`;
