@@ -2257,7 +2257,21 @@ function compileCharacterStats(equipped, autoStats) {
             
             // Bloody Mess (50%[x] to Corpse Explosion)
             if (window.selectedSkills['Bloody Mess'] > 0) {
+                // Now explicitly scoping this to ONLY Corpse Explosion
+                // The actual check happens inside calculateSkillMultiplicativeBucket
                 addStat(stats, 'Skill: Corpse Explosion (Bloody Mess) Damage [x]', 50, 'Bloody Mess');
+            }
+
+            if (window.selectedSkills['Cast Speed'] > 0) {
+                let hemName = 'Hemorrhage';
+                let variations = ['Blood Boil', 'Blood Runs Cold', 'Soul Rip'];
+                for (let i = variations.length - 1; i >= 0; i--) {
+                    if (window.selectedSkills[variations[i]] > 0) {
+                        hemName = variations[i];
+                        break;
+                    }
+                }
+                addStat(stats, `Skill: ${hemName} (Cast Speed) [+]`, 20, 'Cast Speed (Upgrade)');
             }
             
             // Crowd Control Damage Bonus (Blight)
@@ -2810,6 +2824,16 @@ function compileCharacterStats(equipped, autoStats) {
             addStat(stats, 'Thorns', schadenfreudeThorns, 'Schadenfreude');
         }
 
+        if (stats['Attack Speed']) {
+            stats['Attack Speed'].total = Math.min(stats['Attack Speed'].total, 100);
+            stats['Attack Speed'].final = Math.min(stats['Attack Speed'].final, 100);
+        }
+        
+        if (stats['Cast Speed']) {
+            stats['Cast Speed'].total = Math.min(stats['Cast Speed'].total, 100);
+            stats['Cast Speed'].final = Math.min(stats['Cast Speed'].final, 100);
+        }
+
         return stats;
     }
   
@@ -2872,7 +2896,7 @@ function compileCharacterStats(equipped, autoStats) {
       
       const categories = {
           'Core Stats': ['Strength', 'Intelligence', 'Willpower', 'Dexterity', 'All Stats'],
-          'Offensive': ['Damage', 'Critical', 'Vulnerable', 'Attack Speed', 'Overpower'],
+          'Offensive': ['Damage', 'Critical', 'Vulnerable', 'Attack Speed', 'Cast Speed', 'Overpower'],
           'Defensive': ['Life', 'Armor', 'Resistance', 'Reduction', 'Dodge', 'Block'],
           'Utility': ['Movement', 'Cooldown', 'Resource', 'Essence', 'Healing', 'Lucky Hit', 'Barrier']
       };
@@ -7687,14 +7711,14 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (isShadowStat && !isDotStat && !lowerKey.includes('damage to')) {
                 if (tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || dType === 'shadow') applies = true;
             }
-            if (lowerKey.includes('bone') && (tags.includes('skill_bone') || tags.includes('search_bone') || dType === 'bone')) applies = true;
-            if (lowerKey.includes('blood') && tags.includes('skill_blood')) applies = true;
-            if (lowerKey.includes('core') && tags.includes('keyword_core')) applies = true;
-            if (lowerKey.includes('macabre') && (tags.includes('keyword_macabre') || tags.some(t => t.toLowerCase().includes('macabre')) || ['Bone Prison', 'Blood Mist', 'Golem', 'Bone Spirit'].includes(skill.name))) applies = true;
-            if (lowerKey.includes('cold') && (tags.includes('skill_cold') || tags.includes('search_cold') || dType === 'cold')) applies = true;
-            if (lowerKey.includes('poison') && (tags.includes('skill_poison') || tags.includes('search_poison') || dType === 'poison')) applies = true;
-            if (lowerKey.includes('lightning') && (tags.includes('skill_lightning') || tags.includes('search_lightning') || dType === 'lightning')) applies = true;
-            if (lowerKey.includes('physical') && (tags.includes('skill_physical') || tags.includes('search_physical') || dType === 'physical')) applies = true;
+            if (/\bbone\b/.test(lowerKey) && (tags.includes('skill_bone') || tags.includes('search_bone') || dType === 'bone')) applies = true;
+            if (/\bblood\b/.test(lowerKey) && tags.includes('skill_blood')) applies = true;
+            if (/\bcore\b/.test(lowerKey) && tags.includes('keyword_core')) applies = true;
+            if (/\bmacabre\b/.test(lowerKey) && (tags.includes('keyword_macabre') || tags.some(t => t.toLowerCase().includes('macabre')) || ['Bone Prison', 'Blood Mist', 'Golem', 'Bone Spirit'].includes(skill.name))) applies = true;
+            if (/\bcold\b/.test(lowerKey) && (tags.includes('skill_cold') || tags.includes('search_cold') || dType === 'cold')) applies = true;
+            if (/\bpoison\b/.test(lowerKey) && (tags.includes('skill_poison') || tags.includes('search_poison') || dType === 'poison')) applies = true;
+            if (/\blightning\b/.test(lowerKey) && (tags.includes('skill_lightning') || tags.includes('search_lightning') || dType === 'lightning')) applies = true;
+            if (/\bphysical\b/.test(lowerKey) && (tags.includes('skill_physical') || tags.includes('search_physical') || dType === 'physical')) applies = true;
             
             if (lowerKey === 'wither damage [x]') {
                 if (tags.includes('skill_darkness') || tags.includes('search_darkness') || tags.includes('skill_shadow') || tags.includes('search_shadow') || dType === 'shadow') applies = true;
@@ -8217,6 +8241,7 @@ function renderCalcSkills() {
                                     let label = (typeof val === 'object' && val.labelOverride) ? val.labelOverride : key.replace(/_/g, ' ').replace(/tooltip /i, '').replace(/dot/i, 'DoT').replace(/\b\w/g, c => c.toUpperCase());
                                     let scalarVal = typeof val === 'object' ? val.scalar : val;
                                     let secSkill = JSON.parse(JSON.stringify(modSkill));
+                                    secSkill.parentSkillName = displayImgName;
                                     if (typeof val === 'object' && val.tags) secSkill.tags = [...val.tags];
                                     if (typeof val === 'object' && val.addTags) {
                                         secSkill.tags = secSkill.tags || [];
@@ -8353,12 +8378,67 @@ function renderCalcSkills() {
                         })()}
 
                         
-                        <div style="margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
-                          <span style="color: #555;">├</span> Attack Rate: <span style="color: #fff;">TBD frames</span>
-                        </div>
-                        <div style="margin-left: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
-                          <span style="color: #555;">└</span> Attack: <span style="color: #fff;">0</span>
-                        </div>
+                        ${(() => {
+                            let compiledStats = window.D4_COMPILED_STATS || {};
+                            let asTotal = compiledStats['Attack Speed'] ? compiledStats['Attack Speed'].final : 0;
+                            let csTotal = compiledStats['Cast Speed'] ? compiledStats['Cast Speed'].final : 0;
+                            
+                            let asSources = [];
+                            if (compiledStats['Attack Speed'] && compiledStats['Attack Speed'].flatSources) {
+                                asSources = asSources.concat(compiledStats['Attack Speed'].flatSources);
+                            }
+                            let skillAsKey = `Skill: ${displayImgName} (Attack Speed) [+]`;
+                            if (compiledStats[skillAsKey]) {
+                                asTotal += compiledStats[skillAsKey].final;
+                                if (compiledStats[skillAsKey].flatSources) {
+                                    asSources = asSources.concat(compiledStats[skillAsKey].flatSources);
+                                }
+                            }
+                            
+                            let csSources = [];
+                            if (compiledStats['Cast Speed'] && compiledStats['Cast Speed'].flatSources) {
+                                csSources = csSources.concat(compiledStats['Cast Speed'].flatSources);
+                            }
+                            let skillCsKey = `Skill: ${displayImgName} (Cast Speed) [+]`;
+                            if (compiledStats[skillCsKey]) {
+                                csTotal += compiledStats[skillCsKey].final;
+                                if (compiledStats[skillCsKey].flatSources) {
+                                    csSources = csSources.concat(compiledStats[skillCsKey].flatSources);
+                                }
+                            }
+                            
+                            asTotal = Math.min(asTotal, 100);
+                            csTotal = Math.min(csTotal, 100);
+                            
+                            let asDetails = asSources.length > 0 ? `
+                            <details style="margin-left: 15px; margin-bottom: 4px;">
+                              <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                                <span style="color: #555;">├</span> Increased Attack Speed: <span style="color: #fff;">${asTotal}%</span>
+                              </summary>
+                              ${asSources.map(s => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${s.name}: +${Number(s.val.toFixed(1))}%</div>`).join('')}
+                            </details>` : `
+                            <div style="margin-left: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
+                              <span style="color: #555;">├</span> Increased Attack Speed: <span style="color: #fff;">${asTotal}%</span>
+                            </div>`;
+                            
+                            let csDetails = csSources.length > 0 ? `
+                            <details style="margin-left: 15px; margin-bottom: 4px;">
+                              <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                                <span style="color: #555;">└</span> Increased Cast Speed: <span style="color: #fff;">${csTotal}%</span>
+                              </summary>
+                              ${csSources.map(s => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${s.name}: +${Number(s.val.toFixed(1))}%</div>`).join('')}
+                            </details>` : `
+                            <div style="margin-left: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
+                              <span style="color: #555;">└</span> Increased Cast Speed: <span style="color: #fff;">${csTotal}%</span>
+                            </div>`;
+                            
+                            return `
+                            <div style="margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
+                              <span style="color: #555;">├</span> Total Attack Speed: <span style="color: #fff;">${asTotal + csTotal}%</span>
+                            </div>
+                            ${asDetails}
+                            ${csDetails}`;
+                        })()}
                       </div>
                     </div>
                   </div>
@@ -8477,6 +8557,39 @@ function calculateSkillCritChance(skillObj) {
             if (typeof getActiveConditions === 'function' && getActiveConditions().cursed) {
                 totalCrit += 5.0;
                 components.push({ name: 'Decrepify (Upgrade vs Cursed) [+]', value: 5.0 });
+            }
+        }
+        
+        if (window.selectedSkills['Critical Strike Chance (Corpse Tendrils)'] > 0) {
+            totalCrit += 5.0;
+            components.push({ name: 'Corpse Tendrils (Upgrade) [+]', value: 5.0 });
+        }
+        
+        if (window.selectedSkills['Critical Strike'] > 0) {
+            totalCrit += 5.0;
+            components.push({ name: 'Blood Mist (Upgrade) [+]', value: 5.0 });
+        }
+        
+        if (window.selectedSkills['Critical Strike Chance (Skeleton Mage)'] > 0) {
+            totalCrit += 5.0;
+            components.push({ name: 'Skeleton Mage (Upgrade) [+]', value: 5.0 });
+        }
+        
+        if (window.selectedSkills['Litany of Death'] > 0) {
+            let sName = skillObj.name.toLowerCase();
+            let tags = skillObj.tags || [];
+            let isMinion = sName.includes('golem') || sName.includes(' mage') || sName.includes('warrior') || tags.some(t => t.toLowerCase().includes('minion'));
+            
+            if (isMinion) {
+                let currentRank = getBaseSkillRankFor('Skeleton Warrior');
+                if (currentRank < 1) currentRank = 1;
+                let levelsGained = currentRank > 1 ? currentRank - 1 : 0;
+                let enhancedIncreases = Math.floor(currentRank / 5);
+                let table37 = 1.0 + (levelsGained * 0.02) + (enhancedIncreases * 0.04);
+                let critBonus = 15.0 * table37;
+                
+                totalCrit += critBonus;
+                components.push({ name: 'Litany of Death (Upgrade) [+]', value: parseFloat(critBonus.toFixed(1)) });
             }
         }
     }
