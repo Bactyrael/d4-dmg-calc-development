@@ -5320,13 +5320,13 @@ function applyActiveModifiers(baseSkillObj) {
                     modified.resourceCost = 50; // Added
                 }
                 
-                // Specific logic for Shadow And Bone, Plunging Darkness, & Bloody Splinter: remove Bone tag
-                if (mod.name === "Shadow And Bone" || mod.name === "Plunging Darkness" || mod.name === "Bloody Splinter") {
+                // Specific logic for Shadow And Bone, Plunging Darkness, Bloody Splinter, Shadow Splitter, & Blood Spear: remove Bone tag
+                if (mod.name === "Shadow And Bone" || mod.name === "Plunging Darkness" || mod.name === "Bloody Splinter" || mod.name === "Shadow Splitter" || mod.name === "Blood Spear") {
                     modified.tags = modified.tags.filter(t => !t.toLowerCase().includes('bone'));
                 }
 
-                // Specific logic for Soul Rip: remove Blood tag
-                if (mod.name === "Soul Rip") {
+                // Specific logic for Soul Rip, Festering Wound, & Pins and Needles: remove Blood tag
+                if (mod.name === "Soul Rip" || mod.name === "Festering Wound" || mod.name === "Pins and Needles") {
                     modified.tags = modified.tags.filter(t => !t.toLowerCase().includes('blood'));
                 }
 
@@ -8661,10 +8661,10 @@ function renderCalcSkills() {
                     badgesHtml += `<span style="background: rgba(255, 107, 107, 0.1); color: #ff6b6b; padding: 2px 6px; border-radius: 4px; font-size: 0.75em; border: 1px solid #ff6b6b; font-weight: bold;">${modSkill.damageType} Damage</span>`;
                 }
                 if (modSkill.tags) {
-                    let filteredTags = modSkill.tags.filter(t => !t.startsWith('Search_') && !t.startsWith('Necro_Skill_') && !t.startsWith('Damage_Override_') && !t.startsWith('Keyword_') && !t.toLowerCase().startsWith('remove_'));
+                    let filteredTags = modSkill.tags.filter(t => !t.startsWith('Search_') && !t.startsWith('Necro_Skill_') && !t.startsWith('Damage_Override_') && !t.startsWith('Keyword_') && !t.toLowerCase().startsWith('remove_') && !t.toLowerCase().startsWith('subpower_'));
                     filteredTags.forEach(t => {
                         let formatted = typeof formatTag === 'function' ? formatTag(t) : t.replace('Skill_Primary_', '').replace('Skill_', '');
-                        if (modSkill.damageType && formatted.toLowerCase() === modSkill.damageType.toLowerCase()) return;
+                        if (formatted.toLowerCase() === 'physical' && modSkill.damageType && modSkill.damageType.toLowerCase() === 'physical') return;
                         badgesHtml += `<span style="background: #222; color: #aaa; padding: 2px 6px; border-radius: 4px; font-size: 0.75em; border: 1px solid #444;">${formatted}</span>`;
                     });
                 }

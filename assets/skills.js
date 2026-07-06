@@ -916,7 +916,8 @@ const skillsDatabase = {
             "Search_CrowdControl",
             "Keyword_Chill",
             "Damage_Override_Cold",
-            "Search_Cold"
+            "Search_Cold",
+            "Skill_Cold"
           ],
           "description": "{c_important}Blight{/c} deals Cold and Frostbite damage. \\n\\nIts defiled area Pulls in enemies and {c_important}{u}Chills{/u}{/c} for {c_number}15%{/c} every second.",
           "maxRank": 1
@@ -1054,7 +1055,8 @@ const skillsDatabase = {
             "Damage_Override_Cold",
             "Search_Damage",
             "Keyword_Chill",
-            "Search_Cold"
+            "Search_Cold",
+            "Skill_Cold"
           ],
           "description": "{c_important}Sever{/c} deals Cold damage, {c_important}{u}Chills{/c}{/u} for {c_number}15%{/c}, and seeks another enemy to attack again.",
           "maxRank": 1
@@ -2805,6 +2807,7 @@ const skillsDatabase = {
         "Skill_Shadow",
         "Search_ResourceEssence",
         "Search_Damage",
+        "Skill_Ultimate",
         "Search_Cooldown",
         "Search_Shadow",
         "Search_ShadowDOT"
