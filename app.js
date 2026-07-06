@@ -8515,6 +8515,40 @@ function renderCalcSkills() {
                                 }
                             }
                             
+                            const isSummon = baseSkill.tags && baseSkill.tags.includes('Skill_Primary_Summoning');
+                            if (isSummon) {
+                                let summonAsNode = compiledStats['Summon Attack Speed'] || compiledStats['Minion Attack Speed'];
+                                if (summonAsNode) {
+                                    asTotal += summonAsNode.final;
+                                    if (summonAsNode.flatSources) {
+                                        let updatedSources = summonAsNode.flatSources.map(src => {
+                                            if (src.name === 'Paragon Board' || src.name === 'Paragon Board (Normal Nodes)') {
+                                                return { ...src, name: 'Paragon Board (Summon Attack Speed)' };
+                                            }
+                                            return src;
+                                        });
+                                        asSources = asSources.concat(updatedSources);
+                                    }
+                                }
+                            }
+                            
+                            if (baseSkill.name === 'Golem') {
+                                let golemAsKey = Object.keys(compiledStats).find(k => k.toLowerCase().includes('golem') && k.toLowerCase().includes('attack speed'));
+                                let golemAsNode = golemAsKey ? compiledStats[golemAsKey] : null;
+                                if (golemAsNode) {
+                                    asTotal += golemAsNode.final;
+                                    if (golemAsNode.flatSources) {
+                                        let updatedSources = golemAsNode.flatSources.map(src => {
+                                            if (src.name === 'Paragon Board' || src.name === 'Paragon Board (Normal Nodes)') {
+                                                return { ...src, name: 'Paragon Board (Golem Attack Speed)' };
+                                            }
+                                            return src;
+                                        });
+                                        asSources = asSources.concat(updatedSources);
+                                    }
+                                }
+                            }
+                            
                             let csSources = [];
                             if (compiledStats['Cast Speed'] && compiledStats['Cast Speed'].flatSources) {
                                 csSources = csSources.concat(compiledStats['Cast Speed'].flatSources);
