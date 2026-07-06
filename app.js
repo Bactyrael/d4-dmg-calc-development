@@ -1218,23 +1218,23 @@ function getMaxSockets(slotName, itemObj) {
 function getSlotBackgroundImage(slotName, itemObj) {
     let imgName = '';
     const defaults = {
-      'Helm': 'default_helm.png',
-      'Chest Armor': 'default_chest_armor.png',
-      'Gloves': 'default_gloves.png',
-      'Pants': 'default_pants.png',
-      'Boots': 'default_boots.png',
-      'Amulet': 'default_amulet.png',
-      'Left Ring': 'default_left_ring.png',
-      'Right Ring': 'default_right_ring.png',
-      'Mainhand': 'default_one_handed_sword.png',
-      'Offhand': 'default_focus.png',
-      'Ranged Weapon': 'default_two_handed_sword.png',
-      'Bludgeoning Weapon': 'default_two_handed_mace.png',
-      'Slicing Weapon': 'default_one_handed_sword.png',
-      'Weapon 1': 'default_one_handed_mace.png',
-      'Weapon 2': 'default_one_handed_sword.png'
+      'Helm': 'unequipped_helm.png',
+      'Chest Armor': 'unequipped_chest_armor.png',
+      'Gloves': 'unequipped_gloves.png',
+      'Pants': 'unequipped_pants.png',
+      'Boots': 'unequipped_boots.png',
+      'Amulet': 'unequipped_amulet.png',
+      'Left Ring': 'unequipped_left_ring.png',
+      'Right Ring': 'unequipped_right_ring.png',
+      'Mainhand': 'unequipped_main_hand.png',
+      'Offhand': 'unequipped_off_hand.png',
+      'Ranged Weapon': 'unequipped_main_hand.png',
+      'Bludgeoning Weapon': 'unequipped_main_hand.png',
+      'Slicing Weapon': 'unequipped_main_hand.png',
+      'Weapon 1': 'unequipped_main_hand.png',
+      'Weapon 2': 'unequipped_main_hand.png'
     };
-    imgName = defaults[slotName] || 'default_one_handed_sword.png';
+    imgName = defaults[slotName] || 'unequipped_main_hand.png';
     
     if (itemObj && itemObj.name && itemObj.name !== 'Empty') {
       let dbSlotName = slotName;
@@ -2144,6 +2144,7 @@ function compileCharacterStats(equipped, autoStats) {
         
         // Base Character Combat Stats
         addStat(stats, 'Critical Strike Chance', 5, 'Base');
+        addStat(stats, 'Movement Speed', 100, 'Base');
         
         // --- Apply Buffs ---
         if (typeof getActiveBuffs === 'function') {
@@ -2565,6 +2566,15 @@ function compileCharacterStats(equipped, autoStats) {
               
               item.sockets.forEach(gemName => {
                   if (!gemName) return;
+                  
+                  // Special logic for Runes
+                  if (gemName === 'Gar') {
+                      addStat(stats, 'Critical Strike Chance', 10, 'Gar (Rune)');
+                  }
+                  if (gemName === 'Ohm') {
+                      addStat(stats, 'Ohm Damage [x]', 7.5, 'Ohm (Rune)');
+                  }
+                  
                   const gemObj = window.D4_DATABASE?.gems?.find(g => g.name === gemName);
                   if (!gemObj) return;
                   
@@ -2912,6 +2922,11 @@ function compileCharacterStats(equipped, autoStats) {
         if (stats['Cast Speed']) {
             stats['Cast Speed'].total = Math.min(stats['Cast Speed'].total, 100);
             stats['Cast Speed'].final = Math.min(stats['Cast Speed'].final, 100);
+        }
+        
+        if (stats['Movement Speed']) {
+            stats['Movement Speed'].total = Math.min(stats['Movement Speed'].total, 200);
+            stats['Movement Speed'].final = Math.min(stats['Movement Speed'].final, 200);
         }
 
         return stats;
