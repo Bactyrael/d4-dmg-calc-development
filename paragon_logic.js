@@ -900,7 +900,7 @@ window.initParagonUI = function() {
         updateSurfaceTransform();
 
         viewport.addEventListener('mousedown', (e) => {
-            if (e.target.closest('.d4-btn') || e.target.closest('.d4-input') || e.target.closest('#paragon-attach-modal')) return;
+            if (e.target.closest('.d4-btn') || e.target.closest('.d4-input') || e.target.closest('#paragon-attach-modal') || e.target.closest('#paragon-glyph-modal')) return;
             isDragging = true;
             lastMouse = { x: e.clientX, y: e.clientY };
             viewport.style.cursor = 'grabbing';
@@ -922,6 +922,7 @@ window.initParagonUI = function() {
         });
 
         viewport.addEventListener('wheel', (e) => {
+            if (e.target.closest('#paragon-glyph-modal')) return;
             e.preventDefault();
             const zoomAmount = 0.1;
             const delta = e.deltaY > 0 ? -1 : 1;
