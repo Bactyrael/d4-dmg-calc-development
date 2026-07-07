@@ -2559,7 +2559,8 @@ function compileCharacterStats(equipped, autoStats) {
                   }
                   let isGA = item.greaterAffixes?.[i] || false;
                   let isCapstone = (item.capstoneBonus?.type === 'affix' && item.capstoneBonus?.idx === i);
-                  const twoHandedMult = checkIs2H(item, slotName) ? 2 : 1;
+                  const isNativeUniqueAffix = (item.rarity === 'unique' || item.rarity === 'mythic') && baseItem && baseItem.affixes && baseItem.affixes.includes(affixName);
+                  const twoHandedMult = (checkIs2H(item, slotName) && !isNativeUniqueAffix) ? 2 : 1;
                   const qMult = (baseQMult + (isGA ? 0.25 : 0) + (isCapstone ? 0.50 : 0)) * twoHandedMult;
                   addStat(stats, cleanStatName(affixName), v * qMult, slotName);
               });
@@ -6299,7 +6300,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         rarity = foundItem.rarity;
 
         // Auto-heal missing inherent affixes for uniques patched into the database
-        if (rarity === 'unique' && foundItem.affixes && foundItem.affixes.length > 0) {
+        if ((rarity === 'unique' || rarity === 'mythic') && foundItem.affixes && foundItem.affixes.length > 0) {
             if (!itemObj.affixes) itemObj.affixes = [];
             let patched = false;
             foundItem.affixes.forEach((aff, idx) => {
@@ -6442,6 +6443,22 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">130</span>`;
           }
+          if (itemObj.name === 'Greaves of the Empty Tomb' && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">1040</span>`;
+          }
+          if (itemObj.name === 'Rakanoth\'s Wake' && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">455</span>`;
+          }
+          if (itemObj.name === 'X\'Fal\'s Corroded Signet' && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">455</span>`;
+          }
+          if (itemObj.name === 'Will of Rathma' && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">975</span>`;
+          }
           let v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
           if (typeof v === 'string') v = v.replace(/,/g, '');
           v = parseFloat(v) || 0;
@@ -6467,6 +6484,11 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
           valIndex++;
           return inputHtml;
         });
+
+        if (itemObj.name === 'Thousand-Eye Reaver' && itemObj.isMythic) {
+            uniqueDescHtml = `Moving grants Ferocity, and Maximum Ferocity is increased by <span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">5</span>. Ferocity also increases Movement Speed by <span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">10%[+]</span> per stack.`;
+        }
+
         uniqueDescHtml = `<div style="margin-top: 8px; color: #d18a45; font-size: 0.9rem; line-height: 1.5;">${uniqueDescHtml}</div>`;
       }
       
@@ -6555,7 +6577,8 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         
         let displayV = v;
         const effQ = getEffectiveQuality(itemObj);
-        const twoHandedMult = checkIs2H(itemObj, slotName) ? 2 : 1;
+        const isNativeUniqueAffix = type === 'affix' && (itemObj.rarity === 'unique' || itemObj.rarity === 'mythic') && foundItem && foundItem.affixes && foundItem.affixes.includes(currentName);
+        const twoHandedMult = (checkIs2H(itemObj, slotName) && !isNativeUniqueAffix) ? 2 : 1;
         const qMult = (1 + (effQ * 0.01) + gaBonus + capstoneBonus) * twoHandedMult;
         if (typeof displayV === 'number' || (typeof displayV === 'string' && !isNaN(parseFloat(displayV)))) {
            // Skip scaling if it is the "Item Quality" transfigure!
@@ -6680,7 +6703,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">✖ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑 Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel'].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma'].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -6857,7 +6880,8 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                  }
                  const capstoneBonus = isCapstone ? 0.50 : 0;
                  
-                 const twoHandedMult = checkIs2H(itemObj, slotName) ? 2 : 1;
+                 const isNativeUniqueAffix = type === 'affix' && (itemObj.rarity === 'unique' || itemObj.rarity === 'mythic') && foundItem && foundItem.affixes && itemObj.affixes && foundItem.affixes.includes(itemObj.affixes[groupIdx]);
+                 const twoHandedMult = (checkIs2H(itemObj, slotName) && !isNativeUniqueAffix) ? 2 : 1;
                  const rowQMult = (qMult + gaBonus + capstoneBonus) * twoHandedMult;
                  
                  if (baseVal !== undefined && !isNaN(baseVal)) {
@@ -7069,7 +7093,8 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
               baseVal = val;
           } else {
               const effQ = getEffectiveQuality(itemObj);
-              const twoHandedMult = checkIs2H(itemObj, slotName) ? 2 : 1;
+              const isNativeUniqueAffix = type === 'affix' && (itemObj.rarity === 'unique' || itemObj.rarity === 'mythic') && foundItem && foundItem.affixes && itemObj.affixes && foundItem.affixes.includes(itemObj.affixes[groupIdx]);
+              const twoHandedMult = (checkIs2H(itemObj, slotName) && !isNativeUniqueAffix) ? 2 : 1;
               const qMult = (1 + (effQ * 0.01) + gaBonus + capstoneBonus) * twoHandedMult;
               baseVal = Number((val / qMult).toFixed(2));
           }

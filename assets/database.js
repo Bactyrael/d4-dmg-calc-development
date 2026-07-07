@@ -8612,7 +8612,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Doombringer",
-      "desc": "Lucky Hit: Up to a 40% chance to deal 1,500 Shadow damage to surrounding enemies and reduce their damage dealt by 25% for 5 seconds."
+      "desc": "Lucky Hit: Up to a 40% chance to deal 1000% Weapon Damage as Shadow damage to surrounding enemies and reduce their damage dealt by 25% for 5 seconds."
     },
     {
       "name": "Drognan's Anguish",
@@ -8792,7 +8792,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Greaves of the Empty Tomb",
-      "desc": "Sever leaves behind Desecrated Ground that deals 7536-30144 Corrupting damage over 2 seconds."
+      "desc": "Sever leaves behind Desecrated Ground that deals [200 - 800]% Weapon Damage as Corrupting damage over 2 seconds."
     },
     {
       "name": "Greenwalker's Oath",
@@ -9124,7 +9124,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Rakanoth's Wake",
-      "desc": "When you cast a Skill with a Cooldown, you explode, dealing 5652-6594 Fire damage."
+      "desc": "When you cast a Skill with a Cooldown, you explode, dealing [300 - 350]% Weapon Damage as Fire damage."
     },
     {
       "name": "Ramaladni's Magnum Opus",
@@ -9512,7 +9512,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Will of Rathma",
-      "desc": "Vulnerable, Weakened, Crowd Controlled, or Corrupted enemies are Afflicted, taking 40% increased damage from you.Curse Skills deal [600 - 750] Shadow Damage when applied to Afflicted enemies."
+      "desc": "Vulnerable, Weakened, Crowd Controlled, or Corrupted enemies are Afflicted, taking 40% increased damage from you.Curse Skills deal [600 - 750]% Weapon Damage as Shadow Damage when applied to Afflicted enemies."
     },
     {
       "name": "Will of Stone",
@@ -9552,7 +9552,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "X'Fal's Corroded Signet",
-      "desc": "Each Damage over Time type you apply explodes every second, dealing [450 - 525] damage over 4 seconds to surrounding enemies."
+      "desc": "Each Damage over Time type you apply explodes every second, dealing [300 - 350]% Weapon Damage as damage over 4 seconds to surrounding enemies."
     },
     {
       "name": "Yen's Blessing",
@@ -11860,6 +11860,12 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[16.0 - 25.0]% Movement Speed",
+          "+[30.9 - 44.4]% Chance for Sever to Deal Double Damage",
+          "+[30.9 - 44.4]% Sever Size",
+          "+[100 - 121] Intelligence"
+        ],
         "armor": 801,
         "type": "Boots"
       },
@@ -12009,6 +12015,10 @@ window.D4_DATABASE = {
           1,
           1,
           1
+        ],
+        "affixes": [
+          "x[10.0]% All Damage Multiplier",
+          "+[100 - 121] Intelligence"
         ],
         "type": "Boots",
         "armor": 401
@@ -12546,6 +12556,9 @@ window.D4_DATABASE = {
           0,
           0,
           0
+        ],
+        "affixes": [
+          "x[16.0 - 28.0]% Vulnerable Damage Multiplier"
         ],
         "resistance": 230,
         "type": "Amulet"
@@ -13306,6 +13319,9 @@ window.D4_DATABASE = {
           1,
           1,
           1
+        ],
+        "affixes": [
+          "x[30.0]% Damage Over Time Multiplier"
         ],
         "resistance": 173,
         "type": "Ring"
@@ -14473,6 +14489,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[16.3 - 21.3]% Critical Strike Chance"
+        ],
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
@@ -14540,6 +14559,9 @@ window.D4_DATABASE = {
           0,
           1,
           1
+        ],
+        "affixes": [
+          "+[8.0 - 10.0]% Attack Speed"
         ],
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
@@ -15863,6 +15885,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[16.3 - 21.3]% Critical Strike Chance"
+        ],
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
@@ -15911,6 +15936,9 @@ window.D4_DATABASE = {
           0,
           1,
           1
+        ],
+        "affixes": [
+          "+[8.0 - 10.0]% Attack Speed"
         ],
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
@@ -16917,6 +16945,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[16.3 - 21.3]% Critical Strike Chance"
+        ],
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
@@ -16965,6 +16996,9 @@ window.D4_DATABASE = {
           0,
           1,
           1
+        ],
+        "affixes": [
+          "+[8.0 - 10.0]% Attack Speed"
         ],
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
@@ -17971,6 +18005,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[16.3 - 21.3]% Critical Strike Chance"
+        ],
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
@@ -18019,6 +18056,9 @@ window.D4_DATABASE = {
           0,
           1,
           1
+        ],
+        "affixes": [
+          "+[8.0 - 10.0]% Attack Speed"
         ],
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
@@ -19025,6 +19065,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[16.3 - 21.3]% Critical Strike Chance"
+        ],
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
@@ -19073,6 +19116,9 @@ window.D4_DATABASE = {
           0,
           1,
           1
+        ],
+        "affixes": [
+          "+[8.0 - 10.0]% Attack Speed"
         ],
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
@@ -20079,6 +20125,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[16.3 - 21.3]% Critical Strike Chance"
+        ],
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
@@ -20127,6 +20176,9 @@ window.D4_DATABASE = {
           0,
           1,
           1
+        ],
+        "affixes": [
+          "+[8.0 - 10.0]% Attack Speed"
         ],
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
@@ -21133,6 +21185,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[16.3 - 21.3]% Critical Strike Chance"
+        ],
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
@@ -21181,6 +21236,9 @@ window.D4_DATABASE = {
           0,
           1,
           1
+        ],
+        "affixes": [
+          "+[8.0 - 10.0]% Attack Speed"
         ],
         "weaponType": "Axe",
         "weaponSpeed": 1.1,
