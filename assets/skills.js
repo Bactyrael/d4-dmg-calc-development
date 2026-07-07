@@ -14,6 +14,8 @@ const skillsDatabase = {
         {
           "name": "Chilled To The Bone",
           "tags": [
+            "Skill_Darkness",
+            "Skill_Shadow",
             "Keyword_Chill",
             "Damage_Override_Cold",
             "Search_CastSpeed",
@@ -241,6 +243,7 @@ const skillsDatabase = {
         {
           "name": "Blood Runs Cold",
           "tags": [
+            "Skill_Blood",
             "Damage_Override_Cold",
             "Keyword_Freeze",
             "Keyword_Blood_Orb",
@@ -1052,6 +1055,8 @@ const skillsDatabase = {
         {
           "name": "Cold Pursuit",
           "tags": [
+            "Skill_Darkness",
+            "Skill_Shadow",
             "Damage_Override_Cold",
             "Search_Damage",
             "Keyword_Chill",
@@ -2847,6 +2852,8 @@ const skillsDatabase = {
         {
           "name": "Frozen Wasteland",
           "tags": [
+            "Skill_Darkness",
+            "Skill_Shadow",
             "Damage_Override_Cold",
             "Search_Damage",
             "Keyword_Chill",

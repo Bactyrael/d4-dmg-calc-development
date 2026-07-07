@@ -6401,8 +6401,26 @@ rarity = foundItem.rarity;
         const vals = itemObj.aspectValues || [];
         let valIndex = 0;
         uniqueDescHtml = uniqueObj.desc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
+          if (itemObj.name === 'Bloodless Scream' && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">325</span>`;
+          }
           let v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
           if (typeof v === 'string') v = v.replace(/,/g, '');
+          v = parseFloat(v) || 0;
+          if (min) {
+              const numMin = parseFloat(min.replace(/,/g, ''));
+              if (v < numMin) v = numMin;
+          }
+          if (max) {
+              const numMax = parseFloat(max.replace(/,/g, ''));
+              if (v > numMax) v = numMax;
+          }
+          // Auto-repair legacy out-of-bounds values
+          vals[valIndex] = v;
+          itemObj.aspectValues = vals;
+          if (box) box.dataset.value = JSON.stringify(itemObj);
+
           let placeholder = min && max ? `${min}-${max}` : 'value';
           let minAttr = min ? ` min="${min}"` : '';
             let maxAttr = max ? ` max="${max}"` : '';
@@ -6625,10 +6643,16 @@ rarity = foundItem.rarity;
         `;
       })()}
       
-      <div class="edit-actions">
+      <div class="edit-actions" style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">✖ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑 Delete</button>
+        ${itemObj.name === 'Bloodless Scream' ? `
+        <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
+            <input type="checkbox" id="bloodless-scream-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
+            <label for="bloodless-scream-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
+        </div>
+        ` : ''}
       </div>
 
       <div class="edit-section">
@@ -6818,6 +6842,16 @@ rarity = foundItem.rarity;
         });
       }
     });
+
+    const bsmToggle = document.getElementById('bloodless-scream-mythic-toggle');
+    if (bsmToggle) {
+        bsmToggle.addEventListener('change', (e) => {
+            itemObj.isMythic = e.target.checked;
+            box.dataset.value = JSON.stringify(itemObj);
+            saveBuild();
+            openItemModal(slotName);
+        });
+    }
 
     document.querySelectorAll('.aspect-val-input').forEach(inp => {
       inp.addEventListener('change', (e) => {
@@ -9149,6 +9183,33 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
+    // Bloodless Scream Aspect Multiplier
+    if (typeof currentBuild !== 'undefined' && currentBuild.equipment) {
+        Object.keys(currentBuild.equipment).forEach(slot => {
+            const item = currentBuild.equipment[slot];
+            if (item && item.name === 'Bloodless Scream') {
+                let tags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
+                const isDarkness = tags.some(t => t.includes('darkness') || t.includes('shadow'));
+                if (isDarkness) {
+                    if (typeof getActiveConditions === 'function') {
+                        const conds = getActiveConditions();
+                        if (conds.cc || conds.monsterType === 'boss') {
+                            let val = 200;
+                            if (item.isMythic) {
+                                val = 325;
+                            } else if (item.aspectValues && item.aspectValues.length > 0) {
+                                val = parseFloat(item.aspectValues[0]) || 200;
+                            }
+                            let mult = 1 + (val / 100);
+                            multiMult *= mult;
+                            multiData.components.push({ name: `Bloodless Scream (vs CC/Boss) [x]`, value: mult });
+                        }
+                    }
+                }
+            }
+        });
+    }
+
     if (skillObj.name === "Blood Golem Active" && typeof getActiveConditions === 'function' && getActiveConditions().golemSingleTarget) {
         multiMult *= 4.0;
         multiData.components.push({ name: 'Single Target (Blood Golem) [x]', value: 4.0 });

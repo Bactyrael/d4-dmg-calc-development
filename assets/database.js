@@ -8488,7 +8488,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Bloodless Scream",
-      "desc": "Your Darkness Skills Chill enemies for up to 100% and deal [100 - 125]%[x] increased damage to Frozen enemies and bosses.Every 800 times you damage enemies with Darkness Skills, all Nearby enemies are Feared for 0.25 seconds before Freezing for 3 more seconds."
+      "desc": "Your Darkness Skills Chill enemies for up to 100% and deal [200 - 250]%[x] increased damage to Frozen enemies and bosses. Every 800 times you damage enemies with Darkness Skills, all Nearby enemies are Feared for 0.25 seconds before Freezing for 3 more seconds."
     },
     {
       "name": "Blue Rose",
@@ -13438,6 +13438,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[2.0 - 4.0] to Darkness Skills"
+        ],
         "weaponType": "Two-Handed Scythe",
         "weaponSpeed": 0.9,
         "damageRange": "3,071 - 4,607",
@@ -15000,6 +15003,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[2.0 - 4.0] to Darkness Skills"
+        ],
         "weaponType": "Two-Handed Scythe",
         "weaponSpeed": 0.9,
         "damageRange": "3,071 - 4,607",
@@ -16035,6 +16041,9 @@ window.D4_DATABASE = {
           0,
           0,
           0
+        ],
+        "affixes": [
+          "+[2.0 - 4.0] to Darkness Skills"
         ],
         "weaponType": "Two-Handed Scythe",
         "weaponSpeed": 0.9,
@@ -17072,6 +17081,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[2.0 - 4.0] to Darkness Skills"
+        ],
         "weaponType": "Two-Handed Scythe",
         "weaponSpeed": 0.9,
         "damageRange": "3,071 - 4,607",
@@ -18107,6 +18119,9 @@ window.D4_DATABASE = {
           0,
           0,
           0
+        ],
+        "affixes": [
+          "+[2.0 - 4.0] to Darkness Skills"
         ],
         "weaponType": "Two-Handed Scythe",
         "weaponSpeed": 0.9,
@@ -19144,6 +19159,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[2.0 - 4.0] to Darkness Skills"
+        ],
         "weaponType": "Two-Handed Scythe",
         "weaponSpeed": 0.9,
         "damageRange": "3,071 - 4,607",
@@ -20179,6 +20197,9 @@ window.D4_DATABASE = {
           0,
           0,
           0
+        ],
+        "affixes": [
+          "+[2.0 - 4.0] to Darkness Skills"
         ],
         "weaponType": "Two-Handed Scythe",
         "weaponSpeed": 0.9,
