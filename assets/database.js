@@ -8890,10 +8890,7 @@ window.D4_DATABASE = {
       "name": "Ifeh's Dire Totem",
       "desc": "Grizzly Rage is now a Werewolf Skill and Shapeshifts you into a Dire Werewolf. Dire Werewolves gain [100 - 125]%[x] Critical Strike Damage, [100 - 125]%[x] bonus Poisoning damage and Spirit Cost Reduction instead of Armor. In addition, kills Heal you for 5% of your Maximum Life."
     },
-    {
-      "name": "Indira's Memory",
-      "desc": "Blood Wave is additionally a Bone Skill. It spawns a Bone Prison at its end point and increases your Blood Skill damage by [20 - 40]%[x] for 8 seconds when Cast.All Bone Spears are additionally Blood Skills. Your Bone Spears consume a Corpse to launch another Bone Spear and drain 10% of your Maximum Life."
-    },
+
     {
       "name": "Infernal Homunculus",
       "desc": "Your Archfiend Skills deal [50 - 70]%[x] increased damage and gain their Lesser Demon Side Upgrades for free with 200% longer durations."
@@ -8920,7 +8917,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Kessime's Legacy",
-      "desc": "Blood Wave now forms a wave on each side of you. Both waves converge at your feet, Pulling In all surrounding enemies and exploding for 4710-5652 damage."
+      "desc": "Blood Wave now forms a wave on each side of you. Both waves converge at your feet, Pulling In all surrounding enemies and exploding for [300 - 360]% Weapon Damage."
     },
     {
       "name": "Khamsin Steppewalkers",
@@ -11442,6 +11439,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[13 - 25]% Critical Strike Damage [x]"
+        ],
         "armor": 2004,
         "type": "Pants"
       },
@@ -11509,22 +11509,7 @@ window.D4_DATABASE = {
         "armor": 2004,
         "type": "Pants"
       },
-      {
-        "name": "Indira's Memory",
-        "rarity": "unique",
-        "classes": [
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-        ],
-        "armor": 2004,
-        "type": "Pants"
-      },
+
       {
         "name": "Kabraxis' Will",
         "rarity": "unique",
@@ -11553,6 +11538,9 @@ window.D4_DATABASE = {
           0,
           0,
           0
+        ],
+        "affixes": [
+          "+[6.0 - 8.0]% Cooldown Reduction"
         ],
         "armor": 2004,
         "type": "Pants"
@@ -11666,6 +11654,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[327 - 392] Resistance to All Elements"
+        ],
         "armor": 2004,
         "type": "Pants"
       },
@@ -11764,6 +11755,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[2 - 3] to Blood Mist"
+        ],
         "armor": 801,
         "type": "Boots"
       },
@@ -11811,6 +11805,9 @@ window.D4_DATABASE = {
           1,
           1,
           1
+        ],
+        "affixes": [
+          "Attacks Reduce Evade's Cooldown by [1.2 - 1.5] Seconds"
         ],
         "armor": 801,
         "type": "Boots"
@@ -11968,6 +11965,10 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[2 - 3] to Bone Prison",
+          "Attacks Reduce Evade's Cooldown by [1.2 - 1.5] Seconds"
+        ],
         "armor": 801,
         "type": "Boots"
       },
@@ -11999,6 +12000,10 @@ window.D4_DATABASE = {
           1,
           1,
           1
+        ],
+        "affixes": [
+          "+[20 - 24]% Movement Speed",
+          "Attacks Reduce Evade's Cooldown by [1.2 - 1.5] Seconds"
         ],
         "armor": 801,
         "type": "Boots"
@@ -12067,6 +12072,10 @@ window.D4_DATABASE = {
           1,
           1,
           1
+        ],
+        "affixes": [
+          "+[20 - 24]% Movement Speed",
+          "Attacks Reduce Evade's Cooldown by [1.2 - 1.5] Seconds"
         ],
         "armor": 801,
         "type": "Boots"

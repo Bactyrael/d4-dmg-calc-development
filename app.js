@@ -2933,10 +2933,35 @@ function compileCharacterStats(equipped, autoStats) {
         const specificResists = ['Physical Resistance', 'Fire Resistance', 'Lightning Resistance', 'Cold Resistance', 'Poison Resistance', 'Shadow Resistance'];
         specificResists.forEach(res => {
             let resTotal = (stats[res] ? stats[res].total : 0) + (stats['Resistance to All Elements'] ? stats['Resistance to All Elements'].final : 0);
-            let finalResist = resTotal; // Assuming no multiplicative all resist for now, or it comes from equipment
             
+            if (window.tassetsSelection === res) {
+                let tassetsVal = 0;
+                let hasTassets = false;
+                const currentEquip = (typeof getEquipmentValues === 'function') ? getEquipmentValues() : {};
+                for (const slot in currentEquip) {
+                    const eq = currentEquip[slot];
+                    if (eq && eq.name === "Tassets of the Dawning Sky") {
+                        hasTassets = true;
+                        tassetsVal = eq.isMythic ? 208.0 : (eq.aspectValues && eq.aspectValues[0] !== undefined ? parseFloat(eq.aspectValues[0]) || 130.0 : 130.0);
+                        break;
+                    }
+                }
+                if (hasTassets && tassetsVal > 0) {
+                    if (!stats[res]) stats[res] = { total: 0, final: 0, flatSources: [], pctSources: [] };
+                    stats[res].pctSources.push({ name: 'Tassets of the Dawning Sky', val: tassetsVal });
+                }
+            }
+
             if (!stats[res]) stats[res] = { total: 0, final: 0, flatSources: [], pctSources: [] };
+            
+            let pctSum = 0;
+            if (stats[res].pctSources) {
+                stats[res].pctSources.forEach(src => pctSum += src.val);
+            }
+            
+            let finalResist = resTotal * (1 + (pctSum / 100));
             stats[res].final = finalResist;
+            stats[res].total = finalResist;
             
             if (stats['Resistance to All Elements']) {
                 stats[res].flatSources.push({ name: 'From All Resistance', val: stats['Resistance to All Elements'].final });
@@ -6459,6 +6484,43 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">975</span>`;
           }
+          if (itemObj.name === 'Blood Wake' && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">78</span>`;
+          }
+          if (itemObj.name === 'Flickerstep' && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">5.2</span>`;
+          }
+          if (itemObj.name === "Path of Trag'Oul" && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">46</span>`;
+          }
+          if (itemObj.name === 'Penitent Greaves' && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">20</span>`;
+          }
+          if (itemObj.name === "Yen's Blessing" && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">78</span>`;
+          }
+          if (itemObj.name === 'Blood Moon Breeches' && itemObj.isMythic) {
+            if (valIndex === 0) {
+              valIndex++;
+              return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">13.0</span>`;
+            } else if (valIndex === 1) {
+              valIndex++;
+              return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">78</span>`;
+            }
+          }
+          if (itemObj.name === "Kessime's Legacy" && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">468</span>`;
+          }
+          if (itemObj.name === "Tassets of the Dawning Sky" && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">208.0</span>`;
+          }
           let v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
           if (typeof v === 'string') v = v.replace(/,/g, '');
           v = parseFloat(v) || 0;
@@ -6703,7 +6765,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">✖ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑 Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma'].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -9610,7 +9672,12 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
 
     title.textContent = statName + " Breakdown";
     let html = '';
-    const statData = compiledStats[statName];
+    
+    let compileStatName = statName;
+    if (statName.endsWith(' Resist')) {
+        compileStatName = statName + 'ance';
+    }
+    const statData = compiledStats[compileStatName];
 
     if (statName.startsWith('EHP ')) {
         const elem = statName.split(' ')[1];
@@ -9667,19 +9734,45 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
         const elem = statName.split(' ')[0];
         const allResData = compiledStats['Resistance to All Elements'];
         
+        let tassetsVal = 0;
+        let hasTassets = false;
+        const currentEquip = (typeof getEquipmentValues === 'function') ? getEquipmentValues() : {};
+        for (const slot in currentEquip) {
+            const eq = currentEquip[slot];
+            if (eq && eq.name === "Tassets of the Dawning Sky") {
+                hasTassets = true;
+                tassetsVal = eq.isMythic ? 208.0 : (eq.aspectValues && eq.aspectValues[0] !== undefined ? parseFloat(eq.aspectValues[0]) || 130.0 : 130.0);
+                break;
+            }
+        }
+        
         html += `<table style="width: 100%; border-collapse: collapse;"><tbody>`;
         if (allResData && elem !== 'Physical') {
-            html += `<tr style="border-bottom: 1px solid #222;"><td style="padding: 8px 0; color: #aaa;">All Resistance</td><td style="padding: 8px 0; text-align: right; color: #fff;">+${allResData.final.toFixed(1)}%</td></tr>`;
+            html += `<tr style="border-bottom: 1px solid #222;"><td style="padding: 8px 0; color: #aaa;">All Resistance</td><td style="padding: 8px 0; text-align: right; color: #fff;">+${Math.floor(allResData.final).toLocaleString()}</td></tr>`;
         }
         if (statData && statData.flatSources) {
             statData.flatSources.forEach(src => {
-                html += `<tr style="border-bottom: 1px solid #222;"><td style="padding: 8px 0; color: #aaa;">${src.name}</td><td style="padding: 8px 0; text-align: right; color: #fff;">+${src.val}%</td></tr>`;
+                html += `<tr style="border-bottom: 1px solid #222;"><td style="padding: 8px 0; color: #aaa;">${src.name}</td><td style="padding: 8px 0; text-align: right; color: #fff;">+${Math.floor(src.val).toLocaleString()}</td></tr>`;
+            });
+        }
+        if (statData && statData.pctSources && statData.pctSources.length > 0) {
+            statData.pctSources.forEach(src => {
+                html += `<tr style="border-bottom: 1px solid #222;"><td style="padding: 8px 0; color: #aaa;">${src.name}</td><td style="padding: 8px 0; text-align: right; color: #fff;">+${src.val.toFixed(1)}%</td></tr>`;
             });
         }
         
-        let total = (allResData && elem !== 'Physical' ? allResData.final : 0) + (statData ? statData.final : 0);
+        let total = statData ? statData.final : (allResData && elem !== 'Physical' ? allResData.final : 0);
         html += `</tbody></table>`;
-        html += `<div style="margin-top: 15px; font-weight: bold; font-size: 1.1rem; color: #d18a45;">Total: <span style="float: right;">${total.toFixed(1)}%</span></div>`;
+        if (hasTassets && elem !== 'Physical') {
+            const isChecked = (window.tassetsSelection === compileStatName) ? 'checked' : '';
+            html += `<div style="margin-top: 15px; padding: 10px; background: rgba(201, 165, 92, 0.1); border: 1px solid #c9a55c; border-radius: 4px;">
+                <label style="display: flex; align-items: center; cursor: pointer; color: #fff;">
+                    <input type="checkbox" id="tassets-checkbox" data-stat="${compileStatName}" style="margin-right: 10px;" ${isChecked}>
+                    Apply Tassets of the Dawning Sky (+${tassetsVal.toFixed(1)}%)
+                </label>
+            </div>`;
+        }
+        html += `<div style="margin-top: 15px; font-weight: bold; font-size: 1.1rem; color: #d18a45;">Total: <span style="float: right;">${Math.floor(total).toLocaleString()}</span></div>`;
     }
     else if (statName === 'Dodge Chance' || statName.includes('Damage Reduction')) {
         html += `<div style="margin-bottom: 15px; font-style: italic; color: #888;">This stat is calculated inversely multiplicatively.</div>`;
@@ -9760,6 +9853,19 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
     }
 
     body.innerHTML = html;
+    
+    const tassetsCb = document.getElementById('tassets-checkbox');
+    if (tassetsCb) {
+        tassetsCb.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                window.tassetsSelection = e.target.dataset.stat;
+            } else {
+                window.tassetsSelection = null;
+            }
+            if (typeof window.calculate === 'function') window.calculate();
+            if (typeof window.showDefensiveBreakdown === 'function') window.showDefensiveBreakdown(statName, window.D4_COMPILED_STATS);
+        });
+    }
     
     if (statName.startsWith('EHP ')) {
         const barrierInput = document.getElementById('modal-barrier-input');
