@@ -13385,6 +13385,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[200 - 400] Maximum Life"
+        ],
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -13889,6 +13892,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[1 - 2] to Golem"
+        ],
         "weaponType": "Mace",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -14099,6 +14105,9 @@ window.D4_DATABASE = {
           0,
           0,
           1
+        ],
+        "affixes": [
+          "x[8.0 - 13.0]% All Damage Multiplier"
         ],
         "weaponType": "Dagger",
         "weaponSpeed": 1.2,
@@ -14969,6 +14978,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[200 - 400] Maximum Life"
+        ],
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -15378,6 +15390,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[1 - 2] to Golem"
+        ],
         "weaponType": "Mace",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -15531,6 +15546,9 @@ window.D4_DATABASE = {
           0,
           0,
           1
+        ],
+        "affixes": [
+          "x[8.0 - 13.0]% All Damage Multiplier"
         ],
         "weaponType": "Dagger",
         "weaponSpeed": 1.2,
@@ -16008,6 +16026,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[200 - 400] Maximum Life"
+        ],
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -16417,6 +16438,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[1 - 2] to Golem"
+        ],
         "weaponType": "Mace",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -16570,6 +16594,9 @@ window.D4_DATABASE = {
           0,
           0,
           1
+        ],
+        "affixes": [
+          "x[8.0 - 13.0]% All Damage Multiplier"
         ],
         "weaponType": "Dagger",
         "weaponSpeed": 1.2,
@@ -17047,6 +17074,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[200 - 400] Maximum Life"
+        ],
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -17456,6 +17486,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[1 - 2] to Golem"
+        ],
         "weaponType": "Mace",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -17609,6 +17642,9 @@ window.D4_DATABASE = {
           0,
           0,
           1
+        ],
+        "affixes": [
+          "x[8.0 - 13.0]% All Damage Multiplier"
         ],
         "weaponType": "Dagger",
         "weaponSpeed": 1.2,
@@ -18086,6 +18122,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[200 - 400] Maximum Life"
+        ],
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -18495,6 +18534,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[1 - 2] to Golem"
+        ],
         "weaponType": "Mace",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -18648,6 +18690,9 @@ window.D4_DATABASE = {
           0,
           0,
           1
+        ],
+        "affixes": [
+          "x[8.0 - 13.0]% All Damage Multiplier"
         ],
         "weaponType": "Dagger",
         "weaponSpeed": 1.2,
@@ -19125,6 +19170,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[200 - 400] Maximum Life"
+        ],
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -19534,6 +19582,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[1 - 2] to Golem"
+        ],
         "weaponType": "Mace",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -19687,6 +19738,9 @@ window.D4_DATABASE = {
           0,
           0,
           1
+        ],
+        "affixes": [
+          "x[8.0 - 13.0]% All Damage Multiplier"
         ],
         "weaponType": "Dagger",
         "weaponSpeed": 1.2,
@@ -20164,6 +20218,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[200 - 400] Maximum Life"
+        ],
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -20573,6 +20630,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[1 - 2] to Golem"
+        ],
         "weaponType": "Mace",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -20726,6 +20786,9 @@ window.D4_DATABASE = {
           0,
           0,
           1
+        ],
+        "affixes": [
+          "x[8.0 - 13.0]% All Damage Multiplier"
         ],
         "weaponType": "Dagger",
         "weaponSpeed": 1.2,

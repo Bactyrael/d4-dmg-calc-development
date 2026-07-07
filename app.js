@@ -6295,7 +6295,23 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     const dbItems = getDbItems(slotName);
     const foundItem = dbItems.find(i => i.name === itemObj.name);
     if (foundItem) {
-rarity = foundItem.rarity;
+        rarity = foundItem.rarity;
+
+        // Auto-heal missing inherent affixes for uniques patched into the database
+        if (rarity === 'unique' && foundItem.affixes && foundItem.affixes.length > 0) {
+            if (!itemObj.affixes) itemObj.affixes = [];
+            let patched = false;
+            foundItem.affixes.forEach((aff, idx) => {
+                if (itemObj.affixes[idx] !== aff) {
+                    itemObj.affixes[idx] = aff;
+                    patched = true;
+                }
+            });
+            if (patched) {
+                box.dataset.value = JSON.stringify(itemObj);
+                if (typeof saveBuild === 'function') saveBuild();
+            }
+        }
     }
     
     // Get current class from DOM
@@ -6404,6 +6420,18 @@ rarity = foundItem.rarity;
           if (itemObj.name === 'Bloodless Scream' && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">325</span>`;
+          }
+          if (itemObj.name === 'Azurewrath' && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">156</span>`;
+          }
+          if (itemObj.name === 'Mace of King Leoric' && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">156</span>`;
+          }
+          if (itemObj.name === 'Rustbitten Dirk' && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">156</span>`;
           }
           let v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
           if (typeof v === 'string') v = v.replace(/,/g, '');
@@ -6540,7 +6568,11 @@ rarity = foundItem.rarity;
                // keep it exactly as it is (it doesn't scale)
                displayV = parseFloat(displayV).toFixed(1).replace(/\.0$/, '');
            } else {
-               displayV = (parseFloat(displayV) * qMult).toFixed(1).replace(/\.0$/, '');
+               let scaled = parseFloat(displayV) * qMult;
+               if (currentName && currentName.includes(' to ') && !currentName.includes('%') && !currentName.toLowerCase().includes('resistance')) {
+                   scaled = Math.round(scaled);
+               }
+               displayV = scaled.toFixed(1).replace(/\.0$/, '');
            }
         }
 
@@ -6552,14 +6584,20 @@ rarity = foundItem.rarity;
                 let minRaw = parseFloat(min.replace(/,/g, '')).toFixed(1).replace(/\.0$/, '');
                 minAttr = ` min="${minRaw}"`;
             } else {
-                let minScaled = (parseFloat(min.replace(/,/g, '')) * qMult).toFixed(1).replace(/\.0$/, '');
-                minAttr = ` min="${minScaled}"`;
+                let minScaled = parseFloat(min.replace(/,/g, '')) * qMult;
+                if (currentName && currentName.includes(' to ') && !currentName.includes('%') && !currentName.toLowerCase().includes('resistance')) {
+                    minScaled = Math.round(minScaled);
+                }
+                minAttr = ` min="${minScaled.toFixed(1).replace(/\.0$/, '')}"`;
             }
         }
         let maxAttr = ''; // Allow overriding max for higher item power tiers
         if (max && !(currentName && currentName.includes('Item Quality'))) {
-            let maxScaled = (parseFloat(max.replace(/,/g, '')) * qMult).toFixed(1).replace(/\.0$/, '');
-            maxAttr = ` max="${maxScaled}"`;
+            let maxScaled = parseFloat(max.replace(/,/g, '')) * qMult;
+            if (currentName && currentName.includes(' to ') && !currentName.includes('%') && !currentName.toLowerCase().includes('resistance')) {
+                maxScaled = Math.round(maxScaled);
+            }
+            maxAttr = ` max="${maxScaled.toFixed(1).replace(/\.0$/, '')}"`;
         }
         
         let stepAttr = (min && min.includes('.')) || (max && max.includes('.')) ? ' step="0.1"' : ' step="1"';
@@ -6647,10 +6685,10 @@ rarity = foundItem.rarity;
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">✖ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑 Delete</button>
-        ${itemObj.name === 'Bloodless Scream' ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk'].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
-            <input type="checkbox" id="bloodless-scream-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
-            <label for="bloodless-scream-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
+            <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
+            <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
         </div>
         ` : ''}
       </div>
@@ -6831,9 +6869,15 @@ rarity = foundItem.rarity;
                      // Check if this input belongs to the 'Item Quality' transfigure
                      // To do this properly we'd need to look up its name, but an easy way is to check the DOM text
                      const rowNameText = inp.closest('.affix-filled-row')?.innerText || '';
-                     let scaled = (baseVal * rowQMult).toFixed(1).replace(/\.0$/, '');
+                     let scaledRaw = baseVal * rowQMult;
+                     let scaled;
                      if (rowNameText.includes('Item Quality')) {
                          scaled = (baseVal).toFixed(1).replace(/\.0$/, ''); // does not scale
+                     } else {
+                         if (rowNameText.includes(' to ') && !rowNameText.includes('%') && !rowNameText.toLowerCase().includes('resistance')) {
+                             scaledRaw = Math.round(scaledRaw);
+                         }
+                         scaled = scaledRaw.toFixed(1).replace(/\.0$/, '');
                      }
                      inp.value = scaled;
                  }
@@ -6843,7 +6887,7 @@ rarity = foundItem.rarity;
       }
     });
 
-    const bsmToggle = document.getElementById('bloodless-scream-mythic-toggle');
+    const bsmToggle = document.getElementById('item-mythic-toggle');
     if (bsmToggle) {
         bsmToggle.addEventListener('change', (e) => {
             itemObj.isMythic = e.target.checked;
@@ -7846,7 +7890,7 @@ function getActiveConditions() {
         cc: document.getElementById('cond-cc')?.checked || false,
         cursed: document.getElementById('cond-cursed')?.checked || false,
         shadowDot: document.getElementById('cond-shadow-dot')?.checked || false,
-        golemSingleTarget: document.getElementById('cond-golem-single')?.checked || false,
+        numMonsters: parseInt(document.getElementById('cond-num-monsters')?.value) || 1,
         monsterType: document.querySelector('input[name="monster_type"]:checked')?.value || 'elite'
     };
 }
@@ -9187,6 +9231,33 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
     if (typeof currentBuild !== 'undefined' && currentBuild.equipment) {
         Object.keys(currentBuild.equipment).forEach(slot => {
             const item = currentBuild.equipment[slot];
+
+            if (item && item.name === 'Rustbitten Dirk' && typeof getActiveConditions === 'function' && getActiveConditions().numMonsters === 1) {
+                let val = 90; // Default minimum roll
+                if (item.isMythic) {
+                    val = 156;
+                } else if (item.aspectValues && item.aspectValues.length > 0) {
+                    val = parseFloat(item.aspectValues[0]) || 90;
+                }
+                let mult = 1 + (val / 100);
+                multiMult *= mult;
+                multiData.components.push({ name: `Rustbitten Dirk (vs Isolated) [x]`, value: mult });
+            }
+
+            if (item && item.name === 'Mace of King Leoric') {
+                if (skillObj.name === 'Golem' || skillObj.baseName === 'Golem' || skillObj.name === 'Bone Golem Thorns') {
+                    let val = 100;
+                    if (item.isMythic) {
+                        val = 156;
+                    } else if (item.aspectValues && item.aspectValues.length > 0) {
+                        val = parseFloat(item.aspectValues[0]) || 100;
+                    }
+                    let mult = 1 + (val / 100);
+                    multiMult *= mult;
+                    multiData.components.push({ name: `Mace of King Leoric [x]`, value: mult });
+                }
+            }
+
             if (item && item.name === 'Bloodless Scream') {
                 let tags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
                 const isDarkness = tags.some(t => t.includes('darkness') || t.includes('shadow'));
@@ -9210,7 +9281,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         });
     }
 
-    if (skillObj.name === "Blood Golem Active" && typeof getActiveConditions === 'function' && getActiveConditions().golemSingleTarget) {
+    if (skillObj.name === "Blood Golem Active" && typeof getActiveConditions === 'function' && getActiveConditions().numMonsters === 1) {
         multiMult *= 4.0;
         multiData.components.push({ name: 'Single Target (Blood Golem) [x]', value: 4.0 });
     }
