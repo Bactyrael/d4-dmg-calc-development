@@ -2792,6 +2792,7 @@ function compileCharacterStats(equipped, autoStats) {
             } else if (currentBuild.bookOfTheDead.golems?.node === '1') {
                 if (currentBuild.bookOfTheDead.golems.spec === 'Blood Golem') {
                     addStat(stats, 'Skill: Golem (Blood Golem Upgrade 1) Damage [x]', 50, 'Book of the Dead (Blood Golem Upgrade 1)');
+                    addStat(stats, 'Skill: Blood Golem Active (Blood Golem Upgrade 1) Damage [x]', 50, 'Book of the Dead (Blood Golem Upgrade 1)');
                 }
             }
         }
@@ -6437,6 +6438,10 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">65</span>`;
           }
+          if (itemObj.name === 'Shard of Verathiel' && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">130</span>`;
+          }
           let v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
           if (typeof v === 'string') v = v.replace(/,/g, '');
           v = parseFloat(v) || 0;
@@ -6675,7 +6680,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">✖ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑 Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir'].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel'].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -7930,7 +7935,7 @@ function calculateSkillAdditiveBucket(skill, isHit) {
 
     // Generic Additives
     addStat('Damage');
-        if (isHit && stats['Damage Per Overpower Stack'] && stats['Damage Per Overpower Stack'].final) {
+        if (stats['Damage Per Overpower Stack'] && stats['Damage Per Overpower Stack'].final) {
         let opStacks = 0;
         if (typeof getActiveBuffs === 'function') {
             let activeBuffs = getActiveBuffs();
@@ -8079,32 +8084,33 @@ function calculateSkillMultiplicativeBucket(skill) {
             let applies = false;
             
             let isSkillSpecific = lowerKey.startsWith('skill:') || lowerKey.startsWith('skill (secondary):');
-            
-            if (!isSkillSpecific && lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('darkness') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical') && !lowerKey.includes('wither') && !lowerKey.includes('frailty') && !lowerKey.includes('hulking monstrosity')) {
-                // Generic damage multiplier (e.g. 20% [x] Damage)
-                applies = true;
-            }
-            
-            if (lowerKey.includes('vulnerable') && conds.vulnerable) applies = true;
-            
-            if (lowerKey.includes('damage to') && (lowerKey.includes('shadow damage over time') || lowerKey.includes('affected by shadow'))) {
-                if (conds.shadowDot) applies = true;
-            }
-            
             let isDotStat = lowerKey.includes('over time') || lowerKey.includes('dot');
             let isShadowStat = lowerKey.includes('shadow') || lowerKey.includes('darkness');
             
-            if (isShadowStat && !isDotStat && !lowerKey.includes('damage to')) {
-                if (tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || dType === 'shadow') applies = true;
+            if (!isSkillSpecific) {
+                if (lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('darkness') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical') && !lowerKey.includes('wither') && !lowerKey.includes('frailty') && !lowerKey.includes('hulking monstrosity')) {
+                    // Generic damage multiplier (e.g. 20% [x] Damage)
+                    applies = true;
+                }
+                
+                if (lowerKey.includes('vulnerable') && conds.vulnerable) applies = true;
+                
+                if (lowerKey.includes('damage to') && (lowerKey.includes('shadow damage over time') || lowerKey.includes('affected by shadow'))) {
+                    if (conds.shadowDot) applies = true;
+                }
+                
+                if (isShadowStat && !isDotStat && !lowerKey.includes('damage to')) {
+                    if (tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || dType === 'shadow') applies = true;
+                }
+                if (/\bbone\b/.test(lowerKey) && (tags.includes('skill_bone') || tags.includes('search_bone') || dType === 'bone')) applies = true;
+                if (/\bblood\b/.test(lowerKey) && tags.includes('skill_blood')) applies = true;
+                if (/\bcore\b/.test(lowerKey) && tags.includes('keyword_core')) applies = true;
+                if (/\bmacabre\b/.test(lowerKey) && (tags.includes('keyword_macabre') || tags.some(t => t.toLowerCase().includes('macabre')) || ['Bone Prison', 'Blood Mist', 'Golem', 'Bone Spirit'].includes(skill.name))) applies = true;
+                if (/\bcold\b/.test(lowerKey) && (tags.includes('skill_cold') || tags.includes('search_cold') || dType === 'cold')) applies = true;
+                if (/\bpoison\b/.test(lowerKey) && (tags.includes('skill_poison') || tags.includes('search_poison') || dType === 'poison')) applies = true;
+                if (/\blightning\b/.test(lowerKey) && (tags.includes('skill_lightning') || tags.includes('search_lightning') || dType === 'lightning')) applies = true;
+                if (/\bphysical\b/.test(lowerKey) && (tags.includes('skill_physical') || tags.includes('search_physical') || dType === 'physical')) applies = true;
             }
-            if (/\bbone\b/.test(lowerKey) && (tags.includes('skill_bone') || tags.includes('search_bone') || dType === 'bone')) applies = true;
-            if (/\bblood\b/.test(lowerKey) && tags.includes('skill_blood')) applies = true;
-            if (/\bcore\b/.test(lowerKey) && tags.includes('keyword_core')) applies = true;
-            if (/\bmacabre\b/.test(lowerKey) && (tags.includes('keyword_macabre') || tags.some(t => t.toLowerCase().includes('macabre')) || ['Bone Prison', 'Blood Mist', 'Golem', 'Bone Spirit'].includes(skill.name))) applies = true;
-            if (/\bcold\b/.test(lowerKey) && (tags.includes('skill_cold') || tags.includes('search_cold') || dType === 'cold')) applies = true;
-            if (/\bpoison\b/.test(lowerKey) && (tags.includes('skill_poison') || tags.includes('search_poison') || dType === 'poison')) applies = true;
-            if (/\blightning\b/.test(lowerKey) && (tags.includes('skill_lightning') || tags.includes('search_lightning') || dType === 'lightning')) applies = true;
-            if (/\bphysical\b/.test(lowerKey) && (tags.includes('skill_physical') || tags.includes('search_physical') || dType === 'physical')) applies = true;
             
             if (lowerKey === 'wither damage [x]') {
                 if (tags.includes('skill_darkness') || tags.includes('search_darkness') || tags.includes('skill_shadow') || tags.includes('search_shadow') || dType === 'shadow') applies = true;
@@ -8852,6 +8858,24 @@ function renderCalcSkills() {
                     card.appendChild(sliderDiv);
                 }
 
+                const hasSanguivor = Object.values(currentBuild.equipment).some(i => i && i.name === 'Sanguivor, Blade of Zir');
+                if ((baseSkill.name === 'Army of the Dead' || baseSkill.baseName === 'Army of the Dead') && hasSanguivor) {
+                    let curVal = window.skillSliderValues['Vampiric Curse Souls'] !== undefined ? window.skillSliderValues['Vampiric Curse Souls'] : 1;
+                    let sliderDiv = document.createElement('div');
+                    sliderDiv.style.marginTop = '15px';
+                    sliderDiv.style.borderTop = '1px solid #334';
+                    sliderDiv.style.paddingTop = '15px';
+                    sliderDiv.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <label style="color: #ccc; font-size: 0.85em;">Vampiric Curse (Stored Souls)</label>
+                            <span id="slider-val-souls" style="color: #c9a55c; font-size: 0.85em; font-weight: bold;">${curVal}</span>
+                        </div>
+                        <input type="range" min="1" max="20" step="1" value="${curVal}" style="width: 100%; accent-color: #c9a55c;" 
+                               oninput="document.getElementById('slider-val-souls').innerText = this.value; window.skillSliderValues['Vampiric Curse Souls'] = parseInt(this.value); window.calculate();">
+                    `;
+                    card.appendChild(sliderDiv);
+                }
+
                 if ((baseSkill.name === 'Bone Spear' || baseSkill.baseName === 'Bone Spear') && window.selectedSkills['Pierce Damage Bonus'] > 0) {
                     let curVal = window.skillSliderValues['Pierce Damage Bonus'] !== undefined ? window.skillSliderValues['Pierce Damage Bonus'] : 0;
                     let sliderDiv = document.createElement('div');
@@ -9256,9 +9280,27 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                     } else if (item.aspectValues && item.aspectValues.length > 0) {
                         val = parseFloat(item.aspectValues[0]) || 40;
                     }
+                    let souls = window.skillSliderValues && window.skillSliderValues['Vampiric Curse Souls'] !== undefined ? window.skillSliderValues['Vampiric Curse Souls'] : 1;
+                    if (souls > 0) {
+                        let mult = 1 + ((val / 100) * souls);
+                        multiMult *= mult;
+                        multiData.components.push({ name: `Sanguivor, Blade of Zir (${souls} Souls) [x]`, value: mult });
+                    }
+                }
+            }
+
+            if (item && item.name === 'Shard of Verathiel') {
+                let tags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
+                if (tags.includes('basic')) {
+                    let val = 70; // Default minimum roll
+                    if (item.isMythic) {
+                        val = 130;
+                    } else if (item.aspectValues && item.aspectValues.length > 0) {
+                        val = parseFloat(item.aspectValues[0]) || 70;
+                    }
                     let mult = 1 + (val / 100);
                     multiMult *= mult;
-                    multiData.components.push({ name: `Sanguivor, Blade of Zir (per soul) [x]`, value: mult });
+                    multiData.components.push({ name: `Shard of Verathiel [x]`, value: mult });
                 }
             }
 

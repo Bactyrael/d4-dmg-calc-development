@@ -9204,7 +9204,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Sanguivor, Blade of Zir",
-      "desc": "Your Summons' damage afflict enemies with Vampiric Curse. Consuming a Corpse also contributes 3 souls to Vampiric Curse, which can now stack up to 20 souls.Only Army of the Dead can now unleash the souls from Vampiric Curse, causing both Army of the Dead and the souls to deal [40 - 50]%[x] increased damage per soul unleashed."
+      "desc": "Your Summons' damage afflict enemies with Vampiric Curse. Consuming a Corpse also contributes 3 souls to Vampiric Curse, which can now stack up to 20 souls. Only Army of the Dead can now unleash the souls from Vampiric Curse, causing both Army of the Dead and the souls to deal [40 - 50]%[x] increased damage per soul unleashed."
     },
     {
       "name": "Sashes of the Wretched",
@@ -14210,6 +14210,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[1 - 2] to Basic Skills"
+        ],
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -15654,6 +15657,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[1 - 2] to Basic Skills"
+        ],
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -16704,6 +16710,9 @@ window.D4_DATABASE = {
           0,
           1,
           1
+        ],
+        "affixes": [
+          "+[1 - 2] to Basic Skills"
         ],
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
@@ -17756,6 +17765,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[1 - 2] to Basic Skills"
+        ],
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -18806,6 +18818,9 @@ window.D4_DATABASE = {
           0,
           1,
           1
+        ],
+        "affixes": [
+          "+[1 - 2] to Basic Skills"
         ],
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
@@ -19858,6 +19873,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[1 - 2] to Basic Skills"
+        ],
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
         "damageRange": "1,256 - 1,884",
@@ -20908,6 +20926,9 @@ window.D4_DATABASE = {
           0,
           1,
           1
+        ],
+        "affixes": [
+          "+[1 - 2] to Basic Skills"
         ],
         "weaponType": "Sword",
         "weaponSpeed": 1.1,
