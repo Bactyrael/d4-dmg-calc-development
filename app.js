@@ -2713,10 +2713,32 @@ function compileCharacterStats(equipped, autoStats) {
                 const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === item.name);
                 if (uniqueObj && uniqueObj.desc) {
                     let v = 0;
-                    if (item.aspectValues && item.aspectValues.length > 0) {
+                    let handled = false;
+                    if (item.name === "Tibault's Will") {
+                        handled = true;
+                        if (document.getElementById('buff-unstoppable')?.checked) {
+                            v = item.isMythic ? 26 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 20);
+                        }
+                    } else if (item.name === "Deathgrip") {
+                        handled = true;
+                        let v1 = item.isMythic ? 65 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 40);
+                        let v2 = item.isMythic ? 65 : (item.aspectValues && item.aspectValues[1] !== undefined ? parseFloat(item.aspectValues[1]) : 40);
+                        stats["Deathgrip_Cleave"] = { final: v1 };
+                        stats["Deathgrip_Command"] = { final: v2 };
+                    } else if (item.name === "Fists of Fate") {
+                        handled = true;
+                        let maxRoll = item.isMythic ? 390 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 250);
+                        v = ((1 + maxRoll) / 2) - 100;
+                    } else if (item.name === "Cruor's Embrace") {
+                        handled = true;
+                        v = item.isMythic ? 130 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 80);
+                    } else if (item.name === 'Blood Moon Breeches') {
+                        handled = true;
+                        v = item.isMythic ? 78 : (item.aspectValues && item.aspectValues[1] !== undefined ? parseFloat(item.aspectValues[1]) : 50);
+                    } else if (item.aspectValues && item.aspectValues.length > 0) {
                         v = parseFloat(item.aspectValues[0]) || 0;
                     }
-                    if (v === 0) {
+                    if (v === 0 && !handled) {
                         let m = uniqueObj.desc.match(/([\d\.]+)(?:\]?)(%?)\[x\]/);
                         if (m) v = parseFloat(m[1]) || 0;
                     }
@@ -6417,7 +6439,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
               let maxAttr = max !== null ? ` max="${max}"` : '';
             let stepAttr = (min !== null && !Number.isInteger(min)) || (max !== null && !Number.isInteger(max)) ? ' step="0.1"' : ' step="1"';
             if (min === null && max === null) stepAttr = ' step="any"';
-            const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #8ab4f8; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
+            const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 85px; min-width: 85px; flex-shrink: 0; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #8ab4f8; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
             valIndex++;
             return inputHtml;
           });
@@ -6441,9 +6463,28 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       let uniqueDescHtml = '';
       const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === itemObj.name);
       if (uniqueObj && uniqueObj.desc) {
+        let udesc = uniqueObj.desc;
+        if (itemObj.name === 'Temerity' && itemObj.isMythic) {
+            udesc = "Effects that Heal you beyond 100% Life grant you Barrier equal to 130% of the overhealed amount that lasts for 8 seconds.<br><br>You may now drink your Healing Potion while at full Life.";
+        }
+        if (itemObj.name === "Tibault's Will" && itemObj.isMythic) {
+            udesc = "You deal 26%[x] increased damage and gain 50 Primary Resource Regeneration while Unstoppable and for 5 seconds after.";
+        }
+        if (itemObj.name === "Cruor's Embrace" && itemObj.isMythic) {
+            udesc = "Casting Blood Surge picks up 4 Blood Orbs around you to expel smaller blood novas, dealing 130% of normal damage.";
+        }
+        if (itemObj.name === "Deathgrip" && itemObj.isMythic) {
+            udesc = "Your maximum number of Skeleton Warriors is increased by 1. Skeleton Warriors cleave with their attacks and deal 65%[x] increased damage.<br><br>Commanding them onto a target increases the damage that target takes from your Skeleton Warriors by 65%[x].";
+        }
+        if (itemObj.name === "Endurant Faith" && itemObj.isMythic) {
+            udesc = "When you would be damaged for at least 30% of your Maximum Life at once, it is instead distributed over the next 4 seconds and reduced by 26%.";
+        }
+        if (itemObj.name === "Fists of Fate" && itemObj.isMythic) {
+            udesc = "Your attacks randomly deal 1% to 390% of their normal damage.";
+        }
         const vals = itemObj.aspectValues || [];
         let valIndex = 0;
-        uniqueDescHtml = uniqueObj.desc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
+        uniqueDescHtml = udesc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
           if (itemObj.name === 'Bloodless Scream' && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">325</span>`;
@@ -6542,7 +6583,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             let maxAttr = max ? ` max="${max}"` : '';
             let stepAttr = (min && min.includes('.')) || (max && max.includes('.')) ? ' step="0.1"' : ' step="1"';
           if (!min && !max) stepAttr = ' step="any"';
-          const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #d18a45; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
+          const inputHtml = `<input type="number" class="aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 85px; min-width: 85px; flex-shrink: 0; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #d18a45; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
           valIndex++;
           return inputHtml;
         });
@@ -6682,7 +6723,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         
         let stepAttr = (min && min.includes('.')) || (max && max.includes('.')) ? ' step="0.1"' : ' step="1"';
         if (!min && !max) stepAttr = ' step="any"';
-        const inputHtml = `<input type="number" class="affix-val-input" data-type="${type}" data-group="${idx}" data-idx="${valIndex}" data-baseval="${v}" value="${displayV}" placeholder="${placeholderText}" title="${placeholderText}"${minAttr}${maxAttr}${stepAttr} style="width: 56px; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #fff; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
+        const inputHtml = `<input type="number" class="affix-val-input" data-type="${type}" data-group="${idx}" data-idx="${valIndex}" data-baseval="${v}" value="${displayV}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 85px; min-width: 85px; flex-shrink: 0; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #fff; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
         valIndex++;
         return inputHtml;
       });
@@ -6763,9 +6804,9 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       
       <div class="edit-actions" style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
-        <button class="edit-btn" id="btn-unequip-item">✖ Unequip</button>
-        <button class="edit-btn" id="btn-delete-item">🗑 Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky"].includes(itemObj.name) ? `
+        <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
+        <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -9414,6 +9455,33 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         });
     }
 
+    if ((skillObj.name === "Blood Surge" || skillObj.baseName === "Blood Surge") && window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Cruor's Embrace"]) {
+        let ce = window.D4_COMPILED_STATS["Cruor's Embrace"];
+        if (ce && ce.final > 0) {
+            let mult = 1 + (ce.final / 100);
+            multiMult *= mult;
+            multiData.components.push({ name: `Cruor's Embrace (Nova Echoes) [x]`, value: mult });
+        }
+    }
+
+    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Tibault's Will"]) {
+        let tw = window.D4_COMPILED_STATS["Tibault's Will"];
+        if (tw && tw.final > 0) {
+            let mult = 1 + (tw.final / 100);
+            multiMult *= mult;
+            multiData.components.push({ name: `Tibault's Will [x]`, value: mult });
+        }
+    }
+
+    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Fists of Fate"]) {
+        let fof = window.D4_COMPILED_STATS["Fists of Fate"];
+        if (fof && fof.final !== 0) {
+            let mult = 1 + (fof.final / 100);
+            multiMult *= mult;
+            multiData.components.push({ name: `Fists of Fate (Average) [x]`, value: mult });
+        }
+    }
+
     if (skillObj.name === "Blood Golem Active" && typeof getActiveConditions === 'function' && getActiveConditions().numMonsters === 1) {
         multiMult *= 4.0;
         multiData.components.push({ name: 'Single Target (Blood Golem) [x]', value: 4.0 });
@@ -9457,6 +9525,21 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
     if ((skillObj.name === "Skeleton Warrior" || skillObj.baseName === "Skeleton Warrior" || skillObj.name === "Defender Thorns") && window.selectedSkills && window.selectedSkills["Damage Bonus (Skeleton Warrior)"] > 0) {
         multiMult *= 1.25;
         multiData.components.push({ name: 'Damage Bonus (Upgrade) [x]', value: 1.25 });
+    }
+
+    if ((skillObj.name === "Skeleton Warrior" || skillObj.baseName === "Skeleton Warrior" || skillObj.name === "Defender Thorns") && window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Deathgrip_Cleave"]) {
+        let v1 = window.D4_COMPILED_STATS["Deathgrip_Cleave"].final;
+        let v2 = window.D4_COMPILED_STATS["Deathgrip_Command"].final;
+        if (v1 > 0) {
+            let mult1 = 1 + (v1 / 100);
+            multiMult *= mult1;
+            multiData.components.push({ name: `Deathgrip (Cleave) [x]`, value: mult1 });
+        }
+        if (v2 > 0) {
+            let mult2 = 1 + (v2 / 100);
+            multiMult *= mult2;
+            multiData.components.push({ name: `Deathgrip (Commanded Target) [x]`, value: mult2 });
+        }
     }
     
     if ((skillObj.name === "Bone Spirit" || skillObj.baseName === "Bone Spirit") && window.selectedSkills && window.selectedSkills["Damage Bonus (Bone Spirit)"] > 0) {

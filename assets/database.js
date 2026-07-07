@@ -10855,6 +10855,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[2 - 3] to Blood Surge"
+        ],
         "armor": 801,
         "type": "Gloves"
       },
@@ -10903,7 +10906,7 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801,
+        "affixes": ["+[1 - 2] to Skeleton Warrior"], "armor": 801,
         "type": "Gloves"
       },
       {
@@ -10919,7 +10922,7 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 801,
+        "affixes": ["+[1831 - 2200] Maximum Life"], "armor": 801,
         "type": "Gloves"
       },
       {
@@ -10951,7 +10954,7 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 801,
+        "affixes": ["+[8.0 - 9.0]% Lucky Hit Chance"], "armor": 801,
         "type": "Gloves"
       },
       {
@@ -11673,6 +11676,10 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[1226 - 1450] Maximum Life",
+          "+[327 - 392] Resistance to All Elements"
+        ],
         "armor": 2004,
         "type": "Pants"
       },
@@ -11688,6 +11695,10 @@ window.D4_DATABASE = {
           1,
           1,
           1
+        ],
+        "affixes": [
+          "+[1226 - 1450] Maximum Life",
+          "+[327 - 392] Resistance to All Elements"
         ],
         "armor": 2004,
         "type": "Pants"
@@ -25600,3 +25611,7 @@ window.D4_DATABASE = {
     }
   ]
 };
+
+
+
+
