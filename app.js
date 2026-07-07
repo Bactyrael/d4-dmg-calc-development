@@ -9291,7 +9291,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
 
             if (item && item.name === 'Shard of Verathiel') {
                 let tags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
-                if (tags.includes('basic')) {
+                if (tags.some(t => t.includes('basic'))) {
                     let val = 70; // Default minimum roll
                     if (item.isMythic) {
                         val = 130;
