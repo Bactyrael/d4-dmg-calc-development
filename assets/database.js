@@ -8728,7 +8728,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Frostburn",
-      "desc": "Lucky Hit: Up to a 50% chance to Freeze enemies for 1 second.You deal [40 - 50]%[x] increased damage to Frozen enemies."
+      "desc": "Lucky Hit: Up to a 50% chance to Freeze enemies for 1 second. You deal [40 - 50]%[x] increased damage to Frozen enemies."
     },
     {
       "name": "Fury of the Wilds",
@@ -10970,7 +10970,7 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 801,
+        "affixes": ["+[8.0 - 9.0]% Lucky Hit Chance"], "armor": 801,
         "type": "Gloves"
       },
       {
@@ -11082,7 +11082,7 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801,
+        "affixes": ["+[15 - 20] Maximum Resource"], "armor": 801,
         "type": "Gloves"
       },
       {
@@ -25611,6 +25611,9 @@ window.D4_DATABASE = {
     }
   ]
 };
+
+
+
 
 
 

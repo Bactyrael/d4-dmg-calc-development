@@ -2725,6 +2725,18 @@ function compileCharacterStats(equipped, autoStats) {
                         let v2 = item.isMythic ? 65 : (item.aspectValues && item.aspectValues[1] !== undefined ? parseFloat(item.aspectValues[1]) : 40);
                         stats["Deathgrip_Cleave"] = { final: v1 };
                         stats["Deathgrip_Command"] = { final: v2 };
+                    } else if (item.name === "Frostburn") {
+                        handled = true;
+                        if (document.getElementById('cond-cc')?.checked) {
+                            v = item.isMythic ? 65 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 40);
+                        }
+                    } else if (item.name === "Gravewalker's Hand") {
+                        handled = true;
+                        let essGen = item.isMythic ? 52 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 30);
+                        let cap = item.isMythic ? 104 : (item.aspectValues && item.aspectValues[1] !== undefined ? parseFloat(item.aspectValues[1]) : 60);
+                        stats["Essence Generation"] = stats["Essence Generation"] || { final: 0 };
+                        stats["Essence Generation"].final += essGen;
+                        stats["Gravewalker_Cap"] = { final: cap };
                     } else if (item.name === "Fists of Fate") {
                         handled = true;
                         let maxRoll = item.isMythic ? 390 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 250);
@@ -6482,6 +6494,12 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (itemObj.name === "Fists of Fate" && itemObj.isMythic) {
             udesc = "Your attacks randomly deal 1% to 390% of their normal damage.";
         }
+        if (itemObj.name === "Frostburn" && itemObj.isMythic) {
+            udesc = "Lucky Hit: Up to a 50% chance to Freeze enemies for 1 second. You deal 65%[x] increased damage to Frozen enemies.";
+        }
+        if (itemObj.name === "Gravewalker's Hand" && itemObj.isMythic) {
+            udesc = "Your Essence Generation is increased by 52%. Your Bone Skills deal 0.5%[x] increased damage for each point of Essence you have when Cast, up to 104%[x].";
+        }
         const vals = itemObj.aspectValues || [];
         let valIndex = 0;
         uniqueDescHtml = udesc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
@@ -6806,7 +6824,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -9479,6 +9497,27 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
             let mult = 1 + (fof.final / 100);
             multiMult *= mult;
             multiData.components.push({ name: `Fists of Fate (Average) [x]`, value: mult });
+        }
+    }
+
+    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Frostburn"]) {
+        let fb = window.D4_COMPILED_STATS["Frostburn"];
+        if (fb && fb.final > 0) {
+            let mult = 1 + (fb.final / 100);
+            multiMult *= mult;
+            multiData.components.push({ name: `Frostburn (vs Frozen/CC) [x]`, value: mult });
+        }
+    }
+
+    if ((skillObj.tags || []).some(t => t.toLowerCase() === 'skill_bone' || t.toLowerCase() === 'search_bone') && window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Gravewalker_Cap"]) {
+        let cap = window.D4_COMPILED_STATS["Gravewalker_Cap"].final;
+        let maxEssence = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Maximum Essence']) ? window.D4_COMPILED_STATS['Maximum Essence'].final : 0;
+        let dmgMult = maxEssence * 0.5;
+        if (dmgMult > cap) dmgMult = cap;
+        if (dmgMult > 0) {
+            let mult = 1 + (dmgMult / 100);
+            multiMult *= mult;
+            multiData.components.push({ name: `Gravewalker's Hand [x]`, value: mult });
         }
     }
 
