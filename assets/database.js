@@ -9204,7 +9204,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Sanguivor, Blade of Zir",
-      "desc": "Your Summons' damage afflict enemies with Vampiric Curse. Consuming a Corpse also contributes 3 souls to Vampiric Curse, which can now stack up to 20 souls.Only Army of the Dead can now unleash the souls from Vampiric Curse, causing both Army of the Dead and the souls to deal [20.0 - 25.0]%[x] increased damage per soul unleashed."
+      "desc": "Your Summons' damage afflict enemies with Vampiric Curse. Consuming a Corpse also contributes 3 souls to Vampiric Curse, which can now stack up to 20 souls.Only Army of the Dead can now unleash the souls from Vampiric Curse, causing both Army of the Dead and the souls to deal [40 - 50]%[x] increased damage per soul unleashed."
     },
     {
       "name": "Sashes of the Wretched",
@@ -14143,6 +14143,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "x[6.0 - 10]% All Damage Multiplier"
+        ],
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
@@ -15584,6 +15587,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "x[6.0 - 10]% All Damage Multiplier"
+        ],
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
@@ -16631,6 +16637,9 @@ window.D4_DATABASE = {
           0,
           0,
           0
+        ],
+        "affixes": [
+          "x[6.0 - 10]% All Damage Multiplier"
         ],
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
@@ -17680,6 +17689,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "x[6.0 - 10]% All Damage Multiplier"
+        ],
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
@@ -18727,6 +18739,9 @@ window.D4_DATABASE = {
           0,
           0,
           0
+        ],
+        "affixes": [
+          "x[6.0 - 10]% All Damage Multiplier"
         ],
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
@@ -19776,6 +19791,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "x[6.0 - 10]% All Damage Multiplier"
+        ],
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,
         "damageRange": "2,764 - 4,146",
@@ -20823,6 +20841,9 @@ window.D4_DATABASE = {
           0,
           0,
           0
+        ],
+        "affixes": [
+          "x[6.0 - 10]% All Damage Multiplier"
         ],
         "weaponType": "Two-Handed Sword",
         "weaponSpeed": 1,

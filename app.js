@@ -6302,7 +6302,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             if (!itemObj.affixes) itemObj.affixes = [];
             let patched = false;
             foundItem.affixes.forEach((aff, idx) => {
-                if (itemObj.affixes[idx] !== aff) {
+                if (!itemObj.affixes[idx]) {
                     itemObj.affixes[idx] = aff;
                     patched = true;
                 }
@@ -6433,6 +6433,10 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">156</span>`;
           }
+          if (itemObj.name === 'Sanguivor, Blade of Zir' && itemObj.isMythic) {
+            valIndex++;
+            return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">65</span>`;
+          }
           let v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
           if (typeof v === 'string') v = v.replace(/,/g, '');
           v = parseFloat(v) || 0;
@@ -6490,21 +6494,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         datalistId = 'affixes-list'; // transfigures share the same affix
       }
       
-      let constraintName = null;
-      if (type === 'affix' && window.UNIQUE_ITEM_CONSTRAINTS && window.UNIQUE_ITEM_CONSTRAINTS[itemObj.name]) {
-          const constraints = window.UNIQUE_ITEM_CONSTRAINTS[itemObj.name];
-          if (constraints.lockedModifiers && constraints.lockedModifiers[idx]) {
-              constraintName = constraints.lockedModifiers[idx];
-          }
-      }
-
-      const isLocked = constraintName !== null;
-      const currentName = constraintName || (arr && arr[idx] ? arr[idx] : '');
-      
-      // Auto-save the locked affix if it wasn't there
-      if (isLocked && arr && arr[idx] !== currentName) {
-          arr[idx] = currentName;
-      }
+      const currentName = arr && arr[idx] ? arr[idx] : '';
       
       const vals = valuesArr[idx] || [];
       
@@ -6618,12 +6608,12 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       return `
         <div class="affix-filled-row" style="display: flex; align-items: center; justify-content: space-between;">
           <div style="font-size: 0.9rem; line-height: 1.5; color: #ccc; flex: 1;">
-            ${isLocked ? `<span style="color: #666; margin-right: 4px; cursor: not-allowed;" title="Locked Affix">🔒</span>` : `<span style="color: #ff5555; margin-right: 4px; cursor: pointer;" class="btn-remove-affix" data-type="${type}" data-idx="${idx}" title="Remove">✖</span>`} ${descHtml}
+            <span style="color: #ff5555; margin-right: 4px; cursor: pointer;" class="btn-remove-affix" data-type="${type}" data-idx="${idx}" title="Remove">✖</span> ${descHtml}
           </div>
           <div style="display: flex; align-items: center;">
             ${gaIcon}
             ${capstoneIcon}
-            ${isLocked ? '' : `<button class="edit-btn btn-change-affix" data-type="${type}" data-idx="${idx}" style="padding: 2px 8px; font-size: 0.75rem;">Change</button>`}
+            <button class="edit-btn btn-change-affix" data-type="${type}" data-idx="${idx}" style="padding: 2px 8px; font-size: 0.75rem;">Change</button>
           </div>
         </div>
       `;
@@ -6685,7 +6675,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">✖ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑 Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk'].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir'].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -9255,6 +9245,20 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                     let mult = 1 + (val / 100);
                     multiMult *= mult;
                     multiData.components.push({ name: `Mace of King Leoric [x]`, value: mult });
+                }
+            }
+
+            if (item && item.name === 'Sanguivor, Blade of Zir') {
+                if (skillObj.name === 'Army of the Dead' || skillObj.baseName === 'Army of the Dead') {
+                    let val = 40; // Default minimum roll
+                    if (item.isMythic) {
+                        val = 65;
+                    } else if (item.aspectValues && item.aspectValues.length > 0) {
+                        val = parseFloat(item.aspectValues[0]) || 40;
+                    }
+                    let mult = 1 + (val / 100);
+                    multiMult *= mult;
+                    multiData.components.push({ name: `Sanguivor, Blade of Zir (per soul) [x]`, value: mult });
                 }
             }
 
