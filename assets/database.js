@@ -10007,6 +10007,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[524 - 630] Poison Resistance"
+        ],
         "armor": 1603,
         "type": "Helm"
       },
@@ -10102,6 +10105,9 @@ window.D4_DATABASE = {
           1,
           1,
           1
+        ],
+        "affixes": [
+          "+[6.0 - 7.0]% Resource Cost Reduction"
         ],
         "armor": 1603,
         "type": "Helm"

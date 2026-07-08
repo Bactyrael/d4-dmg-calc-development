@@ -2773,6 +2773,10 @@ function compileCharacterStats(equipped, autoStats) {
                         stats["Vengeful_Sinew_Mult"] = { final: roll };
                         let expl = item.isMythic ? 59 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 35);
                         stats["Vengeful_Sinew_Explosion"] = { final: expl };
+                    } else if (item.name === "Crown of Lucion") {
+                        handled = true;
+                        let roll = item.isMythic ? 9.8 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 5.0);
+                        stats["Crown_of_Lucion_Mult"] = { final: roll * 6 };
                     } else if (item.name === "Tyrael's Might") {
                         handled = true;
                         addStat(stats, 'Universal Damage Reduction %', 20, "Tyrael's Might");
@@ -6584,6 +6588,9 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (itemObj.name === "Vengeful Sinew" && itemObj.isMythic) {
             udesc = "Bone Spirit explodes an additional time, dealing 59% of normal damage. Bone Spirit deals 52%[x] increased damage.";
         }
+        if (itemObj.name === "Crown of Lucion" && itemObj.isMythic) {
+            udesc = "Each time you use a Skill with a Primary Resource Cost, gain 9.8%[x] increased damage and Resource Cost is increased by 30%[+] for 6 seconds, stacking up to 6 times.";
+        }
         
         const vals = itemObj.aspectValues || [];
         let valIndex = 0;
@@ -6909,7 +6916,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -9465,6 +9472,20 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
 
     let multiData = typeof calculateSkillMultiplicativeBucket === 'function' ? calculateSkillMultiplicativeBucket(skillObj) : { total: 1, components: [] };
     let multiMult = multiData.total;
+    
+    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Crown_of_Lucion_Mult"]) {
+        let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
+        let hasCost = skillObj.resourceCost !== undefined || (skillObj.desc && skillObj.desc.toLowerCase().includes('cost'));
+        let isBasic = lTags.some(t => t.includes('basic'));
+        
+        if (hasCost || isBasic) {
+            let multVal = window.D4_COMPILED_STATS["Crown_of_Lucion_Mult"].final;
+            let mult = 1 + (multVal / 100);
+            multiMult *= mult;
+            multiData.components.push({ name: 'Crown of Lucion', value: mult });
+            multiData.total = multiMult;
+        }
+    }
     
     const isSummon = skillObj.tags && (skillObj.tags.includes('Skill_Primary_Summoning') || skillObj.tags.includes('Summoning') || skillObj.tags.includes('Minion'));
     if (isSummon && typeof window.getActiveLegendaryPowers === 'function') {
