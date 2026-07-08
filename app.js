@@ -6168,6 +6168,21 @@ function populateMainSkillSelect() {
     }
 }
 
+function isSkillForcedActive(name) {
+    if (currentBuild && currentBuild.equipment && Object.values(currentBuild.equipment).some(item => item && item.name === "Ring of the Sacrilegious Soul")) {
+        const sacUpgrades = [
+            "Lucky Hit Chance (Corpse Tendrils)",
+            "Vulnerable (Corpse Tendrils)",
+            "Critical Strike Chance (Corpse Tendrils)",
+            "Essence Generation (Corpse Tendrils)"
+        ];
+        if (sacUpgrades.includes(name)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function renderSkills() { 
   const container = document.getElementById('skills-container'); 
   if (!container) return; 
@@ -6282,14 +6297,28 @@ function renderSkills() {
           const updateDisplay = () => {
               let invested = window.selectedSkills[name] || 0;
               let total = getBaseSkillRankFor(name);
-              rankDisplay.textContent = total + '/' + maxRank;
-              if (total > invested) {
-                  rankDisplay.style.color = '#3498db'; // Highlight blue for gear bonuses
+              
+              let isForcedActive = isSkillForcedActive(name);
+
+              if (isForcedActive) {
+                  rankDisplay.textContent = Math.max(total, 1) + '/' + maxRank;
+                  rankDisplay.style.color = '#2ecc71'; // Green highlight for item power override
+                  slot.classList.add('active');
+                  slot.style.boxShadow = '0 0 8px rgba(46, 204, 113, 0.6)';
+                  slot.style.borderColor = '#2ecc71';
               } else {
-                  rankDisplay.style.color = '';
+                  rankDisplay.textContent = total + '/' + maxRank;
+                  slot.style.boxShadow = '';
+                  slot.style.borderColor = '';
+                  if (total > invested) {
+                      rankDisplay.style.color = '#3498db'; // Highlight blue for gear bonuses
+                  } else {
+                      rankDisplay.style.color = '';
+                  }
+                  if (invested > 0) slot.classList.add('active');
+                  else slot.classList.remove('active');
               }
-              if (invested > 0) slot.classList.add('active');
-              else slot.classList.remove('active');
+              
               updateSkillPointsUI();
           };
           if (!window.skillUIUpdaters) window.skillUIUpdaters = [];
@@ -6298,6 +6327,8 @@ function renderSkills() {
           updateDisplay();
           
           slot.onclick = (e) => {
+              if (isSkillForcedActive(name)) return; // Block point additions if forced active
+              
               // Restriction: must have a point in base skill to add points to its modifiers
               if (!isBase && (!window.selectedSkills[baseSkillName] || window.selectedSkills[baseSkillName] === 0)) {
                   return; // Do nothing if base skill has no points
@@ -6438,14 +6469,22 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   const updateDisplay = () => { 
     let invested = window.selectedSkills[name] || 0;
     let total = getBaseSkillRankFor(name);
-    rankDisplay.textContent = total + ' / ' + maxRank;
-    if (total > invested) {
-        rankDisplay.style.color = '#3498db'; // Highlight blue for gear bonuses
+    let isForced = isSkillForcedActive(name);
+    
+    if (isForced) {
+        rankDisplay.textContent = Math.max(total, 1) + ' / ' + maxRank;
+        rankDisplay.style.color = '#2ecc71';
+        row.classList.add('active');
     } else {
-        rankDisplay.style.color = '';
+        rankDisplay.textContent = total + ' / ' + maxRank;
+        if (total > invested) {
+            rankDisplay.style.color = '#3498db'; // Highlight blue for gear bonuses
+        } else {
+            rankDisplay.style.color = '';
+        }
+        if (invested > 0) row.classList.add('active'); 
+        else row.classList.remove('active'); 
     }
-    if (invested > 0) row.classList.add('active'); 
-    else row.classList.remove('active'); 
   }; 
   if (!window.skillUIUpdaters) window.skillUIUpdaters = [];
   window.skillUIUpdaters.push(updateDisplay); 
@@ -6461,6 +6500,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     } 
   }; 
   plusBtn.onclick = () => { 
+    if (isSkillForcedActive(name)) return; // Block point additions if forced active
     const current = window.selectedSkills[name] || 0; 
     if (parentName && (!window.selectedSkills[parentName] || window.selectedSkills[parentName] === 0)) return; 
     if (current < maxRank) { 
@@ -9564,8 +9604,13 @@ function calculateLuckyHitChance(skillObj) {
         }
     }
     
+    let hasSacrilegiousRing = false;
+    if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
+        hasSacrilegiousRing = Object.values(currentBuild.equipment).some(item => item && item.name === "Ring of the Sacrilegious Soul");
+    }
+
     let baseName = skillObj.baseName || skillObj.name;
-    if (window.selectedSkills && window.selectedSkills[`Lucky Hit Chance (${baseName})`] > 0) {
+    if ((window.selectedSkills && window.selectedSkills[`Lucky Hit Chance (${baseName})`] > 0) || (baseName === 'Corpse Tendrils' && hasSacrilegiousRing)) {
         let upgradeBonus = 0;
         if (baseName === 'Decompose') {
             upgradeBonus = 30;
