@@ -2767,6 +2767,15 @@ function compileCharacterStats(equipped, autoStats) {
                             let dr = item.isMythic ? 39 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 25);
                             addStat(stats, 'Universal Damage Reduction %', dr, 'Soulbrand (Active Barrier)');
                         }
+                    } else if (item.name === "Vengeful Sinew") {
+                        handled = true;
+                        let roll = item.isMythic ? 52 : (item.aspectValues && item.aspectValues[1] !== undefined ? parseFloat(item.aspectValues[1]) : 30);
+                        stats["Vengeful_Sinew_Mult"] = { final: roll };
+                        let expl = item.isMythic ? 59 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 35);
+                        stats["Vengeful_Sinew_Explosion"] = { final: expl };
+                    } else if (item.name === "Tyrael's Might") {
+                        handled = true;
+                        addStat(stats, 'Universal Damage Reduction %', 20, "Tyrael's Might");
                     } else if (item.name === "Razorplate") {
                         handled = true;
                         v = item.isMythic ? 260 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 180);
@@ -6559,7 +6568,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         }
         if (itemObj.name === "The Hand of Naz" && itemObj.isMythic) {
             udesc = "Your maximum number of Skeleton Mages is increased by 1 and they are upgraded to Arch-Mages. Arch-Mages teleport to safety when attacked and their attacks occasionally shatter on impact, dealing 117%[x] increased damage to the enemy and up to 3 additional targets.";
-        }
+}
         if (itemObj.name === "Wyrdskin" && itemObj.isMythic) {
             udesc = "Attacks apply Vulnerable to Distant Enemies, and Weakened to Close Enemies. You deal 52%[x] increased damage to Enemies that are both Vulnerable and Weakened.";
         }
@@ -6572,6 +6581,10 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (itemObj.name === "Razorplate" && itemObj.isMythic) {
             udesc = "Thorns has a 10% chance to deal 260%[x] increased damage.";
         }
+        if (itemObj.name === "Vengeful Sinew" && itemObj.isMythic) {
+            udesc = "Bone Spirit explodes an additional time, dealing 59% of normal damage. Bone Spirit deals 52%[x] increased damage.";
+        }
+        
         const vals = itemObj.aspectValues || [];
         let valIndex = 0;
         uniqueDescHtml = udesc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
@@ -6896,7 +6909,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -8729,6 +8742,10 @@ function renderCalcSkills() {
                                         </div>
                                       </div>
                                     </details>`}
+                                    ${(baseSkill.name === 'Bone Spirit' && window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Vengeful_Sinew_Explosion']) ? `
+                                    <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px; color: #f39c12; margin-left: 20px;">
+                                      <span style="color: #555;">▪</span> Vengeful Sinew (${window.D4_COMPILED_STATS['Vengeful_Sinew_Explosion'].final}%): <span style="color: #fff; font-weight: bold;">${Math.floor(parseFloat(b.minStr.replace(/,/g, '')) * (window.D4_COMPILED_STATS['Vengeful_Sinew_Explosion'].final / 100)).toLocaleString()} - ${Math.floor(parseFloat(b.maxStr.replace(/,/g, '')) * (window.D4_COMPILED_STATS['Vengeful_Sinew_Explosion'].final / 100)).toLocaleString()}</span>
+                                    </div>` : ''}
                                   </details>`;
                               }
                               

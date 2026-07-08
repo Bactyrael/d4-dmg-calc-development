@@ -9461,7 +9461,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Tyrael's Might",
-      "desc": "Gain 20% Damage Reduction. While at full Life, your Skills unleash a divine barrage dealing 5,652 damage."
+      "desc": "Gain 20% Damage Reduction. While at full Life, your Skills unleash a divine barrage dealing [360% Weapon Damage]."
     },
     {
       "name": "Ugly Bastard Helm",
@@ -10757,6 +10757,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[25.0]% Resistance to All Elements"
+        ],
         "armor": 2805,
         "type": "Chest Armor"
       },
@@ -10772,6 +10775,9 @@ window.D4_DATABASE = {
           0,
           0,
           0
+        ],
+        "affixes": [
+          "+[2 - 3] to Bone Spirit"
         ],
         "armor": 2805,
         "type": "Chest Armor"
