@@ -2737,6 +2737,33 @@ function compileCharacterStats(equipped, autoStats) {
                         stats["Essence Generation"] = stats["Essence Generation"] || { final: 0 };
                         stats["Essence Generation"].final += essGen;
                         stats["Gravewalker_Cap"] = { final: cap };
+                    } else if (item.name === "Hangman's Hand") {
+                        handled = true;
+                        let roll = item.isMythic ? 20 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 10);
+                        stats["Hangman_Sever_Mult"] = { final: roll + 100 };
+                    } else if (item.name === "Howl from Below") {
+                        handled = true;
+                        let roll = item.isMythic ? 117 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 70);
+                        stats["Howl_CE_Mult"] = { final: roll };
+                    } else if (item.name === "Paingorger's Gauntlets") {
+                        handled = true;
+                        let roll = item.isMythic ? 163 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 100);
+                        stats["Paingorgers_Mult"] = { final: roll };
+                    } else if (item.name === "The Hand of Naz") {
+                        handled = true;
+                        let roll = item.isMythic ? 117 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 80);
+                        stats["Naz_Mage_Mult"] = { final: roll };
+                    } else if (item.name === "Wyrdskin") {
+                        handled = true;
+                        let roll = item.isMythic ? 52 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 30);
+                        stats["Wyrdskin_Mult"] = { final: roll };
+                    } else if (item.name === "Mutilator Plate") {
+                        handled = true;
+                        let roll = item.isMythic ? 117 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 70);
+                        stats["Mutilator_Lance_Mult"] = { final: roll };
+                    } else if (item.name === "Razorplate") {
+                        handled = true;
+                        v = item.isMythic ? 260 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 180);
                     } else if (item.name === "Fists of Fate") {
                         handled = true;
                         let maxRoll = item.isMythic ? 390 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 250);
@@ -3156,7 +3183,7 @@ function compileCharacterStats(equipped, autoStats) {
       
       const categories = {
           'Core Stats': ['Strength', 'Intelligence', 'Willpower', 'Dexterity', 'All Stats'],
-          'Offensive': ['Damage', 'Critical', 'Vulnerable', 'Attack Speed', 'Cast Speed', 'Overpower'],
+          'Offensive': ['Damage', 'Critical', 'Vulnerable', 'Attack Speed', 'Cast Speed', 'Overpower', 'Thorns'],
           'Defensive': ['Life', 'Armor', 'Resistance', 'Reduction', 'Dodge', 'Block'],
           'Utility': ['Movement', 'Cooldown', 'Resource', 'Essence', 'Healing', 'Lucky Hit', 'Barrier']
       };
@@ -5615,6 +5642,13 @@ function applyActiveModifiers(baseSkillObj) {
             }
         });
     }
+    
+    // Explicit override for Skeleton Warrior to separate Passive and Active damage
+    if (modified.name === "Skeleton Warrior" || modified.baseName === "Skeleton Warrior") {
+        modified.baseDamageScalar = 0.65;
+        modified.baseLabelOverride = 'Damage';
+    }
+    
     if (modified.tags) {
         const lowerTags = modified.tags.map(t => t.toLowerCase());
         let override = null;
@@ -5671,15 +5705,23 @@ function applyActiveModifiers(baseSkillObj) {
         let spec = currentBuild.bookOfTheDead.golems?.spec;
         let node = currentBuild.bookOfTheDead.golems?.node;
         
-        if (spec === "Blood Golem" && node !== null) {
+        modified.baseLabelOverride = 'Passive Damage';
+        
+        if (spec === "Blood Golem") {
             modified.secondaryScalars = modified.secondaryScalars || {};
             modified.secondaryScalars.active = {
                 scalar: 1.40,
                 nameOverride: "Blood Golem Active"
             };
+        } else if (spec === "Iron Golem") {
+            modified.secondaryScalars = modified.secondaryScalars || {};
+            modified.secondaryScalars.active = {
+                scalar: 2.00,
+                nameOverride: "Iron Golem Active"
+            };
         }
         
-        if (node !== null && spec === "Bone Golem" && Number(node) === 2) {
+        if (spec === "Bone Golem" && Number(node) === 2) {
             modified.secondaryScalars = modified.secondaryScalars || {};
             modified.secondaryScalars.bone_spikes = 2.5;
         }
@@ -6500,6 +6542,27 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (itemObj.name === "Gravewalker's Hand" && itemObj.isMythic) {
             udesc = "Your Essence Generation is increased by 52%. Your Bone Skills deal 0.5%[x] increased damage for each point of Essence you have when Cast, up to 104%[x].";
         }
+        if (itemObj.name === "Hangman's Hand" && itemObj.isMythic) {
+            udesc = "Sever deals 20%[x] increased damage and sends out 1 additional specter to attack a nearby enemy.";
+        }
+        if (itemObj.name === "Howl from Below" && itemObj.isMythic) {
+            udesc = "Instead of detonating immediately, Corpse Explosion now Summons a Volatile Skeleton that charges at a random enemy and explodes. Corpse Explosion deals 117%[x] increased damage.";
+        }
+        if (itemObj.name === "Paingorger's Gauntlets" && itemObj.isMythic) {
+            udesc = "Damaging enemies with a Non-Basic Skill cast marks them for 3 seconds. When a Basic Skill first hits a marked enemy, the Basic Skill's damage is echoed to all marked enemies, dealing 163%[x] increased damage.";
+        }
+        if (itemObj.name === "The Hand of Naz" && itemObj.isMythic) {
+            udesc = "Your maximum number of Skeleton Mages is increased by 1 and they are upgraded to Arch-Mages. Arch-Mages teleport to safety when attacked and their attacks occasionally shatter on impact, dealing 117%[x] increased damage to the enemy and up to 3 additional targets.";
+        }
+        if (itemObj.name === "Wyrdskin" && itemObj.isMythic) {
+            udesc = "Attacks apply Vulnerable to Distant Enemies, and Weakened to Close Enemies. You deal 52%[x] increased damage to Enemies that are both Vulnerable and Weakened.";
+        }
+        if (itemObj.name === "Mutilator Plate" && itemObj.isMythic) {
+            udesc = "You are Blood Lanced, and when Blood Lance would deal damage to you, it instead Fortifies you for 7% of your Maximum Life and has a 10% chance to form a Blood Orb. Blood Lance deals 117%[x] increased damage.";
+        }
+        if (itemObj.name === "Razorplate" && itemObj.isMythic) {
+            udesc = "Thorns has a 10% chance to deal 260%[x] increased damage.";
+        }
         const vals = itemObj.aspectValues || [];
         let valIndex = 0;
         uniqueDescHtml = udesc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
@@ -6824,7 +6887,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Razorplate"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -7347,6 +7410,11 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (foundItem) rarity = foundItem.rarity;
         
         const itemObj = { name: itemName, power: 900, quality: 0, rarity: rarity };
+        
+        if ((rarity === 'unique' || rarity === 'mythic') && foundItem && foundItem.affixes) {
+            itemObj.affixes = [...foundItem.affixes];
+        }
+        
         box.dataset.value = JSON.stringify(itemObj);
         
         if (valDiv) {
@@ -8523,7 +8591,7 @@ function renderCalcSkills() {
                 card.style.boxShadow = '0 4px 12px rgba(0,0,0,0.5)';
                 
                 let displayImgName = baseSkill.name;
-                if (baseSkill.modifiers) {
+                if (baseSkill.modifiers && !['Skeleton Warrior', 'Skeleton Mage', 'Golem'].includes(baseSkill.name)) {
                     // Only check the first 3 modifiers (index 0, 1, 2) which are the diamonds/modifiers.
                     // Upgrades (circles) are index 3+ and should not change the skill's identity.
                     let maxIndex = Math.min(2, baseSkill.modifiers.length - 1);
@@ -9521,6 +9589,33 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
 
+    if ((skillObj.name === "Sever" || skillObj.baseName === "Sever") && window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Hangman_Sever_Mult"]) {
+        let hangman = window.D4_COMPILED_STATS["Hangman_Sever_Mult"];
+        if (hangman && hangman.final > 0) {
+            let mult = 1 + (hangman.final / 100);
+            multiMult *= mult;
+            multiData.components.push({ name: `Hangman's Hand [x]`, value: mult });
+        }
+    }
+
+    if ((skillObj.name === "Corpse Explosion" || skillObj.baseName === "Corpse Explosion" || skillObj.name === "Blighted Corpse Explosion") && window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Howl_CE_Mult"]) {
+        let howl = window.D4_COMPILED_STATS["Howl_CE_Mult"];
+        if (howl && howl.final > 0) {
+            let mult = 1 + (howl.final / 100);
+            multiMult *= mult;
+            multiData.components.push({ name: `Howl from Below [x]`, value: mult });
+        }
+    }
+
+    if ((skillObj.tags || []).some(t => t.toLowerCase().includes('basic')) && window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Paingorgers_Mult"]) {
+        let pg = window.D4_COMPILED_STATS["Paingorgers_Mult"];
+        if (pg && pg.final > 0) {
+            let mult = 1 + (pg.final / 100);
+            multiMult *= mult;
+            multiData.components.push({ name: `Paingorger's Gauntlets (Echo) [x]`, value: mult });
+        }
+    }
+
     if (skillObj.name === "Blood Golem Active" && typeof getActiveConditions === 'function' && getActiveConditions().numMonsters === 1) {
         multiMult *= 4.0;
         multiData.components.push({ name: 'Single Target (Blood Golem) [x]', value: 4.0 });
@@ -9559,6 +9654,39 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
     if ((skillObj.name === "Skeleton Mage" || skillObj.baseName === "Skeleton Mage") && window.selectedSkills && window.selectedSkills["Duration Damage Bonus"] > 0) {
         multiMult *= 1.25;
         multiData.components.push({ name: 'Duration Damage Bonus (Upgrade) [x]', value: 1.25 });
+    }
+
+    if ((skillObj.name === "Skeleton Mage" || skillObj.baseName === "Skeleton Mage") && window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Naz_Mage_Mult"]) {
+        let naz = window.D4_COMPILED_STATS["Naz_Mage_Mult"];
+        if (naz && naz.final > 0) {
+            let mult = 1 + (naz.final / 100);
+            multiMult *= mult;
+            multiData.components.push({ name: `The Hand of Naz [x]`, value: mult });
+        }
+    }
+
+    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Wyrdskin_Mult"]) {
+        if (typeof getActiveConditions === 'function' && typeof getActiveBuffs === 'function') {
+            const conds = getActiveConditions();
+            const buffs = getActiveBuffs();
+            if (conds.vulnerable && buffs.weakened) {
+                let wyrdskin = window.D4_COMPILED_STATS["Wyrdskin_Mult"];
+                if (wyrdskin && wyrdskin.final > 0) {
+                    let mult = 1 + (wyrdskin.final / 100);
+                    multiMult *= mult;
+                    multiData.components.push({ name: `Wyrdskin [x]`, value: mult });
+                }
+            }
+        }
+    }
+
+    if ((skillObj.name === "Blood Lance" || skillObj.baseName === "Blood Lance") && window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Mutilator_Lance_Mult"]) {
+        let mutilator = window.D4_COMPILED_STATS["Mutilator_Lance_Mult"];
+        if (mutilator && mutilator.final > 0) {
+            let mult = 1 + (mutilator.final / 100);
+            multiMult *= mult;
+            multiData.components.push({ name: `Mutilator Plate [x]`, value: mult });
+        }
     }
     
     if ((skillObj.name === "Skeleton Warrior" || skillObj.baseName === "Skeleton Warrior" || skillObj.name === "Defender Thorns") && window.selectedSkills && window.selectedSkills["Damage Bonus (Skeleton Warrior)"] > 0) {

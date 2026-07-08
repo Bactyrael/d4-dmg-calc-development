@@ -10607,7 +10607,7 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 2805,
+        "affixes": ["+[2 - 3] to Blood Lance"], "armor": 2805,
         "type": "Chest Armor"
       },
       {
@@ -10655,7 +10655,7 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 2805,
+        "affixes": ["+[1525 - 2097] Thorns", "+[1525 - 2097] Thorns", "+[1525 - 2097] Thorns", "+[1525 - 2097] Thorns"], "armor": 2805,
         "type": "Chest Armor"
       },
       {
@@ -11130,7 +11130,7 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801,
+        "affixes": ["+[2 - 3] to Sever"], "armor": 801,
         "type": "Gloves"
       },
       {
@@ -11162,7 +11162,7 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801,
+        "affixes": ["+[8.0 - 10.0]% Attack Speed"], "armor": 801,
         "type": "Gloves"
       },
       {
@@ -11210,7 +11210,7 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 801,
+        "affixes": ["+[8.0 - 10.0]% Attack Speed"], "armor": 801,
         "type": "Gloves"
       },
       {
@@ -11274,7 +11274,7 @@ window.D4_DATABASE = {
           0,
           0
         ],
-        "armor": 801,
+        "affixes": ["+[1 - 2] to Skeleton Mage"], "armor": 801,
         "type": "Gloves"
       },
       {
@@ -11338,7 +11338,7 @@ window.D4_DATABASE = {
           1,
           1
         ],
-        "armor": 801,
+        "affixes": ["x[16 - 28]% Vulnerable Damage Multiplier"], "armor": 801,
         "type": "Gloves"
       }
     ],
@@ -21386,7 +21386,7 @@ window.D4_DATABASE = {
               "category": "Resource"
             },
             {
-              "name": "+[1221 - 1526] Thorns",
+              "name": "+[1525 - 2097] Thorns",
               "shortName": "Thorns",
               "category": "Offensive"
             },
@@ -21708,7 +21708,7 @@ window.D4_DATABASE = {
               "category": "Defensive"
             },
             {
-              "name": "+[1221 - 1526] Thorns",
+              "name": "+[1525 - 2097] Thorns",
               "shortName": "Thorns",
               "category": "Offensive"
             },
@@ -22080,7 +22080,7 @@ window.D4_DATABASE = {
               "category": "Defensive"
             },
             {
-              "name": "+[1221 - 1526] Thorns",
+              "name": "+[1525 - 2097] Thorns",
               "shortName": "Thorns",
               "category": "Offensive"
             },
@@ -23543,7 +23543,7 @@ window.D4_DATABASE = {
               "category": "Defensive"
             },
             {
-              "name": "+[1221 - 1526] Thorns",
+              "name": "+[1525 - 2097] Thorns",
               "shortName": "Thorns",
               "category": "Offensive"
             },
@@ -25611,6 +25611,16 @@ window.D4_DATABASE = {
     }
   ]
 };
+
+
+
+
+
+
+
+
+
+
 
 
 
