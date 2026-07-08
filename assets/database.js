@@ -9293,7 +9293,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Soulbrand",
-      "desc": "Your Healing Potions grant a Barrier for 100% of your Maximum Life for 1 second.You gain [25 - 30]% Damage Reduction while you have a Barrier and may drink your Healing Potion while at full Life."
+      "desc": "Your Healing Potions grant a Barrier for 100% of your Maximum Life for 1 second. You gain [25 - 30]% Damage Reduction while you have a Barrier and may drink your Healing Potion while at full Life."
     },
     {
       "name": "Spine of Tathamet",
@@ -10687,6 +10687,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[327 - 392] Resistance to All Elements"
+        ],
         "armor": 2805,
         "type": "Chest Armor"
       },
@@ -10718,6 +10721,9 @@ window.D4_DATABASE = {
           1,
           1,
           1
+        ],
+        "affixes": [
+          "+[1,963 - 2,450] Armor"
         ],
         "armor": 2805,
         "type": "Chest Armor"

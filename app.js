@@ -2761,6 +2761,11 @@ function compileCharacterStats(equipped, autoStats) {
                         handled = true;
                         let roll = item.isMythic ? 117 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 70);
                         stats["Mutilator_Lance_Mult"] = { final: roll };
+                    } else if (item.name === "Soulbrand") {
+                        handled = true;
+                        if (item.isMythic && window.activeBarrierAmount > 0) {
+                            addStat(stats, 'Universal Damage Reduction %', 39, 'Soulbrand (Mythic Barrier)');
+                        }
                     } else if (item.name === "Razorplate") {
                         handled = true;
                         v = item.isMythic ? 260 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 180);
@@ -6560,6 +6565,9 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (itemObj.name === "Mutilator Plate" && itemObj.isMythic) {
             udesc = "You are Blood Lanced, and when Blood Lance would deal damage to you, it instead Fortifies you for 7% of your Maximum Life and has a 10% chance to form a Blood Orb. Blood Lance deals 117%[x] increased damage.";
         }
+        if (itemObj.name === "Soulbrand" && itemObj.isMythic) {
+            udesc = "Your Healing Potions grant a Barrier for 100% of your Maximum Life for 1 second. You gain 39% Damage Reduction while you have a Barrier and may drink your Healing Potion while at full Life.";
+        }
         if (itemObj.name === "Razorplate" && itemObj.isMythic) {
             udesc = "Thorns has a 10% chance to deal 260%[x] increased damage.";
         }
@@ -6887,7 +6895,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Razorplate"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
