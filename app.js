@@ -6775,6 +6775,13 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (itemObj.name === "Ring of the Sacrilegious Soul" && itemObj.isMythic) {
             udesc = "Corpse Tendrils gains the effect of every Upgrade and is automatically triggered once every 16 seconds. This timer is reduced by 2.6 seconds each second while there are corpses by you.";
         }
+        if (itemObj.name === "Signet of Pelghain") {
+            if (itemObj.isMythic) {
+                udesc = "Your Freeze effects cause enemies to permanently take 20%[x] increased Cold damage from you for each second they are Frozen.";
+            } else {
+                udesc = "Your Freeze effects cause enemies to permanently take [10 - 15]%[x] increased Cold damage from you for each second they are Frozen.";
+            }
+        }
         if (itemObj.name === "Endurant Faith" && itemObj.isMythic) {
             udesc = "When you would be damaged for at least 30% of your Maximum Life at once, it is instead distributed over the next 4 seconds and reduced by 26%.";
         }
@@ -7160,7 +7167,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol", "Ebonpiercer", "Locran's Talisman", "Red Blessing", "Mother's Embrace", "Omen of Pain", "Pact of Bone", "Ring of the Sacrilegious Soul"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol", "Ebonpiercer", "Locran's Talisman", "Red Blessing", "Mother's Embrace", "Omen of Pain", "Pact of Bone", "Ring of the Sacrilegious Soul", "Signet of Pelghain"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -9827,6 +9834,26 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiMult *= mult;
         multiData.components.push({ name: 'Ring of Starless Skies', value: mult });
         multiData.total = multiMult;
+    }
+    
+    if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
+        let pelgahin = Object.values(currentBuild.equipment).find(item => item && item.name === "Signet of Pelghain");
+        if (pelgahin) {
+            let secondsFrozen = 0;
+            const sfEl = document.getElementById('cond-seconds-frozen');
+            if (sfEl) secondsFrozen = parseInt(sfEl.value) || 0;
+            
+            let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
+            let isCold = (skillObj.damageType && skillObj.damageType.toLowerCase() === 'cold') || lTags.some(t => t.includes('cold'));
+            
+            if (isCold && secondsFrozen > 0) {
+                let multPerSec = pelgahin.isMythic ? 20 : 15; // Max roll assumed for non-mythic
+                let totalPelgahinMult = 1 + ((multPerSec * secondsFrozen) / 100);
+                multiMult *= totalPelgahinMult;
+                multiData.components.push({ name: `Signet of Pelghain (${secondsFrozen}s)`, value: totalPelgahinMult });
+                multiData.total = multiMult;
+            }
+        }
     }
     
     // Blood Surge Nova Multipliers

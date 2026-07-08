@@ -13150,6 +13150,26 @@ window.D4_DATABASE = {
         ]
       },
       {
+        "name": "Signet of Pelghain",
+        "rarity": "unique",
+        "classes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "resistance": 173,
+        "type": "Ring",
+        "affixes": [
+          "+[8.0 - 10.0]% Damage"
+        ],
+        "desc": "Your Freeze effects cause enemies to permanently take [10 - 15]%[x] increased Cold damage from you for each second they are Frozen."
+      },
+      {
         "name": "Saboteur's Signet",
         "rarity": "unique",
         "classes": [
@@ -13209,22 +13229,6 @@ window.D4_DATABASE = {
           0,
           1,
           0
-        ],
-        "resistance": 173,
-        "type": "Ring"
-      },
-      {
-        "name": "Signet of Pelghain",
-        "rarity": "unique",
-        "classes": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1
         ],
         "resistance": 173,
         "type": "Ring"
