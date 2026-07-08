@@ -2794,6 +2794,30 @@ function compileCharacterStats(equipped, autoStats) {
                         handled = true;
                         let roll = item.isMythic ? 32.5 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 15.0);
                         stats["The_Undercrown_Summon_Mult"] = { final: roll };
+                    } else if (item.name === "Banished Lord's Talisman") {
+                        handled = true;
+                        if (typeof getActiveBuffs === 'function') {
+                            const opStacks = getActiveBuffs().overpower || 0;
+                            if (opStacks > 0) {
+                                let perStack = item.isMythic ? 13.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 8.0);
+                                stats["Banished Lord's Talisman Critical Damage [x]"] = { final: perStack * opStacks, isMultiplicative: true };
+                            }
+                        }
+                    } else if (item.name === "Blood-Mad Idol") {
+                        handled = true;
+                        let roll = item.isMythic ? 195.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 120.0);
+                        stats["Idol Burning [x] Damage"] = { final: roll, isMultiplicative: true };
+                        stats["Idol Berserking [x] Damage"] = { final: 25.0, isMultiplicative: true };
+                        addStat(stats, 'Movement Speed', 15.0, 'Blood-Mad Idol Berserking');
+                    } else if (item.name === "Will of Rathma") {
+                        handled = true;
+                        if (typeof getActiveConditions === 'function' && typeof getActiveBuffs === 'function') {
+                            const conds = getActiveConditions();
+                            const buffs = getActiveBuffs();
+                            if (conds.vulnerable || buffs.weakened || conds.cc || conds.cursed || conds.shadowDot) {
+                                stats["Will of Rathma [x] Damage"] = { final: 40.0, isMultiplicative: true };
+                            }
+                        }
                     } else if (item.name === "Tyrael's Might") {
                         handled = true;
                         addStat(stats, 'Universal Damage Reduction %', 20, "Tyrael's Might");
@@ -6620,6 +6644,12 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (itemObj.name === "The Undercrown" && itemObj.isMythic) {
             udesc = "Your maximum number of Skeleton Warriors and Skeleton Mages is increased by 4 and your Summon damage is increased by 32.5%[x].\n\nCommanding Skeleton Warriors also causes Skeleton Mages to focus the same target for 5 seconds.";
         }
+        if (itemObj.name === "Banished Lord's Talisman" && itemObj.isMythic) {
+            udesc = "After you spend 275 of your Primary Resource, gain 4 stacks of Overpower. Your Critical Strikes deal 13.0%[x] increased damage per stack of Overpower.";
+        }
+        if (itemObj.name === "Blood-Mad Idol" && itemObj.isMythic) {
+            udesc = "You are always Berserking but take 200%[x] increased damage as Burning over 8 seconds. While Burning, Berserking grants an additional 195%[x] increased damage.";
+        }
         
         const vals = itemObj.aspectValues || [];
         let valIndex = 0;
@@ -6945,7 +6975,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>

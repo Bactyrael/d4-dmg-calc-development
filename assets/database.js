@@ -8452,7 +8452,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Banished Lord's Talisman",
-      "desc": "After you spend 275 of your Primary Resource, gain 4 stacks of Overpower. Your Critical Strikes deal [5.0 - 7.0]%[x] increased damage per stack of Overpower."
+      "desc": "After you spend 275 of your Primary Resource, gain 4 stacks of Overpower. Your Critical Strikes deal [8.0 - 10.0]%[x] increased damage per stack of Overpower."
     },
     {
       "name": "Bastion of Sir Matthias",
@@ -8484,7 +8484,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Blood-Mad Idol",
-      "desc": "You are always Berserking but take 200%[x] increased damage as Burning over 8 seconds. While Burning, Berserking grants an additional [80 - 100]%[x] increased damage."
+      "desc": "You are always Berserking but take 200%[x] increased damage as Burning over 8 seconds. While Burning, Berserking grants an additional [120 - 150]%[x] increased damage."
     },
     {
       "name": "Bloodless Scream",
@@ -9509,7 +9509,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Will of Rathma",
-      "desc": "Vulnerable, Weakened, Crowd Controlled, or Corrupted enemies are Afflicted, taking 40% increased damage from you.Curse Skills deal [600 - 750]% Weapon Damage as Shadow Damage when applied to Afflicted enemies."
+      "desc": "Vulnerable, Weakened, Crowd Controlled, or Corrupted enemies are Afflicted, taking 40% increased damage from you. Curse Skills deal [600 - 750]% Weapon Damage as Shadow Damage when applied to Afflicted enemies."
     },
     {
       "name": "Will of Stone",
@@ -12139,6 +12139,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "50%[x] Critical Strike Damage Multiplier"
+        ],
         "resistance": 230,
         "type": "Amulet"
       },
@@ -12170,6 +12173,9 @@ window.D4_DATABASE = {
           1,
           1,
           1
+        ],
+        "affixes": [
+          "+[8.0 - 10.0]% Attack Speed"
         ],
         "resistance": 230,
         "type": "Amulet"
