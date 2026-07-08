@@ -10176,6 +10176,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[981 - 1,225] Armor"
+        ],
         "armor": 1603,
         "type": "Helm"
       },
@@ -10208,6 +10211,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[1226 - 1450] Maximum Life"
+        ],
         "armor": 1603,
         "type": "Helm"
       },
@@ -10239,6 +10245,9 @@ window.D4_DATABASE = {
           1,
           1,
           1
+        ],
+        "affixes": [
+          "+[20 - 24]% Movement Speed"
         ],
         "armor": 1603,
         "type": "Helm"

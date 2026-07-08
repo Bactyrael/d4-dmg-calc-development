@@ -2783,6 +2783,13 @@ function compileCharacterStats(equipped, autoStats) {
                         let rollCrit = item.isMythic ? 91 : (item.aspectValues && item.aspectValues[1] !== undefined ? parseFloat(item.aspectValues[1]) : 60.0);
                         stats["Deathless_Visage_Echo"] = { final: rollEcho };
                         stats["Deathless_Visage_Crit"] = { final: rollCrit };
+                    } else if (item.name === "Godslayer Crown") {
+                        handled = true;
+                        let roll = item.isMythic ? 13.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 10.0);
+                        stats["Godslayer Crown [x] Damage"] = { final: roll, isMultiplicative: true };
+                    } else if (item.name === "Heir of Perdition") {
+                        handled = true;
+                        stats["Heir of Perdition [x] Damage"] = { final: 15.0, isMultiplicative: true };
                     } else if (item.name === "Tyrael's Might") {
                         handled = true;
                         addStat(stats, 'Universal Damage Reduction %', 20, "Tyrael's Might");
@@ -6600,6 +6607,12 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (itemObj.name === "Deathless Visage" && itemObj.isMythic) {
             udesc = "Critical Strikes with Bone Spear form an echo that bursts, dealing 65%[x] of its normal damage. Bone Spear deals 91%[x] increased Critical Strike Damage.";
         }
+        if (itemObj.name === "Godslayer Crown" && itemObj.isMythic) {
+            udesc = "When you attempt to Incapacitate an enemy, you mark them and all surrounding enemies, pulling them in and dealing 13.0%[x] increased damage to them.";
+        }
+        if (itemObj.name === "Heir of Perdition" && itemObj.isMythic) {
+            udesc = "Succumb to hatred and earn Mother's Favor. Slaughtering enemies briefly steals 15%[+] Critical Strike Chance from surrounding allies with Mother's Favor. Mother's Favor always grants you 15%[x] increased damage.";
+        }
         
         const vals = itemObj.aspectValues || [];
         let valIndex = 0;
@@ -6925,7 +6938,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
