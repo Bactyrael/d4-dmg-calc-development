@@ -2777,6 +2777,9 @@ function compileCharacterStats(equipped, autoStats) {
                         handled = true;
                         let roll = item.isMythic ? 9.8 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 5.0);
                         stats["Crown_of_Lucion_Mult"] = { final: roll * 6 };
+                    } else if (item.name === "Ring of Starless Skies") {
+                        handled = true;
+                        stats["Ring_of_Starless_Skies_Mult"] = { final: 50 };
                     } else if (item.name === "Deathless Visage") {
                         handled = true;
                         let rollEcho = item.isMythic ? 65 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 40.0);
@@ -5661,9 +5664,28 @@ function applyActiveModifiers(baseSkillObj) {
     }
     
     if (baseSkillObj.modifiers) {
+        let hasSacrilegiousRing = false;
+        if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
+            hasSacrilegiousRing = Object.values(currentBuild.equipment).some(item => item && item.name === "Ring of the Sacrilegious Soul");
+        }
+
         baseSkillObj.modifiers.forEach(mod => {
             // Check if the user has put points into this modifier
-            if (window.selectedSkills && window.selectedSkills[mod.name] > 0) {
+            let isModActive = window.selectedSkills && window.selectedSkills[mod.name] > 0;
+            
+            if (!isModActive && baseSkillObj.name === "Corpse Tendrils" && hasSacrilegiousRing) {
+                const sacUpgrades = [
+                    "Lucky Hit Chance (Corpse Tendrils)",
+                    "Vulnerable (Corpse Tendrils)",
+                    "Critical Strike Chance (Corpse Tendrils)",
+                    "Essence Generation (Corpse Tendrils)"
+                ];
+                if (sacUpgrades.includes(mod.name)) {
+                    isModActive = true;
+                }
+            }
+
+            if (isModActive) {
                 
                 // Append new tags (e.g., Hematolagnia adding Skill_Primary_Core)
                 if (mod.tags) {
@@ -6710,6 +6732,9 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (itemObj.name === "Pact of Bone" && itemObj.isMythic) {
             udesc = "Your Minions gain 46%[+] Attack Speed and Critical Strike Chance. When one of your Minions die, your other Minions enrage, dealing 46%[x] increased damage for 3 seconds.";
         }
+        if (itemObj.name === "Ring of the Sacrilegious Soul" && itemObj.isMythic) {
+            udesc = "Corpse Tendrils gains the effect of every Upgrade and is automatically triggered once every 16 seconds. This timer is reduced by 2.6 seconds each second while there are corpses by you.";
+        }
         if (itemObj.name === "Endurant Faith" && itemObj.isMythic) {
             udesc = "When you would be damaged for at least 30% of your Maximum Life at once, it is instead distributed over the next 4 seconds and reduced by 26%.";
         }
@@ -7095,7 +7120,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol", "Ebonpiercer", "Locran's Talisman", "Red Blessing", "Mother's Embrace", "Omen of Pain", "Pact of Bone"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol", "Ebonpiercer", "Locran's Talisman", "Red Blessing", "Mother's Embrace", "Omen of Pain", "Pact of Bone", "Ring of the Sacrilegious Soul"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -9459,7 +9484,12 @@ function calculateSkillCritChance(skillObj) {
             }
         }
         
-        if (window.selectedSkills['Critical Strike Chance (Corpse Tendrils)'] > 0) {
+        let hasSacrilegiousRing = false;
+        if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
+            hasSacrilegiousRing = Object.values(currentBuild.equipment).some(item => item && item.name === "Ring of the Sacrilegious Soul");
+        }
+
+        if (window.selectedSkills['Critical Strike Chance (Corpse Tendrils)'] > 0 || hasSacrilegiousRing) {
             totalCrit += 5.0;
             components.push({ name: 'Corpse Tendrils (Upgrade) [+]', value: 5.0 });
         }
@@ -9744,6 +9774,14 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
             multiData.components.push({ name: 'Crown of Lucion', value: mult });
             multiData.total = multiMult;
         }
+    }
+    
+    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Ring_of_Starless_Skies_Mult"]) {
+        let multVal = window.D4_COMPILED_STATS["Ring_of_Starless_Skies_Mult"].final;
+        let mult = 1 + (multVal / 100);
+        multiMult *= mult;
+        multiData.components.push({ name: 'Ring of Starless Skies', value: mult });
+        multiData.total = multiMult;
     }
     
     // Blood Surge Nova Multipliers

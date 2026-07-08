@@ -13061,7 +13061,10 @@ window.D4_DATABASE = {
           1
         ],
         "resistance": 173,
-        "type": "Ring"
+        "type": "Ring",
+        "affixes": [
+          "+[8.0 - 10.0]% Attack Speed"
+        ]
       },
       {
         "name": "Ring of Writhing Moon",
@@ -13141,7 +13144,10 @@ window.D4_DATABASE = {
           0
         ],
         "resistance": 173,
-        "type": "Ring"
+        "type": "Ring",
+        "affixes": [
+          "+[2 - 3] to Corpse Tendrils"
+        ]
       },
       {
         "name": "Saboteur's Signet",
