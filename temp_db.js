@@ -1,4 +1,4 @@
-window.D4_DATABASE = {
+module.exports = {
   "aspects": [
     {
       "name": "Accelerating Aspect",
@@ -8591,6 +8591,10 @@ window.D4_DATABASE = {
       "desc": "You can now overexert yourself while Casting Flurry, spending 3% life when you don't have enough Energy. Spending life to Cast Flurry increases its damage by [45.0 - 60.0]%[x] and your Attack Speed by 50% for 5 seconds."
     },
     {
+      "name": "Deathspeaker's Pendant",
+      "desc": "Blood Surge casts a mini nova on your Minions, dealing [48.6 - 102.6]% Weapon Damage. Damage is increased by 10% per target drained by the initial cast, up to 50%."
+    },
+    {
       "name": "Desperate March",
       "desc": "Evading leaves behind Caltrops. Caltrops gain 50%[+] increased Size and deal [75 - 90]%[x] increased damage."
     },
@@ -12188,6 +12192,28 @@ window.D4_DATABASE = {
           0,
           0,
           0
+        ],
+        "resistance": 230,
+        "type": "Amulet"
+      },
+      {
+        "name": "Deathspeaker's Pendant",
+        "rarity": "unique",
+        "classes": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "affixes": [
+          "+[80 - 94] Intelligence",
+          "+[8.0 - 10.0]% Attack Speed",
+          "+[3 - 5] to Blood Surge",
+          "+1 Essence per Enemy Drained by Blood Surge"
         ],
         "resistance": 230,
         "type": "Amulet"

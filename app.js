@@ -5709,6 +5709,30 @@ function applyActiveModifiers(baseSkillObj) {
         modified.baseLabelOverride = 'Damage';
     }
     
+    if (modified.name === "Blood Surge" || modified.baseName === "Blood Surge") {
+        modified.baseDamageScalar = 0.20;
+        modified.baseLabelOverride = 'Draw Damage';
+        modified.secondaryScalars = modified.secondaryScalars || {};
+        
+        let novaScalar = 1.00;
+        let nameOverride = "Nova";
+        
+        if (window.selectedSkills && window.selectedSkills['Pins and Needles'] > 0) {
+            novaScalar = 0.60;
+            nameOverride = "Bone Shards (Nova)";
+            if (modified.secondaryScalars.nova) delete modified.secondaryScalars.nova;
+        }
+        
+        modified.secondaryScalars.nova = {
+            scalar: novaScalar,
+            nameOverride: nameOverride
+        };
+    }
+    
+    if (modified.name === "Bloodbath") {
+        modified.baseDamageScalar = 0;
+    }
+    
     if (modified.tags) {
         const lowerTags = modified.tags.map(t => t.toLowerCase());
         let override = null;
@@ -9550,6 +9574,44 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
+    // Blood Surge Nova Multipliers
+    if (skillObj.baseName === "Blood Surge" && skillObj.isSecondary && skillObj.name && skillObj.name.includes("Nova")) {
+        // Bloodbath Echo
+        if (window.selectedSkills && window.selectedSkills['Bloodbath'] > 0) {
+            multiMult *= 2.0;
+            multiData.components.push({ name: `Bloodbath (Nova Echo) [x]`, value: 2.0 });
+            multiData.total = multiMult;
+        }
+        
+        // Draw Targets Multiplier (Does not apply to Pins and Needles variant)
+        if (!skillObj.name.includes("Bone Shards")) {
+            if (typeof getActiveConditions === 'function') {
+                const numMonsters = getActiveConditions().numMonsters || 1;
+                const drawMult = Math.min(numMonsters * 0.10, 0.50);
+                if (drawMult > 0) {
+                    let mult = 1 + drawMult;
+                    multiMult *= mult;
+                    multiData.components.push({ name: `Blood Surge (Draw Targets) [x]`, value: mult });
+                    multiData.total = multiMult;
+                }
+            }
+        }
+    }
+    
+    // You And What Army? Multiplier
+    if (skillObj.name && skillObj.name.includes("You And What Army?") && skillObj.isSecondary) {
+        if (typeof getActiveConditions === 'function') {
+            const numMonsters = getActiveConditions().numMonsters || 1;
+            const drawMult = Math.min(numMonsters * 0.10, 0.50);
+            if (drawMult > 0) {
+                let mult = 1 + drawMult;
+                multiMult *= mult;
+                multiData.components.push({ name: `You And What Army? (Draw Targets) [x]`, value: mult });
+                multiData.total = multiMult;
+            }
+        }
+    }
+    
     const isSummon = skillObj.tags && (skillObj.tags.some(t => t.toLowerCase().includes('summon')) || skillObj.tags.includes('Minion') || skillObj.name === 'Army of the Dead' || skillObj.baseName === 'Army of the Dead');
     
     if (isSummon && window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["The_Undercrown_Summon_Mult"]) {
@@ -9762,10 +9824,6 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
-    if (skillObj.name === "You And What Army?") {
-        multiMult *= 1.5;
-        multiData.components.push({ name: 'You And What Army? (Upgrade) [x]', value: 1.5 });
-    }
     
     if ((skillObj.name === "Skeleton Mage" || skillObj.baseName === "Skeleton Mage") && window.selectedSkills && window.selectedSkills["Crowd Control Damage Bonus (Skeleton Mage)"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().cc) {
         multiMult *= 1.30;
