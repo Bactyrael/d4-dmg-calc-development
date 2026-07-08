@@ -8624,7 +8624,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Ebonpiercer",
-      "desc": "Blight also shoots 4 smaller piercing projectiles, each dealing [27 - 33]% of Blight's defiled area damage."
+      "desc": "Blight also shoots 4 smaller piercing projectiles, each dealing [40.0 - 50.0]% of Blight's defiled area damage."
     },
     {
       "name": "Echo of Kwatli",
@@ -8941,7 +8941,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Locran's Talisman",
-      "desc": "Critical Strikes deal [80.0 - 100.0]%[x] increased damage but your Critical Strike Chance is reduced by 50%[+]."
+      "desc": "Critical Strikes deal [120.0 - 150.0]%[x] increased damage but your Critical Strike Chance is reduced by 50%[+]."
     },
     {
       "name": "Loyalty's Mantle",
@@ -8981,7 +8981,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Melted Heart of Selig",
-      "desc": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced.Your Primary Resource is doubled but Maximum Life is reduced by 75%."
+      "desc": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced. Your Primary Resource is doubled but Maximum Life is reduced by 75%."
     },
     {
       "name": "Might of Qual-Kehk",
@@ -9041,7 +9041,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Omen of Pain",
-      "desc": "A dark aura surrounds you, inflicting Decrepify and Iron Maiden on enemies around you and increasing your damage to Close enemies by 15.0%[x].\n\nCurses inflicted this way spread to surrounding targets every second."
+      "desc": "A dark aura surrounds you, inflicting Decrepify and Iron Maiden on enemies around you and increasing your damage to Close enemies by [10.0 - 15.0]%[x]. Curses inflicted this way spread to surrounding targets every second."
     },
     {
       "name": "Onyx Soul",
@@ -9065,7 +9065,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Pact of Bone",
-      "desc": "Your Minions gain [30 - 35]%[+] Attack Speed and Critical Strike Chance.When one of your Minions die, your other Minions enrage, dealing [30 - 35]%[x] increased damage for 3 seconds."
+      "desc": "Your Minions gain [30 - 35]%[+] Attack Speed and Critical Strike Chance. When one of your Minions die, your other Minions enrage, dealing [30 - 35]%[x] increased damage for 3 seconds."
     },
     {
       "name": "Paingorger's Gauntlets",
@@ -9129,7 +9129,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Red Blessing",
-      "desc": "While Healthy, gain 4 Maximum Overpower. Blood Orbs grant 2 stacks of Overpower. You deal [5.33 - 6.67]%[x] increased damage per stack of Overpower."
+      "desc": "While Healthy, gain 2 Maximum Overpower. Blood Orbs grant 2 stacks of Overpower. You deal [8.0 - 10.0]%[x] increased damage per stack of Overpower."
     },
     {
       "name": "Red Sermon",
@@ -12221,6 +12221,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[2 - 3] to Blight"
+        ],
         "resistance": 230,
         "type": "Amulet"
       },
@@ -12339,6 +12342,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[26.0 - 50.0]% Critical Strike Damage"
+        ],
         "type": "Amulet",
         "resistance": 230,
         "armor": 0
@@ -12371,6 +12377,9 @@ window.D4_DATABASE = {
           1,
           1,
           1
+        ],
+        "affixes": [
+          "+20.0% Resource Generation"
         ],
         "resistance": 230,
         "type": "Amulet"
@@ -12467,6 +12476,9 @@ window.D4_DATABASE = {
           0,
           0,
           0
+        ],
+        "affixes": [
+          "+[1 - 2] to Blood Skills"
         ],
         "resistance": 230,
         "type": "Amulet"
@@ -12959,6 +12971,9 @@ window.D4_DATABASE = {
           1,
           1
         ],
+        "affixes": [
+          "+[3.5 - 5.0]% Critical Strike Chance"
+        ],
         "resistance": 173,
         "type": "Ring"
       },
@@ -12975,6 +12990,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[1226 - 1450] Maximum Life"
+        ],
         "resistance": 173,
         "type": "Ring"
       },
@@ -12990,6 +13008,9 @@ window.D4_DATABASE = {
           0,
           0,
           0
+        ],
+        "affixes": [
+          "[13.0 - 25.0]%[x] Critical Strike Damage"
         ],
         "resistance": 173,
         "type": "Ring"

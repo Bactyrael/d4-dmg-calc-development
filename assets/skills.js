@@ -883,7 +883,7 @@ const skillsDatabase = {
       "baseDamageScalar": 0.4,
       "secondaryScalars": {
         "tooltip_dot": {
-          "scalar": 2.1,
+          "scalar": 6.0,
           "addTags": [
             "Search_DoT"
           ]
@@ -920,7 +920,10 @@ const skillsDatabase = {
             "Keyword_Chill",
             "Damage_Override_Cold",
             "Search_Cold",
-            "Skill_Cold"
+            "Skill_Cold",
+            "Search_Darkness",
+            "Keyword_Darkness",
+            "Skill_Darkness"
           ],
           "description": "{c_important}Blight{/c} deals Cold and Frostbite damage. \\n\\nIts defiled area Pulls in enemies and {c_important}{u}Chills{/u}{/c} for {c_number}15%{/c} every second.",
           "maxRank": 1

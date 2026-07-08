@@ -2809,6 +2809,39 @@ function compileCharacterStats(equipped, autoStats) {
                         stats["Idol Burning [x] Damage"] = { final: roll, isMultiplicative: true };
                         stats["Idol Berserking [x] Damage"] = { final: 25.0, isMultiplicative: true };
                         addStat(stats, 'Movement Speed', 15.0, 'Blood-Mad Idol Berserking');
+                    } else if (item.name === "Red Blessing") {
+                        handled = true;
+                        if (typeof getActiveBuffs === 'function') {
+                            const opStacks = getActiveBuffs().overpower || 0;
+                            if (opStacks > 0) {
+                                let perStack = item.isMythic ? 13.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 8.0);
+                                stats["Red Blessing [x] Damage"] = { final: perStack * opStacks, isMultiplicative: true };
+                            }
+                        }
+                    } else if (item.name === "Omen of Pain") {
+                        handled = true;
+                        if (typeof getActiveConditions === 'function') {
+                            const conds = getActiveConditions();
+                            if (conds.close) {
+                                let roll = item.isMythic ? 19.5 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 15.0);
+                                stats["Omen of Pain [x] Damage"] = { final: roll, isMultiplicative: true };
+                            }
+                        }
+                    } else if (item.name === "Pact of Bone") {
+                        handled = true;
+                        let roll = item.isMythic ? 46.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 30.0);
+                        
+                        addStat(stats, 'Skeleton Warrior Attack Speed', roll, 'Pact of Bone');
+                        addStat(stats, 'Skeleton Mage Attack Speed', roll, 'Pact of Bone');
+                        addStat(stats, 'Golem Attack Speed', roll, 'Pact of Bone');
+
+                        addStat(stats, 'Skeleton Warrior Critical Strike Chance', roll, 'Pact of Bone');
+                        addStat(stats, 'Skeleton Mage Critical Strike Chance', roll, 'Pact of Bone');
+                        addStat(stats, 'Golem Critical Strike Chance', roll, 'Pact of Bone');
+                        
+                        stats["Skill: Skeleton Warrior (Pact of Bone) Damage [x]"] = { final: roll, isMultiplicative: true };
+                        stats["Skill: Skeleton Mage (Pact of Bone) Damage [x]"] = { final: roll, isMultiplicative: true };
+                        stats["Skill: Golem (Pact of Bone) Damage [x]"] = { final: roll, isMultiplicative: true };
                     } else if (item.name === "Will of Rathma") {
                         handled = true;
                         if (typeof getActiveConditions === 'function' && typeof getActiveBuffs === 'function') {
@@ -2831,6 +2864,14 @@ function compileCharacterStats(equipped, autoStats) {
                     } else if (item.name === "Cruor's Embrace") {
                         handled = true;
                         v = item.isMythic ? 130 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 80);
+                    } else if (item.name === "Ebonpiercer") {
+                        handled = true;
+                        v = item.isMythic ? 65 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 45);
+                    } else if (item.name === "Locran's Talisman") {
+                        handled = true;
+                        v = item.isMythic ? 195 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 120);
+                        addStat(stats, 'Locran\'s Talisman (Critical Strike Damage) [x]', v, 'Item Power');
+                        addStat(stats, 'Critical Strike Chance', -50, 'Locran\'s Talisman (Power)');
                     } else if (item.name === 'Blood Moon Breeches') {
                         handled = true;
                         v = item.isMythic ? 78 : (item.aspectValues && item.aspectValues[1] !== undefined ? parseFloat(item.aspectValues[1]) : 50);
@@ -3415,7 +3456,11 @@ function compileCharacterStats(equipped, autoStats) {
           }
       }
 
-      const elementalTags = ["Search_Bone", "Search_Blood", "Search_Darkness", "Search_Physical", "Search_Shadow", "Search_Cold", "Damage_Override_Physical", "Damage_Override_Shadow", "Damage_Override_Cold", "Skill_Bone", "Skill_Blood", "Skill_Shadow", "Skill_Cold"];
+      if (warrior && !warrior.tags.includes('Minion')) warrior.tags.push('Minion');
+      if (mage && !mage.tags.includes('Minion')) mage.tags.push('Minion');
+      if (golem && !golem.tags.includes('Minion')) golem.tags.push('Minion');
+
+      const elementalTags = ["Search_Bone", "Search_Blood", "Search_Darkness", "Search_Physical", "Search_Shadow", "Search_Cold", "Damage_Override_Physical", "Damage_Override_Shadow", "Damage_Override_Cold", "Skill_Bone", "Skill_Blood", "Skill_Shadow", "Skill_Cold", "Skill_Darkness"];
 
       if (warrior && currentBuild && currentBuild.bookOfTheDead) {
           let spec = currentBuild.bookOfTheDead.warriors.spec;
@@ -3446,13 +3491,13 @@ function compileCharacterStats(equipped, autoStats) {
           mage.damageType = "Physical";
           
           if (node !== null) {
-              if (spec === "Shadow") {
+              if (spec === "Shadow Mage") {
                   mage.damageType = "Shadow";
                   mage.tags.push("Search_Shadow", "Search_Darkness", "Damage_Override_Shadow", "Skill_Shadow");
-              } else if (spec === "Cold") {
+              } else if (spec === "Cold Mage") {
                   mage.damageType = "Cold";
-                  mage.tags.push("Search_Cold", "Damage_Override_Cold", "Skill_Cold");
-              } else if (spec === "Bone") {
+                  mage.tags.push("Search_Cold", "Damage_Override_Cold", "Skill_Cold", "Search_Darkness", "Skill_Darkness");
+              } else if (spec === "Bone Mage") {
                   mage.damageType = "Physical";
                   mage.tags.push("Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone");
               }
@@ -3676,7 +3721,9 @@ function compileCharacterStats(equipped, autoStats) {
     }
 
     if (dom.critChance) {
-        dom.critChance.value = (compiledStats['Critical Strike Chance'] ? compiledStats['Critical Strike Chance'].final : 0).toFixed(2);
+        let finalCrit = (compiledStats['Critical Strike Chance'] ? compiledStats['Critical Strike Chance'].final : 0);
+        if (finalCrit < 0) finalCrit = 0;
+        dom.critChance.value = finalCrit.toFixed(2);
         dom.critChance.disabled = true;
         dom.critChance.title = "Auto-calculated from equipment and stats";
     }
@@ -5143,10 +5190,16 @@ function parseD4String(str, skillObj, currentRank) {
     str = str.replace(/\{u\}([\s\S]*?)\{\/u\}/g, '<span style="text-decoration: underline;">$1</span>');
     str = str.replace(/\{\/?u\}/g, '');
     
+    let actualRank = currentRank;
+    if (skillObj.name === "Volatile Blood") {
+        actualRank = typeof getBaseSkillRankFor === 'function' ? getBaseSkillRankFor("Blight") : (window.selectedSkills && window.selectedSkills["Blight"] ? window.selectedSkills["Blight"] : 1);
+        if (actualRank < 1) actualRank = 1;
+    }
+    
     let rankMult = 1.0;
-    if (currentRank > 1) {
-        let levelsGained = currentRank - 1;
-        let enhancedIncreases = Math.floor(currentRank / 5);
+    if (actualRank > 1) {
+        let levelsGained = actualRank - 1;
+        let enhancedIncreases = Math.floor(actualRank / 5);
         let scalePerLevel = skillObj.damageScalePerLevel !== undefined ? skillObj.damageScalePerLevel : 0.10;
         let scalePerFive = skillObj.damageScalePerFive !== undefined ? skillObj.damageScalePerFive : 0.05;
         rankMult = 1.0 + (levelsGained * scalePerLevel) + (enhancedIncreases * scalePerFive);
@@ -5733,6 +5786,20 @@ function applyActiveModifiers(baseSkillObj) {
         modified.baseDamageScalar = 0;
     }
     
+    if (modified.name === "Blight" || modified.baseName === "Blight") {
+        if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Ebonpiercer"]) {
+            let pct = window.D4_COMPILED_STATS["Ebonpiercer"].final / 100;
+            // 4 projectiles, each dealing X% of Blight's defiled area damage (which has a base scalar of 6.0, or 3.15 if Volatile Blood is active)
+            let baseArea = (window.selectedSkills && window.selectedSkills['Volatile Blood'] > 0) ? 3.15 : 6.0;
+            modified.secondaryScalars = modified.secondaryScalars || {};
+            modified.secondaryScalars.ebonpiercer = {
+                scalar: baseArea * pct,
+                nameOverride: "Ebonpiercer (Projectile)",
+                isHit: true
+            };
+        }
+    }
+    
     if (modified.tags) {
         const lowerTags = modified.tags.map(t => t.toLowerCase());
         let override = null;
@@ -5781,6 +5848,17 @@ function applyActiveModifiers(baseSkillObj) {
                 isHit: false,
                 nameOverride: "Shadow Mage Upgrade 1",
                 addTags: ["Search_Shadow", "Search_Darkness", "Damage_Override_Shadow", "Skill_Shadow", "Search_ShadowDOT"]
+            };
+        }
+        
+        if (spec === "Bone Mage" && Number(node) === 1) {
+            modified.secondaryScalars = modified.secondaryScalars || {};
+            let baseDmg = baseSkillObj.baseDamageScalar || 0.8;
+            modified.secondaryScalars.bone_projectiles = {
+                scalar: baseDmg * 0.75,
+                isHit: true,
+                nameOverride: "Additional Projectiles (Each)",
+                addTags: ["Search_Physical", "Search_Bone", "Damage_Override_Physical", "Skill_Bone"]
             };
         }
     }
@@ -6614,6 +6692,24 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (itemObj.name === "Deathgrip" && itemObj.isMythic) {
             udesc = "Your maximum number of Skeleton Warriors is increased by 1. Skeleton Warriors cleave with their attacks and deal 65%[x] increased damage.<br><br>Commanding them onto a target increases the damage that target takes from your Skeleton Warriors by 65%[x].";
         }
+        if (itemObj.name === "Ebonpiercer" && itemObj.isMythic) {
+            udesc = "Blight also shoots 4 smaller piercing projectiles, each dealing 65% of Blight's defiled area damage.";
+        }
+        if (itemObj.name === "Locran's Talisman" && itemObj.isMythic) {
+            udesc = "Critical Strikes deal 195%[x] increased damage but your Critical Strike Chance is reduced by 50%[+].";
+        }
+        if (itemObj.name === "Red Blessing" && itemObj.isMythic) {
+            udesc = "While Healthy, gain 2 Maximum Overpower. Blood Orbs grant 2 stacks of Overpower. You deal 13%[x] increased damage per stack of Overpower.";
+        }
+        if (itemObj.name === "Mother's Embrace" && itemObj.isMythic) {
+            udesc = "If a Core Skill hits 4 or more enemies, 78% of the Resource cost is refunded.";
+        }
+        if (itemObj.name === "Omen of Pain" && itemObj.isMythic) {
+            udesc = "A dark aura surrounds you, inflicting Decrepify and Iron Maiden on enemies around you and increasing your damage to Close enemies by 19.5%[x]. Curses inflicted this way spread to surrounding targets every second.";
+        }
+        if (itemObj.name === "Pact of Bone" && itemObj.isMythic) {
+            udesc = "Your Minions gain 46%[+] Attack Speed and Critical Strike Chance. When one of your Minions die, your other Minions enrage, dealing 46%[x] increased damage for 3 seconds.";
+        }
         if (itemObj.name === "Endurant Faith" && itemObj.isMythic) {
             udesc = "When you would be damaged for at least 30% of your Maximum Life at once, it is instead distributed over the next 4 seconds and reduced by 26%.";
         }
@@ -6999,7 +7095,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol", "Ebonpiercer", "Locran's Talisman", "Red Blessing", "Mother's Embrace", "Omen of Pain", "Pact of Bone"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -8496,7 +8592,13 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (lowerKey.startsWith('skill: ' + skill.name.toLowerCase())) {
                 applies = true;
             }
+            if (skill.baseName && lowerKey.startsWith('skill: ' + skill.baseName.toLowerCase())) {
+                applies = true;
+            }
             if (lowerKey.startsWith('skill (secondary): ' + skill.name.toLowerCase()) && skill.isSecondary) {
+                applies = true;
+            }
+            if (skill.baseName && lowerKey.startsWith('skill (secondary): ' + skill.baseName.toLowerCase()) && skill.isSecondary) {
                 applies = true;
             }
 
@@ -8866,7 +8968,7 @@ function renderCalcSkills() {
                                       
                                       let thornsSkillObj = {
                                           name: 'Defender Thorns',
-                                          baseName: 'Defender Thorns',
+                                          baseName: 'Skeleton Warrior',
                                           tags: ['Minion', 'Summoning', 'Thorns', 'Physical', 'Damage'],
                                           damageType: 'Physical',
                                           isHit: true
@@ -8933,7 +9035,7 @@ function renderCalcSkills() {
                                       
                                       let thornsSkillObj = {
                                           name: 'Bone Golem Thorns',
-                                          baseName: 'Bone Golem Thorns',
+                                          baseName: 'Golem',
                                           tags: ['Minion', 'Summoning', 'Thorns', 'Physical', 'Damage'],
                                           damageType: 'Physical',
                                           isHit: true
@@ -9266,10 +9368,14 @@ function renderCalcSkills() {
                 }
                 if (modSkill.tags) {
                     let filteredTags = modSkill.tags.filter(t => !t.startsWith('Search_') && !t.startsWith('Necro_Skill_') && !t.startsWith('Damage_Override_') && !t.startsWith('Keyword_') && !t.toLowerCase().startsWith('remove_') && !t.toLowerCase().startsWith('subpower_'));
+                    let seenBadges = new Set();
                     filteredTags.forEach(t => {
                         let formatted = typeof formatTag === 'function' ? formatTag(t) : t.replace('Skill_Primary_', '').replace('Skill_', '');
                         if (formatted.toLowerCase() === 'physical' && modSkill.damageType && modSkill.damageType.toLowerCase() === 'physical') return;
-                        badgesHtml += `<span style="background: #222; color: #aaa; padding: 2px 6px; border-radius: 4px; font-size: 0.75em; border: 1px solid #444;">${formatted}</span>`;
+                        if (!seenBadges.has(formatted.toLowerCase())) {
+                            seenBadges.add(formatted.toLowerCase());
+                            badgesHtml += `<span style="background: #222; color: #aaa; padding: 2px 6px; border-radius: 4px; font-size: 0.75em; border: 1px solid #444;">${formatted}</span>`;
+                        }
                     });
                 }
 
@@ -9299,6 +9405,7 @@ function calculateSkillCritChance(skillObj) {
     let components = [];
     let critStat = window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Critical Strike Chance'] ? window.D4_COMPILED_STATS['Critical Strike Chance'] : null;
     let totalCrit = critStat ? critStat.final : 5.0;
+    if (totalCrit < 0) totalCrit = 0;
     
     if (critStat && critStat.flatSources && critStat.flatSources.length > 0) {
         critStat.flatSources.forEach(s => {
@@ -9306,6 +9413,37 @@ function calculateSkillCritChance(skillObj) {
         });
     } else {
         components.push({ name: 'Global Critical Strike Chance', value: totalCrit });
+    }
+    
+    let sNameL = skillObj.name ? skillObj.name.toLowerCase() : "";
+    let bNameL = skillObj.baseName ? skillObj.baseName.toLowerCase() : "";
+    
+    if (sNameL.includes('warrior') || bNameL.includes('warrior')) {
+        if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Skeleton Warrior Critical Strike Chance']) {
+            let v = window.D4_COMPILED_STATS['Skeleton Warrior Critical Strike Chance'].final;
+            if (v > 0) {
+                totalCrit += v;
+                components.push({ name: 'Skeleton Warrior Bonus [+]', value: v });
+            }
+        }
+    }
+    if (sNameL.includes('mage') || bNameL.includes('mage')) {
+        if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Skeleton Mage Critical Strike Chance']) {
+            let v = window.D4_COMPILED_STATS['Skeleton Mage Critical Strike Chance'].final;
+            if (v > 0) {
+                totalCrit += v;
+                components.push({ name: 'Skeleton Mage Bonus [+]', value: v });
+            }
+        }
+    }
+    if (sNameL.includes('golem') || bNameL.includes('golem')) {
+        if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Golem Critical Strike Chance']) {
+            let v = window.D4_COMPILED_STATS['Golem Critical Strike Chance'].final;
+            if (v > 0) {
+                totalCrit += v;
+                components.push({ name: 'Golem Bonus [+]', value: v });
+            }
+        }
     }
     
     if (window.selectedSkills) {
@@ -9487,6 +9625,40 @@ function calculateSkillTotalSpeed(baseSkill, displayImgName) {
                 let updatedSources = golemAsNode.flatSources.map(src => {
                     if (src.name === 'Paragon Board' || src.name === 'Paragon Board (Normal Nodes)') {
                         return { ...src, name: 'Paragon Board (Golem Attack Speed)' };
+                    }
+                    return src;
+                });
+                asSources = asSources.concat(updatedSources);
+            }
+        }
+    }
+    
+    if (baseSkill.name === 'Skeleton Warrior' || (baseSkill.name && baseSkill.name.includes('Warrior'))) {
+        let warriorAsKey = Object.keys(compiledStats).find(k => k.toLowerCase().includes('warrior') && k.toLowerCase().includes('attack speed'));
+        let warriorAsNode = warriorAsKey ? compiledStats[warriorAsKey] : null;
+        if (warriorAsNode) {
+            asTotal += warriorAsNode.final;
+            if (warriorAsNode.flatSources) {
+                let updatedSources = warriorAsNode.flatSources.map(src => {
+                    if (src.name === 'Paragon Board' || src.name === 'Paragon Board (Normal Nodes)') {
+                        return { ...src, name: 'Paragon Board (Skeleton Warrior Attack Speed)' };
+                    }
+                    return src;
+                });
+                asSources = asSources.concat(updatedSources);
+            }
+        }
+    }
+
+    if (baseSkill.name === 'Skeleton Mage' || (baseSkill.name && baseSkill.name.includes('Mage'))) {
+        let mageAsKey = Object.keys(compiledStats).find(k => k.toLowerCase().includes('mage') && k.toLowerCase().includes('attack speed'));
+        let mageAsNode = mageAsKey ? compiledStats[mageAsKey] : null;
+        if (mageAsNode) {
+            asTotal += mageAsNode.final;
+            if (mageAsNode.flatSources) {
+                let updatedSources = mageAsNode.flatSources.map(src => {
+                    if (src.name === 'Paragon Board' || src.name === 'Paragon Board (Normal Nodes)') {
+                        return { ...src, name: 'Paragon Board (Skeleton Mage Attack Speed)' };
                     }
                     return src;
                 });
