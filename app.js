@@ -2777,6 +2777,12 @@ function compileCharacterStats(equipped, autoStats) {
                         handled = true;
                         let roll = item.isMythic ? 9.8 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 5.0);
                         stats["Crown_of_Lucion_Mult"] = { final: roll * 6 };
+                    } else if (item.name === "Deathless Visage") {
+                        handled = true;
+                        let rollEcho = item.isMythic ? 65 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 40.0);
+                        let rollCrit = item.isMythic ? 91 : (item.aspectValues && item.aspectValues[1] !== undefined ? parseFloat(item.aspectValues[1]) : 60.0);
+                        stats["Deathless_Visage_Echo"] = { final: rollEcho };
+                        stats["Deathless_Visage_Crit"] = { final: rollCrit };
                     } else if (item.name === "Tyrael's Might") {
                         handled = true;
                         addStat(stats, 'Universal Damage Reduction %', 20, "Tyrael's Might");
@@ -6591,6 +6597,9 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (itemObj.name === "Crown of Lucion" && itemObj.isMythic) {
             udesc = "Each time you use a Skill with a Primary Resource Cost, gain 9.8%[x] increased damage and Resource Cost is increased by 30%[+] for 6 seconds, stacking up to 6 times.";
         }
+        if (itemObj.name === "Deathless Visage" && itemObj.isMythic) {
+            udesc = "Critical Strikes with Bone Spear form an echo that bursts, dealing 65%[x] of its normal damage. Bone Spear deals 91%[x] increased Critical Strike Damage.";
+        }
         
         const vals = itemObj.aspectValues || [];
         let valIndex = 0;
@@ -6916,7 +6925,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -8753,6 +8762,10 @@ function renderCalcSkills() {
                                     <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px; color: #f39c12; margin-left: 20px;">
                                       <span style="color: #555;">▪</span> Vengeful Sinew (${window.D4_COMPILED_STATS['Vengeful_Sinew_Explosion'].final}%): <span style="color: #fff; font-weight: bold;">${Math.floor(parseFloat(b.minStr.replace(/,/g, '')) * (window.D4_COMPILED_STATS['Vengeful_Sinew_Explosion'].final / 100)).toLocaleString()} - ${Math.floor(parseFloat(b.maxStr.replace(/,/g, '')) * (window.D4_COMPILED_STATS['Vengeful_Sinew_Explosion'].final / 100)).toLocaleString()}</span>
                                     </div>` : ''}
+                                    ${(baseSkill.name === 'Bone Spear' && window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Deathless_Visage_Echo']) ? `
+                                    <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px; color: #f39c12; margin-left: 20px;">
+                                      <span style="color: #555;">▪</span> Deathless Visage Echo (${window.D4_COMPILED_STATS['Deathless_Visage_Echo'].final}%): <span style="color: #fff; font-weight: bold;">${Math.floor(parseFloat(b.critStrMin.replace(/,/g, '')) * (window.D4_COMPILED_STATS['Deathless_Visage_Echo'].final / 100)).toLocaleString()} - ${Math.floor(parseFloat(b.critStrMax.replace(/,/g, '')) * (window.D4_COMPILED_STATS['Deathless_Visage_Echo'].final / 100)).toLocaleString()}</span>
+                                    </div>` : ''}
                                   </details>`;
                               }
                               
@@ -9873,6 +9886,13 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
             let bmbVal = (1 + (bmb.final / 100));
             critMultiMult *= bmbVal;
             critMultiplicativeComponents.push({ name: 'Blood Moon Breeches', value: bmbVal });
+        }
+        
+        let dv = window.D4_COMPILED_STATS['Deathless_Visage_Crit'];
+        if (dv && dv.final > 0 && skillObj.name === "Bone Spear") {
+            let dvVal = (1 + (dv.final / 100));
+            critMultiMult *= dvVal;
+            critMultiplicativeComponents.push({ name: 'Deathless Visage', value: dvVal });
         }
 
         // Dynamically grab any generic Critical Strike Damage [x] multipliers

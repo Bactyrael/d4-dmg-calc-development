@@ -10125,6 +10125,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[2 - 3] to Bone Spear"
+        ],
         "armor": 1603,
         "type": "Helm"
       },
