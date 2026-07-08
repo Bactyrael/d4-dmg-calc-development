@@ -2790,6 +2790,10 @@ function compileCharacterStats(equipped, autoStats) {
                     } else if (item.name === "Heir of Perdition") {
                         handled = true;
                         stats["Heir of Perdition [x] Damage"] = { final: 15.0, isMultiplicative: true };
+                    } else if (item.name === "The Undercrown") {
+                        handled = true;
+                        let roll = item.isMythic ? 32.5 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 15.0);
+                        stats["The_Undercrown_Summon_Mult"] = { final: roll };
                     } else if (item.name === "Tyrael's Might") {
                         handled = true;
                         addStat(stats, 'Universal Damage Reduction %', 20, "Tyrael's Might");
@@ -6613,6 +6617,9 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (itemObj.name === "Heir of Perdition" && itemObj.isMythic) {
             udesc = "Succumb to hatred and earn Mother's Favor. Slaughtering enemies briefly steals 15%[+] Critical Strike Chance from surrounding allies with Mother's Favor. Mother's Favor always grants you 15%[x] increased damage.";
         }
+        if (itemObj.name === "The Undercrown" && itemObj.isMythic) {
+            udesc = "Your maximum number of Skeleton Warriors and Skeleton Mages is increased by 4 and your Summon damage is increased by 32.5%[x].\n\nCommanding Skeleton Warriors also causes Skeleton Mages to focus the same target for 5 seconds.";
+        }
         
         const vals = itemObj.aspectValues || [];
         let valIndex = 0;
@@ -6938,7 +6945,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -9382,7 +9389,7 @@ function calculateSkillTotalSpeed(baseSkill, displayImgName) {
         }
     }
     
-    const isSummon = baseSkill.tags && (baseSkill.tags.includes('Skill_Primary_Summoning') || baseSkill.tags.includes('Summoning') || baseSkill.tags.includes('Minion'));
+    const isSummon = baseSkill.tags && (baseSkill.tags.some(t => t.toLowerCase().includes('summon')) || baseSkill.tags.includes('Minion') || baseSkill.name === 'Army of the Dead' || baseSkill.baseName === 'Army of the Dead');
     if (isSummon) {
         let summonAsNode = compiledStats['Summon Attack Speed'] || compiledStats['Minion Attack Speed'];
         if (summonAsNode) {
@@ -9513,7 +9520,18 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
-    const isSummon = skillObj.tags && (skillObj.tags.includes('Skill_Primary_Summoning') || skillObj.tags.includes('Summoning') || skillObj.tags.includes('Minion'));
+    const isSummon = skillObj.tags && (skillObj.tags.some(t => t.toLowerCase().includes('summon')) || skillObj.tags.includes('Minion') || skillObj.name === 'Army of the Dead' || skillObj.baseName === 'Army of the Dead');
+    
+    if (isSummon && window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["The_Undercrown_Summon_Mult"]) {
+        let ucMult = window.D4_COMPILED_STATS["The_Undercrown_Summon_Mult"].final;
+        if (ucMult > 0) {
+            let mult = 1 + (ucMult / 100);
+            multiMult *= mult;
+            multiData.components.push({ name: 'The Undercrown', value: mult });
+            multiData.total = multiMult;
+        }
+    }
+    
     if (isSummon && typeof window.getActiveLegendaryPowers === 'function') {
         const legPowers = window.getActiveLegendaryPowers();
         if (legPowers.includes('Paragon_Necro_Legendary_001')) {

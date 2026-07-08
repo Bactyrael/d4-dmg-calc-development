@@ -10361,6 +10361,9 @@ window.D4_DATABASE = {
           0,
           0
         ],
+        "affixes": [
+          "+[1 - 2] to Minion Skills"
+        ],
         "armor": 1603,
         "type": "Helm"
       },
