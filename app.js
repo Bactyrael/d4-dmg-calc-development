@@ -2763,8 +2763,9 @@ function compileCharacterStats(equipped, autoStats) {
                         stats["Mutilator_Lance_Mult"] = { final: roll };
                     } else if (item.name === "Soulbrand") {
                         handled = true;
-                        if (item.isMythic && window.activeBarrierAmount > 0) {
-                            addStat(stats, 'Universal Damage Reduction %', 39, 'Soulbrand (Mythic Barrier)');
+                        if (window.activeBarrierAmount > 0) {
+                            let dr = item.isMythic ? 39 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 25);
+                            addStat(stats, 'Universal Damage Reduction %', dr, 'Soulbrand (Active Barrier)');
                         }
                     } else if (item.name === "Razorplate") {
                         handled = true;
@@ -10135,13 +10136,23 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
                 if (val > ml) val = ml;
                 window.activeBarrierAmount = val;
                 
-                const fDr = parseFloat(document.getElementById('modal-final-dr').value) || 0;
-                const newEhp = (ml + val) / (1 - fDr);
-                const totalSpan = document.getElementById('modal-ehp-total');
-                if (totalSpan) totalSpan.textContent = Math.floor(newEhp).toLocaleString();
-                
-                if (typeof window.renderToughnessDashboard === 'function' && window.D4_COMPILED_STATS) {
-                    window.renderToughnessDashboard(window.D4_COMPILED_STATS);
+                if (typeof window.calculate === 'function') {
+                    window.calculate();
+                    setTimeout(() => {
+                        const newDash = document.getElementById('modal-barrier-input');
+                        if (newDash) {
+                            newDash.focus();
+                            try {
+                                const len = newDash.value.length;
+                                newDash.setSelectionRange(len, len);
+                            } catch(e) {}
+                        }
+                    }, 0);
+                } else {
+                    const fDr = parseFloat(document.getElementById('modal-final-dr').value) || 0;
+                    const newEhp = (ml + val) / (1 - fDr);
+                    const totalSpan = document.getElementById('modal-ehp-total');
+                    if (totalSpan) totalSpan.textContent = Math.floor(newEhp).toLocaleString();
                 }
             });
             
@@ -10152,6 +10163,7 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
                 if (val > ml) val = ml;
                 e.target.value = val;
                 window.activeBarrierAmount = val;
+                if (typeof window.calculate === 'function') window.calculate();
             });
             
             barrierInput.addEventListener('click', (e) => e.target.select());
@@ -10194,7 +10206,19 @@ document.addEventListener('DOMContentLoaded', () => { setTimeout(() => {
             if (val > ml) val = ml;
             window.activeBarrierAmount = val;
             
-            if (typeof window.renderToughnessDashboard === 'function' && window.D4_COMPILED_STATS) {
+            if (typeof window.calculate === 'function') {
+                window.calculate();
+                setTimeout(() => {
+                    const newDash = document.getElementById('dash-barrier-input');
+                    if (newDash) {
+                        newDash.focus();
+                        try {
+                            const len = newDash.value.length;
+                            newDash.setSelectionRange(len, len);
+                        } catch(e) {}
+                    }
+                }, 0);
+            } else if (typeof window.renderToughnessDashboard === 'function' && window.D4_COMPILED_STATS) {
                 window.renderToughnessDashboard(window.D4_COMPILED_STATS);
             }
         });
@@ -10206,6 +10230,7 @@ document.addEventListener('DOMContentLoaded', () => { setTimeout(() => {
             if (val > ml) val = ml;
             e.target.value = val;
             window.activeBarrierAmount = val;
+            if (typeof window.calculate === 'function') window.calculate();
         });
         
         dashBarrier.addEventListener('click', (e) => {
