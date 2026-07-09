@@ -3111,6 +3111,17 @@ function compileCharacterStats(equipped, autoStats) {
                   }
               }
           }
+
+          let bindMorass = Object.values(equipped).find(item => item && item.aspect === "Aspect of Binding Morass");
+          if (bindMorass) {
+              if (typeof getActiveConditions === 'function') {
+                  const conds = getActiveConditions();
+                  if (conds.close) {
+                      let val = bindMorass.aspectValues && bindMorass.aspectValues.length > 1 ? parseFloat(bindMorass.aspectValues[1]) : 30;
+                      stats["Aspect of Binding Morass Damage [x]"] = { final: val, isMultiplicative: true };
+                  }
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
