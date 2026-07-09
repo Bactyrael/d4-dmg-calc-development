@@ -2181,7 +2181,7 @@ function getTotalActiveMinions(currentBuild) {
     // Mages (Base 3)
     if (currentBuild.bookOfTheDead.mages?.node !== 'sacrifice') {
         let mCount = 3;
-        if (window.selectedSkills && window.selectedSkills["Coven"] > 0) mCount += 2;
+        if (window.selectedSkills && isSkillActiveNode("Coven")) mCount += 2;
         if (typeof getEquipmentValues === 'function') {
             const eq = getEquipmentValues();
             if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("undercrown"))) mCount += 4;
@@ -2191,9 +2191,9 @@ function getTotalActiveMinions(currentBuild) {
     }
     
     // Golems
-    if (window.selectedSkills && window.selectedSkills["Golem"] > 0) {
+    if (window.selectedSkills && isSkillActiveNode("Golem")) {
         let gCount = 1;
-        if (window.selectedSkills["Gravebloom"] > 0) gCount = 3;
+        if (isSkillActiveNode("Gravebloom")) gCount = 3;
         total += gCount;
     }
     
@@ -2233,8 +2233,8 @@ function compileCharacterStats(equipped, autoStats) {
                 addStat(stats, 'Attack Speed', activeBuffs.ferocity * 5, 'Ferocity Stacks');
                 
                 // Sever - Ferocity
-                if (window.selectedSkills['Ferocity (Sever)'] > 0) {
-                    let isSeverSelected = window.selectedSkills['Sever'] > 0 || (window.selectedSkills['Reaping Lotus'] > 0);
+                if (isSkillActiveNode('Ferocity (Sever)')) {
+                    let isSeverSelected = isSkillActiveNode('Sever') || (isSkillActiveNode('Reaping Lotus'));
                     if (isSeverSelected) {
                         addStat(stats, 'Skill: Sever (Ferocity) Damage [x]', 7 * activeBuffs.ferocity, 'Ferocity Stacks');
                     }
@@ -2244,7 +2244,7 @@ function compileCharacterStats(equipped, autoStats) {
             if (activeBuffs.resolve > 0) {
                 addStat(stats, '% Armor', 25, 'Resolve Buff');
             }
-            if (window.selectedSkills && window.selectedSkills['Blood Wave'] > 0 && window.selectedSkills['Damage Reduction (Blood Wave)'] > 0) {
+            if (window.selectedSkills && isSkillActiveNode('Blood Wave') && isSkillActiveNode('Damage Reduction (Blood Wave)')) {
                 addStat(stats, 'Universal Damage Reduction %', 10, 'Blood Wave (Upgrade)');
             }
         }
@@ -2320,7 +2320,7 @@ function compileCharacterStats(equipped, autoStats) {
         if (window.selectedSkills) {
             window.skillSliderValues = window.skillSliderValues || {};
             // Pile the Bodies (Up to 300%[x])
-            if (window.selectedSkills['Pile the Bodies'] > 0) {
+            if (isSkillActiveNode('Pile the Bodies')) {
                 let curStack = window.skillSliderValues['Pile the Bodies'] !== undefined ? window.skillSliderValues['Pile the Bodies'] : 300;
                 if (curStack > 0) {
                     addStat(stats, 'Skill: Army of the Dead (Pile the Bodies) Damage [x]', curStack, 'Pile the Bodies');
@@ -2328,13 +2328,13 @@ function compileCharacterStats(equipped, autoStats) {
             }
             
             // Bloody Mess (50%[x] to Corpse Explosion)
-            if (window.selectedSkills['Bloody Mess'] > 0) {
+            if (isSkillActiveNode('Bloody Mess')) {
                 // Now explicitly scoping this to ONLY Corpse Explosion
                 // The actual check happens inside calculateSkillMultiplicativeBucket
                 addStat(stats, 'Skill: Corpse Explosion (Bloody Mess) Damage [x]', 50, 'Bloody Mess');
             }
 
-            let hemCsLevel = window.selectedSkills['Cast Speed'] || window.selectedSkills['cast-speed-hemorrhage'] || window.selectedSkills['Cast Speed (Hemorrhage)'] || 0;
+            let hemCsLevel = isSkillActiveNode('Cast Speed (Hemorrhage)') || isSkillActiveNode('Cast Speed') ? 1 : 0;
             if (hemCsLevel > 0) {
                 let hemName = 'Hemorrhage';
                 let variations = ['Blood Boil', 'Blood Runs Cold', 'Soul Rip'];
@@ -2351,13 +2351,13 @@ function compileCharacterStats(equipped, autoStats) {
             }
             
             // Reap Cast Speed (Chilled To The Bone)
-            if (window.selectedSkills['Chilled To The Bone'] > 0) {
+            if (isSkillActiveNode('Chilled To The Bone')) {
                 addStat(stats, `Skill: Chilled To The Bone (Cast Speed)`, 30, 'Chilled To The Bone');
                 addStat(stats, `Skill: Reap (Cast Speed)`, 30, 'Chilled To The Bone');
             }
             
             // Gargantua Cast Speed (Applies to Skeleton Warrior and Mage)
-            if (window.selectedSkills['Gargantua'] > 0) {
+            if (isSkillActiveNode('Gargantua')) {
                 let golemRank = window.selectedSkills['Golem'] || 1;
                 
                 let rankMult = 1.0;
@@ -2374,7 +2374,7 @@ function compileCharacterStats(equipped, autoStats) {
             }
             
             // Life Imprisonment (Bone Prison Variant) Global Cast Speed
-            if (window.selectedSkills['Life Imprisonment'] > 0) {
+            if (isSkillActiveNode('Life Imprisonment')) {
                 let prisonRank = window.selectedSkills['Bone Prison'] || 1;
                 
                 let rankMult = 1.0;
@@ -2391,7 +2391,7 @@ function compileCharacterStats(equipped, autoStats) {
             }
             
             // Roll The Bones (Bone Storm Variant) Global Critical Strike Chance and Cast Speed
-            if (window.selectedSkills['Roll The Bones'] > 0 || window.selectedSkills['Roll the Bones'] > 0) {
+            if (isSkillActiveNode('Roll The Bones') || isSkillActiveNode('Roll the Bones')) {
                 let stormRank = window.selectedSkills['Bone Storm'] || 1;
                 
                 let rankMult = 1.0;
@@ -2408,34 +2408,34 @@ function compileCharacterStats(equipped, autoStats) {
             }
             
             // Bone Storm Damage Reduction
-            if (window.selectedSkills['Damage Reduction (Bone Storm)'] > 0) {
+            if (isSkillActiveNode('Damage Reduction (Bone Storm)')) {
                 addStat(stats, 'Universal Damage Reduction %', 10, 'Bone Storm (Upgrade)');
             }
             
             // Crowd Control Damage Bonus (Blight)
-            if (window.selectedSkills['Crowd Control Damage Bonus (Blight)'] > 0 && currentBuild.conditions && currentBuild.conditions.cc) {
+            if (isSkillActiveNode('Crowd Control Damage Bonus (Blight)') && currentBuild.conditions && currentBuild.conditions.cc) {
                 addStat(stats, 'Skill: Blight (Crowd Control Damage Bonus) Damage [x]', 30, 'Crowd Control Damage Bonus (Blight)');
             }
 
             // Area Damage Bonus (Blight)
-            if (window.selectedSkills['Area Damage Bonus'] > 0) {
+            if (isSkillActiveNode('Area Damage Bonus')) {
                 addStat(stats, 'Skill (Secondary): Blight (Area Damage Bonus) Damage [x]', 40, 'Area Damage Bonus');
             }
             // Army of the Dead - Damage Bonus
-            if (window.selectedSkills['Damage Bonus (Army of the Dead)'] > 0) {
+            if (isSkillActiveNode('Damage Bonus (Army of the Dead)')) {
                 let totalMinions = getTotalActiveMinions(currentBuild);
                 let dmgBonus = totalMinions * 2;
                 addStat(stats, 'Skill: Army of the Dead (Damage Bonus) Damage [x]', dmgBonus, 'Damage Bonus');
             }
             
             // Soulrift - Damage Bonus
-            if (window.selectedSkills['Damage Bonus (Soulrift)'] > 0) {
+            if (isSkillActiveNode('Damage Bonus (Soulrift)')) {
                 addStat(stats, 'Skill: Soulrift (Damage Bonus) Damage [x]', 45, 'Damage Bonus');
             }
             
             // Sever - Damage Bonus
-            if (window.selectedSkills['Damage Bonus (Sever)'] > 0) {
-                let isSeverSelected = window.selectedSkills['Sever'] > 0 || (window.selectedSkills['Reaping Lotus'] > 0) || (window.selectedSkills['Inexorable Reaper'] > 0);
+            if (isSkillActiveNode('Damage Bonus (Sever)')) {
+                let isSeverSelected = isSkillActiveNode('Sever') || (isSkillActiveNode('Reaping Lotus')) || (isSkillActiveNode('Inexorable Reaper'));
                 if (isSeverSelected) {
                     let totalMinions = getTotalActiveMinions(currentBuild);
                     let dmgBonus = 10 + (totalMinions * 1);
@@ -2444,14 +2444,14 @@ function compileCharacterStats(equipped, autoStats) {
             }
 
             // Gift of Death
-            if (window.selectedSkills['Gift of Death'] > 0) {
+            if (isSkillActiveNode('Gift of Death')) {
                 let magesRank = window.selectedSkills['Skeleton Mage'] || 1;
                 let levelsGained = magesRank > 1 ? magesRank - 1 : 0;
                 let enhancedIncreases = Math.floor(magesRank / 5);
                 let rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
                 
                 let bonusMages = 0;
-                if (window.selectedSkills["Coven"] > 0) bonusMages += 2;
+                if (isSkillActiveNode("Coven")) bonusMages += 2;
                 if (typeof getEquipmentValues === 'function') {
                     const eq = getEquipmentValues();
                     if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("undercrown"))) {
@@ -3204,7 +3204,7 @@ function compileCharacterStats(equipped, autoStats) {
                 flatSources: newSources
             };
         }
-        if (window.selectedSkills && window.selectedSkills['Bone Prison'] > 0 && window.selectedSkills['Bramble'] > 0) {
+        if (window.selectedSkills && isSkillActiveNode('Bone Prison') && isSkillActiveNode('Bramble')) {
             let L = parseInt(document.getElementById('level-input')?.value) || 70;
             let sLevel = window.selectedSkills['Bone Prison'];
             let t34 = [1, 1, 1.1, 1.2, 1.3, 1.45, 1.55, 1.65, 1.75, 1.85, 2, 2.1, 2.2, 2.3, 2.4, 2.55, 2.65, 2.75, 2.85, 2.95, 3.1][sLevel] || 1;
@@ -3216,7 +3216,7 @@ function compileCharacterStats(equipped, autoStats) {
             }
         }
         
-        if (window.selectedSkills && window.selectedSkills['Schadenfreude'] > 0 && currentBuild.conditions && currentBuild.conditions.cursed) {
+        if (window.selectedSkills && isSkillActiveNode('Schadenfreude') && currentBuild.conditions && currentBuild.conditions.cursed) {
             let L = parseInt(document.getElementById('level-input')?.value) || 70;
             let sLevel = window.selectedSkills['Iron Maiden'] || 1;
             let t34 = [1, 1, 1.1, 1.2, 1.3, 1.45, 1.55, 1.65, 1.75, 1.85, 2, 2.1, 2.2, 2.3, 2.4, 2.55, 2.65, 2.75, 2.85, 2.95, 3.1][sLevel] || 1;
@@ -5185,7 +5185,7 @@ function parseD4String(str, skillObj, currentRank) {
     str = str.replace(/\{if:(1-)?Mod\((\d+)\)(>0\?0:1)?\}([\s\S]*?)(?:\{else\}([\s\S]*?))?\{\/if\}/gi, (match, not, modId, inverse, trueBranch, falseBranch) => {
         let isSelected = false;
         // Specifically map Hematolagnia (582507896)
-        if (modId === "582507896" && window.selectedSkills && window.selectedSkills["Hematolagnia"] > 0) {
+        if (modId === "582507896" && window.selectedSkills && isSkillActiveNode("Hematolagnia")) {
             isSelected = true;
         }
         
@@ -5678,27 +5678,10 @@ function applyActiveModifiers(baseSkillObj) {
     }
     
     if (baseSkillObj.modifiers) {
-        let hasSacrilegiousRing = false;
-        if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
-            hasSacrilegiousRing = Object.values(currentBuild.equipment).some(item => item && item.name === "Ring of the Sacrilegious Soul");
-        }
-
         baseSkillObj.modifiers.forEach(mod => {
-            // Check if the user has put points into this modifier
-            let isModActive = window.selectedSkills && window.selectedSkills[mod.name] > 0;
+            // Check if the user has put points into this modifier or if it is forced active by an item power
+            let isModActive = isSkillActiveNode(mod.name);
             
-            if (!isModActive && baseSkillObj.name === "Corpse Tendrils" && hasSacrilegiousRing) {
-                const sacUpgrades = [
-                    "Lucky Hit Chance (Corpse Tendrils)",
-                    "Vulnerable (Corpse Tendrils)",
-                    "Critical Strike Chance (Corpse Tendrils)",
-                    "Essence Generation (Corpse Tendrils)"
-                ];
-                if (sacUpgrades.includes(mod.name)) {
-                    isModActive = true;
-                }
-            }
-
             if (isModActive) {
                 
                 // Append new tags (e.g., Hematolagnia adding Skill_Primary_Core)
@@ -5806,7 +5789,7 @@ function applyActiveModifiers(baseSkillObj) {
         let novaScalar = 1.00;
         let nameOverride = "Nova";
         
-        if (window.selectedSkills && window.selectedSkills['Pins and Needles'] > 0) {
+        if (window.selectedSkills && isSkillActiveNode('Pins and Needles')) {
             novaScalar = 0.60;
             nameOverride = "Bone Shards (Nova)";
             if (modified.secondaryScalars.nova) delete modified.secondaryScalars.nova;
@@ -5826,7 +5809,7 @@ function applyActiveModifiers(baseSkillObj) {
         if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Ebonpiercer"]) {
             let pct = window.D4_COMPILED_STATS["Ebonpiercer"].final / 100;
             // 4 projectiles, each dealing X% of Blight's defiled area damage (which has a base scalar of 6.0, or 3.15 if Volatile Blood is active)
-            let baseArea = (window.selectedSkills && window.selectedSkills['Volatile Blood'] > 0) ? 3.15 : 6.0;
+            let baseArea = (window.selectedSkills && isSkillActiveNode('Volatile Blood')) ? 3.15 : 6.0;
             modified.secondaryScalars = modified.secondaryScalars || {};
             modified.secondaryScalars.ebonpiercer = {
                 scalar: baseArea * pct,
@@ -6059,7 +6042,7 @@ function showSkillTooltip(skillObj, e) {
     
     let modifiersHtml = '';
     if (skillObj.modifiers && skillObj.modifiers.length > 0) {
-        let activeMods = skillObj.modifiers.filter(mod => window.selectedSkills && window.selectedSkills[mod.name] > 0);
+        let activeMods = skillObj.modifiers.filter(mod => isSkillActiveNode(mod.name));
         if (activeMods.length > 0) {
             let modLines = activeMods.map(mod => {
                 let mDesc = parseD4String(mod.description, mod, displayRank);
@@ -6199,9 +6182,9 @@ function isSkillForcedActive(name) {
         if (Object.values(currentBuild.equipment).some(item => item && item.name === "Gospel of the Devotee")) {
             const basicUpgrades = [
                 "Ferocity (Reap)", "Corpse Generation (Reap)", "Essence Generation (Reap)", "Critical Strike Chance (Reap)",
-                "Crowd Control", "Lucky Hit Chance (Decompose)", "Damage Bonus (Decompose)", "Barrier (Decompose)",
-                "Cast Speed", "Blood Orb (Hemorrhage)", "Weaken (Hemorrhage)", "Overpower (Hemorrhage)",
-                "Projectiles", "Essence Generation (Bone Splinters)", "Vulnerable (Bone Splinters)", "Resolve (Bone Splinters)"
+                "Crowd Control (Decompose)", "Lucky Hit Chance (Decompose)", "Damage Bonus (Decompose)", "Barrier (Decompose)",
+                "Cast Speed (Hemorrhage)", "Blood Orb (Hemorrhage)", "Weaken (Hemorrhage)", "Overpower (Hemorrhage)",
+                "Projectiles (Bone Splinters)", "Essence Generation (Bone Splinters)", "Vulnerable (Bone Splinters)", "Resolve (Bone Splinters)"
             ];
             if (basicUpgrades.includes(name)) {
                 return true;
@@ -6210,6 +6193,11 @@ function isSkillForcedActive(name) {
     }
     return false;
 }
+function isSkillActiveNode(name) {
+    if (typeof isSkillForcedActive === 'function' && isSkillForcedActive(name)) return true;
+    return window.selectedSkills && window.selectedSkills[name] > 0;
+}
+
 
 function renderSkills() { 
   const container = document.getElementById('skills-container'); 
@@ -8904,7 +8892,7 @@ function renderCalcSkills() {
             
             // Render base skills that have points and deal damage (either base or via modified secondary scalars)
             let hasDamage = modSkill.baseDamageScalar > 0 || (modSkill.secondaryScalars && Object.keys(modSkill.secondaryScalars).length > 0);
-            if (baseSkill.name === 'Bone Prison' && window.selectedSkills['Bramble'] > 0) hasDamage = true;
+            if (baseSkill.name === 'Bone Prison' && isSkillActiveNode('Bramble')) hasDamage = true;
             
             if (getBaseSkillRankFor(baseSkill.name) > 0 && hasDamage) {
                 foundSkills++;
@@ -8924,7 +8912,7 @@ function renderCalcSkills() {
                     // Upgrades (circles) are index 3+ and should not change the skill's identity.
                     let maxIndex = Math.min(2, baseSkill.modifiers.length - 1);
                     for (let i = maxIndex; i >= 0; i--) {
-                        if (window.selectedSkills[baseSkill.modifiers[i].name] > 0) {
+                        if (isSkillActiveNode(baseSkill.modifiers[i].name)) {
                             displayImgName = baseSkill.modifiers[i].name;
                             break;
                         }
@@ -9272,7 +9260,7 @@ function renderCalcSkills() {
                                 }
                             }
 
-                            if (modSkill.name === 'Bone Prison' && window.selectedSkills['Bramble'] > 0) {
+                            if (modSkill.name === 'Bone Prison' && isSkillActiveNode('Bramble')) {
                                 let thornsPlayer = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Thorns']) ? window.D4_COMPILED_STATS['Thorns'].final : 0;
                                 let brambleObj = {
                                     name: 'Bramble Segment Damage',
@@ -9374,7 +9362,7 @@ function renderCalcSkills() {
                 `;
                 
                 // Append skill-specific sliders
-                if (baseSkill.name === 'Bone Prison' && window.selectedSkills['Bramble'] > 0) {
+                if (baseSkill.name === 'Bone Prison' && isSkillActiveNode('Bramble')) {
                     let curVal = window.skillSliderValues['Bramble Enemies'] !== undefined ? window.skillSliderValues['Bramble Enemies'] : 1;
                     let sliderDiv = document.createElement('div');
                     sliderDiv.style.marginTop = '15px';
@@ -9391,7 +9379,7 @@ function renderCalcSkills() {
                     card.appendChild(sliderDiv);
                 }
 
-                if (baseSkill.name === 'Army of the Dead' && window.selectedSkills['Pile the Bodies'] > 0) {
+                if (baseSkill.name === 'Army of the Dead' && isSkillActiveNode('Pile the Bodies')) {
                     let curVal = window.skillSliderValues['Pile the Bodies'] !== undefined ? window.skillSliderValues['Pile the Bodies'] : 300;
                     let sliderDiv = document.createElement('div');
                     sliderDiv.style.marginTop = '15px';
@@ -9426,7 +9414,7 @@ function renderCalcSkills() {
                     card.appendChild(sliderDiv);
                 }
 
-                if ((baseSkill.name === 'Bone Spear' || baseSkill.baseName === 'Bone Spear') && window.selectedSkills['Pierce Damage Bonus'] > 0) {
+                if ((baseSkill.name === 'Bone Spear' || baseSkill.baseName === 'Bone Spear') && isSkillActiveNode('Pierce Damage Bonus')) {
                     let curVal = window.skillSliderValues['Pierce Damage Bonus'] !== undefined ? window.skillSliderValues['Pierce Damage Bonus'] : 0;
                     let sliderDiv = document.createElement('div');
                     sliderDiv.style.marginTop = '15px';
@@ -9443,7 +9431,7 @@ function renderCalcSkills() {
                     card.appendChild(sliderDiv);
                 }
 
-                if ((baseSkill.name === 'Bone Spear' || baseSkill.baseName === 'Bone Spear') && window.selectedSkills['First Hit Damage Bonus'] > 0) {
+                if ((baseSkill.name === 'Bone Spear' || baseSkill.baseName === 'Bone Spear') && isSkillActiveNode('First Hit Damage Bonus')) {
                     let isChecked = window.skillSliderValues['First Hit Damage Bonus'] === 1;
                     let checkDiv = document.createElement('div');
                     checkDiv.style.marginTop = '15px';
@@ -9459,7 +9447,7 @@ function renderCalcSkills() {
                     card.appendChild(checkDiv);
                 }
 
-                if ((baseSkill.name === 'Bone Spirit' || baseSkill.baseName === 'Bone Spirit') && window.selectedSkills['Damage Bonus (Bone Spirit)'] > 0) {
+                if ((baseSkill.name === 'Bone Spirit' || baseSkill.baseName === 'Bone Spirit') && isSkillActiveNode('Damage Bonus (Bone Spirit)')) {
                     let curVal = window.skillSliderValues['Bone Spirit Damage Bonus'] !== undefined ? window.skillSliderValues['Bone Spirit Damage Bonus'] : 0;
                     let sliderDiv = document.createElement('div');
                     sliderDiv.style.marginTop = '15px';
@@ -9561,12 +9549,12 @@ function calculateSkillCritChance(skillObj) {
     }
     
     if (window.selectedSkills) {
-        if ((skillObj.name === 'Reap' || skillObj.baseName === 'Reap') && window.selectedSkills['Critical Strike Chance (Reap)'] > 0) {
+        if ((skillObj.name === 'Reap' || skillObj.baseName === 'Reap') && isSkillActiveNode('Critical Strike Chance (Reap)')) {
             totalCrit += 10.0;
             components.push({ name: 'Skill Upgrade', value: 10.0 });
         }
         
-        if (window.selectedSkills['Decrepify'] > 0 && window.selectedSkills['Critical Strike Chance (Decrepify)'] > 0) {
+        if (isSkillActiveNode('Decrepify') && isSkillActiveNode('Critical Strike Chance (Decrepify)')) {
             if (typeof getActiveConditions === 'function' && getActiveConditions().cursed) {
                 totalCrit += 5.0;
                 components.push({ name: 'Decrepify (Upgrade vs Cursed) [+]', value: 5.0 });
@@ -9578,22 +9566,22 @@ function calculateSkillCritChance(skillObj) {
             hasSacrilegiousRing = Object.values(currentBuild.equipment).some(item => item && item.name === "Ring of the Sacrilegious Soul");
         }
 
-        if (window.selectedSkills['Critical Strike Chance (Corpse Tendrils)'] > 0 || hasSacrilegiousRing) {
+        if (isSkillActiveNode('Critical Strike Chance (Corpse Tendrils)') || hasSacrilegiousRing) {
             totalCrit += 5.0;
             components.push({ name: 'Corpse Tendrils (Upgrade) [+]', value: 5.0 });
         }
         
-        if (window.selectedSkills['Critical Strike'] > 0) {
+        if (isSkillActiveNode('Critical Strike')) {
             totalCrit += 5.0;
             components.push({ name: 'Blood Mist (Upgrade) [+]', value: 5.0 });
         }
         
-        if (window.selectedSkills['Critical Strike Chance (Skeleton Mage)'] > 0) {
+        if (isSkillActiveNode('Critical Strike Chance (Skeleton Mage)')) {
             totalCrit += 5.0;
             components.push({ name: 'Skeleton Mage (Upgrade) [+]', value: 5.0 });
         }
         
-        if (window.selectedSkills['Litany of Death'] > 0) {
+        if (isSkillActiveNode('Litany of Death')) {
             let sName = skillObj.name.toLowerCase();
             let tags = skillObj.tags || [];
             let isMinion = sName.includes('golem') || sName.includes(' mage') || sName.includes('warrior') || tags.some(t => t.toLowerCase().includes('minion'));
@@ -9659,7 +9647,7 @@ function calculateLuckyHitChance(skillObj) {
     }
 
     let baseName = skillObj.baseName || skillObj.name;
-    if ((window.selectedSkills && window.selectedSkills[`Lucky Hit Chance (${baseName})`] > 0) || (baseName === 'Corpse Tendrils' && hasSacrilegiousRing)) {
+    if (isSkillActiveNode(`Lucky Hit Chance (${baseName})`)) {
         let upgradeBonus = 0;
         if (baseName === 'Decompose') {
             upgradeBonus = 30;
@@ -9928,7 +9916,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
     // Blood Surge Nova Multipliers
     if (skillObj.baseName === "Blood Surge" && skillObj.isSecondary && skillObj.name && skillObj.name.includes("Nova")) {
         // Bloodbath Echo
-        if (window.selectedSkills && window.selectedSkills['Bloodbath'] > 0) {
+        if (window.selectedSkills && isSkillActiveNode('Bloodbath')) {
             multiMult *= 2.0;
             multiData.components.push({ name: `Bloodbath (Nova Echo) [x]`, value: 2.0 });
             multiData.total = multiMult;
@@ -10155,17 +10143,17 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'Single Target (Blood Golem) [x]', value: 4.0 });
     }
     
-    if (skillObj.name === "Decompose" && window.selectedSkills && window.selectedSkills["Damage Bonus (Decompose)"] > 0) {
+    if (skillObj.name === "Decompose" && window.selectedSkills && isSkillActiveNode("Damage Bonus (Decompose)")) {
         multiMult *= 1.5;
         multiData.components.push({ name: 'Damage Bonus (Upgrade) [x]', value: 1.5 });
     }
     
-    if (skillObj.name === "Blood Surge" && window.selectedSkills && window.selectedSkills["Damage Bonus (Blood Surge)"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().healthy) {
+    if (skillObj.name === "Blood Surge" && window.selectedSkills && isSkillActiveNode("Damage Bonus (Blood Surge)") && typeof getActiveConditions === 'function' && getActiveConditions().healthy) {
         multiMult *= 1.25;
         multiData.components.push({ name: 'Damage Bonus (Upgrade) (Healthy) [x]', value: 1.25 });
     }
     
-    if ((skillObj.name === "Blood Surge" || skillObj.baseName === "Blood Surge") && window.selectedSkills && window.selectedSkills["Overpower (Blood Surge)"] > 0) {
+    if ((skillObj.name === "Blood Surge" || skillObj.baseName === "Blood Surge") && window.selectedSkills && isSkillActiveNode("Overpower (Blood Surge)")) {
         if (typeof getActiveBuffs === 'function') {
             const buffs = getActiveBuffs();
             if (buffs.overpower >= 2) {
@@ -10176,12 +10164,12 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
     }
     
     
-    if ((skillObj.name === "Skeleton Mage" || skillObj.baseName === "Skeleton Mage") && window.selectedSkills && window.selectedSkills["Crowd Control Damage Bonus (Skeleton Mage)"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().cc) {
+    if ((skillObj.name === "Skeleton Mage" || skillObj.baseName === "Skeleton Mage") && window.selectedSkills && isSkillActiveNode("Crowd Control Damage Bonus (Skeleton Mage)") && typeof getActiveConditions === 'function' && getActiveConditions().cc) {
         multiMult *= 1.30;
         multiData.components.push({ name: 'Crowd Control Damage Bonus (Upgrade) [x]', value: 1.30 });
     }
     
-    if ((skillObj.name === "Skeleton Mage" || skillObj.baseName === "Skeleton Mage") && window.selectedSkills && window.selectedSkills["Duration Damage Bonus"] > 0) {
+    if ((skillObj.name === "Skeleton Mage" || skillObj.baseName === "Skeleton Mage") && window.selectedSkills && isSkillActiveNode("Duration Damage Bonus")) {
         multiMult *= 1.25;
         multiData.components.push({ name: 'Duration Damage Bonus (Upgrade) [x]', value: 1.25 });
     }
@@ -10219,7 +10207,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
-    if ((skillObj.name === "Skeleton Warrior" || skillObj.baseName === "Skeleton Warrior" || skillObj.name === "Defender Thorns") && window.selectedSkills && window.selectedSkills["Damage Bonus (Skeleton Warrior)"] > 0) {
+    if ((skillObj.name === "Skeleton Warrior" || skillObj.baseName === "Skeleton Warrior" || skillObj.name === "Defender Thorns") && window.selectedSkills && isSkillActiveNode("Damage Bonus (Skeleton Warrior)")) {
         multiMult *= 1.25;
         multiData.components.push({ name: 'Damage Bonus (Upgrade) [x]', value: 1.25 });
     }
@@ -10239,7 +10227,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
-    if ((skillObj.name === "Bone Spirit" || skillObj.baseName === "Bone Spirit") && window.selectedSkills && window.selectedSkills["Damage Bonus (Bone Spirit)"] > 0) {
+    if ((skillObj.name === "Bone Spirit" || skillObj.baseName === "Bone Spirit") && window.selectedSkills && isSkillActiveNode("Damage Bonus (Bone Spirit)")) {
         let curVal = window.skillSliderValues && window.skillSliderValues['Bone Spirit Damage Bonus'] !== undefined ? window.skillSliderValues['Bone Spirit Damage Bonus'] : 0;
         if (curVal > 0) {
             const mult = 1 + (0.10 * curVal);
@@ -10248,7 +10236,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
-    if ((skillObj.name === "Bone Spirit" || skillObj.baseName === "Bone Spirit") && window.selectedSkills && window.selectedSkills["Core Skill"] > 0) {
+    if ((skillObj.name === "Bone Spirit" || skillObj.baseName === "Bone Spirit") && window.selectedSkills && isSkillActiveNode("Core Skill")) {
         let maxEssence = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Maximum Essence']) ? window.D4_COMPILED_STATS['Maximum Essence'].final : 0;
         if (maxEssence > 30) {
             const mult = 1 + ((maxEssence - 30) * 0.03);
@@ -10257,17 +10245,17 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
-    if ((skillObj.name === "Golem" || skillObj.baseName === "Golem" || skillObj.name === "Bone Golem Thorns") && window.selectedSkills && window.selectedSkills["Damage Bonus (Golem)"] > 0 && typeof getActiveConditions === 'function' && getActiveConditions().vulnerable) {
+    if ((skillObj.name === "Golem" || skillObj.baseName === "Golem" || skillObj.name === "Bone Golem Thorns") && window.selectedSkills && isSkillActiveNode("Damage Bonus (Golem)") && typeof getActiveConditions === 'function' && getActiveConditions().vulnerable) {
         multiMult *= 1.30;
         multiData.components.push({ name: 'Damage Bonus (Upgrade vs Vulnerable) [x]', value: 1.30 });
     }
     
-    if ((skillObj.name === "Blood Wave" || skillObj.baseName === "Blood Wave") && window.selectedSkills && window.selectedSkills["Damage Bonus (Blood Wave)"] > 0 && typeof getActiveBuffs === 'function' && getActiveBuffs().fortified) {
+    if ((skillObj.name === "Blood Wave" || skillObj.baseName === "Blood Wave") && window.selectedSkills && isSkillActiveNode("Damage Bonus (Blood Wave)") && typeof getActiveBuffs === 'function' && getActiveBuffs().fortified) {
         multiMult *= 1.30;
         multiData.components.push({ name: 'Damage Bonus (Upgrade while Fortified) [x]', value: 1.30 });
     }
     
-    if ((skillObj.name === "Bone Spear" || skillObj.baseName === "Bone Spear") && window.selectedSkills && window.selectedSkills["Resolve (Bone Spear)"] > 0) {
+    if ((skillObj.name === "Bone Spear" || skillObj.baseName === "Bone Spear") && window.selectedSkills && isSkillActiveNode("Resolve (Bone Spear)")) {
         if (typeof getActiveBuffs === 'function') {
             const buffs = getActiveBuffs();
             const stacks = Math.min(8, buffs.resolve || 0);
@@ -10279,7 +10267,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
-    if ((skillObj.name === "Bone Spear" || skillObj.baseName === "Bone Spear") && window.selectedSkills && window.selectedSkills["Pierce Damage Bonus"] > 0) {
+    if ((skillObj.name === "Bone Spear" || skillObj.baseName === "Bone Spear") && window.selectedSkills && isSkillActiveNode("Pierce Damage Bonus")) {
         let curVal = window.skillSliderValues && window.skillSliderValues['Pierce Damage Bonus'] !== undefined ? window.skillSliderValues['Pierce Damage Bonus'] : 0;
         if (curVal > 0) {
             const mult = 1 + (0.10 * curVal);
@@ -10288,7 +10276,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
-    if ((skillObj.name === "Bone Spear" || skillObj.baseName === "Bone Spear") && window.selectedSkills && window.selectedSkills["First Hit Damage Bonus"] > 0) {
+    if ((skillObj.name === "Bone Spear" || skillObj.baseName === "Bone Spear") && window.selectedSkills && isSkillActiveNode("First Hit Damage Bonus")) {
         let isFirstHit = window.skillSliderValues && window.skillSliderValues['First Hit Damage Bonus'] === 1;
         if (isFirstHit) {
             multiMult *= 1.40;
@@ -10296,7 +10284,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
-    if ((skillObj.name === "Skeleton Mage" || skillObj.baseName === "Skeleton Mage") && window.selectedSkills && window.selectedSkills["Singularity"] > 0) {
+    if ((skillObj.name === "Skeleton Mage" || skillObj.baseName === "Skeleton Mage") && window.selectedSkills && isSkillActiveNode("Singularity")) {
         let maxEssence = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Maximum Essence']) ? window.D4_COMPILED_STATS['Maximum Essence'].final : 0;
         if (maxEssence > 0) {
             let mult = 1 + (maxEssence * 0.03);
@@ -10313,7 +10301,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
     let baseMax = wpMax * (skillObj.baseDamageScalar || 0);
     
     let addedThorns = 0;
-    if ((skillObj.name === "Iron Maiden" || skillObj.baseName === "Iron Maiden") && window.selectedSkills && window.selectedSkills["Schadenfreude"] > 0) {
+    if ((skillObj.name === "Iron Maiden" || skillObj.baseName === "Iron Maiden") && window.selectedSkills && isSkillActiveNode("Schadenfreude")) {
         let playerThorns = (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Thorns']) ? window.D4_COMPILED_STATS['Thorns'].final : 0;
         baseMin += playerThorns;
         baseMax += playerThorns;
@@ -10767,3 +10755,7 @@ document.addEventListener('DOMContentLoaded', () => { setTimeout(() => {
         });
     }
 }, 500); });
+
+
+
+

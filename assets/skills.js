@@ -158,7 +158,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Crowd Control",
+          "name": "Crowd Control (Decompose)",
           "description": "{c_important}Decompose{/c} Slows enemies by {c_number}50%{/c}.",
           "maxRank": 1,
           "tags": [
@@ -265,7 +265,7 @@ const skillsDatabase = {
           "maxRank": 1
         },
         {
-          "name": "Cast Speed",
+          "name": "Cast Speed (Hemorrhage)",
           "description": "{c_important}Hemorrhage{/c} gains an additional {c_number}20%{c_lightgray}\\[+\\]{/c}{/c} Cast Speed.",
           "maxRank": 1,
           "tags": [
@@ -390,7 +390,7 @@ const skillsDatabase = {
           ]
         },
         {
-          "name": "Projectiles",
+          "name": "Projectiles (Bone Splinters)",
           "tags": [
             "Search_Damage"
           ],
