@@ -3285,6 +3285,14 @@ function compileCharacterStats(equipped, autoStats) {
               let val = terror.aspectValues && terror.aspectValues.length > 0 ? parseFloat(terror.aspectValues[0]) : 25;
               stats['Aspect of Terror Factor'] = { final: val, isMultiplicative: false };
           }
+          
+          let expectant = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Expectant");
+          if (expectant) {
+              let val = expectant.aspectValues && expectant.aspectValues.length > 0 ? parseFloat(expectant.aspectValues[0]) : 5;
+              let activeStacks = expectant.aspectState?.expectantStacks !== undefined ? parseInt(expectant.aspectState.expectantStacks) : 10;
+              stats["Aspect of the Expectant Factor"] = { final: val, isMultiplicative: false };
+              stats["Aspect of the Expectant Stacks"] = { final: activeStacks, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -7220,6 +7228,18 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                   </label>
                 </div>
               `;
+          } else if (currentAspectName === 'Aspect of the Expectant') {
+              if (!itemObj.aspectState) itemObj.aspectState = {};
+              let activeStacks = itemObj.aspectState.expectantStacks !== undefined ? itemObj.aspectState.expectantStacks : 10;
+              
+              aspectDescHtml += `
+                <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="color: #fff; font-size: 0.85rem;">Active Stacks (0-10)</span>
+                    <input type="number" class="d4-input aspect-state-input" data-state-key="expectantStacks" value="${activeStacks}" min="0" max="10" style="width: 60px; text-align: center; padding: 4px;">
+                  </div>
+                </div>
+              `;
           }
         }
       }
@@ -9161,6 +9181,17 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             let mult = 1 + (stats["Aspect of Decay Factor"].final / 100);
             bucket *= mult;
             components.push({ name: 'Aspect of Decay [x]', value: mult });
+        }
+    }
+      
+    // Apply Aspect of the Expectant if applicable
+    if (stats["Aspect of the Expectant Factor"] && (tags.includes('skill_basic') || tags.includes('search_basic'))) {
+        let activeStacks = parseInt(stats["Aspect of the Expectant Stacks"].final) || 0;
+        if (activeStacks > 0) {
+            let multVal = stats["Aspect of the Expectant Factor"].final * activeStacks;
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: `Aspect of the Expectant (${activeStacks} Stacks) [x]`, value: mult });
         }
     }
 
