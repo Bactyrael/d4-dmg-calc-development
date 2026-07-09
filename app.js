@@ -2876,6 +2876,11 @@ function compileCharacterStats(equipped, autoStats) {
                         if (storms > 0) {
                             addStat(stats, 'Lidless Wall (Critical Strike Damage) [x]', 30 * storms, 'Active Bone Storms');
                         }
+                    } else if (item.name === "The Gloom Ward") {
+                        handled = true;
+                        if (item.isMythic) {
+                            addStat(stats, 'Darkness Skills', 2, 'The Gloom Ward (Mythic)');
+                        }
                     } else if (item.name === "Locran's Talisman") {
                         handled = true;
                         v = item.isMythic ? 195 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 120);
@@ -6782,6 +6787,9 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (itemObj.name === "Lidless Wall" && itemObj.isMythic) {
             udesc = "Lucky Hit: While you have an active Bone Storm, hitting an enemy has up to a 59% chance to spawn a Bone Storm around their location. Each Sacrifice bonus increases this chance by 25% and allows you to spawn 1 additional Bone Storm. Each active Bone Storm grants 30%[x] Critical Strike Damage, up to 150%.";
         }
+        if (itemObj.name === "The Gloom Ward" && itemObj.isMythic) {
+            udesc = "Shadow damage infects enemies with Shadowblight for 2 seconds. Every 6th time an enemy receives Shadow damage from you while they are affected by Shadowblight, they take an additional 780%[x] of that damage as Corrupting damage over 4 seconds.";
+        }
         if (itemObj.name === "Locran's Talisman" && itemObj.isMythic) {
             udesc = "Critical Strikes deal 195%[x] increased damage but your Critical Strike Chance is reduced by 50%[+].";
         }
@@ -7206,7 +7214,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol", "Ebonpiercer", "Locran's Talisman", "Red Blessing", "Mother's Embrace", "Omen of Pain", "Pact of Bone", "Ring of the Sacrilegious Soul", "Signet of Pelghain", "Wendigo Brand", "Gospel of the Devotee", "Lidless Wall"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol", "Ebonpiercer", "Locran's Talisman", "Red Blessing", "Mother's Embrace", "Omen of Pain", "Pact of Bone", "Ring of the Sacrilegious Soul", "Signet of Pelghain", "Wendigo Brand", "Gospel of the Devotee", "Lidless Wall", "The Gloom Ward"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -9908,6 +9916,20 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                 let totalPelgahinMult = 1 + ((multPerSec * secondsFrozen) / 100);
                 multiMult *= totalPelgahinMult;
                 multiData.components.push({ name: `Signet of Pelghain (${secondsFrozen}s)`, value: totalPelgahinMult });
+                multiData.total = multiMult;
+            }
+        }
+
+        let gloom = Object.values(currentBuild.equipment).find(item => item && item.name === "The Gloom Ward");
+        if (gloom) {
+            let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
+            let isShadow = (skillObj.damageType && skillObj.damageType.toLowerCase() === 'shadow') || lTags.some(t => t.includes('shadow'));
+            
+            if (isShadow) {
+                let gloomVal = gloom.isMythic ? 780 : (gloom.aspectValues && gloom.aspectValues.length > 0 ? parseFloat(gloom.aspectValues[0]) || 500 : 500);
+                let gloomMult = 1 + ((gloomVal / 6) / 100);
+                multiMult *= gloomMult;
+                multiData.components.push({ name: 'The Gloom Ward (Average DoT) [x]', value: gloomMult });
                 multiData.total = multiMult;
             }
         }
