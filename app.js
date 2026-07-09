@@ -2879,7 +2879,7 @@ function compileCharacterStats(equipped, autoStats) {
                     } else if (item.name === "The Gloom Ward") {
                         handled = true;
                         if (item.isMythic) {
-                            addStat(stats, 'Darkness Skills', 2, 'The Gloom Ward (Mythic)');
+                            addStat(stats, 'to Darkness Skills', 2, 'The Gloom Ward (Mythic)');
                         }
                     } else if (item.name === "Locran's Talisman") {
                         handled = true;
