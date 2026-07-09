@@ -8607,6 +8607,18 @@ function calculateSkillMultiplicativeBucket(skill) {
         components.push({ name: 'Vulnerable (Native)', value: 1.2 });
     }
     
+    if (dType === 'shadow' || tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || tags.includes('search_darkness')) {
+        if (window.currentBuild && window.currentBuild.equipment) {
+            let gloom = Object.values(window.currentBuild.equipment).find(item => item && item.name === "The Gloom Ward");
+            if (gloom) {
+                let gloomVal = gloom.isMythic ? 780 : (gloom.aspectValues && gloom.aspectValues.length > 0 ? parseFloat(gloom.aspectValues[0]) || 500 : 500);
+                let gloomMult = 1 + ((gloomVal / 6) / 100);
+                bucket *= gloomMult;
+                components.push({ name: 'The Gloom Ward (Average DoT) [x]', value: gloomMult });
+            }
+        }
+    }
+    
     // Iterate over all stats to find multiplicative ones
     for (let key in stats) {
         if (!stats.hasOwnProperty(key)) continue;
@@ -9917,19 +9929,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
             }
         }
 
-        let gloom = Object.values(currentBuild.equipment).find(item => item && item.name === "The Gloom Ward");
-        if (gloom) {
-            let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
-            let isShadow = (skillObj.damageType && skillObj.damageType.toLowerCase() === 'shadow') || lTags.some(t => t.includes('shadow'));
-            
-            if (isShadow) {
-                let gloomVal = gloom.isMythic ? 780 : (gloom.aspectValues && gloom.aspectValues.length > 0 ? parseFloat(gloom.aspectValues[0]) || 500 : 500);
-                let gloomMult = 1 + ((gloomVal / 6) / 100);
-                multiMult *= gloomMult;
-                multiData.components.push({ name: 'The Gloom Ward (Average DoT) [x]', value: gloomMult });
-                multiData.total = multiMult;
-            }
-        }
+
 
         let wendigo = Object.values(currentBuild.equipment).find(item => item && item.name === "Wendigo Brand");
         if (wendigo) {
