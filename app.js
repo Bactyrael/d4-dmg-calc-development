@@ -3255,6 +3255,18 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Reanimation Factor"] = { final: val, isMultiplicative: false };
               stats["Aspect of Reanimation Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
+          
+          let redirectedForce = Object.values(equipped).find(item => item && item.aspect === "Aspect of Redirected Force");
+          if (redirectedForce) {
+              let val = redirectedForce.aspectValues && redirectedForce.aspectValues.length > 0 ? parseFloat(redirectedForce.aspectValues[0]) : 40;
+              let recentlyBlocked = redirectedForce.aspectState?.redirectedForceBlocked || false;
+              let blockChance = stats['Block Chance'] ? stats['Block Chance'].final : 0;
+              let critDmgBonus = blockChance * (val / 100);
+              if (recentlyBlocked) critDmgBonus *= 2;
+              if (critDmgBonus > 0) {
+                  addStat(stats, 'Critical Strike Damage', critDmgBonus, "Aspect of Redirected Force");
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -7176,6 +7188,18 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                     <span style="color: #fff; font-size: 0.85rem;">Alive Duration (0-10 sec)</span>
                     <input type="number" class="d4-input aspect-state-input" data-state-key="reanimationStacks" value="${activeStacks}" min="0" max="10" style="width: 60px; text-align: center; padding: 4px;">
                   </div>
+                </div>
+              `;
+          } else if (currentAspectName === 'Aspect of Redirected Force') {
+              if (!itemObj.aspectState) itemObj.aspectState = {};
+              let recentlyBlocked = itemObj.aspectState.redirectedForceBlocked || false;
+              
+              aspectDescHtml += `
+                <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px;">
+                  <label style="display: flex; align-items: center; cursor: pointer; color: #fff; font-size: 0.85rem;">
+                    <input type="checkbox" class="d4-checkbox aspect-state-checkbox" data-state-key="redirectedForceBlocked" ${recentlyBlocked ? 'checked' : ''} style="margin-right: 8px;">
+                    Blocked Recently (Doubles Bonus)
+                  </label>
                 </div>
               `;
           }
