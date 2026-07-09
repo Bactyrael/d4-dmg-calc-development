@@ -2257,22 +2257,6 @@ window.D4_DATABASE = {
       "maxValue": "60"
     },
     {
-      "name": "Aspect of Inevitable Fate",
-      "desc": "When an enemy falls below #% Life while afflicted with any of your damage over time effects, an explosion occurs every # seconds, dealing\u00a0# damage for each Element they're afflicted by.",
-      "category": "FILTER_Legendary_Offensive",
-      "classes": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "maxValue": ""
-    },
-    {
       "name": "Aspect of Infestation",
       "desc": "Pestilent Swarms now also deal #% of their normal damage as Poisoning damage over # seconds.",
       "category": "FILTER_Legendary_Offensive",
