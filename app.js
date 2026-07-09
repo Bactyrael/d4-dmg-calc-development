@@ -3147,6 +3147,12 @@ function compileCharacterStats(equipped, autoStats) {
                   }
               }
           }
+
+          let compoundFracture = Object.values(equipped).find(item => item && item.aspect === "Aspect of Compound Fracture");
+          if (compoundFracture) {
+              let val = compoundFracture.aspectValues && compoundFracture.aspectValues.length > 0 ? parseFloat(compoundFracture.aspectValues[0]) : 70;
+              stats["Aspect of Compound Fracture (Bone) [x] Damage"] = { final: val, isMultiplicative: true };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
