@@ -1073,22 +1073,6 @@ window.D4_DATABASE = {
       "maxValue": ""
     },
     {
-      "name": "Aspect of Creeping Death",
-      "desc": "You deal #% increased damage over time to enemies for each different Crowd Control effect they're afflicted by. Unstoppable enemies and Staggered Bosses take #% increased damage over time from you instead.",
-      "category": "FILTER_Legendary_Offensive",
-      "classes": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "maxValue": ""
-    },
-    {
       "name": "Aspect of Crippling Darkness",
       "desc": "Lucky Hit: Shadow damage has up to a 15% chance to deal [20 - 30]%[x] increased damage, Fear and Immobilize for 1 second.",
       "category": "FILTER_Legendary_Utility",
