@@ -3220,6 +3220,14 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Gloom Factor"] = { final: val, isMultiplicative: false };
               stats["Aspect of Gloom Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
+          
+          let aspectOfInnerCalm = Object.values(equipped).find(item => item && item.aspect === "Aspect of Inner Calm");
+          if (aspectOfInnerCalm) {
+              let val = aspectOfInnerCalm.aspectValues && aspectOfInnerCalm.aspectValues.length > 0 ? parseFloat(aspectOfInnerCalm.aspectValues[0]) : 50;
+              let activeStacks = aspectOfInnerCalm.aspectState?.innerCalmStacks !== undefined ? parseInt(aspectOfInnerCalm.aspectState.innerCalmStacks) : 100;
+              stats["Aspect of Inner Calm Factor"] = { final: val, isMultiplicative: false };
+              stats["Aspect of Inner Calm Stacks"] = { final: activeStacks, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -7107,6 +7115,18 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                   </div>
                 </div>
               `;
+          } else if (currentAspectName === 'Aspect of Inner Calm') {
+              if (!itemObj.aspectState) itemObj.aspectState = {};
+              let activeStacks = itemObj.aspectState.innerCalmStacks !== undefined ? itemObj.aspectState.innerCalmStacks : 100;
+              
+              aspectDescHtml += `
+                <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="color: #fff; font-size: 0.85rem;">Stacks (0-100%)</span>
+                    <input type="number" class="d4-input aspect-state-input" data-state-key="innerCalmStacks" value="${activeStacks}" min="0" max="100" style="width: 60px; text-align: center; padding: 4px;">
+                  </div>
+                </div>
+              `;
           }
         }
       }
@@ -9064,6 +9084,17 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             let mult = 1 + ((stats["Aspect of Gloom Factor"].final / 100) * activeStacks);
             bucket *= mult;
             components.push({ name: `Aspect of Gloom (${activeStacks} Stacks) [x]`, value: mult });
+        }
+    }
+    
+    // Apply Aspect of Inner Calm if applicable
+    if (stats["Aspect of Inner Calm Factor"]) {
+        let activeStacks = parseInt(stats["Aspect of Inner Calm Stacks"].final) || 0;
+        if (activeStacks > 0) {
+            let multVal = stats["Aspect of Inner Calm Factor"].final * (activeStacks / 100);
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: `Aspect of Inner Calm (${activeStacks}%) [x]`, value: mult });
         }
     }
 
