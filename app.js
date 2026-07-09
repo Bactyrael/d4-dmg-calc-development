@@ -3279,6 +3279,12 @@ function compileCharacterStats(equipped, autoStats) {
               stats['Aspect of Serration Factor'] = { final: val, isMultiplicative: false };
               stats['Aspect of Serration Crit'] = { final: 10, isMultiplicative: false };
           }
+          
+          let terror = Object.values(equipped).find(item => item && item.aspect === "Aspect of Terror");
+          if (terror) {
+              let val = terror.aspectValues && terror.aspectValues.length > 0 ? parseFloat(terror.aspectValues[0]) : 25;
+              stats['Aspect of Terror Factor'] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
