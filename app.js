@@ -3228,6 +3228,16 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Inner Calm Factor"] = { final: val, isMultiplicative: false };
               stats["Aspect of Inner Calm Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
+          
+          let lapasScripture = Object.values(equipped).find(item => item && item.aspect === "Aspect of Lapa's Scripture");
+          if (lapasScripture) {
+              let val = lapasScripture.aspectValues && lapasScripture.aspectValues.length > 0 ? parseFloat(lapasScripture.aspectValues[0]) : 392;
+              let activeStacks = lapasScripture.aspectState?.lapaStacks !== undefined ? parseInt(lapasScripture.aspectState.lapaStacks) : 20;
+              let totalThorns = val * activeStacks;
+              if (totalThorns > 0) {
+                  addStat(stats, 'Thorns', totalThorns, "Aspect of Lapa's Scripture");
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -7124,6 +7134,18 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                   <div style="display: flex; align-items: center; justify-content: space-between;">
                     <span style="color: #fff; font-size: 0.85rem;">Stacks (0-100%)</span>
                     <input type="number" class="d4-input aspect-state-input" data-state-key="innerCalmStacks" value="${activeStacks}" min="0" max="100" style="width: 60px; text-align: center; padding: 4px;">
+                  </div>
+                </div>
+              `;
+          } else if (currentAspectName === "Aspect of Lapa's Scripture") {
+              if (!itemObj.aspectState) itemObj.aspectState = {};
+              let activeStacks = itemObj.aspectState.lapaStacks !== undefined ? itemObj.aspectState.lapaStacks : 20;
+              
+              aspectDescHtml += `
+                <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="color: #fff; font-size: 0.85rem;">Active Stacks</span>
+                    <input type="number" class="d4-input aspect-state-input" data-state-key="lapaStacks" value="${activeStacks}" min="0" max="20" style="width: 60px; text-align: center; padding: 4px;">
                   </div>
                 </div>
               `;
