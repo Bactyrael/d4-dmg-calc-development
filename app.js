@@ -1830,6 +1830,8 @@ function renderEquipment(className, savedEquipment = {}) {
           currentBuild.activeSkills[slotIndex] = null;
           dropdown.classList.add('hidden');
           renderEquipment(currentBuild.class, currentBuild.equipment);
+          if (typeof saveBuild === 'function') saveBuild();
+          if (typeof calculate === 'function') calculate();
       });
       noneRow.appendChild(noneIcon);
       dropdown.appendChild(noneRow);
@@ -1853,6 +1855,8 @@ function renderEquipment(className, savedEquipment = {}) {
                   dropdown.classList.add('hidden');
                   hideSkillTooltip();
                   renderEquipment(currentBuild.class, currentBuild.equipment);
+                  if (typeof saveBuild === 'function') saveBuild();
+                  if (typeof calculate === 'function') calculate();
               });
               
               icon.onmouseenter = (e) => showSkillTooltip(skill, e);
