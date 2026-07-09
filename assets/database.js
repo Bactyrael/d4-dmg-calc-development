@@ -14933,7 +14933,10 @@ window.D4_DATABASE = {
         "sockets": 1,
         "type": "Shield",
         "armor": 1202,
-        "blockChance": 20
+        "blockChance": 20,
+        "affixes": [
+          "+[1 - 2] to Darkness Skills"
+        ]
       },
       {
         "name": "Ward of the White Dove",
