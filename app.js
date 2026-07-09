@@ -5627,7 +5627,8 @@ function getBaseSkillRankFor(skillName) {
         for (let s of db[cat]) {
             if (s.name === skillName) {
                 isBaseSkill = true;
-                skillTags = s.tags || [];
+                let modifiedSkill = typeof applyActiveModifiers === 'function' ? applyActiveModifiers(s) : s;
+                skillTags = modifiedSkill.tags || [];
                 break;
             }
             if (s.modifiers) {
@@ -5660,7 +5661,7 @@ function getBaseSkillRankFor(skillName) {
         // 3. Tag Matches (e.g. "to Core Skills", "to Macabre Skills")
         skillTags.forEach(t => {
             if (t.startsWith('Skill_')) {
-                let tagStr = t.replace('Skill_', '');
+                let tagStr = typeof formatTag === 'function' ? formatTag(t) : t.replace('Skill_', '');
                 if (stats[`to ${tagStr} Skills`]) gearBonus += stats[`to ${tagStr} Skills`].final;
             }
         });
