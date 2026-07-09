@@ -4913,6 +4913,10 @@ function compileCharacterStats(equipped, autoStats) {
               saveConditions();
               if (typeof renderCalcSkills === 'function') renderCalcSkills();
           });
+          chk.addEventListener('input', () => {
+              saveConditions();
+              if (typeof renderCalcSkills === 'function') renderCalcSkills();
+          });
       });
       
       document.querySelectorAll('.calc-buff, .calc-monster-type').forEach(el => {
@@ -9177,7 +9181,7 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let memMult = window.D4_COMPILED_STATS["Aspect of Frozen Memories"].final;
         if (memMult > 0 && typeof getActiveConditions === 'function') {
             const conds = getActiveConditions();
-            if (conds.cc) {
+            if (conds.cc || conds.frozenSeconds > 0) {
                 if (conds.frozenSeconds > 0) memMult *= 3;
                 let lTags = skill.tags ? skill.tags.map(t => t.toLowerCase()) : [];
                 let isCold = (skill.damageType && skill.damageType.toLowerCase() === 'cold') || lTags.some(t => t.includes('cold'));
