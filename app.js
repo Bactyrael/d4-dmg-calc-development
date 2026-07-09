@@ -1366,6 +1366,16 @@ function renderEquipment(className, savedEquipment = {}) {
       box.className = 'equipment-slot-box';
       box.dataset.slot = slot;
       
+      box.onmouseenter = (e) => {
+          let itemObj = savedEquipment[slot];
+          if (typeof itemObj === 'string' && itemObj) {
+              itemObj = { name: itemObj, power: 900, quality: 0, sockets: [] };
+          }
+          if (itemObj && itemObj.name) showItemTooltip(itemObj, e, slot);
+      };
+      box.onmousemove = (e) => moveItemTooltip(e);
+      box.onmouseleave = (e) => hideItemTooltip();
+      
       const icon = document.createElement('div');
       icon.className = 'paperdoll-slot-icon';
       icon.style.backgroundImage = `url('${getSlotBackgroundImage(slot, savedEquipment[slot])}')`;
@@ -6264,6 +6274,178 @@ function moveSkillTooltip(e) {
 }
 
 function hideSkillTooltip(e) {
+    if (tooltipEl) tooltipEl.classList.remove('visible');
+}
+
+function showItemTooltip(itemObj, e, slotName) {
+    if (!tooltipEl) {
+        tooltipEl = document.createElement('div');
+        tooltipEl.id = 'skill-tooltip';
+        tooltipEl.className = 'd4-tooltip';
+        document.body.appendChild(tooltipEl);
+    }
+
+    if (!itemObj || !itemObj.name) return;
+
+    let rarityColor = '#e1b171'; // Legendary orange
+    let isMythic = itemObj.isMythic || itemObj.rarity === 'mythic';
+    let isUnique = itemObj.isUnique || itemObj.rarity === 'unique';
+    if (isMythic) rarityColor = '#c17ce2'; // Mythic purple
+    else if (isUnique) rarityColor = '#c4a96e'; // Unique gold
+    else if (itemObj.rarity === 'rare') rarityColor = '#e4c466'; // Rare yellow
+
+    let titleType = "Ancestral Legendary";
+    if (isMythic) titleType = "Mythic Unique";
+    else if (isUnique) titleType = "Ancestral Unique";
+    else if (itemObj.rarity === 'rare') titleType = "Ancestral Rare";
+    
+    // Guess item type from slot name
+    let itemType = slotName;
+    if (slotName.toLowerCase().includes('weapon') || slotName === 'Mainhand' || slotName === 'Offhand') {
+        let dbItem = window.D4_DATABASE?.equipment?.[slotName.toLowerCase()]?.find(i => i.name === itemObj.name);
+        if (!dbItem) dbItem = (window.D4_DATABASE?.uniques || []).find(i => i.name === itemObj.name);
+        if (dbItem && dbItem.type) itemType = dbItem.type;
+        else if (slotName === 'Mainhand') itemType = "One-Handed Weapon";
+        else if (slotName.includes('2-Handed') || slotName === 'Two-Handed Slashing Weapon' || slotName === 'Two-Handed Bludgeoning Weapon') itemType = "Two-Handed Weapon";
+    }
+
+    let tooltipHtml = `
+      <div style="font-family: var(--font-display); width: 280px; text-transform: uppercase;">
+        <div style="font-size: 1.1rem; color: ${rarityColor}; margin-bottom: 2px; font-weight: bold; letter-spacing: 1px;">
+            ${itemObj.name.toUpperCase()}
+        </div>
+        <div style="color: #aaa; font-size: 0.8rem; margin-bottom: 2px;">
+            ${titleType} ${itemType}
+        </div>
+        <div style="color: #ccc; font-size: 0.9rem; margin-bottom: 10px;">
+            900 Item Power
+        </div>
+    `;
+
+    // Weapon Stats
+    let isWeapon = ['Mainhand', 'Offhand', 'Two-Handed Slashing Weapon', 'Two-Handed Bludgeoning Weapon', 'Ranged Weapon', 'Dual-Wield Weapon 1', 'Dual-Wield Weapon 2', 'Weapon1', 'Weapon2'].includes(slotName);
+    if (isWeapon) {
+        let dps = 3455; // Base 900 IP 2h dps
+        let aps = 1.0;
+        let dbItem = window.D4_DATABASE?.equipment?.[slotName.toLowerCase()]?.find(i => i.name === itemObj.name);
+        if (!dbItem) dbItem = (window.D4_DATABASE?.uniques || []).find(i => i.name === itemObj.name);
+        if (dbItem && dbItem.aps) aps = dbItem.aps;
+        
+        if (dbItem && dbItem.type && dbItem.type.toLowerCase().includes('two-handed')) {
+            dps = 3455;
+        } else if (isWeapon && slotName !== 'Offhand' || (dbItem && dbItem.type && !dbItem.type.toLowerCase().includes('focus') && !dbItem.type.toLowerCase().includes('totem') && !dbItem.type.toLowerCase().includes('shield'))) {
+            dps = 1727;
+        }
+        let dph = [dps / aps * 0.8, dps / aps * 1.2];
+        
+        tooltipHtml += `
+            <div style="margin-bottom: 10px;">
+                <div style="font-size: 1.1rem; color: #fff; font-weight: bold; margin-bottom: 2px;">
+                    ${Math.floor(dps).toLocaleString()} Damage Per Second
+                </div>
+                <div style="color: #aaa; font-size: 0.85rem; text-transform: none;">
+                    - [${Math.floor(dph[0]).toLocaleString()} - ${Math.floor(dph[1]).toLocaleString()}] Damage per Hit<br>
+                    - ${aps.toFixed(2)} Attacks per Second
+                </div>
+            </div>
+        `;
+    }
+
+    // Affixes
+    if (itemObj.affixes && itemObj.affixes.length > 0) {
+        tooltipHtml += `<div style="border-top: 1px solid #444; margin-top: 5px; padding-top: 8px;">`;
+        itemObj.affixes.forEach(affix => {
+            if (affix && affix !== 'None') {
+                let name = typeof affix === 'string' ? affix : affix.name;
+                tooltipHtml += `<div style="color: #bbb; font-size: 0.85rem; margin-bottom: 4px; display: flex; text-transform: none;"><span style="color: #777; margin-right: 5px;">•</span> <span>${name}</span></div>`;
+            }
+        });
+        tooltipHtml += `</div>`;
+    }
+
+    // Aspect
+    if (itemObj.aspect && itemObj.aspect !== 'None') {
+        const aspectObj = (window.D4_DATABASE?.aspects || []).find(a => a.name === itemObj.aspect);
+        if (aspectObj && aspectObj.desc) {
+            let aspectMult = getAspectMultiplier(slotName, itemObj);
+            const vals = itemObj.aspectValues || [];
+            let valIndex = 0;
+            let aspectDescHtml = aspectObj.desc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, minStr, maxStr) => {
+                let min = minStr ? parseFloat(minStr.replace(/,/g, '')) * aspectMult : (aspectObj.minVal ? parseFloat(aspectObj.minVal) * aspectMult : null);
+                let max = maxStr ? parseFloat(maxStr.replace(/,/g, '')) * aspectMult : (aspectObj.maxVal ? parseFloat(aspectObj.maxVal) * aspectMult : null);
+                let v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
+                valIndex++;
+                if (typeof v === 'string') v = parseFloat(v.replace(/,/g, ''));
+                v = parseFloat(Number(v).toFixed(2));
+                return `<span style="color: #8ab4f8;">${v}</span>`;
+            });
+            tooltipHtml += `
+                <div style="border-top: 1px solid #444; margin-top: 5px; padding-top: 8px; font-size: 0.85rem; line-height: 1.4; display: flex; text-transform: none;">
+                    <span style="color: #e1b171; margin-right: 5px;">★</span>
+                    <span style="color: #d18a45;">${aspectDescHtml}</span>
+                </div>
+            `;
+        }
+    }
+
+    // Unique Power
+    if (isUnique || isMythic) {
+        const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === itemObj.name);
+        if (uniqueObj && uniqueObj.desc) {
+            let udesc = uniqueObj.desc;
+            tooltipHtml += `
+                <div style="border-top: 1px solid #444; margin-top: 5px; padding-top: 8px; font-size: 0.85rem; line-height: 1.4; display: flex; text-transform: none;">
+                    <span style="color: #e1b171; margin-right: 5px;">★</span>
+                    <span style="color: #d18a45;">${udesc}</span>
+                </div>
+            `;
+        }
+    }
+
+    // Sockets
+    let maxSockets = getMaxSockets(slotName, itemObj);
+    if (maxSockets > 0) {
+        tooltipHtml += `<div style="border-top: 1px solid #444; margin-top: 8px; padding-top: 8px;">`;
+        for (let i = 0; i < maxSockets; i++) {
+            let gem = (itemObj.sockets && itemObj.sockets[i]) ? itemObj.sockets[i] : 'Empty Socket';
+            tooltipHtml += `
+                <div style="color: #aaa; font-size: 0.85rem; margin-bottom: 4px; display: flex; align-items: center; text-transform: none;">
+                    <div style="width: 12px; height: 12px; border: 1px solid #555; border-radius: 50%; margin-right: 6px; display: flex; justify-content: center; align-items: center;">
+                        ${gem !== 'Empty Socket' ? '<div style="width: 8px; height: 8px; background: #888; border-radius: 50%;"></div>' : ''}
+                    </div>
+                    <span>${gem}</span>
+                </div>
+            `;
+        }
+        tooltipHtml += `</div>`;
+    }
+
+    tooltipHtml += `</div>`;
+    
+    tooltipEl.innerHTML = tooltipHtml;
+    tooltipEl.classList.add('visible');
+    moveItemTooltip(e);
+}
+
+function moveItemTooltip(e) {
+    if (!tooltipEl) return;
+    const x = e.clientX + 15;
+    let y = e.clientY + 15;
+    
+    const rect = tooltipEl.getBoundingClientRect();
+    if (x + rect.width > window.innerWidth) {
+        tooltipEl.style.left = (e.clientX - rect.width - 15) + 'px';
+    } else {
+        tooltipEl.style.left = x + 'px';
+    }
+    
+    if (y + rect.height > window.innerHeight) {
+        y = window.innerHeight - rect.height - 10;
+    }
+    tooltipEl.style.top = y + 'px';
+}
+
+function hideItemTooltip() {
     if (tooltipEl) tooltipEl.classList.remove('visible');
 }
 
