@@ -3301,6 +3301,20 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of the Great Feast Factor"] = { final: val, isMultiplicative: false };
               stats["Aspect of the Great Feast Minions"] = { final: activeMinions ? 1 : 0, isMultiplicative: false };
           }
+          
+          let moonrise = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Moonrise");
+          if (moonrise) {
+              let val = moonrise.aspectValues && moonrise.aspectValues.length > 0 ? parseFloat(moonrise.aspectValues[0]) : 40;
+              let activeStacks = moonrise.aspectState?.moonriseStacks !== undefined ? parseInt(moonrise.aspectState.moonriseStacks) : 10;
+              if (activeStacks > 0) {
+                  let asBonus = activeStacks * 4;
+                  addStat(stats, 'Basic Attack Speed', asBonus, `Aspect of the Moonrise (${activeStacks} Stacks)`);
+              }
+              if (activeStacks === 10) {
+                  addStat(stats, 'Movement Speed', 15, 'Aspect of the Moonrise (10 Stacks)');
+                  stats["Aspect of the Moonrise Factor"] = { final: val, isMultiplicative: false };
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -7260,6 +7274,18 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                   </label>
                 </div>
               `;
+          } else if (currentAspectName === 'Aspect of the Moonrise') {
+              if (!itemObj.aspectState) itemObj.aspectState = {};
+              let activeStacks = itemObj.aspectState.moonriseStacks !== undefined ? itemObj.aspectState.moonriseStacks : 10;
+              
+              aspectDescHtml += `
+                <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="color: #fff; font-size: 0.85rem;">Active Stacks (0-10)</span>
+                    <input type="number" class="d4-input aspect-state-input" data-state-key="moonriseStacks" value="${activeStacks}" min="0" max="10" style="width: 60px; text-align: center; padding: 4px;">
+                  </div>
+                </div>
+              `;
           }
         }
       }
@@ -9229,6 +9255,14 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             components.push({ name: 'Aspect of the Great Feast (No Minions) [x]', value: mult });
         }
     }
+    
+    // Apply Aspect of the Moonrise if applicable
+    if (stats["Aspect of the Moonrise Factor"] && (tags.includes('skill_basic') || tags.includes('search_basic'))) {
+        let multVal = stats["Aspect of the Moonrise Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Aspect of the Moonrise (10 Stacks) [x]', value: mult });
+    }
 
     // Apply Aspect of Elemental Fate if applicable
     if (stats["Aspect of Elemental Fate Factor"]) {
@@ -10483,6 +10517,17 @@ function calculateSkillTotalSpeed(baseSkill, displayImgName) {
                     return src;
                 });
                 asSources = asSources.concat(updatedSources);
+            }
+        }
+    }
+    
+    const isBasic = baseSkill.tags && (baseSkill.tags.some(t => t.toLowerCase() === 'skill_basic' || t.toLowerCase() === 'search_basic'));
+    if (isBasic) {
+        let basicAsNode = compiledStats['Basic Attack Speed'];
+        if (basicAsNode) {
+            asTotal += basicAsNode.final;
+            if (basicAsNode.flatSources) {
+                asSources = asSources.concat(basicAsNode.flatSources);
             }
         }
     }
