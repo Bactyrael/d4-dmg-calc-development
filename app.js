@@ -9148,7 +9148,7 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             bucket *= mult;
             components.push({ name: 'Aspect of Terror (CC) [x]', value: mult });
         }
-        if (conds.elite) {
+        if (conds.monsterType === 'elite' || conds.monsterType === 'boss') {
             bucket *= mult;
             components.push({ name: 'Aspect of Terror (Elite) [x]', value: mult });
         }
