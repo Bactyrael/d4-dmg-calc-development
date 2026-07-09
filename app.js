@@ -3247,6 +3247,14 @@ function compileCharacterStats(equipped, autoStats) {
                   addStat(stats, 'Blood Attack Speed', val, "Aspect of Rathma's Chosen");
               }
           }
+          
+          let aspectOfReanimation = Object.values(equipped).find(item => item && item.aspect === "Aspect of Reanimation");
+          if (aspectOfReanimation) {
+              let val = aspectOfReanimation.aspectValues && aspectOfReanimation.aspectValues.length > 0 ? parseFloat(aspectOfReanimation.aspectValues[0]) : 60;
+              let activeStacks = aspectOfReanimation.aspectState?.reanimationStacks !== undefined ? parseInt(aspectOfReanimation.aspectState.reanimationStacks) : 10;
+              stats["Aspect of Reanimation Factor"] = { final: val, isMultiplicative: false };
+              stats["Aspect of Reanimation Stacks"] = { final: activeStacks, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -7158,6 +7166,18 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                   </div>
                 </div>
               `;
+          } else if (currentAspectName === 'Aspect of Reanimation') {
+              if (!itemObj.aspectState) itemObj.aspectState = {};
+              let activeStacks = itemObj.aspectState.reanimationStacks !== undefined ? itemObj.aspectState.reanimationStacks : 10;
+              
+              aspectDescHtml += `
+                <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="color: #fff; font-size: 0.85rem;">Alive Duration (0-10 sec)</span>
+                    <input type="number" class="d4-input aspect-state-input" data-state-key="reanimationStacks" value="${activeStacks}" min="0" max="10" style="width: 60px; text-align: center; padding: 4px;">
+                  </div>
+                </div>
+              `;
           }
         }
       }
@@ -9139,6 +9159,21 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
                 let mult = 1 + (natMult / 100);
                 bucket *= mult;
                 components.push({ name: `Aspect of Natural Selection [x]`, value: mult });
+            }
+        }
+    }
+    
+    // Apply Aspect of Reanimation if applicable
+    if (stats["Aspect of Reanimation Factor"]) {
+        let activeStacks = parseInt(stats["Aspect of Reanimation Stacks"].final) || 0;
+        if (activeStacks > 0) {
+            let lTags = skill.tags ? skill.tags.map(t => t.toLowerCase()) : [];
+            let isSummon = lTags.some(t => t.includes('summon'));
+            if (isSummon) {
+                let multVal = stats["Aspect of Reanimation Factor"].final * (activeStacks / 10);
+                let mult = 1 + (multVal / 100);
+                bucket *= mult;
+                components.push({ name: `Aspect of Reanimation (${activeStacks}s) [x]`, value: mult });
             }
         }
     }
