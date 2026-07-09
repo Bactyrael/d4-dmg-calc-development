@@ -6302,8 +6302,7 @@ function showItemTooltip(itemObj, e, slotName) {
     // Guess item type from slot name
     let itemType = slotName;
     if (slotName.toLowerCase().includes('weapon') || slotName === 'Mainhand' || slotName === 'Offhand') {
-        let dbItem = window.D4_DATABASE?.equipment?.[slotName.toLowerCase()]?.find(i => i.name === itemObj.name);
-        if (!dbItem) dbItem = (window.D4_DATABASE?.uniques || []).find(i => i.name === itemObj.name);
+        let dbItem = getDbItems(slotName).find(i => i.name === itemObj.name);
         if (dbItem && dbItem.type) itemType = dbItem.type;
         else if (slotName === 'Mainhand') itemType = "One-Handed Weapon";
         else if (slotName.includes('2-Handed') || slotName === 'Two-Handed Slashing Weapon' || slotName === 'Two-Handed Bludgeoning Weapon') itemType = "Two-Handed Weapon";
@@ -6327,8 +6326,7 @@ function showItemTooltip(itemObj, e, slotName) {
     if (isWeapon) {
         let dps = 3455; // Base 900 IP 2h dps
         let aps = 1.0;
-        let dbItem = window.D4_DATABASE?.equipment?.[slotName.toLowerCase()]?.find(i => i.name === itemObj.name);
-        if (!dbItem) dbItem = (window.D4_DATABASE?.uniques || []).find(i => i.name === itemObj.name);
+        let dbItem = getDbItems(slotName).find(i => i.name === itemObj.name);
         if (dbItem && dbItem.aps) aps = dbItem.aps;
         
         if (dbItem && dbItem.type && dbItem.type.toLowerCase().includes('two-handed')) {
