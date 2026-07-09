@@ -9119,6 +9119,20 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             components.push({ name: `Aspect of Inner Calm (${activeStacks}%) [x]`, value: mult });
         }
     }
+    
+    // Apply Aspect of Natural Selection if applicable
+    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Aspect of Natural Selection"]) {
+        let natMult = window.D4_COMPILED_STATS["Aspect of Natural Selection"].final;
+        if (natMult > 0) {
+            let lTags = skill.tags ? skill.tags.map(t => t.toLowerCase()) : [];
+            let isMinion = lTags.some(t => t.includes('minion') || t.includes('summon'));
+            if (isMinion) {
+                let mult = 1 + (natMult / 100);
+                bucket *= mult;
+                components.push({ name: `Aspect of Natural Selection [x]`, value: mult });
+            }
+        }
+    }
 
     // Iterate over all stats to find multiplicative ones
     for (let key in stats) {

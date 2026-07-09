@@ -2766,7 +2766,7 @@ window.D4_DATABASE = {
         0,
         0
       ],
-      "maxValue": "1"
+      "maxValue": "70"
     },
     {
       "name": "Aspect of Nebulous Brews",
