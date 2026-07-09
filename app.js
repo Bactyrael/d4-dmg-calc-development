@@ -9161,8 +9161,8 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
     }
     
     if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Crown_of_Lucion_Mult"]) {
-        let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
-        let hasCost = skillObj.resourceCost !== undefined || (skillObj.desc && skillObj.desc.toLowerCase().includes('cost'));
+        let lTags = skill.tags ? skill.tags.map(t => t.toLowerCase()) : [];
+        let hasCost = skill.resourceCost !== undefined || (skill.desc && skill.desc.toLowerCase().includes('cost'));
         let isBasic = lTags.some(t => t.includes('basic'));
         
         if (hasCost || isBasic) {
@@ -9179,8 +9179,8 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             const conds = getActiveConditions();
             if (conds.cc) {
                 if (conds.frozenSeconds > 0) memMult *= 3;
-                let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
-                let isCold = (skillObj.damageType && skillObj.damageType.toLowerCase() === 'cold') || lTags.some(t => t.includes('cold'));
+                let lTags = skill.tags ? skill.tags.map(t => t.toLowerCase()) : [];
+                let isCold = (skill.damageType && skill.damageType.toLowerCase() === 'cold') || lTags.some(t => t.includes('cold'));
                 
                 if (isCold) {
                     let mult = 1 + (memMult / 100);
