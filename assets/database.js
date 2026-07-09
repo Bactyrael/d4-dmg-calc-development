@@ -1953,22 +1953,6 @@ window.D4_DATABASE = {
       "maxValue": "2"
     },
     {
-      "name": "Aspect of Gore Quills",
-      "desc": "Casting Blood Lance will consume Blood Orbs to also conjure lances from them. Each additional Blood Lance deals [60 - 100]% of normal damage and prioritizes targeting un-lanced enemies.",
-      "category": "FILTER_Legendary_Offensive",
-      "classes": [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0
-      ],
-      "maxValue": "."
-    },
-    {
       "name": "Aspect of Grasping Whirlwind",
       "desc": "Whirlwind Pulls enemies to you every # seconds.",
       "category": "FILTER_Legendary_Utility",
