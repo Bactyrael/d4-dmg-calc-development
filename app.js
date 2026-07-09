@@ -3212,6 +3212,14 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Elemental Fate Set"] = { final: activeSet === 'set1' ? 1 : 2, isMultiplicative: false };
               stats["Aspect of Elemental Fate Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
+          
+          let aspectOfGloom = Object.values(equipped).find(item => item && item.aspect === "Aspect of Gloom");
+          if (aspectOfGloom) {
+              let val = aspectOfGloom.aspectValues && aspectOfGloom.aspectValues.length > 0 ? parseFloat(aspectOfGloom.aspectValues[0]) : 10;
+              let activeStacks = aspectOfGloom.aspectState?.gloomStacks !== undefined ? parseInt(aspectOfGloom.aspectState.gloomStacks) : 4;
+              stats["Aspect of Gloom Factor"] = { final: val, isMultiplicative: false };
+              stats["Aspect of Gloom Stacks"] = { final: activeStacks, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -7087,6 +7095,18 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                   </div>
                 </div>
               `;
+          } else if (currentAspectName === 'Aspect of Gloom') {
+              if (!itemObj.aspectState) itemObj.aspectState = {};
+              let activeStacks = itemObj.aspectState.gloomStacks !== undefined ? itemObj.aspectState.gloomStacks : 4;
+              
+              aspectDescHtml += `
+                <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="color: #fff; font-size: 0.85rem;">Active Stacks</span>
+                    <input type="number" class="d4-input aspect-state-input" data-state-key="gloomStacks" value="${activeStacks}" min="0" max="4" style="width: 60px; text-align: center; padding: 4px;">
+                  </div>
+                </div>
+              `;
           }
         }
       }
@@ -9031,6 +9051,19 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             let mult = 1 + ((stats["Aspect of Elemental Fate Factor"].final / 100) * activeStacks);
             bucket *= mult;
             components.push({ name: `Aspect of Elemental Fate (${activeStacks} Stacks) [x]`, value: mult });
+        }
+    }
+    
+    // Apply Aspect of Gloom if applicable
+    if (stats["Aspect of Gloom Factor"]) {
+        let activeStacks = parseInt(stats["Aspect of Gloom Stacks"].final) || 0;
+        let lTags = skill.tags ? skill.tags.map(t => t.toLowerCase()) : [];
+        let isDarkness = (skill.damageType && skill.damageType.toLowerCase() === 'shadow') || lTags.some(t => t.includes('darkness') || t.includes('shadow'));
+        
+        if (isDarkness && activeStacks > 0) {
+            let mult = 1 + ((stats["Aspect of Gloom Factor"].final / 100) * activeStacks);
+            bucket *= mult;
+            components.push({ name: `Aspect of Gloom (${activeStacks} Stacks) [x]`, value: mult });
         }
     }
 
