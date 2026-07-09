@@ -1392,7 +1392,18 @@ function renderEquipment(className, savedEquipment = {}) {
       box.dataset.value = val ? JSON.stringify(val) : '';
       
       if (val && val.name) {
-        valDiv.textContent = val.name;
+        let displayName = val.name;
+        if (val.aspect && val.aspect !== 'None') {
+            let cleanAspect = val.aspect;
+            if (cleanAspect.startsWith('Aspect of ')) {
+                displayName = val.name + ' ' + cleanAspect.replace('Aspect of ', 'of ');
+            } else if (cleanAspect.endsWith(' Aspect')) {
+                displayName = cleanAspect.replace(' Aspect', '') + ' ' + val.name;
+            } else {
+                displayName = val.name + ' (' + cleanAspect + ')';
+            }
+        }
+        valDiv.textContent = displayName;
         valDiv.classList.remove('empty');
       } else {
         valDiv.classList.add('empty');
