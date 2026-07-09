@@ -3136,6 +3136,17 @@ function compileCharacterStats(equipped, autoStats) {
                   stats["Aspect of Channeling Damage [x]"] = { final: val, isMultiplicative: true };
               }
           }
+
+          let coalescedBlood = Object.values(equipped).find(item => item && item.aspect === "Aspect of Coalesced Blood");
+          if (coalescedBlood) {
+              if (typeof getActiveConditions === 'function') {
+                  const conds = getActiveConditions();
+                  if (conds.healthy) {
+                      let val = coalescedBlood.aspectValues && coalescedBlood.aspectValues.length > 0 ? parseFloat(coalescedBlood.aspectValues[0]) : 70;
+                      stats["Aspect of Coalesced Blood [x] Damage"] = { final: val, isMultiplicative: true };
+                  }
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
