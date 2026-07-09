@@ -8782,6 +8782,7 @@ function getActiveConditions() {
         healthy: document.getElementById('cond-healthy')?.checked || false,
         injured: document.getElementById('cond-injured')?.checked || false,
         cc: document.getElementById('cond-cc')?.checked || false,
+        frozen: document.getElementById('cond-frozen')?.checked || false,
         cursed: document.getElementById('cond-cursed')?.checked || false,
         shadowDot: document.getElementById('cond-shadow-dot')?.checked || false,
         frozenSeconds: parseFloat(document.getElementById('cond-seconds-frozen')?.value) || 0,
@@ -9181,15 +9182,15 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let memMult = window.D4_COMPILED_STATS["Aspect of Frozen Memories"].final;
         if (memMult > 0 && typeof getActiveConditions === 'function') {
             const conds = getActiveConditions();
-            if (conds.cc || conds.frozenSeconds > 0) {
-                if (conds.frozenSeconds > 0) memMult *= 3;
+            if (conds.cc || conds.frozen) {
+                if (conds.frozen) memMult *= 3;
                 let lTags = skill.tags ? skill.tags.map(t => t.toLowerCase()) : [];
                 let isCold = (skill.damageType && skill.damageType.toLowerCase() === 'cold') || lTags.some(t => t.includes('cold'));
                 
                 if (isCold) {
                     let mult = 1 + (memMult / 100);
                     bucket *= mult;
-                    components.push({ name: `Aspect of Frozen Memories ${conds.frozenSeconds > 0 ? '(Tripled)' : ''} [x]`, value: mult });
+                    components.push({ name: `Aspect of Frozen Memories ${conds.frozen ? '(Tripled)' : ''} [x]`, value: mult });
                 }
             }
         }
