@@ -8784,7 +8784,7 @@ function getActiveConditions() {
         cc: document.getElementById('cond-cc')?.checked || false,
         cursed: document.getElementById('cond-cursed')?.checked || false,
         shadowDot: document.getElementById('cond-shadow-dot')?.checked || false,
-        frozenSeconds: parseFloat(document.getElementById('cond-frozen-seconds')?.value) || 0,
+        frozenSeconds: parseFloat(document.getElementById('cond-seconds-frozen')?.value) || 0,
         numMonsters: parseInt(document.getElementById('cond-num-monsters')?.value) || 1,
         monsterType: document.querySelector('input[name="monster_type"]:checked')?.value || 'elite'
     };
@@ -10367,7 +10367,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         let pelgahin = Object.values(currentBuild.equipment).find(item => item && item.name === "Signet of Pelghain");
         if (pelgahin) {
             let secondsFrozen = 0;
-            const sfEl = document.getElementById('cond-frozen-seconds');
+            const sfEl = document.getElementById('cond-seconds-frozen');
             if (sfEl) secondsFrozen = parseInt(sfEl.value) || 0;
             
             let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
