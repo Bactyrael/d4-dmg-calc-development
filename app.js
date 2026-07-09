@@ -3153,6 +3153,12 @@ function compileCharacterStats(equipped, autoStats) {
               let val = compoundFracture.aspectValues && compoundFracture.aspectValues.length > 0 ? parseFloat(compoundFracture.aspectValues[0]) : 70;
               stats["Aspect of Compound Fracture (Bone) [x] Damage"] = { final: val, isMultiplicative: true };
           }
+
+          let decayAspect = Object.values(equipped).find(item => item && item.aspect === "Aspect of Decay");
+          if (decayAspect) {
+              let val = decayAspect.aspectValues && decayAspect.aspectValues.length > 0 ? parseFloat(decayAspect.aspectValues[0]) : 85;
+              stats["Aspect of Decay Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -8725,6 +8731,17 @@ function calculateSkillMultiplicativeBucket(skill) {
             let mult = 1 + (bonus / 100);
             bucket *= mult;
             components.push({ name: `Aspect of Bursting Bones (${effectiveEss} Essence) [x]`, value: mult });
+        }
+    }
+
+    // Apply Aspect of Decay if applicable
+    if (stats["Aspect of Decay Factor"]) {
+        let isShadowOrCold = dType === 'shadow' || dType === 'cold' || tags.includes('skill_shadow') || tags.includes('skill_cold') || tags.includes('skill_darkness');
+        let dealsDot = ['Blight', 'Decompose', 'Corpse Explosion', 'Blood Wave', 'Bone Storm'].includes(skill.baseName || skill.name) || (skill.desc && skill.desc.toLowerCase().includes('over '));
+        if (isShadowOrCold && dealsDot) {
+            let mult = 1 + (stats["Aspect of Decay Factor"].final / 100);
+            bucket *= mult;
+            components.push({ name: 'Aspect of Decay [x]', value: mult });
         }
     }
 
