@@ -3122,6 +3122,12 @@ function compileCharacterStats(equipped, autoStats) {
                   }
               }
           }
+
+          let burstingBones = Object.values(equipped).find(item => item && item.aspect === "Aspect of Bursting Bones");
+          if (burstingBones) {
+              let val = burstingBones.aspectValues && burstingBones.aspectValues.length > 0 ? parseFloat(burstingBones.aspectValues[0]) : 0.40;
+              stats["Aspect of Bursting Bones Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -8684,6 +8690,18 @@ function calculateSkillMultiplicativeBucket(skill) {
         }
     }
     
+    // Apply Aspect of Bursting Bones if applicable
+    if (stats["Aspect of Bursting Bones Factor"] && (tags.includes('skill_bone') || tags.includes('search_bone') || dType === 'bone')) {
+        let maxEss = stats["Maximum Essence"] ? stats["Maximum Essence"].final : 100;
+        let effectiveEss = Math.min(maxEss, 200);
+        let bonus = effectiveEss * stats["Aspect of Bursting Bones Factor"].final;
+        if (bonus > 0) {
+            let mult = 1 + (bonus / 100);
+            bucket *= mult;
+            components.push({ name: `Aspect of Bursting Bones (${effectiveEss} Essence) [x]`, value: mult });
+        }
+    }
+
     // Iterate over all stats to find multiplicative ones
     for (let key in stats) {
         if (!stats.hasOwnProperty(key)) continue;
