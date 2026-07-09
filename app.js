@@ -3071,11 +3071,14 @@ function compileCharacterStats(equipped, autoStats) {
                           found = skillsDatabase[cat].find(s => s.name === skillName);
                           if (found) break;
                       }
-                      if (found && found.tags && found.tags.some(t => t.toLowerCase() === 'skill_core')) {
-                          let isHit = found.isHit !== undefined ? found.isHit : !['Decompose', 'Blighted Corpse Explosion'].includes(found.baseName || found.name);
-                          if (isHit) {
-                              hasCore = true;
-                              break;
+                      if (found) {
+                          let modifiedSkill = typeof applyActiveModifiers === 'function' ? applyActiveModifiers(found) : found;
+                          if (modifiedSkill.tags && modifiedSkill.tags.some(t => t.toLowerCase() === 'skill_core')) {
+                              let isHit = modifiedSkill.isHit !== undefined ? modifiedSkill.isHit : !['Decompose', 'Blighted Corpse Explosion'].includes(modifiedSkill.baseName || modifiedSkill.name);
+                              if (isHit) {
+                                  hasCore = true;
+                                  break;
+                              }
                           }
                       }
                   }
