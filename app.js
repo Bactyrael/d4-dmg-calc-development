@@ -3056,7 +3056,7 @@ function compileCharacterStats(equipped, autoStats) {
       additiveScalersCore.forEach(scaleFn);
 
       if (equipped) {
-          let accAspect = Object.values(equipped).find(item => item && item.name === "Accelerating Aspect");
+          let accAspect = Object.values(equipped).find(item => item && item.aspect === "Accelerating Aspect");
           if (accAspect) {
               let hasCore = false;
               if (window.currentBuild && window.currentBuild.activeSkills && typeof skillsDatabase !== 'undefined') {
