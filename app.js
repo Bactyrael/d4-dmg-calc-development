@@ -3293,6 +3293,14 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of the Expectant Factor"] = { final: val, isMultiplicative: false };
               stats["Aspect of the Expectant Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
+          
+          let greatFeast = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Great Feast");
+          if (greatFeast) {
+              let val = greatFeast.aspectValues && greatFeast.aspectValues.length > 0 ? parseFloat(greatFeast.aspectValues[0]) : 35;
+              let activeMinions = greatFeast.aspectState?.feastActiveMinions !== undefined ? greatFeast.aspectState.feastActiveMinions : true;
+              stats["Aspect of the Great Feast Factor"] = { final: val, isMultiplicative: false };
+              stats["Aspect of the Great Feast Minions"] = { final: activeMinions ? 1 : 0, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -7240,6 +7248,18 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                   </div>
                 </div>
               `;
+          } else if (currentAspectName === 'Aspect of the Great Feast') {
+              if (!itemObj.aspectState) itemObj.aspectState = {};
+              let activeMinions = itemObj.aspectState.feastActiveMinions !== undefined ? itemObj.aspectState.feastActiveMinions : true;
+              
+              aspectDescHtml += `
+                <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px;">
+                  <label style="display: flex; align-items: center; cursor: pointer; color: #fff; font-size: 0.85rem;">
+                    <input type="checkbox" class="d4-checkbox aspect-state-input" data-state-key="feastActiveMinions" ${activeMinions ? 'checked' : ''} style="margin-right: 8px;">
+                    Active Minions Available
+                  </label>
+                </div>
+              `;
           }
         }
       }
@@ -9192,6 +9212,21 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             let mult = 1 + (multVal / 100);
             bucket *= mult;
             components.push({ name: `Aspect of the Expectant (${activeStacks} Stacks) [x]`, value: mult });
+        }
+    }
+    
+    // Apply Aspect of the Great Feast if applicable
+    if (stats["Aspect of the Great Feast Factor"]) {
+        let hasMinions = stats["Aspect of the Great Feast Minions"].final === 1;
+        let isMinionSkill = tags.some(t => t.includes('minion') || t.includes('summon'));
+        if (hasMinions && isMinionSkill) {
+            let mult = 1 + (stats["Aspect of the Great Feast Factor"].final / 100);
+            bucket *= mult;
+            components.push({ name: 'Aspect of the Great Feast (Minions) [x]', value: mult });
+        } else if (!hasMinions && !isMinionSkill) {
+            let mult = 1 + (stats["Aspect of the Great Feast Factor"].final / 100);
+            bucket *= mult;
+            components.push({ name: 'Aspect of the Great Feast (No Minions) [x]', value: mult });
         }
     }
 
