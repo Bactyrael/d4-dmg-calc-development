@@ -10229,7 +10229,7 @@ function calculateSkillCritChance(skillObj) {
     }
     
     let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
-    if (lTags.includes('corpse') || lTags.includes('bone')) {
+    if (lTags.some(t => t.includes('corpse') || t.includes('bone'))) {
         if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Aspect of Serration Crit']) {
             let v = window.D4_COMPILED_STATS['Aspect of Serration Crit'].final;
             if (v > 0) {
@@ -11071,7 +11071,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
         
         let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
-        if (lTags.includes('corpse') || lTags.includes('bone')) {
+        if (lTags.some(t => t.includes('corpse') || t.includes('bone'))) {
             let serrationStat = window.D4_COMPILED_STATS['Aspect of Serration Factor'];
             if (serrationStat && serrationStat.final > 0) {
                 let sVal = 1 + (serrationStat.final / 100);
