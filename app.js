@@ -9140,6 +9140,20 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         }
     }
 
+    // Apply Aspect of Terror if applicable
+    if (stats["Aspect of Terror Factor"] && tags.some(t => t.includes('darkness') || t.includes('shadow'))) {
+        let tVal = stats["Aspect of Terror Factor"].final;
+        let mult = 1 + (tVal / 100);
+        if (conds.cc) {
+            bucket *= mult;
+            components.push({ name: 'Aspect of Terror (CC) [x]', value: mult });
+        }
+        if (conds.elite) {
+            bucket *= mult;
+            components.push({ name: 'Aspect of Terror (Elite) [x]', value: mult });
+        }
+    }
+
     // Apply Aspect of Decay if applicable
     if (stats["Aspect of Decay Factor"]) {
         let isShadowOrCold = dType === 'shadow' || dType === 'cold' || tags.includes('skill_shadow') || tags.includes('skill_cold') || tags.includes('skill_darkness');
