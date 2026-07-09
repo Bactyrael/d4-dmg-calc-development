@@ -8676,8 +8676,9 @@ function calculateSkillAdditiveBucket(skill, isHit) {
     return { total: bucket, components: components };
 }
 
-function calculateSkillMultiplicativeBucket(skill) {
-    if (!window.D4_COMPILED_STATS) return 1;
+function calculateSkillMultiplicativeBucket(skill, isHit) {
+    if (isHit === undefined) isHit = skill.isHit !== undefined ? skill.isHit : !['Decompose', 'Blighted Corpse Explosion'].includes(skill.baseName || skill.name);
+    if (!window.D4_COMPILED_STATS) return { total: 1, components: [] };
     const stats = window.D4_COMPILED_STATS;
     const buffs = getActiveBuffs();
     const conds = getActiveConditions();
@@ -8737,8 +8738,7 @@ function calculateSkillMultiplicativeBucket(skill) {
     // Apply Aspect of Decay if applicable
     if (stats["Aspect of Decay Factor"]) {
         let isShadowOrCold = dType === 'shadow' || dType === 'cold' || tags.includes('skill_shadow') || tags.includes('skill_cold') || tags.includes('skill_darkness');
-        let dealsDot = ['Blight', 'Decompose', 'Corpse Explosion', 'Blood Wave', 'Bone Storm'].includes(skill.baseName || skill.name) || (skill.desc && skill.desc.toLowerCase().includes('over '));
-        if (isShadowOrCold && dealsDot) {
+        if (isShadowOrCold && !isHit) {
             let mult = 1 + (stats["Aspect of Decay Factor"].final / 100);
             bucket *= mult;
             components.push({ name: 'Aspect of Decay [x]', value: mult });
@@ -10012,7 +10012,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
     let addData = typeof calculateSkillAdditiveBucket === 'function' ? calculateSkillAdditiveBucket(skillObj, isHit) : { total: 0, components: [] };
     let additiveMult = 1 + addData.total;
 
-    let multiData = typeof calculateSkillMultiplicativeBucket === 'function' ? calculateSkillMultiplicativeBucket(skillObj) : { total: 1, components: [] };
+    let multiData = typeof calculateSkillMultiplicativeBucket === 'function' ? calculateSkillMultiplicativeBucket(skillObj, isHit) : { total: 1, components: [] };
     let multiMult = multiData.total;
     
     if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Crown_of_Lucion_Mult"]) {
