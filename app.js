@@ -1404,10 +1404,26 @@ function renderEquipment(className, savedEquipment = {}) {
             }
         }
         valDiv.textContent = displayName;
+        
+        let fSize = 1.0;
+        if (displayName.length > 32) fSize = 0.60;
+        else if (displayName.length > 25) fSize = 0.70;
+        else if (displayName.length > 18) fSize = 0.85;
+        
+        valDiv.style.fontSize = fSize + 'rem';
+        valDiv.style.whiteSpace = 'nowrap';
+        valDiv.style.overflow = 'hidden';
+        valDiv.style.textOverflow = 'ellipsis';
+        valDiv.title = displayName; // Add title for tooltip on hover if truncated
+        
         valDiv.classList.remove('empty');
       } else {
         valDiv.classList.add('empty');
         valDiv.textContent = 'Empty';
+        valDiv.style.fontSize = '';
+        valDiv.style.whiteSpace = '';
+        valDiv.style.overflow = '';
+        valDiv.title = '';
       }
       
       textContainer.appendChild(label);
