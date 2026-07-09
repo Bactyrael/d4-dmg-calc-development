@@ -3378,7 +3378,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Serration",
-      "desc": "Your Corpse and Bone Skills gain 5%[+] increased Critical Strike Chance and [40 - 60]%[x] increased Critical Strike Damage.",
+      "desc": "Your Corpse and Bone Skills gain 10%[+] increased Critical Strike Chance and [40 - 60]%[x] increased Critical Strike Damage.",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         0,

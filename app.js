@@ -3272,6 +3272,13 @@ function compileCharacterStats(equipped, autoStats) {
                   };
               }
           }
+          
+          let serration = Object.values(equipped).find(item => item && item.aspect === "Aspect of Serration");
+          if (serration) {
+              let val = serration.aspectValues && serration.aspectValues.length > 0 ? parseFloat(serration.aspectValues[0]) : 40;
+              stats['Aspect of Serration Factor'] = { final: val, isMultiplicative: false };
+              stats['Aspect of Serration Crit'] = { final: 10, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -10221,6 +10228,17 @@ function calculateSkillCritChance(skillObj) {
         }
     }
     
+    let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
+    if (lTags.includes('corpse') || lTags.includes('bone')) {
+        if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Aspect of Serration Crit']) {
+            let v = window.D4_COMPILED_STATS['Aspect of Serration Crit'].final;
+            if (v > 0) {
+                totalCrit += v;
+                components.push({ name: 'Aspect of Serration [+]', value: v });
+            }
+        }
+    }
+    
     if (window.selectedSkills) {
         if ((skillObj.name === 'Reap' || skillObj.baseName === 'Reap') && isSkillActiveNode('Critical Strike Chance (Reap)')) {
             totalCrit += 10.0;
@@ -11049,6 +11067,16 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                 let critVal = (1 + (stat.final / 100));
                 critMultiMult *= critVal;
                 critMultiplicativeComponents.push({ name: key, value: critVal });
+            }
+        }
+        
+        let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
+        if (lTags.includes('corpse') || lTags.includes('bone')) {
+            let serrationStat = window.D4_COMPILED_STATS['Aspect of Serration Factor'];
+            if (serrationStat && serrationStat.final > 0) {
+                let sVal = 1 + (serrationStat.final / 100);
+                critMultiMult *= sVal;
+                critMultiplicativeComponents.push({ name: 'Aspect of Serration [x]', value: sVal });
             }
         }
 
