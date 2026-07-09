@@ -3238,6 +3238,15 @@ function compileCharacterStats(equipped, autoStats) {
                   addStat(stats, 'Thorns', totalThorns, "Aspect of Lapa's Scripture");
               }
           }
+          
+          let rathmasChosen = Object.values(equipped).find(item => item && item.aspect === "Aspect of Rathma's Chosen");
+          if (rathmasChosen) {
+              let val = rathmasChosen.aspectValues && rathmasChosen.aspectValues.length > 0 ? parseFloat(rathmasChosen.aspectValues[0]) : 40;
+              let buffs = typeof getActiveBuffs === 'function' ? getActiveBuffs() : { fortified: false };
+              if (buffs.fortified) {
+                  addStat(stats, 'Blood Attack Speed', val, "Aspect of Rathma's Chosen");
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -10322,6 +10331,17 @@ function calculateSkillTotalSpeed(baseSkill, displayImgName) {
                     });
                     asSources = asSources.concat(updatedSources);
                 }
+            }
+        }
+    }
+    
+    const isBlood = baseSkill.tags && baseSkill.tags.some(t => t.toLowerCase().includes('blood'));
+    if (isBlood) {
+        let bloodAsNode = compiledStats['Blood Attack Speed'];
+        if (bloodAsNode) {
+            asTotal += bloodAsNode.final;
+            if (bloodAsNode.flatSources) {
+                asSources = asSources.concat(bloodAsNode.flatSources);
             }
         }
     }
