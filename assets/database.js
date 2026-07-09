@@ -13165,7 +13165,7 @@ window.D4_DATABASE = {
         "resistance": 173,
         "type": "Ring",
         "affixes": [
-          "+[8.0 - 10.0]% Damage"
+          "+[8.0 - 10.0]%[x] Damage"
         ],
         "desc": "Your Freeze effects cause enemies to permanently take [10 - 15]%[x] increased Cold damage from you for each second they are Frozen."
       },
@@ -13327,7 +13327,11 @@ window.D4_DATABASE = {
           1
         ],
         "resistance": 173,
-        "type": "Ring"
+        "type": "Ring",
+        "affixes": [
+          "+[1226 - 1450] Maximum Life"
+        ],
+        "desc": "Every 15 kills in the last [50 - 60] seconds increases your damage by 2%[x], and Maximum Life by 1%[+]."
       },
       {
         "name": "Wound Drinker",
@@ -14778,7 +14782,11 @@ window.D4_DATABASE = {
         "weaponSpeed": 1.2,
         "damageRange": "1,152 - 1,728",
         "sockets": 1,
-        "type": "Focus"
+        "type": "Focus",
+        "affixes": [
+          "+[1 - 2] to Basic Skills"
+        ],
+        "desc": "Your Basic Skills gain the effect of every Upgrade. Damaging an enemy with a Basic Skill causes them to take [30 - 40]%[x] increased damage from your other Basic Skills for 10 seconds."
       },
       {
         "name": "Herald of Zakarum",

@@ -3047,6 +3047,20 @@ function compileCharacterStats(equipped, autoStats) {
 
       additiveScalersCore.forEach(scaleFn);
 
+      if (equipped) {
+          let wendigo = Object.values(equipped).find(item => item && item.name === "Wendigo Brand");
+          if (wendigo) {
+              let rkEl = document.getElementById('cond-recent-kills');
+              if (rkEl) {
+                  let rKills = parseInt(rkEl.value) || 0;
+                  if (rKills >= 15) {
+                      let stacks = Math.floor(rKills / 15);
+                      addStat(stats, '% Maximum Life', stacks * 1, `Wendigo Brand (${stacks} Stacks)`);
+                  }
+              }
+          }
+      }
+
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
 
       additiveScalersSecondary.forEach(scaleFn);
@@ -6169,15 +6183,29 @@ function populateMainSkillSelect() {
 }
 
 function isSkillForcedActive(name) {
-    if (currentBuild && currentBuild.equipment && Object.values(currentBuild.equipment).some(item => item && item.name === "Ring of the Sacrilegious Soul")) {
-        const sacUpgrades = [
-            "Lucky Hit Chance (Corpse Tendrils)",
-            "Vulnerable (Corpse Tendrils)",
-            "Critical Strike Chance (Corpse Tendrils)",
-            "Essence Generation (Corpse Tendrils)"
-        ];
-        if (sacUpgrades.includes(name)) {
-            return true;
+    if (currentBuild && currentBuild.equipment) {
+        if (Object.values(currentBuild.equipment).some(item => item && item.name === "Ring of the Sacrilegious Soul")) {
+            const sacUpgrades = [
+                "Lucky Hit Chance (Corpse Tendrils)",
+                "Vulnerable (Corpse Tendrils)",
+                "Critical Strike Chance (Corpse Tendrils)",
+                "Essence Generation (Corpse Tendrils)"
+            ];
+            if (sacUpgrades.includes(name)) {
+                return true;
+            }
+        }
+        
+        if (Object.values(currentBuild.equipment).some(item => item && item.name === "Gospel of the Devotee")) {
+            const basicUpgrades = [
+                "Ferocity (Reap)", "Corpse Generation (Reap)", "Essence Generation (Reap)", "Critical Strike Chance (Reap)",
+                "Crowd Control", "Lucky Hit Chance (Decompose)", "Damage Bonus (Decompose)", "Barrier (Decompose)",
+                "Cast Speed", "Blood Orb (Hemorrhage)", "Weaken (Hemorrhage)", "Overpower (Hemorrhage)",
+                "Projectiles", "Essence Generation (Bone Splinters)", "Vulnerable (Bone Splinters)", "Resolve (Bone Splinters)"
+            ];
+            if (basicUpgrades.includes(name)) {
+                return true;
+            }
         }
     }
     return false;
@@ -6782,6 +6810,20 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                 udesc = "Your Freeze effects cause enemies to permanently take [10 - 15]%[x] increased Cold damage from you for each second they are Frozen.";
             }
         }
+        if (itemObj.name === "Wendigo Brand") {
+            if (itemObj.isMythic) {
+                udesc = "Every 15 kills in the last 78 seconds increases your damage by 2%[x], and Maximum Life by 1%[+].";
+            } else {
+                udesc = "Every 15 kills in the last [50 - 60] seconds increases your damage by 2%[x], and Maximum Life by 1%[+].";
+            }
+        }
+        if (itemObj.name === "Gospel of the Devotee") {
+            if (itemObj.isMythic) {
+                udesc = "Your Basic Skills gain the effect of every Upgrade. Damaging an enemy with a Basic Skill causes them to take 52%[x] increased damage from your other Basic Skills for 10 seconds.";
+            } else {
+                udesc = "Your Basic Skills gain the effect of every Upgrade. Damaging an enemy with a Basic Skill causes them to take [30 - 40]%[x] increased damage from your other Basic Skills for 10 seconds.";
+            }
+        }
         if (itemObj.name === "Endurant Faith" && itemObj.isMythic) {
             udesc = "When you would be damaged for at least 30% of your Maximum Life at once, it is instead distributed over the next 4 seconds and reduced by 26%.";
         }
@@ -7167,7 +7209,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol", "Ebonpiercer", "Locran's Talisman", "Red Blessing", "Mother's Embrace", "Omen of Pain", "Pact of Bone", "Ring of the Sacrilegious Soul", "Signet of Pelghain"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol", "Ebonpiercer", "Locran's Talisman", "Red Blessing", "Mother's Embrace", "Omen of Pain", "Pact of Bone", "Ring of the Sacrilegious Soul", "Signet of Pelghain", "Wendigo Brand", "Gospel of the Devotee"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -9851,6 +9893,33 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                 let totalPelgahinMult = 1 + ((multPerSec * secondsFrozen) / 100);
                 multiMult *= totalPelgahinMult;
                 multiData.components.push({ name: `Signet of Pelghain (${secondsFrozen}s)`, value: totalPelgahinMult });
+                multiData.total = multiMult;
+            }
+        }
+
+        let wendigo = Object.values(currentBuild.equipment).find(item => item && item.name === "Wendigo Brand");
+        if (wendigo) {
+            let recentKills = 0;
+            const rkEl = document.getElementById('cond-recent-kills');
+            if (rkEl) recentKills = parseInt(rkEl.value) || 0;
+            
+            if (recentKills >= 15) {
+                let stacks = Math.floor(recentKills / 15);
+                let multVal = 1 + ((2 * stacks) / 100);
+                multiMult *= multVal;
+                multiData.components.push({ name: `Wendigo Brand (${stacks} Stacks)`, value: multVal });
+                multiData.total = multiMult;
+            }
+        }
+        
+        let gospel = Object.values(currentBuild.equipment).find(item => item && item.name === "Gospel of the Devotee");
+        if (gospel) {
+            let isBasicSkill = skillObj.tags && skillObj.tags.some(t => t.toLowerCase() === 'basic' || t.toLowerCase() === 'keyword_basic') || ['Decompose', 'Reap', 'Hemorrhage', 'Bone Splinters'].includes(skillObj.name) || ['Decompose', 'Reap', 'Hemorrhage', 'Bone Splinters'].includes(skillObj.baseName);
+            
+            if (isBasicSkill) {
+                let gospelMult = gospel.isMythic ? 1.52 : 1.40; // Max roll for non-mythic
+                multiMult *= gospelMult;
+                multiData.components.push({ name: 'Gospel of the Devotee [x]', value: gospelMult });
                 multiData.total = multiMult;
             }
         }
