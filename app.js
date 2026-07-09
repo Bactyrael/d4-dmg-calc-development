@@ -3160,6 +3160,12 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Decay Factor"] = { final: val, isMultiplicative: false };
           }
 
+          let frenziedOnslaught = Object.values(equipped).find(item => item && item.aspect === "Aspect of Frenzied Onslaught");
+          if (frenziedOnslaught) {
+              let val = frenziedOnslaught.aspectValues && frenziedOnslaught.aspectValues.length > 0 ? parseFloat(frenziedOnslaught.aspectValues[0]) : 50;
+              addStat(stats, 'Summon Attack Speed', val, 'Aspect of Frenzied Onslaught');
+          }
+
           let elementalFate = Object.values(equipped).find(item => item && item.aspect === "Aspect of Elemental Fate");
           if (elementalFate) {
               let val = elementalFate.aspectValues && elementalFate.aspectValues.length > 0 ? parseFloat(elementalFate.aspectValues[0]) : 60;
