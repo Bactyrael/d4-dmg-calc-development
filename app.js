@@ -3139,9 +3139,9 @@ function compileCharacterStats(equipped, autoStats) {
 
           let coalescedBlood = Object.values(equipped).find(item => item && item.aspect === "Aspect of Coalesced Blood");
           if (coalescedBlood) {
-              if (typeof getActiveConditions === 'function') {
-                  const conds = getActiveConditions();
-                  if (conds.healthy) {
+              if (typeof getActiveBuffs === 'function') {
+                  const buffs = getActiveBuffs();
+                  if (buffs.playerHealthy) {
                       let val = coalescedBlood.aspectValues && coalescedBlood.aspectValues.length > 0 ? parseFloat(coalescedBlood.aspectValues[0]) : 70;
                       stats["Aspect of Coalesced Blood [x] Damage"] = { final: val, isMultiplicative: true };
                   }
@@ -8514,7 +8514,8 @@ function getActiveBuffs() {
         ferocity: parseInt(document.getElementById('buff-ferocity')?.value) || 0,
         overpower: parseInt(document.getElementById('buff-overpower')?.value) || 0,
         resolve: parseInt(document.getElementById('buff-resolve')?.value) || 0,
-        fortified: document.getElementById('buff-fortified')?.checked || false
+        fortified: document.getElementById('buff-fortified')?.checked || false,
+        playerHealthy: document.getElementById('buff-player-healthy')?.checked || false
     };
 }
 
@@ -10297,7 +10298,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         multiData.components.push({ name: 'Damage Bonus (Upgrade) [x]', value: 1.5 });
     }
     
-    if (skillObj.name === "Blood Surge" && window.selectedSkills && isSkillActiveNode("Damage Bonus (Blood Surge)") && typeof getActiveConditions === 'function' && getActiveConditions().healthy) {
+    if (skillObj.name === "Blood Surge" && window.selectedSkills && isSkillActiveNode("Damage Bonus (Blood Surge)") && typeof getActiveBuffs === 'function' && getActiveBuffs().playerHealthy) {
         multiMult *= 1.25;
         multiData.components.push({ name: 'Damage Bonus (Upgrade) (Healthy) [x]', value: 1.25 });
     }

@@ -313,7 +313,10 @@
                    </h2>
                    <p style="color: #aaa; font-style: italic; margin-bottom: 20px;">Toggle and configure buffs to apply global modifiers to your character.</p>
                    
-                   <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;" id="buffs-grid">
+                     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;" id="buffs-grid">
+                      <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #ddd;">
+                        <input type="checkbox" id="buff-player-healthy" class="d4-checkbox calc-buff"> Player is Healthy
+                      </label>
                       <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #ddd;">
                         <input type="checkbox" id="buff-fortified" class="d4-checkbox calc-buff"> Player is Fortified
                       </label>
@@ -814,12 +817,12 @@
 
   <div id="d4-tooltip" class="d4-tooltip hidden"></div>
   <div id="d4-context-menu" class="d4-context-menu hidden"></div>
-  <script src="assets/database.js?v=1783578043899"></script>
-  <script src="assets/skills.js?v=1783578043899"></script>
-  <script src="assets/paragon.js?v=1783578043899"></script>
-  <script src="assets/paragon_formulas.js?v=1783578043899"></script>
-  <script src="paragon_logic.js?v=1783578043899"></script>
-  <script src="app.js?v=1783578043899"></script>
+  <script src="assets/database.js?v=1783578408560"></script>
+  <script src="assets/skills.js?v=1783578408560"></script>
+  <script src="assets/paragon.js?v=1783578408560"></script>
+  <script src="assets/paragon_formulas.js?v=1783578408560"></script>
+  <script src="paragon_logic.js?v=1783578408560"></script>
+  <script src="app.js?v=1783578408560"></script>
   <div id="toast-container"></div>
   <div id="defensive-modal" class="modal-overlay hidden" style="align-items: center; justify-content: center; z-index: 1000;">
     <div class="modal-content" style="max-width: 500px; padding: 24px;">
