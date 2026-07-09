@@ -3264,7 +3264,12 @@ function compileCharacterStats(equipped, autoStats) {
               let critDmgBonus = blockChance * (val / 100);
               if (recentlyBlocked) critDmgBonus *= 2;
               if (critDmgBonus > 0) {
-                  addStat(stats, 'Critical Strike Damage', critDmgBonus, "Aspect of Redirected Force");
+                  stats['Aspect of Redirected Force (Critical Damage) [x]'] = {
+                      final: critDmgBonus,
+                      isMultiplicative: true,
+                      sources: [{ name: 'Aspect of Redirected Force', val: critDmgBonus }],
+                      flatSources: [{ name: 'Aspect of Redirected Force', val: critDmgBonus }]
+                  };
               }
           }
       }
