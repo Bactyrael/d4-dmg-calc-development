@@ -3073,7 +3073,7 @@ function compileCharacterStats(equipped, autoStats) {
                       }
                       if (found) {
                           let modifiedSkill = typeof applyActiveModifiers === 'function' ? applyActiveModifiers(found) : found;
-                          if (modifiedSkill.tags && modifiedSkill.tags.some(t => t.toLowerCase() === 'skill_core')) {
+                          if (modifiedSkill.tags && modifiedSkill.tags.some(t => t.toLowerCase() === 'skill_core' || t.toLowerCase() === 'skill_primary_core')) {
                               let isHit = modifiedSkill.isHit !== undefined ? modifiedSkill.isHit : !['Decompose', 'Blighted Corpse Explosion'].includes(modifiedSkill.baseName || modifiedSkill.name);
                               if (isHit) {
                                   hasCore = true;
