@@ -3056,6 +3056,32 @@ function compileCharacterStats(equipped, autoStats) {
       additiveScalersCore.forEach(scaleFn);
 
       if (equipped) {
+          let accAspect = Object.values(equipped).find(item => item && item.name === "Accelerating Aspect");
+          if (accAspect) {
+              let hasCore = false;
+              if (window.currentBuild && window.currentBuild.activeSkills && typeof skillsDatabase !== 'undefined') {
+                  for (let skillName of window.currentBuild.activeSkills) {
+                      if (!skillName) continue;
+                      let found = null;
+                      for (let cat in skillsDatabase) {
+                          found = skillsDatabase[cat].find(s => s.name === skillName);
+                          if (found) break;
+                      }
+                      if (found && found.tags && found.tags.some(t => t.toLowerCase() === 'skill_core')) {
+                          let isHit = found.isHit !== undefined ? found.isHit : !['Decompose', 'Blighted Corpse Explosion'].includes(found.baseName || found.name);
+                          if (isHit) {
+                              hasCore = true;
+                              break;
+                          }
+                      }
+                  }
+              }
+              if (hasCore) {
+                  let val = accAspect.aspectValues && accAspect.aspectValues.length > 0 ? parseFloat(accAspect.aspectValues[0]) : 50;
+                  addStat(stats, 'Attack Speed', val, 'Accelerating Aspect');
+              }
+          }
+
           let wendigo = Object.values(equipped).find(item => item && item.name === "Wendigo Brand");
           if (wendigo) {
               let rkEl = document.getElementById('cond-recent-kills');
