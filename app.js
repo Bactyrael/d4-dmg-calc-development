@@ -7202,7 +7202,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
               aspectDescHtml += `
                 <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px;">
                   <label style="display: flex; align-items: center; cursor: pointer; color: #fff; font-size: 0.85rem;">
-                    <input type="checkbox" class="d4-checkbox aspect-state-checkbox" data-state-key="redirectedForceBlocked" ${recentlyBlocked ? 'checked' : ''} style="margin-right: 8px;">
+                    <input type="checkbox" class="d4-checkbox aspect-state-input" data-state-key="redirectedForceBlocked" ${recentlyBlocked ? 'checked' : ''} style="margin-right: 8px;">
                     Blocked Recently (Doubles Bonus)
                   </label>
                 </div>
@@ -7891,7 +7891,9 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         const target = e.target;
         const stateKey = target.dataset.stateKey;
         let val = target.value;
-        if (target.type === 'number') {
+        if (target.type === 'checkbox') {
+            val = target.checked;
+        } else if (target.type === 'number') {
             val = parseInt(val) || 0;
             if (target.hasAttribute('min') && val < parseInt(target.getAttribute('min'))) val = parseInt(target.getAttribute('min'));
             if (target.hasAttribute('max') && val > parseInt(target.getAttribute('max'))) val = parseInt(target.getAttribute('max'));
