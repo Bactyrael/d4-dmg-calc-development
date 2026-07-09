@@ -9125,7 +9125,7 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let natMult = window.D4_COMPILED_STATS["Aspect of Natural Selection"].final;
         if (natMult > 0) {
             let lTags = skill.tags ? skill.tags.map(t => t.toLowerCase()) : [];
-            let isMinion = lTags.some(t => t.includes('minion') || t.includes('summon'));
+            let isMinion = lTags.some(t => t.includes('minion'));
             if (isMinion) {
                 let mult = 1 + (natMult / 100);
                 bucket *= mult;
