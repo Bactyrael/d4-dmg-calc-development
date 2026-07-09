@@ -2870,6 +2870,12 @@ function compileCharacterStats(equipped, autoStats) {
                     } else if (item.name === "Ebonpiercer") {
                         handled = true;
                         v = item.isMythic ? 65 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 45);
+                    } else if (item.name === "Lidless Wall" && item.isMythic) {
+                        handled = true;
+                        let storms = window.skillSliderValues && window.skillSliderValues['Active Bone Storms (Lidless Wall)'] !== undefined ? window.skillSliderValues['Active Bone Storms (Lidless Wall)'] : 0;
+                        if (storms > 0) {
+                            addStat(stats, 'Lidless Wall (Critical Strike Damage) [x]', 30 * storms, 'Active Bone Storms');
+                        }
                     } else if (item.name === "Locran's Talisman") {
                         handled = true;
                         v = item.isMythic ? 195 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 120);
@@ -6773,6 +6779,9 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (itemObj.name === "Ebonpiercer" && itemObj.isMythic) {
             udesc = "Blight also shoots 4 smaller piercing projectiles, each dealing 65% of Blight's defiled area damage.";
         }
+        if (itemObj.name === "Lidless Wall" && itemObj.isMythic) {
+            udesc = "Lucky Hit: While you have an active Bone Storm, hitting an enemy has up to a 59% chance to spawn a Bone Storm around their location. Each Sacrifice bonus increases this chance by 25% and allows you to spawn 1 additional Bone Storm. Each active Bone Storm grants 30%[x] Critical Strike Damage, up to 150%.";
+        }
         if (itemObj.name === "Locran's Talisman" && itemObj.isMythic) {
             udesc = "Critical Strikes deal 195%[x] increased damage but your Critical Strike Chance is reduced by 50%[+].";
         }
@@ -7197,7 +7206,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol", "Ebonpiercer", "Locran's Talisman", "Red Blessing", "Mother's Embrace", "Omen of Pain", "Pact of Bone", "Ring of the Sacrilegious Soul", "Signet of Pelghain", "Wendigo Brand", "Gospel of the Devotee"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol", "Ebonpiercer", "Locran's Talisman", "Red Blessing", "Mother's Embrace", "Omen of Pain", "Pact of Bone", "Ring of the Sacrilegious Soul", "Signet of Pelghain", "Wendigo Brand", "Gospel of the Devotee", "Lidless Wall"].includes(itemObj.name) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -9410,6 +9419,24 @@ function renderCalcSkills() {
                         </div>
                         <input type="range" min="1" max="20" step="1" value="${curVal}" style="width: 100%; accent-color: #c9a55c;" 
                                oninput="document.getElementById('slider-val-souls').innerText = this.value; window.skillSliderValues['Vampiric Curse Souls'] = parseInt(this.value); window.calculate();">
+                    `;
+                    card.appendChild(sliderDiv);
+                }
+
+                const hasLidlessMythic = Object.values(currentBuild.equipment).some(i => i && i.name === 'Lidless Wall' && i.isMythic);
+                if ((baseSkill.name === 'Bone Storm' || baseSkill.baseName === 'Bone Storm') && hasLidlessMythic) {
+                    let curVal = window.skillSliderValues['Active Bone Storms (Lidless Wall)'] !== undefined ? window.skillSliderValues['Active Bone Storms (Lidless Wall)'] : 0;
+                    let sliderDiv = document.createElement('div');
+                    sliderDiv.style.marginTop = '15px';
+                    sliderDiv.style.borderTop = '1px solid #334';
+                    sliderDiv.style.paddingTop = '15px';
+                    sliderDiv.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <label style="color: #ccc; font-size: 0.85em;">Active Bone Storms (Lidless Wall)</label>
+                            <span id="slider-val-lidless" style="color: #c9a55c; font-size: 0.85em; font-weight: bold;">${curVal}</span>
+                        </div>
+                        <input type="range" min="0" max="5" step="1" value="${curVal}" style="width: 100%; accent-color: #c9a55c;" 
+                               oninput="document.getElementById('slider-val-lidless').innerText = this.value; window.skillSliderValues['Active Bone Storms (Lidless Wall)'] = parseInt(this.value); window.calculate();">
                     `;
                     card.appendChild(sliderDiv);
                 }
