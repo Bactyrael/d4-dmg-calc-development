@@ -8607,7 +8607,16 @@ function calculateSkillMultiplicativeBucket(skill) {
         components.push({ name: 'Vulnerable (Native)', value: 1.2 });
     }
     
-    if (dType === 'shadow' || tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || tags.includes('search_darkness')) {
+    let isShadowDamage = false;
+    if (dType === 'shadow') {
+        isShadowDamage = true;
+    } else if (dType === '') {
+        if (tags.includes('skill_shadow') || tags.includes('search_shadow') || tags.includes('skill_darkness') || tags.includes('search_darkness')) {
+            isShadowDamage = true;
+        }
+    }
+    
+    if (isShadowDamage) {
         if (window.currentBuild && window.currentBuild.equipment) {
             let gloom = Object.values(window.currentBuild.equipment).find(item => item && item.name === "The Gloom Ward");
             if (gloom) {
