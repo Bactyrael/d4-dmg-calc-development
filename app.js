@@ -3255,6 +3255,12 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Reanimation Factor"] = { final: val, isMultiplicative: false };
               stats["Aspect of Reanimation Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
+          
+          let frenziedOnslaught = Object.values(equipped).find(item => item && item.aspect === "Aspect of Frenzied Onslaught");
+          if (frenziedOnslaught) {
+              let val = frenziedOnslaught.aspectValues && frenziedOnslaught.aspectValues.length > 0 ? parseFloat(frenziedOnslaught.aspectValues[0]) : 35;
+              addStat(stats, 'Summon Attack Speed', val, "Aspect of Frenzied Onslaught");
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
