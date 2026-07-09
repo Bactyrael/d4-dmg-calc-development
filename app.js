@@ -3128,6 +3128,14 @@ function compileCharacterStats(equipped, autoStats) {
               let val = burstingBones.aspectValues && burstingBones.aspectValues.length > 0 ? parseFloat(burstingBones.aspectValues[0]) : 0.40;
               stats["Aspect of Bursting Bones Factor"] = { final: val, isMultiplicative: false };
           }
+
+          let channelingAspect = Object.values(equipped).find(item => item && item.aspect === "Aspect of Channeling");
+          if (channelingAspect && window.currentBuild && window.currentBuild.activeSkills) {
+              if (window.currentBuild.activeSkills.includes("Decompose")) {
+                  let val = channelingAspect.aspectValues && channelingAspect.aspectValues.length > 0 ? parseFloat(channelingAspect.aspectValues[0]) : 70;
+                  stats["Aspect of Channeling Damage [x]"] = { final: val, isMultiplicative: true };
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
