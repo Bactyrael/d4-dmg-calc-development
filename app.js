@@ -3159,6 +3159,16 @@ function compileCharacterStats(equipped, autoStats) {
               let val = decayAspect.aspectValues && decayAspect.aspectValues.length > 0 ? parseFloat(decayAspect.aspectValues[0]) : 85;
               stats["Aspect of Decay Factor"] = { final: val, isMultiplicative: false };
           }
+
+          let elementalFate = Object.values(equipped).find(item => item && item.aspect === "Aspect of Elemental Fate");
+          if (elementalFate) {
+              let val = elementalFate.aspectValues && elementalFate.aspectValues.length > 0 ? parseFloat(elementalFate.aspectValues[0]) : 60;
+              let activeSet = elementalFate.aspectState?.elementalFateSet || 'set1';
+              let activeStacks = elementalFate.aspectState?.elementalFateStacks || 0;
+              stats["Aspect of Elemental Fate Factor"] = { final: val, isMultiplicative: false };
+              stats["Aspect of Elemental Fate Set"] = { final: activeSet === 'set1' ? 1 : 2, isMultiplicative: false };
+              stats["Aspect of Elemental Fate Stacks"] = { final: activeStacks, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -6839,6 +6849,28 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             return inputHtml;
           });
           aspectDescHtml = `<div style="margin-top: 8px; color: #d18a45; font-size: 0.9rem; line-height: 1.5;">${aspectDescHtml}</div>`;
+          
+          if (currentAspectName === 'Aspect of Elemental Fate') {
+              if (!itemObj.aspectState) itemObj.aspectState = {};
+              let activeSet = itemObj.aspectState.elementalFateSet || 'set1';
+              let activeStacks = itemObj.aspectState.elementalFateStacks || 0;
+              
+              aspectDescHtml += `
+                <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px;">
+                  <div style="color: #fff; font-size: 0.85rem; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
+                    <span>Active Elemental Set</span>
+                    <select class="d4-input aspect-state-input" data-state-key="elementalFateSet" style="width: 140px; padding: 4px; font-size: 0.8rem;">
+                      <option value="set1" ${activeSet === 'set1' ? 'selected' : ''}>Fire/Light/Holy/Phys</option>
+                      <option value="set2" ${activeSet === 'set2' ? 'selected' : ''}>Cold/Poison/Shadow</option>
+                    </select>
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="color: #fff; font-size: 0.85rem;">Active Stacks</span>
+                    <input type="number" class="d4-input aspect-state-input" data-state-key="elementalFateStacks" value="${activeStacks}" min="0" max="6" style="width: 60px; text-align: center; padding: 4px;">
+                  </div>
+                </div>
+              `;
+          }
         }
       }
       
@@ -7516,6 +7548,25 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             openItemModal(slotName);
         });
     }
+
+    document.querySelectorAll('.aspect-state-input').forEach(inp => {
+      inp.addEventListener('change', (e) => {
+        const target = e.target;
+        const stateKey = target.dataset.stateKey;
+        let val = target.value;
+        if (target.type === 'number') {
+            val = parseInt(val) || 0;
+            if (target.hasAttribute('min') && val < parseInt(target.getAttribute('min'))) val = parseInt(target.getAttribute('min'));
+            if (target.hasAttribute('max') && val > parseInt(target.getAttribute('max'))) val = parseInt(target.getAttribute('max'));
+            target.value = val;
+        }
+        
+        if (!itemObj.aspectState) itemObj.aspectState = {};
+        itemObj.aspectState[stateKey] = val;
+        box.dataset.value = JSON.stringify(itemObj);
+        calculate();
+      });
+    });
 
     document.querySelectorAll('.aspect-val-input').forEach(inp => {
       inp.addEventListener('change', (e) => {
@@ -8742,6 +8793,25 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             let mult = 1 + (stats["Aspect of Decay Factor"].final / 100);
             bucket *= mult;
             components.push({ name: 'Aspect of Decay [x]', value: mult });
+        }
+    }
+
+    // Apply Aspect of Elemental Fate if applicable
+    if (stats["Aspect of Elemental Fate Factor"]) {
+        let activeSet = stats["Aspect of Elemental Fate Set"].final;
+        let activeStacks = parseInt(stats["Aspect of Elemental Fate Stacks"].final) || 0;
+        
+        let applies = false;
+        if (activeSet === 1 && ['fire', 'lightning', 'holy', 'physical'].includes(dType)) {
+            applies = true;
+        } else if (activeSet === 2 && ['cold', 'poison', 'shadow'].includes(dType)) {
+            applies = true;
+        }
+        
+        if (applies && activeStacks > 0) {
+            let mult = 1 + ((stats["Aspect of Elemental Fate Factor"].final / 100) * activeStacks);
+            bucket *= mult;
+            components.push({ name: `Aspect of Elemental Fate (${activeStacks} Stacks) [x]`, value: mult });
         }
     }
 
