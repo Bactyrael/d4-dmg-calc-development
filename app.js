@@ -3100,6 +3100,17 @@ function compileCharacterStats(equipped, autoStats) {
                   }
               }
           }
+
+          let ampAspect = Object.values(equipped).find(item => item && item.aspect === "Aspect of Amplified Damage");
+          if (ampAspect) {
+              if (typeof getActiveConditions === 'function') {
+                  const conds = getActiveConditions();
+                  if (conds.cursed) {
+                      let val = ampAspect.aspectValues && ampAspect.aspectValues.length > 0 ? parseFloat(ampAspect.aspectValues[0]) : 60;
+                      stats["Aspect of Amplified Damage [x]"] = { final: val, isMultiplicative: true };
+                  }
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -8733,7 +8744,7 @@ function calculateSkillMultiplicativeBucket(skill) {
             if (lowerKey.includes('golem (legendary bonus)') || lowerKey.includes('golem (additional bonus)')) {
                 if (skill.name.toLowerCase().includes('golem')) applies = true;
             }
-            if (lowerKey.includes('amplify')) {
+            if (lowerKey.includes('amplify') || lowerKey.includes('amplified')) {
                 if (conds.cursed) applies = true;
             }
             if (lowerKey.includes('control (legendary bonus)')) {
@@ -8817,6 +8828,7 @@ function calculateSkillMultiplicativeBucket(skill) {
                                     if (dType !== 'physical') { addApplies = true; legApplies = true; }
                                     break;
                                 case 'Amplify':
+                                case 'Amplified':
                                     if (conds.cursed) addApplies = true;
                                     legApplies = true;
                                     break;
