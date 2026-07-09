@@ -8780,6 +8780,7 @@ function getActiveConditions() {
         cc: document.getElementById('cond-cc')?.checked || false,
         cursed: document.getElementById('cond-cursed')?.checked || false,
         shadowDot: document.getElementById('cond-shadow-dot')?.checked || false,
+        frozenSeconds: parseFloat(document.getElementById('cond-frozen-seconds')?.value) || 0,
         numMonsters: parseInt(document.getElementById('cond-num-monsters')?.value) || 1,
         monsterType: document.querySelector('input[name="monster_type"]:checked')?.value || 'elite'
     };
@@ -9157,6 +9158,44 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
                 components.push({ name: displayName, value: valMult });
             }
         }
+    }
+    
+    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Crown_of_Lucion_Mult"]) {
+        let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
+        let hasCost = skillObj.resourceCost !== undefined || (skillObj.desc && skillObj.desc.toLowerCase().includes('cost'));
+        let isBasic = lTags.some(t => t.includes('basic'));
+        
+        if (hasCost || isBasic) {
+            let multVal = window.D4_COMPILED_STATS["Crown_of_Lucion_Mult"].final;
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: `Crown of Lucion (Max) [x]`, value: mult });
+        }
+    }
+    
+    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Aspect of Frozen Memories"]) {
+        let memMult = window.D4_COMPILED_STATS["Aspect of Frozen Memories"].final;
+        if (memMult > 0 && typeof getActiveConditions === 'function') {
+            const conds = getActiveConditions();
+            if (conds.cc) {
+                if (conds.frozenSeconds > 0) memMult *= 3;
+                let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
+                let isCold = (skillObj.damageType && skillObj.damageType.toLowerCase() === 'cold') || lTags.some(t => t.includes('cold'));
+                
+                if (isCold) {
+                    let mult = 1 + (memMult / 100);
+                    bucket *= mult;
+                    components.push({ name: `Aspect of Frozen Memories ${conds.frozenSeconds > 0 ? '(Tripled)' : ''} [x]`, value: mult });
+                }
+            }
+        }
+    }
+    
+    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Ring_of_Starless_Skies_Mult"]) {
+        let multVal = window.D4_COMPILED_STATS["Ring_of_Starless_Skies_Mult"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Ring of Starless Skies [x]', value: mult });
     }
     
     
@@ -10324,7 +10363,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         let pelgahin = Object.values(currentBuild.equipment).find(item => item && item.name === "Signet of Pelghain");
         if (pelgahin) {
             let secondsFrozen = 0;
-            const sfEl = document.getElementById('cond-seconds-frozen');
+            const sfEl = document.getElementById('cond-frozen-seconds');
             if (sfEl) secondsFrozen = parseInt(sfEl.value) || 0;
             
             let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
