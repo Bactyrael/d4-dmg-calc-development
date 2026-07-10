@@ -3375,6 +3375,12 @@ function compileCharacterStats(equipped, autoStats) {
                   addStat(stats, 'Attack Speed', val, "Duelist's Aspect");
               }
           }
+          
+          let edgemaster = Object.values(equipped).find(item => item && item.aspect === "Edgemaster's Aspect");
+          if (edgemaster) {
+              let val = edgemaster.aspectValues && edgemaster.aspectValues.length > 0 ? parseFloat(edgemaster.aspectValues[0]) : 40;
+              stats["Edgemaster's Aspect Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -9412,6 +9418,14 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             bucket *= mult;
             components.push({ name: 'Crushing Aspect [x]', value: mult });
         }
+    }
+    
+    // Apply Edgemaster's Aspect if applicable
+    if (stats["Edgemaster's Aspect Factor"]) {
+        let multVal = stats["Edgemaster's Aspect Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Edgemaster\'s Aspect [x]', value: mult });
     }
 
     // Apply Aspect of Elemental Fate if applicable
