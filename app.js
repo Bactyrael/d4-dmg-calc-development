@@ -3483,6 +3483,12 @@ function compileCharacterStats(equipped, autoStats) {
                   addStat(stats, 'Universal Damage Reduction %', val, 'Aspect of Heavenly Strength');
               }
           }
+          
+          let layered = Object.values(equipped).find(item => item && item.aspect === "Aspect of Layered Wards");
+          if (layered) {
+              let val = layered.aspectValues && layered.aspectValues.length > 0 ? parseFloat(layered.aspectValues[0]) : 30;
+              addStat(stats, 'Block Damage Reduction', val, 'Aspect of Layered Wards');
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
