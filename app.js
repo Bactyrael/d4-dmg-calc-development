@@ -3489,6 +3489,36 @@ function compileCharacterStats(equipped, autoStats) {
               let val = layered.aspectValues && layered.aspectValues.length > 0 ? parseFloat(layered.aspectValues[0]) : 30;
               addStat(stats, 'Block Damage Reduction', val, 'Aspect of Layered Wards');
           }
+          
+          let might = Object.values(equipped).find(item => item && item.aspect === "Aspect of Might");
+          if (might) {
+              let val = might.aspectValues && might.aspectValues.length > 0 ? parseFloat(might.aspectValues[0]) : 20;
+              let hasBasic = false;
+              if (window.currentBuild && window.currentBuild.activeSkills && typeof skillsDatabase !== 'undefined') {
+                  for (let skillName of window.currentBuild.activeSkills) {
+                      if (!skillName) continue;
+                      let found = null;
+                      let isBasicCat = false;
+                      for (let cat in skillsDatabase) {
+                          found = skillsDatabase[cat].find(s => s.name === skillName);
+                          if (found) {
+                              if (cat.toLowerCase().includes('basic')) isBasicCat = true;
+                              break;
+                          }
+                      }
+                      if (found) {
+                          let tags = found.tags ? found.tags.map(t => t.toLowerCase()) : [];
+                          if (isBasicCat || tags.some(t => t.includes('basic'))) {
+                              hasBasic = true;
+                              break;
+                          }
+                      }
+                  }
+              }
+              if (hasBasic) {
+                  addStat(stats, 'Universal Damage Reduction %', val, 'Aspect of Might');
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
