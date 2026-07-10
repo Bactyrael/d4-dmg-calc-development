@@ -3875,7 +3875,27 @@ function compileCharacterStats(equipped, autoStats) {
       let totalWeaponDmg = 0;
       let totalWeaponAps = 0;
       let totalAllRes = 0;
-  
+      
+      // Dynamically update Ferocity max based on equipped items
+      if (baseEquipped && document.getElementById('buff-ferocity')) {
+          let maxFero = 4;
+          const ferociousAspect = Object.values(baseEquipped).find(item => item && item.aspect === "Ferocious Aspect");
+          if (ferociousAspect) {
+              let val = ferociousAspect.aspectValues && ferociousAspect.aspectValues.length > 0 ? parseInt(ferociousAspect.aspectValues[0]) : 4;
+              maxFero += val;
+          }
+          const reaver = Object.values(baseEquipped).find(item => item && item.name === "Thousand-Eye Reaver");
+          if (reaver) {
+              let val = reaver.aspectValues && reaver.aspectValues.length > 0 ? parseInt(reaver.aspectValues[0]) : 2; // From [2 - 4]
+              maxFero += val;
+          }
+          const feroInput = document.getElementById('buff-ferocity');
+          const feroLabel = document.getElementById('buff-ferocity-label');
+          if (parseInt(feroInput.value) > maxFero) feroInput.value = maxFero;
+          feroInput.max = maxFero;
+          if (feroLabel) feroLabel.innerText = `Ferocity Stacks (0-${maxFero})`;
+      }
+
       if (baseEquipped) {
         let mainhandDmg = 0; let mainhandMin = 0; let mainhandMax = 0;
         let offhandDmg = 0; let offhandMin = 0; let offhandMax = 0;
