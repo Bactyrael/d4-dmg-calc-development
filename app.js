@@ -3595,6 +3595,15 @@ function compileCharacterStats(equipped, autoStats) {
               let val = juggernaut.aspectValues && juggernaut.aspectValues.length > 0 ? parseFloat(juggernaut.aspectValues[0]) : 150;
               addStat(stats, '% Total Armor', val, "Juggernaut's Aspect");
           }
+          
+          let snowveiled = Object.values(equipped).find(item => item && item.aspect === "Snowveiled Aspect");
+          if (snowveiled) {
+              let barrier = document.getElementById('dash-barrier-input') ? parseInt(document.getElementById('dash-barrier-input').value) || 0 : 0;
+              if (barrier > 0) {
+                  let val = snowveiled.aspectValues && snowveiled.aspectValues.length > 0 ? parseFloat(snowveiled.aspectValues[0]) : 30;
+                  addStat(stats, 'Universal Damage Reduction %', val, "Snowveiled Aspect");
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
