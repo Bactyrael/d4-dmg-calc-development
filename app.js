@@ -3474,7 +3474,7 @@ function compileCharacterStats(equipped, autoStats) {
               let val = heavenly.aspectValues && heavenly.aspectValues.length > 0 ? parseFloat(heavenly.aspectValues[0]) : 30;
               let has2H = false;
               for (const [slotName, itemObj] of Object.entries(equipped)) {
-                  if (itemObj && typeof isTwoHanded === 'function' && isTwoHanded(slotName, itemObj)) {
+                  if (itemObj && typeof checkIs2H === 'function' && checkIs2H(itemObj, slotName)) {
                       has2H = true;
                       break;
                   }
