@@ -3638,6 +3638,16 @@ function compileCharacterStats(equipped, autoStats) {
         });
         
         // Apply standalone modifiers
+        let indomitable = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Indomitable");
+        if (indomitable) {
+            let val = indomitable.aspectValues && indomitable.aspectValues.length > 0 ? parseFloat(indomitable.aspectValues[0]) : 45;
+            let blockChance = stats['Block Chance'] ? stats['Block Chance'].final : 0;
+            let bonus = blockChance * (val / 100);
+            if (bonus > 0) {
+                addStat(stats, '% Total Armor', bonus, 'Aspect of the Indomitable');
+                addStat(stats, 'Control Impaired Duration Reduction', bonus, 'Aspect of the Indomitable');
+            }
+        }
         
         // Post-Compilation Step: Inverse Multiplicative Stats (Dodge Chance, Damage Reduction, etc.)
         // This must run at the very end so that Core Stats (like Dexterity) are included in the inverse multiplicative pool!

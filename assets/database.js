@@ -4211,7 +4211,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of the Indomitable",
-      "desc": "Gain up to [30 - 45]% Damage Reduction and Impairment Resistance, based on your Block chance.\n\nCurrent Bonus: 0%",
+      "desc": "Gain Armor and Impairment Reduction equal to [30 - 45]% of your Block Chance.\n\nCurrent Bonus: 0%",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         0,
