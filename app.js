@@ -9166,6 +9166,19 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         }
       }
 
+      let displayName = a.name;
+      let displayDesc = a.desc || '';
+      
+      if (checkIs2H(itemObj, slotName)) {
+          const regex = /\[([\d\.]+)\s*-\s*([\d\.]+)\]/g;
+          displayName = displayName.replace(regex, (match, p1, p2) => {
+              return `[${(parseFloat(p1)*2).toFixed(1).replace(/\.0$/, '')} - ${(parseFloat(p2)*2).toFixed(1).replace(/\.0$/, '')}]`;
+          });
+          displayDesc = displayDesc.replace(regex, (match, p1, p2) => {
+              return `[${(parseFloat(p1)*2).toFixed(1).replace(/\.0$/, '')} - ${(parseFloat(p2)*2).toFixed(1).replace(/\.0$/, '')}]`;
+          });
+      }
+
       const card = document.createElement('div');
       card.className = 'item-card';
       if (restricted) {
@@ -9174,13 +9187,13 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       }
       const title = document.createElement('div');
       title.className = 'item-card-title';
-      title.textContent = a.name;
+      title.textContent = displayName;
       const desc = document.createElement('div');
       desc.className = 'item-card-desc';
       if (restricted) {
-         desc.innerHTML = '<span style="color: #c95c5c; font-weight: bold;">Restricted: Cannot roll with ' + restrictionReason + '</span><br>' + (a.desc || '');
+         desc.innerHTML = '<span style="color: #c95c5c; font-weight: bold;">Restricted: Cannot roll with ' + restrictionReason + '</span><br>' + displayDesc;
       } else {
-         desc.innerHTML = a.desc || '';
+         desc.innerHTML = displayDesc;
       }
       card.appendChild(title);
       card.appendChild(desc);
