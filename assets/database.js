@@ -6738,7 +6738,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Needleflare Aspect",
-      "desc": "Thorns damage dealt has a [40 - 60]% chance to deal damage to all enemies around you and your Minions.",
+      "desc": "Thorns damage dealt has a [40 - 60]% chance to deal damage to all enemies around you and your Minions. (Requires 2+ Monsters)",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
