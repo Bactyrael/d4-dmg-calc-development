@@ -9128,15 +9128,40 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       return;
     }
 
+    let hasCritDamageX = false;
+    let hasDoTDamageX = false;
+    if (type === 'affix') {
+      currentlyEquipped.forEach(aff => {
+        if (aff && aff !== editingAffixName) {
+           if (aff.includes('Critical Strike Damage') && aff.includes('[x]')) hasCritDamageX = true;
+           if (aff.includes('Damage Over Time') && aff.includes('[x]')) hasDoTDamageX = true;
+        }
+      });
+    }
+
     items.forEach(a => {
+      let restricted = false;
+      if (type === 'affix') {
+        if (hasCritDamageX && a.name.includes('Damage Over Time') && a.name.includes('[x]')) restricted = true;
+        if (hasDoTDamageX && a.name.includes('Critical Strike Damage') && a.name.includes('[x]')) restricted = true;
+      }
+
       const card = document.createElement('div');
       card.className = 'item-card';
+      if (restricted) {
+        card.style.opacity = '0.3';
+        card.style.pointerEvents = 'none';
+      }
       const title = document.createElement('div');
       title.className = 'item-card-title';
       title.textContent = a.name;
       const desc = document.createElement('div');
       desc.className = 'item-card-desc';
-      desc.innerHTML = a.desc || '';
+      if (restricted) {
+         desc.innerHTML = '<span style="color: #c95c5c; font-weight: bold;">Restricted: Cannot roll with ' + (hasCritDamageX ? 'Critical Strike Damage [x]' : 'Damage Over Time [x]') + '</span><br>' + (a.desc || '');
+      } else {
+         desc.innerHTML = a.desc || '';
+      }
       card.appendChild(title);
       card.appendChild(desc);
       
