@@ -9130,20 +9130,40 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
 
     let hasCritDamageX = false;
     let hasDoTDamageX = false;
+    let hasDamageGroup = false;
+    let activeDamageGroupAffix = "";
+
     if (type === 'affix') {
       currentlyEquipped.forEach(aff => {
         if (aff && aff !== editingAffixName) {
            if (aff.includes('Critical Strike Damage') && aff.includes('[x]')) hasCritDamageX = true;
            if (aff.includes('Damage Over Time') && aff.includes('[x]')) hasDoTDamageX = true;
+           
+           if (aff.includes('All Damage') && aff.includes('[x]')) { hasDamageGroup = true; activeDamageGroupAffix = "All Damage [x]"; }
+           else if (aff.includes('Cold Damage') && aff.includes('[x]')) { hasDamageGroup = true; activeDamageGroupAffix = "Cold Damage [x]"; }
+           else if (aff.includes('Physical Damage') && aff.includes('[x]')) { hasDamageGroup = true; activeDamageGroupAffix = "Physical Damage [x]"; }
+           else if (aff.includes('Shadow Damage') && aff.includes('[x]')) { hasDamageGroup = true; activeDamageGroupAffix = "Shadow Damage [x]"; }
         }
       });
     }
 
     items.forEach(a => {
       let restricted = false;
+      let restrictionReason = "";
       if (type === 'affix') {
-        if (hasCritDamageX && a.name.includes('Damage Over Time') && a.name.includes('[x]')) restricted = true;
-        if (hasDoTDamageX && a.name.includes('Critical Strike Damage') && a.name.includes('[x]')) restricted = true;
+        if (hasCritDamageX && a.name.includes('Damage Over Time') && a.name.includes('[x]')) { restricted = true; restrictionReason = 'Critical Strike Damage [x]'; }
+        if (hasDoTDamageX && a.name.includes('Critical Strike Damage') && a.name.includes('[x]')) { restricted = true; restrictionReason = 'Damage Over Time [x]'; }
+        
+        if (hasDamageGroup) {
+            let isCurrentGroup = (a.name.includes('All Damage') && a.name.includes('[x]')) ||
+                                 (a.name.includes('Cold Damage') && a.name.includes('[x]')) ||
+                                 (a.name.includes('Physical Damage') && a.name.includes('[x]')) ||
+                                 (a.name.includes('Shadow Damage') && a.name.includes('[x]'));
+            if (isCurrentGroup && !a.name.includes(activeDamageGroupAffix.replace(' [x]', ''))) {
+                restricted = true;
+                restrictionReason = activeDamageGroupAffix;
+            }
+        }
       }
 
       const card = document.createElement('div');
@@ -9158,7 +9178,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       const desc = document.createElement('div');
       desc.className = 'item-card-desc';
       if (restricted) {
-         desc.innerHTML = '<span style="color: #c95c5c; font-weight: bold;">Restricted: Cannot roll with ' + (hasCritDamageX ? 'Critical Strike Damage [x]' : 'Damage Over Time [x]') + '</span><br>' + (a.desc || '');
+         desc.innerHTML = '<span style="color: #c95c5c; font-weight: bold;">Restricted: Cannot roll with ' + restrictionReason + '</span><br>' + (a.desc || '');
       } else {
          desc.innerHTML = a.desc || '';
       }
