@@ -3563,6 +3563,15 @@ function compileCharacterStats(equipped, autoStats) {
                   addStat(stats, 'Thorns', val * missingLife, "Bruiser's Aspect");
               }
           }
+          
+          let encased = Object.values(equipped).find(item => item && item.aspect === "Encased Aspect");
+          if (encased) {
+              let isFrozen = typeof getActiveConditions === 'function' ? getActiveConditions().frozen : false;
+              if (isFrozen) {
+                  let val = encased.aspectValues && encased.aspectValues.length > 0 ? parseFloat(encased.aspectValues[0]) : 8.0;
+                  addStat(stats, 'Universal Damage Reduction %', val * 5, "Encased Aspect (5 Stacks)");
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
