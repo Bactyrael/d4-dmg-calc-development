@@ -3327,6 +3327,12 @@ function compileCharacterStats(equipped, autoStats) {
               let val = ultimateShadow.aspectValues && ultimateShadow.aspectValues.length > 0 ? parseFloat(ultimateShadow.aspectValues[0]) : 80;
               stats["Aspect of Ultimate Shadow Factor"] = { final: val, isMultiplicative: false };
           }
+          
+          let untimelyDeath = Object.values(equipped).find(item => item && item.aspect === "Aspect of Untimely Death");
+          if (untimelyDeath) {
+              let val = untimelyDeath.aspectValues && untimelyDeath.aspectValues.length > 0 ? parseFloat(untimelyDeath.aspectValues[0]) : 60;
+              stats["Aspect of Untimely Death Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -9282,6 +9288,14 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Aspect of Thickened Blood [x]', value: mult });
+    }
+    
+    // Apply Aspect of Untimely Death if applicable
+    if (stats["Aspect of Untimely Death Factor"] && (tags.includes('skill_blood') || tags.includes('search_blood') || dType === 'blood')) {
+        let multVal = stats["Aspect of Untimely Death Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Aspect of Untimely Death [x]', value: mult });
     }
     
     // Apply Aspect of Ultimate Shadow if applicable
