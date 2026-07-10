@@ -4386,22 +4386,6 @@ window.D4_DATABASE = {
       "maxValue": "100"
     },
     {
-      "name": "Aspect of the Prudent Heart",
-      "desc": "After being damaged for at least #% of your Maximum Life at once, you become Immune for # seconds. Can only occur once every # seconds.",
-      "category": "FILTER_Legendary_Defensive",
-      "classes": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "maxValue": ""
-    },
-    {
       "name": "Aspect of the Rabid Beast",
       "desc": "Deal #% more Poison damage. While Shapeshifted, your direct damage is converted into Poison damage.",
       "category": "FILTER_Legendary_Offensive",
