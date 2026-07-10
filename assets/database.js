@@ -5363,7 +5363,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Bruiser's Aspect",
-      "desc": "Gain 4%[+] increased Armor and [145 - 218] Thorns per 1% missing Maximum Life.",
+      "desc": "Gain 4%[+] increased Armor and [163 - 244] Thorns per 1% missing Maximum Life.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,

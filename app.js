@@ -3553,6 +3553,16 @@ function compileCharacterStats(equipped, autoStats) {
                   addStat(stats, 'Control Impaired Duration Reduction', bonus, 'Aspect of the Indomitable');
               }
           }
+          
+          let bruiser = Object.values(equipped).find(item => item && item.aspect === "Bruiser's Aspect");
+          if (bruiser) {
+              let val = bruiser.aspectValues && bruiser.aspectValues.length > 0 ? parseFloat(bruiser.aspectValues[0]) : 244;
+              let missingLife = document.getElementById('dash-missing-life-input') ? parseInt(document.getElementById('dash-missing-life-input').value) || 0 : 0;
+              if (missingLife > 0) {
+                  addStat(stats, '% Total Armor', 4 * missingLife, "Bruiser's Aspect");
+                  addStat(stats, 'Thorns', val * missingLife, "Bruiser's Aspect");
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }

@@ -361,15 +361,22 @@
                    <div class="results-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 25px;">
                       <div class="result-card stat-row-hoverable" data-stat="Maximum Life">
                         <div style="display: flex; justify-content: space-around; align-items: center;">
-                          <div style="text-align: center; width: 45%;">
+                          <div style="text-align: center; width: 30%;">
                             <div class="result-title">Maximum Life</div>
                             <div class="result-value" id="dash-max-life" style="color: #e74c3c;">0</div>
                           </div>
                           <div style="width: 1px; height: 50px; background-color: #333;"></div>
-                          <div style="text-align: center; width: 45%;">
+                          <div style="text-align: center; width: 30%;">
                             <div class="result-title" style="color: #3498db;">Barrier</div>
                             <div style="margin-top: 10px;">
-                              <input type="number" id="dash-barrier-input" class="calc-buff" min="0" value="0" style="width: 85%; text-align: center; background: rgba(0,0,0,0.3); border: 1px solid #333; color: #3498db; padding: 2px; border-radius: 4px; font-size: 18px; font-weight: bold;" onclick="event.stopPropagation()">
+                              <input type="number" id="dash-barrier-input" class="calc-buff" min="0" value="0" style="width: 85%; text-align: center; background: rgba(0,0,0,0.3); border: 1px solid #333; color: #3498db; padding: 2px; border-radius: 4px; font-size: 14px; font-weight: bold;" onclick="event.stopPropagation()">
+                            </div>
+                          </div>
+                          <div style="width: 1px; height: 50px; background-color: #333;"></div>
+                          <div style="text-align: center; width: 30%;">
+                            <div class="result-title" style="color: #e67e22;">% Missing Life</div>
+                            <div style="margin-top: 10px;">
+                              <input type="number" id="dash-missing-life-input" class="calc-buff" min="0" max="99" value="0" style="width: 85%; text-align: center; background: rgba(0,0,0,0.3); border: 1px solid #333; color: #e67e22; padding: 2px; border-radius: 4px; font-size: 14px; font-weight: bold;" onclick="event.stopPropagation()">
                             </div>
                           </div>
                         </div>
@@ -824,12 +831,12 @@
 
   <div id="d4-tooltip" class="d4-tooltip hidden"></div>
   <div id="d4-context-menu" class="d4-context-menu hidden"></div>
-  <script src="assets/database.js?v=1783659773539"></script>
-  <script src="assets/skills.js?v=1783659773539"></script>
-  <script src="assets/paragon.js?v=1783659773539"></script>
-  <script src="assets/paragon_formulas.js?v=1783659773539"></script>
-  <script src="paragon_logic.js?v=1783659773539"></script>
-  <script src="app.js?v=1783659773539"></script>
+  <script src="assets/database.js?v=1783659951394"></script>
+  <script src="assets/skills.js?v=1783659951394"></script>
+  <script src="assets/paragon.js?v=1783659951394"></script>
+  <script src="assets/paragon_formulas.js?v=1783659951394"></script>
+  <script src="paragon_logic.js?v=1783659951394"></script>
+  <script src="app.js?v=1783659951394"></script>
   <div id="toast-container"></div>
   <div id="defensive-modal" class="modal-overlay hidden" style="align-items: center; justify-content: center; z-index: 1000;">
     <div class="modal-content" style="max-width: 500px; padding: 24px;">
