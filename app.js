@@ -3442,6 +3442,15 @@ function compileCharacterStats(equipped, autoStats) {
                   addStat(stats, 'Damage Reduction while Fortified %', drVal, 'Aspect of Coagulation');
               }
           }
+          
+          let disob = Object.values(equipped).find(item => item && item.aspect === "Aspect of Disobedience");
+          if (disob) {
+              let val = disob.aspectValues && disob.aspectValues.length > 0 ? parseFloat(disob.aspectValues[0]) : 1.0;
+              let activeStacks = disob.aspectState?.disobedienceStacks !== undefined ? parseInt(disob.aspectState.disobedienceStacks) : 30;
+              if (activeStacks > 0) {
+                  addStat(stats, 'Universal Damage Reduction %', val * activeStacks, 'Aspect of Disobedience');
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -7514,6 +7523,18 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                   <div style="display: flex; align-items: center; justify-content: space-between;">
                     <span style="color: #fff; font-size: 0.85rem;">Active Stacks</span>
                     <input type="number" class="d4-input aspect-state-input" data-state-key="writhingStacks" value="${activeStacks}" min="0" max="10" style="width: 60px; text-align: center; padding: 4px;">
+                  </div>
+                </div>
+              `;
+          } else if (currentAspectName === 'Aspect of Disobedience') {
+              if (!itemObj.aspectState) itemObj.aspectState = {};
+              let activeStacks = itemObj.aspectState.disobedienceStacks !== undefined ? itemObj.aspectState.disobedienceStacks : 30;
+              
+              aspectDescHtml += `
+                <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="color: #fff; font-size: 0.85rem;">Active Stacks</span>
+                    <input type="number" class="d4-input aspect-state-input" data-state-key="disobedienceStacks" value="${activeStacks}" min="0" max="30" style="width: 60px; text-align: center; padding: 4px;">
                   </div>
                 </div>
               `;
