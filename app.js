@@ -3347,6 +3347,12 @@ function compileCharacterStats(equipped, autoStats) {
               let val = cadaverous.aspectValues && cadaverous.aspectValues.length > 0 ? parseFloat(cadaverous.aspectValues[0]) : 13;
               stats["Cadaverous Aspect Factor"] = { final: val * 5, isMultiplicative: false }; // Max stacks is always 5
           }
+          
+          let conceited = Object.values(equipped).find(item => item && item.aspect === "Conceited Aspect");
+          if (conceited) {
+              let val = conceited.aspectValues && conceited.aspectValues.length > 0 ? parseFloat(conceited.aspectValues[0]) : 40;
+              stats["Conceited Aspect Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -7330,6 +7336,12 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                   </div>
                 </div>
               `;
+          } else if (currentAspectName === "Conceited Aspect") {
+              aspectDescHtml += `
+                <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px; font-style: italic; color: #aaa; font-size: 0.85rem; text-align: center;">
+                  See Toughness Calculator.
+                </div>
+              `;
           }
         }
       }
@@ -9350,6 +9362,17 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Cadaverous Aspect (Max Stacks) [x]', value: mult });
+    }
+    
+    // Apply Conceited Aspect if applicable
+    if (stats["Conceited Aspect Factor"]) {
+        let activeBarrier = window.activeBarrierAmount || 0;
+        if (activeBarrier > 0) {
+            let multVal = stats["Conceited Aspect Factor"].final;
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: 'Conceited Aspect [x]', value: mult });
+        }
     }
 
     // Apply Aspect of Elemental Fate if applicable
