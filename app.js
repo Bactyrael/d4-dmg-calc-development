@@ -3353,6 +3353,12 @@ function compileCharacterStats(equipped, autoStats) {
               let val = conceited.aspectValues && conceited.aspectValues.length > 0 ? parseFloat(conceited.aspectValues[0]) : 40;
               stats["Conceited Aspect Factor"] = { final: val, isMultiplicative: false };
           }
+          
+          let crushing = Object.values(equipped).find(item => item && item.aspect === "Crushing Aspect");
+          if (crushing) {
+              let val = crushing.aspectValues && crushing.aspectValues.length > 0 ? parseFloat(crushing.aspectValues[0]) : 45;
+              stats["Crushing Aspect Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -7342,6 +7348,12 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                   See Toughness Calculator.
                 </div>
               `;
+          } else if (currentAspectName === "Crushing Aspect") {
+              aspectDescHtml += `
+                <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px; font-style: italic; color: #aaa; font-size: 0.85rem; text-align: center;">
+                  See Buffs Subtab.
+                </div>
+              `;
           }
         }
       }
@@ -9372,6 +9384,17 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             let mult = 1 + (multVal / 100);
             bucket *= mult;
             components.push({ name: 'Conceited Aspect [x]', value: mult });
+        }
+    }
+    
+    // Apply Crushing Aspect if applicable
+    if (stats["Crushing Aspect Factor"]) {
+        let buffs = typeof getActiveBuffs === 'function' ? getActiveBuffs() : { fortified: false };
+        if (buffs.fortified) {
+            let multVal = stats["Crushing Aspect Factor"].final;
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: 'Crushing Aspect [x]', value: mult });
         }
     }
 
