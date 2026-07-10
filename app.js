@@ -3468,6 +3468,21 @@ function compileCharacterStats(equipped, autoStats) {
               let val = hardenedBones.aspectValues && hardenedBones.aspectValues.length > 0 ? parseFloat(hardenedBones.aspectValues[0]) : 15;
               addStat(stats, 'Universal Damage Reduction %', val, 'Aspect of Hardened Bones');
           }
+          
+          let heavenly = Object.values(equipped).find(item => item && item.aspect === "Aspect of Heavenly Strength");
+          if (heavenly) {
+              let val = heavenly.aspectValues && heavenly.aspectValues.length > 0 ? parseFloat(heavenly.aspectValues[0]) : 30;
+              let has2H = false;
+              for (const [slotName, itemObj] of Object.entries(equipped)) {
+                  if (itemObj && typeof isTwoHanded === 'function' && isTwoHanded(slotName, itemObj)) {
+                      has2H = true;
+                      break;
+                  }
+              }
+              if (has2H) {
+                  addStat(stats, 'Universal Damage Reduction %', val, 'Aspect of Heavenly Strength');
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
