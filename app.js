@@ -3572,6 +3572,12 @@ function compileCharacterStats(equipped, autoStats) {
                   addStat(stats, 'Universal Damage Reduction %', val * 5, "Encased Aspect (5 Stacks)");
               }
           }
+          
+          let enshrouding = Object.values(equipped).find(item => item && item.aspect === "Enshrouding Aspect");
+          if (enshrouding) {
+              let val = enshrouding.aspectValues && enshrouding.aspectValues.length > 0 ? parseFloat(enshrouding.aspectValues[0]) : 30;
+              addStat(stats, '% Resistance to All Elements', val, "Enshrouding Aspect");
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
