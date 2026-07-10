@@ -3431,6 +3431,17 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Writhing Aspect Factor"] = { final: val, isMultiplicative: false };
               stats["Writhing Aspect Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
+          
+          let coag = Object.values(equipped).find(item => item && item.aspect === "Aspect of Coagulation");
+          if (coag) {
+              let drVal = coag.aspectValues && coag.aspectValues.length > 0 ? parseFloat(coag.aspectValues[0]) : 15;
+              addStat(stats, 'Fortify Generation %', 30, 'Aspect of Coagulation');
+              if (typeof getActiveBuffs === 'function' && getActiveBuffs().fortified) {
+                  addStat(stats, 'Universal Damage Reduction %', drVal, 'Aspect of Coagulation (Fortified)');
+              } else {
+                  addStat(stats, 'Damage Reduction while Fortified %', drVal, 'Aspect of Coagulation');
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
