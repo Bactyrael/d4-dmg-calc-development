@@ -3451,6 +3451,16 @@ function compileCharacterStats(equipped, autoStats) {
                   addStat(stats, 'Universal Damage Reduction %', val * activeStacks, 'Aspect of Disobedience');
               }
           }
+          
+          let glynn = Object.values(equipped).find(item => item && item.aspect === "Aspect of Glynn's Anvil");
+          if (glynn) {
+              let val = glynn.aspectValues && glynn.aspectValues.length > 0 ? parseFloat(glynn.aspectValues[0]) : 2.5;
+              let resolveStacks = typeof getActiveBuffs === 'function' ? getActiveBuffs().resolve || 0 : 0;
+              if (resolveStacks > 0) {
+                  let drAmount = Math.min(val * resolveStacks, val * 10);
+                  addStat(stats, 'Universal Damage Reduction %', drAmount, "Aspect of Glynn's Anvil");
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }

@@ -1938,7 +1938,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Glynn's Anvil",
-      "desc": "Your maximum Resolve is increased by 2 and you gain [2.5 - 4]% Damage Reduction per Resolve.",
+      "desc": "Your maximum Resolve is increased by 2 and you gain [2.5 - 4.0]% Damage Reduction per Resolve, up to [25 - 40]%.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         0,
