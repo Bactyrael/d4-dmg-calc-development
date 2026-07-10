@@ -3589,6 +3589,12 @@ function compileCharacterStats(equipped, autoStats) {
                   addStat(stats, 'Universal Damage Reduction %', val * cappedMonsters, "Everliving Aspect (" + cappedMonsters + " Stacks)");
               }
           }
+          
+          let juggernaut = Object.values(equipped).find(item => item && item.aspect === "Juggernaut's Aspect");
+          if (juggernaut) {
+              let val = juggernaut.aspectValues && juggernaut.aspectValues.length > 0 ? parseFloat(juggernaut.aspectValues[0]) : 150;
+              addStat(stats, '% Total Armor', val, "Juggernaut's Aspect");
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
