@@ -3603,7 +3603,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Aspect of Spiked Armor",
-      "desc": "Gain [40 - 60]%[+] increased Total Armor, 1,813 Thorns, and 15%[+] increased Block Chance.",
+      "desc": "Gain [40 - 60]%[+] increased Total Armor, 2,033 Thorns, and 15%[+] increased Block Chance.",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         0,

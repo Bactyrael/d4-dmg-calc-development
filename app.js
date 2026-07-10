@@ -3525,6 +3525,14 @@ function compileCharacterStats(equipped, autoStats) {
               let val = shelter.aspectValues && shelter.aspectValues.length > 0 ? parseFloat(shelter.aspectValues[0]) : 30;
               addStat(stats, '% Resistance to All Elements', val, 'Aspect of Shelter');
           }
+          
+          let spiked = Object.values(equipped).find(item => item && item.aspect === "Aspect of Spiked Armor");
+          if (spiked) {
+              let val = spiked.aspectValues && spiked.aspectValues.length > 0 ? parseFloat(spiked.aspectValues[0]) : 40;
+              addStat(stats, '% Total Armor', val, 'Aspect of Spiked Armor');
+              addStat(stats, 'Thorns', 2033, 'Aspect of Spiked Armor');
+              addStat(stats, 'Block Chance', 15, 'Aspect of Spiked Armor');
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
