@@ -3405,6 +3405,12 @@ function compileCharacterStats(equipped, autoStats) {
               let val = splintering.aspectValues && splintering.aspectValues.length > 0 ? parseFloat(splintering.aspectValues[0]) : 50;
               stats["Splintering Aspect Factor"] = { final: val, isMultiplicative: false };
           }
+          
+          let tides = Object.values(equipped).find(item => item && item.aspect === "Tides of Blood Aspect");
+          if (tides) {
+              let val = tides.aspectValues && tides.aspectValues.length > 0 ? parseFloat(tides.aspectValues[0]) : 25;
+              stats["Tides of Blood Aspect Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -9545,6 +9551,15 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Splintering Aspect [x]', value: mult });
+    }
+    
+    // Apply Tides of Blood Aspect if applicable
+    if (stats["Tides of Blood Aspect Factor"] && tags.some(t => t.includes('blood')) && buffs.overpower > 0) {
+        let multVal = stats["Tides of Blood Aspect Factor"].final;
+        if (buffs.playerHealthy) multVal *= 2;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Tides of Blood Aspect [x]', value: mult });
     }
 
     // Apply Aspect of Elemental Fate if applicable
