@@ -6849,22 +6849,6 @@ window.D4_DATABASE = {
       "maxValue": "270"
     },
     {
-      "name": "Osseous Gale Aspect",
-      "desc": "Bone Storm consumes up to 8 Corpses to increase its duration by up to [5.0 - 15.0] seconds.",
-      "category": "FILTER_Legendary_Offensive",
-      "classes": [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0
-      ],
-      "maxValue": "8"
-    },
-    {
       "name": "Overcharged Aspect",
       "desc": "Your Storm Skill damage makes enemies Vulnerable for # seconds. You deal #% increased damage to Vulnerable enemies.",
       "category": "FILTER_Legendary_Utility",
@@ -7279,22 +7263,6 @@ window.D4_DATABASE = {
         0
       ],
       "maxValue": "30"
-    },
-    {
-      "name": "Rotting Aspect",
-      "desc": "Decompose can chain and burst up to 4 additional targets. Explosions from Decompose deal [15 - 35]%[x] increased damage.",
-      "category": "FILTER_Legendary_Offensive",
-      "classes": [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0
-      ],
-      "maxValue": "4"
     },
     {
       "name": "Ruthless Aspect",
