@@ -3519,6 +3519,37 @@ function compileCharacterStats(equipped, autoStats) {
                   addStat(stats, 'Universal Damage Reduction %', val, 'Aspect of Might');
               }
           }
+          
+          let shelter = Object.values(equipped).find(item => item && item.aspect === "Aspect of Shelter");
+          if (shelter) {
+              let val = shelter.aspectValues && shelter.aspectValues.length > 0 ? parseFloat(shelter.aspectValues[0]) : 30;
+              let hasDefensive = false;
+              if (window.currentBuild && window.currentBuild.activeSkills && typeof skillsDatabase !== 'undefined') {
+                  for (let skillName of window.currentBuild.activeSkills) {
+                      if (!skillName) continue;
+                      let found = null;
+                      let isDefCat = false;
+                      for (let cat in skillsDatabase) {
+                          found = skillsDatabase[cat].find(s => s.name === skillName);
+                          if (found) {
+                              let c = cat.toLowerCase();
+                              if (c.includes('defens') || c.includes('macabre') || c.includes('agility') || c.includes('subterfuge') || c.includes('brawling')) isDefCat = true;
+                              break;
+                          }
+                      }
+                      if (found) {
+                          let tags = found.tags ? found.tags.map(t => t.toLowerCase()) : [];
+                          if (isDefCat || tags.some(t => t.includes('defens') || t.includes('macabre') || t.includes('agility') || t.includes('subterfuge') || t.includes('brawling'))) {
+                              hasDefensive = true;
+                              break;
+                          }
+                      }
+                  }
+              }
+              if (hasDefensive) {
+                  addStat(stats, '% Resistance to All Elements', val, 'Aspect of Shelter');
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
