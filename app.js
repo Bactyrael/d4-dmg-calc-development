@@ -9132,6 +9132,8 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     let hasDoTDamageX = false;
     let hasDamageGroup = false;
     let activeDamageGroupAffix = "";
+    let hasSkillsGroup = false;
+    let activeSkillsGroupAffix = "";
 
     if (type === 'affix') {
       currentlyEquipped.forEach(aff => {
@@ -9143,6 +9145,14 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
            else if (aff.includes('Cold Damage') && aff.includes('[x]')) { hasDamageGroup = true; activeDamageGroupAffix = "Cold Damage [x]"; }
            else if (aff.includes('Physical Damage') && aff.includes('[x]')) { hasDamageGroup = true; activeDamageGroupAffix = "Physical Damage [x]"; }
            else if (aff.includes('Shadow Damage') && aff.includes('[x]')) { hasDamageGroup = true; activeDamageGroupAffix = "Shadow Damage [x]"; }
+
+           if (mapped === 'amulet') {
+               const skillMatch = aff.match(/to (Basic|Core|Macabre|Curse|Corpse|Blood|Bone|Darkness|Minion) Skills/i);
+               if (skillMatch) {
+                   hasSkillsGroup = true;
+                   activeSkillsGroupAffix = skillMatch[1] + " Skills";
+               }
+           }
         }
       });
     }
@@ -9162,6 +9172,14 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             if (isCurrentGroup && !a.name.includes(activeDamageGroupAffix.replace(' [x]', ''))) {
                 restricted = true;
                 restrictionReason = activeDamageGroupAffix;
+            }
+        }
+        
+        if (mapped === 'amulet' && hasSkillsGroup) {
+            const isSkillAffix = a.name.match(/to (Basic|Core|Macabre|Curse|Corpse|Blood|Bone|Darkness|Minion) Skills/i);
+            if (isSkillAffix && !a.name.includes(activeSkillsGroupAffix)) {
+                restricted = true;
+                restrictionReason = "+to " + activeSkillsGroupAffix;
             }
         }
       }
