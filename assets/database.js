@@ -3584,22 +3584,7 @@ window.D4_DATABASE = {
       ],
       "maxValue": ""
     },
-    {
-      "name": "Aspect of Sly Steps",
-      "desc": "When you would accumulate #% of your Maximum Life lost, you automatically cast an equipped Defensive, Subterfuge or Macabre Skill before receiving damage. Can only occur once every # seconds and cannot cast Mobility Skills.",
-      "category": "FILTER_Legendary_Defensive",
-      "classes": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        0,
-        1
-      ],
-      "maxValue": ""
-    },
+
     {
       "name": "Aspect of Soil Power",
       "desc": "Lucky Hit: Up to a #% chance to create a Mystic Circle for # seconds. \r\n\r\nCasting a Centipede Skill in Mystic Circles empowers them to periodically apply # Poisoning damage over # seconds to enemies within while extending any Crowd Controls affecting them.",
