@@ -3387,6 +3387,12 @@ function compileCharacterStats(equipped, autoStats) {
               let val = hellbent.aspectValues && hellbent.aspectValues.length > 0 ? parseFloat(hellbent.aspectValues[0]) : 50;
               stats["Hellbent Commander Aspect Factor"] = { final: val, isMultiplicative: false };
           }
+          
+          let needleflare = Object.values(equipped).find(item => item && item.aspect === "Needleflare Aspect");
+          if (needleflare) {
+              let val = needleflare.aspectValues && needleflare.aspectValues.length > 0 ? parseFloat(needleflare.aspectValues[0]) : 40;
+              stats["Needleflare Aspect Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -9503,6 +9509,14 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Hellbent Commander Aspect [x]', value: mult });
+    }
+    
+    // Apply Needleflare Aspect if applicable (Thorns AoE multiplier)
+    if (stats["Needleflare Aspect Factor"] && tags.includes('thorns') && conds.numMonsters > 1) {
+        let multVal = stats["Needleflare Aspect Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Needleflare Aspect [x]', value: mult });
     }
 
     // Apply Aspect of Elemental Fate if applicable
