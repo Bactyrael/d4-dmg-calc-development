@@ -6430,8 +6430,9 @@ function applyActiveModifiers(baseSkillObj) {
             modified.secondaryScalars = modified.secondaryScalars || {};
             modified.secondaryScalars.ebonpiercer = {
                 scalar: baseArea * pct,
-                nameOverride: "Ebonpiercer (Projectile)",
-                isHit: true
+                nameOverride: "Ebonpiercer (Piercing Darkness)",
+                isDoT: true,
+                addTags: ["Search_DoT"]
             };
         }
     }
