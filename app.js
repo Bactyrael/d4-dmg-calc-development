@@ -3895,6 +3895,33 @@ function compileCharacterStats(equipped, autoStats) {
           feroInput.max = maxFero;
           if (feroLabel) feroLabel.innerText = `Ferocity Stacks (0-${maxFero})`;
       }
+      
+      // Dynamically update Overpower max based on equipped items and skills
+      if (baseEquipped && document.getElementById('buff-overpower')) {
+          let maxOp = 4;
+          const tidalAspect = Object.values(baseEquipped).find(item => item && item.aspect === "Tidal Aspect");
+          if (tidalAspect) {
+              let val = tidalAspect.aspectValues && tidalAspect.aspectValues.length > 0 ? parseInt(tidalAspect.aspectValues[0]) : 3;
+              maxOp += val;
+          }
+          const banishedLord = Object.values(baseEquipped).find(item => item && item.name === "Banished Lord's Talisman");
+          if (banishedLord) {
+              maxOp += 4;
+          }
+          const redBlessing = Object.values(baseEquipped).find(item => item && item.name === "Red Blessing");
+          if (redBlessing) {
+              maxOp += 2;
+          }
+          if (window.selectedSkills && typeof isSkillActiveNode === 'function' && isSkillActiveNode("Overpower (Blood Wave)")) {
+              maxOp += 2;
+          }
+          
+          const opInput = document.getElementById('buff-overpower');
+          const opLabel = document.getElementById('buff-overpower-label');
+          if (parseInt(opInput.value) > maxOp) opInput.value = maxOp;
+          opInput.max = maxOp;
+          if (opLabel) opLabel.innerText = `Overpower Stacks (0-${maxOp})`;
+      }
 
       if (baseEquipped) {
         let mainhandDmg = 0; let mainhandMin = 0; let mainhandMax = 0;
