@@ -10524,14 +10524,14 @@ function renderCalcSkills() {
                                     }
                                     secSkill.baseDamageScalar = scalarVal;
                                     secSkill.isSecondary = true;
-                                    let isHit = (typeof val === 'object' && val.isHit !== undefined) ? val.isHit : !key.toLowerCase().includes('dot');
+                                    let isHit = (typeof val === 'object' && val.isDoT) ? false : ((typeof val === 'object' && val.isHit !== undefined) ? val.isHit : !key.toLowerCase().includes('dot'));
                                     let b2 = getSkillDamageBreakdown(secSkill, rank, isHit);
                                     let pct = (scalarVal * b2.rankMultiplier * 100).toFixed(1).replace('.0', '');
                                     let minStr = Math.floor(wpMin * scalarVal * b2.finalScalar).toLocaleString();
                                     let maxStr = Math.floor(wpMax * scalarVal * b2.finalScalar).toLocaleString();
                                     
                                     let addStr2 = Number(((b2.additiveMult - 1) * 100).toFixed(6));
-                                    let canCrit = !key.toLowerCase().includes('dot');
+                                    let canCrit = (typeof val === 'object' && val.isDoT) ? false : !key.toLowerCase().includes('dot');
                                     let critMinStr = Math.floor(wpMin * scalarVal * b2.finalScalar * (b2.critAdditiveMult / b2.additiveMult) * (b2.critMultiMult / b2.multiMult)).toLocaleString();
                                     let critMaxStr = Math.floor(wpMax * scalarVal * b2.finalScalar * (b2.critAdditiveMult / b2.additiveMult) * (b2.critMultiMult / b2.multiMult)).toLocaleString();
                                       
