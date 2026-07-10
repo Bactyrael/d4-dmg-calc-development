@@ -4053,7 +4053,7 @@ function compileCharacterStats(equipped, autoStats) {
         intelligence: baseStats.int + levelBonus,
         willpower: baseStats.will + levelBonus,
         dexterity: baseStats.dex + levelBonus,
-        baseStr: baseStats.str, levelStr: levelBonus,
+                  baseStr: baseStats.str, levelStr: levelBonus,
         baseInt: baseStats.int, levelInt: levelBonus,
         baseWill: baseStats.will, levelWill: levelBonus,
         baseDex: baseStats.dex, levelDex: levelBonus,
@@ -4063,6 +4063,22 @@ function compileCharacterStats(equipped, autoStats) {
     
     const compiledStats = compileCharacterStats(baseEquipped, autoStats);
     window.D4_COMPILED_STATS = compiledStats;
+    
+    // Dynamically update Resolve max based on compiled stats
+    if (document.getElementById('buff-resolve')) {
+        let maxResolve = 8;
+        let resolveBonus = 0;
+        if (compiledStats['Maximum Resolve Stacks']) resolveBonus += compiledStats['Maximum Resolve Stacks'].final;
+        if (compiledStats['Maximum Resolve']) resolveBonus += compiledStats['Maximum Resolve'].final;
+        maxResolve += resolveBonus;
+        if (maxResolve > 30) maxResolve = 30; // Hard cap
+        
+        const resInput = document.getElementById('buff-resolve');
+        const resLabel = document.getElementById('buff-resolve-label');
+        if (parseInt(resInput.value) > maxResolve) resInput.value = maxResolve;
+        resInput.max = maxResolve;
+        if (resLabel) resLabel.innerText = `Resolve Stacks (0-${maxResolve})`;
+    }
     
     // Add flat "Weapon Damage" from modifiers
     if (compiledStats['Weapon Damage']) {
