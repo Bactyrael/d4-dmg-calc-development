@@ -3423,6 +3423,12 @@ function compileCharacterStats(equipped, autoStats) {
               let val = vehement.aspectValues && vehement.aspectValues.length > 0 ? parseFloat(vehement.aspectValues[0]) : 35;
               stats["Vehement Brawler's Aspect Factor"] = { final: val, isMultiplicative: false };
           }
+          
+          let writhing = Object.values(equipped).find(item => item && item.aspect === "Writhing Aspect");
+          if (writhing) {
+              let val = writhing.aspectValues && writhing.aspectValues.length > 0 ? parseFloat(writhing.aspectValues[0]) : 7.5;
+              stats["Writhing Aspect Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -9188,6 +9194,7 @@ function getActiveConditions() {
         cursed: document.getElementById('cond-cursed')?.checked || false,
         shadowDot: document.getElementById('cond-shadow-dot')?.checked || false,
         frozenSeconds: parseFloat(document.getElementById('cond-seconds-frozen')?.value) || 0,
+        writhingStacks: parseInt(document.getElementById('cond-writhing-stacks')?.value) || 10,
         numMonsters: parseInt(document.getElementById('cond-num-monsters')?.value) || 1,
         monsterType: document.querySelector('input[name="monster_type"]:checked')?.value || 'elite'
     };
@@ -9594,6 +9601,17 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Vehement Brawler\'s Aspect [x]', value: mult });
+    }
+    
+    // Apply Writhing Aspect if applicable
+    if (stats["Writhing Aspect Factor"] && !isHit) {
+        let stacks = conds.writhingStacks !== undefined ? conds.writhingStacks : 10;
+        if (stacks > 0) {
+            let multVal = stats["Writhing Aspect Factor"].final * stacks;
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: `Writhing Aspect (${stacks} Stacks) [x]`, value: mult });
+        }
     }
 
     // Apply Aspect of Elemental Fate if applicable
