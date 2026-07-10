@@ -3411,6 +3411,12 @@ function compileCharacterStats(equipped, autoStats) {
               let val = tides.aspectValues && tides.aspectValues.length > 0 ? parseFloat(tides.aspectValues[0]) : 25;
               stats["Tides of Blood Aspect Factor"] = { final: val, isMultiplicative: false };
           }
+          
+          let vanquishing = Object.values(equipped).find(item => item && item.aspect === "Vanquishing Aspect");
+          if (vanquishing) {
+              let val = vanquishing.aspectValues && vanquishing.aspectValues.length > 0 ? parseFloat(vanquishing.aspectValues[0]) : 60;
+              stats["Vanquishing Aspect Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -9161,12 +9167,13 @@ document.addEventListener('DOMContentLoaded', () => {
 function getActiveConditions() {
     return {
         vulnerable: document.getElementById('cond-vulnerable')?.checked || false,
+        cc: document.getElementById('cond-cc')?.checked || false,
+        frozen: document.getElementById('cond-frozen')?.checked || false,
+        incapacitated: document.getElementById('cond-incapacitated')?.checked || false,
         close: document.getElementById('cond-close')?.checked || false,
         distant: document.getElementById('cond-distant')?.checked || false,
         healthy: document.getElementById('cond-healthy')?.checked || false,
         injured: document.getElementById('cond-injured')?.checked || false,
-        cc: document.getElementById('cond-cc')?.checked || false,
-        frozen: document.getElementById('cond-frozen')?.checked || false,
         cursed: document.getElementById('cond-cursed')?.checked || false,
         shadowDot: document.getElementById('cond-shadow-dot')?.checked || false,
         frozenSeconds: parseFloat(document.getElementById('cond-seconds-frozen')?.value) || 0,
@@ -9560,6 +9567,14 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Tides of Blood Aspect [x]', value: mult });
+    }
+    
+    // Apply Vanquishing Aspect if applicable
+    if (stats["Vanquishing Aspect Factor"] && conds.incapacitated) {
+        let multVal = stats["Vanquishing Aspect Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Vanquishing Aspect [x]', value: mult });
     }
 
     // Apply Aspect of Elemental Fate if applicable
