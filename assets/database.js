@@ -7985,22 +7985,6 @@ window.D4_DATABASE = {
       "maxValue": "60"
     },
     {
-      "name": "Unyielding Commander's Aspect",
-      "desc": "While Army of the Dead is active, your Minions take 90% reduced damage and you deal [70 - 110]%[x] increased Summon Damage.",
-      "category": "FILTER_Legendary_Offensive",
-      "classes": [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0
-      ],
-      "maxValue": "90"
-    },
-    {
       "name": "Vanguard's Aspect",
       "desc": "Juggernaut Skills deal #% increased damage to the first # enemies hit.",
       "category": "FILTER_Legendary_Offensive",
