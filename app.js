@@ -3591,7 +3591,9 @@ function compileCharacterStats(equipped, autoStats) {
         if (stats['Block Chance'] && stats['Block Chance'].total > 0) {
             addStat(stats, 'Block Damage Reduction', 15, 'Base Shield');
         }
-        const inverseMultiplicativeKeys = Object.keys(stats).filter(k => k.includes('Dodge Chance') || k.includes('Damage Reduction') || k.includes('Block Damage Reduction') || k.includes('Cooldown Reduction'));
+        const inverseMultiplicativeKeys = Object.keys(stats).filter(k => 
+            (k.includes('Dodge Chance') || k.includes('Damage Reduction') || k.includes('Cooldown Reduction')) && !k.includes('Block Damage Reduction')
+        );
         inverseMultiplicativeKeys.forEach(k => {
             if (stats[k].flatSources && stats[k].flatSources.length > 1) {
                 let inverseProduct = 1.0;
