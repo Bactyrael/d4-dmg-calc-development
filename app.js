@@ -3393,6 +3393,12 @@ function compileCharacterStats(equipped, autoStats) {
               let val = needleflare.aspectValues && needleflare.aspectValues.length > 0 ? parseFloat(needleflare.aspectValues[0]) : 40;
               stats["Needleflare Aspect Factor"] = { final: val, isMultiplicative: false };
           }
+          
+          let shivering = Object.values(equipped).find(item => item && item.aspect === "Shivering Aspect");
+          if (shivering) {
+              let val = shivering.aspectValues && shivering.aspectValues.length > 0 ? parseFloat(shivering.aspectValues[0]) : 60;
+              stats["Shivering Aspect Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -9517,6 +9523,14 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Needleflare Aspect [x]', value: mult });
+    }
+    
+    // Apply Shivering Aspect if applicable
+    if (stats["Shivering Aspect Factor"] && conds.cc) {
+        let multVal = stats["Shivering Aspect Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Shivering Aspect [x]', value: mult });
     }
 
     // Apply Aspect of Elemental Fate if applicable
