@@ -23245,6 +23245,10 @@ window.D4_DATABASE = {
           ],
           "transfigures": [
             {
+              "name": "+[20.0 - 30.0]% Gem Strength in this Item",
+              "desc": "Gem Strength"
+            },
+            {
               "name": "+[3.5 - 5.0]% Intelligence",
               "desc": "Intelligence"
             },
