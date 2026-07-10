@@ -3341,6 +3341,12 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Bone Breaker's Aspect Factor"] = { final: val, isMultiplicative: false };
               stats["Bone Breaker's Aspect Enemy"] = { final: targetHit, isMultiplicative: false };
           }
+          
+          let cadaverous = Object.values(equipped).find(item => item && item.aspect === "Cadaverous Aspect");
+          if (cadaverous) {
+              let val = cadaverous.aspectValues && cadaverous.aspectValues.length > 0 ? parseFloat(cadaverous.aspectValues[0]) : 13;
+              stats["Cadaverous Aspect Factor"] = { final: val * 5, isMultiplicative: false }; // Max stacks is always 5
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -9336,6 +9342,14 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             bucket *= mult;
             components.push({ name: `Bone Breaker's Aspect (Hit ${enemyHit}) [x]`, value: mult });
         }
+    }
+    
+    // Apply Cadaverous Aspect if applicable
+    if (stats["Cadaverous Aspect Factor"]) {
+        let multVal = stats["Cadaverous Aspect Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Cadaverous Aspect (Max Stacks) [x]', value: mult });
     }
 
     // Apply Aspect of Elemental Fate if applicable
