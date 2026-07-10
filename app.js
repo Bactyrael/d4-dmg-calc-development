@@ -3359,6 +3359,22 @@ function compileCharacterStats(equipped, autoStats) {
               let val = crushing.aspectValues && crushing.aspectValues.length > 0 ? parseFloat(crushing.aspectValues[0]) : 45;
               stats["Crushing Aspect Factor"] = { final: val, isMultiplicative: false };
           }
+          
+          let duelist = Object.values(equipped).find(item => item && item.aspect === "Duelist's Aspect");
+          if (duelist) {
+              let has1H = false;
+              const wSlots = ['Mainhand', 'Dual-Wield Weapon 1', 'Dual-Wield Weapon 2', 'Weapon1', 'Weapon2'];
+              for (const s of wSlots) {
+                  if (equipped[s] && typeof checkIs2H === 'function' && !checkIs2H(equipped[s], s)) {
+                      has1H = true;
+                      break;
+                  }
+              }
+              if (has1H) {
+                  let val = duelist.aspectValues && duelist.aspectValues.length > 0 ? parseFloat(duelist.aspectValues[0]) : 50;
+                  addStat(stats, 'Attack Speed', val, "Duelist's Aspect");
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
