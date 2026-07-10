@@ -3537,7 +3537,7 @@ function compileCharacterStats(equipped, autoStats) {
           let fortress = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Fortress");
           if (fortress) {
               let val = fortress.aspectValues && fortress.aspectValues.length > 0 ? parseFloat(fortress.aspectValues[0]) : 40;
-              let isInjured = document.getElementById('cond-injured') && document.getElementById('cond-injured').checked;
+              let isInjured = typeof getActiveBuffs === 'function' ? getActiveBuffs().playerInjured : false;
               if (isInjured) {
                   addStat(stats, 'Universal Damage Reduction %', val, 'Aspect of the Fortress (Max Value)');
               }
@@ -9341,7 +9341,8 @@ function getActiveBuffs() {
         overpower: parseInt(document.getElementById('buff-overpower')?.value) || 0,
         resolve: parseInt(document.getElementById('buff-resolve')?.value) || 0,
         fortified: document.getElementById('buff-fortified')?.checked || false,
-        playerHealthy: document.getElementById('buff-player-healthy')?.checked || false
+        playerHealthy: document.getElementById('buff-player-healthy')?.checked || false,
+        playerInjured: document.getElementById('buff-player-injured')?.checked || false
     };
 }
 
