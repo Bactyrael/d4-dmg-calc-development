@@ -3321,6 +3321,12 @@ function compileCharacterStats(equipped, autoStats) {
               let val = thickenedBlood.aspectValues && thickenedBlood.aspectValues.length > 0 ? parseFloat(thickenedBlood.aspectValues[0]) : 60;
               stats["Aspect of Thickened Blood Factor"] = { final: val, isMultiplicative: false };
           }
+          
+          let ultimateShadow = Object.values(equipped).find(item => item && item.aspect === "Aspect of Ultimate Shadow");
+          if (ultimateShadow) {
+              let val = ultimateShadow.aspectValues && ultimateShadow.aspectValues.length > 0 ? parseFloat(ultimateShadow.aspectValues[0]) : 80;
+              stats["Aspect of Ultimate Shadow Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -9276,6 +9282,14 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Aspect of Thickened Blood [x]', value: mult });
+    }
+    
+    // Apply Aspect of Ultimate Shadow if applicable
+    if (stats["Aspect of Ultimate Shadow Factor"] && (tags.includes('subpower_desecratedground') || tags.includes('search_desecratedground'))) {
+        let multVal = stats["Aspect of Ultimate Shadow Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Aspect of Ultimate Shadow [x]', value: mult });
     }
 
     // Apply Aspect of Elemental Fate if applicable
