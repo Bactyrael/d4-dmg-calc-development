@@ -5891,7 +5891,7 @@ window.D4_DATABASE = {
     },
     {
       "name": "Everliving Aspect",
-      "desc": "Each Crowd Controlled enemy Nearby grants [2.0 - 3.0]% Damage Reduction, up to 13 enemies.",
+      "desc": "Each Crowd Controlled enemy Nearby grants [2.0 - 3.0]% Damage Reduction, up to 13 enemies.\n\nSee Conditions Tab",
       "category": "FILTER_Legendary_Defensive",
       "classes": [
         1,

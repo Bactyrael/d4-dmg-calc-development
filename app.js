@@ -3578,6 +3578,17 @@ function compileCharacterStats(equipped, autoStats) {
               let val = enshrouding.aspectValues && enshrouding.aspectValues.length > 0 ? parseFloat(enshrouding.aspectValues[0]) : 30;
               addStat(stats, '% Resistance to All Elements', val, "Enshrouding Aspect");
           }
+          
+          let everliving = Object.values(equipped).find(item => item && item.aspect === "Everliving Aspect");
+          if (everliving) {
+              let isCc = typeof getActiveConditions === 'function' ? getActiveConditions().cc : false;
+              if (isCc) {
+                  let numMonsters = document.getElementById('cond-num-monsters') ? parseInt(document.getElementById('cond-num-monsters').value) || 1 : 1;
+                  let cappedMonsters = Math.min(numMonsters, 13);
+                  let val = everliving.aspectValues && everliving.aspectValues.length > 0 ? parseFloat(everliving.aspectValues[0]) : 3.0;
+                  addStat(stats, 'Universal Damage Reduction %', val * cappedMonsters, "Everliving Aspect (" + cappedMonsters + " Stacks)");
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
