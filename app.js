@@ -3533,6 +3533,15 @@ function compileCharacterStats(equipped, autoStats) {
               addStat(stats, 'Thorns', 2033, 'Aspect of Spiked Armor');
               addStat(stats, 'Block Chance', 15, 'Aspect of Spiked Armor');
           }
+          
+          let fortress = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Fortress");
+          if (fortress) {
+              let val = fortress.aspectValues && fortress.aspectValues.length > 0 ? parseFloat(fortress.aspectValues[0]) : 40;
+              let isInjured = document.getElementById('cond-injured') && document.getElementById('cond-injured').checked;
+              if (isInjured) {
+                  addStat(stats, 'Universal Damage Reduction %', val, 'Aspect of the Fortress (Max Value)');
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
