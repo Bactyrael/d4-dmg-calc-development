@@ -3315,6 +3315,12 @@ function compileCharacterStats(equipped, autoStats) {
                   stats["Aspect of the Moonrise Factor"] = { final: val, isMultiplicative: false };
               }
           }
+          
+          let thickenedBlood = Object.values(equipped).find(item => item && item.aspect === "Aspect of Thickened Blood");
+          if (thickenedBlood) {
+              let val = thickenedBlood.aspectValues && thickenedBlood.aspectValues.length > 0 ? parseFloat(thickenedBlood.aspectValues[0]) : 60;
+              stats["Aspect of Thickened Blood Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -9262,6 +9268,14 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Aspect of the Moonrise (10 Stacks) [x]', value: mult });
+    }
+    
+    // Apply Aspect of Thickened Blood if applicable
+    if (stats["Aspect of Thickened Blood Factor"] && (tags.includes('skill_blood') || tags.includes('search_blood') || dType === 'blood')) {
+        let multVal = stats["Aspect of Thickened Blood Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Aspect of Thickened Blood [x]', value: mult });
     }
 
     // Apply Aspect of Elemental Fate if applicable
