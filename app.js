@@ -3542,6 +3542,17 @@ function compileCharacterStats(equipped, autoStats) {
                   addStat(stats, 'Universal Damage Reduction %', val, 'Aspect of the Fortress (Max Value)');
               }
           }
+          
+          let indomitable = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Indomitable");
+          if (indomitable) {
+              let val = indomitable.aspectValues && indomitable.aspectValues.length > 0 ? parseFloat(indomitable.aspectValues[0]) : 45;
+              let blockChance = stats['Block Chance'] ? stats['Block Chance'].final : 0;
+              let bonus = blockChance * (val / 100);
+              if (bonus > 0) {
+                  addStat(stats, '% Total Armor', bonus, 'Aspect of the Indomitable');
+                  addStat(stats, 'Control Impaired Duration Reduction', bonus, 'Aspect of the Indomitable');
+              }
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -3638,16 +3649,6 @@ function compileCharacterStats(equipped, autoStats) {
         });
         
         // Apply standalone modifiers
-        let indomitable = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Indomitable");
-        if (indomitable) {
-            let val = indomitable.aspectValues && indomitable.aspectValues.length > 0 ? parseFloat(indomitable.aspectValues[0]) : 45;
-            let blockChance = stats['Block Chance'] ? stats['Block Chance'].final : 0;
-            let bonus = blockChance * (val / 100);
-            if (bonus > 0) {
-                addStat(stats, '% Total Armor', bonus, 'Aspect of the Indomitable');
-                addStat(stats, 'Control Impaired Duration Reduction', bonus, 'Aspect of the Indomitable');
-            }
-        }
         
         // Post-Compilation Step: Inverse Multiplicative Stats (Dodge Chance, Damage Reduction, etc.)
         // This must run at the very end so that Core Stats (like Dexterity) are included in the inverse multiplicative pool!
@@ -3655,7 +3656,7 @@ function compileCharacterStats(equipped, autoStats) {
             addStat(stats, 'Block Damage Reduction', 15, 'Base Shield');
         }
         const inverseMultiplicativeKeys = Object.keys(stats).filter(k => 
-            (k.includes('Dodge Chance') || k.includes('Damage Reduction') || k.includes('Cooldown Reduction')) && !k.includes('Block Damage Reduction')
+            (k.includes('Dodge Chance') || k.includes('Damage Reduction') || k.includes('Cooldown Reduction') || k.includes('Control Impaired Duration Reduction')) && !k.includes('Block Damage Reduction')
         );
         inverseMultiplicativeKeys.forEach(k => {
             if (stats[k].flatSources && stats[k].flatSources.length > 1) {
