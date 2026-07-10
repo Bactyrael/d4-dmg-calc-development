@@ -3462,6 +3462,12 @@ function compileCharacterStats(equipped, autoStats) {
                   addStat(stats, 'Universal Damage Reduction %', drAmount, "Aspect of Glynn's Anvil");
               }
           }
+          
+          let hardenedBones = Object.values(equipped).find(item => item && item.aspect === "Aspect of Hardened Bones");
+          if (hardenedBones) {
+              let val = hardenedBones.aspectValues && hardenedBones.aspectValues.length > 0 ? parseFloat(hardenedBones.aspectValues[0]) : 15;
+              addStat(stats, 'Universal Damage Reduction %', val, 'Aspect of Hardened Bones');
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -3557,10 +3563,7 @@ function compileCharacterStats(equipped, autoStats) {
             addStat(stats, res.split(' ')[0] + ' DR%', resistDr * 100, 'Calculated');
         });
         
-        // Apply standalone Universal DR modifiers
-        if (stats['Aspect of Hardened Bones']) {
-            addStat(stats, 'Universal Damage Reduction %', stats['Aspect of Hardened Bones'].total, 'Aspect of Hardened Bones');
-        }
+        // Apply standalone modifiers
         
         // Post-Compilation Step: Inverse Multiplicative Stats (Dodge Chance, Damage Reduction, etc.)
         // This must run at the very end so that Core Stats (like Dexterity) are included in the inverse multiplicative pool!
