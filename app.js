@@ -3427,7 +3427,9 @@ function compileCharacterStats(equipped, autoStats) {
           let writhing = Object.values(equipped).find(item => item && item.aspect === "Writhing Aspect");
           if (writhing) {
               let val = writhing.aspectValues && writhing.aspectValues.length > 0 ? parseFloat(writhing.aspectValues[0]) : 7.5;
+              let activeStacks = writhing.aspectState?.writhingStacks !== undefined ? parseInt(writhing.aspectState.writhingStacks) : 10;
               stats["Writhing Aspect Factor"] = { final: val, isMultiplicative: false };
+              stats["Writhing Aspect Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
       }
 
@@ -7492,6 +7494,18 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                   See Buffs Subtab.
                 </div>
               `;
+          } else if (currentAspectName === 'Writhing Aspect') {
+              if (!itemObj.aspectState) itemObj.aspectState = {};
+              let activeStacks = itemObj.aspectState.writhingStacks !== undefined ? itemObj.aspectState.writhingStacks : 10;
+              
+              aspectDescHtml += `
+                <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="color: #fff; font-size: 0.85rem;">Active Stacks</span>
+                    <input type="number" class="d4-input aspect-state-input" data-state-key="writhingStacks" value="${activeStacks}" min="0" max="10" style="width: 60px; text-align: center; padding: 4px;">
+                  </div>
+                </div>
+              `;
           }
         }
       }
@@ -9194,7 +9208,6 @@ function getActiveConditions() {
         cursed: document.getElementById('cond-cursed')?.checked || false,
         shadowDot: document.getElementById('cond-shadow-dot')?.checked || false,
         frozenSeconds: parseFloat(document.getElementById('cond-seconds-frozen')?.value) || 0,
-        writhingStacks: parseInt(document.getElementById('cond-writhing-stacks')?.value) || 10,
         numMonsters: parseInt(document.getElementById('cond-num-monsters')?.value) || 1,
         monsterType: document.querySelector('input[name="monster_type"]:checked')?.value || 'elite'
     };
@@ -9605,7 +9618,7 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
     
     // Apply Writhing Aspect if applicable
     if (stats["Writhing Aspect Factor"] && !isHit) {
-        let stacks = conds.writhingStacks !== undefined ? conds.writhingStacks : 10;
+        let stacks = stats["Writhing Aspect Stacks"] ? stats["Writhing Aspect Stacks"].final : 10;
         if (stacks > 0) {
             let multVal = stats["Writhing Aspect Factor"].final * stacks;
             let mult = 1 + (multVal / 100);
