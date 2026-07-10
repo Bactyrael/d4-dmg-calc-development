@@ -3417,6 +3417,12 @@ function compileCharacterStats(equipped, autoStats) {
               let val = vanquishing.aspectValues && vanquishing.aspectValues.length > 0 ? parseFloat(vanquishing.aspectValues[0]) : 60;
               stats["Vanquishing Aspect Factor"] = { final: val, isMultiplicative: false };
           }
+          
+          let vehement = Object.values(equipped).find(item => item && item.aspect === "Vehement Brawler's Aspect");
+          if (vehement) {
+              let val = vehement.aspectValues && vehement.aspectValues.length > 0 ? parseFloat(vehement.aspectValues[0]) : 35;
+              stats["Vehement Brawler's Aspect Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -6082,6 +6088,11 @@ function getBaseSkillRankFor(skillName) {
                 if (stats[`to ${tagStr} Skills`]) gearBonus += stats[`to ${tagStr} Skills`].final;
             }
         });
+        
+        // 4. Vehement Brawler's Aspect (+2 to Ultimate Skills if invested)
+        if (stats["Vehement Brawler's Aspect Factor"] && skillTags.includes('Skill_Ultimate') && baseInvested > 0) {
+            gearBonus += 2;
+        }
     }
     
     return baseInvested + gearBonus;
@@ -9575,6 +9586,14 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Vanquishing Aspect [x]', value: mult });
+    }
+    
+    // Apply Vehement Brawler's Aspect if applicable
+    if (stats["Vehement Brawler's Aspect Factor"]) {
+        let multVal = stats["Vehement Brawler's Aspect Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Vehement Brawler\'s Aspect [x]', value: mult });
     }
 
     // Apply Aspect of Elemental Fate if applicable
