@@ -9498,7 +9498,7 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
     }
     
     // Apply Hellbent Commander Aspect if applicable
-    if (stats["Hellbent Commander Aspect Factor"] && (tags.includes('skill_summoning') || tags.includes('search_summoning') || tags.includes('summon') || tags.includes('skill_summon'))) {
+    if (stats["Hellbent Commander Aspect Factor"] && tags.some(t => t.includes('summon'))) {
         let multVal = stats["Hellbent Commander Aspect Factor"].final;
         let mult = 1 + (multVal / 100);
         bucket *= mult;
