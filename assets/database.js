@@ -6385,22 +6385,6 @@ window.D4_DATABASE = {
       "maxValue": "80.0"
     },
     {
-      "name": "Inspiring Leader Aspect",
-      "desc": "While you are Healthy, your Minions gain an additional #% Critical Strike Chance.",
-      "category": "FILTER_Legendary_Offensive",
-      "classes": [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0
-      ],
-      "maxValue": ""
-    },
-    {
       "name": "Iron Blood Aspect",
       "desc": "Gain #% Damage Reduction for each Nearby Bleeding enemy up to #% maximum.",
       "category": "FILTER_Legendary_Defensive",
