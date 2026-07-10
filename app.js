@@ -3454,6 +3454,7 @@ function compileCharacterStats(equipped, autoStats) {
           
           let glynn = Object.values(equipped).find(item => item && item.aspect === "Aspect of Glynn's Anvil");
           if (glynn) {
+              addStat(stats, 'Maximum Resolve', 2, "Aspect of Glynn's Anvil");
               let val = glynn.aspectValues && glynn.aspectValues.length > 0 ? parseFloat(glynn.aspectValues[0]) : 2.5;
               let resolveStacks = typeof getActiveBuffs === 'function' ? getActiveBuffs().resolve || 0 : 0;
               if (resolveStacks > 0) {
