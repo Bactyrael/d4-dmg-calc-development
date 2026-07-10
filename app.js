@@ -3333,6 +3333,14 @@ function compileCharacterStats(equipped, autoStats) {
               let val = untimelyDeath.aspectValues && untimelyDeath.aspectValues.length > 0 ? parseFloat(untimelyDeath.aspectValues[0]) : 60;
               stats["Aspect of Untimely Death Factor"] = { final: val, isMultiplicative: false };
           }
+          
+          let boneBreaker = Object.values(equipped).find(item => item && item.aspect === "Bone Breaker's Aspect");
+          if (boneBreaker) {
+              let val = boneBreaker.aspectValues && boneBreaker.aspectValues.length > 0 ? parseFloat(boneBreaker.aspectValues[0]) : 100;
+              let targetHit = boneBreaker.aspectState?.bonebreakerHit !== undefined ? parseInt(boneBreaker.aspectState.bonebreakerHit) : 1;
+              stats["Bone Breaker's Aspect Factor"] = { final: val, isMultiplicative: false };
+              stats["Bone Breaker's Aspect Enemy"] = { final: targetHit, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -7304,6 +7312,18 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                   </div>
                 </div>
               `;
+          } else if (currentAspectName === "Bone Breaker's Aspect") {
+              if (!itemObj.aspectState) itemObj.aspectState = {};
+              let enemyHit = itemObj.aspectState.bonebreakerHit !== undefined ? itemObj.aspectState.bonebreakerHit : 1;
+              
+              aspectDescHtml += `
+                <div style="margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 4px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="color: #fff; font-size: 0.85rem;">Enemy Hit Sequence (1-10+)</span>
+                    <input type="number" class="d4-input aspect-state-input" data-state-key="bonebreakerHit" value="${enemyHit}" min="1" max="11" style="width: 60px; text-align: center; padding: 4px;">
+                  </div>
+                </div>
+              `;
           }
         }
       }
@@ -9304,6 +9324,18 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Aspect of Ultimate Shadow [x]', value: mult });
+    }
+    
+    // Apply Bone Breaker's Aspect if applicable
+    if (stats["Bone Breaker's Aspect Factor"] && (tags.includes('skill_bone') || tags.includes('search_bone'))) {
+        let enemyHit = stats["Bone Breaker's Aspect Enemy"].final;
+        let fraction = Math.max(0, 1 - ((enemyHit - 1) * 0.1));
+        if (fraction > 0) {
+            let multVal = stats["Bone Breaker's Aspect Factor"].final * fraction;
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: `Bone Breaker's Aspect (Hit ${enemyHit}) [x]`, value: mult });
+        }
     }
 
     // Apply Aspect of Elemental Fate if applicable
