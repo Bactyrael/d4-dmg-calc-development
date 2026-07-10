@@ -3399,6 +3399,12 @@ function compileCharacterStats(equipped, autoStats) {
               let val = shivering.aspectValues && shivering.aspectValues.length > 0 ? parseFloat(shivering.aspectValues[0]) : 60;
               stats["Shivering Aspect Factor"] = { final: val, isMultiplicative: false };
           }
+          
+          let splintering = Object.values(equipped).find(item => item && item.aspect === "Splintering Aspect");
+          if (splintering) {
+              let val = splintering.aspectValues && splintering.aspectValues.length > 0 ? parseFloat(splintering.aspectValues[0]) : 50;
+              stats["Splintering Aspect Factor"] = { final: val, isMultiplicative: false };
+          }
       }
 
       if (typeof window.getCompiledParagonThresholdStats === 'function') { window.getCompiledParagonThresholdStats(stats, addStat); }
@@ -9531,6 +9537,14 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Shivering Aspect [x]', value: mult });
+    }
+    
+    // Apply Splintering Aspect if applicable
+    if (stats["Splintering Aspect Factor"] && tags.some(t => t.includes('bone')) && conds.vulnerable) {
+        let multVal = stats["Splintering Aspect Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Splintering Aspect [x]', value: mult });
     }
 
     // Apply Aspect of Elemental Fate if applicable
