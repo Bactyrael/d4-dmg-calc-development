@@ -2414,8 +2414,7 @@ const skillsDatabase = {
             "Skill_Shadow",
             "Damage_Override_Shadow",
             "Search_Shadow",
-            "Search_ShadowDOT",
-            "Subpower_DesecratedGround"
+            "Search_ShadowDOT"
           ],
           "description": "{c_important}Blood Wave{/c} becomes a {c_important}Darkness{/c} Skill that deals Shadow damage.\\n\\n{c_important}Blood Wave{/c} leaves behind a trail of {c_important}{u}Desecrated Ground{/c}{/u} as it travels that deals {c_number}[{dot:tooltip_dot}|2?|]{/c} Corrupting damage.",
           "maxRank": 1,
@@ -2423,7 +2422,8 @@ const skillsDatabase = {
             "tooltip_dot": {
               "scalar": 6,
               "addTags": [
-                "Search_DoT"
+                "Search_DoT",
+                "Subpower_DesecratedGround"
               ]
             }
           }
