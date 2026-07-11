@@ -10481,7 +10481,7 @@ function renderCalcSkills() {
                                           ${(b.lhcComponents || []).map((comp, idx) => `<div style="display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: ${idx === 0 ? '' : '+'}${Number(comp.value.toFixed(1))}%</div>`).join('')}
                                         </div>
                                         <div style="font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; margin-bottom: 2px;">
-                                          <span style="color: #555;">├</span> Formula: ${Number(b.lhcComponents[0].value.toFixed(1))}% * (100% + ${Number(b.lhcBonus.toFixed(1))}%)
+                                          <span style="color: #555;">├</span> Formula: ${Number(b.lhcComponents[0].value.toFixed(1))}% * (100% + ${Number(b.lhcBonus.toFixed(1))}%)${b.lhcComponents.some(c => c.name.includes('[x]')) ? ' * ' + b.lhcComponents.filter(c => c.name.includes('[x]')).map(c => '(100% + ' + Number(c.value.toFixed(1)) + '%)').join(' * ') : ''}
                                         </div>
                                       </div>
                                     </details>`}
@@ -10701,7 +10701,7 @@ function renderCalcSkills() {
                                             ${(b2.lhcComponents || []).map((comp, idx) => `<div style="display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name}: ${idx === 0 ? '' : '+'}${Number(comp.value.toFixed(1))}%</div>`).join('')}
                                           </div>
                                           <div style="font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; margin-bottom: 2px;">
-                                            <span style="color: #555;">├</span> Formula: ${Number(b2.lhcComponents[0].value.toFixed(1))}% * (100% + ${Number(b2.lhcBonus.toFixed(1))}%)
+                                            <span style="color: #555;">├</span> Formula: ${Number(b2.lhcComponents[0].value.toFixed(1))}% * (100% + ${Number(b2.lhcBonus.toFixed(1))}%)${b2.lhcComponents.some(c => c.name.includes('[x]')) ? ' * ' + b2.lhcComponents.filter(c => c.name.includes('[x]')).map(c => '(100% + ' + Number(c.value.toFixed(1)) + '%)').join(' * ') : ''}
                                           </div>
                                         </div>
                                       </details>`}
