@@ -11141,7 +11141,21 @@ function calculateLuckyHitChance(skillObj) {
         }
     }
     
-    let totalLHC = baseLHC * (1 + (bonusLHC / 100));
+    let aphoticMult = 1;
+    if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
+        const aphoticItem = Object.values(currentBuild.equipment).find(item => item && item.aspect === "Aphotic Aspect");
+        if (aphoticItem) {
+            let aphoticAspectValue = (aphoticItem.aspectValues && aphoticItem.aspectValues.length > 0) ? aphoticItem.aspectValues[0] : 30;
+            let isShadowDamage = skillObj.damageType === 'Shadow' || (skillObj.tags && skillObj.tags.some(t => t.toLowerCase() === 'damage_shadow' || t.toLowerCase() === 'skill_shadow' || t.toLowerCase() === 'search_shadow'));
+            
+            if (isShadowDamage && aphoticAspectValue > 0) {
+                aphoticMult = (1 + (aphoticAspectValue / 100));
+                components.push({ name: 'Aphotic Aspect [x]', value: aphoticAspectValue });
+            }
+        }
+    }
+    
+    let totalLHC = baseLHC * (1 + (bonusLHC / 100)) * aphoticMult;
     
     return {
         total: totalLHC,
