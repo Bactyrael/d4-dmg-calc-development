@@ -6744,11 +6744,11 @@ function hideSkillTooltip(e) {
 
 
 function showAspectTooltip(aspectName, e) {
-    if (!window.tooltipEl) {
-        window.tooltipEl = document.createElement('div');
-        window.tooltipEl.id = 'skill-tooltip';
-        window.tooltipEl.className = 'd4-tooltip';
-        document.body.appendChild(window.tooltipEl);
+    if (!tooltipEl) {
+        tooltipEl = document.createElement('div');
+        tooltipEl.id = 'skill-tooltip';
+        tooltipEl.className = 'd4-tooltip';
+        document.body.appendChild(tooltipEl);
     }
     
     let aspectObj = (window.D4_DATABASE?.aspects || []).find(a => a.name === aspectName);
@@ -6772,8 +6772,8 @@ function showAspectTooltip(aspectName, e) {
       </div>
     `;
 
-    window.tooltipEl.innerHTML = tooltipHtml;
-    window.tooltipEl.style.display = 'block';
+    tooltipEl.innerHTML = tooltipHtml;
+    tooltipEl.classList.add('visible');
     
     // Position tooltip
     moveItemTooltip(e);
@@ -8935,7 +8935,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       row.addEventListener('click', () => selectAspect(item.name));
       row.addEventListener('mouseenter', (e) => showAspectTooltip(item.name, e));
       row.addEventListener('mousemove', (e) => { if(typeof moveItemTooltip === 'function') moveItemTooltip(e); });
-      row.addEventListener('mouseleave', () => { if(window.tooltipEl) window.tooltipEl.style.display = 'none'; });
+      row.addEventListener('mouseleave', (e) => { if(typeof hideItemTooltip === 'function') hideItemTooltip(e); });
       
       list.appendChild(row);
     });
