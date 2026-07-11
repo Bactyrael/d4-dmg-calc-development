@@ -7406,7 +7406,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       }
     }
   
-  function renderEditTab(slotName {
+  function renderEditTab(slotName) {
       const editBody = document.getElementById('item-modal-edit-body');
       const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
       const tabs = document.querySelectorAll('.item-modal-tab');
