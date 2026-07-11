@@ -9114,6 +9114,24 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       return true;
     });
 
+    // Sort items by category
+    const categoryOrder = {
+      'Core Stats': 1,
+      'Offensive': 2,
+      'Defensive': 3,
+      'Utility': 4,
+      'Resource': 5,
+      'Skills': 6
+    };
+    items.sort((a, b) => {
+      const catA = getAffixCategory(a.name);
+      const catB = getAffixCategory(b.name);
+      const orderA = categoryOrder[catA] || 99;
+      const orderB = categoryOrder[catB] || 99;
+      if (orderA !== orderB) return orderA - orderB;
+      return a.name.localeCompare(b.name);
+    });
+
     // Update sidebar visibility and active state
     let sidebarId = 'modifier-sidebar';
     if (type === 'temper') sidebarId = 'temper-sidebar';
