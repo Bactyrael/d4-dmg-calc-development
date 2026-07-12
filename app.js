@@ -8245,16 +8245,15 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       `;
     }
 
-    
-      if (slotName === 'Seal') {
-          aspectSection = '';
-          temperSection = '';
-          socketSection = '';
-          
-      }
-      editBody.innerHTML = `
-      ${aspectsDatalist}
-      ${affixesDatalist}
+    if (slotName.toLowerCase() === 'seal') {
+        aspectSection = '';
+        temperSection = '';
+        socketSection = '';
+    }
+
+    editBody.innerHTML = `
+    ${aspectsDatalist}
+    ${affixesDatalist}
       ${temperDatalist}
       ${(() => {
         let dbSlotName = slotName;
@@ -8316,7 +8315,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         ` : ''}
       </div>
 
-      <div class="edit-section" style="${slotName === 'Seal' ? 'display:none;' : ''}">
+      <div class="edit-section" style="${slotName.toLowerCase() === 'seal' ? 'display:none;' : ''}">
           <div class="edit-section-title">Transfigure</div>
         <div style="display: flex; flex-direction: column; gap: 4px;">
           ${renderAffixRow(0, 'transfigure')}
@@ -8325,15 +8324,15 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
 
       <div class="edit-section">
         <div class="edit-section-title">Modifiers</div>
-        <div style="display: flex; flex-direction: column; gap: 4px;">
-          ${renderAffixRow(0, 'affix')}
-          ${renderAffixRow(1, 'affix')}
-          ${renderAffixRow(2, 'affix')}
-          ${slotName === 'Seal' ? '' : renderAffixRow(3, 'affix')}
-        </div>
+        <div id="regular-affix-rows" class="affix-rows-container">
+            ${renderAffixRow(0, 'affix')}
+            ${renderAffixRow(1, 'affix')}
+            ${renderAffixRow(2, 'affix')}
+            ${slotName.toLowerCase() === 'seal' ? '' : renderAffixRow(3, 'affix')}
+          </div>
       </div>
 
-      <div class="edit-section" style="${slotName === 'Seal' ? 'display:none;' : ''}">
+      <div class="edit-section" style="${slotName.toLowerCase() === 'seal' ? 'display:none;' : ''}">
           <div class="edit-section-title">Tempering</div>
         <div style="display: flex; flex-direction: column; gap: 4px;">
           ${renderAffixRow(0, 'temper')}
@@ -8996,7 +8995,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   }
 
   function renderModalItems(slotName, query = '') {
-      if (slotName === 'Seal') {
+      if (slotName === 'Seal' || slotName === 'seal') {
           renderSealTab();
           return;
       }
