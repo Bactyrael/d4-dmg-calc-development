@@ -1893,8 +1893,14 @@ function renderEquipment(className, savedEquipment = {}) {
       });
       
       footer.appendChild(sb);
+      }
+      const sealBox = document.querySelector('.equipment-slot-box[data-slot=\"Seal\"]');
+      if (sealBox) {
+          let val = savedEquipment['Seal'];
+          if (typeof val === 'string' && val) val = { name: val, power: 900, quality: 0, rarity: 'legendary' };
+          sealBox.dataset.value = val ? JSON.stringify(val) : '';
+      }
     }
-  }
 
   function openSkillAssignmentDropdown(slotIndex, anchorEl) {
       const dropdown = document.getElementById('skill-assignment-dropdown');
@@ -8835,6 +8841,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       const list = document.getElementById('item-modal-list');
       if (!list) return;
       list.innerHTML = '';
+        const currentSealItem = currentBuild.talisman?.seal;
       
       const noneRow = document.createElement('div');
       noneRow.className = 'item-row';
@@ -8846,6 +8853,10 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       seals.forEach(item => {
           const row = document.createElement('div');
           row.className = 'item-row';
+            if (currentSealItem && currentSealItem.name === item.name) {
+                row.style.border = '1px solid #d18a45';
+                row.style.background = 'rgba(209, 138, 69, 0.2)';
+            }
           let rarityClass = item.rarity === 'legendary' ? 'rarity-legendary' : 'rarity-mythic';
             let iconHtml = `<div class="item-icon" style="color: #c17ce2;">M</div>`;
             if (item.icon && item.icon.url) {
@@ -8902,6 +8913,10 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       charms.forEach(item => {
           const row = document.createElement('div');
           row.className = 'item-row';
+            if (currentSlotItem && currentSlotItem.name === item.name) {
+                row.style.border = '1px solid #d18a45';
+                row.style.background = 'rgba(209, 138, 69, 0.2)';
+            }
           
           let color = '#a3d9a5'; // Set green
           let letter = 'S';
