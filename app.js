@@ -1477,6 +1477,14 @@ function renderEquipment(className, savedEquipment = {}) {
       targetCol.appendChild(box);
       box.addEventListener('click', () => openItemModal(slot));
     });
+
+    document.querySelectorAll('.seal-slot, .charm-slot').forEach(slot => {
+        slot.addEventListener('click', () => {
+            const slotName = slot.dataset.slot;
+            openItemModal(slotName);
+        });
+    });
+
     
     // Inject Class Mechanic Panel for Necromancer
     if (className === 'Necromancer') {
@@ -4285,6 +4293,48 @@ function compileCharacterStats(equipped, autoStats) {
     };
     
     const compiledStats = compileCharacterStats(baseEquipped, autoStats);
+    
+    // Process Talisman Set Bonuses & Charms
+    if (currentBuild.talisman) {
+        let setCounts = {};
+        
+        // Tally sets
+        for (let i = 0; i < 6; i++) {
+            const charm = currentBuild.talisman.charms[i];
+            if (charm && charm.rarity === 'set' && charm.set) {
+                setCounts[charm.set] = (setCounts[charm.set] || 0) + 1;
+            } else if (charm && charm.isUnique) {
+                // If it's a unique charm, its power applies globally
+                // In this simplified model, unique charms provide their power as a stat component
+                // Actually, Unique Charms just grant the Legendary power, so we should add to a legendary array
+                // For now, we just ensure it's tracked
+                if (!compiledStats['Unique Charm Powers']) compiledStats['Unique Charm Powers'] = { final: 0, isMultiplicative: false, components: [] };
+                compiledStats['Unique Charm Powers'].components.push({ name: charm.name, value: charm.desc || '' });
+            }
+        }
+        
+        const seal = currentBuild.talisman.seal;
+        const reducesSetReq = seal && seal.name === 'Seal of the Diamond Mind';
+        
+        if (!compiledStats['Talisman Set Bonuses']) compiledStats['Talisman Set Bonuses'] = { final: 0, isMultiplicative: false, components: [] };
+        
+        // Evaluate bonuses
+        for (const setName in setCounts) {
+            let count = setCounts[setName];
+            let effectiveCount = reducesSetReq ? count + 1 : count;
+            
+            const setBonuses = window.D4_DATABASE?.talismanSets?.[setName];
+            if (setBonuses) {
+                for (const req in setBonuses) {
+                    if (effectiveCount >= parseInt(req)) {
+                        // Bonus active! Add to compiledStats
+                        compiledStats['Talisman Set Bonuses'].components.push({ name: `${setName} (${req}-piece)`, value: setBonuses[req] });
+                    }
+                }
+            }
+        }
+    }
+    
     window.D4_COMPILED_STATS = compiledStats;
     
     // Dynamically update Resolve max based on compiled stats
@@ -8693,7 +8743,172 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     }
   }
 
+
+  function getEquippedUniqueCharmCount() {
+      if (!currentBuild.talisman) return 0;
+      return currentBuild.talisman.charms.filter(c => c && c.isUnique).length;
+  }
+
+    function getScaledSpriteStyle(iconObj, targetSize) {
+    if (!iconObj || !iconObj.url) return '';
+    
+    const cellWidth = 122.5;
+    const cellHeight = 182;
+    const scale = targetSize / cellWidth;
+    
+    let posMatch = iconObj.position.match(/(-?\d+\.?\d*)px\s+(-?\d+\.?\d*)px/);
+    let posX = 0, posY = 0;
+    if (posMatch) {
+        let origX = parseFloat(posMatch[1]);
+        let origY = parseFloat(posMatch[2]);
+        
+        let scaledCellHeight = cellHeight * scale;
+        let yOffsetToCenter = (scaledCellHeight - targetSize) / 2;
+        
+        posX = origX * scale;
+        posY = (origY * scale) - yOffsetToCenter;
+    }
+    
+    let sizeMatch = iconObj.size.match(/(\d+\.?\d*)px\s+(\d+\.?\d*)px/);
+    let sizeX = 512 * scale, sizeY = 9856 * scale;
+    if (sizeMatch) {
+        sizeX = parseFloat(sizeMatch[1]) * scale;
+        sizeY = parseFloat(sizeMatch[2]) * scale;
+    }
+    
+    return `background-image: url('${iconObj.url}'); background-position: ${posX}px ${posY}px; background-size: ${sizeX}px ${sizeY}px; width: ${targetSize}px; height: ${targetSize}px; display: inline-block; vertical-align: middle;`;
+}
+
+  function renderSealTab() {
+      const list = document.getElementById('item-modal-list');
+      if (!list) return;
+      list.innerHTML = '';
+      
+      const noneRow = document.createElement('div');
+      noneRow.className = 'item-row';
+      noneRow.innerHTML = `<div class="item-icon">?</div><div class="item-name" style="color: #888;">None</div>`;
+      noneRow.addEventListener('click', () => selectSeal(null));
+      list.appendChild(noneRow);
+      
+      const seals = window.D4_DATABASE?.seals || [];
+      seals.forEach(item => {
+          const row = document.createElement('div');
+          row.className = 'item-row';
+          let iconHtml = `<div class="item-icon" style="color: #c17ce2;">M</div>`;
+          if (item.icon && item.icon.url) {
+              iconHtml = `<div class="item-icon" style="${getScaledSpriteStyle(item.icon, 36)}"></div>`;
+          }
+          row.innerHTML = `${iconHtml}<div class="item-name rarity-mythic" style="display:inline-block; margin-left: 10px;">${item.name}</div>`;
+          row.addEventListener('click', () => selectSeal(item));
+          row.addEventListener('mouseenter', (e) => showItemTooltip(item, e, 'Seal'));
+          row.addEventListener('mousemove', (e) => { if(typeof moveItemTooltip === 'function') moveItemTooltip(e); });
+          row.addEventListener('mouseleave', (e) => hideItemTooltip(e));
+          list.appendChild(row);
+      });
+  }
+
+  function renderCharmTab(slotName) {
+      const list = document.getElementById('item-modal-list');
+      if (!list) return;
+      list.innerHTML = '';
+      
+      const noneRow = document.createElement('div');
+      noneRow.className = 'item-row';
+      noneRow.innerHTML = `<div class="item-icon">?</div><div class="item-name" style="color: #888;">None</div>`;
+      noneRow.addEventListener('click', () => selectCharm(null, slotName));
+      list.appendChild(noneRow);
+      
+      let canEquipMoreUniques = true;
+      let uniqueLimit = (currentBuild.talisman?.seal?.name === 'Seal of the Golden Epiphany') ? 3 : 1;
+      let currentUniqueCount = getEquippedUniqueCharmCount();
+      
+      // Check if the current slot already has a unique charm
+      const charmIdx = parseInt(slotName.split(' ')[1]) - 1;
+      const currentSlotItem = currentBuild.talisman?.charms[charmIdx];
+      if (currentSlotItem && currentSlotItem.isUnique) {
+          currentUniqueCount--; // Don't count the item we are replacing against the limit
+      }
+      
+      if (currentUniqueCount >= uniqueLimit) {
+          canEquipMoreUniques = false;
+      }
+      
+      const charms = window.D4_DATABASE?.charms || [];
+      charms.forEach(item => {
+          const row = document.createElement('div');
+          row.className = 'item-row';
+          
+          let color = '#a3d9a5'; // Set green
+          let letter = 'S';
+          let rarityClass = 'rarity-set';
+          
+          if (item.rarity === 'mythic') { color = '#c17ce2'; letter = 'M'; rarityClass = 'rarity-mythic'; }
+          else if (item.isUnique) { color = '#c4a96e'; letter = 'U'; rarityClass = 'rarity-unique'; }
+          
+          let iconHtml = `<div class="item-icon" style="color: ${color};">${letter}</div>`;
+          if (item.icon && item.icon.url) {
+              iconHtml = `<div class="item-icon" style="${getScaledSpriteStyle(item.icon, 36)}"></div>`;
+          }
+          row.innerHTML = `${iconHtml}<div class="item-name ${rarityClass}" style="display:inline-block; margin-left: 10px;">${item.name}</div>`;
+          
+          if (item.isUnique && !canEquipMoreUniques) {
+              row.style.opacity = '0.5';
+              row.style.cursor = 'not-allowed';
+              row.title = `You can only equip ${uniqueLimit} Unique Charm(s).`;
+          } else {
+              row.addEventListener('click', () => selectCharm(item, slotName));
+          }
+          
+          row.addEventListener('mouseenter', (e) => showItemTooltip(item, e, slotName));
+          row.addEventListener('mousemove', (e) => { if(typeof moveItemTooltip === 'function') moveItemTooltip(e); });
+          row.addEventListener('mouseleave', (e) => hideItemTooltip(e));
+          
+          list.appendChild(row);
+      });
+  }
+
+  function selectSeal(item) {
+      if (!currentBuild.talisman) currentBuild.talisman = { seal: null, charms: [null, null, null, null, null, null] };
+      currentBuild.talisman.seal = item;
+      
+      let uniqueLimit = (item && item.name === 'Seal of the Golden Epiphany') ? 3 : 1;
+      let uniqueCount = 0;
+      for (let i = 0; i < 6; i++) {
+          if (currentBuild.talisman.charms[i] && currentBuild.talisman.charms[i].isUnique) {
+              uniqueCount++;
+              if (uniqueCount > uniqueLimit) {
+                  currentBuild.talisman.charms[i] = null; // Unequip it
+              }
+          }
+      }
+      
+      saveBuild();
+      document.getElementById('item-selection-modal').style.display = 'none';
+      if (typeof renderTalismanUI === 'function') renderTalismanUI();
+      calculate();
+  }
+
+  function selectCharm(item, slotName) {
+      if (!currentBuild.talisman) currentBuild.talisman = { seal: null, charms: [null, null, null, null, null, null] };
+      const idx = parseInt(slotName.split(' ')[1]) - 1;
+      currentBuild.talisman.charms[idx] = item;
+      
+      saveBuild();
+      document.getElementById('item-selection-modal').style.display = 'none';
+      if (typeof renderTalismanUI === 'function') renderTalismanUI();
+      calculate();
+  }
+
   function renderModalItems(slotName, query = '') {
+      if (slotName === 'Seal') {
+          renderSealTab();
+          return;
+      }
+      if (slotName.startsWith('Charm')) {
+          renderCharmTab(slotName);
+          return;
+      }
+
     const list = document.getElementById('item-modal-list');
     if (!list) return;
     list.innerHTML = '';

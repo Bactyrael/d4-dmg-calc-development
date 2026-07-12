@@ -1,0 +1,3305 @@
+[
+  {
+    "name": "Fer of Desecration",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Radament's Desecration",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -7983px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Practiced Technique",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3173px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Iron Conviction",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Iron Conviction",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -9621px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Sunbird's Gorget",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Dark Stalker's Medallion",
+    "class": "BARBARIAN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of Kwatli's Grace",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Kwatli's Grace",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -6527px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Assassin's Stride",
+    "class": "ROGUE",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Dirge of Odium",
+    "class": "WARLOCK",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of the Den Mother",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Might of the Den Mother",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -2159px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Sea Lord's Fine Gloves",
+    "class": "ROGUE",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of the Old Mountain",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Song of the Old Mountain",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -3251px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Nafain's Bestiary",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Nafain's Bestiary",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -8165px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of the Frozen Sea",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Breath of the Frozen Sea",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -885px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Tal Rasha's Iridescent Loop",
+    "class": "SORCERER",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Emberfury",
+    "class": "SORCERER",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of Bul-Kathos' Pride",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bul-Kathos' Pride",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -8529px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of Wild Lightning",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cain's Wild Lightning",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -1067px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of the Blood Binder",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Word of the Blood Binder",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -5981px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Practiced Technique",
+    "class": "ALL CLASSES",
+    "rarity": "set",
+    "type": "Charm \u00b7 Practiced Technique",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-489px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Soulbrand",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of the Nameless",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rite of the Nameless",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -7255px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of the Bone Weaver",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Art of the Bone Weaver",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -5617px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Hooves of the Mountain God",
+    "class": "BARBARIAN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Might of the Ursine",
+    "class": "DRUID",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Dirge of Airidah",
+    "class": "DRUID",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Arreat",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Arms of Arreat",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -1249px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Nesekem, the Herald",
+    "class": "SPIRITBORN",
+    "rarity": "mythic",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-4027px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of the Waking Touch",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rathma's Waking Touch",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -5071px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Abaddon's Flesh",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Flesh of Abaddon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -6891px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of the Threefold",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Tal Rasha's Threefold Way",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -2705px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Seed of Horazon",
+    "class": "WARLOCK",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of Arreat",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Arms of Arreat",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -1249px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Melted Heart of Selig",
+    "class": "ALL CLASSES",
+    "rarity": "mythic",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-4027px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Jacinth Shell",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Dark Pact",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-1709px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Razorplate",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Omen of Pain",
+    "class": "NECROMANCER",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Horazon's Chains",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Chains of Horazon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -9439px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Applied Alchemy",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Applied Alchemy",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -3433px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Slaughter",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-2685px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of Righteous Will",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Righteous Will",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -4343px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "The Umbracrux",
+    "class": "ROGUE",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Survival",
+    "class": "ALL CLASSES",
+    "rarity": "set",
+    "type": "Charm \u00b7 Survival",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-1343px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "The Open Eye of Gorgorra",
+    "class": "BARBARIAN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Herald of Zakarum",
+    "class": "PALADIN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of Bul-Kathos' Pride",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bul-Kathos' Pride",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -8529px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of Rezoka's Rage",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rezoka's Rage",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -5981px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Dark Pact",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-1587px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of the Blood Binder",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Word of the Blood Binder",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -5799px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ring of Starless Skies",
+    "class": "ALL CLASSES",
+    "rarity": "mythic",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-4027px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Spellbound Steel",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Spellbound Steel",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -4343px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Charm",
+    "class": "ALL CLASSES",
+    "rarity": "magic",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3905px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of Rezoka's Rage",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rezoka's Rage",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -6163px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Applied Alchemy",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Applied Alchemy",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -3615px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Beastfall Boots",
+    "class": "ROGUE",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Thousand-Eye Reaver",
+    "class": "DRUID, BARBARIAN, NECROMANCER, PALADIN, WARLOCK",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Practiced Technique",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3051px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of Arreat",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Arms of Arreat",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -1431px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Lethality",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-2319px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Rakanoth's Wake",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of Abaddon's Flesh",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Flesh of Abaddon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -7073px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "The Butcher's Cleaver",
+    "class": "DRUID, BARBARIAN, NECROMANCER, PALADIN, WARLOCK",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Heir of Perdition",
+    "class": "ALL CLASSES",
+    "rarity": "mythic",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-4027px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Sepazontec",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Desecration",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Radament's Desecration",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -7983px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of the Nameless",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rite of the Nameless",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -7255px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Nafain's Bestiary",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Nafain's Bestiary",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -8165px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "X'Fal's Corroded Signet",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of the Bone Weaver",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Art of the Bone Weaver",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -5799px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Andariel's Visage",
+    "class": "ALL CLASSES",
+    "rarity": "mythic",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-4027px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Crown of Lucion",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Slaughter",
+    "class": "ALL CLASSES",
+    "rarity": "set",
+    "type": "Charm \u00b7 Slaughter",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3417px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Balazan's Bite",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Balazan's Bite",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -6891px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Wushe Nak Pa",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Survival",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-855px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Rezoka's Rage",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rezoka's Rage",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -6163px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Sundered Night",
+    "class": "PALADIN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of Arreat",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Arms of Arreat",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -1431px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Shattered Vow",
+    "class": "DRUID, BARBARIAN, SPIRITBORN",
+    "rarity": "mythic",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-4027px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of the Storm Shepherd",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Storm Shepherd's Call",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -3069px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Uncanny Insight",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Tiraj's Uncanny Insight",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -8893px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Red Blessing",
+    "class": "NECROMANCER",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of Desecration",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Radament's Desecration",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -7801px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Anathema of the Primes",
+    "class": "WARLOCK",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Gravewalker's Hand",
+    "class": "NECROMANCER",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Endurant Faith",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Condemnation",
+    "class": "ROGUE",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Light's Epiphany",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Light's Epiphany",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -5071px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fists of Fate",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Adept Action",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-2441px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Dark Pact",
+    "class": "ALL CLASSES",
+    "rarity": "set",
+    "type": "Charm \u00b7 Dark Pact",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-2441px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of the Sightless",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Legacy of the Sightless",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -8529px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Wild Lightning",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cain's Wild Lightning",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -1067px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Griswold's Opus",
+    "class": "PALADIN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of the Narrow Eye",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Nilfur's Narrow Eye",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -3797px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Misericorde",
+    "class": "ROGUE",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of Wumba's Embrace",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Wumba's Embrace",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -6345px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ramaladni's Magnum Opus",
+    "class": "BARBARIAN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Seal of the Second Trumpet",
+    "class": "PALADIN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of Dauntless Faith",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Dauntless Faith",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -1977px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fleshwrit Carapace",
+    "class": "WARLOCK",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of Desecration",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Radament's Desecration",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -7983px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Moloch's Beating Flame",
+    "class": "WARLOCK",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Tyrael's Might",
+    "class": "ALL CLASSES",
+    "rarity": "mythic",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-4027px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Night Terror",
+    "class": "WARLOCK",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Balazan's Maxtlatl",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of Balazan's Bite",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Balazan's Bite",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -6709px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of the Blurring Blade",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Way of the Blurring Blade",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -4161px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Penitent Greaves",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Horadric Seal",
+    "class": "NORMAL",
+    "rarity": "normal",
+    "type": "",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-235px -1px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of Spellbound Steel",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Spellbound Steel",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -4161px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Harash's Shadow",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Shadow of Harash",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -7437px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Loyalty's Mantle",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Greenwalker's Signet",
+    "class": "DRUID",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Gladiator's Triumph",
+    "class": "ROGUE",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of Sescheron's Fury",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Sescheron's Fury",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -2523px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of the Storm Shepherd",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Storm Shepherd's Call",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -3069px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of the Den Mother",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Might of the Den Mother",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -2159px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of the Den Mother",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Might of the Den Mother",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -2341px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Arreat",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Arms of Arreat",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -1249px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Deceptive Insight",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-733px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Kwatli's Grace",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Kwatli's Grace",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -6527px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Applied Alchemy",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Applied Alchemy",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -3615px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mother's Embrace",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Seal of the Diamond Mind",
+    "class": "MYTHIC",
+    "rarity": "mythic",
+    "type": "",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -469px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of the Cauldron",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Habacalva's Cauldron",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-235px -469px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Nafain's Bestiary",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Nafain's Bestiary",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -7983px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Lethality",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-2197px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of Kwatli's Grace",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Kwatli's Grace",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -6527px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Mastery",
+    "class": "ALL CLASSES",
+    "rarity": "set",
+    "type": "Charm \u00b7 Mastery",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-1953px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Scoundrel's Leathers",
+    "class": "ROGUE",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Blood Moon Breeches",
+    "class": "NECROMANCER",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of Harash's Shadow",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Shadow of Harash",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -7437px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of the Blurring Blade",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Way of the Blurring Blade",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -3979px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Radiant Fire",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Heaven's Radiant Fire",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -4707px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Arcadia",
+    "class": "PALADIN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of Mefis' Fulcrum",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Fulcrum of Mefis",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -7619px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Dauntless Faith",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Dauntless Faith",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -1977px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Bloodless Scream",
+    "class": "NECROMANCER",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Blood-Mad Idol",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Peacemonger's Signet",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Azurewrath",
+    "class": "SORCERER, DRUID, BARBARIAN, ROGUE, NECROMANCER, PALADIN, WARLOCK",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Mastery",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-1831px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Rare Horadric Seal",
+    "class": "RARE",
+    "rarity": "rare",
+    "type": "",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-235px -1px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Harlequin Crest",
+    "class": "ALL CLASSES",
+    "rarity": "mythic",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-4027px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fractured Runestone",
+    "class": "DRUID",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of Mefis' Fulcrum",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Fulcrum of Mefis",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -7619px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of the Multitude",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bliss of the Multitude",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -8893px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Rezoka's Rage",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rezoka's Rage",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -6163px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of the Frozen Sea",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Breath of the Frozen Sea",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -885px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Godslayer Crown",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Uncanny Insight",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Tiraj's Uncanny Insight",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -8893px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Bul-Kathos' Pride",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bul-Kathos' Pride",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -8529px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Slaughter",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-2807px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "The Grandfather",
+    "class": "BARBARIAN, NECROMANCER, PALADIN, WARLOCK",
+    "rarity": "mythic",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-4027px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of the Bloodletter",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bloodletter's Flow",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -1431px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of the Threefold",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Tal Rasha's Threefold Way",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -2705px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Will of Rathma",
+    "class": "NECROMANCER",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of Spellbound Steel",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Spellbound Steel",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -4161px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of the Black Shroud",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Peace of the Black Shroud",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -5435px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of Righteous Will",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Righteous Will",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -4525px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Paingorger's Gauntlets",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Sescheron's Fury",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Sescheron's Fury",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -2341px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mantle of the Grey",
+    "class": "PALADIN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Accord of the Wilds",
+    "class": "DRUID",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of the Multitude",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bliss of the Multitude",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -9075px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Argent Veil",
+    "class": "PALADIN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Protection of the Prime",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of the Multitude",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bliss of the Multitude",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -9075px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Bul-Kathos' Pride",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bul-Kathos' Pride",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -8711px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of the Threefold",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Tal Rasha's Threefold Way",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -2705px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of the Black Shroud",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Peace of the Black Shroud",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -5253px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Harash's Shadow",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Shadow of Harash",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -7437px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of the Sightless",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Legacy of the Sightless",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -8347px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Deceptive Insight",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-489px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of Radiant Fire",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Heaven's Radiant Fire",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -4707px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Cruel Fate",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-1221px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Rustbitten Dirk",
+    "class": "SORCERER, DRUID, ROGUE, NECROMANCER, WARLOCK",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Tassets of the Dawning Sky",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of the Den Mother",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Might of the Den Mother",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -2159px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Seal of the Golden Epiphany",
+    "class": "MYTHIC",
+    "rarity": "mythic",
+    "type": "",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -469px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of the Frozen Sea",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Breath of the Frozen Sea",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -703px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Survival",
+    "class": "ALL CLASSES",
+    "rarity": "set",
+    "type": "Charm \u00b7 Survival",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-1221px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Abaddon's Flesh",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Flesh of Abaddon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -7073px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of the Old Mountain",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Song of the Old Mountain",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -3433px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of Balazan's Bite",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Balazan's Bite",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -6709px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Uncanny Insight",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Tiraj's Uncanny Insight",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -8711px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of the Bone Weaver",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Art of the Bone Weaver",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -5617px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Slaughter",
+    "class": "ALL CLASSES",
+    "rarity": "set",
+    "type": "Charm \u00b7 Slaughter",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3539px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of the Narrow Eye",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Nilfur's Narrow Eye",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -3797px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Arreat's Bearing",
+    "class": "BARBARIAN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of the Frozen Sea",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Breath of the Frozen Sea",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -885px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Rage of Harrogath",
+    "class": "BARBARIAN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of the Black Shroud",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Peace of the Black Shroud",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -5435px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Pact of Bone",
+    "class": "NECROMANCER",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Righteous Will",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Righteous Will",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -4525px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Spellbound Steel",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Spellbound Steel",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -4343px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of the Red Wolf Moon",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rush of the Red Wolf Moon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -2887px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of the Blurring Blade",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Way of the Blurring Blade",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -3979px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Wumba's Embrace",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Wumba's Embrace",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -6345px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Survival",
+    "class": "ALL CLASSES",
+    "rarity": "set",
+    "type": "Charm \u00b7 Survival",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-1099px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Rod of Kepeleke",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fury of the Wilds",
+    "class": "DRUID",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of the Nameless",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rite of the Nameless",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -7255px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Dark Pact",
+    "class": "ALL CLASSES",
+    "rarity": "set",
+    "type": "Charm \u00b7 Dark Pact",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-2563px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Radiant Fire",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Heaven's Radiant Fire",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -4889px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of Applied Alchemy",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Applied Alchemy",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -3615px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ring of the Midday Hunt",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Harmony of Ebewaka",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of Desecration",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Radament's Desecration",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -7801px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Deceptive Insight",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-611px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of Uncanny Insight",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Tiraj's Uncanny Insight",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -8711px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Light's Epiphany",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Light's Epiphany",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -5071px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of the Red Wolf Moon",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rush of the Red Wolf Moon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -2887px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Uncanny Insight",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Tiraj's Uncanny Insight",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -8893px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Drognan's Anguish",
+    "class": "SORCERER",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of Abaddon's Flesh",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Flesh of Abaddon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -6891px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Slaughter",
+    "class": "ALL CLASSES",
+    "rarity": "set",
+    "type": "Charm \u00b7 Slaughter",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3295px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of the Black Shroud",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Peace of the Black Shroud",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -5435px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of the Bone Weaver",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Art of the Bone Weaver",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -5617px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of the Sightless",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Legacy of the Sightless",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -8347px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Horazon's Chains",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Chains of Horazon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -9257px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of Nafain's Bestiary",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Nafain's Bestiary",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -8165px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of the Bloodletter",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bloodletter's Flow",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -1613px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Wild Lightning",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cain's Wild Lightning",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -1067px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of the Den Mother",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Might of the Den Mother",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -2341px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Cathedral's Song",
+    "class": "PALADIN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of Iron Conviction",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Iron Conviction",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -9439px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ring of Red Furor",
+    "class": "BARBARIAN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of Wumba's Embrace",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Wumba's Embrace",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -6345px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Saboteur's Signet",
+    "class": "ROGUE",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Mefis' Fulcrum",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Fulcrum of Mefis",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -7801px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of the Multitude",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bliss of the Multitude",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -9075px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mark of the Old Wolf",
+    "class": "DRUID",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of the Frozen Sea",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Breath of the Frozen Sea",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -885px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of the Blood Binder",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Word of the Blood Binder",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -5799px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of the Red Wolf Moon",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rush of the Red Wolf Moon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -2887px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Dauntless Faith",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Dauntless Faith",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -1977px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ancestral Horadric Seal",
+    "class": "LEGENDARY",
+    "rarity": "legendary",
+    "type": "",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -235px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of the Old Mountain",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Song of the Old Mountain",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -3251px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Wendigo Brand",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of the Nameless",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rite of the Nameless",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -7255px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Charm",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3783px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Frostburn",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Iron Conviction",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Iron Conviction",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -9621px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Scoundrel's Kiss",
+    "class": "ROGUE",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "The Gloom Ward",
+    "class": "NECROMANCER",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of the Cauldron",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Habacalva's Cauldron",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-357px -469px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Bul-Kathos' Pride",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bul-Kathos' Pride",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -8711px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of the Storm Shepherd",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Storm Shepherd's Call",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -3251px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of the Bloodletter",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bloodletter's Flow",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -1431px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ring of the Midnight Sun",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of Applied Alchemy",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Applied Alchemy",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -3615px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Chainscourged Mail",
+    "class": "BARBARIAN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of Light's Epiphany",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Light's Epiphany",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -4889px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Iron Conviction",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Iron Conviction",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -9439px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Rezoka's Rage",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rezoka's Rage",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -5981px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Writhing Band of Trickery",
+    "class": "ROGUE",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of Lethality",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-2075px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of the Bloodletter",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bloodletter's Flow",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -1613px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ring of Writhing Moon",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Judicant's Glaivehelm",
+    "class": "PALADIN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Morlu Fleshward",
+    "class": "WARLOCK",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of the Narrow Eye",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Nilfur's Narrow Eye",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -3797px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Wound Drinker",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of Sescheron's Fury",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Sescheron's Fury",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -2523px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of Dauntless Faith",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Dauntless Faith",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -1977px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Harash's Shadow",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Shadow of Harash",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -7437px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Charm",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3905px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Adept Action",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-2563px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Sabre of Tsasgal",
+    "class": "BARBARIAN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "El'Druin, Sword of Justice",
+    "class": "SORCERER, DRUID, BARBARIAN, ROGUE, NECROMANCER, PALADIN, WARLOCK",
+    "rarity": "mythic",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-4027px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Esu's Heirloom",
+    "class": "SORCERER",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of the Narrow Eye",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Nilfur's Narrow Eye",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -3797px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Abaddon's Flesh",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Flesh of Abaddon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -7073px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of the Waking Touch",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rathma's Waking Touch",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -5071px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of the Nameless",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rite of the Nameless",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -7073px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of Horazon's Chains",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Chains of Horazon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -9257px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of the Blood Binder",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Word of the Blood Binder",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -5981px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Kwatli's Grace",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Kwatli's Grace",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -6527px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Protean Heart",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of the Old Mountain",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Song of the Old Mountain",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -3433px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Wild Lightning",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cain's Wild Lightning",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -1249px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Radiant Fire",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Heaven's Radiant Fire",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -4707px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of the Cauldron",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Habacalva's Cauldron",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -703px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Locran's Talisman",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Nomad's Longing Heart",
+    "class": "BARBARIAN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of Light's Epiphany",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Light's Epiphany",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -4889px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Dark Pact",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-1465px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of the Old Mountain",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Song of the Old Mountain",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -3433px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of the Storm Shepherd",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Storm Shepherd's Call",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -3251px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of the Threefold",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Tal Rasha's Threefold Way",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -2705px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Molten Band",
+    "class": "SORCERER",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Seal of the Severed Finger",
+    "class": "MYTHIC",
+    "rarity": "mythic",
+    "type": "",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -469px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Wumba's Embrace",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Wumba's Embrace",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -6345px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of the Storm Shepherd",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Storm Shepherd's Call",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -3069px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Dauntless Faith",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Dauntless Faith",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -2159px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Etna's Lost Dagger",
+    "class": "ROGUE",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Yen's Blessing",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of the Blurring Blade",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Way of the Blurring Blade",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -3979px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Temerity",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Banished Lord's Talisman",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of the Black Shroud",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Peace of the Black Shroud",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -5435px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of the Red Wolf Moon",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rush of the Red Wolf Moon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -3069px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Emblem of Staalbreak",
+    "class": "BARBARIAN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Sunstained\u00a0War-Crozier",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of the Cauldron",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Habacalva's Cauldron",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -703px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Echo of Kwatli",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of the Blood Binder",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Word of the Blood Binder",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -5799px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Bone Breaking",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3295px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Tibault's Will",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Scepter of the Three",
+    "class": "WARLOCK",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Tuskhelm of Joritz the Mighty",
+    "class": "BARBARIAN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Balazan's Bite",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Balazan's Bite",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -6891px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Slaughter",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-2929px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Wyrdskin",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of the Red Wolf Moon",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rush of the Red Wolf Moon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -2887px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Balazan's Bite",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Balazan's Bite",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -6709px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Sescheron's Fury",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Sescheron's Fury",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -2523px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of the Narrow Eye",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Nilfur's Narrow Eye",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -3979px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Harash's Shadow",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Shadow of Harash",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -7619px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Wild Lightning",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cain's Wild Lightning",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -1067px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Light's Epiphany",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Light's Epiphany",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -4889px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Nafain's Bestiary",
+    "class": "DRUID",
+    "rarity": "set",
+    "type": "Charm \u00b7 Nafain's Bestiary",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -8165px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Horazon's Chains",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Chains of Horazon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -9257px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of the Bloodletter",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bloodletter's Flow",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -1613px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Spellbound Steel",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Spellbound Steel",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -4343px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Mastery",
+    "class": "ALL CLASSES",
+    "rarity": "set",
+    "type": "Charm \u00b7 Mastery",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-1831px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Mefis' Fulcrum",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Fulcrum of Mefis",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -7801px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Iron Conviction",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Iron Conviction",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -9439px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Widow's Web",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Doombringer",
+    "class": "SORCERER, DRUID, BARBARIAN, ROGUE, NECROMANCER, PALADIN, WARLOCK",
+    "rarity": "mythic",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-4027px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Flickerstep",
+    "class": "ALL CLASSES",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Mlor of Righteous Will",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Righteous Will",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -4525px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of the Waking Touch",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rathma's Waking Touch",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -5253px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Practiced Technique",
+    "class": "ALL CLASSES",
+    "rarity": "set",
+    "type": "Charm \u00b7 Practiced Technique",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-611px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of the Threefold",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Tal Rasha's Threefold Way",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -2523px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Mastery",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-1953px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Linta of Radiant Fire",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Heaven's Radiant Fire",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -4707px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Righteous Will",
+    "class": "PALADIN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Cathan's Righteous Will",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -4525px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Orsivane",
+    "class": "SORCERER",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Band of First Breath",
+    "class": "SPIRITBORN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Practiced Technique",
+    "class": "ALL CLASSES",
+    "rarity": "set",
+    "type": "Charm \u00b7 Practiced Technique",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-733px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Horazon's Chains",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Chains of Horazon",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -9257px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Shroud of False Death",
+    "class": "ALL CLASSES",
+    "rarity": "mythic",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-4027px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Fer of Bone Breaking",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3417px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Magic Horadric Seal",
+    "class": "MAGIC",
+    "rarity": "magic",
+    "type": "",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-235px -1px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of Sescheron's Fury",
+    "class": "BARBARIAN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Sescheron's Fury",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -2341px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Phoba of Kwatli's Grace",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Kwatli's Grace",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -6709px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of the Cauldron",
+    "class": "SORCERER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Habacalva's Cauldron",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -703px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Ber\u00fa of Wumba's Embrace",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Wumba's Embrace",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -6163px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of the Bone Weaver",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Art of the Bone Weaver",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-367px -5617px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Cowl of the Nameless",
+    "class": "ROGUE",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Cruel Fate",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-1343px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Bone Breaking",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3539px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of Mefis' Fulcrum",
+    "class": "WARLOCK",
+    "rarity": "set",
+    "type": "Charm \u00b7 Fulcrum of Mefis",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -7619px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fist of the Iron Rose",
+    "class": "ROGUE",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Ber\u00fa of the Sightless",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Legacy of the Sightless",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -8347px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of the Multitude",
+    "class": "SPIRITBORN",
+    "rarity": "set",
+    "type": "Charm \u00b7 Bliss of the Multitude",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -9075px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of the Blurring Blade",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Way of the Blurring Blade",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -4161px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Sanctis of Kethamar",
+    "class": "PALADIN",
+    "rarity": "unique",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-3661px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of Survival",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-977px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Phoba of the Waking Touch",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rathma's Waking Touch",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-245px -5253px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Linta of the Sightless",
+    "class": "ROGUE",
+    "rarity": "set",
+    "type": "Charm \u00b7 Legacy of the Sightless",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -8347px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Fer of the Waking Touch",
+    "class": "NECROMANCER",
+    "rarity": "set",
+    "type": "Charm \u00b7 Rathma's Waking Touch",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-123px -5253px",
+    "background_size": "512px 9856px"
+  },
+  {
+    "name": "Mlor of Cruel Fate",
+    "class": "ALL CLASSES",
+    "rarity": "normal",
+    "type": "Charm",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman_CharmsGeneric.webp",
+    "background_position": "-1099px -1px",
+    "background_size": "4160px 192px"
+  },
+  {
+    "name": "Legendary Horadric Seal",
+    "class": "LEGENDARY",
+    "rarity": "legendary",
+    "type": "",
+    "image_url": "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp",
+    "background_position": "-1px -235px",
+    "background_size": "512px 9856px"
+  }
+]
