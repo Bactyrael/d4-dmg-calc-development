@@ -1355,7 +1355,19 @@ function renderTalismanUI() {
         }
     }
     
-    const unlockedSlots = (currentBuild.talisman.seal && currentBuild.talisman.seal.name === 'Legendary Horadric Seal') ? 5 : 6;
+    let unlockedSlots = (currentBuild.talisman.seal && currentBuild.talisman.seal.name === 'Legendary Horadric Seal') ? 5 : 5;
+    
+    // Check if seal has +1 Charm Slot modifier
+    if (currentBuild.talisman.seal) {
+        const checkExtraSlot = (arr) => arr && arr.some(a => a && a.name && (a.name.includes('+1 Charm Slot') || a.name.includes('of Glory')));
+        if (checkExtraSlot(currentBuild.talisman.seal.affixes) || 
+            checkExtraSlot(currentBuild.talisman.seal.inherentAffixes) || 
+            checkExtraSlot(currentBuild.talisman.seal.temperingModifiers) || 
+            checkExtraSlot(currentBuild.talisman.seal.transfigureModifiers)) {
+            unlockedSlots = 6;
+        }
+    }
+    unlockedSlots = Math.min(6, unlockedSlots);
     
     for (let i = 0; i < 6; i++) {
         const charmSlot = document.querySelector(`.charm-${i}`);
