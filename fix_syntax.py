@@ -1,11 +1,9 @@
-import re
+with open("app.js", "r", encoding="utf-8") as f:
+    content = f.read()
 
-with open("assets/database.js", "r", encoding="utf-8") as f:
-    db = f.read()
+content = content.replace(r"${slotName === \'Seal\' ? \'display:none;\' : \'\'}", "${slotName === 'Seal' ? 'display:none;' : ''}")
+content = content.replace(r"${slotName === \'Seal\' ? \'\' : renderAffixRow(3, \'affix\')}", "${slotName === 'Seal' ? '' : renderAffixRow(3, 'affix')}")
 
-# Replace the closing of Object.assign
-db = re.sub(r'};\s*let uniqueCharmNames = \[', r'});\n\n        let uniqueCharmNames = [', db)
-
-with open("assets/database.js", "w", encoding="utf-8") as f:
-    f.write(db)
-print("Regex replace applied.")
+with open("app.js", "w", encoding="utf-8") as f:
+    f.write(content)
+print("Fixed JS syntax errors.")

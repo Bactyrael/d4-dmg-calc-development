@@ -1271,7 +1271,7 @@ function getMaxSockets(slotName, itemObj) {
     const lowerSlot = slotName.toLowerCase();
     let maxSockets = 2; // HELPER: Default to 2 for helm, chest, pants
     
-    if (lowerSlot.includes('glove') || lowerSlot.includes('boot')) {
+    if (lowerSlot === 'seal' || lowerSlot.includes('glove') || lowerSlot.includes('boot')) {
       maxSockets = 0;
     } else if (lowerSlot.includes('ring') || lowerSlot.includes('amulet') || lowerSlot.includes('offhand') || lowerSlot.includes('dual wield') || lowerSlot.includes('slicing')) {
       maxSockets = 1;
@@ -1337,6 +1337,49 @@ function getSlotBackgroundImage(slotName, itemObj) {
     const clsE = document.getElementById('class-select');
     const clsName = clsE ? clsE.textContent : 'Necromancer';
     return `assets/images/${clsName}/slots/${imgName}`;
+}
+
+
+function renderTalismanUI() {
+    if (!currentBuild || !currentBuild.talisman) return;
+    
+    const sealSlot = document.querySelector('.seal-slot');
+    if (sealSlot) {
+        if (currentBuild.talisman.seal) {
+            let style = getScaledSpriteStyle(currentBuild.talisman.seal.icon, 60, currentBuild.talisman.seal.type);
+            sealSlot.innerHTML = `<div style="${style}; border-radius: 50%; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);"></div>`;
+            sealSlot.style.borderColor = '#d18a45'; // Keep golden accent
+        } else {
+            sealSlot.innerHTML = '';
+            sealSlot.style.borderColor = '#d18a45';
+        }
+    }
+    
+    const unlockedSlots = (currentBuild.talisman.seal && currentBuild.talisman.seal.name === 'Legendary Horadric Seal') ? 5 : 6;
+    
+    for (let i = 0; i < 6; i++) {
+        const charmSlot = document.querySelector(`.charm-${i}`);
+        if (charmSlot) {
+            if (i >= unlockedSlots) {
+                // Lock the slot
+                charmSlot.innerHTML = `<div style="width: 100%; height: 100%; border-radius: 50%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; color: #555; font-size: 20px;">&#128274;</div>`;
+                charmSlot.style.pointerEvents = 'none'; // Prevent clicking
+                // If there's an item stuck in here, unequip it
+                if (currentBuild.talisman.charms[i]) currentBuild.talisman.charms[i] = null;
+                continue;
+            } else {
+                charmSlot.style.pointerEvents = 'auto';
+            }
+            
+            const charm = currentBuild.talisman.charms[i];
+            if (charm) {
+                let style = getScaledSpriteStyle(charm.icon, 50, charm.type);
+                charmSlot.innerHTML = `<div style="${style}; border-radius: 50%; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);"></div>`;
+            } else {
+                charmSlot.innerHTML = '';
+            }
+        }
+    }
 }
 
 function renderEquipment(className, savedEquipment = {}) {
@@ -5219,6 +5262,7 @@ function compileCharacterStats(equipped, autoStats) {
     } finally {
       isLoading = false;
     }
+    if (typeof renderTalismanUI === 'function') renderTalismanUI();
     calculate();
   }
 
@@ -8195,7 +8239,14 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       `;
     }
 
-    editBody.innerHTML = `
+    
+      if (slotName === 'Seal') {
+          aspectSection = '';
+          temperSection = '';
+          socketSection = '';
+          
+      }
+      editBody.innerHTML = `
       ${aspectsDatalist}
       ${affixesDatalist}
       ${temperDatalist}
@@ -8259,8 +8310,8 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         ` : ''}
       </div>
 
-      <div class="edit-section">
-        <div class="edit-section-title">Transfigure</div>
+      <div class="edit-section" style="${slotName === 'Seal' ? 'display:none;' : ''}">
+          <div class="edit-section-title">Transfigure</div>
         <div style="display: flex; flex-direction: column; gap: 4px;">
           ${renderAffixRow(0, 'transfigure')}
         </div>
@@ -8272,12 +8323,12 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
           ${renderAffixRow(0, 'affix')}
           ${renderAffixRow(1, 'affix')}
           ${renderAffixRow(2, 'affix')}
-          ${renderAffixRow(3, 'affix')}
+          ${slotName === 'Seal' ? '' : renderAffixRow(3, 'affix')}
         </div>
       </div>
 
-      <div class="edit-section">
-        <div class="edit-section-title">Tempering</div>
+      <div class="edit-section" style="${slotName === 'Seal' ? 'display:none;' : ''}">
+          <div class="edit-section-title">Tempering</div>
         <div style="display: flex; flex-direction: column; gap: 4px;">
           ${renderAffixRow(0, 'temper')}
         </div>
@@ -8749,11 +8800,12 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       return currentBuild.talisman.charms.filter(c => c && c.isUnique).length;
   }
 
-    function getScaledSpriteStyle(iconObj, targetSize) {
+    function getScaledSpriteStyle(iconObj, targetSize, itemType) {
     if (!iconObj || !iconObj.url) return '';
     
-    const cellWidth = 122.5;
-    const cellHeight = 182;
+    // Seals use a 234x234 grid, Charms use 122.5x182
+    const cellWidth = itemType === 'Seal' ? 234 : 122.5;
+    const cellHeight = itemType === 'Seal' ? 234 : 182;
     const scale = targetSize / cellWidth;
     
     let posMatch = iconObj.position.match(/(-?\d+\.?\d*)px\s+(-?\d+\.?\d*)px/);
@@ -8794,11 +8846,12 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       seals.forEach(item => {
           const row = document.createElement('div');
           row.className = 'item-row';
-          let iconHtml = `<div class="item-icon" style="color: #c17ce2;">M</div>`;
-          if (item.icon && item.icon.url) {
-              iconHtml = `<div class="item-icon" style="${getScaledSpriteStyle(item.icon, 36)}"></div>`;
-          }
-          row.innerHTML = `${iconHtml}<div class="item-name rarity-mythic" style="display:inline-block; margin-left: 10px;">${item.name}</div>`;
+          let rarityClass = item.rarity === 'legendary' ? 'rarity-legendary' : 'rarity-mythic';
+            let iconHtml = `<div class="item-icon" style="color: #c17ce2;">M</div>`;
+            if (item.icon && item.icon.url) {
+                iconHtml = `<div class="item-icon" style="${getScaledSpriteStyle(item.icon, 36, item.type)}"></div>`;
+            }
+            row.innerHTML = `${iconHtml}<div class="item-name ${rarityClass}" style="display:inline-block; margin-left: 10px;">${item.name}</div>`;
           row.addEventListener('click', () => selectSeal(item));
           row.addEventListener('mouseenter', (e) => showItemTooltip(item, e, 'Seal'));
           row.addEventListener('mousemove', (e) => { if(typeof moveItemTooltip === 'function') moveItemTooltip(e); });
@@ -8833,7 +8886,19 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
           canEquipMoreUniques = false;
       }
       
-      const charms = window.D4_DATABASE?.charms || [];
+      const charms = [...(window.D4_DATABASE?.charms || [])].sort((a, b) => {
+          const aIsSet = a.rarity === 'set';
+          const bIsSet = b.rarity === 'set';
+          
+          if (aIsSet && bIsSet) {
+              if (a.set === b.set) return a.name.localeCompare(b.name);
+              return (a.set || '').localeCompare(b.set || '');
+          }
+          if (aIsSet) return -1;
+          if (bIsSet) return 1;
+          
+          return a.name.localeCompare(b.name);
+      });
       charms.forEach(item => {
           const row = document.createElement('div');
           row.className = 'item-row';
@@ -8847,7 +8912,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
           
           let iconHtml = `<div class="item-icon" style="color: ${color};">${letter}</div>`;
           if (item.icon && item.icon.url) {
-              iconHtml = `<div class="item-icon" style="${getScaledSpriteStyle(item.icon, 36)}"></div>`;
+              iconHtml = `<div class="item-icon" style="${getScaledSpriteStyle(item.icon, 36, item.type)}"></div>`;
           }
           row.innerHTML = `${iconHtml}<div class="item-name ${rarityClass}" style="display:inline-block; margin-left: 10px;">${item.name}</div>`;
           
@@ -8870,6 +8935,22 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   function selectSeal(item) {
       if (!currentBuild.talisman) currentBuild.talisman = { seal: null, charms: [null, null, null, null, null, null] };
       currentBuild.talisman.seal = item;
+        
+        const box = document.querySelector(`.equipment-slot-box[data-slot="Seal"]`);
+        if (box) {
+            if (!item) {
+                delete box.dataset.value;
+            } else {
+                let sealObj = null;
+                if (box.dataset.value) {
+                    try { sealObj = JSON.parse(box.dataset.value); } catch(e) {}
+                }
+                if (!sealObj || sealObj.name !== item.name) {
+                    sealObj = { name: item.name, power: 900, quality: 0, rarity: item.rarity };
+                }
+                box.dataset.value = JSON.stringify(sealObj);
+            }
+        }
       
       let uniqueLimit = (item && item.name === 'Seal of the Golden Epiphany') ? 3 : 1;
       let uniqueCount = 0;

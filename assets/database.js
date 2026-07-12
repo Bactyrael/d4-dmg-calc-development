@@ -388,7 +388,16 @@ Object.assign(window.D4_DATABASE, {
             isMythic: true,
             desc: "Can equip up to 3 Unique Charms."
         }
-    ],
+    ,
+          {
+              name: "Legendary Horadric Seal",
+              icon: { url: "https://assets.infinitybuilds.gg/assets/d4/atlases/2DInventory_Talisman.webp", position: "-1px -235px", size: "512px 9856px" },
+              type: "Seal",
+              rarity: "legendary",
+              isMythic: false,
+              desc: "Unlocks 5 Charm Slots"
+          }
+      ],
     "charms": [
         {
             name: "Beru of the Waking Touch",
