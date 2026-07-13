@@ -2311,7 +2311,7 @@ function renderEquipment(className, savedEquipment = {}) {
 
   function cleanStatName(name) {
     if (!name) return name;
-    return name.replace(/^\+?\[[\d\.,]+\s*-\s*[\d\.,]+\]%?\s*/, '');
+    return name.replace(/^\+?\[[\d\.,]+\s*-\s*[\d\.,]+\](%?)\s*/, (match, p1) => p1 ? '% ' : '');
 }
 
 function getTotalActiveMinions(currentBuild) {
