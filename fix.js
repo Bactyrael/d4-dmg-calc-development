@@ -1,4 +1,5 @@
 const fs = require('fs');
-let app = fs.readFileSync('app.js', 'utf8');
-app = app.replaceAll('let maxAttr = max ? ` max="${max}"` : \'\';', 'let maxAttr = \'\'; // Allow overriding max for higher item power tiers');
-fs.writeFileSync('app.js', app);
+let code = fs.readFileSync('assets/database.js', 'utf8');
+code = code.replace(/("name":\s*"Doombringer",\s*"rarity":\s*"mythic",)/g, '$1\n        "affixes": [\n          "+[15]% Maximum Life"\n        ],');
+fs.writeFileSync('assets/database.js', code);
+console.log('done');
