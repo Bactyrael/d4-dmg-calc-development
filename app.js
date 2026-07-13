@@ -10567,7 +10567,7 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             bucket *= mult;
             components.push({ name: 'Word of the Blood Binder (5-piece) [x]', value: mult });
         }
-        if (stats['Word of the Blood Binder 5-piece Cast Twice Factor'] && (tags.includes('keyword_basic') || tags.includes('keyword_core') || tags.includes('keyword_ultimate') || tags.includes('search_basic') || tags.includes('search_core') || tags.includes('search_ultimate'))) {
+        if (stats['Word of the Blood Binder 5-piece Cast Twice Factor'] && tags.some(t => t.includes('basic') || t.includes('core') || t.includes('ultimate'))) {
             let multVal = stats['Word of the Blood Binder 5-piece Cast Twice Factor'].final;
             let mult = 1 + (multVal / 100);
             bucket *= mult;
