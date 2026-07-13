@@ -991,6 +991,9 @@ var currentBuild = createDefaultBuild();
     const d4Idx = currentClassVal ? D4_CLASS_MAP[currentClassVal] : undefined;
     
     const dbItems = window.D4_DATABASE.itemDatabase[mapped] || [];
+    if (mapped === 'Seal') return window.D4_DATABASE.seals || [];
+    if (mapped === 'Charm 1' || mapped === 'Charm 2' || mapped === 'Charm 3' || mapped === 'Charm 4' || mapped === 'Charm 5' || mapped === 'Charm 6') return window.D4_DATABASE.charms || [];
+
     if (d4Idx !== undefined) {
       let filtered = dbItems.filter(i => !i.classes || i.classes[d4Idx] === 1);
       if (d4Idx === 4) { // Necromancer
@@ -1346,7 +1349,16 @@ function renderTalismanUI() {
     const sealSlot = document.querySelector('.seal-slot');
     if (sealSlot) {
         if (currentBuild.talisman.seal) {
-            let style = getScaledSpriteStyle(currentBuild.talisman.seal.icon, 60, currentBuild.talisman.seal.type);
+            let sealData = currentBuild.talisman.seal;
+            if (!sealData.icon || !sealData.type) {
+                const dbSeals = window.D4_DATABASE?.seals || [];
+                const dbSeal = dbSeals.find(s => s.name === sealData.name);
+                if (dbSeal) {
+                    if (!sealData.icon) sealData.icon = dbSeal.icon;
+                    if (!sealData.type) sealData.type = dbSeal.type;
+                }
+            }
+            let style = getScaledSpriteStyle(sealData.icon, 60, sealData.type);
             sealSlot.innerHTML = `<div style="${style}; border-radius: 50%; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);"></div>`;
             sealSlot.style.borderColor = '#d18a45'; // Keep golden accent
         } else {
@@ -1359,19 +1371,20 @@ function renderTalismanUI() {
     
     // Check if seal has +1 Charm Slot modifier or is Mythic
     if (currentBuild.talisman.seal) {
-        if (currentBuild.talisman.seal.isMythic || currentBuild.talisman.seal.rarity === 'mythic') {
+        let seal = currentBuild.talisman.seal;
+        if (seal.isMythic || seal.rarity === 'mythic') {
             unlockedSlots = 6;
         } else {
             const checkExtraSlot = (arr) => arr && arr.some(a => {
                 if (typeof a === 'string') return a.includes('+1 Charm Slot') || a.includes('of Glory');
                 return a && a.name && (a.name.includes('+1 Charm Slot') || a.name.includes('of Glory'));
             });
-            if (checkExtraSlot(currentBuild.talisman.seal.affixes) || 
-                checkExtraSlot(currentBuild.talisman.seal.inherentAffixes) || 
-                checkExtraSlot(currentBuild.talisman.seal.temperingModifiers) || 
-                checkExtraSlot(currentBuild.talisman.seal.transfigureModifiers) ||
-                checkExtraSlot(currentBuild.talisman.seal.tempering) ||
-                checkExtraSlot(currentBuild.talisman.seal.transfigure)) {
+            if (checkExtraSlot(seal.affixes) || 
+                checkExtraSlot(seal.inherentAffixes) || 
+                checkExtraSlot(seal.temperingModifiers) || 
+                checkExtraSlot(seal.transfigureModifiers) ||
+                checkExtraSlot(seal.tempering) ||
+                checkExtraSlot(seal.transfigure)) {
                 unlockedSlots = 6;
             }
         }

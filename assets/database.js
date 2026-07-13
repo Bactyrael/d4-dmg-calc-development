@@ -21854,6 +21854,358 @@ Object.assign(window.D4_DATABASE, {
     },
     "Necromancer": {
       "equipment": {
+        "seal": {
+          "modifiers": [
+            {
+              "name": "Vigorous: [6.5 - 8.0]% Maximum Life",
+              "shortName": "[6.5 - 8.0]% Maximum Life",
+              "htmlName": "<div style=\'color:#6879d1;\'>Vigorous</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>[6.5 - 8.0]% Maximum Life</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Swiftness: +[20 - 24]% Movement Speed",
+              "shortName": "+[20 - 24]% Movement Speed",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Swiftness</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Practiced Technique:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[20 - 24]% Movement Speed</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Technique: +[2 - 10]% Bonus Kill Experience ([0.2 - 1.0]% at level 70)",
+              "shortName": "+[2 - 10]% Bonus Kill Experience ([0.2 - 1.0]% at level 70)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Technique</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Practiced Technique:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[2 - 10]% Bonus Kill Experience ([0.2 - 1.0]% at level 70)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "Keen: +[8.0 - 10.0]% Attack Speed",
+              "shortName": "+[8.0 - 10.0]% Attack Speed",
+              "htmlName": "<div style=\'color:#6879d1;\'>Keen</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[8.0 - 10.0]% Attack Speed</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "Adept: +[7.5 - 10.0]% Critical Strike Chance",
+              "shortName": "+[7.5 - 10.0]% Critical Strike Chance",
+              "htmlName": "<div style=\'color:#6879d1;\'>Adept</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.5 - 10.0]% Critical Strike Chance</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "Ferocious: [12.0 - 20.0]% [x] Damage",
+              "shortName": "[12.0 - 20.0]% [x] Damage",
+              "htmlName": "<div style=\'color:#6879d1;\'>Ferocious</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>[12.0 - 20.0]% [x] Damage</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "Stalwart\'s: +[7.5 - 10.0]% Total Armor",
+              "shortName": "+[7.5 - 10.0]% Total Armor",
+              "htmlName": "<div style=\'color:#6879d1;\'>Stalwart\'s</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.5 - 10.0]% Total Armor</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "Resistant: +[7.5 - 10.0]% Resistance to All Elements",
+              "shortName": "+[7.5 - 10.0]% Resistance to All Elements",
+              "htmlName": "<div style=\'color:#6879d1;\'>Resistant</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.5 - 10.0]% Resistance to All Elements</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "Efficient: [7.5 - 10.0]% Resource Cost Reduction",
+              "shortName": "[7.5 - 10.0]% Resource Cost Reduction",
+              "htmlName": "<div style=\'color:#6879d1;\'>Efficient</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>[7.5 - 10.0]% Resource Cost Reduction</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "Resourceful: +[15 - 20] Maximum Resource",
+              "shortName": "+[15 - 20] Maximum Resource",
+              "htmlName": "<div style=\'color:#6879d1;\'>Resourceful</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[15 - 20] Maximum Resource</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Flaying: +[8 - 10]% Minion Attack Speed (Necromancer Only)",
+              "shortName": "+[8 - 10]% Minion Attack Speed (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Flaying</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Rathma\'s Walking Touch:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[8 - 10]% Minion Attack Speed (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Bones: +[7 - 10]% Bone Skill Damage (Necromancer Only)",
+              "shortName": "+[7 - 10]% Bone Skill Damage (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Bones</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Art of the Bone Weaver:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% Bone Skill Damage (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Spirits: +[5 - 11]% Maximum Essence (Necromancer Only)",
+              "shortName": "+[5 - 11]% Maximum Essence (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Spirits</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Art of the Bone Weaver:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[5 - 11]% Maximum Essence (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Lamellar: +[8 - 10]% Armor (Necromancer Only)",
+              "shortName": "+[8 - 10]% Armor (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Lamellar</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Art of the Bone Weaver:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[8 - 10]% Armor (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Liches: +[2 - 3] to Skeleton Mage (Necromancer Only)",
+              "shortName": "+[2 - 3] to Skeleton Mage (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Liches</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Rathma\'s Walking Touch:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[2 - 3] to Skeleton Mage (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Force: +[7 - 10]% [x] Physical Damage (Necromancer Only)",
+              "shortName": "+[7 - 10]% [x] Physical Damage (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Force</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Rathma\'s Walking Touch:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% [x] Physical Damage (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "Astute: +[7.5 - 10.0]% Intelligence",
+              "shortName": "+[7.5 - 10.0]% Intelligence",
+              "htmlName": "<div style=\'color:#6879d1;\'>Astute</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.5 - 10.0]% Intelligence</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "Harmonious: +[6.0 - 8.0]% All Stats",
+              "shortName": "+[6.0 - 8.0]% All Stats",
+              "htmlName": "<div style=\'color:#6879d1;\'>Harmonious</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[6.0 - 8.0]% All Stats</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Minions: +[7 - 10]% [x] Minion Damage (Necromancer Only)",
+              "shortName": "+[7 - 10]% [x] Minion Damage (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Minions</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Rathma\'s Walking Touch:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% [x] Minion Damage (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Ghouls: +[2 - 3] to Skeleton Warrior (Necromancer Only)",
+              "shortName": "+[2 - 3] to Skeleton Warrior (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Ghouls</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Rathma\'s Walking Touch:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[2 - 3] to Skeleton Warrior (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Shade: +[7 - 10]% [x] Shadow Damage (Necromancer Only)",
+              "shortName": "+[7 - 10]% [x] Shadow Damage (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Shade</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Peace of the Black Shroud:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% [x] Shadow Damage (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Shadows: +[5 - 8]% Darkness Skill Cooldown Reduction (Necromancer Only)",
+              "shortName": "+[5 - 8]% Darkness Skill Cooldown Reduction (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Shadows</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Peace of the Black Shroud:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[5 - 8]% Darkness Skill Cooldown Reduction (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Injuries: +[7.0 - 10.0]% [x] Damage to Crowd Controlled Enemies (Necromancer Only)",
+              "shortName": "+[7.0 - 10.0]% [x] Damage to Crowd Controlled Enemies (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Injuries</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Peace of the Black Shroud:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.0 - 10.0]% [x] Damage to Crowd Controlled Enemies (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Chilling: +[7 - 10]% [x] Cold Damage (Necromancer Only)",
+              "shortName": "+[7 - 10]% [x] Cold Damage (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Chilling</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Peace of the Black Shroud:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% [x] Cold Damage (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Infusions: +[7 - 10]% Damage for 4 seconds after picking up a Blood Orb (Necromancer Only)",
+              "shortName": "+[7 - 10]% Damage for 4 seconds after picking up a Blood Orb (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Infusions</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Word of the Blood Binder:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% Damage for 4 seconds after picking up a Blood Orb (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Stygian: +[7 - 10]% [x] Darkness Skill Damage (Necromancer Only)",
+              "shortName": "+[7 - 10]% [x] Darkness Skill Damage (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Stygian</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Peace of the Black Shroud:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% [x] Darkness Skill Damage (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Shrouds: +[7.5 - 10.0] Resistance to All Elements (Necromancer Only)",
+              "shortName": "+[7.5 - 10.0] Resistance to All Elements (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Shrouds</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Peace of the Black Shroud:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.5 - 10.0] Resistance to All Elements (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Lifesteal: +[263 - 316] Life on Kill (Necromancer Only)",
+              "shortName": "+[263 - 316] Life on Kill (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Lifesteal</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Word of the Blood Binder:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[263 - 316] Life on Kill (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Clotting: +[12 - 15]% Fortification Generation (Necromancer Only)",
+              "shortName": "+[12 - 15]% Fortification Generation (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Clotting</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Word of the Blood Binder:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[12 - 15]% Fortification Generation (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Coagulation: +[5 - 8]% Blood Skill Cooldown Reduction (Necromancer Only)",
+              "shortName": "+[5 - 8]% Blood Skill Cooldown Reduction (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Coagulation</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Word of the Blood Binder:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[5 - 8]% Blood Skill Cooldown Reduction (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Survival: +[7 - 8]% Maximum Life (Necromancer Only)",
+              "shortName": "+[7 - 8]% Maximum Life (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Survival</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Word of the Blood Binder:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 8]% Maximum Life (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Shattering: +[5 - 8]% Bone Skill Cooldown Reduction (Necromancer Only)",
+              "shortName": "+[5 - 8]% Bone Skill Cooldown Reduction (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Shattering</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Art of the Bone Weaver:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[5 - 8]% Bone Skill Cooldown Reduction (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Innards: +[7.0 - 10.0]% [x] Core Skill Damage (Necromancer Only)",
+              "shortName": "+[7.0 - 10.0]% [x] Core Skill Damage (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Innards</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Art of the Bone Weaver:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.0 - 10.0]% [x] Core Skill Damage (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Swiftness: +[20 - 24]% Movement Speed while Quintessence is active (Necromancer Only)",
+              "shortName": "+[20 - 24]% Movement Speed while Quintessence is active (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Swiftness</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Art of the Bone Weaver:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[20 - 24]% Movement Speed while Quintessence is active (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Exsanguination: +[7 - 10]% [x] Blood Skill Damage (Necromancer Only)",
+              "shortName": "+[7 - 10]% [x] Blood Skill Damage (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Exsanguination</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Word of the Blood Binder:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% [x] Blood Skill Damage (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Corpses: +[7 - 10]% [x] Corpse Skill Damage (Necromancer Only)",
+              "shortName": "+[7 - 10]% [x] Corpse Skill Damage (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Corpses</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Radament\'s Desecration:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% [x] Corpse Skill Damage (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Death Rattles: +[5 - 8]% Macabre Skill Cooldown Reduction (Necromancer Only)",
+              "shortName": "+[5 - 8]% Macabre Skill Cooldown Reduction (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Death Rattles</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Radament\'s Desecration:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[5 - 8]% Macabre Skill Cooldown Reduction (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Graves: +[7 - 10]% Macabre Skill Damage (Necromancer Only)",
+              "shortName": "+[7 - 10]% Macabre Skill Damage (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Graves</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Radament\'s Desecration:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% Macabre Skill Damage (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Severing: +[1 - 2] Essence on Kill (Necromancer Only)",
+              "shortName": "+[1 - 2] Essence on Kill (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Severing</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Radament\'s Desecration:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[1 - 2] Essence on Kill (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Alchemy: +[2 - 3] Potion Capacity",
+              "shortName": "+[2 - 3] Potion Capacity",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Alchemy</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Practiced Technique:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[2 - 3] Potion Capacity</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Armor: +[7.5 - 10.0] Armor",
+              "shortName": "+[7.5 - 10.0] Armor",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Armor</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Survival:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.5 - 10.0] Armor</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Durability: +[7.5 - 10.0] Maximum Resistance to All Elements",
+              "shortName": "+[7.5 - 10.0] Maximum Resistance to All Elements",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Durability</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Survival:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.5 - 10.0] Maximum Resistance to All Elements</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Insight: +[2.0 - 10.0] Bonus Experience from Elites",
+              "shortName": "+[2.0 - 10.0] Bonus Experience from Elites",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Insight</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Slaughter:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[2.0 - 10.0] Bonus Experience from Elites</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Safeguarding: +[11.0 - 15.0] Damage Reduction from Elites",
+              "shortName": "+[11.0 - 15.0] Damage Reduction from Elites",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Safeguarding</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Slaughter:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[11.0 - 15.0] Damage Reduction from Elites</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Devastation: +[7.0 - 10.0] Damage to Elites",
+              "shortName": "+[7.0 - 10.0] Damage to Elites",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Devastation</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Slaughter:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.0 - 10.0] Damage to Elites</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Riches: +[85 - 100]% Gold Drop Rate",
+              "shortName": "+[85 - 100]% Gold Drop Rate",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Riches</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Practiced Technique:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[85 - 100]% Gold Drop Rate</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Curses: +[7 - 10]% Damage against Cursed Enemies (Necromancer Only)",
+              "shortName": "+[7 - 10]% Damage against Cursed Enemies (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Curses</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Radament\'s Desecration:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% Damage against Cursed Enemies (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Reapers: +[7.0 - 10.0]% [x] Ultimate Skill Damage (Necromancer Only)",
+              "shortName": "+[7.0 - 10.0]% [x] Ultimate Skill Damage (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Reapers</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Radament\'s Desecration:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.0 - 10.0]% [x] Ultimate Skill Damage (Necromancer Only)</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Glory: +1 Charm Slot",
+              "shortName": "+1 Charm Slot",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Glory</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+1 Charm Slot</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of the Fleet Footed: +[20 - 24]% Movement Speed for 4 Seconds After Killing an Elite",
+              "shortName": "+[20 - 24]% Movement Speed for 4 Seconds After Killing an Elite",
+              "htmlName": "<div style=\'color:#ff8500;\'>of the Fleet Footed</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Slaughter:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[20 - 24]% Movement Speed for 4 Seconds After Killing an Elite</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Virtuosity: +1 to All Skills",
+              "shortName": "+1 to All Skills",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Virtuosity</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Mastery:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+1 to All Skills</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Command: +[7.0 - 10.0] Basic Skill Damage",
+              "shortName": "+[7.0 - 10.0] Basic Skill Damage",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Command</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Mastery:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.0 - 10.0] Basic Skill Damage</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Expertise: +[7.0 - 10.0] Core Skill Damage",
+              "shortName": "+[7.0 - 10.0] Core Skill Damage",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Expertise</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Mastery:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.0 - 10.0] Core Skill Damage</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "Swift: [7.5 - 10.0]% Cooldown Reduction",
+              "shortName": "[7.5 - 10.0]% Cooldown Reduction",
+              "htmlName": "<div style=\'color:#6879d1;\'>Swift</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>[7.5 - 10.0]% Cooldown Reduction</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Brawn: +[6.5 - 8.0] Maximum Life",
+              "shortName": "+[6.5 - 8.0] Maximum Life",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Brawn</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Survival:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[6.5 - 8.0] Maximum Life</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Proficiency: +[6.0 - 8.0] All Stats",
+              "shortName": "+[6.0 - 8.0] All Stats",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Proficiency</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Survival:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[6.0 - 8.0] All Stats</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Luck: +[8.0 - 9.0] Lucky Hit Chance",
+              "shortName": "+[8.0 - 9.0] Lucky Hit Chance",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Luck</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Dark Pact:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[8.0 - 9.0] Lucky Hit Chance</div>",
+              "category": "Utility"
+            },
+            {
+              "name": "of Elements: +[7.0 - 10.0] Non-Physical Damage",
+              "shortName": "+[7.0 - 10.0] Non-Physical Damage",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Elements</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Dark Pact:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.0 - 10.0] Non-Physical Damage</div>",
+              "category": "Utility"
+            }
+          ]
+        },
         "helm": {
           "modifiers": [
             {
