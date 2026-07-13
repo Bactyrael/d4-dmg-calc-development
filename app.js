@@ -4437,6 +4437,11 @@ function compileCharacterStats(equipped, autoStats) {
                     if (effectiveCount >= parseInt(req)) {
                         // Bonus active! Add to compiledStats
                         compiledStats['Talisman Set Bonuses'].components.push({ name: `${setName} (${req}-piece)`, value: setBonuses[req] });
+                        
+                        // Hardcoded Set Bonus Effects
+                        if (setName === 'Mastery' && req === '2') {
+                            addStat(compiledStats, 'to All Skills', 2, 'Mastery Set (2-piece)');
+                        }
                     }
                 }
             }
@@ -6414,20 +6419,27 @@ function getBaseSkillRankFor(skillName) {
     if (window.D4_COMPILED_STATS) {
         let stats = window.D4_COMPILED_STATS;
         
-        // 1. Broad All Skills
-        if (stats['to All Skills']) gearBonus += stats['to All Skills'].final;
-        if (stats['to Skills']) gearBonus += stats['to Skills'].final;
+        // First check if the skill is unlocked (either by points or a specific item affix)
+        let isUnlocked = baseInvested > 0 || (stats[`to ${skillName}`] && stats[`to ${skillName}`].final > 0);
         
-        // 2. Exact Base Skill Name
+        // 1. Broad All Skills (Only applies if unlocked)
+        if (isUnlocked) {
+            if (stats['to All Skills']) gearBonus += stats['to All Skills'].final;
+            if (stats['to Skills']) gearBonus += stats['to Skills'].final;
+        }
+        
+        // 2. Exact Base Skill Name (This unlocks the skill)
         if (stats[`to ${skillName}`]) gearBonus += stats[`to ${skillName}`].final;
         
-        // 3. Tag Matches (e.g. "to Core Skills", "to Macabre Skills")
-        skillTags.forEach(t => {
-            if (t.startsWith('Skill_')) {
-                let tagStr = typeof formatTag === 'function' ? formatTag(t) : t.replace('Skill_', '');
-                if (stats[`to ${tagStr} Skills`]) gearBonus += stats[`to ${tagStr} Skills`].final;
-            }
-        });
+        // 3. Tag Matches (e.g. "to Core Skills", "to Macabre Skills") (Only applies if unlocked)
+        if (isUnlocked) {
+            skillTags.forEach(t => {
+                if (t.startsWith('Skill_')) {
+                    let tagStr = typeof formatTag === 'function' ? formatTag(t) : t.replace('Skill_', '');
+                    if (stats[`to ${tagStr} Skills`]) gearBonus += stats[`to ${tagStr} Skills`].final;
+                }
+            });
+        }
         
         // 4. Vehement Brawler's Aspect (+2 to Ultimate Skills if invested)
         if (stats["Vehement Brawler's Aspect Factor"] && skillTags.includes('Skill_Ultimate') && baseInvested > 0) {
@@ -6604,7 +6616,7 @@ function applyActiveModifiers(baseSkillObj) {
             rathmaItem = Object.values(window.currentBuild.equipment).find(item => item && item.name === "Will of Rathma");
         }
         if (rathmaItem) {
-            let rathmaVal = rathmaItem.aspectValues && rathmaItem.aspectValues[0] !== undefined ? parseFloat(rathmaItem.aspectValues[0]) / 100 : 6.0;
+            let rathmaVal = (rathmaItem.isMythic || rathmaItem.rarity === 'mythic') ? 9.75 : (rathmaItem.aspectValues && rathmaItem.aspectValues[0] !== undefined ? parseFloat(rathmaItem.aspectValues[0]) / 100 : 6.0);
             modified.secondaryScalars = modified.secondaryScalars || {};
             modified.secondaryScalars.will_of_rathma = {
                 scalar: rathmaVal,
