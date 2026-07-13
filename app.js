@@ -1357,19 +1357,23 @@ function renderTalismanUI() {
     
     let unlockedSlots = (currentBuild.talisman.seal && currentBuild.talisman.seal.name === 'Legendary Horadric Seal') ? 5 : 5;
     
-    // Check if seal has +1 Charm Slot modifier
+    // Check if seal has +1 Charm Slot modifier or is Mythic
     if (currentBuild.talisman.seal) {
-        const checkExtraSlot = (arr) => arr && arr.some(a => {
-            if (typeof a === 'string') return a.includes('+1 Charm Slot') || a.includes('of Glory');
-            return a && a.name && (a.name.includes('+1 Charm Slot') || a.name.includes('of Glory'));
-        });
-        if (checkExtraSlot(currentBuild.talisman.seal.affixes) || 
-            checkExtraSlot(currentBuild.talisman.seal.inherentAffixes) || 
-            checkExtraSlot(currentBuild.talisman.seal.temperingModifiers) || 
-            checkExtraSlot(currentBuild.talisman.seal.transfigureModifiers) ||
-            checkExtraSlot(currentBuild.talisman.seal.tempering) ||
-            checkExtraSlot(currentBuild.talisman.seal.transfigure)) {
+        if (currentBuild.talisman.seal.isMythic || currentBuild.talisman.seal.rarity === 'mythic') {
             unlockedSlots = 6;
+        } else {
+            const checkExtraSlot = (arr) => arr && arr.some(a => {
+                if (typeof a === 'string') return a.includes('+1 Charm Slot') || a.includes('of Glory');
+                return a && a.name && (a.name.includes('+1 Charm Slot') || a.name.includes('of Glory'));
+            });
+            if (checkExtraSlot(currentBuild.talisman.seal.affixes) || 
+                checkExtraSlot(currentBuild.talisman.seal.inherentAffixes) || 
+                checkExtraSlot(currentBuild.talisman.seal.temperingModifiers) || 
+                checkExtraSlot(currentBuild.talisman.seal.transfigureModifiers) ||
+                checkExtraSlot(currentBuild.talisman.seal.tempering) ||
+                checkExtraSlot(currentBuild.talisman.seal.transfigure)) {
+                unlockedSlots = 6;
+            }
         }
     }
     unlockedSlots = Math.min(6, unlockedSlots);
@@ -9661,10 +9665,25 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         }
         
         box.dataset.value = JSON.stringify(targetObj);
+        
+        // Keep currentBuild in sync!
+        if (slotName === 'Seal') {
+            if (!currentBuild.talisman) currentBuild.talisman = { seal: null, charms: [null, null, null, null, null, null] };
+            currentBuild.talisman.seal = targetObj;
+        } else if (slotName.startsWith('Charm')) {
+            const cIdx = parseInt(slotName.split(' ')[1]) - 1;
+            if (!currentBuild.talisman) currentBuild.talisman = { seal: null, charms: [null, null, null, null, null, null] };
+            currentBuild.talisman.charms[cIdx] = targetObj;
+        } else {
+            if (!currentBuild.equipment) currentBuild.equipment = {};
+            currentBuild.equipment[slotName] = targetObj;
+        }
+        
         calculate();
         switchModalTab('edit');
         window.currentModifierEditing = null;
         renderEditTab(slotName);
+        if (typeof renderTalismanUI === 'function') renderTalismanUI();
       });
       
       list.appendChild(card);
