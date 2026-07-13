@@ -601,10 +601,30 @@ Object.assign(window.D4_DATABASE, {
         }
     ],
     "talismanSets": {
+                "Word of the Blood Binder": {
+            "2": "Your Blood Skills Fortify you for 5% of your Maximum Life on cast and deal 60%[x] increased damage while Fortify is actively healing you.",
+            "3": "Every percentage of Fortified Life you gain also increases your Maximum Life by an equal percentage for 20 seconds, up to 50%.",
+            "5": "Your Basic, Core, and Ultimate Blood Skills drain 3% of your Maximum Life on Cast to trigger twice. Your Blood Skills deal 75%[x] increased damage."
+        },
         "Rathma's Waking Touch": {
-            2: "Your Minions deal 60%[x] increased damage and reduce the Cooldown of Army of the Dead by 1 second each time they deal damage.",
-            3: "35% of the damage you take is redirected to your Minions.",
-            5: "Army of the Dead deals 450%[x] increased damage. While Army of the Dead is active, your Minions are larger, have 100%[x] increased Life, and gain 25%[+] Attack Speed."
+                  "2": "Your Minions deal 60%[x] increased damage and reduce the Cooldown of Army of the Dead by 1 second each time they deal damage.",
+                  "3": "35% of the damage you take is redirected to your Minions.",
+                  "5": "Army of the Dead deals 450%[x] increased damage.<br>• While Army of the Dead is active, your Minions are larger, have 100%[x] increased Life, and gain 25%[+] Attack Speed."
+        },
+        "Radament's Desecration": {
+                  "2": "Forming or consuming a Corpse reduces the Essence costs and Cooldowns of your Profane and Macabre Skills by 25% and increases their damage by 30%[x] for 6 seconds.<br>• Casting an Ultimate Skill forms 10 Corpses over its duration.",
+                  "3": "When you form or consume a Corpse you gain 15% Damage Reduction for 6 seconds.<br>• Enemies Close to your Corpses are inflicted with Decrepify and Iron Maiden.",
+                  "5": "Your Profane and Macabre Skills deal 225%[x] increased damage.<br>• Your Ultimate Skills are also Profane or Macabre Skills."
+        },
+        "Art of the Bone Weaver": {
+                  "2": "After spending 100 Essence on Bone Skills you gain Quintessence for 15 seconds. Quintessence increases your Critical Strike Chance by 10%[+] and your Critical Strike Damage by 50%[x].",
+                  "3": "Quintessence also grants 30% Damage Reduction.",
+                  "5": "Whenever you gain Quintessence you spray out 12 piercing bone shards in all directions, dealing 0 damage each, generating 3 Essence per enemy hit, and causing enemies hit to take 200%[x] increased damage from your Bone Skills."
+        },
+        "Peace of the Black Shroud": {
+                  "2": "Your Darkness Skills deal 75% of their damage as additional Corrupting or Frostbite damage over 30 seconds.",
+                  "3": "You gain 30% Damage Reduction for 5 seconds whenever you deal damage over time to an enemy.",
+                  "5": "You deal 175%[x] increased Shadow and Cold damage.<br>• Enemies who are Corrupted or Frostbitten for more than their remaining life are permanently Vulnerable, Weakened, Slowed by 85%, take 50%[x] increased damage from you, and are Feared every 5 seconds."
         }
     },
   "aspects": [
