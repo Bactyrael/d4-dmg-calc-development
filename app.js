@@ -2658,6 +2658,9 @@ function compileCharacterStats(equipped, autoStats) {
           if (item.name === 'Harlequin Crest') {
               addStat(stats, 'to All Skills', 6, 'Harlequin Crest');
           }
+          if (item.name === 'Doombringer') {
+              addStat(stats, '% Maximum Life', 15, 'Doombringer');
+          }
           
           const effQ = getEffectiveQuality(item);
           const baseQMult = 1 + (effQ * 0.01);
