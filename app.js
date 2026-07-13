@@ -4477,6 +4477,18 @@ function compileCharacterStats(equipped, autoStats) {
                                 addStat(compiledStats, '% Minion Attack Speed', 25, 'Waking Touch (5-piece)');
                             }
                         }
+                        if (setName === 'Survival') {
+                            if (req === '2') {
+                                addStat(compiledStats, 'Armor', 1000, 'Survival Set (2-piece)');
+                                addStat(compiledStats, 'Resistance to All Elements', 100, 'Survival Set (2-piece)');
+                            }
+                            if (req === '3') {
+                                addStat(compiledStats, 'Intelligence', 200, 'Survival Set (3-piece)');
+                                addStat(compiledStats, 'Willpower', 200, 'Survival Set (3-piece)');
+                                addStat(compiledStats, 'Strength', 200, 'Survival Set (3-piece)');
+                                addStat(compiledStats, 'Dexterity', 200, 'Survival Set (3-piece)');
+                            }
+                        }
                     }
                 }
             }
