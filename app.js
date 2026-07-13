@@ -4442,6 +4442,29 @@ function compileCharacterStats(equipped, autoStats) {
                         if (setName === 'Mastery' && req === '2') {
                             addStat(compiledStats, 'to All Skills', 2, 'Mastery Set (2-piece)');
                         }
+                        if (setName === 'Practiced Technique') {
+                            if (req === '2') {
+                                addStat(compiledStats, '% Attack Speed', 5, 'Practiced Technique (2-piece)');
+                                addStat(compiledStats, '% Movement Speed', 15, 'Practiced Technique (2-piece)');
+                            }
+                            if (req === '3') {
+                                addStat(compiledStats, '% Gold Find', 25, 'Practiced Technique (3-piece)');
+                                addStat(compiledStats, '% Bonus Kill Experience', 50, 'Practiced Technique (3-piece)');
+                            }
+                        }
+                        if (setName === 'Slaughter') {
+                            if (req === '2') {
+                                addStat(compiledStats, 'Universal Damage Reduction %', 5, 'Slaughter Set (2-piece)');
+                                addStat(compiledStats, 'Slaughter 2-piece Factor', 10, 'Slaughter Set (2-piece)');
+                            }
+                            if (req === '3') {
+                                let conds = typeof getActiveConditions === 'function' ? getActiveConditions() : {};
+                                if (conds.monsterType === 'elite' || conds.monsterType === 'boss') {
+                                    addStat(compiledStats, 'Universal Damage Reduction %', 10, 'Slaughter Set (3-piece)');
+                                }
+                                addStat(compiledStats, 'Slaughter 3-piece Factor', 15, 'Slaughter Set (3-piece)');
+                            }
+                        }
                     }
                 }
             }
@@ -10316,6 +10339,21 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         if (conds.monsterType === 'elite' || conds.monsterType === 'boss') {
             bucket *= mult;
             components.push({ name: 'Aspect of Terror (Elite) [x]', value: mult });
+        }
+    }
+    
+    // Apply Slaughter Set Multipliers
+    if (stats["Slaughter 2-piece Factor"]) {
+        let mult = 1 + (stats["Slaughter 2-piece Factor"].final / 100);
+        bucket *= mult;
+        components.push({ name: 'Slaughter Set (2-piece) [x]', value: mult });
+    }
+    
+    if (stats["Slaughter 3-piece Factor"]) {
+        if (conds.monsterType === 'elite' || conds.monsterType === 'boss') {
+            let mult = 1 + (stats["Slaughter 3-piece Factor"].final / 100);
+            bucket *= mult;
+            components.push({ name: 'Slaughter Set (3-piece, Elite) [x]', value: mult });
         }
     }
 
