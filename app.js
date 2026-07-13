@@ -1359,11 +1359,16 @@ function renderTalismanUI() {
     
     // Check if seal has +1 Charm Slot modifier
     if (currentBuild.talisman.seal) {
-        const checkExtraSlot = (arr) => arr && arr.some(a => a && a.name && (a.name.includes('+1 Charm Slot') || a.name.includes('of Glory')));
+        const checkExtraSlot = (arr) => arr && arr.some(a => {
+            if (typeof a === 'string') return a.includes('+1 Charm Slot') || a.includes('of Glory');
+            return a && a.name && (a.name.includes('+1 Charm Slot') || a.name.includes('of Glory'));
+        });
         if (checkExtraSlot(currentBuild.talisman.seal.affixes) || 
             checkExtraSlot(currentBuild.talisman.seal.inherentAffixes) || 
             checkExtraSlot(currentBuild.talisman.seal.temperingModifiers) || 
-            checkExtraSlot(currentBuild.talisman.seal.transfigureModifiers)) {
+            checkExtraSlot(currentBuild.talisman.seal.transfigureModifiers) ||
+            checkExtraSlot(currentBuild.talisman.seal.tempering) ||
+            checkExtraSlot(currentBuild.talisman.seal.transfigure)) {
             unlockedSlots = 6;
         }
     }
