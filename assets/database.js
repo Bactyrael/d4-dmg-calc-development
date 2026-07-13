@@ -14197,7 +14197,7 @@ Object.assign(window.D4_DATABASE, {
         "name": "Doombringer",
         "rarity": "mythic",
         "affixes": [
-          "+[15]% Maximum Life"
+          "+[15 - 15]% Maximum Life"
         ],
         "classes": [
           1,
@@ -15717,7 +15717,7 @@ Object.assign(window.D4_DATABASE, {
         "name": "Doombringer",
         "rarity": "mythic",
         "affixes": [
-          "+[15]% Maximum Life"
+          "+[15 - 15]% Maximum Life"
         ],
         "classes": [
           1,
@@ -16780,7 +16780,7 @@ Object.assign(window.D4_DATABASE, {
         "name": "Doombringer",
         "rarity": "mythic",
         "affixes": [
-          "+[15]% Maximum Life"
+          "+[15 - 15]% Maximum Life"
         ],
         "classes": [
           1,
@@ -17843,7 +17843,7 @@ Object.assign(window.D4_DATABASE, {
         "name": "Doombringer",
         "rarity": "mythic",
         "affixes": [
-          "+[15]% Maximum Life"
+          "+[15 - 15]% Maximum Life"
         ],
         "classes": [
           1,
@@ -18906,7 +18906,7 @@ Object.assign(window.D4_DATABASE, {
         "name": "Doombringer",
         "rarity": "mythic",
         "affixes": [
-          "+[15]% Maximum Life"
+          "+[15 - 15]% Maximum Life"
         ],
         "classes": [
           1,
@@ -19969,7 +19969,7 @@ Object.assign(window.D4_DATABASE, {
         "name": "Doombringer",
         "rarity": "mythic",
         "affixes": [
-          "+[15]% Maximum Life"
+          "+[15 - 15]% Maximum Life"
         ],
         "classes": [
           1,
@@ -21032,7 +21032,7 @@ Object.assign(window.D4_DATABASE, {
         "name": "Doombringer",
         "rarity": "mythic",
         "affixes": [
-          "+[15]% Maximum Life"
+          "+[15 - 15]% Maximum Life"
         ],
         "classes": [
           1,
