@@ -29,7 +29,7 @@ function renderActiveRunes() {
     
     let activeRunes = [];
     
-    document.querySelectorAll('.equipment-slot-box').forEach(box => {
+    document.querySelectorAll('.equipment-slot-box, .charm-slot, .seal-slot').forEach(box => {
         if (box.dataset.value) {
             try {
                 const eq = JSON.parse(box.dataset.value);
@@ -1258,7 +1258,7 @@ function getEquipmentValues() {
     const vals = {};
     const container = document.getElementById('tab-equipment');
     if (!container) return vals;
-    const boxes = container.querySelectorAll('.equipment-slot-box');
+    const boxes = container.querySelectorAll('.equipment-slot-box, .charm-slot, .seal-slot');
     boxes.forEach(box => {
       try {
         vals[box.dataset.slot] = box.dataset.value ? JSON.parse(box.dataset.value) : null;
@@ -1274,7 +1274,7 @@ function getMaxSockets(slotName, itemObj) {
     const lowerSlot = slotName.toLowerCase();
     let maxSockets = 2; // HELPER: Default to 2 for helm, chest, pants
     
-    if (lowerSlot === 'seal' || lowerSlot.includes('glove') || lowerSlot.includes('boot')) {
+    if (lowerSlot === 'seal' || lowerSlot.startsWith('charm') || lowerSlot.includes('glove') || lowerSlot.includes('boot')) {
       maxSockets = 0;
     } else if (lowerSlot.includes('ring') || lowerSlot.includes('amulet') || lowerSlot.includes('offhand') || lowerSlot.includes('dual wield') || lowerSlot.includes('slicing')) {
       maxSockets = 1;
@@ -1361,9 +1361,11 @@ function renderTalismanUI() {
             let style = getScaledSpriteStyle(sealData.icon, 60, sealData.type);
             sealSlot.innerHTML = `<div style="${style}; border-radius: 50%; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);"></div>`;
             sealSlot.style.borderColor = '#d18a45'; // Keep golden accent
+            sealSlot.dataset.value = JSON.stringify(sealData);
         } else {
             sealSlot.innerHTML = '';
             sealSlot.style.borderColor = '#d18a45';
+            delete sealSlot.dataset.value;
         }
     }
     
@@ -1409,8 +1411,10 @@ function renderTalismanUI() {
             if (charm) {
                 let style = getScaledSpriteStyle(charm.icon, 50, charm.type);
                 charmSlot.innerHTML = `<div style="${style}; border-radius: 50%; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);"></div>`;
+                charmSlot.dataset.value = JSON.stringify(charm);
             } else {
                 charmSlot.innerHTML = '';
+                delete charmSlot.dataset.value;
             }
         }
     }
@@ -1928,7 +1932,7 @@ function renderEquipment(className, savedEquipment = {}) {
       
       footer.appendChild(sb);
       }
-      const sealBox = document.querySelector('.equipment-slot-box[data-slot=\"Seal\"]');
+      const sealBox = document.querySelector('.equipment-slot-box[data-slot="Seal"], .charm-slot[data-slot="Seal"], .seal-slot[data-slot="Seal"]');
       if (sealBox) {
           let val = savedEquipment['Seal'];
           if (typeof val === 'string' && val) val = { name: val, power: 900, quality: 0, rarity: 'legendary' };
@@ -2677,6 +2681,7 @@ function compileCharacterStats(equipped, autoStats) {
                           // Try to find the stat in the DB by shortName and extract its max.
                           const currentClassVal = document.getElementById('class-select')?.textContent || 'Necromancer';
                           let mappedSlot = slotName.toLowerCase();
+    if (mappedSlot.startsWith("charm")) mappedSlot = "charm";
                           if (mappedSlot === 'left ring' || mappedSlot === 'right ring') mappedSlot = 'ring';
                           if (mappedSlot === 'chest armor') mappedSlot = 'chest';
                           if (mappedSlot.startsWith('weapon') || mappedSlot === 'mainhand' || mappedSlot === 'offhand' || mappedSlot === 'ranged weapon') mappedSlot = 'mainhand';
@@ -2712,6 +2717,7 @@ function compileCharacterStats(equipped, autoStats) {
                       } else {
                           const currentClassVal = document.getElementById('class-select')?.textContent || 'Necromancer';
                           let mappedSlot = slotName.toLowerCase();
+    if (mappedSlot.startsWith("charm")) mappedSlot = "charm";
                           if (mappedSlot === 'left ring' || mappedSlot === 'right ring') mappedSlot = 'ring';
                           if (mappedSlot === 'chest armor') mappedSlot = 'chest';
                           if (mappedSlot.startsWith('weapon') || mappedSlot === 'mainhand' || mappedSlot === 'offhand' || mappedSlot === 'ranged weapon') mappedSlot = 'mainhand';
@@ -2748,6 +2754,7 @@ function compileCharacterStats(equipped, autoStats) {
                       } else {
                           const currentClassVal = document.getElementById('class-select')?.textContent || 'Necromancer';
                           let mappedSlot = slotName.toLowerCase();
+    if (mappedSlot.startsWith("charm")) mappedSlot = "charm";
                           if (mappedSlot === 'left ring' || mappedSlot === 'right ring') mappedSlot = 'ring';
                           if (mappedSlot === 'chest armor') mappedSlot = 'chest';
                           if (mappedSlot.startsWith('weapon') || mappedSlot === 'mainhand' || mappedSlot === 'offhand' || mappedSlot === 'ranged weapon') mappedSlot = 'mainhand';
@@ -7579,7 +7586,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   
   function renderEditTab(slotName) {
       const editBody = document.getElementById('item-modal-edit-body');
-      const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
+      const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"], .charm-slot[data-slot="${slotName}"], .seal-slot[data-slot="${slotName}"]`);
       const tabs = document.querySelectorAll('.item-modal-tab');
       const editTabBtn = tabs[1];
       
@@ -7627,6 +7634,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     const currentClassVal = document.getElementById('class-select').textContent;
     const classIdx = D4_CLASS_MAP[currentClassVal];
     let mapped = slotName.toLowerCase();
+    if (mapped.startsWith("charm")) mapped = "charm";
     if (mapped === 'left ring' || mapped === 'right ring') mapped = 'ring';
     if (mapped === 'chest armor') mapped = 'chest';
     if (mapped === 'mainhand' || mapped === 'offhand' || mapped === 'weapon1' || mapped === 'weapon2' || mapped === 'ranged weapon') {
@@ -8161,6 +8169,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       
       // Determine mapped slot name to match hierarchy keys
       let mappedSlot = slotName.toLowerCase();
+    if (mappedSlot.startsWith("charm")) mappedSlot = "charm";
       if (mappedSlot === 'left ring' || mappedSlot === 'right ring') mappedSlot = 'ring';
       if (mappedSlot === 'chest armor') mappedSlot = 'chest';
       if (mappedSlot === 'mainhand' || mappedSlot === 'offhand' || mappedSlot === 'weapon1' || mappedSlot === 'weapon2' || mappedSlot === 'ranged weapon') {
@@ -8279,7 +8288,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       `;
     }
 
-    if (slotName.toLowerCase() === 'seal') {
+    if (slotName.toLowerCase() === 'seal' || slotName.toLowerCase().startsWith('charm')) {
         aspectSection = '';
         temperSection = '';
         socketSection = '';
@@ -8349,7 +8358,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         ` : ''}
       </div>
 
-      <div class="edit-section" style="${slotName.toLowerCase() === 'seal' ? 'display:none;' : ''}">
+      <div class="edit-section" style="${slotName.toLowerCase() === 'seal' || slotName.toLowerCase().startsWith('charm') ? 'display:none;' : ''}">
           <div class="edit-section-title">Transfigure</div>
         <div style="display: flex; flex-direction: column; gap: 4px;">
           ${renderAffixRow(0, 'transfigure')}
@@ -8361,12 +8370,12 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <div id="regular-affix-rows" class="affix-rows-container">
             ${renderAffixRow(0, 'affix')}
             ${renderAffixRow(1, 'affix')}
-            ${renderAffixRow(2, 'affix')}
-            ${slotName.toLowerCase() === 'seal' ? '' : renderAffixRow(3, 'affix')}
+            ${slotName.toLowerCase().startsWith('charm') ? '' : renderAffixRow(2, 'affix')}
+            ${slotName.toLowerCase().startsWith('charm') || slotName.toLowerCase() === 'seal' ? '' : renderAffixRow(3, 'affix')}
           </div>
       </div>
 
-      <div class="edit-section" style="${slotName.toLowerCase() === 'seal' ? 'display:none;' : ''}">
+      <div class="edit-section" style="${slotName.toLowerCase() === 'seal' || slotName.toLowerCase().startsWith('charm') ? 'display:none;' : ''}">
           <div class="edit-section-title">Tempering</div>
         <div style="display: flex; flex-direction: column; gap: 4px;">
           ${renderAffixRow(0, 'temper')}
@@ -8819,7 +8828,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       renderModifierTab(slotName, 'transfigure', '', 'All Modifiers');
       renderGemTab(slotName, 'All Gems', '');
       
-      const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
+      const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"], .charm-slot[data-slot="${slotName}"], .seal-slot[data-slot="${slotName}"]`);
       if (box && box.dataset.value) {
         switchModalTab('edit');
       } else {
@@ -8984,7 +8993,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       if (!currentBuild.talisman) currentBuild.talisman = { seal: null, charms: [null, null, null, null, null, null] };
       currentBuild.talisman.seal = item;
         
-        const box = document.querySelector(`.equipment-slot-box[data-slot="Seal"]`);
+        const box = document.querySelector(`.equipment-slot-box[data-slot="Seal"], .charm-slot[data-slot="Seal"], .seal-slot[data-slot="Seal"]`);
         if (box) {
             if (!item) {
                 delete box.dataset.value;
@@ -9095,7 +9104,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   function selectItem(itemName) {
     if (!currentModalSlot) return;
     
-    const box = document.querySelector(`.equipment-slot-box[data-slot="${currentModalSlot}"]`);
+    const box = document.querySelector(`.equipment-slot-box[data-slot="${currentModalSlot}"], .charm-slot[data-slot="${currentModalSlot}"], .seal-slot[data-slot="${currentModalSlot}"]`);
     if (box) {
       const valDiv = box.querySelector('.paperdoll-slot-value');
       if (itemName) {
@@ -9120,7 +9129,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         // QoL: Two-Handed logic
         if (foundItem && foundItem.weaponType && foundItem.weaponType.toLowerCase().includes('two-handed')) {
             if (currentModalSlot === 'Mainhand') {
-                const offhandBox = document.querySelector(`.equipment-slot-box[data-slot="Offhand"]`);
+                const offhandBox = document.querySelector(`.equipment-slot-box[data-slot="Offhand"], .charm-slot[data-slot="Offhand"], .seal-slot[data-slot="Offhand"]`);
                 if (offhandBox) {
                     delete offhandBox.dataset.value;
                     const offValDiv = offhandBox.querySelector('.paperdoll-slot-value');
@@ -9132,7 +9141,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             }
         }
         if (currentModalSlot === 'Offhand') {
-           const mainhandBox = document.querySelector(`.equipment-slot-box[data-slot="Mainhand"]`);
+           const mainhandBox = document.querySelector(`.equipment-slot-box[data-slot="Mainhand"], .charm-slot[data-slot="Mainhand"], .seal-slot[data-slot="Mainhand"]`);
            if (mainhandBox && mainhandBox.dataset.value) {
               try {
                   const mhVal = JSON.parse(mainhandBox.dataset.value);
@@ -9169,7 +9178,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   function selectAspect(aspectName) {
     if (!currentModalSlot) return;
     
-    const box = document.querySelector(`.equipment-slot-box[data-slot="${currentModalSlot}"]`);
+    const box = document.querySelector(`.equipment-slot-box[data-slot="${currentModalSlot}"], .charm-slot[data-slot="${currentModalSlot}"], .seal-slot[data-slot="${currentModalSlot}"]`);
     if (box && box.dataset.value) {
       try {
         const itemObj = JSON.parse(box.dataset.value);
@@ -9288,7 +9297,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   function selectGem(gemName) {
     if (!currentModalSlot) return;
     
-    const box = document.querySelector(`.equipment-slot-box[data-slot="${currentModalSlot}"]`);
+    const box = document.querySelector(`.equipment-slot-box[data-slot="${currentModalSlot}"], .charm-slot[data-slot="${currentModalSlot}"], .seal-slot[data-slot="${currentModalSlot}"]`);
     if (box && box.dataset.value) {
       try {
         const itemObj = JSON.parse(box.dataset.value);
@@ -9328,7 +9337,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     
     let items = [...(window.D4_DATABASE?.gems || [])];
     
-    const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
+    const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"], .charm-slot[data-slot="${slotName}"], .seal-slot[data-slot="${slotName}"]`);
     let eq = {};
     if (box && box.dataset.value) {
         try { eq = JSON.parse(box.dataset.value); } catch(e){}
@@ -9336,7 +9345,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     const maxSockets = getMaxSockets(slotName, eq);
     
     let globalRuneCount = 0;
-    document.querySelectorAll('.equipment-slot-box').forEach(b => {
+    document.querySelectorAll('.equipment-slot-box, .charm-slot, .seal-slot').forEach(b => {
         if (b.dataset.value) {
             try {
                 const bEq = JSON.parse(b.dataset.value);
@@ -9467,13 +9476,14 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     const currentClassVal = document.getElementById('class-select').textContent;
     const classIdx = D4_CLASS_MAP[currentClassVal];
 
-    const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
+    const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"], .charm-slot[data-slot="${slotName}"], .seal-slot[data-slot="${slotName}"]`);
     let itemObj = { name: '' };
     if (box && box.dataset.value) {
       try { itemObj = JSON.parse(box.dataset.value); } catch(e) {}
     }
     
     let mapped = slotName.toLowerCase();
+    if (mapped.startsWith("charm")) mapped = "charm";
     if (mapped === 'chest armor') mapped = 'chest';
     if (mapped === 'left ring' || mapped === 'right ring') mapped = 'ring';
     if (mapped.startsWith('weapon') || mapped === 'ranged weapon') mapped = 'mainhand';
@@ -9660,7 +9670,8 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
           } else {
             if (!targetObj.affixes) targetObj.affixes = [];
             idx = targetObj.affixes.findIndex(x => !x);
-            if (idx === -1) idx = Math.min(targetObj.affixes.length, 2); // Max 3 affixes (0,1,2)
+            let maxAffixes = slotName.toLowerCase().startsWith('charm') ? 1 : (slotName.toLowerCase() === 'seal' ? 2 : 3);
+            if (idx === -1) idx = Math.min(targetObj.affixes.length, maxAffixes);
           }
           editing = { type: type || 'affix', idx, slotName };
         }
@@ -12732,7 +12743,7 @@ document.addEventListener('DOMContentLoaded', () => { setTimeout(() => {
               e.stopPropagation();
               
               // Swap with currently equipped item in this slot
-              const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"]`);
+              const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"], .charm-slot[data-slot="${slotName}"], .seal-slot[data-slot="${slotName}"]`);
               if (box) {
                   const currentVal = box.dataset.value;
                   box.dataset.value = JSON.stringify(itemObj);
@@ -12748,7 +12759,7 @@ document.addEventListener('DOMContentLoaded', () => { setTimeout(() => {
                   const dbItems = getDbItems(slotName);
                   const foundItem = dbItems.find(i => i.name === itemObj.name);
                   if (foundItem && foundItem.weaponType && foundItem.weaponType.toLowerCase().includes('two-handed') && slotName === 'Mainhand') {
-                      const offhandBox = document.querySelector(`.equipment-slot-box[data-slot="Offhand"]`);
+                      const offhandBox = document.querySelector(`.equipment-slot-box[data-slot="Offhand"], .charm-slot[data-slot="Offhand"], .seal-slot[data-slot="Offhand"]`);
                       if (offhandBox) {
                           stashItem('Offhand', offhandBox.dataset.value);
                           delete offhandBox.dataset.value;

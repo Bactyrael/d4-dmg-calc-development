@@ -26548,3 +26548,410 @@ Object.assign(window.D4_DATABASE, {
             }
         }
     }, 100);
+
+
+// === AUTO-INJECTED CHARM MODIFIERS (NECROMANCER ONLY) ===
+setTimeout(() => {
+    const charmModifiers = [
+    {
+        "name": "Arisen: +[3 - 4] to Corpse Skills",
+        "shortName": "+[3 - 4] to Corpse Skills",
+        "htmlName": "<div style='color:#ff8500;'>Arisen</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[3 - 4] to Corpse Skills</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Doom: +[3 - 4] to Curse Skills",
+        "shortName": "+[3 - 4] to Curse Skills",
+        "htmlName": "<div style='color:#ff8500;'>Doom</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[3 - 4] to Curse Skills</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "The Macabre: +[3 - 4] to Macabre Skills",
+        "shortName": "+[3 - 4] to Macabre Skills",
+        "htmlName": "<div style='color:#ff8500;'>The Macabre</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[3 - 4] to Macabre Skills</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "of Knowledge: +[3 - 13]% Bonus Kill Experience ([0.3 - 1.3]% at level 70)",
+        "shortName": "+[3 - 13]% Bonus Kill Experience ([0.3 - 1.3]% at level 70)",
+        "htmlName": "<div style='color:#ff8500;'>of Knowledge</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[3 - 13]% Bonus Kill Experience ([0.3 - 1.3]% at level 70)</div>",
+        "category": "Utility",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Cruel / of Cruelty: +[10 - 18]% Vulnerable Damage",
+        "shortName": "+[10 - 18]% Vulnerable Damage",
+        "htmlName": "<div style='color:#ff8500;'>Cruel / of Cruelty</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[10 - 18]% Vulnerable Damage</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Greedy: +[6 - 11]% Gold Drop Rate",
+        "shortName": "+[6 - 11]% Gold Drop Rate",
+        "htmlName": "<div style='color:#ff8500;'>Greedy</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[6 - 11]% Gold Drop Rate</div>",
+        "category": "Utility",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Insulating: +[655 - 787] Cold Resistance",
+        "shortName": "+[655 - 787] Cold Resistance",
+        "htmlName": "<div style='color:#ff8500;'>Insulating</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[655 - 787] Cold Resistance</div>",
+        "category": "Defensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Dampening: +[655 - 787] Fire Resistance",
+        "shortName": "+[655 - 787] Fire Resistance",
+        "htmlName": "<div style='color:#ff8500;'>Dampening</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[655 - 787] Fire Resistance</div>",
+        "category": "Defensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Grounding: +[655 - 787] Lightning Resistance",
+        "shortName": "+[655 - 787] Lightning Resistance",
+        "htmlName": "<div style='color:#ff8500;'>Grounding</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[655 - 787] Lightning Resistance</div>",
+        "category": "Defensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Steeling: +[655 - 787] Physical Resistance",
+        "shortName": "+[655 - 787] Physical Resistance",
+        "htmlName": "<div style='color:#ff8500;'>Steeling</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[655 - 787] Physical Resistance</div>",
+        "category": "Defensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Neutralizing: +[655 - 787] Poison Resistance",
+        "shortName": "+[655 - 787] Poison Resistance",
+        "htmlName": "<div style='color:#ff8500;'>Neutralizing</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[655 - 787] Poison Resistance</div>",
+        "category": "Defensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Sanctified: +[655 - 787] Shadow Resistance",
+        "shortName": "+[655 - 787] Shadow Resistance",
+        "htmlName": "<div style='color:#ff8500;'>Sanctified</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[655 - 787] Shadow Resistance</div>",
+        "category": "Defensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Skillful: +[3 - 4] to Basic Skills",
+        "shortName": "+[3 - 4] to Basic Skills",
+        "htmlName": "<div style='color:#ff8500;'>Skillful</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[3 - 4] to Basic Skills</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Principal: +[3 - 4] to Core Skills",
+        "shortName": "+[3 - 4] to Core Skills",
+        "htmlName": "<div style='color:#ff8500;'>Principal</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[3 - 4] to Core Skills</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Harmonious: +[94 - 125] All Stats",
+        "shortName": "+[94 - 125] All Stats",
+        "htmlName": "<div style='color:#ff8500;'>Harmonious</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[94 - 125] All Stats</div>",
+        "category": "Utility",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Speedy: +[16 - 20]% Movement Speed",
+        "shortName": "+[16 - 20]% Movement Speed",
+        "htmlName": "<div style='color:#ff8500;'>Speedy</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[16 - 20]% Movement Speed</div>",
+        "category": "Utility",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Resourceful: +[19 - 25] Maximum Resource",
+        "shortName": "+[19 - 25] Maximum Resource",
+        "htmlName": "<div style='color:#ff8500;'>Resourceful</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[19 - 25] Maximum Resource</div>",
+        "category": "Utility",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Resistant: +[8.8 - 10.0]% Resistance to All Elements",
+        "shortName": "+[8.8 - 10.0]% Resistance to All Elements",
+        "htmlName": "<div style='color:#ff8500;'>Resistant</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[8.8 - 10.0]% Resistance to All Elements</div>",
+        "category": "Defensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Stalwart's: +[8.1 - 10.0]% Total Armor",
+        "shortName": "+[8.1 - 10.0]% Total Armor",
+        "htmlName": "<div style='color:#ff8500;'>Stalwart's</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[8.1 - 10.0]% Total Armor</div>",
+        "category": "Defensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Vigorous: [8.1 - 10.0]% Maximum Life",
+        "shortName": "[8.1 - 10.0]% Maximum Life",
+        "htmlName": "<div style='color:#ff8500;'>Vigorous</div><div style='color:#b3b3b3; font-size: 0.9em;'>[8.1 - 10.0]% Maximum Life</div>",
+        "category": "Defensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Frigid: Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Cold Damage",
+        "shortName": "Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Cold Damage",
+        "htmlName": "<div style='color:#ff8500;'>Frigid</div><div style='color:#b3b3b3; font-size: 0.9em;'>Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Cold Damage</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Pyric: Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Fire Damage",
+        "shortName": "Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Fire Damage",
+        "htmlName": "<div style='color:#ff8500;'>Pyric</div><div style='color:#b3b3b3; font-size: 0.9em;'>Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Fire Damage</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Divine: Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Holy Damage",
+        "shortName": "Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Holy Damage",
+        "htmlName": "<div style='color:#ff8500;'>Divine</div><div style='color:#b3b3b3; font-size: 0.9em;'>Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Holy Damage</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Voltaic: Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Lightning Damage",
+        "shortName": "Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Lightning Damage",
+        "htmlName": "<div style='color:#ff8500;'>Voltaic</div><div style='color:#b3b3b3; font-size: 0.9em;'>Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Lightning Damage</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Brutal: Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Physical Damage",
+        "shortName": "Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Physical Damage",
+        "htmlName": "<div style='color:#ff8500;'>Brutal</div><div style='color:#b3b3b3; font-size: 0.9em;'>Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Physical Damage</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Noxious: Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Poison Damage",
+        "shortName": "Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Poison Damage",
+        "htmlName": "<div style='color:#ff8500;'>Noxious</div><div style='color:#b3b3b3; font-size: 0.9em;'>Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Poison Damage</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Umbral: Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Shadow Damage",
+        "shortName": "Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Shadow Damage",
+        "htmlName": "<div style='color:#ff8500;'>Umbral</div><div style='color:#b3b3b3; font-size: 0.9em;'>Lucky Hit: Up to a 40% Chance to Deal +[3,500 - 4,375] Shadow Damage</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "of Restoration: +[8.8 - 10.0]% Potion Healing",
+        "shortName": "+[8.8 - 10.0]% Potion Healing",
+        "htmlName": "<div style='color:#ff8500;'>of Restoration</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[8.8 - 10.0]% Potion Healing</div>",
+        "category": "Defensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Focused: +[71 - 94]% Critical Strike Damage",
+        "shortName": "+[71 - 94]% Critical Strike Damage",
+        "htmlName": "<div style='color:#ff8500;'>Focused</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[71 - 94]% Critical Strike Damage</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "of the Focused: +[110 - 144]% Critical Strike Damage",
+        "shortName": "+[110 - 144]% Critical Strike Damage",
+        "htmlName": "<div style='color:#ff8500;'>of the Focused</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[110 - 144]% Critical Strike Damage</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    }
+];
+
+    if (window.D4_DATABASE && window.D4_DATABASE.classData && window.D4_DATABASE.classData["Necromancer"]) {
+        let necro = window.D4_DATABASE.classData["Necromancer"];
+        if (!necro.equipment) necro.equipment = {};
+        if (!necro.equipment.charm) necro.equipment.charm = {};
+        if (!necro.equipment.charm.modifiers) necro.equipment.charm.modifiers = [];
+        
+        // Push all charm modifiers directly into the necro charm slot
+        necro.equipment.charm.modifiers.push(...charmModifiers);
+    }
+}, 300);
