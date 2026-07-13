@@ -378,7 +378,8 @@ Object.assign(window.D4_DATABASE, {
             type: "Seal",
             rarity: "mythic",
             isMythic: true,
-            desc: "Reduces the number of Charms needed for Set bonuses by 1 (to a minimum of 2)."
+            desc: "Reduces the number of Charms needed for Set bonuses by 1 (to a minimum of 2).",
+            flavorText: "Every facet, precise. Each turn of the stone, a symphony of refracted light. How miraculous the properties? How thrilling the possibilities?\" -Zoltun Kulle"
         },
         {
             name: "Seal of the Golden Epiphany",
@@ -386,7 +387,8 @@ Object.assign(window.D4_DATABASE, {
             type: "Seal",
             rarity: "mythic",
             isMythic: true,
-            desc: "Can equip up to 3 Unique Charms."
+            desc: "Can equip up to 3 Unique Charms.",
+            flavorText: "I know what I must do. Phoba, Fer, Mlor, aligned upon a single, terrible course. Yet despite myself, I find the certainty not only comforting but beautiful in its simplicity.\" -Tal Rasha"
         }
     ,
           {

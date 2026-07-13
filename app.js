@@ -6956,14 +6956,16 @@ function showItemTooltip(itemObj, e, slotName) {
     else if (itemObj.rarity === 'set') rarityColor = '#00ff00'; // Set green
 
     let titleType = "Ancestral Legendary";
-    if (isMythic) titleType = "Mythic Unique";
+    if (isMythic && itemObj.type === 'Seal') titleType = "Ancestral Mythic Unique";
+    else if (isMythic) titleType = "Mythic Unique";
     else if (isUnique) titleType = "Ancestral Unique";
     else if (itemObj.rarity === 'rare') titleType = "Ancestral Rare";
     else if (itemObj.rarity === 'set') titleType = "Ancestral Set";
     
     // Guess item type from slot name
     let itemType = slotName;
-    if (slotName.toLowerCase().includes('weapon') || slotName === 'Mainhand' || slotName === 'Offhand') {
+    if (itemObj.type === 'Seal') itemType = "Horadric Seal";
+    else if (slotName.toLowerCase().includes('weapon') || slotName === 'Mainhand' || slotName === 'Offhand') {
         let dbItem = getDbItems(slotName).find(i => i.name === itemObj.name);
         if (dbItem && dbItem.type) itemType = dbItem.type;
         else if (slotName === 'Mainhand') itemType = "One-Handed Weapon";
@@ -6981,6 +6983,7 @@ function showItemTooltip(itemObj, e, slotName) {
         <div style="color: #ccc; font-size: 0.9rem; margin-bottom: 10px;">
             900 Item Power
         </div>
+        ${itemObj.type === 'Seal' ? `<div style="margin-top: 10px; margin-bottom: 10px; border-top: 1px solid #444; border-bottom: 1px solid #444; padding: 8px 0; color: #ccc; font-size: 0.85rem; display: flex; align-items: center; text-transform: none;"><span style="color: #777; margin-right: 5px;">❖</span> Unlocks 6 Charm Slots</div>` : ''}
     `;
 
     // Weapon Stats
@@ -7041,7 +7044,7 @@ function showItemTooltip(itemObj, e, slotName) {
             });
             tooltipHtml += `
                 <div style="border-top: 1px solid #444; margin-top: 5px; padding-top: 8px; font-size: 0.85rem; line-height: 1.4; display: flex; text-transform: none;">
-                    <span style="color: #e1b171; margin-right: 5px;">★</span>
+                    <span style="color: ${isMythic ? '#c17ce2' : '#e1b171'}; margin-right: 5px; font-size: 1.1em;">${isMythic ? '❖' : '★'}</span>
                     <span style="color: #d18a45;">${aspectDescHtml}</span>
                 </div>
             `;
@@ -7051,18 +7054,27 @@ function showItemTooltip(itemObj, e, slotName) {
     // Unique Power
     if (isUnique || isMythic) {
         let baseName2 = itemObj.name.replace(' (Charm)', '');
-          const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === baseName2) || (window.D4_DATABASE?.mythics || []).find(u => u.name === baseName2);
-        if (uniqueObj && uniqueObj.desc) {
-            let udesc = uniqueObj.desc;
+        const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === baseName2) || (window.D4_DATABASE?.mythics || []).find(u => u.name === baseName2);
+        
+        let udesc = null;
+        if (itemObj.type === 'Seal' && itemObj.desc) {
+            udesc = itemObj.desc;
+        } else if (uniqueObj && uniqueObj.desc) {
+            udesc = uniqueObj.desc;
+        }
+
+        if (udesc) {
+            let flavorHtml = itemObj.flavorText ? `<div style="margin-top: 10px; color: #888; font-style: italic; font-size: 0.8rem;">"${itemObj.flavorText}"</div>` : '';
             tooltipHtml += `
                 <div style="border-top: 1px solid #444; margin-top: 5px; padding-top: 8px; font-size: 0.85rem; line-height: 1.4; display: flex; text-transform: none;">
-                    <span style="color: #e1b171; margin-right: 5px;">★</span>
-                    <span style="color: #d18a45;">${udesc}</span>
+                    <span style="color: ${isMythic ? '#c17ce2' : '#e1b171'}; margin-right: 5px; font-size: 1.1em;">${isMythic ? '❖' : '★'}</span>
+                    <span style="color: ${isMythic ? '#c17ce2' : '#d18a45'}; width: 100%;">${udesc}
+                        ${flavorHtml}
+                    </span>
                 </div>
             `;
         }
     }
-
     
     // Set Information
     if (itemObj.rarity === 'set' && itemObj.set) {
