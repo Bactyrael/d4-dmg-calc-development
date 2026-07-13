@@ -4537,7 +4537,13 @@ function compileCharacterStats(equipped, autoStats) {
                                 addStat(compiledStats, 'Word of the Blood Binder 2-piece Factor', 60, 'Word of the Blood Binder (2-piece)');
                             }
                             if (req === '3') {
-                                addStat(compiledStats, '% Maximum Life', 50, 'Word of the Blood Binder (3-piece)');
+                                if (compiledStats['Maximum Life']) {
+                                    compiledStats['Maximum Life'].final += (compiledStats['Maximum Life'].total * 0.50);
+                                    compiledStats['Maximum Life'].pctSources.push({
+                                        name: 'Word of the Blood Binder (3-piece)',
+                                        val: 50
+                                    });
+                                }
                             }
                             if (req === '5') {
                                 addStat(compiledStats, 'Word of the Blood Binder 5-piece Cast Twice Factor', 100, 'Word of the Blood Binder (5-piece)');
