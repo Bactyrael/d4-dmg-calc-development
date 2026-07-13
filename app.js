@@ -1377,10 +1377,11 @@ function renderTalismanUI() {
         }
     }
     
-    let unlockedSlots = (currentBuild.talisman.seal && currentBuild.talisman.seal.name === 'Legendary Horadric Seal') ? 5 : 5;
+    let unlockedSlots = 0;
     
     // Check if seal has +1 Charm Slot modifier or is Mythic
     if (currentBuild.talisman.seal) {
+        unlockedSlots = 5;
         let seal = currentBuild.talisman.seal;
         if (seal.isMythic || seal.rarity === 'mythic') {
             unlockedSlots = 6;
@@ -9268,6 +9269,19 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
           valDiv.textContent = 'Empty';
           valDiv.className = 'paperdoll-slot-value empty';
         }
+        
+        // Remove from Talisman UI state
+        if (currentModalSlot === 'Seal') {
+            if (window.currentBuild && window.currentBuild.talisman) window.currentBuild.talisman.seal = null;
+            if (typeof renderTalismanUI === 'function') renderTalismanUI();
+        } else if (currentModalSlot && currentModalSlot.startsWith('Charm ')) {
+            const idx = parseInt(currentModalSlot.split(' ')[1]) - 1;
+            if (window.currentBuild && window.currentBuild.talisman && window.currentBuild.talisman.charms) {
+                window.currentBuild.talisman.charms[idx] = null;
+            }
+            if (typeof renderTalismanUI === 'function') renderTalismanUI();
+        }
+        
         renderEditTab(currentModalSlot);
         switchModalTab('select');
       }
