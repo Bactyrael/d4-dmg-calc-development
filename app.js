@@ -4442,6 +4442,13 @@ function compileCharacterStats(equipped, autoStats) {
                     '3': '+200 to All Stats.'
                 };
             }
+            if (!window.D4_DATABASE.talismanSets['Art of the Bone Weaver']) {
+                window.D4_DATABASE.talismanSets['Art of the Bone Weaver'] = {
+                    '2': 'Bone skills gain 10%[+] Critical Strike Chance and 50%[x] Damage.',
+                    '3': 'Gain 30% Universal Damage Reduction.',
+                    '5': 'Bone skills gain an additional 200%[x] Damage.'
+                };
+            }
         }
         
         // Evaluate bonuses
@@ -4505,6 +4512,18 @@ function compileCharacterStats(equipped, autoStats) {
                                 addStat(compiledStats, 'Willpower', 200, 'Survival Set (3-piece)');
                                 addStat(compiledStats, 'Strength', 200, 'Survival Set (3-piece)');
                                 addStat(compiledStats, 'Dexterity', 200, 'Survival Set (3-piece)');
+                            }
+                        }
+                        if (setName === 'Art of the Bone Weaver') {
+                            if (req === '2') {
+                                addStat(compiledStats, 'Art of the Bone Weaver 2-piece Factor', 50, 'Art of the Bone Weaver (2-piece)');
+                                addStat(compiledStats, 'Art of the Bone Weaver 2-piece Crit', 10, 'Art of the Bone Weaver (2-piece)');
+                            }
+                            if (req === '3') {
+                                addStat(compiledStats, 'Universal Damage Reduction %', 30, 'Art of the Bone Weaver (3-piece)');
+                            }
+                            if (req === '5') {
+                                addStat(compiledStats, 'Art of the Bone Weaver 5-piece Factor', 200, 'Art of the Bone Weaver (5-piece)');
                             }
                         }
                     }
@@ -10497,6 +10516,22 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         }
     }
     
+    // Apply Art of the Bone Weaver factors
+    if ((tags.includes('skill_bone') || tags.includes('search_bone')) && (stats['Art of the Bone Weaver 2-piece Factor'] || stats['Art of the Bone Weaver 5-piece Factor'])) {
+        if (stats['Art of the Bone Weaver 2-piece Factor']) {
+            let multVal = stats['Art of the Bone Weaver 2-piece Factor'].final;
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: 'Art of the Bone Weaver (2-piece) [x]', value: mult });
+        }
+        if (stats['Art of the Bone Weaver 5-piece Factor']) {
+            let multVal = stats['Art of the Bone Weaver 5-piece Factor'].final;
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: 'Art of the Bone Weaver (5-piece) [x]', value: mult });
+        }
+    }
+    
     // Apply Cadaverous Aspect if applicable
     if (stats["Cadaverous Aspect Factor"]) {
         let multVal = stats["Cadaverous Aspect Factor"].final;
@@ -11694,6 +11729,16 @@ function calculateSkillCritChance(skillObj) {
             if (v > 0) {
                 totalCrit += v;
                 components.push({ name: 'Aspect of Serration [+]', value: v });
+            }
+        }
+    }
+    
+    if (lTags.some(t => t.includes('bone'))) {
+        if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Art of the Bone Weaver 2-piece Crit']) {
+            let v = window.D4_COMPILED_STATS['Art of the Bone Weaver 2-piece Crit'].final;
+            if (v > 0) {
+                totalCrit += v;
+                components.push({ name: 'Art of the Bone Weaver (2-piece) [+]', value: v });
             }
         }
     }
