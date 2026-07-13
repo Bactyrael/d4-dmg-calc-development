@@ -9181,7 +9181,26 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       row.appendChild(icon);
       row.appendChild(name);
       
-      row.addEventListener('click', () => selectItem(item.name));
+      if (item.rarity === 'unique' || item.rarity === 'mythic' || item.rarity === 'set') {
+          row.onmouseenter = (e) => {
+              if (typeof showItemTooltip === 'function') {
+                  // Simulate an equipped item object for the tooltip
+                  const previewItem = { ...item, power: 900, quality: 0 };
+                  showItemTooltip(previewItem, e, slotName);
+              }
+          };
+          row.onmousemove = (e) => {
+              if (typeof moveItemTooltip === 'function') moveItemTooltip(e);
+          };
+          row.onmouseleave = (e) => {
+              if (typeof hideItemTooltip === 'function') hideItemTooltip();
+          };
+      }
+      
+      row.addEventListener('click', () => {
+          if (typeof hideItemTooltip === 'function') hideItemTooltip();
+          selectItem(item.name);
+      });
       list.appendChild(row);
     });
   }
