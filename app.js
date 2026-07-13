@@ -6597,6 +6597,24 @@ function applyActiveModifiers(baseSkillObj) {
         }
     }
     
+    // Will of Rathma
+    if (modified.tags && modified.tags.some(t => t.toLowerCase() === 'skill_curse')) {
+        let rathmaItem = null;
+        if (typeof window.currentBuild !== 'undefined' && window.currentBuild && window.currentBuild.equipment) {
+            rathmaItem = Object.values(window.currentBuild.equipment).find(item => item && item.name === "Will of Rathma");
+        }
+        if (rathmaItem) {
+            let rathmaVal = rathmaItem.aspectValues && rathmaItem.aspectValues[0] !== undefined ? parseFloat(rathmaItem.aspectValues[0]) / 100 : 6.0;
+            modified.secondaryScalars = modified.secondaryScalars || {};
+            modified.secondaryScalars.will_of_rathma = {
+                scalar: rathmaVal,
+                nameOverride: "Will of Rathma (vs Afflicted)",
+                isHit: true,
+                addTags: ["Damage_Type_Shadow", "Skill_Darkness", "Search_Shadow", "Search_Darkness"]
+            };
+        }
+    }
+    
     if (modified.tags) {
         const lowerTags = modified.tags.map(t => t.toLowerCase());
         let override = null;
