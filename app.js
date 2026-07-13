@@ -2850,7 +2850,8 @@ function compileCharacterStats(equipped, autoStats) {
             }
             
             if (item.rarity === 'unique' || item.rarity === 'mythic') {
-                const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === item.name);
+                let baseName1 = item.name.replace(' (Charm)', '');
+                  const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === baseName1) || (window.D4_DATABASE?.mythics || []).find(u => u.name === baseName1);
                 if (uniqueObj && uniqueObj.desc) {
                     let v = 0;
                     let handled = false;
@@ -7031,7 +7032,8 @@ function showItemTooltip(itemObj, e, slotName) {
 
     // Unique Power
     if (isUnique || isMythic) {
-        const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === itemObj.name);
+        let baseName2 = itemObj.name.replace(' (Charm)', '');
+          const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === baseName2) || (window.D4_DATABASE?.mythics || []).find(u => u.name === baseName2);
         if (uniqueObj && uniqueObj.desc) {
             let udesc = uniqueObj.desc;
             tooltipHtml += `
@@ -7895,7 +7897,8 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       `;
     } else {
       let uniqueDescHtml = '';
-      const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === itemObj.name);
+      let baseName2 = itemObj.name.replace(' (Charm)', '');
+          const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === baseName2) || (window.D4_DATABASE?.mythics || []).find(u => u.name === baseName2);
       if (uniqueObj && uniqueObj.desc) {
         let udesc = uniqueObj.desc;
         if (itemObj.name === 'Temerity' && itemObj.isMythic) {

@@ -26542,7 +26542,9 @@ Object.assign(window.D4_DATABASE, {
                         isMythic: item.isMythic,
                         isUnique: true,
                         desc: item.desc,
-                        icon: window.D4_DATABASE.talismanIcons[item.name] || item.icon
+                        icon: window.D4_DATABASE.talismanIcons[item.name] || item.icon,
+                        affixes: item.affixes ? [...item.affixes] : [],
+                        inherentAffixes: item.inherentAffixes ? [...item.inherentAffixes] : []
                     });
                 }
             }
@@ -26554,9 +26556,9 @@ Object.assign(window.D4_DATABASE, {
 setTimeout(() => {
     const charmModifiers = [
     {
-        "name": "Arisen: +[3 - 4] to Corpse Skills",
-        "shortName": "+[3 - 4] to Corpse Skills",
-        "htmlName": "<div style='color:#ff8500;'>Arisen</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[3 - 4] to Corpse Skills</div>",
+        "name": "Arisen: +[2 - 3] to Corpse Skills",
+        "shortName": "+[2 - 3] to Corpse Skills",
+        "htmlName": "<div style='color:#ff8500;'>Arisen</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[2 - 3] to Corpse Skills</div>",
         "category": "Offensive",
         "classes": [
             0,
@@ -26567,9 +26569,9 @@ setTimeout(() => {
         ]
     },
     {
-        "name": "Doom: +[3 - 4] to Curse Skills",
-        "shortName": "+[3 - 4] to Curse Skills",
-        "htmlName": "<div style='color:#ff8500;'>Doom</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[3 - 4] to Curse Skills</div>",
+        "name": "Doom: +[2 - 3] to Curse Skills",
+        "shortName": "+[2 - 3] to Curse Skills",
+        "htmlName": "<div style='color:#ff8500;'>Doom</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[2 - 3] to Curse Skills</div>",
         "category": "Offensive",
         "classes": [
             0,
@@ -26580,9 +26582,9 @@ setTimeout(() => {
         ]
     },
     {
-        "name": "The Macabre: +[3 - 4] to Macabre Skills",
-        "shortName": "+[3 - 4] to Macabre Skills",
-        "htmlName": "<div style='color:#ff8500;'>The Macabre</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[3 - 4] to Macabre Skills</div>",
+        "name": "The Macabre: +[2 - 3] to Macabre Skills",
+        "shortName": "+[2 - 3] to Macabre Skills",
+        "htmlName": "<div style='color:#ff8500;'>The Macabre</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[2 - 3] to Macabre Skills</div>",
         "category": "Offensive",
         "classes": [
             0,
@@ -26710,9 +26712,9 @@ setTimeout(() => {
         ]
     },
     {
-        "name": "Skillful: +[3 - 4] to Basic Skills",
-        "shortName": "+[3 - 4] to Basic Skills",
-        "htmlName": "<div style='color:#ff8500;'>Skillful</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[3 - 4] to Basic Skills</div>",
+        "name": "Skillful: +[2 - 3] to Basic Skills",
+        "shortName": "+[2 - 3] to Basic Skills",
+        "htmlName": "<div style='color:#ff8500;'>Skillful</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[2 - 3] to Basic Skills</div>",
         "category": "Offensive",
         "classes": [
             0,
@@ -26723,9 +26725,9 @@ setTimeout(() => {
         ]
     },
     {
-        "name": "Principal: +[3 - 4] to Core Skills",
-        "shortName": "+[3 - 4] to Core Skills",
-        "htmlName": "<div style='color:#ff8500;'>Principal</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[3 - 4] to Core Skills</div>",
+        "name": "Principal: +[2 - 3] to Core Skills",
+        "shortName": "+[2 - 3] to Core Skills",
+        "htmlName": "<div style='color:#ff8500;'>Principal</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[2 - 3] to Core Skills</div>",
         "category": "Offensive",
         "classes": [
             0,
@@ -26804,6 +26806,97 @@ setTimeout(() => {
         "name": "Vigorous: [8.1 - 10.0]% Maximum Life",
         "shortName": "[8.1 - 10.0]% Maximum Life",
         "htmlName": "<div style='color:#ff8500;'>Vigorous</div><div style='color:#b3b3b3; font-size: 0.9em;'>[8.1 - 10.0]% Maximum Life</div>",
+        "category": "Defensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "of Restoration: +[8.8 - 10.0]% Potion Healing",
+        "shortName": "+[8.8 - 10.0]% Potion Healing",
+        "htmlName": "<div style='color:#ff8500;'>of Restoration</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[8.8 - 10.0]% Potion Healing</div>",
+        "category": "Defensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Focused: +[71 - 94]% Critical Strike Damage",
+        "shortName": "+[71 - 94]% Critical Strike Damage",
+        "htmlName": "<div style='color:#ff8500;'>Focused</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[71 - 94]% Critical Strike Damage</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Osseous: +[2 - 3] to Bone Skills",
+        "shortName": "+[2 - 3] to Bone Skills",
+        "htmlName": "<div style='color:#ff8500;'>Osseous</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[2 - 3] to Bone Skills</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Bloody: +[2 - 3] to Blood Skills",
+        "shortName": "+[2 - 3] to Blood Skills",
+        "htmlName": "<div style='color:#ff8500;'>Bloody</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[2 - 3] to Blood Skills</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Gloomy: +[2 - 3] to Darkness Skills",
+        "shortName": "+[2 - 3] to Darkness Skills",
+        "htmlName": "<div style='color:#ff8500;'>Gloomy</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[2 - 3] to Darkness Skills</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Reanimator's: +[2 - 3] to Minion Skills",
+        "shortName": "+[2 - 3] to Minion Skills",
+        "htmlName": "<div style='color:#ff8500;'>Reanimator's</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[2 - 3] to Minion Skills</div>",
+        "category": "Offensive",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Unbounding: +[8 - 10]% Impairment Reduction",
+        "shortName": "+[8 - 10]% Impairment Reduction",
+        "htmlName": "<div style='color:#ff8500;'>Unbounding</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[8 - 10]% Impairment Reduction</div>",
         "category": "Defensive",
         "classes": [
             0,
@@ -26905,10 +26998,10 @@ setTimeout(() => {
         ]
     },
     {
-        "name": "of Restoration: +[8.8 - 10.0]% Potion Healing",
-        "shortName": "+[8.8 - 10.0]% Potion Healing",
-        "htmlName": "<div style='color:#ff8500;'>of Restoration</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[8.8 - 10.0]% Potion Healing</div>",
-        "category": "Defensive",
+        "name": "Dazing: Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Daze for 2 Seconds",
+        "shortName": "Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Daze for 2 Seconds",
+        "htmlName": "<div style='color:#ff8500;'>Dazing</div><div style='color:#b3b3b3; font-size: 0.9em;'>Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Daze for 2 Seconds</div>",
+        "category": "Utility",
         "classes": [
             0,
             0,
@@ -26918,10 +27011,10 @@ setTimeout(() => {
         ]
     },
     {
-        "name": "Focused: +[71 - 94]% Critical Strike Damage",
-        "shortName": "+[71 - 94]% Critical Strike Damage",
-        "htmlName": "<div style='color:#ff8500;'>Focused</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[71 - 94]% Critical Strike Damage</div>",
-        "category": "Offensive",
+        "name": "Immobilization: Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Immobilize for 2 Seconds",
+        "shortName": "Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Immobilize for 2 Seconds",
+        "htmlName": "<div style='color:#ff8500;'>Immobilization</div><div style='color:#b3b3b3; font-size: 0.9em;'>Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Immobilize for 2 Seconds</div>",
+        "category": "Utility",
         "classes": [
             0,
             0,
@@ -26931,10 +27024,36 @@ setTimeout(() => {
         ]
     },
     {
-        "name": "of the Focused: +[110 - 144]% Critical Strike Damage",
-        "shortName": "+[110 - 144]% Critical Strike Damage",
-        "htmlName": "<div style='color:#ff8500;'>of the Focused</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[110 - 144]% Critical Strike Damage</div>",
-        "category": "Offensive",
+        "name": "Slowing: Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Slow for 2 Seconds",
+        "shortName": "Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Slow for 2 Seconds",
+        "htmlName": "<div style='color:#ff8500;'>Slowing</div><div style='color:#b3b3b3; font-size: 0.9em;'>Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Slow for 2 Seconds</div>",
+        "category": "Utility",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Stunning: Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Stun for 2 Seconds",
+        "shortName": "Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Stun for 2 Seconds",
+        "htmlName": "<div style='color:#ff8500;'>Stunning</div><div style='color:#b3b3b3; font-size: 0.9em;'>Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Stun for 2 Seconds</div>",
+        "category": "Utility",
+        "classes": [
+            0,
+            0,
+            0,
+            0,
+            1
+        ]
+    },
+    {
+        "name": "Freezing: Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Freeze for 2 Seconds",
+        "shortName": "Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Freeze for 2 Seconds",
+        "htmlName": "<div style='color:#ff8500;'>Freezing</div><div style='color:#b3b3b3; font-size: 0.9em;'>Lucky Hit: Up to a +[3.0 - 4.0]% Chance to Freeze for 2 Seconds</div>",
+        "category": "Utility",
         "classes": [
             0,
             0,
