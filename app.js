@@ -4426,6 +4426,24 @@ function compileCharacterStats(equipped, autoStats) {
         
         if (!compiledStats['Talisman Set Bonuses']) compiledStats['Talisman Set Bonuses'] = { final: 0, isMultiplicative: false, components: [] };
         
+        // Ensure new sets are registered so the loop evaluates them
+        if (window.D4_DATABASE) {
+            if (!window.D4_DATABASE.talismanSets) window.D4_DATABASE.talismanSets = {};
+            if (!window.D4_DATABASE.talismanSets["Rathma's Waking Touch"]) {
+                window.D4_DATABASE.talismanSets["Rathma's Waking Touch"] = {
+                    '2': 'Increases Minion Damage by 60%[x].',
+                    '3': 'Gain 35% Universal Damage Reduction.',
+                    '5': 'Army of the Dead damage is increased by 450%[x]. Minions gain +25% Attack Speed.'
+                };
+            }
+            if (!window.D4_DATABASE.talismanSets['Survival']) {
+                window.D4_DATABASE.talismanSets['Survival'] = {
+                    '2': '+1000 Armor and +100 Resistance to All Elements.',
+                    '3': '+200 to All Stats.'
+                };
+            }
+        }
+        
         // Evaluate bonuses
         for (const setName in setCounts) {
             let count = setCounts[setName];
