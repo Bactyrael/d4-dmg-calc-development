@@ -1360,12 +1360,20 @@ function renderTalismanUI() {
             }
             let style = getScaledSpriteStyle(sealData.icon, 60, sealData.type);
             sealSlot.innerHTML = `<div style="${style}; border-radius: 50%; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);"></div>`;
-            sealSlot.style.borderColor = '#d18a45'; // Keep golden accent
+            sealSlot.style.borderColor = '#d18a45';
             sealSlot.dataset.value = JSON.stringify(sealData);
+            sealSlot.onmouseenter = (e) => {
+                if (sealData && sealData.name) showItemTooltip(sealData, e, 'Seal');
+            };
+            sealSlot.onmousemove = (e) => typeof moveItemTooltip === 'function' ? moveItemTooltip(e) : null;
+            sealSlot.onmouseleave = (e) => typeof hideItemTooltip === 'function' ? hideItemTooltip() : null;
         } else {
             sealSlot.innerHTML = '';
             sealSlot.style.borderColor = '#d18a45';
             delete sealSlot.dataset.value;
+            sealSlot.onmouseenter = null;
+            sealSlot.onmousemove = null;
+            sealSlot.onmouseleave = null;
         }
     }
     
@@ -1412,9 +1420,17 @@ function renderTalismanUI() {
                 let style = getScaledSpriteStyle(charm.icon, 50, charm.type);
                 charmSlot.innerHTML = `<div style="${style}; border-radius: 50%; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);"></div>`;
                 charmSlot.dataset.value = JSON.stringify(charm);
+                charmSlot.onmouseenter = (e) => {
+                    if (charm && charm.name) showItemTooltip(charm, e, 'Charm ' + (i+1));
+                };
+                charmSlot.onmousemove = (e) => typeof moveItemTooltip === 'function' ? moveItemTooltip(e) : null;
+                charmSlot.onmouseleave = (e) => typeof hideItemTooltip === 'function' ? hideItemTooltip() : null;
             } else {
                 charmSlot.innerHTML = '';
                 delete charmSlot.dataset.value;
+                charmSlot.onmouseenter = null;
+                charmSlot.onmousemove = null;
+                charmSlot.onmouseleave = null;
             }
         }
     }
@@ -8292,7 +8308,9 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     }
 
     if (slotName.toLowerCase() === 'seal' || slotName.toLowerCase().startsWith('charm')) {
-        aspectSection = '';
+        if (itemObj.rarity !== 'unique' && itemObj.rarity !== 'mythic') {
+            aspectSection = '';
+        }
         temperSection = '';
         socketSection = '';
     }
