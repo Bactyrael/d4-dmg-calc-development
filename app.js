@@ -4449,6 +4449,13 @@ function compileCharacterStats(equipped, autoStats) {
                     '5': 'Bone skills gain an additional 200%[x] Damage.'
                 };
             }
+            if (!window.D4_DATABASE.talismanSets['Word of the Blood Binder']) {
+                window.D4_DATABASE.talismanSets['Word of the Blood Binder'] = {
+                    '2': 'Blood skills gain a 60%[x] Damage multiplier.',
+                    '3': 'Increases Maximum Life by 50%[x].',
+                    '5': 'Basic, Core, and Ultimate Blood skills cast twice (100%[x] damage). All Blood skills gain 75%[x] Damage.'
+                };
+            }
         }
         
         // Evaluate bonuses
@@ -4524,6 +4531,21 @@ function compileCharacterStats(equipped, autoStats) {
                             }
                             if (req === '5') {
                                 addStat(compiledStats, 'Art of the Bone Weaver 5-piece Factor', 200, 'Art of the Bone Weaver (5-piece)');
+                            }
+                        }
+                        if (setName === 'Word of the Blood Binder') {
+                            if (req === '2') {
+                                addStat(compiledStats, 'Word of the Blood Binder 2-piece Factor', 60, 'Word of the Blood Binder (2-piece)');
+                            }
+                            if (req === '3') {
+                                addStat(compiledStats, 'Word of the Blood Binder 3-piece Life Factor', 50, 'Word of the Blood Binder (3-piece)');
+                                if (compiledStats['Maximum Life']) {
+                                    compiledStats['Maximum Life'].final *= 1.50;
+                                }
+                            }
+                            if (req === '5') {
+                                addStat(compiledStats, 'Word of the Blood Binder 5-piece Cast Twice Factor', 100, 'Word of the Blood Binder (5-piece)');
+                                addStat(compiledStats, 'Word of the Blood Binder 5-piece Global Factor', 75, 'Word of the Blood Binder (5-piece)');
                             }
                         }
                     }
@@ -10529,6 +10551,28 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             let mult = 1 + (multVal / 100);
             bucket *= mult;
             components.push({ name: 'Art of the Bone Weaver (5-piece) [x]', value: mult });
+        }
+    }
+    
+    // Apply Word of the Blood Binder factors
+    if (tags.includes('skill_blood') || tags.includes('search_blood') || dType === 'blood') {
+        if (stats['Word of the Blood Binder 2-piece Factor']) {
+            let multVal = stats['Word of the Blood Binder 2-piece Factor'].final;
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: 'Word of the Blood Binder (2-piece) [x]', value: mult });
+        }
+        if (stats['Word of the Blood Binder 5-piece Global Factor']) {
+            let multVal = stats['Word of the Blood Binder 5-piece Global Factor'].final;
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: 'Word of the Blood Binder (5-piece) [x]', value: mult });
+        }
+        if (stats['Word of the Blood Binder 5-piece Cast Twice Factor'] && (tags.includes('keyword_basic') || tags.includes('keyword_core') || tags.includes('keyword_ultimate') || tags.includes('search_basic') || tags.includes('search_core') || tags.includes('search_ultimate'))) {
+            let multVal = stats['Word of the Blood Binder 5-piece Cast Twice Factor'].final;
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: 'Word of the Blood Binder (5-piece Cast Twice) [x]', value: mult });
         }
     }
     
