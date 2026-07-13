@@ -4540,6 +4540,11 @@ function compileCharacterStats(equipped, autoStats) {
                                 addStat(compiledStats, 'Word of the Blood Binder 3-piece Life Factor', 50, 'Word of the Blood Binder (3-piece)');
                                 if (compiledStats['Maximum Life']) {
                                     compiledStats['Maximum Life'].final *= 1.50;
+                                    compiledStats['Maximum Life'].flatSources.push({
+                                        name: 'Word of the Blood Binder (3-piece)',
+                                        val: 1.50,
+                                        isMultiplier: true
+                                    });
                                 }
                             }
                             if (req === '5') {
