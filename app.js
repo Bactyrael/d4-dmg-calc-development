@@ -4465,6 +4465,18 @@ function compileCharacterStats(equipped, autoStats) {
                                 addStat(compiledStats, 'Slaughter 3-piece Factor', 15, 'Slaughter Set (3-piece)');
                             }
                         }
+                        if (setName === "Rathma's Waking Touch") {
+                            if (req === '2') {
+                                addStat(compiledStats, 'Waking Touch 2-piece Factor', 60, 'Waking Touch (2-piece)');
+                            }
+                            if (req === '3') {
+                                addStat(compiledStats, 'Universal Damage Reduction %', 35, 'Waking Touch (3-piece)');
+                            }
+                            if (req === '5') {
+                                addStat(compiledStats, 'Waking Touch 5-piece Factor', 450, 'Waking Touch (5-piece)');
+                                addStat(compiledStats, '% Minion Attack Speed', 25, 'Waking Touch (5-piece)');
+                            }
+                        }
                     }
                 }
             }
@@ -10354,6 +10366,24 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             let mult = 1 + (stats["Slaughter 3-piece Factor"].final / 100);
             bucket *= mult;
             components.push({ name: 'Slaughter Set (3-piece, Elite) [x]', value: mult });
+        }
+    }
+    
+    // Apply Waking Touch Set Multipliers
+    if (stats["Waking Touch 2-piece Factor"]) {
+        let isMinionSkill = tags.some(t => t.includes('minion') || t.includes('summon'));
+        if (isMinionSkill) {
+            let mult = 1 + (stats["Waking Touch 2-piece Factor"].final / 100);
+            bucket *= mult;
+            components.push({ name: 'Waking Touch (2-piece) [x]', value: mult });
+        }
+    }
+    
+    if (stats["Waking Touch 5-piece Factor"]) {
+        if (skill.name === 'Army of the Dead' || skill.baseName === 'Army of the Dead') {
+            let mult = 1 + (stats["Waking Touch 5-piece Factor"].final / 100);
+            bucket *= mult;
+            components.push({ name: 'Waking Touch (5-piece) [x]', value: mult });
         }
     }
 
