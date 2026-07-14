@@ -4550,6 +4550,18 @@ function compileCharacterStats(equipped, autoStats) {
                                 addStat(compiledStats, 'Word of the Blood Binder 5-piece Global Factor', 75, 'Word of the Blood Binder (5-piece)');
                             }
                         }
+                        if (setName === 'Peace of the Black Shroud') {
+                            if (req === '2') {
+                                addStat(compiledStats, 'Peace of the Black Shroud 2-piece Factor', 75, 'Peace of the Black Shroud (2-piece)');
+                            }
+                            if (req === '3') {
+                                addStat(compiledStats, 'Universal Damage Reduction %', 30, 'Peace of the Black Shroud (3-piece)');
+                            }
+                            if (req === '5') {
+                                addStat(compiledStats, 'Peace of the Black Shroud 5-piece Shadow/Cold Factor', 175, 'Peace of the Black Shroud (5-piece)');
+                                addStat(compiledStats, 'Peace of the Black Shroud 5-piece Global Factor', 50, 'Peace of the Black Shroud (5-piece)');
+                            }
+                        }
                     }
                 }
             }
@@ -10576,6 +10588,32 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             bucket *= mult;
             components.push({ name: 'Word of the Blood Binder (5-piece Cast Twice) [x]', value: mult });
         }
+    }
+    
+    // Apply Peace of the Black Shroud factors
+    if (tags.includes('skill_darkness') || tags.includes('search_darkness') || dType === 'darkness') {
+        if (stats['Peace of the Black Shroud 2-piece Factor']) {
+            let multVal = stats['Peace of the Black Shroud 2-piece Factor'].final;
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: 'Peace of the Black Shroud (2-piece) [x]', value: mult });
+        }
+    }
+    
+    if (dType === 'shadow' || dType === 'cold' || tags.includes('skill_shadow') || tags.includes('skill_cold') || tags.includes('search_shadow') || tags.includes('search_cold')) {
+        if (stats['Peace of the Black Shroud 5-piece Shadow/Cold Factor']) {
+            let multVal = stats['Peace of the Black Shroud 5-piece Shadow/Cold Factor'].final;
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: 'Peace of the Black Shroud (5-piece Shadow/Cold) [x]', value: mult });
+        }
+    }
+    
+    if (stats['Peace of the Black Shroud 5-piece Global Factor']) {
+        let multVal = stats['Peace of the Black Shroud 5-piece Global Factor'].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Peace of the Black Shroud (5-piece Global) [x]', value: mult });
     }
     
     // Apply Cadaverous Aspect if applicable
