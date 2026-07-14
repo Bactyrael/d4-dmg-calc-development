@@ -10591,7 +10591,7 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
     }
     
     // Apply Peace of the Black Shroud factors
-    if (tags.includes('skill_darkness') || tags.includes('search_darkness') || dType === 'darkness') {
+    if (tags.includes('skill_darkness') || tags.includes('search_darkness') || dType === 'darkness' || tags.includes('skill_shadow') || tags.includes('search_shadow') || dType === 'shadow') {
         if (stats['Peace of the Black Shroud 2-piece Factor']) {
             let multVal = stats['Peace of the Black Shroud 2-piece Factor'].final;
             let mult = 1 + (multVal / 100);
