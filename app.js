@@ -11311,7 +11311,7 @@ function renderCalcSkills() {
                                       let thornsSkillObj = {
                                           name: 'Defender Thorns',
                                           baseName: 'Skeleton Warrior',
-                                          tags: ['Minion', 'Summoning', 'Thorns', 'Physical', 'Damage'],
+                                          tags: ['Minion', 'Summoning', 'Thorns', 'Physical', 'Damage', 'Blood', 'Skill_Blood', 'Search_Blood'],
                                           damageType: 'Physical',
                                           isHit: true
                                       };
