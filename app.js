@@ -10126,6 +10126,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         }
         
         calculate();
+        if (typeof saveBuild === 'function') saveBuild();
         switchModalTab('edit');
         window.currentModifierEditing = null;
         renderEditTab(slotName);
@@ -13356,3 +13357,7 @@ document.addEventListener('DOMContentLoaded', () => { setTimeout(() => {
           list.appendChild(card);
       });
   }
+
+
+
+
