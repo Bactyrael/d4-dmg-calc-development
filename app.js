@@ -1346,7 +1346,8 @@ function getSlotBackgroundImage(slotName, itemObj) {
 
 
 function renderTalismanUI() {
-    if (!currentBuild || !currentBuild.talisman) return;
+    if (!currentBuild) return;
+    if (!currentBuild.talisman) currentBuild.talisman = { seal: null, charms: [null, null, null, null, null, null] };
     
     const sealSlot = document.querySelector('.seal-slot');
     if (sealSlot) {
