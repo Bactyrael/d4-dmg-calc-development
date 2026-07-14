@@ -2863,7 +2863,11 @@ function compileCharacterStats(equipped, autoStats) {
                   const match = effect.match(/([\+\-]?[\d\.]+)(%?)\s+(.*)/);
                   if (match) {
                       let v = parseFloat(match[1]);
-                      let name = (match[2] ? '%' : '') + match[3];
+                      let statLabel = match[3];
+                      if (statLabel.includes('Damage Multiplier')) {
+                          statLabel = statLabel.replace('Multiplier', '[x]');
+                      }
+                      let name = (match[2] ? '%' : '') + statLabel;
                       addStat(stats, name, v, slotName + ' (Gem)');
                   }
               });
