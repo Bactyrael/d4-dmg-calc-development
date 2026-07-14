@@ -4472,6 +4472,12 @@ function compileCharacterStats(equipped, autoStats) {
         // Ensure new sets are registered so the loop evaluates them
         if (window.D4_DATABASE) {
             if (!window.D4_DATABASE.talismanSets) window.D4_DATABASE.talismanSets = {};
+            if (!window.D4_DATABASE.talismanSets["Slaughter"]) {
+                window.D4_DATABASE.talismanSets["Slaughter"] = {
+                    '2': '+[5]% Damage Reduction. x[10]% Damage',
+                    '3': '+[10]% Damage Reduction from Elites. x[15]% Damage to Elites'
+                };
+            }
             if (!window.D4_DATABASE.talismanSets["Rathma's Waking Touch"]) {
                 window.D4_DATABASE.talismanSets["Rathma's Waking Touch"] = {
                     '2': 'Increases Minion Damage by 60%[x].',
