@@ -4431,14 +4431,18 @@ function compileCharacterStats(equipped, autoStats) {
         
         // Tally sets
         for (let i = 0; i < 6; i++) {
-            const charm = currentBuild.talisman.charms[i];
-            if (charm && charm.rarity === 'set' && charm.set) {
+            let charm = currentBuild.talisman.charms[i];
+            if (!charm) continue;
+            
+            // Hydrate missing fields from database for lightweight saves
+            const dbCharm = (window.D4_DATABASE?.charms || []).find(c => c.name === charm.name);
+            if (dbCharm) {
+                charm = { ...dbCharm, ...charm };
+            }
+
+            if (charm.rarity === 'set' && charm.set) {
                 setCounts[charm.set] = (setCounts[charm.set] || 0) + 1;
-            } else if (charm && charm.isUnique) {
-                // If it's a unique charm, its power applies globally
-                // In this simplified model, unique charms provide their power as a stat component
-                // Actually, Unique Charms just grant the Legendary power, so we should add to a legendary array
-                // For now, we just ensure it's tracked
+            } else if (charm.isUnique || charm.rarity === 'unique' || charm.rarity === 'mythic') {
                 if (!compiledStats['Unique Charm Powers']) compiledStats['Unique Charm Powers'] = { final: 0, isMultiplicative: false, components: [] };
                 compiledStats['Unique Charm Powers'].components.push({ name: charm.name, value: charm.desc || '' });
             }
