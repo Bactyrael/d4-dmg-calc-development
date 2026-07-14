@@ -6806,6 +6806,7 @@ function applyActiveModifiers(baseSkillObj) {
                 scalar: baseArea * pct,
                 nameOverride: "Ebonpiercer (Piercing Darkness)",
                 isDoT: true,
+                scalesWithRank: false,
                 addTags: ["Search_DoT"]
             };
         }
@@ -6824,6 +6825,7 @@ function applyActiveModifiers(baseSkillObj) {
                 scalar: rathmaVal,
                 nameOverride: "Will of Rathma (vs Afflicted)",
                 isHit: true,
+                scalesWithRank: false,
                 tags: ["Damage_Type_Shadow", "Skill_Darkness", "Skill_Curse", "Skill_Profane", "Search_Shadow", "Search_Darkness", "Search_Curse"]
             };
         }
@@ -11598,6 +11600,10 @@ function renderCalcSkills() {
                                     }
                                     secSkill.baseDamageScalar = scalarVal;
                                     secSkill.isSecondary = true;
+                                    if (typeof val === 'object' && val.scalesWithRank === false) {
+                                        secSkill.damageScalePerLevel = 0;
+                                        secSkill.damageScalePerFive = 0;
+                                    }
                                     let isHit = (typeof val === 'object' && val.isDoT) ? false : ((typeof val === 'object' && val.isHit !== undefined) ? val.isHit : !key.toLowerCase().includes('dot'));
                                     let b2 = getSkillDamageBreakdown(secSkill, rank, isHit);
                                     let pct = (scalarVal * b2.rankMultiplier * 100).toFixed(1).replace('.0', '');
