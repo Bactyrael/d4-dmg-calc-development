@@ -1261,9 +1261,11 @@ function getEquipmentValues() {
     const boxes = container.querySelectorAll('.equipment-slot-box, .charm-slot, .seal-slot');
     boxes.forEach(box => {
       try {
-        vals[box.dataset.slot] = box.dataset.value ? JSON.parse(box.dataset.value) : null;
+        let parsed = box.dataset.value ? JSON.parse(box.dataset.value) : null;
+        if (parsed || !vals[box.dataset.slot]) vals[box.dataset.slot] = parsed;
       } catch(e) {
-        vals[box.dataset.slot] = box.dataset.value ? { name: box.dataset.value, power: 900, quality: 0 } : null;
+        let fallback = box.dataset.value ? { name: box.dataset.value, power: 900, quality: 0 } : null;
+        if (fallback || !vals[box.dataset.slot]) vals[box.dataset.slot] = fallback;
       }
     });
     return vals;
