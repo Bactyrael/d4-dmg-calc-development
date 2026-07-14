@@ -2311,7 +2311,13 @@ function renderEquipment(className, savedEquipment = {}) {
 
   function cleanStatName(name) {
     if (!name) return name;
-    return name.replace(/^\+?\[[\d\.,]+\s*-\s*[\d\.,]+\](%?)\s*/, (match, p1) => p1 ? '% ' : '');
+    // Remove Charm/Seal prefixes like "of Severing: " or "Harmonious: "
+    let cleaned = name.replace(/^(?:of\s+[A-Za-z]+|[A-Za-z]+):\s+/, '');
+    // Remove the roll range e.g. "+[1.0 - 2.0] " or "[1.0 - 2.0]% "
+    cleaned = cleaned.replace(/^\+?\[[\d\.,]+\s*-\s*[\d\.,]+\](%?)\s*/, (match, p1) => p1 ? '% ' : '');
+    // Remove trailing "(Class Only)" restriction
+    cleaned = cleaned.replace(/\s*\([^)]+Only\)$/i, '');
+    return cleaned.trim();
 }
 
 function getTotalActiveMinions(currentBuild) {
@@ -3816,6 +3822,14 @@ function compileCharacterStats(equipped, autoStats) {
         });
         
         // Apply standalone modifiers
+        const ehpConds = typeof getActiveConditions === 'function' ? getActiveConditions() : {};
+        if (ehpConds.monsterType === 'elite' || ehpConds.monsterType === 'boss') {
+            let eliteDR = stats['% Damage Reduction from Elites'] ? stats['% Damage Reduction from Elites'].total : 0;
+            if (eliteDR === 0) eliteDR = stats['Damage Reduction from Elites'] ? stats['Damage Reduction from Elites'].total : 0;
+            if (eliteDR > 0) {
+                addStat(stats, 'Universal Damage Reduction %', eliteDR, 'Damage Reduction from Elites');
+            }
+        }
         
         // Post-Compilation Step: Inverse Multiplicative Stats (Dodge Chance, Damage Reduction, etc.)
         // This must run at the very end so that Core Stats (like Dexterity) are included in the inverse multiplicative pool!
@@ -10823,7 +10837,7 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             let isShadowStat = lowerKey.includes('shadow') || lowerKey.includes('darkness');
             
             if (!isSkillSpecific) {
-                if (lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('darkness') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical') && !lowerKey.includes('wither') && !lowerKey.includes('frailty') && !lowerKey.includes('hulking monstrosity')) {
+                if (lowerKey.includes('damage') && !lowerKey.includes('critical') && !lowerKey.includes('over time') && !lowerKey.includes('dot') && !lowerKey.includes('to') && !lowerKey.includes('shadow') && !lowerKey.includes('darkness') && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical') && !lowerKey.includes('wither') && !lowerKey.includes('frailty') && !lowerKey.includes('hulking monstrosity') && !lowerKey.includes('basic') && !lowerKey.includes('ultimate') && !lowerKey.includes('corpse') && !lowerKey.includes('summon') && !lowerKey.includes('minion') && !lowerKey.includes('curse')) {
                     // Generic damage multiplier (e.g. 20% [x] Damage)
                     applies = true;
                 }
@@ -10845,6 +10859,12 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
                 if (/\bpoison\b/.test(lowerKey) && (tags.includes('skill_poison') || tags.includes('search_poison') || dType === 'poison')) applies = true;
                 if (/\blightning\b/.test(lowerKey) && (tags.includes('skill_lightning') || tags.includes('search_lightning') || dType === 'lightning')) applies = true;
                 if (/\bphysical\b/.test(lowerKey) && (tags.includes('skill_physical') || tags.includes('search_physical') || dType === 'physical')) applies = true;
+                
+                if (/\bbasic\b/.test(lowerKey) && tags.includes('keyword_basic')) applies = true;
+                if (/\bultimate\b/.test(lowerKey) && tags.includes('keyword_ultimate')) applies = true;
+                if (/\bcorpse\b/.test(lowerKey) && (tags.includes('keyword_corpse') || tags.some(t => t.toLowerCase().includes('corpse')) || ['Corpse Explosion', 'Corpse Tendrils', 'Raise Skeleton'].includes(skill.name))) applies = true;
+                if ((/\bsummon\b/.test(lowerKey) || /\bsummoning\b/.test(lowerKey) || /\bminion\b/.test(lowerKey)) && (tags.some(t => t.includes('summon')) || isMinion)) applies = true;
+                if (/\bcurse\b/.test(lowerKey) && tags.includes('keyword_curse')) applies = true;
             }
             
             if (lowerKey === 'wither damage [x]') {
@@ -10883,6 +10903,12 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             }
             if (lowerKey.includes('scent of death') && conds.corpsesNearby) applies = true;
             if (lowerKey.includes('territorial') && conds.close) applies = true;
+            
+            // Explicit conditional damage multipliers
+            if (lowerKey.includes('damage against cursed enemies') && conds.cursed) applies = true;
+            if (lowerKey.includes('damage to elites') && (conds.monsterType === 'elite' || conds.monsterType === 'boss')) applies = true;
+            if (lowerKey.includes('non-physical damage') && dType !== 'physical') applies = true;
+            if (lowerKey.includes('blood orb') && lowerKey.includes('damage')) applies = true;
             
             // Catch-all for purely generic aspect multipliers
             if (!lowerKey.includes('cult leader') && !lowerKey.includes('deadraiser') && !lowerKey.includes('commander') && !lowerKey.includes('golem') && !lowerKey.includes('amplify') && !lowerKey.includes('control') && !lowerKey.includes('scent of death') && !lowerKey.includes('territorial') && !lowerKey.includes('damage') && !lowerKey.includes('critical') && !isDotStat && !isShadowStat && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {

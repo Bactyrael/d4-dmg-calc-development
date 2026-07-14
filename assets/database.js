@@ -21966,7 +21966,7 @@ Object.assign(window.D4_DATABASE, {
               "category": "Utility"
             },
             {
-              "name": "of Bones: +[7 - 10]% Bone Skill Damage (Necromancer Only)",
+              "name": "of Bones: +[7 - 10]% [x] Bone Skill Damage (Necromancer Only)",
               "shortName": "+[7 - 10]% Bone Skill Damage (Necromancer Only)",
               "htmlName": "<div style=\'color:#ff8500;\'>of Bones</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Art of the Bone Weaver:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% Bone Skill Damage (Necromancer Only)</div>",
               "category": "Utility"
@@ -22044,9 +22044,9 @@ Object.assign(window.D4_DATABASE, {
               "category": "Utility"
             },
             {
-              "name": "of Infusions: +[7 - 10]% Damage for 4 seconds after picking up a Blood Orb (Necromancer Only)",
-              "shortName": "+[7 - 10]% Damage for 4 seconds after picking up a Blood Orb (Necromancer Only)",
-              "htmlName": "<div style=\'color:#ff8500;\'>of Infusions</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Word of the Blood Binder:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% Damage for 4 seconds after picking up a Blood Orb (Necromancer Only)</div>",
+              "name": "of Infusions: +[7 - 10]% [x] Damage for 4 seconds after picking up a Blood Orb (Necromancer Only)",
+              "shortName": "+[7 - 10]% [x] Damage for 4 seconds after picking up a Blood Orb (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Infusions</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Word of the Blood Binder:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% [x] Damage for 4 seconds after picking up a Blood Orb (Necromancer Only)</div>",
               "category": "Utility"
             },
             {
@@ -22122,7 +22122,7 @@ Object.assign(window.D4_DATABASE, {
               "category": "Utility"
             },
             {
-              "name": "of Graves: +[7 - 10]% Macabre Skill Damage (Necromancer Only)",
+              "name": "of Graves: +[7 - 10]% [x] Macabre Skill Damage (Necromancer Only)",
               "shortName": "+[7 - 10]% Macabre Skill Damage (Necromancer Only)",
               "htmlName": "<div style=\'color:#ff8500;\'>of Graves</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Radament\'s Desecration:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% Macabre Skill Damage (Necromancer Only)</div>",
               "category": "Utility"
@@ -22152,15 +22152,15 @@ Object.assign(window.D4_DATABASE, {
               "category": "Utility"
             },
             {
-              "name": "of Safeguarding: +[11.0 - 15.0] Damage Reduction from Elites",
-              "shortName": "+[11.0 - 15.0] Damage Reduction from Elites",
-              "htmlName": "<div style=\'color:#ff8500;\'>of Safeguarding</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Slaughter:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[11.0 - 15.0] Damage Reduction from Elites</div>",
+              "name": "of Safeguarding: +[11.0 - 15.0]% Damage Reduction from Elites",
+              "shortName": "+[11.0 - 15.0]% Damage Reduction from Elites",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Safeguarding</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Slaughter:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[11.0 - 15.0]% Damage Reduction from Elites</div>",
               "category": "Utility"
             },
             {
-              "name": "of Devastation: +[7.0 - 10.0] Damage to Elites",
-              "shortName": "+[7.0 - 10.0] Damage to Elites",
-              "htmlName": "<div style=\'color:#ff8500;\'>of Devastation</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Slaughter:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.0 - 10.0] Damage to Elites</div>",
+              "name": "of Devastation: +[7.0 - 10.0]% [x] Damage to Elites",
+              "shortName": "+[7.0 - 10.0]% [x] Damage to Elites",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Devastation</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Slaughter:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.0 - 10.0]% [x] Damage to Elites</div>",
               "category": "Utility"
             },
             {
@@ -22170,9 +22170,9 @@ Object.assign(window.D4_DATABASE, {
               "category": "Utility"
             },
             {
-              "name": "of Curses: +[7 - 10]% Damage against Cursed Enemies (Necromancer Only)",
-              "shortName": "+[7 - 10]% Damage against Cursed Enemies (Necromancer Only)",
-              "htmlName": "<div style=\'color:#ff8500;\'>of Curses</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Radament\'s Desecration:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% Damage against Cursed Enemies (Necromancer Only)</div>",
+              "name": "of Curses: +[7 - 10]% [x] Damage against Cursed Enemies (Necromancer Only)",
+              "shortName": "+[7 - 10]% [x] Damage against Cursed Enemies (Necromancer Only)",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Curses</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Radament\'s Desecration:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7 - 10]% [x] Damage against Cursed Enemies (Necromancer Only)</div>",
               "category": "Utility"
             },
             {
@@ -22200,15 +22200,9 @@ Object.assign(window.D4_DATABASE, {
               "category": "Utility"
             },
             {
-              "name": "of Command: +[7.0 - 10.0] Basic Skill Damage",
+              "name": "of Command: +[7.0 - 10.0]% [x] Basic Skill Damage",
               "shortName": "+[7.0 - 10.0] Basic Skill Damage",
               "htmlName": "<div style=\'color:#ff8500;\'>of Command</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Mastery:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.0 - 10.0] Basic Skill Damage</div>",
-              "category": "Utility"
-            },
-            {
-              "name": "of Expertise: +[7.0 - 10.0] Core Skill Damage",
-              "shortName": "+[7.0 - 10.0] Core Skill Damage",
-              "htmlName": "<div style=\'color:#ff8500;\'>of Expertise</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Mastery:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.0 - 10.0] Core Skill Damage</div>",
               "category": "Utility"
             },
             {
@@ -22218,21 +22212,15 @@ Object.assign(window.D4_DATABASE, {
               "category": "Utility"
             },
             {
-              "name": "of Proficiency: +[6.0 - 8.0] All Stats",
-              "shortName": "+[6.0 - 8.0] All Stats",
-              "htmlName": "<div style=\'color:#ff8500;\'>of Proficiency</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Survival:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[6.0 - 8.0] All Stats</div>",
-              "category": "Utility"
-            },
-            {
               "name": "of Luck: +[8.0 - 9.0] Lucky Hit Chance",
               "shortName": "+[8.0 - 9.0] Lucky Hit Chance",
               "htmlName": "<div style=\'color:#ff8500;\'>of Luck</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Dark Pact:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[8.0 - 9.0] Lucky Hit Chance</div>",
               "category": "Utility"
             },
             {
-              "name": "of Elements: +[7.0 - 10.0] Non-Physical Damage",
-              "shortName": "+[7.0 - 10.0] Non-Physical Damage",
-              "htmlName": "<div style=\'color:#ff8500;\'>of Elements</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Dark Pact:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.0 - 10.0] Non-Physical Damage</div>",
+              "name": "of Elements: +[7.0 - 10.0]% [x] Non-Physical Damage",
+              "shortName": "+[7.0 - 10.0]% [x] Non-Physical Damage",
+              "htmlName": "<div style=\'color:#ff8500;\'>of Elements</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Dark Pact:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.0 - 10.0]% [x] Non-Physical Damage</div>",
               "category": "Utility"
             }
           ]
