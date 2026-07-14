@@ -7885,7 +7885,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   return row; 
 }
   function start() {
-    if (!window.D4_DATABASE || !window.D4_DATABASE.charms || window.D4_DATABASE.charms.length === 0) {
+    if (!window.D4_DATABASE || !window.D4_DATABASE.talismanSets || !window.D4_DATABASE.talismanSets['Slaughter']) {
         setTimeout(start, 50);
         return;
     }
