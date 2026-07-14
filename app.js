@@ -10109,7 +10109,8 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
           targetObj.transfigure[editing.idx] = a.name;
         }
         
-        box.dataset.value = JSON.stringify(targetObj);
+        const boxes = document.querySelectorAll(`.equipment-slot-box[data-slot="${slotName}"], .charm-slot[data-slot="${slotName}"], .seal-slot[data-slot="${slotName}"]`);
+        boxes.forEach(b => b.dataset.value = JSON.stringify(targetObj));
         
         // Keep currentBuild in sync!
         if (slotName === 'Seal') {
