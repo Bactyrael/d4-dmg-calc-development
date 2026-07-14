@@ -4246,11 +4246,18 @@ function compileCharacterStats(equipped, autoStats) {
   }
 
   function calculate() {
-        if (isLoading) return;
+    if (isLoading) return;
     updateDynamicSkillTags();
     try {
       // Auto-calculate base weapon damage and armor from equipped items
       const baseEquipped = getEquipmentValues();
+      if (baseEquipped) {
+          for (const slot in baseEquipped) {
+              if (baseEquipped[slot] && baseEquipped[slot].name) {
+                  baseEquipped[slot].name = baseEquipped[slot].name.replace(' (Charm)', '');
+              }
+          }
+      }
       let totalArmor = 0;
       let totalWeaponDmg = 0;
       let totalWeaponAps = 0;
