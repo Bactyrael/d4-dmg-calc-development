@@ -7135,6 +7135,26 @@ function showItemTooltip(itemObj, e, slotName) {
     }
 
     if (!itemObj || !itemObj.name) return;
+    
+    // Fallback: populate missing data from database for lightweight items
+    let tooltipDbItem = null;
+    if (slotName && slotName.startsWith('Charm')) {
+        tooltipDbItem = (window.D4_DATABASE?.charms || []).find(c => c.name === itemObj.name);
+    } else if (slotName === 'Seal') {
+        tooltipDbItem = (window.D4_DATABASE?.seals || []).find(s => s.name === itemObj.name);
+    } else {
+        tooltipDbItem = getDbItems(slotName).find(i => i.name === itemObj.name);
+    }
+    
+    if (tooltipDbItem) {
+        if (!itemObj.set && tooltipDbItem.set) itemObj.set = tooltipDbItem.set;
+        if (!itemObj.affixes && tooltipDbItem.affixes) itemObj.affixes = tooltipDbItem.affixes;
+        if (!itemObj.aspect && tooltipDbItem.aspect) itemObj.aspect = tooltipDbItem.aspect;
+        if (!itemObj.desc && tooltipDbItem.desc) itemObj.desc = tooltipDbItem.desc;
+        if (!itemObj.flavorText && tooltipDbItem.flavorText) itemObj.flavorText = tooltipDbItem.flavorText;
+        if (!itemObj.type && tooltipDbItem.type) itemObj.type = tooltipDbItem.type;
+        if (!itemObj.icon && tooltipDbItem.icon) itemObj.icon = tooltipDbItem.icon;
+    }
 
     let rarityColor = '#e1b171'; // Legendary orange
     let isMythic = itemObj.isMythic || itemObj.rarity === 'mythic';
