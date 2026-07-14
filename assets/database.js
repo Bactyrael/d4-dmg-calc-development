@@ -22140,12 +22140,6 @@ Object.assign(window.D4_DATABASE, {
               "category": "Utility"
             },
             {
-              "name": "of Armor: +[7.5 - 10.0] Armor",
-              "shortName": "+[7.5 - 10.0] Armor",
-              "htmlName": "<div style=\'color:#ff8500;\'>of Armor</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Survival:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.5 - 10.0] Armor</div>",
-              "category": "Utility"
-            },
-            {
               "name": "of Durability: +[7.5 - 10.0] Maximum Resistance to All Elements",
               "shortName": "+[7.5 - 10.0] Maximum Resistance to All Elements",
               "htmlName": "<div style=\'color:#ff8500;\'>of Durability</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Survival:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[7.5 - 10.0] Maximum Resistance to All Elements</div>",
@@ -22221,12 +22215,6 @@ Object.assign(window.D4_DATABASE, {
               "name": "Swift: [7.5 - 10.0]% Cooldown Reduction",
               "shortName": "[7.5 - 10.0]% Cooldown Reduction",
               "htmlName": "<div style=\'color:#6879d1;\'>Swift</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>[7.5 - 10.0]% Cooldown Reduction</div>",
-              "category": "Utility"
-            },
-            {
-              "name": "of Brawn: +[6.5 - 8.0] Maximum Life",
-              "shortName": "+[6.5 - 8.0] Maximum Life",
-              "htmlName": "<div style=\'color:#ff8500;\'>of Brawn</div><div style=\'color:#2bd42b; font-size: 0.9em;\'>Survival:</div><div style=\'color:#b3b3b3; font-size: 0.9em;\'>+[6.5 - 8.0] Maximum Life</div>",
               "category": "Utility"
             },
             {
