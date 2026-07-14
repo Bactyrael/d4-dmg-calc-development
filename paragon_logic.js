@@ -113,6 +113,7 @@ window.NODE_IMAGES = {
     "shadow resilience_frailty": "Shadow Resilience_frailty.png",
     "shaper of bone": "Shaper of Bone.png",
     "shrouded": "Shrouded.png",
+    "splinter": "Splinter.png",
     "stifle": "Stifle.png",
     "strength_normal_paragon_node": "strength_normal_paragon_node.png",
     "suffused resilience": "Suffused Resilience.png",
