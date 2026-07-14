@@ -10981,7 +10981,7 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             if (lowerKey.includes('control (legendary bonus)')) {
                 if (conds.cc) applies = true;
             }
-            if (lowerKey.includes('scent of death') && conds.corpsesNearby) applies = true;
+            if (lowerKey.includes('scent of death')) applies = true;
             if (lowerKey.includes('territorial') && conds.close) applies = true;
             
             // Explicit conditional damage multipliers
