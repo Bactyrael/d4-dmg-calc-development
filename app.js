@@ -3470,6 +3470,12 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Hewed Flesh Factor"] = { final: val, isMultiplicative: false };
           }
           
+          let voidAspect = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Void");
+          if (voidAspect) {
+              let val = voidAspect.aspectValues && voidAspect.aspectValues.length > 0 ? parseFloat(voidAspect.aspectValues[0]) : 15;
+              stats["Aspect of the Void Factor"] = { final: val, isMultiplicative: false };
+          }
+          
           let untimelyDeath = Object.values(equipped).find(item => item && item.aspect === "Aspect of Untimely Death");
           if (untimelyDeath) {
               let val = untimelyDeath.aspectValues && untimelyDeath.aspectValues.length > 0 ? parseFloat(untimelyDeath.aspectValues[0]) : 60;
@@ -10646,6 +10652,16 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Aspect of Hewed Flesh [x]', value: mult });
+    }
+    
+    // Apply Aspect of the Void if applicable
+    if (stats["Aspect of the Void Factor"] && buffs.weakened) {
+        if (tags.some(t => t.includes('darkness'))) {
+            let multVal = stats["Aspect of the Void Factor"].final;
+            let mult = 1 + (multVal / 100);
+            bucket *= mult;
+            components.push({ name: 'Aspect of the Void [x]', value: mult });
+        }
     }
     
     // Apply Bone Breaker's Aspect if applicable
