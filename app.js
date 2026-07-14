@@ -9322,6 +9322,22 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       const idx = parseInt(slotName.split(' ')[1]) - 1;
       currentBuild.talisman.charms[idx] = item;
       
+      const box = document.querySelector(`.equipment-slot-box[data-slot="${slotName}"], .charm-slot[data-slot="${slotName}"]`);
+      if (box) {
+          if (!item) {
+              delete box.dataset.value;
+          } else {
+              let charmObj = null;
+              if (box.dataset.value) {
+                  try { charmObj = JSON.parse(box.dataset.value); } catch(e) {}
+              }
+              if (!charmObj || charmObj.name !== item.name) {
+                  charmObj = { name: item.name, power: 900, quality: 0, rarity: item.rarity };
+              }
+              box.dataset.value = JSON.stringify(charmObj);
+          }
+      }
+      
       saveBuild();
       document.getElementById('item-selection-modal').style.display = 'none';
       if (typeof renderTalismanUI === 'function') renderTalismanUI();
