@@ -3460,6 +3460,12 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Ultimate Shadow Factor"] = { final: val, isMultiplicative: false };
           }
           
+          let hewedFlesh = Object.values(equipped).find(item => item && item.aspect === "Aspect of Hewed Flesh");
+          if (hewedFlesh) {
+              let val = hewedFlesh.aspectValues && hewedFlesh.aspectValues.length > 0 ? parseFloat(hewedFlesh.aspectValues[0]) : 20;
+              stats["Aspect of Hewed Flesh Factor"] = { final: val, isMultiplicative: false };
+          }
+          
           let untimelyDeath = Object.values(equipped).find(item => item && item.aspect === "Aspect of Untimely Death");
           if (untimelyDeath) {
               let val = untimelyDeath.aspectValues && untimelyDeath.aspectValues.length > 0 ? parseFloat(untimelyDeath.aspectValues[0]) : 60;
