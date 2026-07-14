@@ -1414,6 +1414,7 @@ function renderTalismanUI() {
                 charmSlot.style.pointerEvents = 'none'; // Prevent clicking
                 // If there's an item stuck in here, unequip it
                 if (currentBuild.talisman.charms[i]) currentBuild.talisman.charms[i] = null;
+                delete charmSlot.dataset.value;
                 continue;
             } else {
                 charmSlot.style.pointerEvents = 'auto';
