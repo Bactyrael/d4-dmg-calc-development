@@ -7267,10 +7267,20 @@ function showItemTooltip(itemObj, e, slotName) {
 
             tooltipHtml += `<div style="font-size: 0.9rem; color: #00ff00; margin-top: 6px; margin-bottom: 4px; text-transform: none;">${setName} (${equippedCount}/${components.length || 5})</div>`;
 
+            let reducesSetReq = false;
+            if (window.currentBuild && window.currentBuild.talisman && window.currentBuild.talisman.seal) {
+                if (window.currentBuild.talisman.seal.name === 'Seal of the Diamond Mind') {
+                    reducesSetReq = true;
+                }
+            }
+            
             // List bonuses
             [2, 3, 5].forEach(req => {
                 if (setBonuses[req]) {
-                    let isActive = equippedCount >= req;
+                    let requiredCount = parseInt(req);
+                    if (reducesSetReq) requiredCount = Math.max(2, requiredCount - 1);
+                    
+                    let isActive = equippedCount >= requiredCount;
                     let titleColor = isActive ? '#ccc' : '#555';
                     let descColor = isActive ? '#aaa' : '#555';
                     let highlightColor = isActive ? '#d18a45' : '#555'; // Gold for numbers if active
