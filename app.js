@@ -1420,6 +1420,14 @@ function renderTalismanUI() {
             
             const charm = currentBuild.talisman.charms[i];
             if (charm) {
+                if (!charm.icon || !charm.type) {
+                    const dbCharms = window.D4_DATABASE?.charms || [];
+                    const dbCharm = dbCharms.find(c => c.name === charm.name);
+                    if (dbCharm) {
+                        if (!charm.icon) charm.icon = dbCharm.icon;
+                        if (!charm.type) charm.type = dbCharm.type;
+                    }
+                }
                 let style = getScaledSpriteStyle(charm.icon, 50, charm.type);
                 charmSlot.innerHTML = `<div style="${style}; border-radius: 50%; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);"></div>`;
                 charmSlot.dataset.value = JSON.stringify(charm);
