@@ -9366,20 +9366,18 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       if (!currentBuild.talisman) currentBuild.talisman = { seal: null, charms: [null, null, null, null, null, null] };
       currentBuild.talisman.seal = item;
         
-        const box = document.querySelector(`.equipment-slot-box[data-slot="Seal"], .charm-slot[data-slot="Seal"], .seal-slot[data-slot="Seal"]`);
-        if (box) {
-            if (!item) {
-                delete box.dataset.value;
-            } else {
-                let sealObj = null;
-                if (box.dataset.value) {
-                    try { sealObj = JSON.parse(box.dataset.value); } catch(e) {}
-                }
-                if (!sealObj || sealObj.name !== item.name) {
-                    sealObj = { name: item.name, power: 900, quality: 0, rarity: item.rarity };
-                }
-                box.dataset.value = JSON.stringify(sealObj);
+        const boxes = document.querySelectorAll(`.equipment-slot-box[data-slot="Seal"], .charm-slot[data-slot="Seal"], .seal-slot[data-slot="Seal"]`);
+        if (!item) {
+            boxes.forEach(b => delete b.dataset.value);
+        } else {
+            let sealObj = null;
+            if (boxes[0] && boxes[0].dataset.value) {
+                try { sealObj = JSON.parse(boxes[0].dataset.value); } catch(e) {}
             }
+            if (!sealObj || sealObj.name !== item.name) {
+                sealObj = { name: item.name, power: 900, quality: 0, rarity: item.rarity };
+            }
+            boxes.forEach(b => b.dataset.value = JSON.stringify(sealObj));
         }
       
       let uniqueLimit = (item && item.name === 'Seal of the Golden Epiphany') ? 3 : 1;
