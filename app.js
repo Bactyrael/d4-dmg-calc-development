@@ -10630,6 +10630,14 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         components.push({ name: 'Aspect of Ultimate Shadow [x]', value: mult });
     }
     
+    // Apply Aspect of Hewed Flesh if applicable
+    if (stats["Aspect of Hewed Flesh Factor"] && (tags.some(t => t.includes('corpse')))) {
+        let multVal = stats["Aspect of Hewed Flesh Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Aspect of Hewed Flesh [x]', value: mult });
+    }
+    
     // Apply Bone Breaker's Aspect if applicable
     if (stats["Bone Breaker's Aspect Factor"] && (tags.includes('skill_bone') || tags.includes('search_bone'))) {
         let enemyHit = stats["Bone Breaker's Aspect Enemy"].final;
