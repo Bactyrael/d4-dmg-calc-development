@@ -5001,6 +5001,20 @@ function compileCharacterStats(equipped, autoStats) {
     currentBuild.name = dom.buildName.textContent || 'New Build';
     currentBuild.class = selectedClass;
     currentBuild.equipment = getEquipmentValues();
+    
+    // Extract Talisman items from equipment values (since they share the same UI DOM logic)
+    if (!currentBuild.talisman) currentBuild.talisman = { seal: null, charms: [null, null, null, null, null, null] };
+    if (currentBuild.equipment['Seal'] !== undefined) {
+        currentBuild.talisman.seal = currentBuild.equipment['Seal'];
+        delete currentBuild.equipment['Seal'];
+    }
+    for (let i = 1; i <= 6; i++) {
+        if (currentBuild.equipment[`Charm ${i}`] !== undefined) {
+            currentBuild.talisman.charms[i-1] = currentBuild.equipment[`Charm ${i}`];
+            delete currentBuild.equipment[`Charm ${i}`];
+        }
+    }
+    
     currentBuild.conditions = getActiveConditions();
     currentBuild.buffs = getActiveBuffs();
     currentBuild.skills = JSON.parse(JSON.stringify(window.selectedSkills || {}));
