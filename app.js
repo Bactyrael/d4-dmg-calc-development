@@ -6824,7 +6824,7 @@ function applyActiveModifiers(baseSkillObj) {
                 scalar: rathmaVal,
                 nameOverride: "Will of Rathma (vs Afflicted)",
                 isHit: true,
-                addTags: ["Damage_Type_Shadow", "Skill_Darkness", "Search_Shadow", "Search_Darkness"]
+                tags: ["Damage_Type_Shadow", "Skill_Darkness", "Skill_Curse", "Skill_Profane", "Search_Shadow", "Search_Darkness", "Search_Curse"]
             };
         }
     }
