@@ -4618,6 +4618,24 @@ function compileCharacterStats(equipped, autoStats) {
         }
     }
     
+    // Re-evaluate Inverse Multiplicative Stats (Dodge Chance, Damage Reduction, etc.)
+    // because Talisman Set Bonuses might have added new sources (e.g. Universal Damage Reduction %)
+    const inverseMultiplicativeKeys = Object.keys(compiledStats).filter(k => 
+        (k.includes('Dodge Chance') || k.includes('Damage Reduction') || k.includes('Cooldown Reduction') || k.includes('Control Impaired Duration Reduction')) && !k.includes('Block Damage Reduction')
+    );
+    inverseMultiplicativeKeys.forEach(k => {
+        if (compiledStats[k].flatSources && compiledStats[k].flatSources.length > 1) {
+            let inverseProduct = 1.0;
+            compiledStats[k].flatSources.forEach(src => {
+                inverseProduct *= (1 - (src.val / 100));
+            });
+            compiledStats[k].final = (1 - inverseProduct) * 100;
+        }
+        if (k.includes('Cooldown Reduction') && compiledStats[k].final > 75) {
+            compiledStats[k].final = 75;
+        }
+    });
+    
     window.D4_COMPILED_STATS = compiledStats;
     
     // Dynamically update Resolve max based on compiled stats
