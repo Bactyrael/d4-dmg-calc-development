@@ -7299,7 +7299,9 @@ function showItemTooltip(itemObj, e, slotName) {
             let equippedCount = 0;
             if (window.currentBuild && window.currentBuild.talisman && window.currentBuild.talisman.charms) {
                 window.currentBuild.talisman.charms.forEach(c => {
-                    if (c && c.set === setName) equippedCount++;
+                    if (c && components.some(comp => comp.name === c.name)) {
+                        equippedCount++;
+                    }
                 });
             }
             // If viewing in paperdoll or search modal, itemObj might already be equipped, but let's just rely on currentBuild for equip count.
