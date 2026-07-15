@@ -3324,6 +3324,12 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
 
+          let wildboltAspect = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Wildbolt Aspect");
+          if (wildboltAspect) {
+              stats["Wildbolt Aspect Damage [x]"] = { final: 15, isMultiplicative: true };
+          }
+
+
           let coalescedBlood = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Coalesced Blood");
           if (coalescedBlood) {
               if (typeof getActiveBuffs === 'function') {
@@ -3795,6 +3801,33 @@ function compileCharacterStats(equipped, autoStats) {
               if (barrier > 0) {
                   let val = snowveiled.aspectValues && snowveiled.aspectValues.length > 0 ? parseFloat(snowveiled.aspectValues[0]) : 30;
                   addStat(stats, 'Universal Damage Reduction %', val, "Snowveiled Aspect");
+              }
+          }
+          
+          let exploiter = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Exploiter's Aspect");
+          if (exploiter) {
+              let val = exploiter.aspectValues && exploiter.aspectValues.length > 0 ? parseFloat(exploiter.aspectValues[0]) : 20;
+              stats["Exploiter's Aspect Factor"] = { final: val, isMultiplicative: false };
+          }
+          
+          let sticker = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Sticker-thought Aspect");
+          if (sticker && window.currentBuild && window.currentBuild.activeSkills && window.currentBuild.activeSkills.includes("Decompose")) {
+              let val = 0;
+              if (sticker.aspectValues && sticker.aspectValues.length > 0) {
+                  val = parseFloat(String(sticker.aspectValues[0]).replace(/,/g, '')) || 0;
+              } else {
+                  const aspectObj = (window.D4_DATABASE?.aspects || []).find(a => a.name === "Sticker-thought Aspect");
+                  if (aspectObj && aspectObj.desc) {
+                      const match = aspectObj.desc.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
+                      if (match) val = parseFloat(match[2].replace(/,/g, ''));
+                  }
+              }
+              if (val > 0) {
+                  addStat(stats, "Thorns", val, "Sticker-thought Aspect");
+                  // Remove the default empty stat to prevent it from showing up as 0 in Other
+                  if (stats["Sticker-thought Aspect"] && stats["Sticker-thought Aspect"].final === 0) {
+                      delete stats["Sticker-thought Aspect"];
+                  }
               }
           }
       }
@@ -5495,6 +5528,7 @@ function compileCharacterStats(equipped, autoStats) {
       if (document.getElementById('cond-healthy')) document.getElementById('cond-healthy').checked = b.conditions.healthy || false;
       if (document.getElementById('cond-injured')) document.getElementById('cond-injured').checked = b.conditions.injured || false;
       if (document.getElementById('cond-cc')) document.getElementById('cond-cc').checked = b.conditions.cc || false;
+      if (document.getElementById('cond-unstoppable')) document.getElementById('cond-unstoppable').checked = b.conditions.unstoppable || false;
       if (document.getElementById('cond-overpower')) document.getElementById('cond-overpower').checked = b.conditions.overpower || false;
       if (b.conditions.monsterType) {
           const mTypeRadio = document.querySelector(`input[name="monster_type"][value="${b.conditions.monsterType}"]`);
@@ -10444,6 +10478,7 @@ function getActiveConditions() {
         cc: document.getElementById('cond-cc')?.checked || false,
         frozen: document.getElementById('cond-frozen')?.checked || false,
         incapacitated: document.getElementById('cond-incapacitated')?.checked || false,
+        unstoppable: document.getElementById('cond-unstoppable')?.checked || false,
         close: document.getElementById('cond-close')?.checked || false,
         distant: document.getElementById('cond-distant')?.checked || false,
         healthy: document.getElementById('cond-healthy')?.checked || false,
@@ -10805,7 +10840,7 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         }
     }
     // Apply Exploiter's Aspect if applicable
-    if (stats["Exploiter's Aspect Factor"]) {
+    if (stats["Exploiter's Aspect Factor"] && getActiveConditions().unstoppable) {
         let multVal = stats["Exploiter's Aspect Factor"].final;
         let mult = 1 + (multVal / 100);
         bucket *= mult;
@@ -11175,7 +11210,7 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
             if (lowerKey.includes('blood orb') && lowerKey.includes('damage')) applies = true;
             
             // Catch-all for purely generic aspect multipliers
-            if (!lowerKey.includes('cult leader') && !lowerKey.includes('deadraiser') && !lowerKey.includes('commander') && !lowerKey.includes('golem') && !lowerKey.includes('amplify') && !lowerKey.includes('control') && !lowerKey.includes('scent of death') && !lowerKey.includes('territorial') && !lowerKey.includes('damage') && !lowerKey.includes('critical') && !isDotStat && !isShadowStat && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical')) {
+            if (!lowerKey.includes('cult leader') && !lowerKey.includes('deadraiser') && !lowerKey.includes('commander') && !lowerKey.includes('golem') && !lowerKey.includes('amplify') && !lowerKey.includes('control') && !lowerKey.includes('scent of death') && !lowerKey.includes('territorial') && !lowerKey.includes('damage') && !lowerKey.includes('critical') && !isDotStat && !isShadowStat && !lowerKey.includes('bone') && !lowerKey.includes('blood') && !lowerKey.includes('core') && !lowerKey.includes('macabre') && !lowerKey.includes('vulnerable') && !lowerKey.includes('cold') && !lowerKey.includes('poison') && !lowerKey.includes('lightning') && !lowerKey.includes('physical') && !lowerKey.includes('crown_of_lucion') && !lowerKey.includes('penitent_greaves') && !lowerKey.includes('ring_of_starless_skies') && !lowerKey.includes('aspect of frozen memories')) {
                 applies = true;
             }
             
@@ -11258,13 +11293,10 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
     
     if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Penitent_Greaves_Mult"]) {
         let pgMult = window.D4_COMPILED_STATS["Penitent_Greaves_Mult"].final;
-        if (pgMult > 0 && typeof getActiveConditions === 'function') {
-            const conds = getActiveConditions();
-            if (conds.cc || conds.frozen) {
-                let mult = 1 + (pgMult / 100);
-                bucket *= mult;
-                components.push({ name: 'Penitent Greaves (vs Chilled) [x]', value: mult });
-            }
+        if (pgMult > 0) {
+            let mult = 1 + (pgMult / 100);
+            bucket *= mult;
+            components.push({ name: 'Penitent Greaves (vs Chilled) [x]', value: mult });
         }
     }
     

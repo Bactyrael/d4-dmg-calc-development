@@ -1432,7 +1432,7 @@ Object.assign(window.D4_DATABASE, {
     },
     {
       "name": "Aspect of Channeling",
-      "desc": "While channeling a Skill, all damage is increased by [50 - 70]%[x].",
+      "desc": "While channeling a Skill, all damage is increased by [50 - 70]%[x].\n\nActive Skill Decompose Required",
       "category": "FILTER_Legendary_Offensive",
       "classes": [
         1,
@@ -8252,7 +8252,7 @@ Object.assign(window.D4_DATABASE, {
     },
     {
       "name": "Sticker-thought Aspect",
-      "desc": "Gain [1,813 - 5,439] Thorns while Channeling and for 3 seconds afterwards.",
+      "desc": "Gain [1,813 - 5,439] Thorns while Channeling and for 3 seconds afterwards.\n\nActive Skill Decompose Required",
       "category": "FILTER_Legendary_Utility",
       "classes": [
         1,
