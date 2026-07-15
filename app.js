@@ -1,4 +1,27 @@
 
+window.getAllEquippedItemsWithAspects = function(build) {
+    if (!build) return [];
+    let items = [...Object.values(build.equipment || {})];
+    if (build.talisman && build.talisman.charms) {
+        items = items.concat(build.talisman.charms);
+    }
+    
+    let expandedItems = [];
+    for (const item of items) {
+        if (item) {
+            expandedItems.push(item);
+            if (item.kulleanAspect && item.kulleanAspect !== 'None') {
+                let clonedItem = JSON.parse(JSON.stringify(item));
+                clonedItem.aspect = item.kulleanAspect;
+                clonedItem.aspectValues = item.kulleanAspectValues;
+                expandedItems.push(clonedItem);
+            }
+        }
+    }
+    return expandedItems;
+};
+
+
 window.NECRO_ICONS = new Set(["area-damage-bonus-blight","army-of-the-dead","astral-projection","barrier-bone-storm","barrier-decompose","barrier-soulrift","bitter-harvest","blight","blood-boil","blood-lance","blood-maiden","blood-mist","blood-orb-blood-wave","blood-orb-corpse-explosion","blood-orb-hemorrhage","blood-runs-cold","blood-rush","blood-seeker","blood-spear","blood-surge","blood-transfusion","blood-wave","bloodbath","bloody-mess","bloody-splinter","bone-prison","bone-spear","bone-spikes","bone-spirit","bone-splinters","bone-storm","bouncing-spines","bramble","cast-speed-hemorrhage","charges-bone-spirit","chilled-to-the-bone","cold-pursuit","cooldown-reduction-army-of-the-dead","cooldown-reduction-bone-prison","cooldown-reduction-decrepify","core-skill-bone-spirit","corpse-efficiency-corpse-explosion","corpse-explosion","corpse-generation-army-of-the-dead","corpse-generation-reap","corpse-tendrils","cost-reduction-blood-lance","cost-reduction-bone-spear","cost-reduction-sever","coven","critical-strike-blood-mist","critical-strike-chance-corpse-tendrils","critical-strike-chance-decrepify","critical-strike-chance-reap","critical-strike-chance-skeleton-mage","crowd-control-and-corpse-generation-sever","crowd-control-damage-bonus-blight","crowd-control-damage-bonus-skeleton-mage","crowd-control-decompose","cull-the-weak","damage-bonus-army-of-the-dead","damage-bonus-blood-surge","damage-bonus-blood-wave","damage-bonus-bone-spirit","damage-bonus-decompose","damage-bonus-golem","damage-bonus-sever","damage-bonus-skeleton-warrior","damage-bonus-soulrift","damage-reduction-blood-wave","damage-reduction-bone-storm","dead-cold","decompose","decrepify","devouring-mist","distilled-anima","dizzying-curse","dry-rot","duration-damage-bonus-skeleton-mage","duration-increase-bone-storm","essence-generation-bone-prison","essence-generation-bone-splinters","essence-generation-corpse-explosion","essence-generation-corpse-tendrils","essence-generation-iron-maiden","essence-generation-reap","execute-and-fortify-iron-maiden","fel-gluttony","ferocity-and-overpower-iron-maiden","ferocity-reap","ferocity-resolve-or-overpower-skeleton-mage","ferocity-sever","ferocity-soulrift","festering-wound","first-hit-damage-bonus-bone-spear","fortify-blood-lance","fortify-blood-surge","frozen-wasteland","gargantua","get-over-here","gift-of-death","golem","gore-quills","gravebloom","harvest","healing-skeleton-warrior","hematolagnia","hemorrhage","hungry-cyclone","inexorable-reaper","iron-maiden","jaws-of-death","life-imprisonment","life-tap","litany-of-death","lucky-hit-chance-blight","lucky-hit-chance-corpse-tendrils","lucky-hit-chance-decompose","master-of-puppets","maximum-essence-bone-spirit","miasma","movement-speed-blood-mist","movement-speed-decrepify","multiple-corpses-corpse-explosion","overpower-blood-lance","overpower-blood-mist","overpower-blood-surge","overpower-blood-wave","overpower-hemorrhage","passive-bonus-army-of-the-dead","path-of-darkness","pierce-damage-bonus-bone-spear","piercing-darkness","pile-the-bodies","pins-and-needles","plunging-darkness","poltergeists","projectiles-bone-splinters","putrid-burst","reap","reaping-lotus","resolve-bone-prison","resolve-bone-spear","resolve-bone-splinters","resolve-decrepify","resolve-overpower-or-ferocity-golem","resolve-skeleton-warrior","ricochet-blood-lance","rip-and-tear","roll-the-bones","schadenfreude","service-and-sacrifice","sever","shadow-and-bone","shadow-seekers","shadow-splitter","shrapnel","singularity","size-bonus-blight","skeleton-mage","skeleton-warrior","soul-rip","soul-vortex","soulrift","tides-of-blood","torture-artist","unfinished-business","unholy-frenzy","unstoppable-golem","unyielding-commander","volatile-blood","vulnerable-and-crowd-control-soulrift","vulnerable-and-slow-blood-mist","vulnerable-bone-prison","vulnerable-bone-splinters","vulnerable-bone-storm","vulnerable-corpse-tendrils","vulnerable-iron-maiden","vulnerable-skeleton-warrior","weaken-blood-surge","weaken-golem","weaken-hemorrhage","whirlpool","you-and-what-army"]);
 
 window.UNIQUE_ITEM_CONSTRAINTS = {
@@ -3247,7 +3270,7 @@ function compileCharacterStats(equipped, autoStats) {
       additiveScalersCore.forEach(scaleFn);
 
       if (equipped) {
-          let accAspect = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Accelerating Aspect");
+          let accAspect = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Accelerating Aspect");
           if (accAspect) {
               let hasCore = false;
               if (window.currentBuild && window.currentBuild.activeSkills && typeof skillsDatabase !== 'undefined') {
@@ -3276,7 +3299,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
 
-          let wendigo = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && (item.name === "Wendigo Brand" || item.name === "Wendigo Brand (Charm)"));
+          let wendigo = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && (item.name === "Wendigo Brand" || item.name === "Wendigo Brand (Charm)"));
           if (wendigo) {
               let rkEl = document.getElementById('cond-recent-kills');
               if (rkEl) {
@@ -3288,7 +3311,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
 
-          let ampAspect = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Amplified Damage");
+          let ampAspect = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Amplified Damage");
           if (ampAspect) {
               if (typeof getActiveConditions === 'function') {
                   const conds = getActiveConditions();
@@ -3299,7 +3322,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
 
-          let bindMorass = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Binding Morass");
+          let bindMorass = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Binding Morass");
           if (bindMorass) {
               if (typeof getActiveConditions === 'function') {
                   const conds = getActiveConditions();
@@ -3310,13 +3333,13 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
 
-          let burstingBones = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Bursting Bones");
+          let burstingBones = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Bursting Bones");
           if (burstingBones) {
               let val = burstingBones.aspectValues && burstingBones.aspectValues.length > 0 ? parseFloat(burstingBones.aspectValues[0]) : 0.40;
               stats["Aspect of Bursting Bones Factor"] = { final: val, isMultiplicative: false };
           }
 
-          let channelingAspect = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Channeling");
+          let channelingAspect = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Channeling");
           if (channelingAspect && window.currentBuild && window.currentBuild.activeSkills) {
               if (window.currentBuild.activeSkills.includes("Decompose")) {
                   let val = channelingAspect.aspectValues && channelingAspect.aspectValues.length > 0 ? parseFloat(channelingAspect.aspectValues[0]) : 70;
@@ -3324,13 +3347,13 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
 
-          let wildboltAspect = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Wildbolt Aspect");
+          let wildboltAspect = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Wildbolt Aspect");
           if (wildboltAspect) {
               stats["Wildbolt Aspect Damage [x]"] = { final: 15, isMultiplicative: true };
           }
 
 
-          let coalescedBlood = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Coalesced Blood");
+          let coalescedBlood = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Coalesced Blood");
           if (coalescedBlood) {
               if (typeof getActiveBuffs === 'function') {
                   const buffs = getActiveBuffs();
@@ -3341,25 +3364,25 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
 
-          let compoundFracture = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Compound Fracture");
+          let compoundFracture = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Compound Fracture");
           if (compoundFracture) {
               let val = compoundFracture.aspectValues && compoundFracture.aspectValues.length > 0 ? parseFloat(compoundFracture.aspectValues[0]) : 70;
               stats["Aspect of Compound Fracture (Bone) [x] Damage"] = { final: val, isMultiplicative: true };
           }
 
-          let decayAspect = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Decay");
+          let decayAspect = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Decay");
           if (decayAspect) {
               let val = decayAspect.aspectValues && decayAspect.aspectValues.length > 0 ? parseFloat(decayAspect.aspectValues[0]) : 85;
               stats["Aspect of Decay Factor"] = { final: val, isMultiplicative: false };
           }
 
-          let frenziedOnslaught = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Frenzied Onslaught");
+          let frenziedOnslaught = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Frenzied Onslaught");
           if (frenziedOnslaught) {
               let val = frenziedOnslaught.aspectValues && frenziedOnslaught.aspectValues.length > 0 ? parseFloat(frenziedOnslaught.aspectValues[0]) : 50;
               addStat(stats, 'Summon Attack Speed', val, 'Aspect of Frenzied Onslaught');
           }
 
-          let elementalFate = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Elemental Fate");
+          let elementalFate = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Elemental Fate");
           if (elementalFate) {
               let val = elementalFate.aspectValues && elementalFate.aspectValues.length > 0 ? parseFloat(elementalFate.aspectValues[0]) : 60;
               let activeSet = elementalFate.aspectState?.elementalFateSet || 'set1';
@@ -3369,7 +3392,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Elemental Fate Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
           
-          let aspectOfGloom = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Gloom");
+          let aspectOfGloom = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Gloom");
           if (aspectOfGloom) {
               let val = aspectOfGloom.aspectValues && aspectOfGloom.aspectValues.length > 0 ? parseFloat(aspectOfGloom.aspectValues[0]) : 10;
               let activeStacks = aspectOfGloom.aspectState?.gloomStacks !== undefined ? parseInt(aspectOfGloom.aspectState.gloomStacks) : 4;
@@ -3377,7 +3400,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Gloom Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
           
-          let aspectOfInnerCalm = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Inner Calm");
+          let aspectOfInnerCalm = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Inner Calm");
           if (aspectOfInnerCalm) {
               let val = aspectOfInnerCalm.aspectValues && aspectOfInnerCalm.aspectValues.length > 0 ? parseFloat(aspectOfInnerCalm.aspectValues[0]) : 50;
               let activeStacks = aspectOfInnerCalm.aspectState?.innerCalmStacks !== undefined ? parseInt(aspectOfInnerCalm.aspectState.innerCalmStacks) : 100;
@@ -3385,7 +3408,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Inner Calm Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
           
-          let lapasScripture = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Lapa's Scripture");
+          let lapasScripture = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Lapa's Scripture");
           if (lapasScripture) {
               let val = lapasScripture.aspectValues && lapasScripture.aspectValues.length > 0 ? parseFloat(lapasScripture.aspectValues[0]) : 392;
               let activeStacks = lapasScripture.aspectState?.lapaStacks !== undefined ? parseInt(lapasScripture.aspectState.lapaStacks) : 20;
@@ -3395,7 +3418,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let rathmasChosen = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Rathma's Chosen");
+          let rathmasChosen = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Rathma's Chosen");
           if (rathmasChosen) {
               let val = rathmasChosen.aspectValues && rathmasChosen.aspectValues.length > 0 ? parseFloat(rathmasChosen.aspectValues[0]) : 40;
               let buffs = typeof getActiveBuffs === 'function' ? getActiveBuffs() : { fortified: false };
@@ -3404,7 +3427,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let aspectOfReanimation = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Reanimation");
+          let aspectOfReanimation = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Reanimation");
           if (aspectOfReanimation) {
               let val = aspectOfReanimation.aspectValues && aspectOfReanimation.aspectValues.length > 0 ? parseFloat(aspectOfReanimation.aspectValues[0]) : 60;
               let activeStacks = aspectOfReanimation.aspectState?.reanimationStacks !== undefined ? parseInt(aspectOfReanimation.aspectState.reanimationStacks) : 10;
@@ -3412,7 +3435,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Reanimation Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
           
-          let redirectedForce = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Redirected Force");
+          let redirectedForce = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Redirected Force");
           if (redirectedForce) {
               let val = redirectedForce.aspectValues && redirectedForce.aspectValues.length > 0 ? parseFloat(redirectedForce.aspectValues[0]) : 40;
               let recentlyBlocked = redirectedForce.aspectState?.redirectedForceBlocked || false;
@@ -3429,20 +3452,20 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let serration = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Serration");
+          let serration = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Serration");
           if (serration) {
               let val = serration.aspectValues && serration.aspectValues.length > 0 ? parseFloat(serration.aspectValues[0]) : 40;
               stats['Aspect of Serration Factor'] = { final: val, isMultiplicative: false };
               stats['Aspect of Serration Crit'] = { final: 10, isMultiplicative: false };
           }
           
-          let terror = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Terror");
+          let terror = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Terror");
           if (terror) {
               let val = terror.aspectValues && terror.aspectValues.length > 0 ? parseFloat(terror.aspectValues[0]) : 25;
               stats['Aspect of Terror Factor'] = { final: val, isMultiplicative: false };
           }
           
-          let expectant = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of the Expectant");
+          let expectant = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of the Expectant");
           if (expectant) {
               let val = expectant.aspectValues && expectant.aspectValues.length > 0 ? parseFloat(expectant.aspectValues[0]) : 5;
               let activeStacks = expectant.aspectState?.expectantStacks !== undefined ? parseInt(expectant.aspectState.expectantStacks) : 10;
@@ -3450,7 +3473,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of the Expectant Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
           
-          let greatFeast = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of the Great Feast");
+          let greatFeast = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of the Great Feast");
           if (greatFeast) {
               let val = greatFeast.aspectValues && greatFeast.aspectValues.length > 0 ? parseFloat(greatFeast.aspectValues[0]) : 35;
               let activeMinions = greatFeast.aspectState?.feastActiveMinions !== undefined ? greatFeast.aspectState.feastActiveMinions : true;
@@ -3458,7 +3481,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of the Great Feast Minions"] = { final: activeMinions ? 1 : 0, isMultiplicative: false };
           }
           
-          let moonrise = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of the Moonrise");
+          let moonrise = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of the Moonrise");
           if (moonrise) {
               let val = moonrise.aspectValues && moonrise.aspectValues.length > 0 ? parseFloat(moonrise.aspectValues[0]) : 40;
               let activeStacks = moonrise.aspectState?.moonriseStacks !== undefined ? parseInt(moonrise.aspectState.moonriseStacks) : 10;
@@ -3472,37 +3495,37 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let thickenedBlood = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Thickened Blood");
+          let thickenedBlood = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Thickened Blood");
           if (thickenedBlood) {
               let val = thickenedBlood.aspectValues && thickenedBlood.aspectValues.length > 0 ? parseFloat(thickenedBlood.aspectValues[0]) : 60;
               stats["Aspect of Thickened Blood Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let ultimateShadow = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Ultimate Shadow");
+          let ultimateShadow = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Ultimate Shadow");
           if (ultimateShadow) {
               let val = ultimateShadow.aspectValues && ultimateShadow.aspectValues.length > 0 ? parseFloat(ultimateShadow.aspectValues[0]) : 80;
               stats["Aspect of Ultimate Shadow Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let hewedFlesh = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Hewed Flesh");
+          let hewedFlesh = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Hewed Flesh");
           if (hewedFlesh) {
               let val = hewedFlesh.aspectValues && hewedFlesh.aspectValues.length > 0 ? parseFloat(hewedFlesh.aspectValues[0]) : 20;
               stats["Aspect of Hewed Flesh Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let voidAspect = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of the Void");
+          let voidAspect = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of the Void");
           if (voidAspect) {
               let val = voidAspect.aspectValues && voidAspect.aspectValues.length > 0 ? parseFloat(voidAspect.aspectValues[0]) : 15;
               stats["Aspect of the Void Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let untimelyDeath = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Untimely Death");
+          let untimelyDeath = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Untimely Death");
           if (untimelyDeath) {
               let val = untimelyDeath.aspectValues && untimelyDeath.aspectValues.length > 0 ? parseFloat(untimelyDeath.aspectValues[0]) : 60;
               stats["Aspect of Untimely Death Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let boneBreaker = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Bone Breaker's Aspect");
+          let boneBreaker = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Bone Breaker's Aspect");
           if (boneBreaker) {
               let val = boneBreaker.aspectValues && boneBreaker.aspectValues.length > 0 ? parseFloat(boneBreaker.aspectValues[0]) : 100;
               let targetHit = boneBreaker.aspectState?.bonebreakerHit !== undefined ? parseInt(boneBreaker.aspectState.bonebreakerHit) : 1;
@@ -3510,25 +3533,25 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Bone Breaker's Aspect Enemy"] = { final: targetHit, isMultiplicative: false };
           }
           
-          let cadaverous = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Cadaverous Aspect");
+          let cadaverous = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Cadaverous Aspect");
           if (cadaverous) {
               let val = cadaverous.aspectValues && cadaverous.aspectValues.length > 0 ? parseFloat(cadaverous.aspectValues[0]) : 13;
               stats["Cadaverous Aspect Factor"] = { final: val * 5, isMultiplicative: false }; // Max stacks is always 5
           }
           
-          let conceited = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Conceited Aspect");
+          let conceited = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Conceited Aspect");
           if (conceited) {
               let val = conceited.aspectValues && conceited.aspectValues.length > 0 ? parseFloat(conceited.aspectValues[0]) : 40;
               stats["Conceited Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let crushing = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Crushing Aspect");
+          let crushing = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Crushing Aspect");
           if (crushing) {
               let val = crushing.aspectValues && crushing.aspectValues.length > 0 ? parseFloat(crushing.aspectValues[0]) : 45;
               stats["Crushing Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let duelist = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Duelist's Aspect");
+          let duelist = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Duelist's Aspect");
           if (duelist) {
               let has1H = false;
               const wSlots = ['Mainhand', 'Dual-Wield Weapon 1', 'Dual-Wield Weapon 2', 'Weapon1', 'Weapon2'];
@@ -3544,67 +3567,67 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let edgemaster = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Edgemaster's Aspect");
+          let edgemaster = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Edgemaster's Aspect");
           if (edgemaster) {
               let val = edgemaster.aspectValues && edgemaster.aspectValues.length > 0 ? parseFloat(edgemaster.aspectValues[0]) : 40;
               stats["Edgemaster's Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let piercing = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Piercing Cold");
+          let piercing = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Piercing Cold");
           if (piercing) {
               let val = piercing.aspectValues && piercing.aspectValues.length > 0 ? parseFloat(piercing.aspectValues[0]) : 20;
               stats["Aspect of Piercing Cold Factor"] = { final: val, isMultiplicative: false };
           }
 
-          let retribution = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Retribution");
+          let retribution = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Retribution");
           if (retribution) {
               let val = retribution.aspectValues && retribution.aspectValues.length > 0 ? parseFloat(retribution.aspectValues[0]) : 30;
               stats["Aspect of Retribution Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let hellbent = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Hellbent Commander Aspect");
+          let hellbent = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Hellbent Commander Aspect");
           if (hellbent) {
               let val = hellbent.aspectValues && hellbent.aspectValues.length > 0 ? parseFloat(hellbent.aspectValues[0]) : 50;
               stats["Hellbent Commander Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let needleflare = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Needleflare Aspect");
+          let needleflare = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Needleflare Aspect");
           if (needleflare) {
               let val = needleflare.aspectValues && needleflare.aspectValues.length > 0 ? parseFloat(needleflare.aspectValues[0]) : 40;
               stats["Needleflare Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let shivering = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Shivering Aspect");
+          let shivering = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Shivering Aspect");
           if (shivering) {
               let val = shivering.aspectValues && shivering.aspectValues.length > 0 ? parseFloat(shivering.aspectValues[0]) : 60;
               stats["Shivering Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let splintering = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Splintering Aspect");
+          let splintering = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Splintering Aspect");
           if (splintering) {
               let val = splintering.aspectValues && splintering.aspectValues.length > 0 ? parseFloat(splintering.aspectValues[0]) : 50;
               stats["Splintering Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let tides = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Tides of Blood Aspect");
+          let tides = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Tides of Blood Aspect");
           if (tides) {
               let val = tides.aspectValues && tides.aspectValues.length > 0 ? parseFloat(tides.aspectValues[0]) : 25;
               stats["Tides of Blood Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let vanquishing = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Vanquishing Aspect");
+          let vanquishing = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Vanquishing Aspect");
           if (vanquishing) {
               let val = vanquishing.aspectValues && vanquishing.aspectValues.length > 0 ? parseFloat(vanquishing.aspectValues[0]) : 60;
               stats["Vanquishing Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let vehement = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Vehement Brawler's Aspect");
+          let vehement = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Vehement Brawler's Aspect");
           if (vehement) {
               let val = vehement.aspectValues && vehement.aspectValues.length > 0 ? parseFloat(vehement.aspectValues[0]) : 35;
               stats["Vehement Brawler's Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let writhing = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Writhing Aspect");
+          let writhing = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Writhing Aspect");
           if (writhing) {
               let val = writhing.aspectValues && writhing.aspectValues.length > 0 ? parseFloat(writhing.aspectValues[0]) : 7.5;
               let activeStacks = writhing.aspectState?.writhingStacks !== undefined ? parseInt(writhing.aspectState.writhingStacks) : 10;
@@ -3612,7 +3635,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Writhing Aspect Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
           
-          let coag = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Coagulation");
+          let coag = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Coagulation");
           if (coag) {
               let drVal = coag.aspectValues && coag.aspectValues.length > 0 ? parseFloat(coag.aspectValues[0]) : 15;
               addStat(stats, 'Fortify Generation %', 30, 'Aspect of Coagulation');
@@ -3623,7 +3646,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let disob = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Disobedience");
+          let disob = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Disobedience");
           if (disob) {
               let val = disob.aspectValues && disob.aspectValues.length > 0 ? parseFloat(disob.aspectValues[0]) : 1.0;
               let activeStacks = disob.aspectState?.disobedienceStacks !== undefined ? parseInt(disob.aspectState.disobedienceStacks) : 30;
@@ -3632,7 +3655,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let glynn = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Glynn's Anvil");
+          let glynn = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Glynn's Anvil");
           if (glynn) {
               addStat(stats, 'Maximum Resolve', 2, "Aspect of Glynn's Anvil");
               let val = glynn.aspectValues && glynn.aspectValues.length > 0 ? parseFloat(glynn.aspectValues[0]) : 2.5;
@@ -3643,13 +3666,13 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let hardenedBones = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Hardened Bones");
+          let hardenedBones = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Hardened Bones");
           if (hardenedBones) {
               let val = hardenedBones.aspectValues && hardenedBones.aspectValues.length > 0 ? parseFloat(hardenedBones.aspectValues[0]) : 15;
               addStat(stats, 'Universal Damage Reduction %', val, 'Aspect of Hardened Bones');
           }
           
-          let heavenly = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Heavenly Strength");
+          let heavenly = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Heavenly Strength");
           if (heavenly) {
               let val = heavenly.aspectValues && heavenly.aspectValues.length > 0 ? parseFloat(heavenly.aspectValues[0]) : 30;
               let has2H = false;
@@ -3664,13 +3687,13 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let layered = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Layered Wards");
+          let layered = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Layered Wards");
           if (layered) {
               let val = layered.aspectValues && layered.aspectValues.length > 0 ? parseFloat(layered.aspectValues[0]) : 30;
               addStat(stats, 'Block Damage Reduction', val, 'Aspect of Layered Wards');
           }
           
-          let might = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Might");
+          let might = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Might");
           if (might) {
               let val = might.aspectValues && might.aspectValues.length > 0 ? parseFloat(might.aspectValues[0]) : 20;
               let hasBasic = false;
@@ -3700,13 +3723,13 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let shelter = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Shelter");
+          let shelter = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Shelter");
           if (shelter) {
               let val = shelter.aspectValues && shelter.aspectValues.length > 0 ? parseFloat(shelter.aspectValues[0]) : 30;
               addStat(stats, '% Resistance to All Elements', val, 'Aspect of Shelter');
           }
           
-          let spiked = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Spiked Armor");
+          let spiked = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Spiked Armor");
           if (spiked) {
               let val = spiked.aspectValues && spiked.aspectValues.length > 0 ? parseFloat(spiked.aspectValues[0]) : 40;
               addStat(stats, '% Total Armor', val, 'Aspect of Spiked Armor');
@@ -3714,7 +3737,7 @@ function compileCharacterStats(equipped, autoStats) {
               addStat(stats, 'Block Chance', 15, 'Aspect of Spiked Armor');
           }
           
-          let fortress = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of the Fortress");
+          let fortress = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of the Fortress");
           if (fortress) {
               let val = fortress.aspectValues && fortress.aspectValues.length > 0 ? parseFloat(fortress.aspectValues[0]) : 40;
               let isInjured = typeof getActiveBuffs === 'function' ? getActiveBuffs().playerInjured : false;
@@ -3723,7 +3746,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let indomitable = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of the Indomitable");
+          let indomitable = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of the Indomitable");
           if (indomitable) {
               let val = indomitable.aspectValues && indomitable.aspectValues.length > 0 ? parseFloat(indomitable.aspectValues[0]) : 45;
               let blockChance = stats['Block Chance'] ? stats['Block Chance'].final : 0;
@@ -3734,7 +3757,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let interdiction = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Interdiction");
+          let interdiction = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Interdiction");
           if (interdiction) {
               let val = interdiction.aspectValues && interdiction.aspectValues.length > 0 ? parseFloat(interdiction.aspectValues[0]) : 3.0; // Default to 3% if not found
               let resolveStacks = parseInt(document.getElementById('buff-resolve')?.value) || 0;
@@ -3744,7 +3767,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let shieldingBones = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Shielding Bones");
+          let shieldingBones = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Shielding Bones");
           if (shieldingBones) {
               let resolveStacks = parseInt(document.getElementById('buff-resolve')?.value) || 0;
               if (resolveStacks >= 1) {
@@ -3753,7 +3776,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let bruiser = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Bruiser's Aspect");
+          let bruiser = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Bruiser's Aspect");
           if (bruiser) {
               let val = bruiser.aspectValues && bruiser.aspectValues.length > 0 ? parseFloat(bruiser.aspectValues[0]) : 244;
               let missingLife = document.getElementById('dash-missing-life-input') ? parseInt(document.getElementById('dash-missing-life-input').value) || 0 : 0;
@@ -3763,7 +3786,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let encased = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Encased Aspect");
+          let encased = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Encased Aspect");
           if (encased) {
               let isFrozen = typeof getActiveConditions === 'function' ? getActiveConditions().frozen : false;
               if (isFrozen) {
@@ -3772,13 +3795,13 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let enshrouding = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Enshrouding Aspect");
+          let enshrouding = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Enshrouding Aspect");
           if (enshrouding) {
               let val = enshrouding.aspectValues && enshrouding.aspectValues.length > 0 ? parseFloat(enshrouding.aspectValues[0]) : 30;
               addStat(stats, '% Resistance to All Elements', val, "Enshrouding Aspect");
           }
           
-          let everliving = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Everliving Aspect");
+          let everliving = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Everliving Aspect");
           if (everliving) {
               let isCc = typeof getActiveConditions === 'function' ? getActiveConditions().cc : false;
               if (isCc) {
@@ -3789,13 +3812,13 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let juggernaut = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Juggernaut's Aspect");
+          let juggernaut = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Juggernaut's Aspect");
           if (juggernaut) {
               let val = juggernaut.aspectValues && juggernaut.aspectValues.length > 0 ? parseFloat(juggernaut.aspectValues[0]) : 150;
               addStat(stats, '% Total Armor', val, "Juggernaut's Aspect");
           }
           
-          let snowveiled = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Snowveiled Aspect");
+          let snowveiled = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Snowveiled Aspect");
           if (snowveiled) {
               let barrier = document.getElementById('dash-barrier-input') ? parseInt(document.getElementById('dash-barrier-input').value) || 0 : 0;
               if (barrier > 0) {
@@ -3804,13 +3827,13 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let exploiter = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Exploiter's Aspect");
+          let exploiter = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Exploiter's Aspect");
           if (exploiter) {
               let val = exploiter.aspectValues && exploiter.aspectValues.length > 0 ? parseFloat(exploiter.aspectValues[0]) : 20;
               stats["Exploiter's Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let sticker = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Sticker-thought Aspect");
+          let sticker = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Sticker-thought Aspect");
           if (sticker && window.currentBuild && window.currentBuild.activeSkills && window.currentBuild.activeSkills.includes("Decompose")) {
               let val = 0;
               if (sticker.aspectValues && sticker.aspectValues.length > 0) {
@@ -6902,7 +6925,7 @@ function applyActiveModifiers(baseSkillObj) {
     if (modified.tags && modified.tags.some(t => t.toLowerCase() === 'skill_curse')) {
         let rathmaItem = null;
         if (typeof window.currentBuild !== 'undefined' && window.currentBuild && window.currentBuild.equipment) {
-            rathmaItem = [...Object.values(window.currentBuild.equipment || {}), ...(window.currentBuild.talisman?.charms || [])].find(item => item && (item.name === "Will of Rathma" || item.name === "Will of Rathma (Charm)"));
+            rathmaItem = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && (item.name === "Will of Rathma" || item.name === "Will of Rathma (Charm)"));
         }
         if (rathmaItem) {
             let rathmaVal = (rathmaItem.isMythic || rathmaItem.rarity === 'mythic') ? 9.75 : (rathmaItem.aspectValues && rathmaItem.aspectValues[0] !== undefined ? parseFloat(rathmaItem.aspectValues[0]) / 100 : 6.0);
@@ -7592,7 +7615,7 @@ function populateMainSkillSelect() {
 
 function isSkillForcedActive(name) {
     if (currentBuild && currentBuild.equipment) {
-        if ([...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].some(item => item && (item.name === "Ring of the Sacrilegious Soul" || item.name === "Ring of the Sacrilegious Soul (Charm)"))) {
+        if (window.getAllEquippedItemsWithAspects(currentBuild).some(item => item && (item.name === "Ring of the Sacrilegious Soul" || item.name === "Ring of the Sacrilegious Soul (Charm)"))) {
             const sacUpgrades = [
                 "Lucky Hit Chance (Corpse Tendrils)",
                 "Vulnerable (Corpse Tendrils)",
@@ -7604,7 +7627,7 @@ function isSkillForcedActive(name) {
             }
         }
         
-        if ([...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].some(item => item && (item.name === "Gospel of the Devotee" || item.name === "Gospel of the Devotee (Charm)"))) {
+        if (window.getAllEquippedItemsWithAspects(currentBuild).some(item => item && (item.name === "Gospel of the Devotee" || item.name === "Gospel of the Devotee (Charm)"))) {
             const basicUpgrades = [
                 "Ferocity (Reap)", "Corpse Generation (Reap)", "Essence Generation (Reap)", "Critical Strike Chance (Reap)",
                 "Crowd Control (Decompose)", "Lucky Hit Chance (Decompose)", "Damage Bonus (Decompose)", "Barrier (Decompose)",
@@ -8137,6 +8160,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     const aspectsDatalist = `<datalist id="aspects-list">${aspectsOptions}</datalist>`;
 
     let aspectSection = '';
+    let kulleanAspectSection = '';
     if (rarity !== 'mythic' && rarity !== 'unique') {
       const currentAspectName = itemObj.aspect || 'None';
       let aspectDescHtml = '';
@@ -8758,6 +8782,52 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       `;
     }
 
+    if (slotName.toLowerCase() === 'amulet') {
+      const currentKulleanAspectName = itemObj.kulleanAspect || 'None';
+      let kulleanAspectDescHtml = '';
+      if (currentKulleanAspectName !== 'None') {
+        const aspectObj = (window.D4_DATABASE?.aspects || []).find(a => a.name === currentKulleanAspectName);
+        if (aspectObj && aspectObj.desc) {
+          let aspectMult = getAspectMultiplier(slotName, itemObj);
+          const vals = itemObj.kulleanAspectValues || [];
+          let valIndex = 0;
+          kulleanAspectDescHtml = aspectObj.desc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, minStr, maxStr) => {
+            let min = minStr ? parseFloat(minStr.replace(/,/g, '')) * aspectMult : (aspectObj.minVal ? parseFloat(aspectObj.minVal) * aspectMult : null);
+            let max = maxStr ? parseFloat(maxStr.replace(/,/g, '')) * aspectMult : (aspectObj.maxVal ? parseFloat(aspectObj.maxVal) * aspectMult : null);
+            if (min !== null) min = parseFloat(min.toFixed(2));
+            if (max !== null) max = parseFloat(max.toFixed(2));
+            
+            let v = vals[valIndex] !== undefined ? vals[valIndex] : (max || min || 0);
+            if (typeof v === 'string') v = parseFloat(v.replace(/,/g, ''));
+            v = parseFloat(Number(v).toFixed(2));
+
+            let placeholder = (min !== null && max !== null) ? `${min}-${max}` : 'value';
+            let minAttr = min !== null ? ` min="${min}"` : '';
+            let maxAttr = max !== null ? ` max="${max}"` : '';
+            let stepAttr = (min !== null && !Number.isInteger(min)) || (max !== null && !Number.isInteger(max)) ? ' step="0.1"' : ' step="1"';
+            if (min === null && max === null) stepAttr = ' step="any"';
+            const inputHtml = `<input type="number" class="kullean-aspect-val-input" data-idx="${valIndex}" value="${v}" placeholder="${placeholder}" title="${placeholder}"${minAttr}${maxAttr}${stepAttr} style="width: 85px; min-width: 85px; flex-shrink: 0; padding: 2px 4px; text-align: center; border: 1px solid #555; border-radius: 3px; background: rgba(0,0,0,0.5); color: #8ab4f8; font-family: inherit; font-size: 0.9em; margin: 0 2px;">`;
+            valIndex++;
+            return inputHtml;
+          });
+          kulleanAspectDescHtml = `<div style="margin-top: 8px; color: #d18a45; font-size: 0.9rem; line-height: 1.5;">${kulleanAspectDescHtml}</div>`;
+        }
+      }
+      
+      kulleanAspectSection = `
+        <div class="edit-section">
+          <div class="edit-section-title orange" style="display: flex; justify-content: space-between; align-items: center;">
+            <span>Kullean Aspect</span>
+            <button class="edit-btn" id="btn-select-kullean-aspect" style="padding: 2px 8px; font-size: 0.75rem;">Change</button>
+          </div>
+          <div class="edit-section-content" style="padding: 4px 0;">
+            <div style="color: var(--text-primary); font-size: 0.95rem; font-weight: 500;">${currentKulleanAspectName}</div>
+            ${kulleanAspectDescHtml}
+          </div>
+        </div>
+      `;
+    }
+
     if (slotName.toLowerCase() === 'seal' || slotName.toLowerCase().startsWith('charm')) {
         if (itemObj.rarity !== 'unique' && itemObj.rarity !== 'mythic') {
             aspectSection = '';
@@ -8855,6 +8925,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       </div>
 
       ${aspectSection}
+      ${kulleanAspectSection}
 
       ${(() => {
         const lowerSlot = slotName.toLowerCase();
@@ -10684,7 +10755,7 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
     
     if (isShadowDamage) {
         if (window.currentBuild) {
-            let allItems = [...Object.values(window.currentBuild.equipment || {}), ...(window.currentBuild.talisman?.charms || [])];
+            let allItems = window.getAllEquippedItemsWithAspects(window.currentBuild);
             let gloom = allItems.find(item => item && (item.name === "The Gloom Ward" || item.name === "The Gloom Ward (Charm)"));
             if (gloom) {
                 let gloomVal = gloom.isMythic ? 780 : (gloom.aspectValues && gloom.aspectValues.length > 0 ? parseFloat(gloom.aspectValues[0]) || 500 : 500);
@@ -11985,7 +12056,7 @@ function renderCalcSkills() {
                     card.appendChild(sliderDiv);
                 }
 
-                const hasSanguivor = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].some(i => i && (i.name === 'Sanguivor, Blade of Zir' || i.name === 'Sanguivor, Blade of Zir (Charm)'));
+                const hasSanguivor = window.getAllEquippedItemsWithAspects(currentBuild).some(i => i && (i.name === 'Sanguivor, Blade of Zir' || i.name === 'Sanguivor, Blade of Zir (Charm)'));
                 if ((baseSkill.name === 'Army of the Dead' || baseSkill.baseName === 'Army of the Dead') && hasSanguivor) {
                     let curVal = window.skillSliderValues['Vampiric Curse Souls'] !== undefined ? window.skillSliderValues['Vampiric Curse Souls'] : 1;
                     let sliderDiv = document.createElement('div');
@@ -12003,7 +12074,7 @@ function renderCalcSkills() {
                     card.appendChild(sliderDiv);
                 }
 
-                const hasLidlessMythic = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].some(i => i && (i.name === 'Lidless Wall' || i.name === 'Lidless Wall (Charm)') && i.isMythic);
+                const hasLidlessMythic = window.getAllEquippedItemsWithAspects(currentBuild).some(i => i && (i.name === 'Lidless Wall' || i.name === 'Lidless Wall (Charm)') && i.isMythic);
                 if ((baseSkill.name === 'Bone Storm' || baseSkill.baseName === 'Bone Storm') && hasLidlessMythic) {
                     let curVal = window.skillSliderValues['Active Bone Storms (Lidless Wall)'] !== undefined ? window.skillSliderValues['Active Bone Storms (Lidless Wall)'] : 0;
                     let sliderDiv = document.createElement('div');
@@ -12191,7 +12262,7 @@ function calculateSkillCritChance(skillObj) {
         
         let hasSacrilegiousRing = false;
         if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
-            hasSacrilegiousRing = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].some(item => item && (item.name === "Ring of the Sacrilegious Soul" || item.name === "Ring of the Sacrilegious Soul (Charm)"));
+            hasSacrilegiousRing = window.getAllEquippedItemsWithAspects(currentBuild).some(item => item && (item.name === "Ring of the Sacrilegious Soul" || item.name === "Ring of the Sacrilegious Soul (Charm)"));
         }
 
         if (isSkillActiveNode('Critical Strike Chance (Corpse Tendrils)') || hasSacrilegiousRing) {
@@ -12271,7 +12342,7 @@ function calculateLuckyHitChance(skillObj) {
     
     let hasSacrilegiousRing = false;
     if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
-        hasSacrilegiousRing = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].some(item => item && (item.name === "Ring of the Sacrilegious Soul" || item.name === "Ring of the Sacrilegious Soul (Charm)"));
+        hasSacrilegiousRing = window.getAllEquippedItemsWithAspects(currentBuild).some(item => item && (item.name === "Ring of the Sacrilegious Soul" || item.name === "Ring of the Sacrilegious Soul (Charm)"));
     }
 
     let baseName = skillObj.baseName || skillObj.name;
@@ -12293,7 +12364,7 @@ function calculateLuckyHitChance(skillObj) {
     
     let aphoticMult = 1;
     if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
-        const aphoticItem = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].find(item => item && item.aspect === "Aphotic Aspect");
+        const aphoticItem = window.getAllEquippedItemsWithAspects(currentBuild).find(item => item && item.aspect === "Aphotic Aspect");
         if (aphoticItem) {
             let aphoticAspectValue = (aphoticItem.aspectValues && aphoticItem.aspectValues.length > 0) ? aphoticItem.aspectValues[0] : 30;
             let isShadowDamage = skillObj.damageType === 'Shadow' || (skillObj.tags && skillObj.tags.some(t => t.toLowerCase() === 'damage_shadow' || t.toLowerCase() === 'skill_shadow' || t.toLowerCase() === 'search_shadow'));
@@ -12306,7 +12377,7 @@ function calculateLuckyHitChance(skillObj) {
     }
     let fortuneMult = 1;
     if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
-        const fortuneItem = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Fortune");
+        const fortuneItem = window.getAllEquippedItemsWithAspects(currentBuild).find(item => item && item.aspect === "Aspect of Fortune");
         if (fortuneItem) {
             let targetTypeVal = document.querySelector('input[name="monster_type"]:checked')?.value;
             let isEliteOrBoss = targetTypeVal && (targetTypeVal.toLowerCase() === 'elite' || targetTypeVal.toLowerCase() === 'boss');
@@ -12523,7 +12594,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
     
 
     if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
-        let pelgahin = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].find(item => item && (item.name === "Signet of Pelghain" || item.name === "Signet of Pelghain (Charm)"));
+        let pelgahin = window.getAllEquippedItemsWithAspects(currentBuild).find(item => item && (item.name === "Signet of Pelghain" || item.name === "Signet of Pelghain (Charm)"));
         if (pelgahin) {
             let secondsFrozen = 0;
             const sfEl = document.getElementById('cond-seconds-frozen');
@@ -12543,7 +12614,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
 
 
 
-        let wendigo = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].find(item => item && (item.name === "Wendigo Brand" || item.name === "Wendigo Brand (Charm)"));
+        let wendigo = window.getAllEquippedItemsWithAspects(currentBuild).find(item => item && (item.name === "Wendigo Brand" || item.name === "Wendigo Brand (Charm)"));
         if (wendigo) {
             let recentKills = 0;
             const rkEl = document.getElementById('cond-recent-kills');
@@ -12558,7 +12629,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
             }
         }
         
-        let gospel = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].find(item => item && (item.name === "Gospel of the Devotee" || item.name === "Gospel of the Devotee (Charm)"));
+        let gospel = window.getAllEquippedItemsWithAspects(currentBuild).find(item => item && (item.name === "Gospel of the Devotee" || item.name === "Gospel of the Devotee (Charm)"));
         if (gospel) {
             let isBasicSkill = skillObj.tags && skillObj.tags.some(t => t.toLowerCase() === 'basic' || t.toLowerCase() === 'keyword_basic') || ['Decompose', 'Reap', 'Hemorrhage', 'Bone Splinters'].includes(skillObj.name) || ['Decompose', 'Reap', 'Hemorrhage', 'Bone Splinters'].includes(skillObj.baseName);
             
