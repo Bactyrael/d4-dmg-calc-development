@@ -8148,7 +8148,10 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       'mainhand': ['Offensive'],
       'offhand': ['Offensive', 'Defensive', 'Utility']
     };
-    const allowedCats = slotCategories[slotName.toLowerCase()] || [];
+    let allowedCats = slotCategories[slotName.toLowerCase()] || [];
+    if (window.isSelectingKullean) {
+        allowedCats = ['Utility'];
+    }
 
     const aspectsOptions = (window.D4_DATABASE?.aspects || [])
       .filter(a => {
@@ -8986,7 +8989,11 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     
     const btnSelectAspect = document.getElementById('btn-select-aspect');
     if (btnSelectAspect) {
-      btnSelectAspect.addEventListener('click', () => switchModalTab('aspect'));
+      btnSelectAspect.addEventListener('click', () => { window.isSelectingKullean = false; switchModalTab('aspect'); });
+    }
+    const btnSelectKulleanAspect = document.getElementById('btn-select-kullean-aspect');
+    if (btnSelectKulleanAspect) {
+      btnSelectKulleanAspect.addEventListener('click', () => { window.isSelectingKullean = true; switchModalTab('aspect'); });
     }
 
     document.querySelectorAll('.btn-socket').forEach(btn => {
@@ -9814,16 +9821,25 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     if (box && box.dataset.value) {
       try {
         const itemObj = JSON.parse(box.dataset.value);
-        itemObj.aspect = aspectName;
+                if (window.isSelectingKullean) {
+            itemObj.kulleanAspect = aspectName;
+        } else {
+            itemObj.aspect = aspectName;
+        }
         
         let aspectMult = getAspectMultiplier(currentModalSlot, itemObj);
         
         // Auto-fill max value from database if available
         const aspectObj = window.D4_DATABASE?.aspects?.find(a => a.name === aspectName);
+        let vals = [];
         if (aspectObj && aspectObj.maxValue) {
-          itemObj.aspectValues = [parseFloat((aspectObj.maxValue * aspectMult).toFixed(2))];
+          vals = [parseFloat((aspectObj.maxValue * aspectMult).toFixed(2))];
+        }
+        
+        if (window.isSelectingKullean) {
+            itemObj.kulleanAspectValues = vals;
         } else {
-          itemObj.aspectValues = [];
+            itemObj.aspectValues = vals;
         }
         
         box.dataset.value = JSON.stringify(itemObj);
@@ -9865,7 +9881,10 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       'weapon 3 (dual wield 1)': ['Offensive'],
       'weapon 4 (dual wield 2)': ['Offensive']
     };
-    const allowedCats = slotCategories[slotName.toLowerCase()] || [];
+    let allowedCats = slotCategories[slotName.toLowerCase()] || [];
+    if (window.isSelectingKullean) {
+        allowedCats = ['Utility'];
+    }
 
     // Filter logic
     let items = (window.D4_DATABASE?.aspects || []).filter(a => {
@@ -13629,6 +13648,7 @@ document.addEventListener('DOMContentLoaded', () => { setTimeout(() => {
           list.appendChild(card);
       });
   }
+
 
 
 
