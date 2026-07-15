@@ -8988,7 +8988,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     });
 
     document.querySelectorAll('.aspect-val-input').forEach(inp => {
-      inp.addEventListener('change', (e) => {
+      inp.addEventListener('input', (e) => {
         const target = e.target;
         const idx = parseInt(target.dataset.idx);
         let val = parseFloat(target.value) || 0;
