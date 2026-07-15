@@ -2303,7 +2303,7 @@ function renderEquipment(className, savedEquipment = {}) {
       if (!rawName) return;
       let cleanName = rawName.replace(/\[(?!(?:x|X)\]).*?\]\s*/g, '').replace(/^[\+\-]\s*/, '').trim();
       
-      const keepPct = ['% Strength', '% Intelligence', '% Willpower', '% Dexterity', '% Maximum Life', '% Armor', '% Total Armor', '% Resistance to All Elements'];
+      const keepPct = ['% Strength', '% Intelligence', '% Willpower', '% Dexterity', '% Maximum Life', '% Armor', '% Total Armor', '% Resistance to All Elements', '% All Stats'];
       if (cleanName.startsWith('%') && !keepPct.includes(cleanName)) {
           cleanName = cleanName.replace(/^%\s*/, '').trim();
       }
@@ -3129,6 +3129,23 @@ function compileCharacterStats(equipped, autoStats) {
               });
           });
           delete stats['All Stats'];
+      }
+
+      // Distribute % All Stats
+      if (stats['% All Stats']) {
+          const pctAllStatsObj = stats['% All Stats'];
+          const coreStats = ['Strength', 'Intelligence', 'Willpower', 'Dexterity'];
+          coreStats.forEach(core => {
+              const pctKey = '% ' + core;
+              if (!stats[pctKey]) stats[pctKey] = { total: 0, final: 0, flatSources: [], pctSources: [] };
+              pctAllStatsObj.flatSources.forEach(src => {
+                  let existingSource = stats[pctKey].flatSources.find(s => s.name === src.name);
+                  if (existingSource) existingSource.val += src.val;
+                  else stats[pctKey].flatSources.push({ name: src.name, val: src.val });
+                  stats[pctKey].total += src.val;
+              });
+          });
+          delete stats['% All Stats'];
       }
 
       // Combine Base Armor into Armor
