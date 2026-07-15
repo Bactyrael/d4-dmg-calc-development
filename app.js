@@ -7335,6 +7335,14 @@ function showItemTooltip(itemObj, e, slotName) {
             udesc = uniqueObj.desc;
         }
 
+        if (udesc && itemObj.name && itemObj.name.includes('(Charm)')) {
+            if (itemObj.name === "Blood-Mad Idol (Charm)") udesc = udesc.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[80 - 100]');
+            if (itemObj.name === "Red Blessing (Charm)") udesc = udesc.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[5 - 7]');
+            if (itemObj.name === "Locran's Talisman (Charm)") udesc = udesc.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[80 - 100]');
+            if (itemObj.name === "Bloodless Scream (Charm)") udesc = udesc.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[100 - 125]');
+            if (itemObj.name === "Banished Lord's Talisman (Charm)") udesc = udesc.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[5 - 7]');
+        }
+
         if (udesc) {
             let flavorHtml = itemObj.flavorText ? `<div style="margin-top: 10px; color: #888; font-style: italic; font-size: 0.8rem;">"${itemObj.flavorText}"</div>` : '';
             tooltipHtml += `
@@ -8284,6 +8292,13 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
           const uniqueObj = (window.D4_DATABASE?.uniques || []).find(u => u.name === baseName2) || (window.D4_DATABASE?.mythics || []).find(u => u.name === baseName2);
       if (uniqueObj && uniqueObj.desc) {
         let udesc = uniqueObj.desc;
+        if (itemObj.name && itemObj.name.includes('(Charm)')) {
+            if (itemObj.name === "Blood-Mad Idol (Charm)") udesc = udesc.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[80 - 100]');
+            if (itemObj.name === "Red Blessing (Charm)") udesc = udesc.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[5 - 7]');
+            if (itemObj.name === "Locran's Talisman (Charm)") udesc = udesc.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[80 - 100]');
+            if (itemObj.name === "Bloodless Scream (Charm)") udesc = udesc.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[100 - 125]');
+            if (itemObj.name === "Banished Lord's Talisman (Charm)") udesc = udesc.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[5 - 7]');
+        }
         if (itemObj.name === 'Temerity' && itemObj.isMythic) {
             udesc = "Effects that Heal you beyond 100% Life grant you Barrier equal to 130% of the overhealed amount that lasts for 8 seconds.<br><br>You may now drink your Healing Potion while at full Life.";
         }
