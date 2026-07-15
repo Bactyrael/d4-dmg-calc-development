@@ -9410,6 +9410,15 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             }
             if (!sealObj || sealObj.name !== item.name) {
                 sealObj = { name: item.name, power: 900, quality: 0, rarity: item.rarity };
+                if ((item.rarity === 'unique' || item.rarity === 'mythic') && item.affixes) {
+                    sealObj.affixes = [...item.affixes];
+                    if (item.desc) {
+                        const aspectMatch = item.desc.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
+                        if (aspectMatch) {
+                            sealObj.aspectValues = [parseFloat(aspectMatch[2])];
+                        }
+                    }
+                }
             }
             boxes.forEach(b => b.dataset.value = JSON.stringify(sealObj));
         }
@@ -9447,6 +9456,24 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
               }
               if (!charmObj || charmObj.name !== item.name) {
                   charmObj = { name: item.name, power: 900, quality: 0, rarity: item.rarity };
+                  if ((item.rarity === 'unique' || item.rarity === 'mythic') && item.affixes) {
+                      charmObj.affixes = [...item.affixes];
+                      if (item.desc) {
+                          let descToParse = item.desc;
+                          if (item.name === "Banished Lord's Talisman (Charm)") {
+                              descToParse = descToParse.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[5 - 7]');
+                          } else if (item.name === "Bloodless Scream (Charm)") {
+                              descToParse = descToParse.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[100 - 125]');
+                          } else if (item.name === "Locran's Talisman (Charm)") {
+                              descToParse = descToParse.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[80 - 100]');
+                          }
+                          const aspectMatch = descToParse.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
+                          if (aspectMatch) {
+                              // By default, set it to the maximum roll (index 2)
+                              charmObj.aspectValues = [parseFloat(aspectMatch[2])];
+                          }
+                      }
+                  }
               }
               box.dataset.value = JSON.stringify(charmObj);
           }
@@ -9561,6 +9588,10 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
                 let descToParse = foundItem.desc;
                 if (itemName === "Banished Lord's Talisman (Charm)") {
                     descToParse = descToParse.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[5 - 7]');
+                } else if (itemName === "Bloodless Scream (Charm)") {
+                    descToParse = descToParse.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[100 - 125]');
+                } else if (itemName === "Locran's Talisman (Charm)") {
+                    descToParse = descToParse.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[80 - 100]');
                 }
                 const aspectMatch = descToParse.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
                 if (aspectMatch) {
