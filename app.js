@@ -3544,6 +3544,18 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Edgemaster's Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
+          let piercing = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Piercing Cold");
+          if (piercing) {
+              let val = piercing.aspectValues && piercing.aspectValues.length > 0 ? parseFloat(piercing.aspectValues[0]) : 20;
+              stats["Aspect of Piercing Cold Factor"] = { final: val, isMultiplicative: false };
+          }
+
+          let retribution = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Retribution");
+          if (retribution) {
+              let val = retribution.aspectValues && retribution.aspectValues.length > 0 ? parseFloat(retribution.aspectValues[0]) : 30;
+              stats["Aspect of Retribution Factor"] = { final: val, isMultiplicative: false };
+          }
+          
           let hellbent = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Hellbent Commander Aspect");
           if (hellbent) {
               let val = hellbent.aspectValues && hellbent.aspectValues.length > 0 ? parseFloat(hellbent.aspectValues[0]) : 50;
@@ -3713,6 +3725,25 @@ function compileCharacterStats(equipped, autoStats) {
               if (bonus > 0) {
                   addStat(stats, '% Total Armor', bonus, 'Aspect of the Indomitable');
                   addStat(stats, 'Control Impaired Duration Reduction', bonus, 'Aspect of the Indomitable');
+              }
+          }
+          
+          let interdiction = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Interdiction");
+          if (interdiction) {
+              let val = interdiction.aspectValues && interdiction.aspectValues.length > 0 ? parseFloat(interdiction.aspectValues[0]) : 3.0; // Default to 3% if not found
+              let resolveStacks = parseInt(document.getElementById('buff-resolve')?.value) || 0;
+              let hasShield = stats['Block Chance'] && stats['Block Chance'].final > 0;
+              if (hasShield && resolveStacks > 0) {
+                  addStat(stats, 'Block Chance', val * resolveStacks, 'Aspect of Interdiction');
+              }
+          }
+          
+          let shieldingBones = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Shielding Bones");
+          if (shieldingBones) {
+              let resolveStacks = parseInt(document.getElementById('buff-resolve')?.value) || 0;
+              if (resolveStacks >= 1) {
+                  let val = shieldingBones.aspectValues && shieldingBones.aspectValues.length > 0 ? parseFloat(shieldingBones.aspectValues[0]) : 45;
+                  addStat(stats, '% Resistance to All Elements', val, "Aspect of Shielding Bones");
               }
           }
           
@@ -10766,12 +10797,19 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
     
     // Apply Aspect of the Void if applicable
     if (stats["Aspect of the Void Factor"] && buffs.weakened) {
-        if (tags.some(t => t.includes('darkness'))) {
+        if (tags.some(t => t.includes('darkness') || t.includes('shadow'))) {
             let multVal = stats["Aspect of the Void Factor"].final;
             let mult = 1 + (multVal / 100);
             bucket *= mult;
             components.push({ name: 'Aspect of the Void [x]', value: mult });
         }
+    }
+    // Apply Exploiter's Aspect if applicable
+    if (stats["Exploiter's Aspect Factor"]) {
+        let multVal = stats["Exploiter's Aspect Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Exploiter\'s Aspect [x]', value: mult });
     }
     
     // Apply Bone Breaker's Aspect if applicable
@@ -10886,6 +10924,22 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Edgemaster\'s Aspect [x]', value: mult });
+    }
+    
+    // Apply Aspect of Piercing Cold if applicable
+    if (stats["Aspect of Piercing Cold Factor"] && conds.cc) {
+        let multVal = stats["Aspect of Piercing Cold Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Aspect of Piercing Cold [x]', value: mult });
+    }
+    
+    // Apply Aspect of Retribution if applicable
+    if (stats["Aspect of Retribution Factor"] && conds.distant) {
+        let multVal = stats["Aspect of Retribution Factor"].final;
+        let mult = 1 + (multVal / 100);
+        bucket *= mult;
+        components.push({ name: 'Aspect of Retribution [x]', value: mult });
     }
     
     // Apply Hellbent Commander Aspect if applicable
@@ -12218,8 +12272,21 @@ function calculateLuckyHitChance(skillObj) {
             }
         }
     }
+    let fortuneMult = 1;
+    if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
+        const fortuneItem = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Fortune");
+        if (fortuneItem) {
+            let targetTypeVal = document.querySelector('input[name="monster_type"]:checked')?.value;
+            let isEliteOrBoss = targetTypeVal && (targetTypeVal.toLowerCase() === 'elite' || targetTypeVal.toLowerCase() === 'boss');
+            if (isEliteOrBoss) {
+                let fortuneAspectValue = (fortuneItem.aspectValues && fortuneItem.aspectValues.length > 0) ? fortuneItem.aspectValues[0] : 20;
+                fortuneMult = (1 + (fortuneAspectValue / 100));
+                components.push({ name: 'Aspect of Fortune [x]', value: fortuneAspectValue });
+            }
+        }
+    }
     
-    let totalLHC = baseLHC * (1 + (bonusLHC / 100)) * aphoticMult;
+    let totalLHC = baseLHC * (1 + (bonusLHC / 100)) * aphoticMult * fortuneMult;
     
     return {
         total: totalLHC,
@@ -12624,6 +12691,34 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                             multiData.components.push({ name: `Bloodless Scream (vs CC/Boss) [x]`, value: mult });
                         }
                     }
+                }
+            }
+
+            if (item && item.aspect === 'Aspect of Biting Cold') {
+                let tags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
+                const isCold = tags.includes('skill_cold') || tags.includes('search_cold') || (skillObj.damageType && skillObj.damageType.toLowerCase() === 'cold');
+                if (isCold) {
+                    let val = 15;
+                    if (item.aspectValues && item.aspectValues.length > 0) {
+                        val = parseFloat(item.aspectValues[0]) || 15;
+                    }
+                    let mult = 1 + (val / 100);
+                    multiMult *= mult;
+                    multiData.components.push({ name: `Aspect of Biting Cold [x]`, value: mult });
+                }
+            }
+            
+            if (item && item.aspect === 'Aspect of Debilitating Darkness') {
+                let tags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
+                const isDesecratedGround = tags.includes('desecrated ground') || tags.includes('desecrated_ground') || tags.includes('subpower_desecratedground');
+                if (isDesecratedGround) {
+                    let val = 50; // default multiplier
+                    if (item.aspectValues && item.aspectValues.length > 0) {
+                        val = parseFloat(item.aspectValues[0]) || 50;
+                    }
+                    let mult = 1 + (val / 100);
+                    multiMult *= mult;
+                    multiData.components.push({ name: `Aspect of Debilitating Darkness [x]`, value: mult });
                 }
             }
         });

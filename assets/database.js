@@ -4552,22 +4552,6 @@ Object.assign(window.D4_DATABASE, {
       "maxValue": ""
     },
     {
-      "name": "Aspect of the Cursed Aura",
-      "desc": "A dark aura surrounds you, inflicting Decrepify and Iron Maiden on enemies who touch it. \n\nCurses inflicted this way spread to surrounding targets every [2.5 - 4] seconds and last 4 seconds outside of the aura.",
-      "category": "FILTER_Legendary_Utility",
-      "classes": [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0
-      ],
-      "maxValue": "."
-    },
-    {
       "name": "Aspect of the Damned",
       "desc": "You deal #% increased Shadow damage to enemies afflicted by any Curse.",
       "category": "FILTER_Legendary_Offensive",
@@ -5895,22 +5879,7 @@ Object.assign(window.D4_DATABASE, {
       ],
       "maxValue": "6"
     },
-    {
-      "name": "Blood Getter's Aspect",
-      "desc": "Your Skeletal Priests now also empower you at [55 - 75]% effectiveness.",
-      "category": "FILTER_Legendary_Utility",
-      "classes": [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0
-      ],
-      "maxValue": "75"
-    },
+    
     {
       "name": "Bold Chieftain's Aspect",
       "desc": "Your Shout Skill Cooldowns are reduced by # seconds.",
@@ -6103,22 +6072,7 @@ Object.assign(window.D4_DATABASE, {
       ],
       "maxValue": ""
     },
-    {
-      "name": "Coldbringer's Aspect",
-      "desc": "Every 4 seconds, your Skeletal Mages cast a blizzard that deals [135 - 180] Cold damage and continuously Chills enemies for 6% over 8 seconds.",
-      "category": "FILTER_Legendary_Utility",
-      "classes": [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0
-      ],
-      "maxValue": "4"
-    },
+    
     {
       "name": "Coldclip Aspect",
       "desc": "You deal #% increased damage to enemies who are Chilled or Frozen and when you deal Cold damage to Bosses.",
@@ -6871,22 +6825,7 @@ Object.assign(window.D4_DATABASE, {
       ],
       "maxValue": "55"
     },
-    {
-      "name": "Hulking Aspect",
-      "desc": "Your Golem has a [2 - 18]% chance to reduce its active Cooldown by 2 seconds and a [1.0 - 9.0]% chance to spawn a Corpse each time it damages an enemy with its normal attack.",
-      "category": "FILTER_Legendary_Utility",
-      "classes": [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0
-      ],
-      "maxValue": "18"
-    },
+    
     {
       "name": "Icy Alchemist's Aspect",
       "desc": "Lucky Hit: Shadow damage has up to a #% chance to release an explosion that deals # Cold damage to the target and surrounding enemies, Chilling for #% and Weakening them for # seconds.",
