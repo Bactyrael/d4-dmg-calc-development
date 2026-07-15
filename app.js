@@ -286,7 +286,7 @@ function renderActiveRunes() {
 var currentBuild = createDefaultBuild();
 
   // ---- Build Model ----
-  function createDefaultBuild(name = 'New Build', className = 'Barbarian') {
+  function createDefaultBuild(name = 'New Build', className = 'Necromancer') {
     return {
       name: name,
       class: className,
