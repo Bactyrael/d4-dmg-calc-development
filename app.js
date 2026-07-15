@@ -2990,7 +2990,9 @@ function compileCharacterStats(equipped, autoStats) {
                         }
                     } else if (item.name === "Blood-Mad Idol") {
                         handled = true;
-                        let roll = item.isMythic ? 195.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 120.0);
+                        let isCharm = slotName.toLowerCase().startsWith('charm');
+                        let defaultVal = isCharm ? 80.0 : 120.0;
+                        let roll = item.isMythic ? 195.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : defaultVal);
                         stats["Idol Burning [x] Damage"] = { final: roll, isMultiplicative: true };
                         stats["Idol Berserking [x] Damage"] = { final: 25.0, isMultiplicative: true };
                         addStat(stats, 'Movement Speed', 15.0, 'Blood-Mad Idol Berserking');
@@ -2999,7 +3001,9 @@ function compileCharacterStats(equipped, autoStats) {
                         if (typeof getActiveBuffs === 'function') {
                             const opStacks = getActiveBuffs().overpower || 0;
                             if (opStacks > 0) {
-                                let perStack = item.isMythic ? 13.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 8.0);
+                                let isCharm = slotName.toLowerCase().startsWith('charm');
+                                let defaultVal = isCharm ? 5.0 : 8.0;
+                                let perStack = item.isMythic ? 13.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : defaultVal);
                                 stats["Red Blessing [x] Damage"] = { final: perStack * opStacks, isMultiplicative: true };
                             }
                         }
@@ -3062,7 +3066,9 @@ function compileCharacterStats(equipped, autoStats) {
                         handled = true;
                     } else if (item.name === "Locran's Talisman") {
                         handled = true;
-                        v = item.isMythic ? 195 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 120);
+                        let isCharm = slotName.toLowerCase().startsWith('charm');
+                        let defaultVal = isCharm ? 80 : 120;
+                        v = item.isMythic ? 195 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : defaultVal);
                         addStat(stats, 'Locran\'s Talisman (Critical Strike Damage) [x]', v, 'Item Power');
                         addStat(stats, 'Critical Strike Chance', -50, 'Locran\'s Talisman (Power)');
                     } else if (item.name === 'Blood Moon Breeches') {
@@ -12546,11 +12552,13 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                     if (typeof getActiveConditions === 'function') {
                         const conds = getActiveConditions();
                         if (conds.cc || conds.monsterType === 'boss') {
-                            let val = 200;
+                            let isCharm = slot.toLowerCase().startsWith('charm');
+                            let defaultVal = isCharm ? 100 : 200;
+                            let val = defaultVal;
                             if (item.isMythic) {
                                 val = 325;
                             } else if (item.aspectValues && item.aspectValues.length > 0) {
-                                val = parseFloat(item.aspectValues[0]) || 200;
+                                val = parseFloat(item.aspectValues[0]) || defaultVal;
                             }
                             let mult = 1 + (val / 100);
                             multiMult *= mult;
