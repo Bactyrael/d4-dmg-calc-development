@@ -2673,7 +2673,7 @@ function compileCharacterStats(equipped, autoStats) {
           const item = equipped[slotName];
           if (!item || !item.name) return;
           
-          if (item.name === 'Harlequin Crest') {
+          if ((item.name === 'Harlequin Crest' || item.name === 'Harlequin Crest (Charm)')) {
               addStat(stats, 'to All Skills', 6, 'Harlequin Crest');
           }
           
@@ -2894,90 +2894,94 @@ function compileCharacterStats(equipped, autoStats) {
                 if (uniqueObj && uniqueObj.desc) {
                     let v = 0;
                     let handled = false;
-                    if (item.name === "Tibault's Will") {
+                    if ((item.name === "Tibault's Will" || item.name === "Tibault's Will (Charm)")) {
                         handled = true;
                         if (document.getElementById('buff-unstoppable')?.checked) {
                             v = item.isMythic ? 26 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 20);
                         }
-                    } else if (item.name === "Deathgrip") {
+                    } else if ((item.name === "Deathgrip" || item.name === "Deathgrip (Charm)")) {
                         handled = true;
                         let v1 = item.isMythic ? 65 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 40);
                         let v2 = item.isMythic ? 65 : (item.aspectValues && item.aspectValues[1] !== undefined ? parseFloat(item.aspectValues[1]) : 40);
                         stats["Deathgrip_Cleave"] = { final: v1 };
                         stats["Deathgrip_Command"] = { final: v2 };
-                    } else if (item.name === "Frostburn") {
+                    } else if ((item.name === "Frostburn" || item.name === "Frostburn (Charm)")) {
                         handled = true;
                         if (document.getElementById('cond-cc')?.checked) {
                             v = item.isMythic ? 65 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 40);
                         }
-                    } else if (item.name === "Gravewalker's Hand") {
+                    } else if ((item.name === "Gravewalker's Hand" || item.name === "Gravewalker's Hand (Charm)")) {
                         handled = true;
                         let essGen = item.isMythic ? 52 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 30);
                         let cap = item.isMythic ? 104 : (item.aspectValues && item.aspectValues[1] !== undefined ? parseFloat(item.aspectValues[1]) : 60);
                         stats["Essence Generation"] = stats["Essence Generation"] || { final: 0 };
                         stats["Essence Generation"].final += essGen;
                         stats["Gravewalker_Cap"] = { final: cap };
-                    } else if (item.name === "Hangman's Hand") {
+                    } else if ((item.name === "Hangman's Hand" || item.name === "Hangman's Hand (Charm)")) {
                         handled = true;
                         let roll = item.isMythic ? 20 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 10);
                         stats["Hangman_Sever_Mult"] = { final: roll + 100 };
-                    } else if (item.name === "Howl from Below") {
+                    } else if ((item.name === "Howl from Below" || item.name === "Howl from Below (Charm)")) {
                         handled = true;
                         let roll = item.isMythic ? 117 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 70);
                         stats["Howl_CE_Mult"] = { final: roll };
-                    } else if (item.name === "Paingorger's Gauntlets") {
+                    } else if ((item.name === "Paingorger's Gauntlets" || item.name === "Paingorger's Gauntlets (Charm)")) {
                         handled = true;
                         let roll = item.isMythic ? 163 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 100);
                         stats["Paingorgers_Mult"] = { final: roll };
-                    } else if (item.name === "The Hand of Naz") {
+                    } else if ((item.name === "The Hand of Naz" || item.name === "The Hand of Naz (Charm)")) {
                         handled = true;
                         let roll = item.isMythic ? 117 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 80);
                         stats["Naz_Mage_Mult"] = { final: roll };
-                    } else if (item.name === "Wyrdskin") {
+                    } else if ((item.name === "Wyrdskin" || item.name === "Wyrdskin (Charm)")) {
                         handled = true;
                         let roll = item.isMythic ? 52 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 30);
                         stats["Wyrdskin_Mult"] = { final: roll };
-                    } else if (item.name === "Mutilator Plate") {
+                    } else if ((item.name === "Mutilator Plate" || item.name === "Mutilator Plate (Charm)")) {
                         handled = true;
                         let roll = item.isMythic ? 117 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 70);
                         stats["Mutilator_Lance_Mult"] = { final: roll };
-                    } else if (item.name === "Soulbrand") {
+                    } else if ((item.name === "Soulbrand" || item.name === "Soulbrand (Charm)")) {
                         handled = true;
                         if (window.activeBarrierAmount > 0) {
                             let dr = item.isMythic ? 39 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 25);
                             addStat(stats, 'Universal Damage Reduction %', dr, 'Soulbrand (Active Barrier)');
                         }
-                    } else if (item.name === "Vengeful Sinew") {
+                    } else if ((item.name === "Vengeful Sinew" || item.name === "Vengeful Sinew (Charm)")) {
                         handled = true;
                         let roll = item.isMythic ? 52 : (item.aspectValues && item.aspectValues[1] !== undefined ? parseFloat(item.aspectValues[1]) : 30);
                         stats["Vengeful_Sinew_Mult"] = { final: roll };
                         let expl = item.isMythic ? 59 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 35);
                         stats["Vengeful_Sinew_Explosion"] = { final: expl };
-                    } else if (item.name === "Crown of Lucion") {
+                    } else if ((item.name === "Penitent Greaves" || item.name === "Penitent Greaves (Charm)")) {
+                        handled = true;
+                        let roll = item.isMythic ? 20.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 7.0);
+                        stats["Penitent_Greaves_Mult"] = { final: roll };
+                    } else if ((item.name === "Crown of Lucion" || item.name === "Crown of Lucion (Charm)")) {
                         handled = true;
                         let roll = item.isMythic ? 9.8 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 5.0);
                         stats["Crown_of_Lucion_Mult"] = { final: roll * 6 };
-                    } else if (item.name === "Ring of Starless Skies") {
+                    } else if ((item.name === "Ring of Starless Skies" || item.name === "Ring of Starless Skies (Charm)")) {
                         handled = true;
                         stats["Ring_of_Starless_Skies_Mult"] = { final: 50 };
-                    } else if (item.name === "Deathless Visage") {
+                    } else if ((item.name === "Deathless Visage" || item.name === "Deathless Visage (Charm)")) {
                         handled = true;
                         let rollEcho = item.isMythic ? 65 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 40.0);
                         let rollCrit = item.isMythic ? 91 : (item.aspectValues && item.aspectValues[1] !== undefined ? parseFloat(item.aspectValues[1]) : 60.0);
                         stats["Deathless_Visage_Echo"] = { final: rollEcho };
                         stats["Deathless_Visage_Crit"] = { final: rollCrit };
-                    } else if (item.name === "Godslayer Crown") {
+                    } else if ((item.name === "Godslayer Crown" || item.name === "Godslayer Crown (Charm)")) {
                         handled = true;
                         let roll = item.isMythic ? 13.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 10.0);
                         stats["Godslayer Crown [x] Damage"] = { final: roll, isMultiplicative: true };
-                    } else if (item.name === "Heir of Perdition") {
+                    } else if ((item.name === "Heir of Perdition" || item.name === "Heir of Perdition (Charm)")) {
                         handled = true;
                         stats["Heir of Perdition [x] Damage"] = { final: 15.0, isMultiplicative: true };
-                    } else if (item.name === "The Undercrown") {
+                    } else if ((item.name === "The Undercrown" || item.name === "The Undercrown (Charm)")) {
                         handled = true;
                         let roll = item.isMythic ? 32.5 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 15.0);
                         stats["The_Undercrown_Summon_Mult"] = { final: roll };
-                    } else if (item.name === "Banished Lord's Talisman") {
+                    } else if ((item.name === "Banished Lord's Talisman" || item.name === "Banished Lord's Talisman (Charm)")) {
                         handled = true;
                         if (typeof getActiveBuffs === 'function') {
                             const opStacks = getActiveBuffs().overpower || 0;
@@ -2988,7 +2992,7 @@ function compileCharacterStats(equipped, autoStats) {
                                 stats["Banished Lord's Talisman Critical Damage [x]"] = { final: perStack * opStacks, isMultiplicative: true };
                             }
                         }
-                    } else if (item.name === "Blood-Mad Idol") {
+                    } else if ((item.name === "Blood-Mad Idol" || item.name === "Blood-Mad Idol (Charm)")) {
                         handled = true;
                         let isCharm = slotName.toLowerCase().startsWith('charm');
                         let defaultVal = isCharm ? 100.0 : 150.0;
@@ -2996,7 +3000,7 @@ function compileCharacterStats(equipped, autoStats) {
                         stats["Idol Burning [x] Damage"] = { final: roll, isMultiplicative: true };
                         stats["Idol Berserking [x] Damage"] = { final: 25.0, isMultiplicative: true };
                         addStat(stats, 'Movement Speed', 15.0, 'Blood-Mad Idol Berserking');
-                    } else if (item.name === "Red Blessing") {
+                    } else if ((item.name === "Red Blessing" || item.name === "Red Blessing (Charm)")) {
                         handled = true;
                         if (typeof getActiveBuffs === 'function') {
                             const opStacks = getActiveBuffs().overpower || 0;
@@ -3007,7 +3011,7 @@ function compileCharacterStats(equipped, autoStats) {
                                 stats["Red Blessing [x] Damage"] = { final: perStack * opStacks, isMultiplicative: true };
                             }
                         }
-                    } else if (item.name === "Omen of Pain") {
+                    } else if ((item.name === "Omen of Pain" || item.name === "Omen of Pain (Charm)")) {
                         handled = true;
                         if (typeof getActiveConditions === 'function') {
                             const conds = getActiveConditions();
@@ -3016,7 +3020,7 @@ function compileCharacterStats(equipped, autoStats) {
                                 stats["Omen of Pain [x] Damage"] = { final: roll, isMultiplicative: true };
                             }
                         }
-                    } else if (item.name === "Pact of Bone") {
+                    } else if ((item.name === "Pact of Bone" || item.name === "Pact of Bone (Charm)")) {
                         handled = true;
                         let roll = item.isMythic ? 46.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 30.0);
                         
@@ -3031,7 +3035,7 @@ function compileCharacterStats(equipped, autoStats) {
                         stats["Skill: Skeleton Warrior (Pact of Bone) Damage [x]"] = { final: roll, isMultiplicative: true };
                         stats["Skill: Skeleton Mage (Pact of Bone) Damage [x]"] = { final: roll, isMultiplicative: true };
                         stats["Skill: Golem (Pact of Bone) Damage [x]"] = { final: roll, isMultiplicative: true };
-                    } else if (item.name === "Will of Rathma") {
+                    } else if ((item.name === "Will of Rathma" || item.name === "Will of Rathma (Charm)")) {
                         handled = true;
                         if (typeof getActiveConditions === 'function' && typeof getActiveBuffs === 'function') {
                             const conds = getActiveConditions();
@@ -3040,38 +3044,38 @@ function compileCharacterStats(equipped, autoStats) {
                                 stats["Will of Rathma [x] Damage"] = { final: 40.0, isMultiplicative: true };
                             }
                         }
-                    } else if (item.name === "Tyrael's Might") {
+                    } else if ((item.name === "Tyrael's Might" || item.name === "Tyrael's Might (Charm)")) {
                         handled = true;
                         addStat(stats, 'Universal Damage Reduction %', 20, "Tyrael's Might");
-                    } else if (item.name === "Razorplate") {
+                    } else if ((item.name === "Razorplate" || item.name === "Razorplate (Charm)")) {
                         handled = true;
                         v = item.isMythic ? 260 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 180);
-                    } else if (item.name === "Fists of Fate") {
+                    } else if ((item.name === "Fists of Fate" || item.name === "Fists of Fate (Charm)")) {
                         handled = true;
                         let maxRoll = item.isMythic ? 390 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 250);
                         v = ((1 + maxRoll) / 2) - 100;
-                    } else if (item.name === "Cruor's Embrace") {
+                    } else if ((item.name === "Cruor's Embrace" || item.name === "Cruor's Embrace (Charm)")) {
                         handled = true;
                         v = item.isMythic ? 130 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 80);
-                    } else if (item.name === "Ebonpiercer") {
+                    } else if ((item.name === "Ebonpiercer" || item.name === "Ebonpiercer (Charm)")) {
                         handled = true;
                         v = item.isMythic ? 65 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 45);
-                    } else if (item.name === "Lidless Wall" && item.isMythic) {
+                    } else if ((item.name === "Lidless Wall" || item.name === "Lidless Wall (Charm)") && item.isMythic) {
                         handled = true;
                         let storms = window.skillSliderValues && window.skillSliderValues['Active Bone Storms (Lidless Wall)'] !== undefined ? window.skillSliderValues['Active Bone Storms (Lidless Wall)'] : 0;
                         if (storms > 0) {
                             addStat(stats, 'Lidless Wall (Critical Strike Damage) [x]', 30 * storms, 'Active Bone Storms');
                         }
-                    } else if (item.name === "The Gloom Ward") {
+                    } else if ((item.name === "The Gloom Ward" || item.name === "The Gloom Ward (Charm)")) {
                         handled = true;
-                    } else if (item.name === "Locran's Talisman") {
+                    } else if ((item.name === "Locran's Talisman" || item.name === "Locran's Talisman (Charm)")) {
                         handled = true;
                         let isCharm = slotName.toLowerCase().startsWith('charm');
                         let defaultVal = isCharm ? 100 : 150;
                         v = item.isMythic ? 195 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : defaultVal);
                         addStat(stats, 'Locran\'s Talisman (Critical Strike Damage) [x]', v, 'Item Power');
                         addStat(stats, 'Critical Strike Chance', -50, 'Locran\'s Talisman (Power)');
-                    } else if (item.name === 'Blood Moon Breeches') {
+                    } else if ((item.name === 'Blood Moon Breeches' || item.name === 'Blood Moon Breeches (Charm)')) {
                         handled = true;
                         v = item.isMythic ? 78 : (item.aspectValues && item.aspectValues[1] !== undefined ? parseFloat(item.aspectValues[1]) : 50);
                     } else if (item.aspectValues && item.aspectValues.length > 0) {
@@ -3243,7 +3247,7 @@ function compileCharacterStats(equipped, autoStats) {
       additiveScalersCore.forEach(scaleFn);
 
       if (equipped) {
-          let accAspect = Object.values(equipped).find(item => item && item.aspect === "Accelerating Aspect");
+          let accAspect = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Accelerating Aspect");
           if (accAspect) {
               let hasCore = false;
               if (window.currentBuild && window.currentBuild.activeSkills && typeof skillsDatabase !== 'undefined') {
@@ -3272,7 +3276,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
 
-          let wendigo = Object.values(equipped).find(item => item && item.name === "Wendigo Brand");
+          let wendigo = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && (item.name === "Wendigo Brand" || item.name === "Wendigo Brand (Charm)"));
           if (wendigo) {
               let rkEl = document.getElementById('cond-recent-kills');
               if (rkEl) {
@@ -3284,7 +3288,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
 
-          let ampAspect = Object.values(equipped).find(item => item && item.aspect === "Aspect of Amplified Damage");
+          let ampAspect = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Amplified Damage");
           if (ampAspect) {
               if (typeof getActiveConditions === 'function') {
                   const conds = getActiveConditions();
@@ -3295,7 +3299,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
 
-          let bindMorass = Object.values(equipped).find(item => item && item.aspect === "Aspect of Binding Morass");
+          let bindMorass = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Binding Morass");
           if (bindMorass) {
               if (typeof getActiveConditions === 'function') {
                   const conds = getActiveConditions();
@@ -3306,13 +3310,13 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
 
-          let burstingBones = Object.values(equipped).find(item => item && item.aspect === "Aspect of Bursting Bones");
+          let burstingBones = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Bursting Bones");
           if (burstingBones) {
               let val = burstingBones.aspectValues && burstingBones.aspectValues.length > 0 ? parseFloat(burstingBones.aspectValues[0]) : 0.40;
               stats["Aspect of Bursting Bones Factor"] = { final: val, isMultiplicative: false };
           }
 
-          let channelingAspect = Object.values(equipped).find(item => item && item.aspect === "Aspect of Channeling");
+          let channelingAspect = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Channeling");
           if (channelingAspect && window.currentBuild && window.currentBuild.activeSkills) {
               if (window.currentBuild.activeSkills.includes("Decompose")) {
                   let val = channelingAspect.aspectValues && channelingAspect.aspectValues.length > 0 ? parseFloat(channelingAspect.aspectValues[0]) : 70;
@@ -3320,7 +3324,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
 
-          let coalescedBlood = Object.values(equipped).find(item => item && item.aspect === "Aspect of Coalesced Blood");
+          let coalescedBlood = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Coalesced Blood");
           if (coalescedBlood) {
               if (typeof getActiveBuffs === 'function') {
                   const buffs = getActiveBuffs();
@@ -3331,25 +3335,25 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
 
-          let compoundFracture = Object.values(equipped).find(item => item && item.aspect === "Aspect of Compound Fracture");
+          let compoundFracture = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Compound Fracture");
           if (compoundFracture) {
               let val = compoundFracture.aspectValues && compoundFracture.aspectValues.length > 0 ? parseFloat(compoundFracture.aspectValues[0]) : 70;
               stats["Aspect of Compound Fracture (Bone) [x] Damage"] = { final: val, isMultiplicative: true };
           }
 
-          let decayAspect = Object.values(equipped).find(item => item && item.aspect === "Aspect of Decay");
+          let decayAspect = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Decay");
           if (decayAspect) {
               let val = decayAspect.aspectValues && decayAspect.aspectValues.length > 0 ? parseFloat(decayAspect.aspectValues[0]) : 85;
               stats["Aspect of Decay Factor"] = { final: val, isMultiplicative: false };
           }
 
-          let frenziedOnslaught = Object.values(equipped).find(item => item && item.aspect === "Aspect of Frenzied Onslaught");
+          let frenziedOnslaught = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Frenzied Onslaught");
           if (frenziedOnslaught) {
               let val = frenziedOnslaught.aspectValues && frenziedOnslaught.aspectValues.length > 0 ? parseFloat(frenziedOnslaught.aspectValues[0]) : 50;
               addStat(stats, 'Summon Attack Speed', val, 'Aspect of Frenzied Onslaught');
           }
 
-          let elementalFate = Object.values(equipped).find(item => item && item.aspect === "Aspect of Elemental Fate");
+          let elementalFate = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Elemental Fate");
           if (elementalFate) {
               let val = elementalFate.aspectValues && elementalFate.aspectValues.length > 0 ? parseFloat(elementalFate.aspectValues[0]) : 60;
               let activeSet = elementalFate.aspectState?.elementalFateSet || 'set1';
@@ -3359,7 +3363,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Elemental Fate Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
           
-          let aspectOfGloom = Object.values(equipped).find(item => item && item.aspect === "Aspect of Gloom");
+          let aspectOfGloom = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Gloom");
           if (aspectOfGloom) {
               let val = aspectOfGloom.aspectValues && aspectOfGloom.aspectValues.length > 0 ? parseFloat(aspectOfGloom.aspectValues[0]) : 10;
               let activeStacks = aspectOfGloom.aspectState?.gloomStacks !== undefined ? parseInt(aspectOfGloom.aspectState.gloomStacks) : 4;
@@ -3367,7 +3371,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Gloom Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
           
-          let aspectOfInnerCalm = Object.values(equipped).find(item => item && item.aspect === "Aspect of Inner Calm");
+          let aspectOfInnerCalm = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Inner Calm");
           if (aspectOfInnerCalm) {
               let val = aspectOfInnerCalm.aspectValues && aspectOfInnerCalm.aspectValues.length > 0 ? parseFloat(aspectOfInnerCalm.aspectValues[0]) : 50;
               let activeStacks = aspectOfInnerCalm.aspectState?.innerCalmStacks !== undefined ? parseInt(aspectOfInnerCalm.aspectState.innerCalmStacks) : 100;
@@ -3375,7 +3379,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Inner Calm Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
           
-          let lapasScripture = Object.values(equipped).find(item => item && item.aspect === "Aspect of Lapa's Scripture");
+          let lapasScripture = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Lapa's Scripture");
           if (lapasScripture) {
               let val = lapasScripture.aspectValues && lapasScripture.aspectValues.length > 0 ? parseFloat(lapasScripture.aspectValues[0]) : 392;
               let activeStacks = lapasScripture.aspectState?.lapaStacks !== undefined ? parseInt(lapasScripture.aspectState.lapaStacks) : 20;
@@ -3385,7 +3389,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let rathmasChosen = Object.values(equipped).find(item => item && item.aspect === "Aspect of Rathma's Chosen");
+          let rathmasChosen = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Rathma's Chosen");
           if (rathmasChosen) {
               let val = rathmasChosen.aspectValues && rathmasChosen.aspectValues.length > 0 ? parseFloat(rathmasChosen.aspectValues[0]) : 40;
               let buffs = typeof getActiveBuffs === 'function' ? getActiveBuffs() : { fortified: false };
@@ -3394,7 +3398,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let aspectOfReanimation = Object.values(equipped).find(item => item && item.aspect === "Aspect of Reanimation");
+          let aspectOfReanimation = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Reanimation");
           if (aspectOfReanimation) {
               let val = aspectOfReanimation.aspectValues && aspectOfReanimation.aspectValues.length > 0 ? parseFloat(aspectOfReanimation.aspectValues[0]) : 60;
               let activeStacks = aspectOfReanimation.aspectState?.reanimationStacks !== undefined ? parseInt(aspectOfReanimation.aspectState.reanimationStacks) : 10;
@@ -3402,7 +3406,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Reanimation Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
           
-          let redirectedForce = Object.values(equipped).find(item => item && item.aspect === "Aspect of Redirected Force");
+          let redirectedForce = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Redirected Force");
           if (redirectedForce) {
               let val = redirectedForce.aspectValues && redirectedForce.aspectValues.length > 0 ? parseFloat(redirectedForce.aspectValues[0]) : 40;
               let recentlyBlocked = redirectedForce.aspectState?.redirectedForceBlocked || false;
@@ -3419,20 +3423,20 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let serration = Object.values(equipped).find(item => item && item.aspect === "Aspect of Serration");
+          let serration = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Serration");
           if (serration) {
               let val = serration.aspectValues && serration.aspectValues.length > 0 ? parseFloat(serration.aspectValues[0]) : 40;
               stats['Aspect of Serration Factor'] = { final: val, isMultiplicative: false };
               stats['Aspect of Serration Crit'] = { final: 10, isMultiplicative: false };
           }
           
-          let terror = Object.values(equipped).find(item => item && item.aspect === "Aspect of Terror");
+          let terror = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Terror");
           if (terror) {
               let val = terror.aspectValues && terror.aspectValues.length > 0 ? parseFloat(terror.aspectValues[0]) : 25;
               stats['Aspect of Terror Factor'] = { final: val, isMultiplicative: false };
           }
           
-          let expectant = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Expectant");
+          let expectant = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of the Expectant");
           if (expectant) {
               let val = expectant.aspectValues && expectant.aspectValues.length > 0 ? parseFloat(expectant.aspectValues[0]) : 5;
               let activeStacks = expectant.aspectState?.expectantStacks !== undefined ? parseInt(expectant.aspectState.expectantStacks) : 10;
@@ -3440,7 +3444,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of the Expectant Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
           
-          let greatFeast = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Great Feast");
+          let greatFeast = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of the Great Feast");
           if (greatFeast) {
               let val = greatFeast.aspectValues && greatFeast.aspectValues.length > 0 ? parseFloat(greatFeast.aspectValues[0]) : 35;
               let activeMinions = greatFeast.aspectState?.feastActiveMinions !== undefined ? greatFeast.aspectState.feastActiveMinions : true;
@@ -3448,7 +3452,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of the Great Feast Minions"] = { final: activeMinions ? 1 : 0, isMultiplicative: false };
           }
           
-          let moonrise = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Moonrise");
+          let moonrise = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of the Moonrise");
           if (moonrise) {
               let val = moonrise.aspectValues && moonrise.aspectValues.length > 0 ? parseFloat(moonrise.aspectValues[0]) : 40;
               let activeStacks = moonrise.aspectState?.moonriseStacks !== undefined ? parseInt(moonrise.aspectState.moonriseStacks) : 10;
@@ -3462,37 +3466,37 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let thickenedBlood = Object.values(equipped).find(item => item && item.aspect === "Aspect of Thickened Blood");
+          let thickenedBlood = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Thickened Blood");
           if (thickenedBlood) {
               let val = thickenedBlood.aspectValues && thickenedBlood.aspectValues.length > 0 ? parseFloat(thickenedBlood.aspectValues[0]) : 60;
               stats["Aspect of Thickened Blood Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let ultimateShadow = Object.values(equipped).find(item => item && item.aspect === "Aspect of Ultimate Shadow");
+          let ultimateShadow = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Ultimate Shadow");
           if (ultimateShadow) {
               let val = ultimateShadow.aspectValues && ultimateShadow.aspectValues.length > 0 ? parseFloat(ultimateShadow.aspectValues[0]) : 80;
               stats["Aspect of Ultimate Shadow Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let hewedFlesh = Object.values(equipped).find(item => item && item.aspect === "Aspect of Hewed Flesh");
+          let hewedFlesh = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Hewed Flesh");
           if (hewedFlesh) {
               let val = hewedFlesh.aspectValues && hewedFlesh.aspectValues.length > 0 ? parseFloat(hewedFlesh.aspectValues[0]) : 20;
               stats["Aspect of Hewed Flesh Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let voidAspect = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Void");
+          let voidAspect = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of the Void");
           if (voidAspect) {
               let val = voidAspect.aspectValues && voidAspect.aspectValues.length > 0 ? parseFloat(voidAspect.aspectValues[0]) : 15;
               stats["Aspect of the Void Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let untimelyDeath = Object.values(equipped).find(item => item && item.aspect === "Aspect of Untimely Death");
+          let untimelyDeath = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Untimely Death");
           if (untimelyDeath) {
               let val = untimelyDeath.aspectValues && untimelyDeath.aspectValues.length > 0 ? parseFloat(untimelyDeath.aspectValues[0]) : 60;
               stats["Aspect of Untimely Death Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let boneBreaker = Object.values(equipped).find(item => item && item.aspect === "Bone Breaker's Aspect");
+          let boneBreaker = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Bone Breaker's Aspect");
           if (boneBreaker) {
               let val = boneBreaker.aspectValues && boneBreaker.aspectValues.length > 0 ? parseFloat(boneBreaker.aspectValues[0]) : 100;
               let targetHit = boneBreaker.aspectState?.bonebreakerHit !== undefined ? parseInt(boneBreaker.aspectState.bonebreakerHit) : 1;
@@ -3500,25 +3504,25 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Bone Breaker's Aspect Enemy"] = { final: targetHit, isMultiplicative: false };
           }
           
-          let cadaverous = Object.values(equipped).find(item => item && item.aspect === "Cadaverous Aspect");
+          let cadaverous = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Cadaverous Aspect");
           if (cadaverous) {
               let val = cadaverous.aspectValues && cadaverous.aspectValues.length > 0 ? parseFloat(cadaverous.aspectValues[0]) : 13;
               stats["Cadaverous Aspect Factor"] = { final: val * 5, isMultiplicative: false }; // Max stacks is always 5
           }
           
-          let conceited = Object.values(equipped).find(item => item && item.aspect === "Conceited Aspect");
+          let conceited = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Conceited Aspect");
           if (conceited) {
               let val = conceited.aspectValues && conceited.aspectValues.length > 0 ? parseFloat(conceited.aspectValues[0]) : 40;
               stats["Conceited Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let crushing = Object.values(equipped).find(item => item && item.aspect === "Crushing Aspect");
+          let crushing = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Crushing Aspect");
           if (crushing) {
               let val = crushing.aspectValues && crushing.aspectValues.length > 0 ? parseFloat(crushing.aspectValues[0]) : 45;
               stats["Crushing Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let duelist = Object.values(equipped).find(item => item && item.aspect === "Duelist's Aspect");
+          let duelist = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Duelist's Aspect");
           if (duelist) {
               let has1H = false;
               const wSlots = ['Mainhand', 'Dual-Wield Weapon 1', 'Dual-Wield Weapon 2', 'Weapon1', 'Weapon2'];
@@ -3534,55 +3538,55 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let edgemaster = Object.values(equipped).find(item => item && item.aspect === "Edgemaster's Aspect");
+          let edgemaster = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Edgemaster's Aspect");
           if (edgemaster) {
               let val = edgemaster.aspectValues && edgemaster.aspectValues.length > 0 ? parseFloat(edgemaster.aspectValues[0]) : 40;
               stats["Edgemaster's Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let hellbent = Object.values(equipped).find(item => item && item.aspect === "Hellbent Commander Aspect");
+          let hellbent = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Hellbent Commander Aspect");
           if (hellbent) {
               let val = hellbent.aspectValues && hellbent.aspectValues.length > 0 ? parseFloat(hellbent.aspectValues[0]) : 50;
               stats["Hellbent Commander Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let needleflare = Object.values(equipped).find(item => item && item.aspect === "Needleflare Aspect");
+          let needleflare = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Needleflare Aspect");
           if (needleflare) {
               let val = needleflare.aspectValues && needleflare.aspectValues.length > 0 ? parseFloat(needleflare.aspectValues[0]) : 40;
               stats["Needleflare Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let shivering = Object.values(equipped).find(item => item && item.aspect === "Shivering Aspect");
+          let shivering = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Shivering Aspect");
           if (shivering) {
               let val = shivering.aspectValues && shivering.aspectValues.length > 0 ? parseFloat(shivering.aspectValues[0]) : 60;
               stats["Shivering Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let splintering = Object.values(equipped).find(item => item && item.aspect === "Splintering Aspect");
+          let splintering = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Splintering Aspect");
           if (splintering) {
               let val = splintering.aspectValues && splintering.aspectValues.length > 0 ? parseFloat(splintering.aspectValues[0]) : 50;
               stats["Splintering Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let tides = Object.values(equipped).find(item => item && item.aspect === "Tides of Blood Aspect");
+          let tides = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Tides of Blood Aspect");
           if (tides) {
               let val = tides.aspectValues && tides.aspectValues.length > 0 ? parseFloat(tides.aspectValues[0]) : 25;
               stats["Tides of Blood Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let vanquishing = Object.values(equipped).find(item => item && item.aspect === "Vanquishing Aspect");
+          let vanquishing = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Vanquishing Aspect");
           if (vanquishing) {
               let val = vanquishing.aspectValues && vanquishing.aspectValues.length > 0 ? parseFloat(vanquishing.aspectValues[0]) : 60;
               stats["Vanquishing Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let vehement = Object.values(equipped).find(item => item && item.aspect === "Vehement Brawler's Aspect");
+          let vehement = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Vehement Brawler's Aspect");
           if (vehement) {
               let val = vehement.aspectValues && vehement.aspectValues.length > 0 ? parseFloat(vehement.aspectValues[0]) : 35;
               stats["Vehement Brawler's Aspect Factor"] = { final: val, isMultiplicative: false };
           }
           
-          let writhing = Object.values(equipped).find(item => item && item.aspect === "Writhing Aspect");
+          let writhing = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Writhing Aspect");
           if (writhing) {
               let val = writhing.aspectValues && writhing.aspectValues.length > 0 ? parseFloat(writhing.aspectValues[0]) : 7.5;
               let activeStacks = writhing.aspectState?.writhingStacks !== undefined ? parseInt(writhing.aspectState.writhingStacks) : 10;
@@ -3590,7 +3594,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Writhing Aspect Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
           
-          let coag = Object.values(equipped).find(item => item && item.aspect === "Aspect of Coagulation");
+          let coag = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Coagulation");
           if (coag) {
               let drVal = coag.aspectValues && coag.aspectValues.length > 0 ? parseFloat(coag.aspectValues[0]) : 15;
               addStat(stats, 'Fortify Generation %', 30, 'Aspect of Coagulation');
@@ -3601,7 +3605,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let disob = Object.values(equipped).find(item => item && item.aspect === "Aspect of Disobedience");
+          let disob = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Disobedience");
           if (disob) {
               let val = disob.aspectValues && disob.aspectValues.length > 0 ? parseFloat(disob.aspectValues[0]) : 1.0;
               let activeStacks = disob.aspectState?.disobedienceStacks !== undefined ? parseInt(disob.aspectState.disobedienceStacks) : 30;
@@ -3610,7 +3614,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let glynn = Object.values(equipped).find(item => item && item.aspect === "Aspect of Glynn's Anvil");
+          let glynn = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Glynn's Anvil");
           if (glynn) {
               addStat(stats, 'Maximum Resolve', 2, "Aspect of Glynn's Anvil");
               let val = glynn.aspectValues && glynn.aspectValues.length > 0 ? parseFloat(glynn.aspectValues[0]) : 2.5;
@@ -3621,13 +3625,13 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let hardenedBones = Object.values(equipped).find(item => item && item.aspect === "Aspect of Hardened Bones");
+          let hardenedBones = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Hardened Bones");
           if (hardenedBones) {
               let val = hardenedBones.aspectValues && hardenedBones.aspectValues.length > 0 ? parseFloat(hardenedBones.aspectValues[0]) : 15;
               addStat(stats, 'Universal Damage Reduction %', val, 'Aspect of Hardened Bones');
           }
           
-          let heavenly = Object.values(equipped).find(item => item && item.aspect === "Aspect of Heavenly Strength");
+          let heavenly = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Heavenly Strength");
           if (heavenly) {
               let val = heavenly.aspectValues && heavenly.aspectValues.length > 0 ? parseFloat(heavenly.aspectValues[0]) : 30;
               let has2H = false;
@@ -3642,13 +3646,13 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let layered = Object.values(equipped).find(item => item && item.aspect === "Aspect of Layered Wards");
+          let layered = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Layered Wards");
           if (layered) {
               let val = layered.aspectValues && layered.aspectValues.length > 0 ? parseFloat(layered.aspectValues[0]) : 30;
               addStat(stats, 'Block Damage Reduction', val, 'Aspect of Layered Wards');
           }
           
-          let might = Object.values(equipped).find(item => item && item.aspect === "Aspect of Might");
+          let might = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Might");
           if (might) {
               let val = might.aspectValues && might.aspectValues.length > 0 ? parseFloat(might.aspectValues[0]) : 20;
               let hasBasic = false;
@@ -3678,13 +3682,13 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let shelter = Object.values(equipped).find(item => item && item.aspect === "Aspect of Shelter");
+          let shelter = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Shelter");
           if (shelter) {
               let val = shelter.aspectValues && shelter.aspectValues.length > 0 ? parseFloat(shelter.aspectValues[0]) : 30;
               addStat(stats, '% Resistance to All Elements', val, 'Aspect of Shelter');
           }
           
-          let spiked = Object.values(equipped).find(item => item && item.aspect === "Aspect of Spiked Armor");
+          let spiked = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of Spiked Armor");
           if (spiked) {
               let val = spiked.aspectValues && spiked.aspectValues.length > 0 ? parseFloat(spiked.aspectValues[0]) : 40;
               addStat(stats, '% Total Armor', val, 'Aspect of Spiked Armor');
@@ -3692,7 +3696,7 @@ function compileCharacterStats(equipped, autoStats) {
               addStat(stats, 'Block Chance', 15, 'Aspect of Spiked Armor');
           }
           
-          let fortress = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Fortress");
+          let fortress = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of the Fortress");
           if (fortress) {
               let val = fortress.aspectValues && fortress.aspectValues.length > 0 ? parseFloat(fortress.aspectValues[0]) : 40;
               let isInjured = typeof getActiveBuffs === 'function' ? getActiveBuffs().playerInjured : false;
@@ -3701,7 +3705,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let indomitable = Object.values(equipped).find(item => item && item.aspect === "Aspect of the Indomitable");
+          let indomitable = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Aspect of the Indomitable");
           if (indomitable) {
               let val = indomitable.aspectValues && indomitable.aspectValues.length > 0 ? parseFloat(indomitable.aspectValues[0]) : 45;
               let blockChance = stats['Block Chance'] ? stats['Block Chance'].final : 0;
@@ -3712,7 +3716,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let bruiser = Object.values(equipped).find(item => item && item.aspect === "Bruiser's Aspect");
+          let bruiser = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Bruiser's Aspect");
           if (bruiser) {
               let val = bruiser.aspectValues && bruiser.aspectValues.length > 0 ? parseFloat(bruiser.aspectValues[0]) : 244;
               let missingLife = document.getElementById('dash-missing-life-input') ? parseInt(document.getElementById('dash-missing-life-input').value) || 0 : 0;
@@ -3722,7 +3726,7 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let encased = Object.values(equipped).find(item => item && item.aspect === "Encased Aspect");
+          let encased = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Encased Aspect");
           if (encased) {
               let isFrozen = typeof getActiveConditions === 'function' ? getActiveConditions().frozen : false;
               if (isFrozen) {
@@ -3731,13 +3735,13 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let enshrouding = Object.values(equipped).find(item => item && item.aspect === "Enshrouding Aspect");
+          let enshrouding = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Enshrouding Aspect");
           if (enshrouding) {
               let val = enshrouding.aspectValues && enshrouding.aspectValues.length > 0 ? parseFloat(enshrouding.aspectValues[0]) : 30;
               addStat(stats, '% Resistance to All Elements', val, "Enshrouding Aspect");
           }
           
-          let everliving = Object.values(equipped).find(item => item && item.aspect === "Everliving Aspect");
+          let everliving = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Everliving Aspect");
           if (everliving) {
               let isCc = typeof getActiveConditions === 'function' ? getActiveConditions().cc : false;
               if (isCc) {
@@ -3748,13 +3752,13 @@ function compileCharacterStats(equipped, autoStats) {
               }
           }
           
-          let juggernaut = Object.values(equipped).find(item => item && item.aspect === "Juggernaut's Aspect");
+          let juggernaut = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Juggernaut's Aspect");
           if (juggernaut) {
               let val = juggernaut.aspectValues && juggernaut.aspectValues.length > 0 ? parseFloat(juggernaut.aspectValues[0]) : 150;
               addStat(stats, '% Total Armor', val, "Juggernaut's Aspect");
           }
           
-          let snowveiled = Object.values(equipped).find(item => item && item.aspect === "Snowveiled Aspect");
+          let snowveiled = [...Object.values(equipped || {}), ...(window.currentBuild?.talisman?.charms || [])].find(item => item && item.aspect === "Snowveiled Aspect");
           if (snowveiled) {
               let barrier = document.getElementById('dash-barrier-input') ? parseInt(document.getElementById('dash-barrier-input').value) || 0 : 0;
               if (barrier > 0) {
@@ -3822,7 +3826,7 @@ function compileCharacterStats(equipped, autoStats) {
                 const currentEquip = (typeof getEquipmentValues === 'function') ? getEquipmentValues() : {};
                 for (const slot in currentEquip) {
                     const eq = currentEquip[slot];
-                    if (eq && eq.name === "Tassets of the Dawning Sky") {
+                    if (eq && (eq.name === "Tassets of the Dawning Sky" || eq.name === "Tassets of the Dawning Sky (Charm)")) {
                         hasTassets = true;
                         tassetsVal = eq.isMythic ? 208.0 : (eq.aspectValues && eq.aspectValues[0] !== undefined ? parseFloat(eq.aspectValues[0]) || 130.0 : 130.0);
                         break;
@@ -4279,7 +4283,7 @@ function compileCharacterStats(equipped, autoStats) {
               let val = ferociousAspect.aspectValues && ferociousAspect.aspectValues.length > 0 ? parseInt(ferociousAspect.aspectValues[0]) : 4;
               maxFero += val;
           }
-          const reaver = Object.values(baseEquipped).find(item => item && item.name === "Thousand-Eye Reaver");
+          const reaver = Object.values(baseEquipped).find(item => item && (item.name === "Thousand-Eye Reaver" || item.name === "Thousand-Eye Reaver (Charm)"));
           if (reaver) {
               let val = reaver.aspectValues && reaver.aspectValues.length > 0 ? parseInt(reaver.aspectValues[0]) : 2; // From [2 - 4]
               maxFero += val;
@@ -4299,11 +4303,11 @@ function compileCharacterStats(equipped, autoStats) {
               let val = tidalAspect.aspectValues && tidalAspect.aspectValues.length > 0 ? parseInt(tidalAspect.aspectValues[0]) : 3;
               maxOp += val;
           }
-          const banishedLord = Object.values(baseEquipped).find(item => item && item.name === "Banished Lord's Talisman");
+          const banishedLord = Object.values(baseEquipped).find(item => item && (item.name === "Banished Lord's Talisman" || item.name === "Banished Lord's Talisman (Charm)"));
           if (banishedLord) {
               maxOp += 4;
           }
-          const redBlessing = Object.values(baseEquipped).find(item => item && item.name === "Red Blessing");
+          const redBlessing = Object.values(baseEquipped).find(item => item && (item.name === "Red Blessing" || item.name === "Red Blessing (Charm)"));
           if (redBlessing) {
               maxOp += 2;
           }
@@ -6833,7 +6837,7 @@ function applyActiveModifiers(baseSkillObj) {
     if (modified.tags && modified.tags.some(t => t.toLowerCase() === 'skill_curse')) {
         let rathmaItem = null;
         if (typeof window.currentBuild !== 'undefined' && window.currentBuild && window.currentBuild.equipment) {
-            rathmaItem = Object.values(window.currentBuild.equipment).find(item => item && item.name === "Will of Rathma");
+            rathmaItem = [...Object.values(window.currentBuild.equipment || {}), ...(window.currentBuild.talisman?.charms || [])].find(item => item && (item.name === "Will of Rathma" || item.name === "Will of Rathma (Charm)"));
         }
         if (rathmaItem) {
             let rathmaVal = (rathmaItem.isMythic || rathmaItem.rarity === 'mythic') ? 9.75 : (rathmaItem.aspectValues && rathmaItem.aspectValues[0] !== undefined ? parseFloat(rathmaItem.aspectValues[0]) / 100 : 6.0);
@@ -7523,7 +7527,7 @@ function populateMainSkillSelect() {
 
 function isSkillForcedActive(name) {
     if (currentBuild && currentBuild.equipment) {
-        if (Object.values(currentBuild.equipment).some(item => item && item.name === "Ring of the Sacrilegious Soul")) {
+        if ([...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].some(item => item && (item.name === "Ring of the Sacrilegious Soul" || item.name === "Ring of the Sacrilegious Soul (Charm)"))) {
             const sacUpgrades = [
                 "Lucky Hit Chance (Corpse Tendrils)",
                 "Vulnerable (Corpse Tendrils)",
@@ -7535,7 +7539,7 @@ function isSkillForcedActive(name) {
             }
         }
         
-        if (Object.values(currentBuild.equipment).some(item => item && item.name === "Gospel of the Devotee")) {
+        if ([...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].some(item => item && (item.name === "Gospel of the Devotee" || item.name === "Gospel of the Devotee (Charm)"))) {
             const basicUpgrades = [
                 "Ferocity (Reap)", "Corpse Generation (Reap)", "Essence Generation (Reap)", "Critical Strike Chance (Reap)",
                 "Crowd Control (Decompose)", "Lucky Hit Chance (Decompose)", "Damage Bonus (Decompose)", "Barrier (Decompose)",
@@ -8299,191 +8303,191 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             if (itemObj.name === "Bloodless Scream (Charm)") udesc = udesc.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[100 - 125]');
             if (itemObj.name === "Banished Lord's Talisman (Charm)") udesc = udesc.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[5 - 7]');
         }
-        if (itemObj.name === 'Temerity' && itemObj.isMythic) {
+        if ((itemObj.name === 'Temerity' || itemObj.name === 'Temerity (Charm)') && itemObj.isMythic) {
             udesc = "Effects that Heal you beyond 100% Life grant you Barrier equal to 130% of the overhealed amount that lasts for 8 seconds.<br><br>You may now drink your Healing Potion while at full Life.";
         }
-        if (itemObj.name === "Tibault's Will" && itemObj.isMythic) {
+        if ((itemObj.name === "Tibault's Will" || itemObj.name === "Tibault's Will (Charm)") && itemObj.isMythic) {
             udesc = "You deal 26%[x] increased damage and gain 50 Primary Resource Regeneration while Unstoppable and for 5 seconds after.";
         }
-        if (itemObj.name === "Cruor's Embrace" && itemObj.isMythic) {
+        if ((itemObj.name === "Cruor's Embrace" || itemObj.name === "Cruor's Embrace (Charm)") && itemObj.isMythic) {
             udesc = "Casting Blood Surge picks up 4 Blood Orbs around you to expel smaller blood novas, dealing 130% of normal damage.";
         }
-        if (itemObj.name === "Deathgrip" && itemObj.isMythic) {
+        if ((itemObj.name === "Deathgrip" || itemObj.name === "Deathgrip (Charm)") && itemObj.isMythic) {
             udesc = "Your maximum number of Skeleton Warriors is increased by 1. Skeleton Warriors cleave with their attacks and deal 65%[x] increased damage.<br><br>Commanding them onto a target increases the damage that target takes from your Skeleton Warriors by 65%[x].";
         }
-        if (itemObj.name === "Ebonpiercer" && itemObj.isMythic) {
+        if ((itemObj.name === "Ebonpiercer" || itemObj.name === "Ebonpiercer (Charm)") && itemObj.isMythic) {
             udesc = "Blight also shoots 4 smaller piercing projectiles, each dealing 65% of Blight's defiled area damage.";
         }
-        if (itemObj.name === "Lidless Wall" && itemObj.isMythic) {
+        if ((itemObj.name === "Lidless Wall" || itemObj.name === "Lidless Wall (Charm)") && itemObj.isMythic) {
             udesc = "Lucky Hit: While you have an active Bone Storm, hitting an enemy has up to a 59% chance to spawn a Bone Storm around their location. Each Sacrifice bonus increases this chance by 25% and allows you to spawn 1 additional Bone Storm. Each active Bone Storm grants 30%[x] Critical Strike Damage, up to 150%.";
         }
-        if (itemObj.name === "The Gloom Ward" && itemObj.isMythic) {
+        if ((itemObj.name === "The Gloom Ward" || itemObj.name === "The Gloom Ward (Charm)") && itemObj.isMythic) {
             udesc = "Shadow damage infects enemies with Shadowblight for 2 seconds. Every 6th time an enemy receives Shadow damage from you while they are affected by Shadowblight, they take an additional 780%[x] of that damage as Corrupting damage over 4 seconds.";
         }
-        if (itemObj.name === "Locran's Talisman" && itemObj.isMythic) {
+        if ((itemObj.name === "Locran's Talisman" || itemObj.name === "Locran's Talisman (Charm)") && itemObj.isMythic) {
             udesc = "Critical Strikes deal 195%[x] increased damage but your Critical Strike Chance is reduced by 50%[+].";
         }
-        if (itemObj.name === "Red Blessing" && itemObj.isMythic) {
+        if ((itemObj.name === "Red Blessing" || itemObj.name === "Red Blessing (Charm)") && itemObj.isMythic) {
             udesc = "While Healthy, gain 2 Maximum Overpower. Blood Orbs grant 2 stacks of Overpower. You deal 13%[x] increased damage per stack of Overpower.";
         }
-        if (itemObj.name === "Mother's Embrace" && itemObj.isMythic) {
+        if ((itemObj.name === "Mother's Embrace" || itemObj.name === "Mother's Embrace (Charm)") && itemObj.isMythic) {
             udesc = "If a Core Skill hits 4 or more enemies, 78% of the Resource cost is refunded.";
         }
-        if (itemObj.name === "Omen of Pain" && itemObj.isMythic) {
+        if ((itemObj.name === "Omen of Pain" || itemObj.name === "Omen of Pain (Charm)") && itemObj.isMythic) {
             udesc = "A dark aura surrounds you, inflicting Decrepify and Iron Maiden on enemies around you and increasing your damage to Close enemies by 19.5%[x]. Curses inflicted this way spread to surrounding targets every second.";
         }
-        if (itemObj.name === "Pact of Bone" && itemObj.isMythic) {
+        if ((itemObj.name === "Pact of Bone" || itemObj.name === "Pact of Bone (Charm)") && itemObj.isMythic) {
             udesc = "Your Minions gain 46%[+] Attack Speed and Critical Strike Chance. When one of your Minions die, your other Minions enrage, dealing 46%[x] increased damage for 3 seconds.";
         }
-        if (itemObj.name === "Ring of the Sacrilegious Soul" && itemObj.isMythic) {
+        if ((itemObj.name === "Ring of the Sacrilegious Soul" || itemObj.name === "Ring of the Sacrilegious Soul (Charm)") && itemObj.isMythic) {
             udesc = "Corpse Tendrils gains the effect of every Upgrade and is automatically triggered once every 16 seconds. This timer is reduced by 2.6 seconds each second while there are corpses by you.";
         }
-        if (itemObj.name === "Signet of Pelghain") {
+        if ((itemObj.name === "Signet of Pelghain" || itemObj.name === "Signet of Pelghain (Charm)")) {
             if (itemObj.isMythic) {
                 udesc = "Your Freeze effects cause enemies to permanently take 20%[x] increased Cold damage from you for each second they are Frozen.";
             } else {
                 udesc = "Your Freeze effects cause enemies to permanently take [10 - 15]%[x] increased Cold damage from you for each second they are Frozen.";
             }
         }
-        if (itemObj.name === "Wendigo Brand") {
+        if ((itemObj.name === "Wendigo Brand" || itemObj.name === "Wendigo Brand (Charm)")) {
             if (itemObj.isMythic) {
                 udesc = "Every 15 kills in the last 78 seconds increases your damage by 2%[x], and Maximum Life by 1%[+].";
             } else {
                 udesc = "Every 15 kills in the last [50 - 60] seconds increases your damage by 2%[x], and Maximum Life by 1%[+].";
             }
         }
-        if (itemObj.name === "Gospel of the Devotee") {
+        if ((itemObj.name === "Gospel of the Devotee" || itemObj.name === "Gospel of the Devotee (Charm)")) {
             if (itemObj.isMythic) {
                 udesc = "Your Basic Skills gain the effect of every Upgrade. Damaging an enemy with a Basic Skill causes them to take 52%[x] increased damage from your other Basic Skills for 10 seconds.";
             } else {
                 udesc = "Your Basic Skills gain the effect of every Upgrade. Damaging an enemy with a Basic Skill causes them to take [30 - 40]%[x] increased damage from your other Basic Skills for 10 seconds.";
             }
         }
-        if (itemObj.name === "Endurant Faith" && itemObj.isMythic) {
+        if ((itemObj.name === "Endurant Faith" || itemObj.name === "Endurant Faith (Charm)") && itemObj.isMythic) {
             udesc = "When you would be damaged for at least 30% of your Maximum Life at once, it is instead distributed over the next 4 seconds and reduced by 26%.";
         }
-        if (itemObj.name === "Fists of Fate" && itemObj.isMythic) {
+        if ((itemObj.name === "Fists of Fate" || itemObj.name === "Fists of Fate (Charm)") && itemObj.isMythic) {
             udesc = "Your attacks randomly deal 1% to 390% of their normal damage.";
         }
-        if (itemObj.name === "Frostburn" && itemObj.isMythic) {
+        if ((itemObj.name === "Frostburn" || itemObj.name === "Frostburn (Charm)") && itemObj.isMythic) {
             udesc = "Lucky Hit: Up to a 50% chance to Freeze enemies for 1 second. You deal 65%[x] increased damage to Frozen enemies.";
         }
-        if (itemObj.name === "Gravewalker's Hand" && itemObj.isMythic) {
+        if ((itemObj.name === "Gravewalker's Hand" || itemObj.name === "Gravewalker's Hand (Charm)") && itemObj.isMythic) {
             udesc = "Your Essence Generation is increased by 52%. Your Bone Skills deal 0.5%[x] increased damage for each point of Essence you have when Cast, up to 104%[x].";
         }
-        if (itemObj.name === "Hangman's Hand" && itemObj.isMythic) {
+        if ((itemObj.name === "Hangman's Hand" || itemObj.name === "Hangman's Hand (Charm)") && itemObj.isMythic) {
             udesc = "Sever deals 20%[x] increased damage and sends out 1 additional specter to attack a nearby enemy.";
         }
-        if (itemObj.name === "Howl from Below" && itemObj.isMythic) {
+        if ((itemObj.name === "Howl from Below" || itemObj.name === "Howl from Below (Charm)") && itemObj.isMythic) {
             udesc = "Instead of detonating immediately, Corpse Explosion now Summons a Volatile Skeleton that charges at a random enemy and explodes. Corpse Explosion deals 117%[x] increased damage.";
         }
-        if (itemObj.name === "Paingorger's Gauntlets" && itemObj.isMythic) {
+        if ((itemObj.name === "Paingorger's Gauntlets" || itemObj.name === "Paingorger's Gauntlets (Charm)") && itemObj.isMythic) {
             udesc = "Damaging enemies with a Non-Basic Skill cast marks them for 3 seconds. When a Basic Skill first hits a marked enemy, the Basic Skill's damage is echoed to all marked enemies, dealing 163%[x] increased damage.";
         }
-        if (itemObj.name === "The Hand of Naz" && itemObj.isMythic) {
+        if ((itemObj.name === "The Hand of Naz" || itemObj.name === "The Hand of Naz (Charm)") && itemObj.isMythic) {
             udesc = "Your maximum number of Skeleton Mages is increased by 1 and they are upgraded to Arch-Mages. Arch-Mages teleport to safety when attacked and their attacks occasionally shatter on impact, dealing 117%[x] increased damage to the enemy and up to 3 additional targets.";
 }
-        if (itemObj.name === "Wyrdskin" && itemObj.isMythic) {
+        if ((itemObj.name === "Wyrdskin" || itemObj.name === "Wyrdskin (Charm)") && itemObj.isMythic) {
             udesc = "Attacks apply Vulnerable to Distant Enemies, and Weakened to Close Enemies. You deal 52%[x] increased damage to Enemies that are both Vulnerable and Weakened.";
         }
-        if (itemObj.name === "Mutilator Plate" && itemObj.isMythic) {
+        if ((itemObj.name === "Mutilator Plate" || itemObj.name === "Mutilator Plate (Charm)") && itemObj.isMythic) {
             udesc = "You are Blood Lanced, and when Blood Lance would deal damage to you, it instead Fortifies you for 7% of your Maximum Life and has a 10% chance to form a Blood Orb. Blood Lance deals 117%[x] increased damage.";
         }
-        if (itemObj.name === "Soulbrand" && itemObj.isMythic) {
+        if ((itemObj.name === "Soulbrand" || itemObj.name === "Soulbrand (Charm)") && itemObj.isMythic) {
             udesc = "Your Healing Potions grant a Barrier for 100% of your Maximum Life for 1 second. You gain 39% Damage Reduction while you have a Barrier and may drink your Healing Potion while at full Life.";
         }
-        if (itemObj.name === "Razorplate" && itemObj.isMythic) {
+        if ((itemObj.name === "Razorplate" || itemObj.name === "Razorplate (Charm)") && itemObj.isMythic) {
             udesc = "Thorns has a 10% chance to deal 260%[x] increased damage.";
         }
-        if (itemObj.name === "Vengeful Sinew" && itemObj.isMythic) {
+        if ((itemObj.name === "Vengeful Sinew" || itemObj.name === "Vengeful Sinew (Charm)") && itemObj.isMythic) {
             udesc = "Bone Spirit explodes an additional time, dealing 59% of normal damage. Bone Spirit deals 52%[x] increased damage.";
         }
-        if (itemObj.name === "Crown of Lucion" && itemObj.isMythic) {
+        if ((itemObj.name === "Crown of Lucion" || itemObj.name === "Crown of Lucion (Charm)") && itemObj.isMythic) {
             udesc = "Each time you use a Skill with a Primary Resource Cost, gain 9.8%[x] increased damage and Resource Cost is increased by 30%[+] for 6 seconds, stacking up to 6 times.";
         }
-        if (itemObj.name === "Deathless Visage" && itemObj.isMythic) {
+        if ((itemObj.name === "Deathless Visage" || itemObj.name === "Deathless Visage (Charm)") && itemObj.isMythic) {
             udesc = "Critical Strikes with Bone Spear form an echo that bursts, dealing 65%[x] of its normal damage. Bone Spear deals 91%[x] increased Critical Strike Damage.";
         }
-        if (itemObj.name === "Godslayer Crown" && itemObj.isMythic) {
+        if ((itemObj.name === "Godslayer Crown" || itemObj.name === "Godslayer Crown (Charm)") && itemObj.isMythic) {
             udesc = "When you attempt to Incapacitate an enemy, you mark them and all surrounding enemies, pulling them in and dealing 13.0%[x] increased damage to them.";
         }
-        if (itemObj.name === "Heir of Perdition" && itemObj.isMythic) {
+        if ((itemObj.name === "Heir of Perdition" || itemObj.name === "Heir of Perdition (Charm)") && itemObj.isMythic) {
             udesc = "Succumb to hatred and earn Mother's Favor. Slaughtering enemies briefly steals 15%[+] Critical Strike Chance from surrounding allies with Mother's Favor. Mother's Favor always grants you 15%[x] increased damage.";
         }
-        if (itemObj.name === "The Undercrown" && itemObj.isMythic) {
+        if ((itemObj.name === "The Undercrown" || itemObj.name === "The Undercrown (Charm)") && itemObj.isMythic) {
             udesc = "Your maximum number of Skeleton Warriors and Skeleton Mages is increased by 4 and your Summon damage is increased by 32.5%[x].\n\nCommanding Skeleton Warriors also causes Skeleton Mages to focus the same target for 5 seconds.";
         }
-        if (itemObj.name === "Banished Lord's Talisman" && itemObj.isMythic) {
+        if ((itemObj.name === "Banished Lord's Talisman" || itemObj.name === "Banished Lord's Talisman (Charm)") && itemObj.isMythic) {
             udesc = "After you spend 275 of your Primary Resource, gain 4 stacks of Overpower. Your Critical Strikes deal 13.0%[x] increased damage per stack of Overpower.";
         }
-        if (itemObj.name === "Blood-Mad Idol" && itemObj.isMythic) {
+        if ((itemObj.name === "Blood-Mad Idol" || itemObj.name === "Blood-Mad Idol (Charm)") && itemObj.isMythic) {
             udesc = "You are always Berserking but take 200%[x] increased damage as Burning over 8 seconds. While Burning, Berserking grants an additional 195%[x] increased damage.";
         }
         
         const vals = itemObj.aspectValues || [];
         let valIndex = 0;
         uniqueDescHtml = udesc.replace(/(?:\[([\d\.,]+)\s*-\s*([\d\.,]+)\])|#/g, (match, min, max) => {
-          if (itemObj.name === 'Bloodless Scream' && itemObj.isMythic) {
+          if ((itemObj.name === 'Bloodless Scream' || itemObj.name === 'Bloodless Scream (Charm)') && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">325</span>`;
           }
-          if (itemObj.name === 'Azurewrath' && itemObj.isMythic) {
+          if ((itemObj.name === 'Azurewrath' || itemObj.name === 'Azurewrath (Charm)') && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">156</span>`;
           }
-          if (itemObj.name === 'Mace of King Leoric' && itemObj.isMythic) {
+          if ((itemObj.name === 'Mace of King Leoric' || itemObj.name === 'Mace of King Leoric (Charm)') && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">156</span>`;
           }
-          if (itemObj.name === 'Rustbitten Dirk' && itemObj.isMythic) {
+          if ((itemObj.name === 'Rustbitten Dirk' || itemObj.name === 'Rustbitten Dirk (Charm)') && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">156</span>`;
           }
-          if (itemObj.name === 'Sanguivor, Blade of Zir' && itemObj.isMythic) {
+          if ((itemObj.name === 'Sanguivor, Blade of Zir' || itemObj.name === 'Sanguivor, Blade of Zir (Charm)') && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">65</span>`;
           }
-          if (itemObj.name === 'Shard of Verathiel' && itemObj.isMythic) {
+          if ((itemObj.name === 'Shard of Verathiel' || itemObj.name === 'Shard of Verathiel (Charm)') && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">130</span>`;
           }
-          if (itemObj.name === 'Greaves of the Empty Tomb' && itemObj.isMythic) {
+          if ((itemObj.name === 'Greaves of the Empty Tomb' || itemObj.name === 'Greaves of the Empty Tomb (Charm)') && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">1040</span>`;
           }
-          if (itemObj.name === 'Rakanoth\'s Wake' && itemObj.isMythic) {
+          if ((itemObj.name === "Rakanoth's Wake" || itemObj.name === "Rakanoth's Wake (Charm)") && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">455</span>`;
           }
-          if (itemObj.name === 'X\'Fal\'s Corroded Signet' && itemObj.isMythic) {
+          if ((itemObj.name === "X'Fal's Corroded Signet" || itemObj.name === "X'Fal's Corroded Signet (Charm)") && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">455</span>`;
           }
-          if (itemObj.name === 'Will of Rathma' && itemObj.isMythic) {
+          if ((itemObj.name === 'Will of Rathma' || itemObj.name === 'Will of Rathma (Charm)') && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">975</span>`;
           }
-          if (itemObj.name === 'Blood Wake' && itemObj.isMythic) {
+          if ((itemObj.name === 'Blood Wake' || itemObj.name === 'Blood Wake (Charm)') && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">78</span>`;
           }
-          if (itemObj.name === 'Flickerstep' && itemObj.isMythic) {
+          if ((itemObj.name === 'Flickerstep' || itemObj.name === 'Flickerstep (Charm)') && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">5.2</span>`;
           }
-          if (itemObj.name === "Path of Trag'Oul" && itemObj.isMythic) {
+          if ((itemObj.name === "Path of Trag'Oul" || itemObj.name === "Path of Trag'Oul (Charm)") && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">46</span>`;
           }
-          if (itemObj.name === 'Penitent Greaves' && itemObj.isMythic) {
+          if ((itemObj.name === 'Penitent Greaves' || itemObj.name === 'Penitent Greaves (Charm)') && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">20</span>`;
           }
-          if (itemObj.name === "Yen's Blessing" && itemObj.isMythic) {
+          if ((itemObj.name === "Yen's Blessing" || itemObj.name === "Yen's Blessing (Charm)") && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">78</span>`;
           }
-          if (itemObj.name === 'Blood Moon Breeches' && itemObj.isMythic) {
+          if ((itemObj.name === 'Blood Moon Breeches' || itemObj.name === 'Blood Moon Breeches (Charm)') && itemObj.isMythic) {
             if (valIndex === 0) {
               valIndex++;
               return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">13.0</span>`;
@@ -8492,11 +8496,11 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
               return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">78</span>`;
             }
           }
-          if (itemObj.name === "Kessime's Legacy" && itemObj.isMythic) {
+          if ((itemObj.name === "Kessime's Legacy" || itemObj.name === "Kessime's Legacy (Charm)") && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">468</span>`;
           }
-          if (itemObj.name === "Tassets of the Dawning Sky" && itemObj.isMythic) {
+          if ((itemObj.name === "Tassets of the Dawning Sky" || itemObj.name === "Tassets of the Dawning Sky (Charm)") && itemObj.isMythic) {
             valIndex++;
             return `<span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">208.0</span>`;
           }
@@ -8526,7 +8530,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
           return inputHtml;
         });
 
-        if (itemObj.name === 'Thousand-Eye Reaver' && itemObj.isMythic) {
+        if ((itemObj.name === 'Thousand-Eye Reaver' || itemObj.name === 'Thousand-Eye Reaver (Charm)') && itemObj.isMythic) {
             uniqueDescHtml = `Moving grants Ferocity, and Maximum Ferocity is increased by <span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">5</span>. Ferocity also increases Movement Speed by <span style="color: #8ab4f8; font-weight: bold; padding: 0 2px;">10%[+]</span> per stack.`;
         }
 
@@ -8753,7 +8757,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         <button class="edit-btn" id="btn-change-item">🔄 Change Item</button>
         <button class="edit-btn" id="btn-unequip-item">🛡️ Unequip</button>
         <button class="edit-btn" id="btn-delete-item">🗑️ Delete</button>
-        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol", "Ebonpiercer", "Locran's Talisman", "Red Blessing", "Mother's Embrace", "Omen of Pain", "Pact of Bone", "Ring of the Sacrilegious Soul", "Signet of Pelghain", "Wendigo Brand", "Gospel of the Devotee", "Lidless Wall", "The Gloom Ward"].includes(itemObj.name) ? `
+        ${['Bloodless Scream', 'Azurewrath', 'Mace of King Leoric', 'Rustbitten Dirk', 'Sanguivor, Blade of Zir', 'Shard of Verathiel', 'Thousand-Eye Reaver', 'Greaves of the Empty Tomb', 'Rakanoth\'s Wake', 'X\'Fal\'s Corroded Signet', 'Will of Rathma', 'Blood Wake', 'Flickerstep', "Path of Trag'Oul", 'Penitent Greaves', "Yen's Blessing", 'Blood Moon Breeches', "Kessime's Legacy", "Tassets of the Dawning Sky", "Temerity", "Tibault's Will", "Cruor's Embrace", "Deathgrip", "Endurant Faith", "Fists of Fate", "Frostburn", "Gravewalker's Hand", "Hangman's Hand", "Howl from Below", "Paingorger's Gauntlets", "The Hand of Naz", "Wyrdskin", "Mutilator Plate", "Soulbrand", "Razorplate", "Vengeful Sinew", "Crown of Lucion", "Deathless Visage", "Godslayer Crown", "Heir of Perdition", "The Undercrown", "Banished Lord's Talisman", "Blood-Mad Idol", "Ebonpiercer", "Locran's Talisman", "Red Blessing", "Mother's Embrace", "Omen of Pain", "Pact of Bone", "Ring of the Sacrilegious Soul", "Signet of Pelghain", "Wendigo Brand", "Gospel of the Devotee", "Lidless Wall", "The Gloom Ward"].includes(itemObj.name.replace(' (Charm)', '')) ? `
         <div class="edit-btn" style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
             <input type="checkbox" id="item-mythic-toggle" ${itemObj.isMythic ? 'checked' : ''} style="cursor: pointer; margin: 0;">
             <label for="item-mythic-toggle" style="cursor: pointer; margin: 0; padding-right: 4px;">Mythic</label>
@@ -9410,7 +9414,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             boxes.forEach(b => b.dataset.value = JSON.stringify(sealObj));
         }
       
-      let uniqueLimit = (item && item.name === 'Seal of the Golden Epiphany') ? 3 : 1;
+      let uniqueLimit = (item && (item.name === 'Seal of the Golden Epiphany' || item.name === 'Seal of the Golden Epiphany (Charm)')) ? 3 : 1;
       let uniqueCount = 0;
       for (let i = 0; i < 6; i++) {
           if (currentBuild.talisman.charms[i] && currentBuild.talisman.charms[i].isUnique) {
@@ -9606,6 +9610,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         }
 
         renderEditTab(currentModalSlot);
+        if (typeof saveBuild === 'function') saveBuild();
         switchModalTab('edit');
       } else {
         stashItem(currentModalSlot, box.dataset.value);
@@ -9628,6 +9633,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         }
         
         renderEditTab(currentModalSlot);
+        if (typeof saveBuild === 'function') saveBuild();
         switchModalTab('select');
       }
       calculate();
@@ -10580,8 +10586,9 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
     }
     
     if (isShadowDamage) {
-        if (window.currentBuild && window.currentBuild.equipment) {
-            let gloom = Object.values(window.currentBuild.equipment).find(item => item && item.name === "The Gloom Ward");
+        if (window.currentBuild) {
+            let allItems = [...Object.values(window.currentBuild.equipment || {}), ...(window.currentBuild.talisman?.charms || [])];
+            let gloom = allItems.find(item => item && (item.name === "The Gloom Ward" || item.name === "The Gloom Ward (Charm)"));
             if (gloom) {
                 let gloomVal = gloom.isMythic ? 780 : (gloom.aspectValues && gloom.aspectValues.length > 0 ? parseFloat(gloom.aspectValues[0]) || 500 : 500);
                 let gloomMult = 1 + ((gloomVal / 6) / 100);
@@ -11160,6 +11167,18 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
                     bucket *= mult;
                     components.push({ name: `Aspect of Frozen Memories ${conds.frozen ? '(Tripled)' : ''} [x]`, value: mult });
                 }
+            }
+        }
+    }
+    
+    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Penitent_Greaves_Mult"]) {
+        let pgMult = window.D4_COMPILED_STATS["Penitent_Greaves_Mult"].final;
+        if (pgMult > 0 && typeof getActiveConditions === 'function') {
+            const conds = getActiveConditions();
+            if (conds.cc || conds.frozen) {
+                let mult = 1 + (pgMult / 100);
+                bucket *= mult;
+                components.push({ name: 'Penitent Greaves (vs Chilled) [x]', value: mult });
             }
         }
     }
@@ -11849,7 +11868,7 @@ function renderCalcSkills() {
                     card.appendChild(sliderDiv);
                 }
 
-                const hasSanguivor = Object.values(currentBuild.equipment).some(i => i && i.name === 'Sanguivor, Blade of Zir');
+                const hasSanguivor = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].some(i => i && (i.name === 'Sanguivor, Blade of Zir' || i.name === 'Sanguivor, Blade of Zir (Charm)'));
                 if ((baseSkill.name === 'Army of the Dead' || baseSkill.baseName === 'Army of the Dead') && hasSanguivor) {
                     let curVal = window.skillSliderValues['Vampiric Curse Souls'] !== undefined ? window.skillSliderValues['Vampiric Curse Souls'] : 1;
                     let sliderDiv = document.createElement('div');
@@ -11867,7 +11886,7 @@ function renderCalcSkills() {
                     card.appendChild(sliderDiv);
                 }
 
-                const hasLidlessMythic = Object.values(currentBuild.equipment).some(i => i && i.name === 'Lidless Wall' && i.isMythic);
+                const hasLidlessMythic = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].some(i => i && (i.name === 'Lidless Wall' || i.name === 'Lidless Wall (Charm)') && i.isMythic);
                 if ((baseSkill.name === 'Bone Storm' || baseSkill.baseName === 'Bone Storm') && hasLidlessMythic) {
                     let curVal = window.skillSliderValues['Active Bone Storms (Lidless Wall)'] !== undefined ? window.skillSliderValues['Active Bone Storms (Lidless Wall)'] : 0;
                     let sliderDiv = document.createElement('div');
@@ -12055,7 +12074,7 @@ function calculateSkillCritChance(skillObj) {
         
         let hasSacrilegiousRing = false;
         if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
-            hasSacrilegiousRing = Object.values(currentBuild.equipment).some(item => item && item.name === "Ring of the Sacrilegious Soul");
+            hasSacrilegiousRing = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].some(item => item && (item.name === "Ring of the Sacrilegious Soul" || item.name === "Ring of the Sacrilegious Soul (Charm)"));
         }
 
         if (isSkillActiveNode('Critical Strike Chance (Corpse Tendrils)') || hasSacrilegiousRing) {
@@ -12135,7 +12154,7 @@ function calculateLuckyHitChance(skillObj) {
     
     let hasSacrilegiousRing = false;
     if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
-        hasSacrilegiousRing = Object.values(currentBuild.equipment).some(item => item && item.name === "Ring of the Sacrilegious Soul");
+        hasSacrilegiousRing = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].some(item => item && (item.name === "Ring of the Sacrilegious Soul" || item.name === "Ring of the Sacrilegious Soul (Charm)"));
     }
 
     let baseName = skillObj.baseName || skillObj.name;
@@ -12157,7 +12176,7 @@ function calculateLuckyHitChance(skillObj) {
     
     let aphoticMult = 1;
     if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
-        const aphoticItem = Object.values(currentBuild.equipment).find(item => item && item.aspect === "Aphotic Aspect");
+        const aphoticItem = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].find(item => item && item.aspect === "Aphotic Aspect");
         if (aphoticItem) {
             let aphoticAspectValue = (aphoticItem.aspectValues && aphoticItem.aspectValues.length > 0) ? aphoticItem.aspectValues[0] : 30;
             let isShadowDamage = skillObj.damageType === 'Shadow' || (skillObj.tags && skillObj.tags.some(t => t.toLowerCase() === 'damage_shadow' || t.toLowerCase() === 'skill_shadow' || t.toLowerCase() === 'search_shadow'));
@@ -12372,30 +12391,9 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
     let multiData = typeof calculateSkillMultiplicativeBucket === 'function' ? calculateSkillMultiplicativeBucket(skillObj, isHit) : { total: 1, components: [] };
     let multiMult = multiData.total;
     
-    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Crown_of_Lucion_Mult"]) {
-        let lTags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
-        let hasCost = skillObj.resourceCost !== undefined || (skillObj.desc && skillObj.desc.toLowerCase().includes('cost'));
-        let isBasic = lTags.some(t => t.includes('basic'));
-        
-        if (hasCost || isBasic) {
-            let multVal = window.D4_COMPILED_STATS["Crown_of_Lucion_Mult"].final;
-            let mult = 1 + (multVal / 100);
-            multiMult *= mult;
-            multiData.components.push({ name: 'Crown of Lucion', value: mult });
-            multiData.total = multiMult;
-        }
-    }
-    
-    if (window.D4_COMPILED_STATS && window.D4_COMPILED_STATS["Ring_of_Starless_Skies_Mult"]) {
-        let multVal = window.D4_COMPILED_STATS["Ring_of_Starless_Skies_Mult"].final;
-        let mult = 1 + (multVal / 100);
-        multiMult *= mult;
-        multiData.components.push({ name: 'Ring of Starless Skies', value: mult });
-        multiData.total = multiMult;
-    }
-    
+
     if (typeof currentBuild !== 'undefined' && currentBuild && currentBuild.equipment) {
-        let pelgahin = Object.values(currentBuild.equipment).find(item => item && item.name === "Signet of Pelghain");
+        let pelgahin = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].find(item => item && (item.name === "Signet of Pelghain" || item.name === "Signet of Pelghain (Charm)"));
         if (pelgahin) {
             let secondsFrozen = 0;
             const sfEl = document.getElementById('cond-seconds-frozen');
@@ -12415,7 +12413,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
 
 
 
-        let wendigo = Object.values(currentBuild.equipment).find(item => item && item.name === "Wendigo Brand");
+        let wendigo = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].find(item => item && (item.name === "Wendigo Brand" || item.name === "Wendigo Brand (Charm)"));
         if (wendigo) {
             let recentKills = 0;
             const rkEl = document.getElementById('cond-recent-kills');
@@ -12430,7 +12428,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
             }
         }
         
-        let gospel = Object.values(currentBuild.equipment).find(item => item && item.name === "Gospel of the Devotee");
+        let gospel = [...Object.values(currentBuild.equipment || {}), ...(currentBuild.talisman?.charms || [])].find(item => item && (item.name === "Gospel of the Devotee" || item.name === "Gospel of the Devotee (Charm)"));
         if (gospel) {
             let isBasicSkill = skillObj.tags && skillObj.tags.some(t => t.toLowerCase() === 'basic' || t.toLowerCase() === 'keyword_basic') || ['Decompose', 'Reap', 'Hemorrhage', 'Bone Splinters'].includes(skillObj.name) || ['Decompose', 'Reap', 'Hemorrhage', 'Bone Splinters'].includes(skillObj.baseName);
             
@@ -12507,12 +12505,17 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
-    // Bloodless Scream Aspect Multiplier
-    if (typeof currentBuild !== 'undefined' && currentBuild.equipment) {
-        Object.keys(currentBuild.equipment).forEach(slot => {
-            const item = currentBuild.equipment[slot];
+    // Bloodless Scream & Other Aspect Multipliers
+    if (typeof currentBuild !== 'undefined') {
+        let allEquipped = {};
+        if (currentBuild.equipment) Object.assign(allEquipped, currentBuild.equipment);
+        if (currentBuild.talisman && currentBuild.talisman.charms) {
+            currentBuild.talisman.charms.forEach((c, i) => { if (c) allEquipped[`Charm ${i+1}`] = c; });
+        }
+        Object.keys(allEquipped).forEach(slot => {
+            const item = allEquipped[slot];
 
-            if (item && item.name === 'Rustbitten Dirk' && typeof getActiveConditions === 'function' && getActiveConditions().numMonsters === 1) {
+            if (item && (item.name === 'Rustbitten Dirk' || item.name === 'Rustbitten Dirk (Charm)') && typeof getActiveConditions === 'function' && getActiveConditions().numMonsters === 1) {
                 let val = 90; // Default minimum roll
                 if (item.isMythic) {
                     val = 156;
@@ -12524,7 +12527,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                 multiData.components.push({ name: `Rustbitten Dirk (vs Isolated) [x]`, value: mult });
             }
 
-            if (item && item.name === 'Mace of King Leoric') {
+            if (item && (item.name === 'Mace of King Leoric' || item.name === 'Mace of King Leoric (Charm)')) {
                 if (skillObj.name === 'Golem' || skillObj.baseName === 'Golem' || skillObj.name === 'Bone Golem Thorns') {
                     let val = 100;
                     if (item.isMythic) {
@@ -12538,7 +12541,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                 }
             }
 
-            if (item && item.name === 'Sanguivor, Blade of Zir') {
+            if (item && (item.name === 'Sanguivor, Blade of Zir' || item.name === 'Sanguivor, Blade of Zir (Charm)')) {
                 if (skillObj.name === 'Army of the Dead' || skillObj.baseName === 'Army of the Dead') {
                     let val = 40; // Default minimum roll
                     if (item.isMythic) {
@@ -12555,7 +12558,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                 }
             }
 
-            if (item && item.name === 'Shard of Verathiel') {
+            if (item && (item.name === 'Shard of Verathiel' || item.name === 'Shard of Verathiel (Charm)')) {
                 let tags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
                 if (tags.some(t => t.includes('basic'))) {
                     let val = 70; // Default minimum roll
@@ -12570,7 +12573,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                 }
             }
 
-            if (item && item.name === 'Bloodless Scream') {
+            if (item && (item.name === 'Bloodless Scream' || item.name === 'Bloodless Scream (Charm)')) {
                 let tags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
                 const isDarkness = tags.some(t => t.includes('darkness') || t.includes('shadow'));
                 if (isDarkness) {
@@ -13056,7 +13059,7 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
         const currentEquip = (typeof getEquipmentValues === 'function') ? getEquipmentValues() : {};
         for (const slot in currentEquip) {
             const eq = currentEquip[slot];
-            if (eq && eq.name === "Tassets of the Dawning Sky") {
+            if (eq && (eq.name === "Tassets of the Dawning Sky" || eq.name === "Tassets of the Dawning Sky (Charm)")) {
                 hasTassets = true;
                 tassetsVal = eq.isMythic ? 208.0 : (eq.aspectValues && eq.aspectValues[0] !== undefined ? parseFloat(eq.aspectValues[0]) || 130.0 : 130.0);
                 break;
