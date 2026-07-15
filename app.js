@@ -3273,9 +3273,18 @@ function compileCharacterStats(equipped, autoStats) {
           let accAspect = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Accelerating Aspect");
           if (accAspect) {
               let hasCore = false;
-              if (window.currentBuild && window.currentBuild.activeSkills && typeof skillsDatabase !== 'undefined') {
-                  for (let skillName of window.currentBuild.activeSkills) {
-                      if (!skillName) continue;
+              if (typeof skillsDatabase !== 'undefined') {
+                  let skillsToCheck = new Set();
+                  if (window.currentBuild && window.currentBuild.activeSkills) {
+                      window.currentBuild.activeSkills.forEach(s => { if (s) skillsToCheck.add(s); });
+                  }
+                  if (window.selectedSkills) {
+                      Object.keys(window.selectedSkills).forEach(s => {
+                          if (window.selectedSkills[s] > 0) skillsToCheck.add(s);
+                      });
+                  }
+                  
+                  for (let skillName of skillsToCheck) {
                       let found = null;
                       for (let cat in skillsDatabase) {
                           found = skillsDatabase[cat].find(s => s.name === skillName);
@@ -3292,7 +3301,7 @@ function compileCharacterStats(equipped, autoStats) {
                           }
                       }
                   }
-              }
+              } 
               if (hasCore) {
                   let val = accAspect.aspectValues && accAspect.aspectValues.length > 0 ? parseFloat(accAspect.aspectValues[0]) : 50;
                   addStat(stats, 'Attack Speed', val, 'Accelerating Aspect');
