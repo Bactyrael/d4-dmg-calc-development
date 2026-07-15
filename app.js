@@ -2983,7 +2983,7 @@ function compileCharacterStats(equipped, autoStats) {
                             const opStacks = getActiveBuffs().overpower || 0;
                             if (opStacks > 0) {
                                 let isCharm = slotName.toLowerCase().startsWith('charm');
-                                let defaultVal = isCharm ? 5.0 : 8.0;
+                                let defaultVal = isCharm ? 7.0 : 10.0;
                                 let perStack = item.isMythic ? 13.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : defaultVal);
                                 stats["Banished Lord's Talisman Critical Damage [x]"] = { final: perStack * opStacks, isMultiplicative: true };
                             }
@@ -2991,7 +2991,7 @@ function compileCharacterStats(equipped, autoStats) {
                     } else if (item.name === "Blood-Mad Idol") {
                         handled = true;
                         let isCharm = slotName.toLowerCase().startsWith('charm');
-                        let defaultVal = isCharm ? 80.0 : 120.0;
+                        let defaultVal = isCharm ? 100.0 : 150.0;
                         let roll = item.isMythic ? 195.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : defaultVal);
                         stats["Idol Burning [x] Damage"] = { final: roll, isMultiplicative: true };
                         stats["Idol Berserking [x] Damage"] = { final: 25.0, isMultiplicative: true };
@@ -3002,7 +3002,7 @@ function compileCharacterStats(equipped, autoStats) {
                             const opStacks = getActiveBuffs().overpower || 0;
                             if (opStacks > 0) {
                                 let isCharm = slotName.toLowerCase().startsWith('charm');
-                                let defaultVal = isCharm ? 5.0 : 8.0;
+                                let defaultVal = isCharm ? 7.0 : 13.0;
                                 let perStack = item.isMythic ? 13.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : defaultVal);
                                 stats["Red Blessing [x] Damage"] = { final: perStack * opStacks, isMultiplicative: true };
                             }
@@ -3067,7 +3067,7 @@ function compileCharacterStats(equipped, autoStats) {
                     } else if (item.name === "Locran's Talisman") {
                         handled = true;
                         let isCharm = slotName.toLowerCase().startsWith('charm');
-                        let defaultVal = isCharm ? 80 : 120;
+                        let defaultVal = isCharm ? 100 : 150;
                         v = item.isMythic ? 195 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : defaultVal);
                         addStat(stats, 'Locran\'s Talisman (Critical Strike Damage) [x]', v, 'Item Power');
                         addStat(stats, 'Critical Strike Chance', -50, 'Locran\'s Talisman (Power)');
@@ -9553,6 +9553,16 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         
         if ((rarity === 'unique' || rarity === 'mythic') && foundItem && foundItem.affixes) {
             itemObj.affixes = [...foundItem.affixes];
+            if (foundItem.desc) {
+                let descToParse = foundItem.desc;
+                if (itemName === "Banished Lord's Talisman (Charm)") {
+                    descToParse = descToParse.replace(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/g, '[5 - 7]');
+                }
+                const aspectMatch = descToParse.match(/\[([\d\.,]+)\s*-\s*([\d\.,]+)\]/);
+                if (aspectMatch) {
+                    itemObj.aspectValues = [parseFloat(aspectMatch[2])];
+                }
+            }
         }
         
         box.dataset.value = JSON.stringify(itemObj);
