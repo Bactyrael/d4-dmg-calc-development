@@ -4021,7 +4021,7 @@ function compileCharacterStats(equipped, autoStats) {
     }
   
   function getStatEffects(statName, finalVal) {
-      const selectedClass = document.getElementById('class-select')?.textContent || 'Barbarian';
+      const selectedClass = document.getElementById('class-select')?.textContent || 'Necromancer';
       let effects = [];
       const v = Math.floor(finalVal);
       
@@ -4827,7 +4827,7 @@ function compileCharacterStats(equipped, autoStats) {
     const baseDamage = (skillPct / 100) * weaponDmg;
 
     // Get Class main stat multiplier
-    const selectedClass = dom.classSelect ? dom.classSelect.textContent : 'Barbarian';
+    const selectedClass = dom.classSelect ? dom.classSelect.textContent : 'Necromancer';
     
     let mainStatValue = 0;
     let mainStatFactor = 0;
@@ -5487,7 +5487,7 @@ function compileCharacterStats(equipped, autoStats) {
       currentBuild = b;
 
     dom.buildName.textContent = b.name || 'New Build';
-    if (dom.classSelect) dom.classSelect.textContent = b.class || 'Barbarian';
+    if (dom.classSelect) dom.classSelect.textContent = b.class || 'Necromancer';
     dom.weaponDamage.value = b.weaponDamage || 0;
     dom.skillDamage.value = b.skillDamage || 0;
 
@@ -5593,14 +5593,14 @@ function compileCharacterStats(equipped, autoStats) {
     
     // For legacy saves where level was packed into addBonuses
     const legBonuses = glyphs.slice(5, 10).map((v, i) => {
-        if (CLASS_PARAGON_DATA[currentBuild.class || 'Barbarian'] && addBonuses[i] !== null && typeof addBonuses[i] === 'object') {
+        if (CLASS_PARAGON_DATA[currentBuild.class || 'Necromancer'] && addBonuses[i] !== null && typeof addBonuses[i] === 'object') {
             return addBonuses[i].level || v || 1;
         }
         return v;
     });
     
     if (typeof populateMainSkillSelect === 'function') populateMainSkillSelect();
-      renderEquipment(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', b.equipment || {});
+      renderEquipment(dom.classSelect ? dom.classSelect.textContent : 'Necromancer', b.equipment || {});
     window.selectedSkills = b.skills ? JSON.parse(JSON.stringify(b.skills)) : {};
     renderSkills();
 
@@ -5624,7 +5624,7 @@ function compileCharacterStats(equipped, autoStats) {
     calculate();
   }
 
-  function newBuild(name = 'New Build', className = 'Barbarian') {
+  function newBuild(name = 'New Build', className = 'Necromancer') {
     try { localStorage.removeItem(AUTOSAVE_KEY); } catch(e) {}
     loadBuildToUI(createDefaultBuild(name, className));
     const equipmentBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('data-target') === 'tab-equipment');
@@ -5989,7 +5989,7 @@ function compileCharacterStats(equipped, autoStats) {
         // When changing class, get the current state to pass through (it handles resets gracefully)
         const currentAddSave = [];
         const currentLegSave = [];
-        const oldClassData = CLASS_PARAGON_DATA[currentBuild.class || 'Barbarian'];
+        const oldClassData = CLASS_PARAGON_DATA[currentBuild.class || 'Necromancer'];
         const newClassData = CLASS_PARAGON_DATA[dom.classSelect.textContent];
         
         for (let i = 1; i <= 5; i++) {
@@ -6084,7 +6084,7 @@ function compileCharacterStats(equipped, autoStats) {
         dom.newBuildModal.style.display = 'flex';
         dom.newBuildModal.classList.remove('hidden');
         if (dom.newBuildName) dom.newBuildName.value = 'New Build';
-        if (dom.newBuildClass) dom.newBuildClass.value = 'Barbarian';
+        if (dom.newBuildClass) dom.newBuildClass.value = 'Necromancer';
       }
     });
 
@@ -6100,7 +6100,7 @@ function compileCharacterStats(equipped, autoStats) {
     if (dom.btnCreateNewBuild) {
       dom.btnCreateNewBuild.addEventListener('click', () => {
         const name = dom.newBuildName ? (dom.newBuildName.value.trim() || 'New Build') : 'New Build';
-        const className = dom.newBuildClass ? dom.newBuildClass.value : 'Barbarian';
+        const className = dom.newBuildClass ? dom.newBuildClass.value : 'Necromancer';
         
         if (confirm('Start a new build? Unsaved changes will be lost.')) {
           newBuild(name, className);
@@ -7999,7 +7999,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     
     
     
-    renderEquipment(dom.classSelect ? dom.classSelect.textContent : 'Barbarian', {});
+    renderEquipment(dom.classSelect ? dom.classSelect.textContent : 'Necromancer', {});
   }
 
   let currentModalSlot = null;
