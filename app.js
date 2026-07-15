@@ -2982,7 +2982,9 @@ function compileCharacterStats(equipped, autoStats) {
                         if (typeof getActiveBuffs === 'function') {
                             const opStacks = getActiveBuffs().overpower || 0;
                             if (opStacks > 0) {
-                                let perStack = item.isMythic ? 13.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 8.0);
+                                let isCharm = slotName.toLowerCase().startsWith('charm');
+                                let defaultVal = isCharm ? 5.0 : 8.0;
+                                let perStack = item.isMythic ? 13.0 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : defaultVal);
                                 stats["Banished Lord's Talisman Critical Damage [x]"] = { final: perStack * opStacks, isMultiplicative: true };
                             }
                         }
