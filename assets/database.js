@@ -26696,9 +26696,9 @@ setTimeout(() => {
         ]
     },
     {
-        "name": "Harmonious: +[94 - 125] All Stats",
-        "shortName": "+[94 - 125] All Stats",
-        "htmlName": "<div style='color:#ff8500;'>Harmonious</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[94 - 125] All Stats</div>",
+        "name": "Harmonious: +[75 - 100] All Stats",
+        "shortName": "+[75 - 100] All Stats",
+        "htmlName": "<div style='color:#ff8500;'>Harmonious</div><div style='color:#b3b3b3; font-size: 0.9em;'>+[75 - 100] All Stats</div>",
         "category": "Utility",
         "classes": [
             0,

@@ -2397,7 +2397,10 @@ function getTotalActiveMinions(currentBuild) {
 
 function compileCharacterStats(equipped, autoStats) {
         const stats = {};
-        
+
+        if (equipped) {
+            // removed red div
+        }        
         addStat(stats, 'Strength', autoStats.baseStr, 'Base');
         addStat(stats, 'Strength', autoStats.levelStr, 'Level');
         addStat(stats, 'Intelligence', autoStats.baseInt, 'Base');
@@ -2511,169 +2514,7 @@ function compileCharacterStats(equipped, autoStats) {
             }
         }
         
-        // Apply active Skill Modifiers (Variable Stacks / Sliders)
-        if (window.selectedSkills) {
-            window.skillSliderValues = window.skillSliderValues || {};
-            // Pile the Bodies (Up to 300%[x])
-            if (isSkillActiveNode('Pile the Bodies')) {
-                let curStack = window.skillSliderValues['Pile the Bodies'] !== undefined ? window.skillSliderValues['Pile the Bodies'] : 300;
-                if (curStack > 0) {
-                    addStat(stats, 'Skill: Army of the Dead (Pile the Bodies) Damage [x]', curStack, 'Pile the Bodies');
-                }
-            }
-            
-            // Bloody Mess (50%[x] to Corpse Explosion)
-            if (isSkillActiveNode('Bloody Mess')) {
-                // Now explicitly scoping this to ONLY Corpse Explosion
-                // The actual check happens inside calculateSkillMultiplicativeBucket
-                addStat(stats, 'Skill: Corpse Explosion (Bloody Mess) Damage [x]', 50, 'Bloody Mess');
-            }
 
-            let hemCsLevel = isSkillActiveNode('Cast Speed (Hemorrhage)') || isSkillActiveNode('Cast Speed') ? 1 : 0;
-            if (hemCsLevel > 0) {
-                let hemName = 'Hemorrhage';
-                let variations = ['Blood Boil', 'Blood Runs Cold', 'Soul Rip'];
-                for (let i = variations.length - 1; i >= 0; i--) {
-                    if (window.selectedSkills[variations[i]] > 0) {
-                        hemName = variations[i];
-                        break;
-                    }
-                }
-                addStat(stats, `Skill: ${hemName} (Cast Speed)`, 20, 'Cast Speed (Upgrade)');
-                if (hemName !== 'Hemorrhage') {
-                    addStat(stats, `Skill: Hemorrhage (Cast Speed)`, 20, 'Cast Speed (Upgrade)');
-                }
-            }
-            
-            // Reap Cast Speed (Chilled To The Bone)
-            if (isSkillActiveNode('Chilled To The Bone')) {
-                addStat(stats, `Skill: Chilled To The Bone (Cast Speed)`, 30, 'Chilled To The Bone');
-                addStat(stats, `Skill: Reap (Cast Speed)`, 30, 'Chilled To The Bone');
-            }
-            
-            // Gargantua Cast Speed (Applies to Skeleton Warrior and Mage)
-            if (isSkillActiveNode('Gargantua')) {
-                let golemRank = window.selectedSkills['Golem'] || 1;
-                
-                let rankMult = 1.0;
-                if (golemRank > 1) {
-                    let levelsGained = golemRank - 1;
-                    let enhancedIncreases = Math.floor(golemRank / 5);
-                    rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
-                }
-                
-                let castSpeedBonus = parseFloat((20 * rankMult).toFixed(1));
-                
-                addStat(stats, 'Skill: Skeleton Warrior (Cast Speed)', castSpeedBonus, 'Gargantua');
-                addStat(stats, 'Skill: Skeleton Mage (Cast Speed)', castSpeedBonus, 'Gargantua');
-            }
-            
-            // Life Imprisonment (Bone Prison Variant) Global Cast Speed
-            if (isSkillActiveNode('Life Imprisonment')) {
-                let prisonRank = window.selectedSkills['Bone Prison'] || 1;
-                
-                let rankMult = 1.0;
-                if (prisonRank > 1) {
-                    let levelsGained = prisonRank - 1;
-                    let enhancedIncreases = Math.floor(prisonRank / 5);
-                    rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
-                }
-                
-                let castSpeedBonus = parseFloat((20 * rankMult).toFixed(1));
-                
-                addStat(stats, 'Cast Speed', castSpeedBonus, 'Life Imprisonment');
-                addStat(stats, 'Essence Generation %', castSpeedBonus, 'Life Imprisonment');
-            }
-            
-            // Roll The Bones (Bone Storm Variant) Global Critical Strike Chance and Cast Speed
-            if (isSkillActiveNode('Roll The Bones') || isSkillActiveNode('Roll the Bones')) {
-                let stormRank = window.selectedSkills['Bone Storm'] || 1;
-                
-                let rankMult = 1.0;
-                if (stormRank > 1) {
-                    let levelsGained = stormRank - 1;
-                    let enhancedIncreases = Math.floor(stormRank / 5);
-                    rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
-                }
-                
-                let bonus = parseFloat((15 * rankMult).toFixed(1));
-                
-                addStat(stats, 'Critical Strike Chance', bonus, 'Roll The Bones (Skill)');
-                addStat(stats, 'Cast Speed', bonus, 'Roll The Bones (Skill)');
-            }
-            
-            // Bone Storm Damage Reduction
-            if (isSkillActiveNode('Damage Reduction (Bone Storm)')) {
-                addStat(stats, 'Universal Damage Reduction %', 10, 'Bone Storm (Upgrade)');
-            }
-            
-            // Crowd Control Damage Bonus (Blight)
-            if (isSkillActiveNode('Crowd Control Damage Bonus (Blight)') && currentBuild.conditions && currentBuild.conditions.cc) {
-                addStat(stats, 'Skill: Blight (Crowd Control Damage Bonus) Damage [x]', 30, 'Crowd Control Damage Bonus (Blight)');
-            }
-
-            // Area Damage Bonus (Blight)
-            if (isSkillActiveNode('Area Damage Bonus')) {
-                addStat(stats, 'Skill (Secondary): Blight (Area Damage Bonus) Damage [x]', 40, 'Area Damage Bonus');
-            }
-            // Army of the Dead - Damage Bonus
-            if (isSkillActiveNode('Damage Bonus (Army of the Dead)')) {
-                let totalMinions = getTotalActiveMinions(currentBuild);
-                let dmgBonus = totalMinions * 2;
-                addStat(stats, 'Skill: Army of the Dead (Damage Bonus) Damage [x]', dmgBonus, 'Damage Bonus');
-            }
-            
-            // Soulrift - Damage Bonus
-            if (isSkillActiveNode('Damage Bonus (Soulrift)')) {
-                addStat(stats, 'Skill: Soulrift (Damage Bonus) Damage [x]', 45, 'Damage Bonus');
-            }
-            
-            // Sever - Damage Bonus
-            if (isSkillActiveNode('Damage Bonus (Sever)')) {
-                let isSeverSelected = isSkillActiveNode('Sever') || (isSkillActiveNode('Reaping Lotus')) || (isSkillActiveNode('Inexorable Reaper'));
-                if (isSeverSelected) {
-                    let totalMinions = getTotalActiveMinions(currentBuild);
-                    let dmgBonus = 10 + (totalMinions * 1);
-                    addStat(stats, 'Skill: Sever (Damage Bonus) Damage [x]', dmgBonus, 'Damage Bonus');
-                }
-            }
-
-            // Gift of Death
-            if (isSkillActiveNode('Gift of Death')) {
-                let magesRank = window.selectedSkills['Skeleton Mage'] || 1;
-                let levelsGained = magesRank > 1 ? magesRank - 1 : 0;
-                let enhancedIncreases = Math.floor(magesRank / 5);
-                let rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
-                
-                let bonusMages = 0;
-                if (isSkillActiveNode("Coven")) bonusMages += 2;
-                if (typeof getEquipmentValues === 'function') {
-                    const eq = getEquipmentValues();
-                    if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("undercrown"))) {
-                        bonusMages += 4;
-                    }
-                    if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("the hand of naz"))) {
-                        bonusMages += 1;
-                    }
-                }
-                let totalMages = 3 + bonusMages;
-                let regenPerMage = 0.5 * rankMult * 100;
-                
-                addStat(stats, 'Essence Regeneration %', regenPerMage * totalMages, 'Gift of Death');
-            }
-        }
-        
-        let resourceName = 'Maximum Resource';
-      const currClass = currentBuild.class || 'Necromancer';
-      if (currClass === 'Necromancer') resourceName = 'Maximum Essence';
-      else if (currClass === 'Barbarian') resourceName = 'Maximum Fury';
-      else if (currClass === 'Rogue') resourceName = 'Maximum Energy';
-      else if (currClass === 'Sorcerer') resourceName = 'Maximum Mana';
-      else if (currClass === 'Druid') resourceName = 'Maximum Spirit';
-      else if (currClass === 'Spiritborn') resourceName = 'Maximum Vigor';
-      
-      addStat(stats, resourceName, autoStats.maximumResource, 'Base');
-      
       if (!equipped) return stats;
 
 
@@ -3113,6 +2954,171 @@ function compileCharacterStats(equipped, autoStats) {
             }
 
         });
+
+        // Apply active Skill Modifiers (Variable Stacks / Sliders)
+        if (window.selectedSkills) {
+            window.skillSliderValues = window.skillSliderValues || {};
+            // Pile the Bodies (Up to 300%[x])
+            if (isSkillActiveNode('Pile the Bodies')) {
+                let curStack = window.skillSliderValues['Pile the Bodies'] !== undefined ? window.skillSliderValues['Pile the Bodies'] : 300;
+                if (curStack > 0) {
+                    addStat(stats, 'Skill: Army of the Dead (Pile the Bodies) Damage [x]', curStack, 'Pile the Bodies');
+                }
+            }
+            
+            // Bloody Mess (50%[x] to Corpse Explosion)
+            if (isSkillActiveNode('Bloody Mess')) {
+                // Now explicitly scoping this to ONLY Corpse Explosion
+                // The actual check happens inside calculateSkillMultiplicativeBucket
+                addStat(stats, 'Skill: Corpse Explosion (Bloody Mess) Damage [x]', 50, 'Bloody Mess');
+            }
+
+            let hemCsLevel = isSkillActiveNode('Cast Speed (Hemorrhage)') || isSkillActiveNode('Cast Speed') ? 1 : 0;
+            if (hemCsLevel > 0) {
+                let hemName = 'Hemorrhage';
+                let variations = ['Blood Boil', 'Blood Runs Cold', 'Soul Rip'];
+                for (let i = variations.length - 1; i >= 0; i--) {
+                    if (window.selectedSkills[variations[i]] > 0) {
+                        hemName = variations[i];
+                        break;
+                    }
+                }
+                addStat(stats, `Skill: ${hemName} (Cast Speed)`, 20, 'Cast Speed (Upgrade)');
+                if (hemName !== 'Hemorrhage') {
+                    addStat(stats, `Skill: Hemorrhage (Cast Speed)`, 20, 'Cast Speed (Upgrade)');
+                }
+            }
+            
+            // Reap Cast Speed (Chilled To The Bone)
+            if (isSkillActiveNode('Chilled To The Bone')) {
+                addStat(stats, `Skill: Chilled To The Bone (Cast Speed)`, 30, 'Chilled To The Bone');
+                addStat(stats, `Skill: Reap (Cast Speed)`, 30, 'Chilled To The Bone');
+            }
+            
+            // Gargantua Cast Speed (Applies to Skeleton Warrior and Mage)
+            if (isSkillActiveNode('Gargantua')) {
+                let golemRank = typeof getBaseSkillRankFor === 'function' ? getBaseSkillRankFor('Golem', stats) : (window.selectedSkills['Golem'] || 1);
+                
+                let rankMult = 1.0;
+                if (golemRank > 1) {
+                    let levelsGained = golemRank - 1;
+                    let enhancedIncreases = Math.floor(golemRank / 5);
+                    rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
+                }
+                
+                let castSpeedBonus = parseFloat((20 * rankMult).toFixed(1));
+                
+                addStat(stats, 'Skill: Skeleton Warrior (Cast Speed)', castSpeedBonus, 'Gargantua');
+                addStat(stats, 'Skill: Skeleton Mage (Cast Speed)', castSpeedBonus, 'Gargantua');
+            }
+            
+            // Life Imprisonment (Bone Prison Variant) Global Cast Speed
+            if (isSkillActiveNode('Life Imprisonment')) {
+                let prisonRank = typeof getBaseSkillRankFor === 'function' ? getBaseSkillRankFor('Bone Prison', stats) : (window.selectedSkills['Bone Prison'] || 1);
+                
+                let rankMult = 1.0;
+                if (prisonRank > 1) {
+                    let levelsGained = prisonRank - 1;
+                    let enhancedIncreases = Math.floor(prisonRank / 5);
+                    rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
+                }
+                
+                let castSpeedBonus = parseFloat((20 * rankMult).toFixed(1));
+                
+                addStat(stats, 'Cast Speed', castSpeedBonus, 'Life Imprisonment');
+                addStat(stats, 'Essence Generation %', castSpeedBonus, 'Life Imprisonment');
+            }
+            
+            // Roll The Bones (Bone Storm Variant) Global Critical Strike Chance and Cast Speed
+            if (isSkillActiveNode('Roll The Bones') || isSkillActiveNode('Roll the Bones')) {
+                let stormRank = typeof getBaseSkillRankFor === 'function' ? getBaseSkillRankFor('Bone Storm', stats) : (window.selectedSkills['Bone Storm'] || 1);
+                
+                let rankMult = 1.0;
+                if (stormRank > 1) {
+                    let levelsGained = stormRank - 1;
+                    let enhancedIncreases = Math.floor(stormRank / 5);
+                    rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
+                }
+                
+                let bonus = parseFloat((15 * rankMult).toFixed(1));
+                
+                addStat(stats, 'Critical Strike Chance', bonus, 'Roll The Bones (Skill)');
+                addStat(stats, 'Cast Speed', bonus, 'Roll The Bones (Skill)');
+            }
+            
+            // Bone Storm Damage Reduction
+            if (isSkillActiveNode('Damage Reduction (Bone Storm)')) {
+                addStat(stats, 'Universal Damage Reduction %', 10, 'Bone Storm (Upgrade)');
+            }
+            
+            // Crowd Control Damage Bonus (Blight)
+            if (isSkillActiveNode('Crowd Control Damage Bonus (Blight)') && currentBuild.conditions && currentBuild.conditions.cc) {
+                addStat(stats, 'Skill: Blight (Crowd Control Damage Bonus) Damage [x]', 30, 'Crowd Control Damage Bonus (Blight)');
+            }
+
+            // Area Damage Bonus (Blight)
+            if (isSkillActiveNode('Area Damage Bonus')) {
+                addStat(stats, 'Skill (Secondary): Blight (Area Damage Bonus) Damage [x]', 40, 'Area Damage Bonus');
+            }
+            // Army of the Dead - Damage Bonus
+            if (isSkillActiveNode('Damage Bonus (Army of the Dead)')) {
+                let totalMinions = getTotalActiveMinions(currentBuild);
+                let dmgBonus = totalMinions * 2;
+                addStat(stats, 'Skill: Army of the Dead (Damage Bonus) Damage [x]', dmgBonus, 'Damage Bonus');
+            }
+            
+            // Soulrift - Damage Bonus
+            if (isSkillActiveNode('Damage Bonus (Soulrift)')) {
+                addStat(stats, 'Skill: Soulrift (Damage Bonus) Damage [x]', 45, 'Damage Bonus');
+            }
+            
+            // Sever - Damage Bonus
+            if (isSkillActiveNode('Damage Bonus (Sever)')) {
+                let isSeverSelected = isSkillActiveNode('Sever') || (isSkillActiveNode('Reaping Lotus')) || (isSkillActiveNode('Inexorable Reaper'));
+                if (isSeverSelected) {
+                    let totalMinions = getTotalActiveMinions(currentBuild);
+                    let dmgBonus = 10 + (totalMinions * 1);
+                    addStat(stats, 'Skill: Sever (Damage Bonus) Damage [x]', dmgBonus, 'Damage Bonus');
+                }
+            }
+
+            // Gift of Death
+            if (isSkillActiveNode('Gift of Death')) {
+                let magesRank = typeof getBaseSkillRankFor === 'function' ? getBaseSkillRankFor('Skeleton Mage', stats) : (window.selectedSkills['Skeleton Mage'] || 1);
+                let levelsGained = magesRank > 1 ? magesRank - 1 : 0;
+                let enhancedIncreases = Math.floor(magesRank / 5);
+                let rankMult = 1.0 + (levelsGained * 0.10) + (enhancedIncreases * 0.05);
+                
+                let bonusMages = 0;
+                if (isSkillActiveNode("Coven")) bonusMages += 2;
+                if (typeof getEquipmentValues === 'function') {
+                    const eq = getEquipmentValues();
+                    if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("undercrown"))) {
+                        bonusMages += 4;
+                    }
+                    if (eq && Object.values(eq).some(item => item && item.name && item.name.toLowerCase().includes("the hand of naz"))) {
+                        bonusMages += 1;
+                    }
+                }
+                let totalMages = 3 + bonusMages;
+                let regenPerMage = 0.5 * rankMult * 100;
+                
+                addStat(stats, 'Essence Regeneration %', regenPerMage * totalMages, 'Gift of Death');
+            }
+        }
+        
+        let resourceName = 'Maximum Resource';
+      const currClass = currentBuild.class || 'Necromancer';
+      if (currClass === 'Necromancer') resourceName = 'Maximum Essence';
+      else if (currClass === 'Barbarian') resourceName = 'Maximum Fury';
+      else if (currClass === 'Rogue') resourceName = 'Maximum Energy';
+      else if (currClass === 'Sorcerer') resourceName = 'Maximum Mana';
+      else if (currClass === 'Druid') resourceName = 'Maximum Spirit';
+      else if (currClass === 'Spiritborn') resourceName = 'Maximum Vigor';
+      
+      addStat(stats, resourceName, autoStats.maximumResource, 'Base');
+      
+
       
       // Distribute All Stats
       if (stats['All Stats']) {
@@ -3461,22 +3467,7 @@ function compileCharacterStats(equipped, autoStats) {
               stats["Aspect of Reanimation Stacks"] = { final: activeStacks, isMultiplicative: false };
           }
           
-          let redirectedForce = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Redirected Force");
-          if (redirectedForce) {
-              let val = redirectedForce.aspectValues && redirectedForce.aspectValues.length > 0 ? parseFloat(redirectedForce.aspectValues[0]) : 40;
-              let recentlyBlocked = redirectedForce.aspectState?.redirectedForceBlocked || false;
-              let blockChance = stats['Block Chance'] ? stats['Block Chance'].final : 0;
-              let critDmgBonus = blockChance * (val / 100);
-              if (recentlyBlocked) critDmgBonus *= 2;
-              if (critDmgBonus > 0) {
-                  stats['Aspect of Redirected Force (Critical Damage) [x]'] = {
-                      final: critDmgBonus,
-                      isMultiplicative: true,
-                      sources: [{ name: 'Aspect of Redirected Force', val: critDmgBonus }],
-                      flatSources: [{ name: 'Aspect of Redirected Force', val: critDmgBonus }]
-                  };
-              }
-          }
+          // Aspect of Redirected Force moved down below Block Chance modifiers
           
           let serration = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Serration");
           if (serration) {
@@ -3762,6 +3753,25 @@ function compileCharacterStats(equipped, autoStats) {
               addStat(stats, 'Thorns', 2033, 'Aspect of Spiked Armor');
               addStat(stats, 'Block Chance', 15, 'Aspect of Spiked Armor');
           }
+
+          let bulwarkVal = 20;
+          let hasBulwark = false;
+          let bulwarkKeyToDelete = "Bulwark's Aspect";
+          for (const slot in equipped) {
+              const it = equipped[slot];
+              if (it && ((it.aspect && it.aspect.includes("Bulwark")) || (it.kulleanAspect && it.kulleanAspect.includes("Bulwark")))) {
+                  hasBulwark = true;
+                  bulwarkKeyToDelete = it.aspect || it.kulleanAspect;
+                  let vals = it.aspect && it.aspect.includes("Bulwark") ? it.aspectValues : it.kulleanAspectValues;
+                  if (vals && vals.length > 0) bulwarkVal = parseFloat(vals[0]);
+                  break;
+              }
+          }
+          if (hasBulwark) {
+              addStat(stats, 'Block Damage Reduction', bulwarkVal, 'Bulwark\'s Aspect');
+              addStat(stats, 'Block Chance', 15, 'Bulwark\'s Aspect');
+              delete stats[bulwarkKeyToDelete]; // Remove from 'Other' category
+          }
           
           let fortress = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of the Fortress");
           if (fortress) {
@@ -3771,26 +3781,80 @@ function compileCharacterStats(equipped, autoStats) {
                   addStat(stats, 'Universal Damage Reduction %', val, 'Aspect of the Fortress (Max Value)');
               }
           }
-          
-          let indomitable = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of the Indomitable");
-          if (indomitable) {
-              let val = indomitable.aspectValues && indomitable.aspectValues.length > 0 ? parseFloat(indomitable.aspectValues[0]) : 45;
-              let blockChance = stats['Block Chance'] ? stats['Block Chance'].final : 0;
-              let bonus = blockChance * (val / 100);
-              if (bonus > 0) {
-                  addStat(stats, '% Total Armor', bonus, 'Aspect of the Indomitable');
-                  addStat(stats, 'Control Impaired Duration Reduction', bonus, 'Aspect of the Indomitable');
+                    let interdictionVal = 3.0;
+          let hasInterdiction = false;
+          let interdictionKeyToDelete = "Aspect of Interdiction";
+          for (const slot in equipped) {
+              const it = equipped[slot];
+              if (it && ((it.aspect && it.aspect.includes("Interdiction")) || (it.kulleanAspect && it.kulleanAspect.includes("Interdiction")))) {
+                  hasInterdiction = true;
+                  interdictionKeyToDelete = it.aspect || it.kulleanAspect;
+                  let vals = it.aspect && it.aspect.includes("Interdiction") ? it.aspectValues : it.kulleanAspectValues;
+                  if (vals && vals.length > 0) interdictionVal = parseFloat(vals[0]);
+                  break;
               }
           }
-          
-          let interdiction = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Interdiction");
-          if (interdiction) {
-              let val = interdiction.aspectValues && interdiction.aspectValues.length > 0 ? parseFloat(interdiction.aspectValues[0]) : 3.0; // Default to 3% if not found
+          if (hasInterdiction) {
               let resolveStacks = parseInt(document.getElementById('buff-resolve')?.value) || 0;
+              let val = interdictionVal;
               let hasShield = stats['Block Chance'] && stats['Block Chance'].final > 0;
               if (hasShield && resolveStacks > 0) {
                   addStat(stats, 'Block Chance', val * resolveStacks, 'Aspect of Interdiction');
               }
+          }
+
+          let redirectedForceVal = 0;
+          let recentlyBlocked = false;
+          let hasRedirectedForce = false;
+          let redirectedForceKeyToDelete = "Aspect of Redirected Force";
+          for (const slot in equipped) {
+              const it = equipped[slot];
+              if (it && ((it.aspect && it.aspect.includes("Redirected Force")) || (it.kulleanAspect && it.kulleanAspect.includes("Redirected Force")))) {
+                  hasRedirectedForce = true;
+                  redirectedForceKeyToDelete = it.aspect || it.kulleanAspect;
+                  let vals = it.aspect && it.aspect.includes("Redirected Force") ? it.aspectValues : it.kulleanAspectValues;
+                  if (vals && vals.length > 0) redirectedForceVal = parseFloat(vals[0]);
+                  recentlyBlocked = it.aspectState?.redirectedForceBlocked || false;
+                  break;
+              }
+          }
+          if (hasRedirectedForce) {
+              let blockChance = Math.min(100, stats['Block Chance'] ? stats['Block Chance'].final : 0);
+              let critDmgBonus = blockChance * (redirectedForceVal / 100);
+              if (recentlyBlocked) critDmgBonus *= 2;
+              if (critDmgBonus > 0) {
+                  stats['Aspect of Redirected Force (Critical Damage) [x]'] = {
+                      total: critDmgBonus,
+                      final: critDmgBonus,
+                      isMultiplicative: true,
+                      sources: [{ name: 'Aspect of Redirected Force', val: critDmgBonus }],
+                      flatSources: [{ name: 'Aspect of Redirected Force', val: critDmgBonus }]
+                  };
+              }
+              delete stats[redirectedForceKeyToDelete];
+          }
+
+          let indomitableVal = 45;
+          let hasIndomitable = false;
+          let indomitableKeyToDelete = "Aspect of the Indomitable";
+          for (const slot in equipped) {
+              const it = equipped[slot];
+              if (it && ((it.aspect && it.aspect.includes("Indomitable")) || (it.kulleanAspect && it.kulleanAspect.includes("Indomitable")))) {
+                  hasIndomitable = true;
+                  indomitableKeyToDelete = it.aspect || it.kulleanAspect;
+                  let vals = it.aspect && it.aspect.includes("Indomitable") ? it.aspectValues : it.kulleanAspectValues;
+                  if (vals && vals.length > 0) indomitableVal = parseFloat(vals[0]);
+                  break;
+              }
+          }
+          if (hasIndomitable) {
+              let blockChance = Math.min(100, stats['Block Chance'] ? stats['Block Chance'].final : 0);
+              let bonus = blockChance * (indomitableVal / 100);
+              if (bonus > 0) {
+                  addStat(stats, '% Total Armor', bonus, 'Aspect of the Indomitable');
+                  addStat(stats, 'Control Impaired Duration Reduction', bonus, 'Aspect of the Indomitable');
+              }
+              delete stats[indomitableKeyToDelete];
           }
           
           let shieldingBones = window.getAllEquippedItemsWithAspects(window.currentBuild).find(item => item && item.aspect === "Aspect of Shielding Bones");
@@ -3989,6 +4053,14 @@ function compileCharacterStats(equipped, autoStats) {
         if (stats['Block Chance'] && stats['Block Chance'].total > 0) {
             addStat(stats, 'Block Damage Reduction', 15, 'Base Shield');
         }
+        if (stats['Block Chance'] && stats['Block Chance'].final > 100) {
+            stats['Block Chance'].final = 100;
+            stats['Block Chance'].total = 100;
+        }
+        if (stats['Block Damage Reduction'] && stats['Block Damage Reduction'].final > 100) {
+            stats['Block Damage Reduction'].final = 100;
+            stats['Block Damage Reduction'].total = 100;
+        }
         const inverseMultiplicativeKeys = Object.keys(stats).filter(k => 
             (k.includes('Dodge Chance') || k.includes('Damage Reduction') || k.includes('Cooldown Reduction') || k.includes('Control Impaired Duration Reduction')) && !k.includes('Block Damage Reduction')
         );
@@ -4004,6 +4076,25 @@ function compileCharacterStats(equipped, autoStats) {
                 stats[k].final = 75;
             }
         });
+
+        let hasBulwarkZero = false;
+        for (const slot in equipped) {
+            const it = equipped[slot];
+            if (it && ((it.aspect && it.aspect.includes("Bulwark")) || (it.kulleanAspect && it.kulleanAspect.includes("Bulwark")))) {
+                hasBulwarkZero = true;
+                break;
+            }
+        }
+        if (hasBulwarkZero) {
+            if (stats['Dodge Chance']) {
+                stats['Dodge Chance'].total = 0;
+                stats['Dodge Chance'].final = 0;
+                stats['Dodge Chance'].flatSources = [{ val: 0, src: 'Bulwark\'s Aspect (No Dodge)' }];
+            } else {
+                stats['Dodge Chance'] = { total: 0, final: 0, flatSources: [{ val: 0, src: 'Bulwark\'s Aspect (No Dodge)' }] };
+            }
+        }
+
         if ((currentBuild.class || 'Necromancer') === 'Necromancer') {
             let baseRegen = 3;
             let existingFlat = stats['Essence Regeneration'] || { final: 0, flatSources: [] };
@@ -6720,7 +6811,7 @@ function formatTag(t) {
     return tag;
 }
 
-function getBaseSkillRankFor(skillName) {
+function getBaseSkillRankFor(skillName, localStats = null) {
     let db = typeof skillsDatabase !== 'undefined' ? skillsDatabase : (window.skillsDatabase || null);
     if (!db) return window.selectedSkills[skillName] || 0;
     
@@ -6753,8 +6844,8 @@ function getBaseSkillRankFor(skillName) {
     
     // Process +Skills for Base Skills
     let gearBonus = 0;
-    if (window.D4_COMPILED_STATS) {
-        let stats = window.D4_COMPILED_STATS;
+    let stats = localStats || window.D4_COMPILED_STATS;
+    if (stats) {
         
         // First check if the skill is unlocked (either by points or a specific item affix)
         let isUnlocked = baseInvested > 0 || (stats[`to ${skillName}`] && stats[`to ${skillName}`].final > 0);
@@ -13368,7 +13459,7 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
         }
         html += `<div style="margin-top: 15px; font-weight: bold; font-size: 1.1rem; color: #d18a45;">Total: <span style="float: right;">${Math.floor(total).toLocaleString()}</span></div>`;
     }
-    else if (statName === 'Dodge Chance' || statName.includes('Damage Reduction')) {
+    else if (statName === 'Dodge Chance' || (statName.includes('Damage Reduction') && !statName.includes('Block Damage Reduction'))) {
         html += `<div style="margin-bottom: 15px; font-style: italic; color: #888;">This stat is calculated inversely multiplicatively.</div>`;
         html += `<table style="width: 100%; border-collapse: collapse;"><tbody>`;
         
@@ -13425,10 +13516,12 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
     }
     else {
         html += `<table style="width: 100%; border-collapse: collapse;"><tbody>`;
+        const total = statData ? statData.final : 0;
+        let suffix = (statName.includes('Chance') || statName.includes('Reduction') || statName.includes('%')) ? '%' : '';
         if (statData && statData.flatSources && statData.flatSources.length > 0) {
             html += `<tr><td colspan="2" style="padding: 8px 0; font-weight: bold; color: #eee;">Base Sources</td></tr>`;
             statData.flatSources.forEach(src => {
-                html += `<tr style="border-bottom: 1px solid #222;"><td style="padding: 4px 0 4px 15px; color: #aaa;">${src.name}</td><td style="padding: 4px 0; text-align: right; color: #fff;">+${src.val}</td></tr>`;
+                html += `<tr style="border-bottom: 1px solid #222;"><td style="padding: 4px 0 4px 15px; color: #aaa;">${src.name}</td><td style="padding: 4px 0; text-align: right; color: #fff;">+${src.val}${suffix}</td></tr>`;
             });
         }
         if (statData && statData.pctSources && statData.pctSources.length > 0) {
@@ -13441,9 +13534,7 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
              html += `<tr><td style="padding: 8px 0; color: #777;">No sources detected.</td></tr>`;
         }
         html += `</tbody></table>`;
-        const total = statData ? statData.final : 0;
-        let suffix = statName.includes('Chance') ? '%' : '';
-        html += `<div style="margin-top: 15px; font-weight: bold; font-size: 1.1rem; color: #d18a45;">Final Total: <span style="float: right;">${Math.floor(total).toLocaleString()}${suffix}</span></div>`;
+        html += `<div style="margin-top: 15px; font-weight: bold; font-size: 1.1rem; color: #d18a45;">Final Total: <span style="float: right;">${total % 1 === 0 ? total : total.toFixed(1)}${suffix}</span></div>`;
     }
 
     body.innerHTML = html;
