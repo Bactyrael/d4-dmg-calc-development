@@ -12336,7 +12336,7 @@ function renderCalcSkills() {
 function calculateSkillCritChance(skillObj) {
     let components = [];
     let critStat = window.D4_COMPILED_STATS && window.D4_COMPILED_STATS['Critical Strike Chance'] ? window.D4_COMPILED_STATS['Critical Strike Chance'] : null;
-    let totalCrit = critStat ? critStat.final : 5.0;
+    let totalCrit = critStat ? (critStat.uncappedFinal || critStat.final) : 5.0;
     if (totalCrit < 0) totalCrit = 0;
     
     if (critStat && critStat.flatSources && critStat.flatSources.length > 0) {
@@ -12553,8 +12553,8 @@ function calculateLuckyHitChance(skillObj) {
 
 function calculateSkillTotalSpeed(baseSkill, displayImgName) {
     let compiledStats = window.D4_COMPILED_STATS || {};
-    let asTotal = compiledStats['Attack Speed'] ? compiledStats['Attack Speed'].final : 0;
-    let csTotal = compiledStats['Cast Speed'] ? compiledStats['Cast Speed'].final : 0;
+    let asTotal = compiledStats['Attack Speed'] ? (compiledStats['Attack Speed'].uncappedFinal || compiledStats['Attack Speed'].final) : 0;
+    let csTotal = compiledStats['Cast Speed'] ? (compiledStats['Cast Speed'].uncappedFinal || compiledStats['Cast Speed'].final) : 0;
     
     let asSources = [];
     if (compiledStats['Attack Speed'] && compiledStats['Attack Speed'].flatSources) {
