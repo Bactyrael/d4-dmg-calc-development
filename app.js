@@ -4147,13 +4147,21 @@ function compileCharacterStats(equipped, autoStats) {
         }
 
         if (stats['Attack Speed']) {
+            stats['Attack Speed'].uncappedFinal = stats['Attack Speed'].final;
             stats['Attack Speed'].total = Math.min(stats['Attack Speed'].total, 100);
             stats['Attack Speed'].final = Math.min(stats['Attack Speed'].final, 100);
         }
-        
+
         if (stats['Cast Speed']) {
+            stats['Cast Speed'].uncappedFinal = stats['Cast Speed'].final;
             stats['Cast Speed'].total = Math.min(stats['Cast Speed'].total, 100);
             stats['Cast Speed'].final = Math.min(stats['Cast Speed'].final, 100);
+        }
+
+        if (stats['Critical Strike Chance']) {
+            stats['Critical Strike Chance'].uncappedFinal = stats['Critical Strike Chance'].final;
+            stats['Critical Strike Chance'].total = Math.min(stats['Critical Strike Chance'].total, 100);
+            stats['Critical Strike Chance'].final = Math.min(stats['Critical Strike Chance'].final, 100);
         }
         
         if (stats['Movement Speed']) {
@@ -13538,7 +13546,12 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
              html += `<tr><td style="padding: 8px 0; color: #777;">No sources detected.</td></tr>`;
         }
         html += `</tbody></table>`;
-        html += `<div style="margin-top: 15px; font-weight: bold; font-size: 1.1rem; color: #d18a45;">Final Total: <span style="float: right;">${total % 1 === 0 ? total : total.toFixed(1)}${suffix}</span></div>`;
+        let displayTotalStr = `${total % 1 === 0 ? total : total.toFixed(1)}${suffix}`;
+        if (statData && statData.uncappedFinal > total && (statName === 'Attack Speed' || statName === 'Cast Speed' || statName === 'Critical Strike Chance')) {
+             let uncappedTotal = statData.uncappedFinal;
+             displayTotalStr = `${uncappedTotal % 1 === 0 ? uncappedTotal : uncappedTotal.toFixed(1)} / ${displayTotalStr}`;
+        }
+        html += `<div style="margin-top: 15px; font-weight: bold; font-size: 1.1rem; color: #d18a45;">Final Total: <span style="float: right;">${displayTotalStr}</span></div>`;
     }
 
     body.innerHTML = html;
