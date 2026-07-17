@@ -2352,7 +2352,11 @@ function renderEquipment(className, savedEquipment = {}) {
     cleaned = cleaned.replace(/^\+?\[[\d\.,]+\s*-\s*[\d\.,]+\](%?)\s*/, (match, p1) => p1 ? '% ' : '');
     // Remove trailing "(Class Only)" restriction
     cleaned = cleaned.replace(/\s*\([^)]+Only\)$/i, '');
-    return cleaned.trim();
+    cleaned = cleaned.trim();
+    if (cleaned === 'Damage Reduction') {
+        return 'Universal Damage Reduction %';
+    }
+    return cleaned;
 }
 
 function getTotalActiveMinions(currentBuild) {
