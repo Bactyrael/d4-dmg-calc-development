@@ -2928,7 +2928,7 @@ function compileCharacterStats(equipped, autoStats) {
                     } else if ((item.name === "Ebonpiercer" || item.name === "Ebonpiercer (Charm)")) {
                         handled = true;
                         v = item.isMythic ? 65 : (item.aspectValues && item.aspectValues[0] !== undefined ? parseFloat(item.aspectValues[0]) : 45);
-                    } else if ((item.name === "Lidless Wall" || item.name === "Lidless Wall (Charm)") && item.isMythic) {
+                    } else if ((item.name === "Lidless Wall" || item.name === "Lidless Wall (Charm)")) {
                         handled = true;
                         let storms = window.skillSliderValues && window.skillSliderValues['Active Bone Storms (Lidless Wall)'] !== undefined ? window.skillSliderValues['Active Bone Storms (Lidless Wall)'] : 0;
                         if (storms > 0) {
@@ -8531,7 +8531,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if ((itemObj.name === "Ebonpiercer" || itemObj.name === "Ebonpiercer (Charm)") && itemObj.isMythic) {
             udesc = "Blight also shoots 4 smaller piercing projectiles, each dealing 65% of Blight's defiled area damage.";
         }
-        if ((itemObj.name === "Lidless Wall" || itemObj.name === "Lidless Wall (Charm)") && itemObj.isMythic) {
+        if ((itemObj.name === "Lidless Wall" || itemObj.name === "Lidless Wall (Charm)")) {
             udesc = "Lucky Hit: While you have an active Bone Storm, hitting an enemy has up to a 59% chance to spawn a Bone Storm around their location. Each Sacrifice bonus increases this chance by 25% and allows you to spawn 1 additional Bone Storm. Each active Bone Storm grants 30%[x] Critical Strike Damage, up to 150%.";
         }
         if ((itemObj.name === "The Gloom Ward" || itemObj.name === "The Gloom Ward (Charm)") && itemObj.isMythic) {
@@ -12214,8 +12214,8 @@ function renderCalcSkills() {
                     card.appendChild(sliderDiv);
                 }
 
-                const hasLidlessMythic = window.getAllEquippedItemsWithAspects(currentBuild).some(i => i && (i.name === 'Lidless Wall' || i.name === 'Lidless Wall (Charm)') && i.isMythic);
-                if ((baseSkill.name === 'Bone Storm' || baseSkill.baseName === 'Bone Storm') && hasLidlessMythic) {
+                const hasLidless = window.getAllEquippedItemsWithAspects(currentBuild).some(i => i && (i.name === 'Lidless Wall' || i.name === 'Lidless Wall (Charm)'));
+                if ((baseSkill.name === 'Bone Storm' || baseSkill.baseName === 'Bone Storm') && hasLidless) {
                     let curVal = window.skillSliderValues['Active Bone Storms (Lidless Wall)'] !== undefined ? window.skillSliderValues['Active Bone Storms (Lidless Wall)'] : 0;
                     let sliderDiv = document.createElement('div');
                     sliderDiv.style.marginTop = '15px';
