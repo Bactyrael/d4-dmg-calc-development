@@ -11811,7 +11811,7 @@ function renderCalcSkills() {
                                     </div>
                                     ${!b.isHit ? '' : `<details style="margin-left: 20px; font-size: 0.9em; margin-bottom: 6px;">
                                       <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #f9d85c;">
-                                        <span style="color: #555;">└</span> Critical Hit (${Number(b.critChance.toFixed(1))}%): <span style="font-weight: bold;">${b.critStrMin} - ${b.critStrMax}</span>
+                                        <span style="color: #555;">└</span> Critical Hit (${b.critChanceUncapped > 100 ? Number(b.critChanceUncapped.toFixed(1)) + ' / 100' : Number(b.critChance.toFixed(1))}%): <span style="font-weight: bold;">${b.critStrMin} - ${b.critStrMax}</span>
                                       </summary>
                                       <div style="margin-left: 15px; margin-top: 5px; border-left: 1px solid #444; padding-left: 10px;">
                                         <div style="font-size: 0.85em; color: #888; margin-bottom: 4px;">
@@ -12036,7 +12036,7 @@ function renderCalcSkills() {
                                       ${canCrit ? `
                                       <details style="margin-left: 20px; font-size: 0.9em; margin-bottom: 6px;">
                                         <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #f9d85c;">
-                                          <span style="color: #555;">└</span> Critical Hit (${Number(b2.critChance.toFixed(1))}%): <span style="font-weight: bold;">${critMinStr} - ${critMaxStr}</span>
+                                          <span style="color: #555;">└</span> Critical Hit (${b2.critChanceUncapped > 100 ? Number(b2.critChanceUncapped.toFixed(1)) + ' / 100' : Number(b2.critChance.toFixed(1))}%): <span style="font-weight: bold;">${critMinStr} - ${critMaxStr}</span>
                                         </summary>
                                         <div style="margin-left: 15px; margin-top: 5px; border-left: 1px solid #444; padding-left: 10px;">
                                           <div style="font-size: 0.85em; color: #888; margin-bottom: 4px;">
@@ -12129,8 +12129,12 @@ function renderCalcSkills() {
                         
                         ${(() => {
                             let speedInfo = calculateSkillTotalSpeed(modSkill, displayImgName);
+                            let asTotalUncapped = speedInfo.asTotal;
+                            let csTotalUncapped = speedInfo.csTotal;
                             let asTotal = Math.min(speedInfo.asTotal, 100);
                             let csTotal = Math.min(speedInfo.csTotal, 100);
+                            let asTotalStr = asTotalUncapped > 100 ? `${Number(asTotalUncapped.toFixed(1))} / 100` : asTotal;
+                            let csTotalStr = csTotalUncapped > 100 ? `${Number(csTotalUncapped.toFixed(1))} / 100` : csTotal;
                             let asSources = speedInfo.asSources;
                             let csSources = speedInfo.csSources;
                             
@@ -12138,28 +12142,28 @@ function renderCalcSkills() {
                             let asDetails = asSources.length > 0 ? `
                             <details style="margin-left: 15px; margin-bottom: 4px;">
                               <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px;">
-                                <span style="color: #555;">├</span> Attack Speed: <span style="color: #fff;">${asTotal}%</span>
+                                <span style="color: #555;">├</span> Attack Speed: <span style="color: #fff;">${asTotalStr}%</span>
                               </summary>
                               ${asSources.map(s => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${s.name}: +${Number(s.val.toFixed(1))}%</div>`).join('')}
                             </details>` : `
                             <div style="margin-left: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
-                              <span style="color: #555;">├</span> Attack Speed: <span style="color: #fff;">${asTotal}%</span>
+                              <span style="color: #555;">├</span> Attack Speed: <span style="color: #fff;">${asTotalStr}%</span>
                             </div>`;
                             
                             let csDetails = csSources.length > 0 ? `
                             <details style="margin-left: 15px; margin-bottom: 4px;">
                               <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px;">
-                                <span style="color: #555;">└</span> Cast Speed: <span style="color: #fff;">${csTotal}%</span>
+                                <span style="color: #555;">└</span> Cast Speed: <span style="color: #fff;">${csTotalStr}%</span>
                               </summary>
                               ${csSources.map(s => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">└</span> ${s.name}: +${Number(s.val.toFixed(1))}%</div>`).join('')}
                             </details>` : `
                             <div style="margin-left: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
-                              <span style="color: #555;">└</span> Cast Speed: <span style="color: #fff;">${csTotal}%</span>
+                              <span style="color: #555;">└</span> Cast Speed: <span style="color: #fff;">${csTotalStr}%</span>
                             </div>`;
                             
                             return `
                             <div style="margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
-                              <span style="color: #555;">├</span> Total Attack Speed: <span style="color: #fff;">${asTotal + csTotal}%</span>
+                              <span style="color: #555;">├</span> Total Attack Speed: <span style="color: #fff;">${(asTotalUncapped + csTotalUncapped) > 100 ? `${Number((asTotalUncapped + csTotalUncapped).toFixed(1))} / 100` : (asTotal + csTotal)}%</span>
                             </div>
                             ${asDetails}
                             ${csDetails}`;
@@ -12449,6 +12453,7 @@ function calculateSkillCritChance(skillObj) {
     
     return {
         total: Math.min(totalCrit, 100),
+        uncappedTotal: totalCrit,
         components: components
     };
 }
@@ -13348,6 +13353,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         isHit: isHit,
         critStrMax,
         critChance: critChanceData.total,
+        critChanceUncapped: critChanceData.uncappedTotal || critChanceData.total,
         critChanceComponents: critChanceData.components,
         lhcTotal: lhcData.total,
         lhcComponents: lhcData.components,
