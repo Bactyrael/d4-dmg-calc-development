@@ -2353,7 +2353,7 @@ function renderEquipment(className, savedEquipment = {}) {
     // Remove trailing "(Class Only)" restriction
     cleaned = cleaned.replace(/\s*\([^)]+Only\)$/i, '');
     cleaned = cleaned.trim();
-    if (cleaned === 'Damage Reduction') {
+    if (cleaned === 'Damage Reduction' || cleaned === '% Damage Reduction') {
         return 'Universal Damage Reduction %';
     }
     return cleaned;
