@@ -4837,6 +4837,18 @@ function compileCharacterStats(equipped, autoStats) {
                                 addStat(compiledStats, 'Word of the Blood Binder 5-piece Global Factor', 75, 'Word of the Blood Binder (5-piece)');
                             }
                         }
+                        if (setName === "Radament's Desecration") {
+                            if (req === '2') {
+                                addStat(compiledStats, "Radament's Desecration 2-piece Factor", 30, "Radament's Desecration (2-piece)");
+                            }
+                            if (req === '3') {
+                                addStat(compiledStats, 'Universal Damage Reduction %', 15, "Radament's Desecration (3-piece)");
+                            }
+                            if (req === '5') {
+                                addStat(compiledStats, "Radament's Desecration 5-piece Factor", 225, "Radament's Desecration (5-piece)");
+                                addStat(compiledStats, "Radament's Desecration Ultimate Tag", 1, "Radament's Desecration (5-piece)");
+                            }
+                        }
                         if (setName === 'Peace of the Black Shroud') {
                             if (req === '2') {
                                 addStat(compiledStats, 'Peace of the Black Shroud 2-piece Factor', 75, 'Peace of the Black Shroud (2-piece)');
@@ -10727,6 +10739,9 @@ function calculateSkillAdditiveBucket(skill, isHit) {
     const stats = window.D4_COMPILED_STATS;
     const conds = getActiveConditions();
     const tags = (skill.tags || []).map(t => t.toLowerCase());
+    if (stats["Radament's Desecration Ultimate Tag"] && tags.some(t => t.includes('ultimate'))) {
+        tags.push('skill_profane', 'skill_macabre');
+    }
     let dType = (skill.damageType || '').toLowerCase();
     
     if (tags.includes('damage_override_cold')) dType = 'cold';
@@ -10873,6 +10888,9 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
     const buffs = getActiveBuffs();
     const conds = getActiveConditions();
     const tags = (skill.tags || []).map(t => t.toLowerCase());
+    if (stats["Radament's Desecration Ultimate Tag"] && tags.some(t => t.includes('ultimate'))) {
+        tags.push('skill_profane', 'skill_macabre');
+    }
     
     let dType = (skill.damageType || '').toLowerCase();
     if (tags.includes('damage_override_cold')) dType = 'cold';
@@ -11047,6 +11065,20 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         let mult = 1 + (multVal / 100);
         bucket *= mult;
         components.push({ name: 'Aspect of Hewed Flesh [x]', value: mult });
+    }
+
+    if (tags.some(t => t.includes('profane') || t.includes('macabre'))) {
+        let talismanSets = stats['Talisman Set Bonuses'] ? stats['Talisman Set Bonuses'].components : [];
+        if (talismanSets.some(c => c.name.includes("Radament's Desecration (2-piece)"))) {
+            let mult = 1 + 0.30;
+            bucket *= mult;
+            components.push({ name: "Radament's Desecration (2-piece) [x]", value: mult });
+        }
+        if (talismanSets.some(c => c.name.includes("Radament's Desecration (5-piece)"))) {
+            let mult = 1 + 2.25;
+            bucket *= mult;
+            components.push({ name: "Radament's Desecration (5-piece) [x]", value: mult });
+        }
     }
     
     // Apply Aspect of the Void if applicable
