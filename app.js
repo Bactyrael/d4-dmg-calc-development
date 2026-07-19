@@ -10414,7 +10414,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       }
 
       let displayName = a.name;
-      let displayDesc = a.desc || '';
+      let displayDesc = type === 'transfigure' ? '' : (a.desc || '');
       
       if (checkIs2H(itemObj, slotName)) {
           const regex = /\[([\d\.]+)\s*-\s*([\d\.]+)\]/g;
