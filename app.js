@@ -2680,7 +2680,8 @@ function compileCharacterStats(equipped, autoStats) {
           
           if (item.sockets) {
               const sName = slotName.toLowerCase();
-              const isWeapon = sName.includes('weapon') || sName === 'mainhand' || sName === 'offhand';
+              const isShield = item.type === 'Shield' || item.weaponType === 'Shield';
+              const isWeapon = !isShield && (sName.includes('weapon') || sName === 'mainhand' || sName === 'offhand');
               const isJewelry = sName === 'amulet' || sName.includes('ring');
               
               item.sockets.forEach(gemName => {
@@ -5196,8 +5197,9 @@ function compileCharacterStats(equipped, autoStats) {
         if (!item || !item.sockets) return;
         
         const sName = slotName.toLowerCase();
-        const isWeapon = sName.includes('weapon') || sName === 'mainhand' || sName === 'offhand';
-        const isArmor = sName === 'helm' || sName === 'chest armor' || sName === 'pants' || sName === 'boots' || sName === 'gloves';
+        const isShield = item.type === 'Shield' || item.weaponType === 'Shield';
+        const isWeapon = !isShield && (sName.includes('weapon') || sName === 'mainhand' || sName === 'offhand');
+        const isArmor = isShield || sName === 'helm' || sName === 'chest armor' || sName === 'pants' || sName === 'boots' || sName === 'gloves';
         const isJewelry = sName === 'amulet' || sName.includes('ring');
         
         item.sockets.forEach(gemName => {
@@ -9085,8 +9087,9 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             let effectStr = gemName;
             if (gemObj) {
                 const sName = slotName.toLowerCase();
-                const isWeapon = sName.includes('weapon') || sName === 'mainhand' || sName === 'offhand' || sName.includes('slicing');
-                const isArmor = sName === 'helm' || sName === 'chest armor' || sName === 'pants' || sName === 'boots' || sName === 'gloves';
+                const isShield = itemObj.type === 'Shield' || itemObj.weaponType === 'Shield';
+                const isWeapon = !isShield && (sName.includes('weapon') || sName === 'mainhand' || sName === 'offhand' || sName.includes('slicing'));
+                const isArmor = isShield || sName === 'helm' || sName === 'chest armor' || sName === 'pants' || sName === 'boots' || sName === 'gloves';
                 const isJewelry = sName === 'amulet' || sName.includes('ring');
                 
                 if (isWeapon) effectStr = gemObj.weaponEffect;
