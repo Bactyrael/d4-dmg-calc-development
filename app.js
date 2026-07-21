@@ -11431,7 +11431,7 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
                 if (/\bbasic\b/.test(lowerKey) && tags.includes('keyword_basic')) applies = true;
                 if (/\bultimate\b/.test(lowerKey) && tags.includes('keyword_ultimate')) applies = true;
                 if (/\bcorpse\b/.test(lowerKey) && (tags.includes('keyword_corpse') || tags.some(t => t.toLowerCase().includes('corpse')) || ['Corpse Explosion', 'Corpse Tendrils', 'Raise Skeleton'].includes(skill.name))) applies = true;
-                if ((/\bsummon\b/.test(lowerKey) || /\bsummoning\b/.test(lowerKey) || /\bminion\b/.test(lowerKey)) && (tags.some(t => t.includes('summon')) || isMinion)) applies = true;
+                if ((/\bsummon\b/.test(lowerKey) || /\bsummoning\b/.test(lowerKey) || /\bminion\b/.test(lowerKey)) && (tags.some(t => t.includes('summon') || t.includes('minion')) || ['golem', 'mage', 'warrior', 'skeleton'].some(m => (skill.name||'').toLowerCase().includes(m)))) applies = true;
                 if (/\bcurse\b/.test(lowerKey) && tags.includes('keyword_curse')) applies = true;
             }
             
