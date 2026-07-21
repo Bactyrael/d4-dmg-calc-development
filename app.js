@@ -2680,7 +2680,12 @@ function compileCharacterStats(equipped, autoStats) {
           
           if (item.sockets) {
               const sName = slotName.toLowerCase();
-              const isShield = item.type === 'Shield' || item.weaponType === 'Shield';
+              let bItem = {};
+              Object.values(window.D4_DATABASE?.itemDatabase || {}).forEach(arr => {
+                  const found = arr.find(i => i.name === item.name);
+                  if (found) bItem = found;
+              });
+              const isShield = bItem.type === 'Shield' || bItem.weaponType === 'Shield';
               const isWeapon = !isShield && (sName.includes('weapon') || sName === 'mainhand' || sName === 'offhand');
               const isJewelry = sName === 'amulet' || sName.includes('ring');
               
@@ -5197,7 +5202,12 @@ function compileCharacterStats(equipped, autoStats) {
         if (!item || !item.sockets) return;
         
         const sName = slotName.toLowerCase();
-        const isShield = item.type === 'Shield' || item.weaponType === 'Shield';
+        let bItem = {};
+        Object.values(window.D4_DATABASE?.itemDatabase || {}).forEach(arr => {
+            const found = arr.find(i => i.name === item.name);
+            if (found) bItem = found;
+        });
+        const isShield = bItem.type === 'Shield' || bItem.weaponType === 'Shield';
         const isWeapon = !isShield && (sName.includes('weapon') || sName === 'mainhand' || sName === 'offhand');
         const isArmor = isShield || sName === 'helm' || sName === 'chest armor' || sName === 'pants' || sName === 'boots' || sName === 'gloves';
         const isJewelry = sName === 'amulet' || sName.includes('ring');
@@ -9087,7 +9097,12 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
             let effectStr = gemName;
             if (gemObj) {
                 const sName = slotName.toLowerCase();
-                const isShield = itemObj.type === 'Shield' || itemObj.weaponType === 'Shield';
+                let bItem = {};
+                Object.values(window.D4_DATABASE?.itemDatabase || {}).forEach(arr => {
+                    const found = arr.find(i => i.name === itemObj.name);
+                    if (found) bItem = found;
+                });
+                const isShield = bItem.type === 'Shield' || bItem.weaponType === 'Shield';
                 const isWeapon = !isShield && (sName.includes('weapon') || sName === 'mainhand' || sName === 'offhand' || sName.includes('slicing'));
                 const isArmor = isShield || sName === 'helm' || sName === 'chest armor' || sName === 'pants' || sName === 'boots' || sName === 'gloves';
                 const isJewelry = sName === 'amulet' || sName.includes('ring');
