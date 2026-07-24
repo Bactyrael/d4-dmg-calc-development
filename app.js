@@ -3989,7 +3989,7 @@ function compileCharacterStats(equipped, autoStats) {
         
         const coreVals = { 'Strength': strVal, 'Intelligence': intVal, 'Willpower': willVal, 'Dexterity': dexVal };
         if (skillDamageStat && coreVals[skillDamageStat] > 0) addStat(stats, 'Skill Damage', coreVals[skillDamageStat] * skillDamageFactor, `From ${skillDamageStat}`);
-        if (critStat && coreVals[critStat] > 0) addStat(stats, 'Critical Strike Chance', coreVals[critStat] * 0.02, `From ${critStat}`);
+        if (critStat && coreVals[critStat] > 0) addStat(stats, 'Critical Strike Chance', coreVals[critStat] * 0.0025, `From ${critStat}`);
         if (resGenStat && coreVals[resGenStat] > 0) addStat(stats, 'Resource Generation', coreVals[resGenStat] * 0.03, `From ${resGenStat}`);
 
 
@@ -4201,12 +4201,12 @@ function compileCharacterStats(equipped, autoStats) {
       if (statName === 'Strength') {
           if (cls === 'Barbarian' || cls === 'Paladin') effects.push(`Increases Skill Damage by +${(v * 0.11).toFixed(1)}%`);
           else if (cls === 'Rogue') effects.push(`Increases Resource Generation by +${(v * 0.03).toFixed(2)}%`);
-          else if (cls === 'Spiritborn') effects.push(`Increases Critical Strike Chance by +${(v * 0.02).toFixed(2)}%`);
+          else if (cls === 'Spiritborn') effects.push(`Increases Critical Strike Chance by +${(v * 0.0025).toFixed(4)}%`);
       }
       if (statName === 'Intelligence') {
           if (cls === 'Sorcerer' || cls === 'Necromancer') effects.push(`Increases Skill Damage by +${(v * 0.125).toFixed(1)}%`);
           else if (cls === 'Druid' || cls === 'Spiritborn') effects.push(`Increases Resource Generation by +${(v * 0.03).toFixed(2)}%`);
-          else if (cls === 'Paladin' || cls === 'Rogue') effects.push(`Increases Critical Strike Chance by +${(v * 0.02).toFixed(2)}%`);
+          else if (cls === 'Paladin' || cls === 'Rogue') effects.push(`Increases Critical Strike Chance by +${(v * 0.0025).toFixed(4)}%`);
       }
       if (statName === 'Willpower') {
           if (cls === 'Druid') effects.push(`Increases Skill Damage by +${(v * 0.125).toFixed(1)}%`);
@@ -4214,7 +4214,7 @@ function compileCharacterStats(equipped, autoStats) {
       }
       if (statName === 'Dexterity') {
           if (cls === 'Rogue' || cls === 'Spiritborn') effects.push(`Increases Skill Damage by +${(v * 0.11).toFixed(1)}%`); // Note Rogue is 0.11% in user prompt, wait I will fix rogue to 0.11
-          else if (cls === 'Barbarian' || cls === 'Druid' || cls === 'Sorcerer' || cls === 'Necromancer') effects.push(`Increases Critical Strike Chance by +${(v * 0.02).toFixed(2)}%`);
+          else if (cls === 'Barbarian' || cls === 'Druid' || cls === 'Sorcerer' || cls === 'Necromancer') effects.push(`Increases Critical Strike Chance by +${(v * 0.0025).toFixed(4)}%`);
       }
 
       // Rogue exception for dex
