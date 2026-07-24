@@ -10061,7 +10061,12 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (!a.category || !a.category.includes(activeCategory)) return false;
       }
       // 4. Filter by Search Query
-      if (query && !a.name.toLowerCase().includes(query.toLowerCase())) return false;
+      if (query) {
+        const q = query.toLowerCase();
+        const matchesName = a.name && a.name.toLowerCase().includes(q);
+        const matchesDesc = a.desc && a.desc.toLowerCase().includes(q);
+        if (!matchesName && !matchesDesc) return false;
+      }
       
       return true;
     });
@@ -10321,7 +10326,12 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
 
     let items = dbItems.filter(a => {
       if (activeCategory !== 'All Modifiers' && getAffixCategory(a.name) !== activeCategory) return false;
-      if (query && !a.name.toLowerCase().includes(query.toLowerCase())) return false;
+      if (query) {
+        const q = query.toLowerCase();
+        const matchesName = a.name && a.name.toLowerCase().includes(q);
+        const matchesDesc = a.desc && a.desc.toLowerCase().includes(q);
+        if (!matchesName && !matchesDesc) return false;
+      }
       if (a.name !== editingAffixName && currentlyEquipped.includes(a.name)) return false;
       
       // Filter out shield-specific tempers and modifiers if the equipped offhand is a focus
