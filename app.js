@@ -2308,6 +2308,11 @@ function renderEquipment(className, savedEquipment = {}) {
           cleanName = cleanName.replace(/^%\s*/, '').trim();
       }
       
+      // Floor + to skill ranks which shouldn't have partial fractions from masterworking
+      if (!rawName.includes('%') && (cleanName.toLowerCase().includes(' to ') || cleanName.toLowerCase().includes(' rank'))) {
+          value = Math.floor(value);
+      }
+      
       if (cleanName === 'Maximum Resource') {
           const currClass = currentBuild.class || 'Necromancer';
           if (currClass === 'Necromancer') cleanName = 'Maximum Essence';
