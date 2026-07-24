@@ -2309,7 +2309,7 @@ function renderEquipment(className, savedEquipment = {}) {
       }
       
       // Floor + to skill ranks which shouldn't have partial fractions from masterworking
-      if (!rawName.includes('%') && (cleanName.toLowerCase().includes(' to ') || cleanName.toLowerCase().includes(' rank'))) {
+      if (!rawName.includes('%') && (cleanName.toLowerCase().includes(' to ') || cleanName.toLowerCase().startsWith('to ') || cleanName.toLowerCase().includes(' rank'))) {
           value = Math.floor(value);
       }
       
