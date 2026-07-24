@@ -4077,7 +4077,7 @@ function compileCharacterStats(equipped, autoStats) {
             stats['Block Damage Reduction'].total = 100;
         }
         const inverseMultiplicativeKeys = Object.keys(stats).filter(k => 
-            (k.includes('Dodge Chance') || k.includes('Damage Reduction') || k.includes('Cooldown Reduction') || k.includes('Control Impaired Duration Reduction')) && !k.includes('Block Damage Reduction')
+            (k.includes('Dodge Chance') || k.includes('Damage Reduction') || k.includes('Cooldown Reduction') || k.includes('Control Impaired Duration Reduction') || k.includes('Block Damage Reduction'))
         );
         inverseMultiplicativeKeys.forEach(k => {
             if (stats[k].flatSources && stats[k].flatSources.length > 1) {
@@ -4881,7 +4881,7 @@ function compileCharacterStats(equipped, autoStats) {
     // Re-evaluate Inverse Multiplicative Stats (Dodge Chance, Damage Reduction, etc.)
     // because Talisman Set Bonuses might have added new sources (e.g. Universal Damage Reduction %)
     const inverseMultiplicativeKeys = Object.keys(compiledStats).filter(k => 
-        (k.includes('Dodge Chance') || k.includes('Damage Reduction') || k.includes('Cooldown Reduction') || k.includes('Control Impaired Duration Reduction')) && !k.includes('Block Damage Reduction')
+        (k.includes('Dodge Chance') || k.includes('Damage Reduction') || k.includes('Cooldown Reduction') || k.includes('Control Impaired Duration Reduction'))
     );
     inverseMultiplicativeKeys.forEach(k => {
         if (compiledStats[k].flatSources && compiledStats[k].flatSources.length > 1) {
@@ -13542,7 +13542,7 @@ window.showDefensiveBreakdown = function(statName, compiledStats) {
         }
         html += `<div style="margin-top: 15px; font-weight: bold; font-size: 1.1rem; color: #d18a45;">Total: <span style="float: right;">${Math.floor(total).toLocaleString()}</span></div>`;
     }
-    else if (statName === 'Dodge Chance' || (statName.includes('Damage Reduction') && !statName.includes('Block Damage Reduction'))) {
+    else if (statName === 'Dodge Chance' || statName.includes('Damage Reduction')) {
         html += `<div style="margin-bottom: 15px; font-style: italic; color: #888;">This stat is calculated inversely multiplicatively.</div>`;
         html += `<table style="width: 100%; border-collapse: collapse;"><tbody>`;
         
