@@ -6581,7 +6581,7 @@ function parseD4String(str, skillObj, currentRank) {
             if (tableId === "37") {
                 let levelsGained = currentRank > 1 ? currentRank - 1 : 0;
                 let enhancedIncreases = Math.floor(currentRank / 5);
-                return 1.0 + (levelsGained * 0.02) + (enhancedIncreases * 0.04);
+                return Math.min(1.6, 1.0 + (levelsGained * 0.02) + (enhancedIncreases * 0.04));
             }
             return rankMult;
         });
