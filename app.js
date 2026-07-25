@@ -2351,10 +2351,17 @@ function renderEquipment(className, savedEquipment = {}) {
 
   function cleanStatName(name) {
     if (!name) return name;
-    // Remove Charm/Seal prefixes like "of Severing: " or "Harmonious: "
-    let cleaned = name.replace(/^(?:of\s+[A-Za-z]+|[A-Za-z]+):\s+/, '');
+    let isLuckyHit = name.startsWith('Lucky Hit:');
+    if (!isLuckyHit) {
+        name = name.replace(/^[^:]+:\s+/, '');
+    }
+    
     // Remove the roll range e.g. "+[1.0 - 2.0] " or "[1.0 - 2.0]% "
-    cleaned = cleaned.replace(/^\+?\[[\d\.,]+\s*-\s*[\d\.,]+\](%?)\s*/, (match, p1) => p1 ? '% ' : '');
+    let cleaned = name.replace(/^\+?\[[\d\.,]+\s*-\s*([\d\.,]+)\](%?)\s*/, (match, p1) => p1 ? '% ' : '');
+    
+    // Also remove static prefixes if there are no brackets (e.g. "+3 " or "3 ")
+    cleaned = cleaned.replace(/^\+?[\d\.,]+(%?)\s*/, (match, p1) => p1 ? '% ' : '');
+    
     // Remove trailing "(Class Only)" restriction
     cleaned = cleaned.replace(/\s*\([^)]+Only\)$/i, '');
     cleaned = cleaned.trim();
