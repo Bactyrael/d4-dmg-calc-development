@@ -6912,7 +6912,7 @@ function getBaseSkillRankFor(skillName, localStats = null) {
             });
             
             if (!minionSkillApplied) {
-                let isMinion = skillTags.some(t => t.toLowerCase().includes('summon') || t.toLowerCase().includes('minion')) || ['golem', 'mage', 'warrior', 'skeleton', 'wolves', 'ravens', 'poison creeper'].some(m => (skillName||'').toLowerCase().includes(m));
+                let isMinion = ['golem', 'mage', 'warrior', 'skeleton'].some(m => (skillName||'').toLowerCase().includes(m));
                 if (isMinion && stats[`to Minion Skills`]) {
                     gearBonus += stats[`to Minion Skills`].final;
                 }
@@ -7309,7 +7309,8 @@ function showSkillTooltip(skillObj, e) {
         }
 
         if (cleanTags.length > 0) {
-            let tagBoxes = cleanTags.map(t => `<div class="d4-tooltip-tag">${formatTag(t)}</div>`).join('');
+            let uniqueFormattedTags = [...new Set(cleanTags.map(t => formatTag(t)))];
+            let tagBoxes = uniqueFormattedTags.map(t => `<div class="d4-tooltip-tag">${t}</div>`).join('');
             tagsHtml = `<div class="d4-tooltip-tags">${tagBoxes}</div><hr class="d4-divider">`;
         }
     }
