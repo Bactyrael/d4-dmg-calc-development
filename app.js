@@ -6902,12 +6902,21 @@ function getBaseSkillRankFor(skillName, localStats = null) {
         
         // 3. Tag Matches (e.g. "to Core Skills", "to Macabre Skills") (Only applies if unlocked)
         if (isUnlocked) {
+            let minionSkillApplied = false;
             skillTags.forEach(t => {
                 if (t.startsWith('Skill_')) {
                     let tagStr = typeof formatTag === 'function' ? formatTag(t) : t.replace('Skill_', '');
                     if (stats[`to ${tagStr} Skills`]) gearBonus += stats[`to ${tagStr} Skills`].final;
+                    if (tagStr.toLowerCase() === 'minion') minionSkillApplied = true;
                 }
             });
+            
+            if (!minionSkillApplied) {
+                let isMinion = skillTags.some(t => t.toLowerCase().includes('summon') || t.toLowerCase().includes('minion')) || ['golem', 'mage', 'warrior', 'skeleton', 'wolves', 'ravens', 'poison creeper'].some(m => (skillName||'').toLowerCase().includes(m));
+                if (isMinion && stats[`to Minion Skills`]) {
+                    gearBonus += stats[`to Minion Skills`].final;
+                }
+            }
         }
         
         // 4. Vehement Brawler's Aspect (+2 to Ultimate Skills if invested)
