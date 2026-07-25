@@ -2679,7 +2679,7 @@ function compileCharacterStats(equipped, autoStats) {
                   let isCapstone = (item.capstoneBonus?.type === 'transfigure' && item.capstoneBonus?.idx === i);
                   const twoHandedMult = checkIs2H(item, slotName) ? 2 : 1;
                   const qMult = (baseQMult + (isCapstone ? 0.50 : 0)) * twoHandedMult;
-                  addStat(stats, transfigureName, v * qMult, slotName + ' (Transfigure)');
+                  addStat(stats, cleanStatName(transfigureName), v * qMult, slotName + ' (Transfigure)');
               });
           }
           
