@@ -2357,7 +2357,7 @@ function renderEquipment(className, savedEquipment = {}) {
     }
     
     // Remove the roll range e.g. "+[1.0 - 2.0] " or "[1.0 - 2.0]% "
-    let cleaned = name.replace(/^\+?\[[\d\.,]+\s*-\s*([\d\.,]+)\](%?)\s*/, (match, p1) => p1 ? '% ' : '');
+    let cleaned = name.replace(/^\+?\[[\d\.,]+\s*-\s*([\d\.,]+)\](%?)\s*/, (match, p1, p2) => p2 ? '% ' : '');
     
     // Also remove static prefixes if there are no brackets (e.g. "+3 " or "3 ")
     cleaned = cleaned.replace(/^\+?[\d\.,]+(%?)\s*/, (match, p1) => p1 ? '% ' : '');
