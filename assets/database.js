@@ -11898,7 +11898,7 @@ Object.assign(window.D4_DATABASE, {
           0
         ],
         "affixes": [
-          "+[13 - 25]% Critical Strike Damage"
+          "+[13 - 25]% Critical Strike Damage [x]"
         ],
         "armor": 2004,
         "type": "Pants"
@@ -13436,7 +13436,7 @@ Object.assign(window.D4_DATABASE, {
           0
         ],
         "affixes": [
-          "[13.0 - 25.0]% Critical Strike Damage"
+          "[13.0 - 25.0]%[x] Critical Strike Damage"
         ],
         "resistance": 173,
         "type": "Ring"
@@ -23339,7 +23339,7 @@ Object.assign(window.D4_DATABASE, {
               "category": "Core Stat"
             },
             {
-              "name": "+[26 - 50]% Critical Strike Damage",
+              "name": "+[26 - 50]% Critical Strike Damage [x]",
               "shortName": "Critical Strike Damage",
               "category": "Offensive"
             },
@@ -23893,7 +23893,7 @@ Object.assign(window.D4_DATABASE, {
         "mainhand": {
           "modifiers": [
             {
-              "name": "+[13 - 25]% Critical Strike Damage",
+              "name": "+[13 - 25]% Critical Strike Damage [x]",
               "shortName": "Critical Strike Damage",
               "category": "Offensive"
             },
@@ -24273,7 +24273,7 @@ Object.assign(window.D4_DATABASE, {
               "category": "Offensive"
             },
             {
-              "name": "+[13 - 25]% Critical Strike Damage",
+              "name": "+[13 - 25]% Critical Strike Damage [x]",
               "shortName": "Critical Strike Damage",
               "category": "Offensive"
             },
@@ -24850,7 +24850,7 @@ Object.assign(window.D4_DATABASE, {
               "category": "Offensive"
             },
             {
-              "name": "+[13 - 25]% Critical Strike Damage",
+              "name": "+[13 - 25]% Critical Strike Damage [x]",
               "shortName": "Critical Strike Damage",
               "category": "Offensive"
             },
@@ -25334,7 +25334,7 @@ Object.assign(window.D4_DATABASE, {
               "category": "Core Stat"
             },
             {
-              "name": "+[26 - 50]% Critical Strike Damage",
+              "name": "+[26 - 50]% Critical Strike Damage [x]",
               "shortName": "Critical Strike Damage",
               "category": "Offensive"
             },
@@ -25790,7 +25790,7 @@ Object.assign(window.D4_DATABASE, {
         "twohanded": {
           "modifiers": [
             {
-              "name": "+[26 - 50]% Critical Strike Damage",
+              "name": "+[26 - 50]% Critical Strike Damage [x]",
               "shortName": "Critical Strike Damage",
               "category": "Offensive"
             },
