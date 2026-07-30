@@ -11407,13 +11407,13 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
     }
     
     // Apply Unyielding Commander
-    if (stats["Unyielding Commander's Aspect"]) {
+    if (typeof isSkillActiveNode === 'function' && isSkillActiveNode('Unyielding Commander')) {
         let lTags = skill.tags ? skill.tags.map(t => t.toLowerCase()) : [];
         let isSummon = lTags.some(t => t.includes('summon'));
         if (isSummon) {
-            let mult = 1 + (stats["Unyielding Commander's Aspect"].final / 100);
+            let mult = 1.5;
             bucket *= mult;
-            components.push({ name: `Unyielding Commander's Aspect [x]`, value: mult });
+            components.push({ name: `Unyielding Commander [x]`, value: mult });
         }
     }
 
