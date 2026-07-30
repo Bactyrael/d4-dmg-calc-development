@@ -6164,6 +6164,19 @@ function compileCharacterStats(equipped, autoStats) {
         const targetPane = document.getElementById(targetId);
         if (targetPane) {
           targetPane.classList.add('active');
+          if (targetId === 'tab-paragon') {
+              if (typeof mapPan !== 'undefined' && typeof updateSurfaceTransform === 'function' && document.getElementById('paragon-viewport')) {
+                  let vRect = document.getElementById('paragon-viewport').getBoundingClientRect();
+                  if (vRect.width > 0 && mapPan.x <= -200 && mapPan.y <= -200) {
+                      mapPan.x = vRect.width / 2 - 240;
+                      mapPan.y = vRect.height / 2 - 240;
+                      updateSurfaceTransform();
+                  }
+              }
+              if (typeof renderParagonGrid === 'function') {
+                  renderParagonGrid();
+              }
+          }
         }
       });
     });
