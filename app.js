@@ -11406,6 +11406,17 @@ function calculateSkillMultiplicativeBucket(skill, isHit) {
         }
     }
     
+    // Apply Unyielding Commander
+    if (stats["Unyielding Commander's Aspect"]) {
+        let lTags = skill.tags ? skill.tags.map(t => t.toLowerCase()) : [];
+        let isSummon = lTags.some(t => t.includes('summon'));
+        if (isSummon) {
+            let mult = 1 + (stats["Unyielding Commander's Aspect"].final / 100);
+            bucket *= mult;
+            components.push({ name: `Unyielding Commander's Aspect [x]`, value: mult });
+        }
+    }
+
     // Apply Aspect of Reanimation if applicable
     if (stats["Aspect of Reanimation Factor"]) {
         let activeStacks = parseInt(stats["Aspect of Reanimation Stacks"].final) || 0;
