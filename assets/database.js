@@ -3799,6 +3799,22 @@ Object.assign(window.D4_DATABASE, {
       "maxValue": "10"
     },
     {
+      "name": "Unyielding Commander's Aspect",
+      "desc": "While Army of the Dead is active, your Minions take 90% reduced damage and you deal [30 - 50]%[x] increased Summon Damage.",
+      "category": "FILTER_Legendary_Offensive",
+      "classes": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "maxValue": "50"
+    },
+    {
       "name": "Aspect of Reanimation",
       "desc": "Your Summons gain increased damage while alive, up to [60 - 90]%[x] after 10 seconds.",
       "category": "FILTER_Legendary_Offensive",
