@@ -13295,7 +13295,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
     
-    let finalScalar = rankMultiplier * mainStatMult * additiveMult * multiMult;
+    let finalScalar = rankMultiplier * mainStatMult * additiveMult * multiMult * MONSTER_DR;
 
     let minDmg = 0;
     let maxDmg = 0;
@@ -13410,7 +13410,7 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
         }
     }
 
-    let finalCritScalar = rankMultiplier * mainStatMult * critAdditiveMult * critMultiMult;
+    let finalCritScalar = rankMultiplier * mainStatMult * critAdditiveMult * critMultiMult * MONSTER_DR;
 
     if (skillObj.baseDamageScalar) {
         critMin = Math.floor(wpMin * skillObj.baseDamageScalar * finalCritScalar);
