@@ -4535,9 +4535,11 @@ function compileCharacterStats(equipped, autoStats) {
       // Dynamically update Overpower max based on equipped items and skills
       if (baseEquipped && document.getElementById('buff-overpower')) {
           let maxOp = 4;
-          const tidalAspect = Object.values(baseEquipped).find(item => item && item.aspect === "Tidal Aspect");
+          const tidalAspect = Object.values(baseEquipped).find(item => item && (item.aspect === "Tidal Aspect" || item.kulleanAspect === "Tidal Aspect"));
           if (tidalAspect) {
-              let val = tidalAspect.aspectValues && tidalAspect.aspectValues.length > 0 ? parseInt(tidalAspect.aspectValues[0]) : 3;
+              let isKullean = tidalAspect.kulleanAspect === "Tidal Aspect";
+              let vals = isKullean ? tidalAspect.kulleanAspectValues : tidalAspect.aspectValues;
+              let val = vals && vals.length > 0 ? parseInt(vals[0]) : 3;
               maxOp += val;
           }
           const banishedLord = Object.values(baseEquipped).find(item => item && (item.name === "Banished Lord's Talisman" || item.name === "Banished Lord's Talisman (Charm)"));
