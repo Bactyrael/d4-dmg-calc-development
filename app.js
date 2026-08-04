@@ -13505,9 +13505,9 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
 
     let finalCritScalar = rankMultiplier * mainStatMult * critAdditiveMult * critMultiMult * MONSTER_DR;
 
-    if (skillObj.baseDamageScalar) {
-        critMin = Math.floor(wpMin * skillObj.baseDamageScalar * finalCritScalar);
-        critMax = Math.floor(wpMax * skillObj.baseDamageScalar * finalCritScalar);
+    if (baseMin > 0 || baseMax > 0) {
+        critMin = Math.floor(baseMin * finalCritScalar);
+        critMax = Math.floor(baseMax * finalCritScalar);
         critStrMin = critMin.toLocaleString();
         critStrMax = critMax.toLocaleString();
     }
