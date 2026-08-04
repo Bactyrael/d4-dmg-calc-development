@@ -13115,6 +13115,19 @@ function getSkillDamageBreakdown(skillObj, displayRank, isHit) {
                 }
             }
 
+            if (item && item.aspect === 'Bristleback Aspect') {
+                let tags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
+                if (tags.includes('thorns') || skillObj.name.includes('Thorns')) {
+                    let val = 200; // Default minimum roll
+                    if (item.aspectValues && item.aspectValues.length > 0) {
+                        val = parseFloat(item.aspectValues[0]) || 200;
+                    }
+                    let mult = 1 + (val / 100);
+                    multiMult *= mult;
+                    multiData.components.push({ name: `Bristleback Aspect [x]`, value: mult });
+                }
+            }
+
             if (item && item.aspect === 'Aspect of Biting Cold') {
                 let tags = skillObj.tags ? skillObj.tags.map(t => t.toLowerCase()) : [];
                 const isCold = tags.includes('skill_cold') || tags.includes('search_cold') || (skillObj.damageType && skillObj.damageType.toLowerCase() === 'cold');
