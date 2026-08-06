@@ -8112,7 +8112,7 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
   let clsName = currentBuild.class || 'Necromancer';
   let imgSrc = `assets/Skills/${clsName}/${imgName}.png`;
   
-  nameSpan.innerHTML = prefix + `<img src="${imgSrc}" style="width:24px; height:24px; border:1px solid #333;" onerror="this.outerHTML='<div style=\'width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #222; color: #888;\'>?</div>'" />` + `<span>${displayName}</span>`; 
+  nameSpan.innerHTML = prefix + `<img src="${imgSrc}" style="width:24px; height:24px; border:1px solid #333;" onerror="this.outerHTML='<div style=&quot;width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #222; color: #888;&quot;>?</div>'" />` + `<span>${displayName}</span>`; 
   const controls = document.createElement('div'); 
   controls.className = 'skill-controls'; 
   const minusBtn = document.createElement('button'); 
@@ -11846,7 +11846,7 @@ function renderCalcSkills() {
                 }
                 
                 let iconUrl = `assets/Skills/${clsName}/${finalIconName}.png`;
-                let iconHtml = `<img src="${iconUrl}" style="width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px;" onerror="this.outerHTML='<div style=\'width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #222; color: #888;\'>?</div>'">`;
+                let iconHtml = `<img src="${iconUrl}" style="width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px;" onerror="this.outerHTML='<div style=&quot;width: 48px; height: 48px; border: 1px solid #c9a55c; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #222; color: #888;&quot;>?</div>'">`;
                 
                 let titleText = displayImgName;
                 if (['Skeleton Warrior', 'Skeleton Mage', 'Golem'].includes(baseSkill.name) && currentBuild && currentBuild.bookOfTheDead) {
