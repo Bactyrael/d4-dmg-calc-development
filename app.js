@@ -2365,9 +2365,7 @@ function renderEquipment(className, savedEquipment = {}) {
     // Remove trailing "(Class Only)" restriction
     cleaned = cleaned.replace(/\s*\([^)]+Only\)$/i, '');
     cleaned = cleaned.trim();
-    if (cleaned === 'Critical Strike Damage [x]' || cleaned === '[x] Critical Strike Damage') {
-        return 'Critical Strike Damage';
-    }
+
     if (cleaned === 'Damage Reduction' || cleaned === '% Damage Reduction') {
         return 'Universal Damage Reduction %';
     }
@@ -13968,6 +13966,7 @@ document.addEventListener('DOMContentLoaded', () => { setTimeout(() => {
           list.appendChild(card);
       });
   }
+
 
 
 
