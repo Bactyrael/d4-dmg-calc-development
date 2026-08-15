@@ -24276,6 +24276,106 @@ Object.assign(window.D4_DATABASE, {
             }
           ]
         },
+        "shield": {
+          "modifiers": [
+                    {
+                              "name": "+[5.0 - 8.0]% Cooldown Reduction",
+                              "shortName": "Cooldown Reduction",
+                              "category": "Utility"
+                    },
+                    {
+                              "name": "+[6.5 - 8.5]% Critical Strike Chance",
+                              "shortName": "Critical Strike Chance",
+                              "category": "Offensive"
+                    },
+                    {
+                              "name": "+[1 - 2] Essence On Kill",
+                              "shortName": "Essence On Kill",
+                              "category": "Resource"
+                    },
+                    {
+                              "name": "+[150 - 180] Intelligence",
+                              "shortName": "Intelligence",
+                              "category": "Core Stat"
+                    },
+                    {
+                              "name": "+[526 - 632] Life On Hit",
+                              "shortName": "Life On Hit",
+                              "category": "Defensive"
+                    },
+                    {
+                              "name": "+[8.0 - 10.0]% Impairment Reduction",
+                              "shortName": "Impairment Reduction",
+                              "category": "Utility"
+                    },
+                    {
+                              "name": "+[220 - 264] Life Regeneration",
+                              "shortName": "Life Regeneration",
+                              "category": "Defensive"
+                    },
+                    {
+                              "name": "+[524 - 630] Fire Resistance",
+                              "shortName": "Fire Resistance",
+                              "category": "Defensive"
+                    },
+                    {
+                              "name": "+[524 - 630] Lightning Resistance",
+                              "shortName": "Lightning Resistance",
+                              "category": "Defensive"
+                    },
+                    {
+                              "name": "+[524 - 630] Poison Resistance",
+                              "shortName": "Poison Resistance",
+                              "category": "Defensive"
+                    },
+                    {
+                              "name": "+[524 - 630] Shadow Resistance",
+                              "shortName": "Shadow Resistance",
+                              "category": "Defensive"
+                    },
+                    {
+                              "name": "+[1525 - 2097] Thorns",
+                              "shortName": "Thorns",
+                              "category": "Offensive"
+                    },
+                    {
+                              "name": "+[524 - 630] Cold Resistance",
+                              "shortName": "Cold Resistance",
+                              "category": "Defensive"
+                    },
+                    {
+                              "name": "+[11.0 - 15.0]% Healing Received",
+                              "shortName": "Healing Received",
+                              "category": "Defensive"
+                    },
+                    {
+                              "name": "+[327 - 392] Resistance to All Elements",
+                              "shortName": "Resistance to All Elements",
+                              "category": "Defensive"
+                    },
+                    {
+                              "name": "+[11.0 - 15.0]% Damage Reduction",
+                              "shortName": "Damage Reduction",
+                              "category": "Defensive"
+                    },
+                    {
+                              "name": "+[524 - 630] Physical Resistance",
+                              "shortName": "Physical Resistance",
+                              "category": "Defensive"
+                    },
+                    {
+                              "name": "+[10.0 - 15.0]% Fortify Generation",
+                              "shortName": "Fortify Generation",
+                              "category": "Defensive"
+                    },
+                    {
+                              "name": "+[1963 - 2450] Armor",
+                              "shortName": "Armor",
+                              "category": "Defensive"
+                    }
+          ]
+        },
+
         "offhand": {
           "modifiers": [
             {
