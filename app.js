@@ -11875,10 +11875,18 @@ function renderCalcSkills() {
                                 let hasCharges = typeof currentBuild !== 'undefined' && currentBuild && currentBuild.skills && currentBuild.skills['Charges'] > 0;
                                 cd = hasCharges ? 10 : 12;
                             }
+                            let tmpRank = getBaseSkillRankFor(baseSkill.name) || 1;
+                            let bTmp = getSkillDamageBreakdown(modSkill, tmpRank);
+                            let tmStr = 'x' + Number((bTmp.mainStatMult * bTmp.additiveMult * bTmp.multiMult).toFixed(2)).toLocaleString();
+
+                            let centerHtml = `<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;">`;
+                            centerHtml += `<div style="font-size: 0.95rem; color: #9b59b6; font-weight: bold;">Mult: ${tmStr}</div>`;
                             if (cd) {
-                                return `<span style="flex: 1; text-align: center; font-size: 0.95rem; color: #c9a55c; font-weight: normal;">Cooldown: ${typeof getEffectiveCooldown === 'function' ? getEffectiveCooldown(modSkill, cd) : cd}s</span>`;
+                                centerHtml += `<div style="font-size: 0.85rem; color: #c9a55c; font-weight: normal;">Cooldown: ${typeof getEffectiveCooldown === 'function' ? getEffectiveCooldown(modSkill, cd) : cd}s</div>`;
                             }
-                            return `<span style="flex: 1;"></span>`;
+                            centerHtml += `</div>`;
+                            
+                            return `<span style="flex: 1; display: flex; justify-content: center;">${centerHtml}</span>`;
                         })()}
                         <span style="flex: 1; text-align: right; font-size: 0.9rem; color: #888;">Rank ${getBaseSkillRankFor(baseSkill.name)}</span>
                       </h3>
@@ -11917,9 +11925,6 @@ function renderCalcSkills() {
                                         </div>
                                         ${(b.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name.replace('Skill: ', '')}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
                                       </div>
-                                        <div style="margin-top: 6px; padding-top: 4px; border-top: 1px dashed #444; display: flex; align-items: center; gap: 5px;">
-                                          <span style="color: #555;">└</span> <span style="color: #9b59b6;">Total Base Multiplier:</span> <span style="color: #fff; font-weight: bold;">x${Number((b.mainStatMult * b.additiveMult * b.multiMult).toFixed(2)).toLocaleString()}</span>
-                                        </div>
                                     </div>
                                     ${!b.isHit ? '' : `<details style="margin-left: 20px; font-size: 0.9em; margin-bottom: 6px;">
                                       <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #f9d85c;">
@@ -12020,9 +12025,6 @@ function renderCalcSkills() {
                                             </div>
                                             ${(bThorns.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">└</span> ${comp.name.replace('Skill: ', '')}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
                                           </div>
-                                        <div style="margin-top: 6px; padding-top: 4px; border-top: 1px dashed #444; display: flex; align-items: center; gap: 5px;">
-                                          <span style="color: #555;">└</span> <span style="color: #9b59b6;">Total Base Multiplier:</span> <span style="color: #fff; font-weight: bold;">x${Number((bThorns.mainStatMult * bThorns.additiveMult * bThorns.multiMult).toFixed(2)).toLocaleString()}</span>
-                                        </div>
                                           
                                           <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px; color: #f39c12;">
                                             <span style="color: #555;">└</span> Splinter Damage (50%): <span style="color: #fff; font-weight: bold;">${splinterDamage.toLocaleString()}</span>
@@ -12088,9 +12090,6 @@ function renderCalcSkills() {
                                             </div>
                                             ${(bThorns.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">└</span> ${comp.name.replace('Skill: ', '')}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
                                           </div>
-                                        <div style="margin-top: 6px; padding-top: 4px; border-top: 1px dashed #444; display: flex; align-items: center; gap: 5px;">
-                                          <span style="color: #555;">└</span> <span style="color: #9b59b6;">Total Base Multiplier:</span> <span style="color: #fff; font-weight: bold;">x${Number((bThorns.mainStatMult * bThorns.additiveMult * bThorns.multiMult).toFixed(2)).toLocaleString()}</span>
-                                        </div>
                                         </div>
                                       </details>`;
                                   }
@@ -12146,9 +12145,6 @@ function renderCalcSkills() {
                                             <span style="color: #555;">└</span> Multiplicative Multiplier: <span style="color: #fff;">x${Number(b2.multiMult.toFixed(6))}</span>
                                           </div>
                                           ${(b2.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name.replace('Skill: ', '')}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
-                                        </div>
-                                        <div style="margin-top: 6px; padding-top: 4px; border-top: 1px dashed #444; display: flex; align-items: center; gap: 5px;">
-                                          <span style="color: #555;">└</span> <span style="color: #9b59b6;">Total Base Multiplier:</span> <span style="color: #fff; font-weight: bold;">x${Number((b2.mainStatMult * b2.additiveMult * b2.multiMult).toFixed(2)).toLocaleString()}</span>
                                         </div>
                                       </div>
                                       ${canCrit ? `
@@ -12224,9 +12220,6 @@ function renderCalcSkills() {
                                         </div>
                                         ${(bBramble.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">├</span> ${comp.name.replace('Skill: ', '')}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
                                       </div>
-                                        <div style="margin-top: 6px; padding-top: 4px; border-top: 1px dashed #444; display: flex; align-items: center; gap: 5px;">
-                                          <span style="color: #555;">└</span> <span style="color: #9b59b6;">Total Base Multiplier:</span> <span style="color: #fff; font-weight: bold;">x${Number((bBramble.mainStatMult * bBramble.additiveMult * bBramble.multiMult).toFixed(2)).toLocaleString()}</span>
-                                        </div>
                                     </div>
                                     <details style="margin-left: 20px; font-size: 0.9em; margin-bottom: 6px;">
                                       <summary style="cursor: pointer; display: flex; align-items: center; gap: 5px; outline: none; color: #f9d85c;">
@@ -12501,9 +12494,6 @@ function renderCalcSkills() {
                   </div>
                   ${(bThorns.multiplicativeComponents || []).map(comp => `<div style="margin-left: 20px; font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px;"><span style="color: #555;">└</span> ${comp.name.replace('Skill: ', '')}: x${Number(comp.value.toFixed(6))}</div>`).join('')}
                 </div>
-                                        <div style="margin-top: 6px; padding-top: 4px; border-top: 1px dashed #444; display: flex; align-items: center; gap: 5px;">
-                                          <span style="color: #555;">└</span> <span style="color: #9b59b6;">Total Base Multiplier:</span> <span style="color: #fff; font-weight: bold;">x${Number((bThorns.mainStatMult * bThorns.additiveMult * bThorns.multiMult).toFixed(2)).toLocaleString()}</span>
-                                        </div>
               </div>
             </div>
           </div>
