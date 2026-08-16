@@ -8315,7 +8315,8 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     if (mapped === 'chest armor') mapped = 'chest';
     if (mapped === 'mainhand' || mapped === 'offhand' || mapped === 'weapon1' || mapped === 'weapon2' || mapped === 'ranged weapon') {
        if (mapped.startsWith('weapon') || mapped === 'ranged weapon') mapped = 'mainhand';
-    if (mapped === 'offhand' && itemObj.type === 'Shield') mapped = 'shield';
+    const dbMatchForTypeModal = (window.D4_DATABASE?.itemDatabase?.[slotName] || []).find(i => i.name === itemObj.name);
+    if (mapped === 'offhand' && (itemObj.type === 'Shield' || (dbMatchForTypeModal && dbMatchForTypeModal.type === 'Shield'))) mapped = 'shield';
     }
 
     const classData = window.D4_DATABASE?.classData?.[currentClassVal]?.equipment?.[mapped] || {};
@@ -8863,7 +8864,8 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
       if (mappedSlot === 'chest armor') mappedSlot = 'chest';
       if (mappedSlot === 'mainhand' || mappedSlot === 'offhand' || mappedSlot === 'weapon1' || mappedSlot === 'weapon2' || mappedSlot === 'ranged weapon') {
          if (mappedSlot.startsWith('weapon') || mappedSlot === 'ranged weapon') mappedSlot = 'mainhand';
-         if (mappedSlot === 'offhand' && itemObj.type === 'Shield') mappedSlot = 'shield';
+         const dbMatchForType = (window.D4_DATABASE?.itemDatabase?.[slotName] || []).find(i => i.name === itemObj.name);
+         if (mappedSlot === 'offhand' && (itemObj.type === 'Shield' || (dbMatchForType && dbMatchForType.type === 'Shield'))) mappedSlot = 'shield';
       }
 
       // Read from active class hierarchy
@@ -9923,6 +9925,8 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
         if (foundItem) rarity = foundItem.rarity;
         
         const itemObj = { name: itemName, power: 900, quality: 0, rarity: rarity };
+        if (foundItem && foundItem.type) itemObj.type = foundItem.type;
+        if (foundItem && foundItem.weaponType) itemObj.weaponType = foundItem.weaponType;
         
         if ((rarity === 'unique' || rarity === 'mythic') && foundItem && foundItem.affixes) {
             itemObj.affixes = [...foundItem.affixes];
@@ -10342,7 +10346,8 @@ function createSkillRow(name, maxRank, indentLevel, parentName = null, exclusive
     if (mapped === 'chest armor') mapped = 'chest';
     if (mapped === 'left ring' || mapped === 'right ring') mapped = 'ring';
     if (mapped.startsWith('weapon') || mapped === 'ranged weapon') mapped = 'mainhand';
-    if (mapped === 'offhand' && itemObj.type === 'Shield') mapped = 'shield';
+    const dbMatchForTypeModal = (window.D4_DATABASE?.itemDatabase?.[slotName] || []).find(i => i.name === itemObj.name);
+    if (mapped === 'offhand' && (itemObj.type === 'Shield' || (dbMatchForTypeModal && dbMatchForTypeModal.type === 'Shield'))) mapped = 'shield';
 
     const classData = window.D4_DATABASE?.classData?.[currentClassVal]?.equipment?.[mapped] || {};
     let dbItems = [];
